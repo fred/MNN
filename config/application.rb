@@ -45,6 +45,10 @@ module Publication
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     
+    # Heroku
     config.assets.initialize_on_precompile = false
+    
+    # RailsAdmin Assets
+    config.assets.precompile += %w( rails_admin/rails_admin.css rails_admin/rails_admin.js )
   end
 end
