@@ -37,8 +37,9 @@ gem 'stringex'
 gem 'friendly_id', :git => 'git://github.com/norman/friendly_id.git'
 
 
-# Comment System
+### Comment System
 gem 'opinio', :git => "git://github.com/Draiken/opinio.git"
+gem 'rakismet'
 
 ### Queue
 # gem 'resque'

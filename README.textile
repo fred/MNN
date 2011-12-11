@@ -21,6 +21,11 @@ Users with most comments, and general contribution to the system will gain highe
 Inspired by Daemon/Freedom TM (http://thedaemon.com/)
 Algorithm developed by David Kemp. 
 
+h3. Secure comments
+
+Comments spam protection with Akismet, Swearing and bad words detection to flag comment.
+Comments moderation requires karma level socores. Users with low scores cannot fully moderate on system.
+
 h3. Roles System
 
 A Roles System similar to Wordpress but automatically ranked with Karma Score System.
@@ -49,13 +54,18 @@ Articles history, trash and draft modes.
 
 ...and many more....
 
-h3. Contributors: 
+
+h2. Installation:
+
+
+
+h2. Contributors: 
 
 # Frederico Araujo
 # David Kemp
 # other anonymous contributors
 
-h3. Inspired By: 
+h2. Inspired By: 
 
 Diaspora 
 LocomotiveCMS 

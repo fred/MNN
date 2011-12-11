@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111211180736) do
+ActiveRecord::Schema.define(:version => 20111211202801) do
 
   create_table "attachments", :force => true do |t|
     t.string   "file"
@@ -35,13 +35,24 @@ ActiveRecord::Schema.define(:version => 20111211180736) do
   end
 
   create_table "comments", :force => true do |t|
-    t.integer  "owner_id",         :null => false
-    t.integer  "commentable_id",   :null => false
-    t.string   "commentable_type", :null => false
-    t.text     "body",             :null => false
+    t.integer  "owner_id",                            :null => false
+    t.integer  "commentable_id",                      :null => false
+    t.string   "commentable_type",                    :null => false
+    t.text     "body",                                :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "user_ip"
+    t.string   "user_agent"
+    t.integer  "approved_by"
+    t.boolean  "approved",         :default => false
+    t.boolean  "suspicious",       :default => false
+    t.boolean  "marked_spam",      :default => false
   end
+
+  add_index "comments", ["approved"], :name => "index_comments_on_approved"
+  add_index "comments", ["approved_by"], :name => "index_comments_on_approved_by"
+  add_index "comments", ["marked_spam"], :name => "index_comments_on_marked_spam"
+  add_index "comments", ["suspicious"], :name => "index_comments_on_suspicious"
 
   create_table "item_stats", :force => true do |t|
     t.integer "item_id"

@@ -9,6 +9,7 @@ log/*
 tmp/*
 pids/*
 database.yml
+keys.sh
 
 # Documentation
 doc/
