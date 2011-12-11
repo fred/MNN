@@ -10,7 +10,9 @@ gem 'bundler', '>= 1.0.0'
 gem 'thin', '1.3.1', :require => false
 
 ### Database
-gem 'mysql2'
+gem 'mysql2', :group => :test
+gem 'mysql2', :group => :development
+gem "pg",     :group => :production
 
 ### Roles and Authentication
 gem 'cancan' 
