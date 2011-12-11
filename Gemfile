@@ -22,6 +22,7 @@ gem 'paper_trail'
 ### Views
 gem 'kaminari'
 gem "squeel"
+gem 'nested_form'
 
 ### File Uploading and Image Processing
 gem 'rmagick', '2.13.1'
@@ -33,7 +34,7 @@ gem 'nokogiri'
 
 ### Permalink
 gem 'stringex'
-gem 'friendly_id'
+gem "friendly_id", :git => "git://github.com/norman/friendly_id.git"
 
 ### Queue
 # gem 'resque'

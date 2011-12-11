@@ -6,6 +6,12 @@ GIT
       rails (>= 3.0.0)
 
 GIT
+  remote: git://github.com/norman/friendly_id.git
+  revision: 2997285916d6a3a6f335db1dde5f31ed83f0eb9d
+  specs:
+    friendly_id (4.0.0.beta14)
+
+GIT
   remote: git://github.com/svenfuchs/i18n-active_record.git
   revision: b631b05a96d578b6c01c4751cc1a0ba8a84406af
   specs:
@@ -45,7 +51,6 @@ GEM
       multi_json (~> 1.0)
     ansi (1.4.1)
     arel (2.2.1)
-    babosa (0.3.5)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
     cancan (1.6.7)
@@ -87,8 +92,6 @@ GEM
       nokogiri (~> 1.5.0)
       ruby-hmac
     formatador (0.2.1)
-    friendly_id (3.3.0.1)
-      babosa (~> 0.3.0)
     highline (1.6.8)
     hike (1.2.1)
     hirb (0.6.0)
@@ -106,6 +109,7 @@ GEM
     mime-types (1.17.2)
     multi_json (1.0.4)
     mysql2 (0.3.11)
+    nested_form (0.1.1)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.2.1)
@@ -223,13 +227,14 @@ DEPENDENCIES
   devise
   factory_girl_rails (~> 1.2)
   fog
-  friendly_id
+  friendly_id!
   hirb
   i18n-active_record!
   jquery-rails
   json
   kaminari
   mysql2
+  nested_form
   nifty-generators
   nokogiri
   paper_trail
