@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111211161245) do
+ActiveRecord::Schema.define(:version => 20111211180736) do
 
   create_table "attachments", :force => true do |t|
     t.string   "file"
@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(:version => 20111211161245) do
     t.integer  "attachable_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "attachable_type"
   end
 
+  add_index "attachments", ["attachable_id", "attachable_type"], :name => "index_attachments_on_attachable_id_and_attachable_type"
   add_index "attachments", ["attachable_id"], :name => "index_attachments_on_attachable_id"
   add_index "attachments", ["user_id"], :name => "index_attachments_on_user_id"
 
@@ -92,6 +94,19 @@ ActiveRecord::Schema.define(:version => 20111211161245) do
   add_index "items", ["status_code"], :name => "index_items_on_status_code"
   add_index "items", ["updated_by"], :name => "index_items_on_updated_by"
   add_index "items", ["user_id"], :name => "index_items_on_user_id"
+
+  create_table "rails_admin_histories", :force => true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 8
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "roles", :force => true do |t|
     t.string   "title"
@@ -183,5 +198,16 @@ ActiveRecord::Schema.define(:version => 20111211161245) do
   add_index "users", ["ranking"], :name => "index_users_on_ranking"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
+
+  create_table "versions", :force => true do |t|
+    t.string   "item_type",  :null => false
+    t.integer  "item_id",    :null => false
+    t.string   "event",      :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
 end

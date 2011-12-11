@@ -22,7 +22,7 @@ gem 'paper_trail'
 ### Views
 gem 'kaminari'
 gem 'squeel'
-gem 'nested_form'
+# gem 'nested_form'
 
 ### File Uploading and Image Processing
 gem 'mini_magick', '3.3'
@@ -84,6 +84,8 @@ gem 'i18n-active_record',
     :require => 'i18n/active_record',
     :git => 'git://github.com/svenfuchs/i18n-active_record.git'
 
+### ADMIN 
+gem 'rails_admin', :git => "git://github.com/sferik/rails_admin.git"
 
 group :development do
   gem 'rspec-rails', '>= 2.6.1'

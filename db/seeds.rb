@@ -38,13 +38,11 @@ region_tags.each do |t|
 end
 
 unless Role.count > 0
-  Role.create!(:name => "Admin", :description => "Only For Administration Purposes")
-  Role.create!(:name => "Publisher", :description => "Publish Articles to Main Site")
-  Role.create!(:name => "Destroyer", :description => "Delete Others Articles")
-  Role.create!(:name => "Editor", :description => "Edit Others Articles")
-  Role.create!(:name => "Writer", :description => "Create New Articles")
-  Role.create!(:name => "Reader", :description => "Can Read all Articles")
-  Role.create!(:name => "User", :description => "Can Read, Edit and Delete own Articles")
+  Role.create!(:title => "Admin", :description => "Only For Administration Purposes")
+  Role.create!(:title => "Publisher", :description => "Publish Articles to Main Site")
+  Role.create!(:title => "Destroyer", :description => "Delete Others Articles")
+  Role.create!(:title => "Editor", :description => "Edit Others Articles")
+  Role.create!(:title => "Writer", :description => "Create New Articles")
+  Role.create!(:title => "Reader", :description => "Can Read all Articles")
+  Role.create!(:title => "User", :description => "Can Read, Edit and Delete own Articles")
 end
-
-

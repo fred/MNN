@@ -24,5 +24,33 @@ class Ability
     #   can :update, Article, :published => true
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
+    
+    if user
+      can :access, :rails_admin
+      if user.has_role? :admin
+        can :manage, :all
+      elsif user.has_role? :publisher
+        can :manage, [Item]
+      elsif user.has_role? :destroyer
+        can :delete, [Item]
+      elsif user.has_role? :editor
+        can :manage, [Item]
+      elsif user.has_role? :writer
+        can :manage, [Item]
+      elsif user.has_role? :reader
+        can :read, :all
+      elsif user.has_role? :user
+        can :read, [Item]
+      end
+    end
+    
+    # Role.create!(:title => "Admin", :description => "Only For Administration Purposes")
+    # Role.create!(:title => "Publisher", :description => "Publish Articles to Main Site")
+    # Role.create!(:title => "Destroyer", :description => "Delete Others Articles")
+    # Role.create!(:title => "Editor", :description => "Edit Others Articles")
+    # Role.create!(:title => "Writer", :description => "Create New Articles")
+    # Role.create!(:title => "Reader", :description => "Can Read all Articles")
+    # Role.create!(:title => "User", :description => "Can Read, Edit and Delete own Articles")
+    
   end
 end

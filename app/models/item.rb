@@ -1,5 +1,8 @@
 class Item < ActiveRecord::Base
   
+  # Versioning System
+  has_paper_trail
+  
   # Comment System
   # opinio_subjectum
   

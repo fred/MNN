@@ -9,8 +9,27 @@ class User < ActiveRecord::Base
   
   # Relationships
   has_many :items
+  has_many :scores
   has_many :attachments
   has_and_belongs_to_many :roles
   
   accepts_nested_attributes_for :attachments, :allow_destroy => true
+  
+  
+  def has_role?(role)
+    self.roles.where(:title => role.to_s.downcase).count > 0
+  end
+  
+  def role_titles
+    self.roles.collect {|t| t.title}.join(", ")
+  end
+  
+  def role_models
+    rol = []
+    self.roles.collect.each do |t|
+      rol << t.title.capitalize
+    end
+    rol
+  end
+  
 end
