@@ -1,0 +1,83 @@
+# Rails
+.bundle
+db/*.sqlite3
+db/*.sqlite3-journal
+db/*.sql
+*.lzma
+*.log
+log/*
+tmp/*
+pids/*
+database.yml
+
+# Documentation
+doc/
+doc/api
+doc/app
+.yardoc
+.yardopts
+config/aws_keys
+
+# Public Uploads
+public/system/*
+public/themes/*
+
+# Public Cache
+public/javascripts/cache
+public/stylesheets/cache
+
+# Indexes (sphinx/solr)
+solr/data
+solr/pids
+index/**/*
+db/sphinx/
+
+# Refinery Specific
+*.tmproj
+*.autobackupbyrefinery.*
+refinerycms-*.gem
+.autotest
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# NetBeans
+nbproject
+
+# Eclipse
+.project
+
+# Redcar
+.redcar
+
+# Rubinius
+*.rbc
+
+# Vim
+*.swp
+*.swo
+
+# RubyMine
+.idea
+
+# E-texteditor
+.eprj
+
+# Backup
+*~
+.bak/
+
+# Capybara Bug
+capybara-*html
+
+# sass
+.sass-cache
+.sass-cache/*
+
+#rvm
+.rvmrc
+.rvmrc.*
+
