@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Mathaba::Application.load_tasks
+Publication::Application.load_tasks

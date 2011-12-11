@@ -1,0 +1,2 @@
+class RegionTag < Tag
+end

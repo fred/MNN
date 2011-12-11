@@ -1,10 +1,22 @@
 class Item < ActiveRecord::Base
+  
+  # Comment System
+  # opinio_subjectum
+  
+  # Permalink URLS
   extend FriendlyId
   friendly_id :title, :use => :slugged
   
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  # Relationships
   belongs_to :user
   has_many :attachments, :as => :attachable
-  
+  has_many :item_stats
+  has_and_belongs_to_many :tags, :join_table => "taggings", 
+    :foreign_key => "taggable_id", :association_foreign_key => "tag_id"
+  has_and_belongs_to_many :region_tags, :join_table => "taggings",
+    :foreign_key => "taggable_id", :association_foreign_key => "tag_id"
+    
+  # Nested Attributes
+  accepts_nested_attributes_for :attachments, :allow_destroy => true
   
 end

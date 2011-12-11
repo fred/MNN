@@ -13,7 +13,7 @@ gem 'thin', '1.3.1', :require => false
 gem 'mysql2'
 
 ### Roles and Authentication
-gem "cancan" 
+gem 'cancan' 
 gem 'devise' # Devise must be required before RailsAdmin
 
 ### Versioning
@@ -21,12 +21,12 @@ gem 'paper_trail'
 
 ### Views
 gem 'kaminari'
-gem "squeel"
+gem 'squeel'
 gem 'nested_form'
 
 ### File Uploading and Image Processing
-gem 'rmagick', '2.13.1'
-gem "fog"
+gem 'mini_magick', '3.3'
+gem 'fog'
 gem 'carrierwave'
 
 ### Parsing
@@ -34,7 +34,11 @@ gem 'nokogiri'
 
 ### Permalink
 gem 'stringex'
-gem "friendly_id", :git => "git://github.com/norman/friendly_id.git"
+gem 'friendly_id', :git => 'git://github.com/norman/friendly_id.git'
+
+
+# Comment System
+gem 'opinio', :git => "git://github.com/Draiken/opinio.git"
 
 ### Queue
 # gem 'resque'
@@ -71,7 +75,7 @@ gem 'sunspot_with_kaminari'
 gem 'progress_bar'
 
 # Settings
-gem "rails-settings-cached", 
+gem 'rails-settings-cached', 
     :require => 'rails-settings', 
     :git => 'git://github.com/huacnlee/rails-settings-cached.git'
 
@@ -82,14 +86,14 @@ gem 'i18n-active_record',
 
 
 group :development do
-  gem "rspec-rails", ">= 2.6.1"
-  gem "nifty-generators"
+  gem 'rspec-rails', '>= 2.6.1'
+  gem 'nifty-generators'
   gem 'hirb'
 end
 
 group :test do
   # Pretty printed test output
   gem 'turn', '~> 0.8.3', :require => false
-  gem "rspec-rails", ">= 2.6.1"
-  gem "factory_girl_rails", "~> 1.2"
+  gem 'rspec-rails', '>= 2.6.1'
+  gem 'factory_girl_rails', '~> 1.2'
 end

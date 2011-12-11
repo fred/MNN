@@ -1,4 +1,4 @@
-Mathaba::Application.configure do
+Publication::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
@@ -49,7 +49,7 @@ Mathaba::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Enable threaded mode
-  # config.threadsafe!
+  config.threadsafe!
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
@@ -57,4 +57,7 @@ Mathaba::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  # Production URL
+  config.action_mailer.default_url_options = { :host => 'mnn.heroku.com' }
 end

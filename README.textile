@@ -10,7 +10,12 @@ Developers and Contributors highly welcome.
 
 h2. Features
 
-h3. Karma System: 
+h3. Searchable
+
+It provided Search ability with Sunspot SOLR indexing. SOLR is very fast and highly customizable indexing engine by LUCENE. 
+Users should be able to search posts by Author, Category, Tags, HashTags, Content, Title, etc. 
+
+h3. Karma System
 
 Users with most comments, and general contribution to the system will gain higher points in the karma system. 
 Inspired by Daemon/Freedom TM (http://thedaemon.com/)
@@ -22,9 +27,9 @@ A Roles System similar to Wordpress but automatically ranked with Karma Score Sy
 
 h3. Security
 
-Security is enforced with CanCan, Devise and paper_trail.
-Only Users with specific roles can make changes to system. 
-All changes on the system *Should* be reversible, with few exceptions.
+Security is enforced with CanCan and Devise.
+Only Users with specific roles can make authorized changes to system. 
+All changes on the system *Should* be reversible, with a few exceptions.
 
 h3. Caching with memcached and Rack-Cache
 
@@ -34,11 +39,13 @@ Future: enable Amazon Elasticache
 h3. Image uploading to S3
 
 With carrierwave, Fog and RMagick, images are resized and uploaded to S3.
+So that images are quickly served to users all around the world.
 Optionally enabled with Amazon CDN.
 
 h3. Articles Versioning
 
 Posts with Multi Versions, using Paper-Trail (https://github.com/airblade/paper_trail)
+Articles history, trash and draft modes.
 
 ...and many more....
 

@@ -1,4 +1,8 @@
-Mathaba::Application.routes.draw do
+Publication::Application.routes.draw do
+  opinio_model
+
+  devise_for :users
+
   resources :items
 
   # The priority is based upon order of creation:
