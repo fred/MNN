@@ -131,11 +131,8 @@ RailsAdmin.config do |config|
   config.model Attachment do
     # Found associations:
       configure :user, :belongs_to_association 
-      configure :attachable, :polymorphic_association   #   # Found columns:
-      configure :file, :string 
+      configure :image
       configure :description, :text 
-      configure :created_at, :datetime 
-      configure :updated_at, :datetime   #   # Sections:
     list do; end
     export do; end
     show do; end
@@ -158,8 +155,7 @@ RailsAdmin.config do |config|
     update do; end
   end
   config.model Comment do
-    # Found associations:
-      configure :commentable, :polymorphic_association         # Hidden 
+    # Found associations: 
       configure :owner, :belongs_to_association   #   # Found columns:
       configure :body, :text 
       configure :created_at, :datetime 
@@ -205,8 +201,6 @@ RailsAdmin.config do |config|
       configure :member_only, :boolean 
       configure :published_at, :datetime 
       configure :expires_on, :datetime 
-      configure :created_at, :datetime 
-      configure :updated_at, :datetime   #   # Sections:
     list do; end
     export do; end
     show do; end
@@ -244,8 +238,6 @@ RailsAdmin.config do |config|
       configure :users, :has_and_belongs_to_many_association   #   # Found columns:
       configure :title, :string 
       configure :description, :text 
-      configure :created_at, :datetime 
-      configure :updated_at, :datetime   #   # Sections:
     list do; end
     export do; end
     show do; end
@@ -260,8 +252,6 @@ RailsAdmin.config do |config|
       configure :scorable_type, :integer 
       configure :scorable_id, :integer 
       configure :points, :integer 
-      configure :created_at, :datetime 
-      configure :updated_at, :datetime   #   # Sections:
     list do; end
     export do; end
     show do; end
@@ -274,8 +264,6 @@ RailsAdmin.config do |config|
     # Found columns:
       configure :title, :string 
       configure :type, :string 
-      configure :created_at, :datetime 
-      configure :updated_at, :datetime   #   # Sections:
     list do; end
     export do; end
     show do; end
@@ -291,8 +279,6 @@ RailsAdmin.config do |config|
       configure :value, :text 
       configure :interpolations, :text 
       configure :is_proc, :boolean 
-      configure :created_at, :datetime 
-      configure :updated_at, :datetime   #   # Sections:
     list do; end
     export do; end
     show do; end
@@ -333,8 +319,6 @@ RailsAdmin.config do |config|
       configure :phone_number, :string 
       configure :time_zone, :string 
       configure :ranking, :integer 
-      configure :created_at, :datetime 
-      configure :updated_at, :datetime   #   # Sections:
     list do; end
     export do; end
     show do; end
