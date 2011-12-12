@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   # Relationships
   has_many :items
   has_many :scores
-  has_many :comments
+  # has_many :comments
   has_many :attachments
   has_and_belongs_to_many :roles
   

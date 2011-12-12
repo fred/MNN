@@ -11,7 +11,7 @@ class Comment < ActiveRecord::Base
   # user_agent    : user agent string
   # referrer      : referring URL (note the spelling)
   
-  belongs_to :user
+  # belongs_to :user
   belongs_to :approving_user, :foreign_key => :approved_by, :class_name => "User"
   
   ### Askimet helpers ###
