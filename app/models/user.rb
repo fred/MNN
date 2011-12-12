@@ -18,11 +18,11 @@ class User < ActiveRecord::Base
   
   
   def title
+    str = self.email
     if self.name
-      return self.name
-    else
-      return self.email
+      str =+ " (#{self.name})"
     end
+    str
   end
   
   def has_role?(role)

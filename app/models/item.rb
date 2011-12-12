@@ -1,4 +1,5 @@
 class Item < ActiveRecord::Base
+  include Rails.application.routes.url_helpers # neeeded for _path helpers to work in models
   
   # Versioning System
   has_paper_trail
@@ -22,4 +23,8 @@ class Item < ActiveRecord::Base
   # Nested Attributes
   accepts_nested_attributes_for :attachments, :allow_destroy => true
   
+  
+  def admin_permalink
+    admin_item_path(self)
+  end
 end

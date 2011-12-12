@@ -90,8 +90,8 @@ gem 'i18n-active_record',
 ### ADMIN 
 # gem 'rails_admin',  :git => 'git://github.com/sferik/rails_admin.git', 
 #                     :ref => "2216171ab2f9b35cdd83d2828e15131fd531bec3"
-gem 'activeadmin'
-gem "meta_search"
+gem 'activeadmin', :git => "git://github.com/gregbell/active_admin.git"
+gem "meta_search", '1.1.1'
   
 group :development do
   gem 'rspec-rails', '>= 2.6.1'

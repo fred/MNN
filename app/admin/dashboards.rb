@@ -38,37 +38,142 @@ ActiveAdmin::Dashboards.build do
   
   ActiveAdmin.register Item do
     menu :priority => 2
+    index do
+      column :id
+      column :user
+      column :title
+      column :draft
+      column :featured
+      column :member_only
+      column :status_code
+      column :updated_at
+      column :published_at
+      column :expires_on
+      default_actions
+    end
   end
+  
+  # Comments
   ActiveAdmin.register Comment, :as => "UserComment"  do
     menu :priority => 4
   end
   
+  # Categories
   ActiveAdmin.register Category do
     menu :priority => 10
   end
+  
+  
   ActiveAdmin.register GeneralTag do
     menu :priority => 11
   end
+  
+  
   ActiveAdmin.register RegionTag do
     menu :priority => 12
   end
 
+
   ActiveAdmin.register Attachment do
     menu :priority => 20
   end
+  
+  
+  # USER
   ActiveAdmin.register User do
     menu :priority => 30
+    # filter :name
+    # filter :email
+    # filter :ranking
+    index do
+      column :id
+      column :name
+      column :email
+      column :ranking
+      column :diaspora
+      column :gtalk
+      column :jabber
+      column :skype
+      column :twitter
+      column :roles
+      default_actions
+    end
+
+    # show do
+    #   user.name
+    #   user.email
+    #   user.ranking
+    #   user.diaspora
+    #   user.gtalk
+    #   user.jabber
+    #   user.skype
+    #   user.twitter
+    #   user.roles
+    # end
+    
+    form do |f|
+      f.inputs "User Info" do
+        f.input :email
+        f.input :name
+        f.input :bio
+      end
+      f.inputs "Contact Info" do
+        f.input :address
+        f.input :skype
+        f.input :twitter
+        f.input :diaspora
+        f.input :jabber
+        f.input :gtalk
+        f.input :phone_number
+        f.input :time_zone
+      end
+      f.inputs "Roles" do
+        f.input :roles
+      end
+      f.buttons
+    end
   end
+  
   ActiveAdmin.register Score do
     menu :priority => 31
   end
   ActiveAdmin.register Role do
     menu :priority => 32
+    filter :title
+    form do |f|
+      f.inputs "Role" do
+        f.input :title
+        f.input :description
+      end
+      f.inputs "Users" do
+        f.input :users
+      end
+      f.buttons
+    end
   end
   
   ActiveAdmin.register Translation do
     menu :priority => 40
   end
   
+
+  # paper_trail
+  section "Recently updated content" do
+    table_for Version.order('id desc').limit(20) do
+      column "Item" do |v| v.item end
+      column "Type" do |v| v.item_type.underscore.humanize end
+      column "Modified at" do |v| v.created_at.to_s :long end
+      
+      column "User" do |v| 
+        user = User.where(:id => v.whodunnit).first
+        if user
+          (link_to user.title, admin_user_path(v.whodunnit))
+        else
+          ""
+        end
+      end
+      
+    end
+  end
 
 end
