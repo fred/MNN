@@ -27,7 +27,9 @@ class Ability
     
     if user
       can :access, :rails_admin
-      if user.has_role? :admin
+      if user
+        can :manage, :all
+      elsif user.has_role? :admin
         can :manage, :all
       elsif user.has_role? :publisher
         can :manage, [Item]
