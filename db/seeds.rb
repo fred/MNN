@@ -46,3 +46,8 @@ unless Role.count > 0
   Role.create!(:title => "Reader", :description => "Can Read all Articles")
   Role.create!(:title => "User", :description => "Can Read, Edit and Delete own Articles")
 end
+
+User.all.each do |user|
+  role = Role.first
+  user.roles << role
+end
