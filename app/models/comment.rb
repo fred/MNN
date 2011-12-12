@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  opinio
+  # opinio
   include Rakismet::Model  
   # author        : name submitted with the comment
   # author_url    : URL submitted with the comment

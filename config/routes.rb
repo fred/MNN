@@ -1,12 +1,22 @@
 Publication::Application.routes.draw do
   
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  ActiveAdmin.routes(self)
 
-  opinio_model
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :users, ActiveAdmin::Devise.config
+  # mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-  devise_for :users
+  # opinio_model
 
   resources :items
+  resources :roles
+  resources :tags
+  resources :categories
+  resources :region_tags
+  resources :attachments
+  resources :scores
+  resources :translations
+  resources :comments
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

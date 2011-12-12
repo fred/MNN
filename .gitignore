@@ -10,6 +10,7 @@ tmp/*
 pids/*
 database.yml
 keys.sh
+start.sh
 
 # Documentation
 doc/

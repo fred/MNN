@@ -69,10 +69,10 @@ end
 gem 'jquery-rails'
 
 # Search and Indexing
-gem 'sunspot'
-gem 'sunspot_rails'
-gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
-gem 'sunspot_with_kaminari'
+# gem 'sunspot'
+# gem 'sunspot_rails'
+# gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
+# gem 'sunspot_with_kaminari'
 
 # Nice progress when rake indexing with solr
 gem 'progress_bar'
@@ -88,8 +88,11 @@ gem 'i18n-active_record',
     :git => 'git://github.com/svenfuchs/i18n-active_record.git'
 
 ### ADMIN 
-gem 'rails_admin', :git => "git://github.com/sferik/rails_admin.git"
-
+# gem 'rails_admin',  :git => 'git://github.com/sferik/rails_admin.git', 
+#                     :ref => "2216171ab2f9b35cdd83d2828e15131fd531bec3"
+gem 'activeadmin'
+gem "meta_search"
+  
 group :development do
   gem 'rspec-rails', '>= 2.6.1'
   gem 'nifty-generators'

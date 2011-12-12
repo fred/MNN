@@ -17,6 +17,14 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :attachments, :allow_destroy => true
   
   
+  def title
+    if self.name
+      return self.name
+    else
+      return self.email
+    end
+  end
+  
   def has_role?(role)
     self.roles.where(:title => role.to_s.downcase).count > 0
   end

@@ -1,0 +1,2 @@
+class GeneralTag < Tag
+end

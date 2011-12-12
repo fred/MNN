@@ -25,22 +25,35 @@ class Ability
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     
+    user ||= AdminUser.new       
+    # case user.role      
+    # when user.has_role? :admin
+    #   can :manage, :all
+    # when user.has_role? :editor
+    #   can :manage, Post   
+    #   cannot [:destroy,:edit], Post   
+    # end
+       
     if user
-      can :access, :rails_admin
-      if user
+      can :manage, :all
+      
+      if user.has_role? :admin
         can :manage, :all
-      elsif user.has_role? :admin
-        can :manage, :all
+        
       elsif user.has_role? :publisher
         can :manage, [Item]
-      elsif user.has_role? :destroyer
-        can :delete, [Item]
+        
       elsif user.has_role? :editor
         can :manage, [Item]
+        cannot [:publish], Item
+        
       elsif user.has_role? :writer
         can :manage, [Item]
+        cannot [:publish], Item
+        
       elsif user.has_role? :reader
         can :read, :all
+        
       elsif user.has_role? :user
         can :read, [Item]
       end
