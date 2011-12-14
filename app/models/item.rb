@@ -13,9 +13,12 @@ class Item < ActiveRecord::Base
   
   # Relationships
   belongs_to :user
+  belongs_to :category
+  
   has_many :attachments, :as => :attachable
   has_many :item_stats
-  has_and_belongs_to_many :tags, :join_table => "taggings", 
+  
+  has_and_belongs_to_many :general_tags, :join_table => "taggings", 
     :foreign_key => "taggable_id", :association_foreign_key => "tag_id"
   has_and_belongs_to_many :region_tags, :join_table => "taggings",
     :foreign_key => "taggable_id", :association_foreign_key => "tag_id"

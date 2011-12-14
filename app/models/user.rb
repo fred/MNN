@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  # attr_accessible :email, :password, :password_confirmation, :remember_me
   
   # Relationships
   has_many :items
@@ -18,9 +18,10 @@ class User < ActiveRecord::Base
   
   
   def title
-    str = self.email
     if self.name
-      str =+ " (#{self.name})"
+      str = "#{self.name} - #{self.email}"
+    else
+      str = self.email
     end
     str
   end

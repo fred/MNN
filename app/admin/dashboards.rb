@@ -37,25 +37,64 @@ ActiveAdmin::Dashboards.build do
   
   
   ActiveAdmin.register Item do
-    menu :priority => 2
+    menu :priority => 1
     index do
       column :id
       column :user
       column :title
       column :draft
       column :featured
-      column :member_only
       column :status_code
       column :updated_at
       column :published_at
       column :expires_on
       default_actions
     end
+    form do |f|
+      f.inputs "Required Main Information" do
+        f.input :category, :as => :select, 
+                :label_method => 'title', 
+                :value_method => :id, 
+                :label => "Section",
+                :required => true
+        f.input :title, :label => "Main Title", :required => true
+        f.input :highlight, :label => "Article Highlight", :required => true
+        f.input :body, :label => "Main Content", :required => true
+      end
+      
+      f.inputs "Tags" do
+        f.input :general_tags, :as => :check_boxes, :collection => GeneralTag.find(:all, :order => "title ASC")
+        f.input :region_tags, :as => :check_boxes, :collection => RegionTag.find(:all, :order => "title ASC")
+        f.input :country_tags, :as => :check_boxes, :collection => CountryTag.find(:all, :order => "title ASC")
+      end
+      
+      f.inputs "Optional" do
+        f.input :author_name
+        f.input :author_email
+        f.input :source_url
+      end
+      f.inputs "Status Codes" do
+        f.input :draft
+        f.input :featured, :label => "Highlight"
+        f.input :allow_comments
+        f.input :allow_star_rating
+        f.input :protected_record, :label => "Locked"
+      end
+      
+      f.inputs "Dates" do
+        f.input :published_at, :label => "When to go live", :time => true
+        f.input :expires_on, :label => "Expiration Date", :time => true
+        # f.input :published_at, :label => "When to go live", :as => :datepicker, :time => true
+        # f.input :expires_on, :label => "Expiration Date", :as => :datepicker, :time => true
+      end
+      
+      f.buttons
+    end
   end
   
   # Comments
   ActiveAdmin.register Comment, :as => "UserComment"  do
-    menu :priority => 4
+    menu :priority => 4, :label => "Comments"
   end
   
   # Categories
@@ -64,16 +103,18 @@ ActiveAdmin::Dashboards.build do
   end
   
   
+  # TAGS
   ActiveAdmin.register GeneralTag do
-    menu :priority => 11
+    menu :parent => "Tags", :priority => 11
   end
-  
-  
   ActiveAdmin.register RegionTag do
-    menu :priority => 12
+    menu :parent => "Tags", :priority => 13
+  end
+  ActiveAdmin.register CountryTag do
+    menu :parent => "Tags", :priority => 15
   end
 
-
+  # Images and File
   ActiveAdmin.register Attachment do
     menu :priority => 20
   end
@@ -81,7 +122,7 @@ ActiveAdmin::Dashboards.build do
   
   # USER
   ActiveAdmin.register User do
-    menu :priority => 30
+    menu :parent => "Members", :priority => 30
     # filter :name
     # filter :email
     # filter :ranking
@@ -90,12 +131,7 @@ ActiveAdmin::Dashboards.build do
       column :name
       column :email
       column :ranking
-      column :diaspora
-      column :gtalk
-      column :jabber
-      column :skype
-      column :twitter
-      column :roles
+      column :role_titles
       default_actions
     end
 
@@ -128,17 +164,20 @@ ActiveAdmin::Dashboards.build do
         f.input :time_zone
       end
       f.inputs "Roles" do
-        f.input :roles
+        f.input :roles, :as => :select, :label_method => 'title' , :value_method => :id
       end
       f.buttons
     end
   end
   
+  # Scores
   ActiveAdmin.register Score do
-    menu :priority => 31
+    menu :parent => "Members", :priority => 32
   end
+  
+  # Roles
   ActiveAdmin.register Role do
-    menu :priority => 32
+    menu :parent => "Members", :priority => 34
     filter :title
     form do |f|
       f.inputs "Role" do
@@ -146,7 +185,7 @@ ActiveAdmin::Dashboards.build do
         f.input :description
       end
       f.inputs "Users" do
-        f.input :users
+        f.input :users, :as => :select, :label_method => 'title' , :value_method => :id
       end
       f.buttons
     end

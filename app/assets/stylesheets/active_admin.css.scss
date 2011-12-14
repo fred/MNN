@@ -4,3 +4,30 @@
 
 // To customize the Active Admin interfaces, add your
 // styles here:
+
+::-webkit-scrollbar {
+	-webkit-appearance: always;
+	width: 7px;
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 4px;
+	background-color: rgba(0,0,0,.5);
+	-webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+ol.choices-group {
+  height: 150px;
+  overflow: scroll;
+  padding-right: 20px;
+  -webkit-box-shadow: 0px 0px 8px #CCC;
+  -moz-box-shadow: 0px 0px 8px #CCC;
+  box-shadow: 0px 0px 8px #CCC;
+  width: auto;
+  padding-right: 20px;
+  min-width: 150px;
+}
+
+form fieldset > ol > li fieldset legend {
+  padding-top: 6px;
+  padding-left: 12px;
+}

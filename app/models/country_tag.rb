@@ -1,0 +1,2 @@
+class CountryTag < Tag
+end
