@@ -87,5 +87,41 @@ class Item < ActiveRecord::Base
     end
   end
   
-  
+
+  def self.import_wordpress_xml
+    require 'nokogiri'
+    file = File.join(Rails.root, "doc", "wp.xml")
+    doc = Nokogiri::HTML(open(file))
+    items = doc.xpath("//item")
+    user = User.first
+
+    items.each do |item|
+      item_id = item.xpath("guid").first.to_str
+      title = item.xpath("title").first.to_str
+      pubdate = item.xpath("pubdate").first.to_str
+      body = item.xpath("encoded").first.to_str
+      author_name = item.xpath("creator").first.to_str
+
+      puts "**** item_id: #{item_id} ****"
+      if pubdate
+        date = DateTime.parse(pubdate)
+        if date
+          time = date.to_time
+        else
+          time = Time.now
+        end
+      end
+
+      # Item.create(
+      #   :title => title,
+      #   :published_at => time,
+      #   :body => body,
+      #   :author_name => author_name,
+      #   :source_url => item_id,
+      #   :draft => false,
+      #   :user_id => user.id
+      # )
+    end
+  end
+    
 end
