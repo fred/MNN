@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   
   def title
     if self.name
-      str = "#{self.name} - #{self.email}"
+      str = self.name
     else
       str = self.email
     end
@@ -42,4 +42,37 @@ class User < ActiveRecord::Base
     rol
   end
   
+  
+  
+  
+  # Returns approved Users
+  def self.approved
+    where("confirmed_at is not NULL")
+  end
+  def self.pending
+    where("confirmed_at is NULL")
+  end
+  
+  # Returns the last 10 approved users
+  def self.recent(limit=10)
+    approved.
+    order("id DESC").
+    limit(limit)
+  end
+  
+  # Returns the last 10 pending users
+  def self.recent_pending(limit=10)
+    pending.
+    order("id DESC").
+    limit(limit)
+  end
+  
+  # Returns the last 10 logged in users
+  def self.logged_in(limit=10)
+    approved.
+    order("current_sign_in_at DESC").
+    limit(limit)
+  end  
+  
 end
+

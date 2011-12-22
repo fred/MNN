@@ -41,6 +41,8 @@ Publication::Application.configure do
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
+  # Using Cloudfront url for assets
+  config.action_controller.asset_host = "http://d4b3aux6dw2bz.cloudfront.net"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
@@ -60,4 +62,5 @@ Publication::Application.configure do
   
   # Production URL
   config.action_mailer.default_url_options = { :host => 'mnn.heroku.com' }
+  
 end

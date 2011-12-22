@@ -36,6 +36,135 @@ ActiveAdmin::Dashboards.build do
   # Will render the "Recent Users" then the "Recent Posts" sections on the dashboard.  
   
   
+  ##################
+  ### DASHBOARD ####
+  ##################
+  
+  section "Recently Updated Items", :priority => 2 do
+    ul do
+      Item.recent_updated(10).collect do |item|
+        li(
+          link_to("#{item.category_title} - #{item.title} - #{time_ago_in_words(item.updated_at)} ago",
+          admin_item_path(item))
+        )
+      end
+    end
+  end
+  
+  section "Draft Items", :priority => 8 do
+    ul do
+      Item.recent_drafts(10).collect do |item|
+        li link_to("#{item.category_title} - #{item.title} - #{time_ago_in_words(item.updated_at)} ago", admin_item_path(item))
+      end
+    end
+  end
+  
+  section "Pending Items", :priority => 14 do
+    ul do
+      Item.pending(10).collect do |item|
+        li link_to("#{item.category_title} - #{item.title}", admin_item_path(item))
+      end
+    end
+  end
+
+  ### USERS
+  section "Pending Users", :priority => 4 do
+    ul do
+      User.recent_pending(10).collect do |user|
+        li link_to(user.title, admin_user_path(user))
+      end
+    end
+  end
+  section "New Users", :priority => 10 do
+    ul do
+      User.recent(10).collect do |user|
+        li link_to(user.title, admin_user_path(user))
+      end
+    end
+  end
+  section "Recent Logged in Users", :priority => 16 do
+    ul do
+      User.logged_in(10).collect do |user|
+        li(
+          link_to(
+            "#{user.title} - #{time_ago_in_words(user.current_sign_in_at)} ago", 
+            admin_user_path(user)
+          )
+        )
+      end
+    end
+  end
+
+  ### COMMENTS ###
+  section "Recent Comments", :priority => 6 do
+    ul do
+      Comment.recent(10).collect do |comment|
+        li(link_to(
+            "#{comment.commentable.email} Wrote #{time_ago_in_words(comment.created_at)}:", 
+            admin_comment_path(comment), 
+            :title => comment.body
+          )
+        )
+        li "#{comment.body.truncate(50)} ago"
+      end
+    end
+  end
+  section "Pending Comments", :priority => 12 do
+    ul do
+      Comment.pending(10).collect do |comment|
+        li(link_to(
+            "#{comment.commentable.email} Wrote #{time_ago_in_words(comment.created_at)}:", 
+            admin_comment_path(comment), 
+            :title => comment.body
+          )
+        )
+        li "#{comment.body.truncate(50)} ago"
+      end
+    end
+  end
+  section "Spam Comments", :priority => 18 do
+    ul do
+      Comment.as_spam(10).collect do |comment|
+        li(link_to(
+            "#{comment.commentable.email} Wrote #{time_ago_in_words(comment.created_at)}:", 
+            admin_comment_path(comment), 
+            :title => comment.body
+          )
+        )
+        li "#{comment.body.truncate(50)} ago"
+      end
+    end
+  end
+  
+  
+  # paper_trail
+  section "Recently Updated Content", :priority => 40 do
+    table_for Version.order('id desc').limit(10) do
+      column "Type" do |v| 
+        v.item_type.underscore.humanize
+      end
+      column "Action" do |v| 
+        v.event
+      end
+      column "When" do |v| 
+        v.created_at.to_s :short 
+      end
+      column "User" do |v| 
+        user = User.where(:id => v.whodunnit).first
+        if user
+          (link_to user.title, admin_user_path(v.whodunnit))
+        else
+          ""
+        end
+      end
+    end
+  end
+  
+  
+  
+  
+  # MODELS
+  
   ActiveAdmin.register Item do
     menu :priority => 1
     index do
@@ -93,36 +222,42 @@ ActiveAdmin::Dashboards.build do
   end
   
   # Comments
-  ActiveAdmin.register Comment, :as => "UserComment"  do
+  ActiveAdmin.register Comment, :as => "UserComment" do
+    config.comments = false
     menu :priority => 4, :label => "Comments"
   end
   
   # Categories
   ActiveAdmin.register Category do
+    config.comments = false
     menu :priority => 10
   end
   
   
   # TAGS
   ActiveAdmin.register GeneralTag do
-    menu :parent => "Tags", :priority => 11
+    config.comments = false
+    menu :parent => "Tags", :priority => 15
   end
   ActiveAdmin.register RegionTag do
-    menu :parent => "Tags", :priority => 13
+    config.comments = false
+    menu :parent => "Tags", :priority => 17
   end
   ActiveAdmin.register CountryTag do
-    menu :parent => "Tags", :priority => 15
+    config.comments = false
+    menu :parent => "Tags", :priority => 19
   end
 
   # Images and File
   ActiveAdmin.register Attachment do
-    menu :priority => 20
+    menu :priority => 22
   end
   
   
   # USER
   ActiveAdmin.register User do
-    menu :parent => "Members", :priority => 30
+    config.comments = false
+    menu :parent => "Members", :priority => 24
     # filter :name
     # filter :email
     # filter :ranking
@@ -172,12 +307,14 @@ ActiveAdmin::Dashboards.build do
   
   # Scores
   ActiveAdmin.register Score do
-    menu :parent => "Members", :priority => 32
+    config.comments = false
+    menu :parent => "Members", :priority => 35
   end
   
   # Roles
   ActiveAdmin.register Role do
-    menu :parent => "Members", :priority => 34
+    config.comments = false
+    menu :parent => "Members", :priority => 50
     filter :title
     form do |f|
       f.inputs "Role" do
@@ -192,27 +329,14 @@ ActiveAdmin::Dashboards.build do
   end
   
   ActiveAdmin.register Translation do
-    menu :priority => 40
+    config.comments = false
+    menu :priority => 45
   end
+
+
+  # ActiveAdmin.register Version do
+  #   config.comments = false
+  #   menu :priority => 50
+  # end
   
-
-  # paper_trail
-  section "Recently updated content" do
-    table_for Version.order('id desc').limit(20) do
-      column "Item" do |v| v.item end
-      column "Type" do |v| v.item_type.underscore.humanize end
-      column "Modified at" do |v| v.created_at.to_s :long end
-      
-      column "User" do |v| 
-        user = User.where(:id => v.whodunnit).first
-        if user
-          (link_to user.title, admin_user_path(v.whodunnit))
-        else
-          ""
-        end
-      end
-      
-    end
-  end
-
 end

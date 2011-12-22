@@ -24,17 +24,20 @@ gem 'paper_trail'
 ### Views
 gem 'kaminari'
 gem 'squeel'
-# gem 'nested_form'
 
 ### File Uploading and Image Processing
 gem 'mini_magick', '3.3'
 gem 'fog'
 gem 'carrierwave'
 
+### S3 Asset hosting
+gem "asset_sync"
+
 ### Parsing
 gem 'nokogiri'
 
 ### Permalink
+gem 'RedCloth'
 gem 'stringex'
 gem 'friendly_id', :git => 'git://github.com/norman/friendly_id.git'
 
@@ -53,6 +56,9 @@ gem 'rakismet'
 # gem 'mail'
 # gem 'resque_mailer'
 
+gem "libv8"
+gem "execjs"
+gem "therubyracer", :require => 'v8'
 gem 'json'
 gem 'sass'
 gem 'sass-rails',   '~> 3.1.5'
@@ -104,3 +110,4 @@ end
 ### Active Admin, loaded at end. 
 gem "meta_search", '1.1.1'
 gem 'activeadmin', :git => "git://github.com/gregbell/active_admin.git"
+

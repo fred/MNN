@@ -1,15 +1,15 @@
 GIT
   remote: git://github.com/Draiken/opinio.git
-  revision: d5bd14f92edc4e25fa02144269b237b1165441ee
+  revision: 2a9a2ace7f11a151b27c0fae00d239f26a0b04c3
   specs:
-    opinio (0.3.2)
+    opinio (0.3.3)
       jquery-rails
       kaminari
       rails (~> 3.0)
 
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 5676c997af88a206b9660af1bc73afd21ca0c47b
+  revision: a0d58288cdd5fc2e2f166500d6d9ac169809d293
   specs:
     activeadmin (0.3.4)
       bourbon (>= 1.0.0)
@@ -32,9 +32,9 @@ GIT
 
 GIT
   remote: git://github.com/norman/friendly_id.git
-  revision: 2997285916d6a3a6f335db1dde5f31ed83f0eb9d
+  revision: 8e852bea05e6d11b03aec36cbea5427d21016a09
   specs:
-    friendly_id (4.0.0.beta14)
+    friendly_id (4.0.0.rc2)
 
 GIT
   remote: git://github.com/svenfuchs/i18n-active_record.git
@@ -46,6 +46,7 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
+    RedCloth (4.2.9)
     actionmailer (3.1.3)
       actionpack (= 3.1.3)
       mail (~> 2.3.0)
@@ -76,6 +77,9 @@ GEM
       multi_json (~> 1.0)
     ansi (1.4.1)
     arel (2.2.1)
+    asset_sync (0.2.3)
+      activemodel
+      fog
     bcrypt-ruby (3.0.1)
     bourbon (1.2.0)
       sass (>= 3.1)
@@ -89,17 +93,17 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.1.3)
-    daemons (1.1.4)
-    devise (1.5.2)
+    coffee-script-source (1.2.0)
+    daemons (1.1.5)
+    devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
       warden (~> 1.1)
     diff-lcs (1.1.3)
     erubis (2.7.0)
     eventmachine (0.12.10)
-    excon (0.7.12)
-    execjs (1.2.12)
+    excon (0.9.4)
+    execjs (1.2.13)
       multi_json (~> 1.0)
     factory_girl (2.3.2)
       activesupport
@@ -108,9 +112,9 @@ GEM
       railties (>= 3.0.0)
     fastercsv (1.5.4)
     fattr (2.2.0)
-    fog (1.1.1)
+    fog (1.1.2)
       builder
-      excon (~> 0.7.4)
+      excon (~> 0.9.0)
       formatador (~> 0.2.0)
       mime-types
       multi_json (~> 1.0.3)
@@ -122,7 +126,7 @@ GEM
     formtastic (2.0.2)
       rails (~> 3.0)
     has_scope (0.5.1)
-    highline (1.6.8)
+    highline (1.6.9)
     hike (1.2.1)
     hirb (0.6.0)
     i18n (0.6.0)
@@ -133,8 +137,11 @@ GEM
       railties (~> 3.0)
       thor (~> 0.14)
     json (1.6.3)
-    kaminari (0.12.4)
-      rails (>= 3.0.0)
+    kaminari (0.13.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
+    libv8 (3.3.10.4)
     mail (2.3.0)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -195,7 +202,7 @@ GEM
     rake-compiler (0.7.9)
       rake
     rakismet (1.1.2)
-    rdoc (3.11)
+    rdoc (3.12)
       json (~> 1.4)
     responders (0.6.4)
     rspec (2.7.0)
@@ -212,7 +219,7 @@ GEM
       railties (~> 3.0)
       rspec (~> 2.7.0)
     ruby-hmac (0.4.0)
-    sass (3.1.11)
+    sass (3.1.12)
     sass-rails (3.1.5)
       actionpack (~> 3.1.0)
       railties (~> 3.1.0)
@@ -228,6 +235,8 @@ GEM
       polyamorous (~> 0.5.0)
     stringex (1.3.0)
     subexec (0.1.0)
+    therubyracer (0.9.9)
+      libv8 (~> 3.3.10)
     thin (1.3.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -240,7 +249,7 @@ GEM
     turn (0.8.3)
       ansi
     tzinfo (0.3.31)
-    uglifier (1.1.0)
+    uglifier (1.2.0)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
     warden (1.1.0)
@@ -250,12 +259,15 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  RedCloth
   activeadmin!
+  asset_sync
   bundler (>= 1.0.0)
   cancan
   carrierwave
   coffee-rails (~> 3.1.1)
   devise
+  execjs
   factory_girl_rails (~> 1.2)
   fog
   friendly_id!
@@ -264,6 +276,7 @@ DEPENDENCIES
   jquery-rails
   json
   kaminari
+  libv8
   meta_search (= 1.1.1)
   mini_magick (= 3.3)
   mysql2
@@ -284,6 +297,7 @@ DEPENDENCIES
   sass-rails (~> 3.1.5)
   squeel
   stringex
+  therubyracer
   thin (= 1.3.1)
   turn (~> 0.8.3)
   uglifier (>= 1.0.3)

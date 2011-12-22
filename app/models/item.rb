@@ -31,4 +31,61 @@ class Item < ActiveRecord::Base
   def admin_permalink
     admin_item_path(self)
   end
+
+  def published?
+    !self.published_at.nil?
+  end  
+  
+  def self.published
+    where(:published_at => !nil)
+  end
+  def self.draft
+    where(:draft => true)
+  end
+  
+  # Returns the last 10 approved items (not draft anymore)
+  def self.recent_updated(limit=10)
+    published.
+    where(:draft => false).
+    order("updated_at DESC").
+    limit(limit).
+    all(:conditions => "updated_at > created_at")
+  end
+    
+  # Returns the last 10 approved items (not draft anymore)
+  def self.recent(limit=10)
+    published.
+    draft.
+    order("id DESC").
+    limit(limit).
+    all
+  end
+  
+  # Returns the last 10 draft items
+  def self.recent_drafts(limit=10)
+    draft.
+    order("updated_at DESC").
+    limit(limit).
+    all
+  end
+  
+  # Returns the last 10 pending items (not draft anymore)
+  def self.pending(limit=10)
+    published.
+    where(:draft => false).
+    order("updated_at DESC").
+    limit(limit).
+    all
+  end
+  
+  
+  def category_title
+    if self.category
+      self.category.title
+    else
+      "Listing"
+    end
+  end
+  
+  
 end

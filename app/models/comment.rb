@@ -39,4 +39,37 @@ class Comment < ActiveRecord::Base
   end
   
   
+  # Returns the last 10 approved comments
+  def self.recent(limit=10)
+    where(:approved => true).
+    order("updated_at DESC").
+    limit(limit).
+    all
+  end
+
+  # Returns the last 10 pending comments
+  def self.pending(limit=10)
+    where(:approved => false).
+    order("updated_at DESC").
+    limit(limit).
+    all
+  end
+  
+  # Returns the last 10 suspicious comments
+  def self.suspicious(limit=10)
+    where(:suspicious => true).
+    order("updated_at DESC").
+    limit(limit).
+    all
+  end
+  
+  # Returns the last 10 comments marked as spam
+  def self.as_spam(limit=10)
+    where(:marked_spam => true).
+    order("updated_at DESC").
+    limit(limit).
+    all
+  end
+  
+  
 end
