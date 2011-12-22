@@ -111,3 +111,5 @@ end
 gem "meta_search", '1.1.1'
 gem 'activeadmin', :git => "git://github.com/gregbell/active_admin.git"
 
+gem 'tinymce-rails'
+# gem 'wymeditor-rails', :git => "git://github.com/marshill/wymeditor-rails.git"

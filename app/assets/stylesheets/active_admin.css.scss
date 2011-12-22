@@ -16,7 +16,7 @@
 }
 
 ol.choices-group {
-  height: 150px;
+  height: 190px;
   overflow: scroll;
   padding-right: 20px;
   -webkit-box-shadow: 0px 0px 8px #CCC;
@@ -31,3 +31,104 @@ form fieldset > ol > li fieldset legend {
   padding-top: 6px;
   padding-left: 12px;
 }
+form hr {
+  color:#fff;
+  border-color:#fff;
+}
+
+form #googlemap {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 2%;
+  padding: 2px;
+  border: 1px solid #fff;
+  box-shadow: 0px 0px 6px #999;
+  border-radius: 6px;
+}
+
+form input.full_sized {
+  width: 176px;
+}
+form input.auto_sized {
+  width: auto;
+}
+
+form div.small_box {
+  float: left;
+  margin: 10px 0 10px 20px;
+  padding: 10px;
+  border: 1px solid #fff;
+  box-shadow: 0px 0px 6px #999;
+  width: 200px;
+}
+
+form div.small_box label {
+  padding-right: 6px;
+}
+form div.medium_box {
+  float:left;
+  min-width: 200px;
+  margin: 10px 0 10px 20px;
+  padding: 10px;
+  border: 1px solid #fff;
+  box-shadow: 0px 0px 6px #999;
+}
+form div.medium_box fieldset ol > li {
+  display: block;
+  margin-bottom:5px;
+}
+form div.medium_box fieldset ol > li label {
+  display: block;
+  width: 90%;
+  float: left;
+}
+
+img.show_listing_img {
+  margin: 9px;
+  -webkit-box-shadow: 0px 0px 8px #888;
+  -moz-box-shadow: 0px 0px 8px #888;
+  box-shadow: 0px 0px 8px #888;
+  padding: none;
+  border: 1px solid #eee;
+}
+span.image {
+  float: left;
+  display: block;
+  text-align: center;
+  margin: 10px 10px 0 0;
+  border: 1px solid #DDD;
+  padding-bottom: 4px;
+}
+span.image p {
+  margin: 0;
+  padding: 0;
+}
+
+.index_as_block {
+  float: left;
+  display: block;
+}
+.index_as_block h2,
+.index_as_block h3,
+.index_as_block h4,
+.index_as_block p {
+  margin: 1px 1px 2px 8px;
+  padding: 0px;
+}
+.index_as_block .grid_images {
+  float: left;
+  margin-right: 6px;
+  width: 220px;
+  height: 260px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+.index_as_block .grid_images img {
+  margin: 8px;
+  -webkit-box-shadow: 0px 0px 7px #888;
+  -moz-box-shadow: 0px 0px 7px #888;
+  box-shadow: 0px 0px 7px #888;
+  padding: none;
+  border: 1px solid #eee;
+}
+

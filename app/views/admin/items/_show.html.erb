@@ -1,0 +1,150 @@
+<div class="panel">
+  <h3>Title</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @item.title %>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Highlight</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @item.highlight %>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Main Category</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @item.category_title %>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>General Tags</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <ul>
+        <% @item.general_tags.each do |tag| %>
+          <li><%= tag.title %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="panel">
+  <h3>Region Tags</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <ul>
+        <% @item.region_tags.each do |tag| %>
+          <li><%= tag.title %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="panel">
+  <h3>Country Tags</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <ul>
+        <% @item.country_tags.each do |tag| %>
+          <li><%= tag.title %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Author and Source Details</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <p>Name: <%= @item.author_name %></p>
+      <p>Email: <%= @item.author_name %></p>
+      <p>Source URL: <%= @item.source_url %></p>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Satus Codes</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <p>Draft: <%= @item.draft %></p>
+      <p>Featured: <%= @item.featured %></p>
+      <p>Comments Enabled: <%= @item.allow_comments %></p>
+      <p>Star Rating Enabled: <%= @item.allow_star_rating %></p>
+      <p>Protected Record: <%= @item.protected_record %></p>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Dates</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <p>Published Date: <%= @item.published_at.to_s(:long) %></p>
+      <p>Expired Date: <%= @item.expires_on.to_s(:long) %></p>
+      <p>Created at: <%= @item.created_at.to_s(:long) %></p>
+      <p>Updated at: <%= @item.updated_at.to_s(:long) %></p>
+      <p>Updated by: <%= @item.id %></p>
+    </div>
+  </div>
+</div>
+
+
+<div class="panel">
+  <h3>Body</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @item.body.html_safe %>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Editor Notes</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @item.editor_notes %>
+    </div>
+  </div>
+</div>
+
+
+<div class="panel">
+  <h3>Images</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <% @item.attachments.each do |attachment| %>
+        <span class='attachment'>
+          <h3><%= attachment.title %></h3>
+          <%= link_to(
+              image_tag(attachment.image.small.url, :class => "show_item_img"), 
+              admin_attachment_path(attachment),
+              :title => "Show full size"
+            ) 
+          %>
+          <p><%= attachment.description %></p>
+          <p>
+            <%= link_to "Edit", edit_admin_attachment_path(attachment) %> - 
+            <%= link_to "Delete", admin_attachment_path(attachment), :method => 'delete', 
+                  :confirm => "Are You sure you want to delete this Image?" 
+            %>
+          </p>
+        </span>
+      <% end %>
+    </div>
+  </div>
+</div>

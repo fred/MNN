@@ -167,6 +167,12 @@ ActiveAdmin::Dashboards.build do
   
   ActiveAdmin.register Item do
     menu :priority => 1
+    
+    # Show page
+    show do
+      render "show"
+    end
+    
     index do
       column :id
       column :user
@@ -179,46 +185,7 @@ ActiveAdmin::Dashboards.build do
       column :expires_on
       default_actions
     end
-    form do |f|
-      f.inputs "Required Main Information" do
-        f.input :category, :as => :select, 
-                :label_method => 'title', 
-                :value_method => :id, 
-                :label => "Section",
-                :required => true
-        f.input :title, :label => "Main Title", :required => true
-        f.input :highlight, :label => "Article Highlight", :required => true
-        f.input :body, :label => "Main Content", :required => true
-      end
-      
-      f.inputs "Tags" do
-        f.input :general_tags, :as => :check_boxes, :collection => GeneralTag.find(:all, :order => "title ASC")
-        f.input :region_tags, :as => :check_boxes, :collection => RegionTag.find(:all, :order => "title ASC")
-        f.input :country_tags, :as => :check_boxes, :collection => CountryTag.find(:all, :order => "title ASC")
-      end
-      
-      f.inputs "Optional" do
-        f.input :author_name
-        f.input :author_email
-        f.input :source_url
-      end
-      f.inputs "Status Codes" do
-        f.input :draft
-        f.input :featured, :label => "Highlight"
-        f.input :allow_comments
-        f.input :allow_star_rating
-        f.input :protected_record, :label => "Locked"
-      end
-      
-      f.inputs "Dates" do
-        f.input :published_at, :label => "When to go live", :time => true
-        f.input :expires_on, :label => "Expiration Date", :time => true
-        # f.input :published_at, :label => "When to go live", :as => :datepicker, :time => true
-        # f.input :expires_on, :label => "Expiration Date", :as => :datepicker, :time => true
-      end
-      
-      f.buttons
-    end
+    form :partial => "form"
   end
   
   # Comments

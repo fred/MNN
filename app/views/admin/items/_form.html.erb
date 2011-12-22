@@ -1,0 +1,81 @@
+<%= semantic_form_for [:admin, @item], :html => { :enctype => "multipart/form-data" }  do |f| %>
+
+  <%= f.inputs :name => "Required Main Information" do %>
+    <%= f.input :category, :as => :select, 
+           :label_method => 'title', 
+           :value_method => :id, 
+           :label => "Category",
+           :required => true
+    %>
+    <%= f.input :title, :label => "Main Title", :required => true %>
+    <%= f.input :highlight, :label => "Article Highlight", :required => true %>
+    <%= f.input :body, :label => "Main Content", :required => true, :rows => 40, :cols => 120 %>
+  <% end %>
+  
+  <%= f.inputs :name => "Tags" do %>
+    <div class="medium_box">
+      <%= f.input :general_tags, :as => :check_boxes, :label => "General",
+          :collection => GeneralTag.find(:all, :order => "title ASC") 
+      %>
+    </div>
+    <div class="medium_box">
+      <%= f.input :region_tags, :as => :check_boxes, :labels => "Regional",
+          :collection => RegionTag.find(:all, :order => "title ASC") 
+      %>
+    </div>
+    <div class="medium_box">
+      <%= f.input :country_tags, :as => :check_boxes, :labels => "Countries",
+          :collection => CountryTag.find(:all, :order => "title ASC") 
+      %>
+    </div>
+  <% end %>
+  
+  <%= f.inputs :name => "Optional" do %>
+    <%= f.input :author_name, :hint => "If blank, your 'Name' will be used" %>
+    <%= f.input :author_email, :hint => "If blank, your 'Email' will be used" %>
+    <%= f.input :source_url %>
+  <% end %>
+  
+  
+  <%= f.inputs :name => "Status Codes" do %>
+    <%= f.input :draft, :hint => "Set to draft if you have not finished with editing." %><br />
+    <%= f.input :featured, :hint => "Will be featured on front page." %><br />
+    <%= f.input :allow_comments, :hint => "Allow users to comment" %><br />
+    <%= f.input :protected_record, :hint => "Locked from editing, use with caution." %><br />
+    <%#= f.input :share_twitter, :hint => "Post on twitter?" %>
+    <%#= f.input :share_facebook, :hint => "Share on facebook?" %>
+    <%#= f.input :share_facebook, :hint => "Share on linkedin?" %>
+  <% end %>
+
+
+  <%= f.inputs :name => "Dates" do %>
+    <%= f.input :published_at, :hint => "When to go live", :time => true %>
+    <%= f.input :expires_on, :hint => "Expiration Date of article", :time => true %>
+  <% end %>
+
+  <% f.object.attachments.build %>
+  <%= f.inputs :name => "Attachments", :multipart => true do %>
+    <%= f.semantic_fields_for :attachments do |attachment| %>
+      <%= attachment.input :description, :as => "string", :label => "Image Description" %>
+      <%= attachment.input :image, :as => "file", :label => "Choose File to upload" %>
+    <% end %>
+  <% end %>
+  
+  
+  <%= f.inputs :name => "Editor Notes" do %>
+    <%= f.input :editor_notes %>
+  <% end %>
+  
+  <%= f.buttons :commit %>
+<% end %>
+
+
+
+<script type="text/javascript">
+  $(function() {
+    $('#item_body').tinymce({
+      theme: 'advanced',
+      height: "640px"
+    });
+  });
+</script>
