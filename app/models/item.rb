@@ -28,6 +28,23 @@ class Item < ActiveRecord::Base
   accepts_nested_attributes_for :attachments, :allow_destroy => true
   
   
+  # Filter hooks
+  before_create :set_draft_on
+  before_update :set_status_code
+  
+  
+  def set_draft_on
+    self.draft = true
+  end
+  def set_status_code
+    if self.published_at && (self.published_at > Time.now)
+      self.status_code = "Not Live"
+    else
+      self.status_code = "Live"
+    end
+  end
+  
+  
   def admin_permalink
     admin_item_path(self)
   end

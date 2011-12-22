@@ -162,27 +162,25 @@ ActiveAdmin::Dashboards.build do
   
   
   
-  
   # MODELS
-  
   ActiveAdmin.register Item do
     menu :priority => 1
-    
-    # Show page
     show do
       render "show"
     end
-    
     index do
       column :id
       column :user
       column :title
       column :draft
       column :featured
-      column :status_code
-      column :updated_at
-      column :published_at
-      column :expires_on
+      column "Status", :status_code
+      column "Updated" do |item|
+        item.updated_at.to_s(:short)
+      end
+      column "Published" do |item|
+        item.published_at.to_s(:short)
+      end
       default_actions
     end
     form :partial => "form"

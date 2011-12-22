@@ -94,11 +94,11 @@
   <h3>Dates</h3>
   <div class="panel_contents">
     <div class="attributes_table item">
-      <p>Published Date: <%= @item.published_at.to_s(:long) %></p>
-      <p>Expired Date: <%= @item.expires_on.to_s(:long) %></p>
-      <p>Created at: <%= @item.created_at.to_s(:long) %></p>
-      <p>Updated at: <%= @item.updated_at.to_s(:long) %></p>
-      <p>Updated by: <%= @item.id %></p>
+      <p>Published: <%= @item.published_at.to_s(:long) if @item.published_at %></p>
+      <p>Expires: <%= @item.expires_on.to_s(:long) if @item.expires_on %></p>
+      <p>Created: <%= @item.created_at.to_s(:long) %></p>
+      <p>Updated: <%= @item.updated_at.to_s(:long) %></p>
+      <p>Updated by: <%= @item.user.title if @item.user %></p>
     </div>
   </div>
 </div>
@@ -128,10 +128,10 @@
   <div class="panel_contents">
     <div class="attributes_table item">
       <% @item.attachments.each do |attachment| %>
-        <span class='attachment'>
-          <h3><%= attachment.title %></h3>
+        <span class='image'>
+          <h3>Image</h3>
           <%= link_to(
-              image_tag(attachment.image.small.url, :class => "show_item_img"), 
+              image_tag(attachment.image.medium.url, :class => "show_item_img"), 
               admin_attachment_path(attachment),
               :title => "Show full size"
             ) 
