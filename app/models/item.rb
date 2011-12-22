@@ -37,7 +37,7 @@ class Item < ActiveRecord::Base
   end  
   
   def self.published
-    where(:published_at => !nil)
+    where("published_at is not NULL")
   end
   def self.draft
     where(:draft => true)
