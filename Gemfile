@@ -37,7 +37,7 @@ gem "asset_sync"
 gem 'nokogiri'
 
 ### Permalink
-gem 'RedCloth'
+# gem 'RedCloth'
 gem 'stringex'
 gem 'friendly_id', :git => 'git://github.com/norman/friendly_id.git'
 

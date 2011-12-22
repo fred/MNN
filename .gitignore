@@ -83,3 +83,4 @@ capybara-*html
 .rvmrc
 .rvmrc.*
 
+unicorn.rb
