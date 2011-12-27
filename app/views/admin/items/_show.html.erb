@@ -128,22 +128,24 @@
   <div class="panel_contents">
     <div class="attributes_table item">
       <% @item.attachments.each do |attachment| %>
-        <span class='image'>
-          <h3>Image</h3>
-          <%= link_to(
-              image_tag(attachment.image.medium.url, :class => "show_item_img"), 
-              admin_attachment_path(attachment),
-              :title => "Show full size"
-            ) 
-          %>
-          <p><%= attachment.description %></p>
-          <p>
-            <%= link_to "Edit", edit_admin_attachment_path(attachment) %> - 
-            <%= link_to "Delete", admin_attachment_path(attachment), :method => 'delete', 
-                  :confirm => "Are You sure you want to delete this Image?" 
+        <% if attachment.image %>
+          <span class='image'>
+            <h3>Image</h3>
+            <%= link_to(
+                image_tag(attachment.image.medium.url, :class => "show_item_img"), 
+                admin_attachment_path(attachment),
+                :title => "Show full size"
+              ) 
             %>
-          </p>
-        </span>
+            <p><%= attachment.description %></p>
+            <p>
+              <%= link_to "Edit", edit_admin_attachment_path(attachment) %> - 
+              <%= link_to "Delete", admin_attachment_path(attachment), :method => 'delete', 
+                    :confirm => "Are You sure you want to delete this Image?" 
+              %>
+            </p>
+          </span>
+        <% end %>
       <% end %>
     </div>
   </div>
