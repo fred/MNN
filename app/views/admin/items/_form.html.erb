@@ -55,8 +55,14 @@
   <% f.object.attachments.build %>
   <%= f.inputs :name => "Main Image", :multipart => true do %>
     <%= f.semantic_fields_for :attachments do |attachment| %>
-      <%= attachment.input :description, :as => "string", :label => "Image Caption" %>
-      <%= attachment.input :image, :as => "file", :label => "Choose File to upload" %>
+      <% if attachment.object.new_record? %>
+        <%= attachment.input :description, :as => "string", :label => "Image Caption" %>
+        <%= attachment.input :image, :as => "file", :label => "Choose File to upload" %>
+      <% else %>
+        <h3>Current Images: </h3>
+        <h4><%= attachment.object.title %></h4>
+        <%= link_to(image_tag(attachment.object.image.medium, :class => "show_item_img"), admin_attachment_path(attachment.object)) %>
+      <% end %>
     <% end %>
   <% end %>
   

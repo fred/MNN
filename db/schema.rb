@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111227114624) do
+ActiveRecord::Schema.define(:version => 20111227194235) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(:version => 20111227114624) do
   create_table "items", :force => true do |t|
     t.string   "title"
     t.string   "highlight"
-    t.text     "body",              :limit => 2147483647
+    t.text     "body"
     t.text     "abstract"
     t.text     "editor_notes"
     t.string   "slug"
@@ -95,19 +95,19 @@ ActiveRecord::Schema.define(:version => 20111227114624) do
     t.string   "author_email"
     t.string   "article_source"
     t.string   "source_url"
-    t.string   "formatting_type",                         :default => "HTML"
+    t.string   "formatting_type",   :default => "HTML"
     t.string   "locale"
     t.string   "meta_keywords"
     t.string   "meta_title"
     t.string   "meta_description"
-    t.string   "status_code",                             :default => "draft"
-    t.boolean  "draft",                                   :default => true
-    t.boolean  "meta_enabled",                            :default => true
-    t.boolean  "allow_comments",                          :default => true
-    t.boolean  "allow_star_rating",                       :default => true
-    t.boolean  "protected_record",                        :default => false
-    t.boolean  "featured",                                :default => false
-    t.boolean  "member_only",                             :default => false
+    t.string   "status_code",       :default => "draft"
+    t.boolean  "draft",             :default => true
+    t.boolean  "meta_enabled",      :default => true
+    t.boolean  "allow_comments",    :default => true
+    t.boolean  "allow_star_rating", :default => true
+    t.boolean  "protected_record",  :default => false
+    t.boolean  "featured",          :default => false
+    t.boolean  "member_only",       :default => false
     t.datetime "published_at"
     t.datetime "expires_on"
     t.datetime "created_at"
@@ -129,19 +129,6 @@ ActiveRecord::Schema.define(:version => 20111227114624) do
   add_index "items", ["status_code"], :name => "index_items_on_status_code"
   add_index "items", ["updated_by"], :name => "index_items_on_updated_by"
   add_index "items", ["user_id"], :name => "index_items_on_user_id"
-
-  create_table "rails_admin_histories", :force => true do |t|
-    t.text     "message"
-    t.string   "username"
-    t.integer  "item"
-    t.string   "table"
-    t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 8
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "roles", :force => true do |t|
     t.string   "title"
@@ -197,8 +184,8 @@ ActiveRecord::Schema.define(:version => 20111227114624) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                                :null => false
+    t.string   "encrypted_password",     :limit => 128,                :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

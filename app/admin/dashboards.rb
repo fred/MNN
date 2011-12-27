@@ -170,15 +170,28 @@ ActiveAdmin::Dashboards.build do
     end
     index do
       column :id
+      column :image do |item|
+        if !item.attachments.empty?
+          link_to(
+            image_tag(item.attachments.first.image.thumb.url), 
+            admin_attachment_path(item.attachments.first)
+          ) 
+        end
+      end
       column :user
-      column :title
-      column :draft
-      column :featured
-      column "Status", :status_code
-      column "Updated" do |item|
+      column "Title", :sortable => :title do |item|
+        link_to item.title, admin_item_path(item)
+      end
+      column :draft, :sortable => :draft do |item|
+        bol_to_word(item.draft)
+      end
+      column :featured, :sortable => :featured do |item|
+        bol_to_word(item.featured)
+      end
+      column "Updated", :sortable => :updated_at do |item|
         item.updated_at.to_s(:short)
       end
-      column "Published" do |item|
+      column "Published", :sortable => :published_at do |item|
         item.published_at.to_s(:short)
       end
       default_actions
@@ -243,6 +256,9 @@ ActiveAdmin::Dashboards.build do
   # Images and File
   ActiveAdmin.register Attachment do
     menu :priority => 22
+    show do
+      render "show"
+    end
   end
   
   

@@ -1,0 +1,28 @@
+<div class="panel">
+  <h3>Image Details</h3>
+  <div class="panel_contents">
+    <div class="attributes_table image">
+      <p>Title: <b><%= @attachment.title %></b></p>
+      <p>Description: <b><%= @attachment.description %></b></p>
+
+      <% if @attachment.attachable && @attachment.attachable.user %>
+        <p>User: <b><%= link_to(@attachment.attachable.user.email, admin_user_path(@attachment.attachable.user)) %></b></p>
+      <% end %>
+      <p>Created at: <b><%= @attachment.created_at.to_s(:long) %></b></p>
+    </div>
+  </div>
+</div>
+
+
+<div class="panel">
+  <h3>Images</h3>
+  <div class="panel_contents">
+    <div class="attributes_table images">
+      <% @attachment.image.versions.each do |t| %>
+          <h3><%= t.inspect %></h3>
+          <%= image_tag(t[1], :class => "show_listing_img")  %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
