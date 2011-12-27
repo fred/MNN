@@ -214,7 +214,7 @@ ActiveAdmin::Dashboards.build do
       column :description
       column :priority
       column "Active" do |category|
-        category.active.to_word
+        bol_to_word(category.active)
       end
       column "Updated" do |category|
         category.updated_at.to_s(:short)
