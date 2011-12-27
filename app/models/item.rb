@@ -112,7 +112,7 @@ class Item < ActiveRecord::Base
 
   def self.import_wordpress_xml
     require 'nokogiri'
-    file = File.join(Rails.root, "doc", "wp.xml")
+    file = File.join(Rails.root, "config", "wp.xml")
     doc = Nokogiri::HTML(open(file))
     items = doc.xpath("//item")
     user = User.first
