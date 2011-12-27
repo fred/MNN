@@ -105,7 +105,7 @@ class Item < ActiveRecord::Base
     if self.category
       self.category.title
     else
-      "Listing"
+      "Uncategorized"
     end
   end
   

@@ -9,6 +9,10 @@
 
 CarrierWave.configure do |config|
   config.cache_dir = "#{Rails.root}/tmp/uploads"
+
+  # config.cache_dir = 'carrierwave' # ...two lines
+  # config.root = Rails.root.join('tmp') # adding these...
+  
   config.fog_credentials = {
     :provider               => 'AWS',               # required
     :aws_access_key_id      => ENV["S3_KEY"],       # required
