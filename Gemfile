@@ -9,10 +9,9 @@ gem 'rails', '3.1.3'
 gem 'bundler', '>= 1.0.0'
 gem 'thin', '1.3.1', :require => false
 
-### Database
-gem 'mysql2', :group => :test
-gem 'mysql2', :group => :development
-gem "pg",     :group => :production
+### Database Adapter
+# Using Postgresql for all environments.
+gem 'pg'
 
 ### Roles and Authentication
 gem 'cancan' 

@@ -5,7 +5,7 @@ class CreateItems < ActiveRecord::Migration
       # Strings and TEXT
       t.string  :title
       t.string  :highlight
-      t.text    :body, :limit => 16777214 # MEDIUMTEXT => (16MB)
+      t.text    :body #, :limit => 16777214 # MEDIUMTEXT => (16MB) fails on PG
       t.text    :abstract
       t.text    :editor_notes
       t.string  :slug
