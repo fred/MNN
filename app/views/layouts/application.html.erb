@@ -1,14 +1,69 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Publication System</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="News Publication System">
+    <meta name="author" content="News Publication System">
+    
+    <title>News Publication System</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
 
-<%= yield %>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <!-- Le fav and touch icons -->
+    <!-- 
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png"> 
+    -->
+  </head>
 
-</body>
+  <body>
+    <%= render :partial => "/shared/topbar" %>
+    
+    <div class="container-fluid">
+      <%= render :partial => "/shared/sidebar_account" %>
+      
+      <div class="content">
+        <!-- Content -->
+        <ul class="breadcrumb">
+          <%= yield :breadcrumb %>
+        </ul>
+
+        <% if notice %>
+          <div class="alert-message success fade in" data-alert="notice">
+            <a class="close" href="#">×</a>
+            <p><%= notice %></p>
+          </div>
+        <% end %>
+
+        <% if alert %>
+          <div class="alert-message warning fade in" data-alert="alert">
+            <a class="close" href="#">×</a>
+            <p><%= alert %></p>
+          </div>
+        <% end %>
+
+        <% if flash[:error] %>
+          <div class="alert-message error fade in" data-alert="error">
+            <a class="close" href="#">×</a>
+            <p><%= error %></p>
+          </div>
+        <% end %>
+
+        <%= yield %>
+        <%= render :partial => "/shared/footer" %>
+      </div>
+      
+    </div>
+    
+  </body>
+  
+  <%= yield(:footer) %>
+  <%= yield(:scripts) %>
 </html>

@@ -1,5 +1,19 @@
 Publication::Application.routes.draw do
-  
+  get "country_tags/index"
+
+  get "country_tags/show"
+
+  get "region_tags/index"
+
+  get "region_tags/show"
+
+  get "general_tags/index"
+
+  get "general_tags/show"
+
+  get "categories/index"
+  get "categories/show"
+    
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -10,8 +24,10 @@ Publication::Application.routes.draw do
   resources :items
   resources :roles
   resources :tags
-  resources :categories
+  resources :general_tags
   resources :region_tags
+  resources :country_tags
+  resources :categories
   resources :attachments
   resources :scores
   resources :translations
@@ -66,7 +82,7 @@ Publication::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'items#index'
+  root :to => 'categories#index'
 
   # See how all your routes lay out with "rake routes"
 

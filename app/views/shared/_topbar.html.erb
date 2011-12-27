@@ -1,0 +1,57 @@
+<header class="master">
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="container-fluid">
+        <a class="brand" href="/">Publication System</a>
+        <ul class="nav">
+          <li><%= link_to "Home", root_path %></li>
+        
+          <li class="dropdown" data-dropdown="dropdown">
+            <a href="#" class="dropdown-toggle">Browse by Sections</a>
+            <ul class="dropdown-menu">
+              <% Category.order("title ASC").all.each do |category|%>
+                <li><%= link_to category.title, category %></li>
+              <% end %>
+            </ul>
+          </li>
+        
+          <li class="dropdown" data-dropdown="dropdown">
+            <a href="#" class="dropdown-toggle">Browse by Region</a>
+            <ul class="dropdown-menu">
+              <% RegionTag.order("title ASC").all.each do |tag|%>
+                <li><%= link_to tag.title, tag %></li>
+              <% end %>
+            </ul>
+          </li>
+        
+          <li class="dropdown" data-dropdown="dropdown">
+            <a href="#" class="dropdown-toggle">Account</a>
+            <ul class="dropdown-menu">
+              <% if user_signed_in? %>
+                <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+                <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+              <% else %>
+                <li><%= link_to "Sign in", new_session_path(:user) %></li>
+                <%- if Devise.mappings[:user].registerable?  %>
+                  <li><%= link_to "Sign up", new_registration_path(:user) %></li>
+                <% end -%>
+                <%- if Devise.mappings[:user].recoverable? && controller_name != 'passwords' %>
+                  <li><%= link_to "Forgot your password?", new_password_path(:user) %></li>
+                <% end -%>
+                <%- if Devise.mappings[:user].confirmable? && controller_name != 'confirmations' %>
+                  <li><%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(:user) %></li>
+                <% end -%>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+      
+        <% if user_signed_in? %>
+          <p class="pull-right">Logged in as <%= link_to current_user.title, edit_user_registration_path %></p>
+        <% else %>
+          <p class="pull-right"><%= link_to "Sign in", new_session_path(:user) %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</header>

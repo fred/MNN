@@ -1,0 +1,21 @@
+<% @items.each do |item| %>
+  <article>
+    <header>
+      <h3><%= link_to item.title, item %></h3>
+    </header>
+    <section>
+      <%= item.abstract.to_s.html_safe %>
+    </section>
+    <section>
+      <span class="date">
+        Published on 
+        <%= time_tag(item.published_at, :pubdate => true) %>
+      </span>
+      <% if item.user %>
+        <span class="author"> by <%= link_to_if(item.user, item.user.title, item.user) %></span>
+      <% else %>
+        <span class="author"> <%= item.author_name %></span>
+      <% end %>
+    </section>
+  </article>
+<% end %>

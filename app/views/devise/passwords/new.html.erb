@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="span8">
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+      <fieldset class="withBorder">
+        <legend>Password reset</legend>
+        <div class="clearfix">
+          <%= f.label :email %>
+          <div class="input">
+            <%= f.text_field :email, :required => false, :autofocus => true, :type => "email", :class => "xlarge" %>
+            <span class="help-block">
+              We will send you instructions to reset your password.
+              <br />
+              The token will only be valid for 8 hours.
+            </span>
+          </div>
+        </div>
+        <div class="actions">
+          <%= f.submit "Reset my Password", :class => "btn primary" %>
+        </div>
+      </fieldset>
+    <% end %> <!-- End Form -->
+  </div> <!-- End span8-->
+</div>
+
+<% content_for :breadcrumb do %>
+  <li>
+    <a href="/">Home</a>
+    <span class="divider">/</span>
+  </li>
+  <li class="active">Forgot Password</li>
+<% end %>

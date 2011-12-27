@@ -112,4 +112,6 @@ gem "meta_search", '1.1.1'
 gem 'activeadmin', :git => "git://github.com/gregbell/active_admin.git"
 
 gem 'tinymce-rails'
-# gem 'wymeditor-rails', :git => "git://github.com/marshill/wymeditor-rails.git"
+
+# Twitter Bootstrap for Rails 3.1 Asset Pipeline
+gem 'twitter-bootstrap-rails', :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git"

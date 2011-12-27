@@ -1,0 +1,50 @@
+<div class="sidebar">
+  <div class="well">
+    <% if user_signed_in? %>
+      <h5>My Account</h5>
+      <ul>
+        <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+        <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+      </ul>
+    <% else %>
+      <h5>Account</h5>
+      <ul>
+        <%- if controller_name != 'sessions' %>
+          <li><%= link_to "Sign in", new_session_path(resource_name) %></li>
+        <% end -%>
+
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+          <li><%= link_to "Sign up", new_registration_path(resource_name) %></li>
+        <% end -%>
+      </ul>
+      
+      <h5>Account Recovery</h5>
+      <ul>
+        <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+          <li><%= link_to "Forgot your password?", new_password_path(resource_name) %></li>
+        <% end -%>
+
+        <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+          <li><%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %></li>
+        <% end -%>
+
+        <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+          <li><%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %></li>
+        <% end -%>
+
+        <%- if devise_mapping.omniauthable? %>
+          <%- resource_class.omniauth_providers.each do |provider| %>
+            <li><%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %></li>
+          <% end -%>
+        <% end -%>
+      </ul>
+      <h5>Help</h5>
+      <ul>
+        <li><%= link_to "Help", "/pages/help" %></li>
+        <li><%= link_to "Contact us", "/messages/new" %></li>
+        <li><%= link_to "Privacy Policy", "/pages/policy" %></li>
+      </ul>
+
+    <% end %>
+  </div>
+</div>

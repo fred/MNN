@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111214081015) do
+ActiveRecord::Schema.define(:version => 20111227114624) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(:version => 20111214081015) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "attachable_type"
+    t.string   "title"
+    t.string   "alt_text"
   end
 
   add_index "attachments", ["attachable_id", "attachable_type"], :name => "index_attachments_on_attachable_id_and_attachable_type"
@@ -47,7 +49,12 @@ ActiveRecord::Schema.define(:version => 20111214081015) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "priority",    :default => 10
+    t.boolean  "active",      :default => true
+    t.string   "slug"
   end
+
+  add_index "categories", ["slug"], :name => "index_categories_on_slug", :unique => true
 
   create_table "comments", :force => true do |t|
     t.integer  "owner_id",                            :null => false
@@ -105,6 +112,8 @@ ActiveRecord::Schema.define(:version => 20111214081015) do
     t.datetime "expires_on"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "author_status"
+    t.datetime "deleted_at"
   end
 
   add_index "items", ["allow_comments"], :name => "index_items_on_allow_comments"
@@ -171,8 +180,10 @@ ActiveRecord::Schema.define(:version => 20111214081015) do
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
+  add_index "tags", ["slug"], :name => "index_tags_on_slug", :unique => true
   add_index "tags", ["type"], :name => "index_tags_on_type"
 
   create_table "translations", :force => true do |t|

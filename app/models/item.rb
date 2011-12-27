@@ -17,7 +17,9 @@ class Item < ActiveRecord::Base
   
   has_many :attachments, :as => :attachable
   has_many :item_stats
-  
+
+  has_and_belongs_to_many :tags, :join_table => "taggings", 
+    :foreign_key => "taggable_id", :association_foreign_key => "tag_id"
   has_and_belongs_to_many :general_tags, :join_table => "taggings", 
     :foreign_key => "taggable_id", :association_foreign_key => "tag_id"
   has_and_belongs_to_many :region_tags, :join_table => "taggings",
@@ -29,13 +31,16 @@ class Item < ActiveRecord::Base
   
   
   # Filter hooks
-  before_create :set_draft_on
   before_update :set_status_code
-  
-  
-  def set_draft_on
-    self.draft = true
+
+  def after_initialize
+    self.draft ||= true
+    self.published_at ||= Time.now  # will set the default value only if it's nil
+    self.expires_on   ||= Time.now+10.years
   end
+  
+  
+  # Set to draft automatically upon creation
   def set_status_code
     if self.published_at && (self.published_at > Time.now)
       self.status_code = "Not Live"
@@ -129,15 +134,16 @@ class Item < ActiveRecord::Base
         end
       end
 
-      # Item.create(
-      #   :title => title,
-      #   :published_at => time,
-      #   :body => body,
-      #   :author_name => author_name,
-      #   :source_url => item_id,
-      #   :draft => false,
-      #   :user_id => user.id
-      # )
+      Item.create(
+        :title => title,
+        :published_at => time,
+        :body => body,
+        :author_name => author_name,
+        :source_url => item_id,
+        :draft => true,
+        :featured => false,
+        :user_id => user.id
+      )
     end
   end
     

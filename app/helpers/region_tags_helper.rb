@@ -1,0 +1,2 @@
+module RegionTagsHelper
+end

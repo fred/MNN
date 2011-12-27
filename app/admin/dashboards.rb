@@ -184,6 +184,18 @@ ActiveAdmin::Dashboards.build do
       default_actions
     end
     form :partial => "form"
+    controller do
+      def new
+        @item = Item.new
+        @now = Time.zone.now
+        @item.published_at = @now+3600
+        @item.expires_on = @now+10.years
+        @item.draft = true
+        @item.author_name = current_admin_user.title
+        @item.author_email = current_admin_user.email
+        @item.user_id = current_admin_user.id
+      end
+    end
   end
   
   # Comments
@@ -196,6 +208,18 @@ ActiveAdmin::Dashboards.build do
   ActiveAdmin.register Category do
     config.comments = false
     menu :priority => 10
+    index do
+      column :id
+      column :title
+      column :description
+      column :priority
+      column "Active" do |category|
+        category.active.to_word
+      end
+      column "Updated" do |category|
+        category.updated_at.to_s(:short)
+      end
+    end
   end
   
   
@@ -203,14 +227,17 @@ ActiveAdmin::Dashboards.build do
   ActiveAdmin.register GeneralTag do
     config.comments = false
     menu :parent => "Tags", :priority => 15
+    form :partial => "form"
   end
   ActiveAdmin.register RegionTag do
     config.comments = false
     menu :parent => "Tags", :priority => 17
+    form :partial => "form"
   end
   ActiveAdmin.register CountryTag do
     config.comments = false
     menu :parent => "Tags", :priority => 19
+    form :partial => "form"
   end
 
   # Images and File

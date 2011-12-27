@@ -10,4 +10,27 @@ class Category < ActiveRecord::Base
   # Relationships
   has_many :items
   
+  # Permalink URLS
+  extend FriendlyId
+  friendly_id :title, :use => :slugged
+  
+  def published_items
+    self.
+      items.
+      where(:draft => false).
+      where("published_at is not NULL").
+      where("published_at < '#{Time.now.to_s(:db)}'").
+      order("published_at DESC")
+  end
+  
+  def top_items(lmt=10)
+    self.
+      items.
+      where(:draft => false).
+      where("published_at is not NULL").
+      where("published_at < '#{Time.now.to_s(:db)}'").
+      order("published_at DESC").
+      limit(lmt)
+  end
+  
 end

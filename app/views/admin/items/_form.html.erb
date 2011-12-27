@@ -15,7 +15,7 @@
   <%= f.inputs :name => "Tags" do %>
     <div class="medium_box">
       <%= f.input :general_tags, :as => :check_boxes, :label => "General",
-          :collection => GeneralTag.find(:all, :order => "title ASC") 
+          :collection => GeneralTag.find(:all, :order => "title ASC")
       %>
     </div>
     <div class="medium_box">
@@ -46,25 +46,31 @@
     <%#= f.input :share_facebook, :hint => "Share on facebook?" %>
     <%#= f.input :share_facebook, :hint => "Share on linkedin?" %>
   <% end %>
-
-
-  <%= f.inputs :name => "Dates" do %>
-    <%= f.input :published_at, :hint => "When to go live", :time => true %>
-    <%= f.input :expires_on, :hint => "Expiration Date of article", :time => true %>
+  
+  <%= f.inputs :name => "Dates and Status" do %>
+    <%= f.input :published_at, :hint => "When article will go live (default: 1 hour from now)", :time => true %>
+    <%= f.input :expires_on, :hint => "Expiration Date of article (default: never)", :time => true %>
   <% end %>
 
   <% f.object.attachments.build %>
-  <%= f.inputs :name => "Attachments", :multipart => true do %>
+  <%= f.inputs :name => "Main Image", :multipart => true do %>
     <%= f.semantic_fields_for :attachments do |attachment| %>
-      <%= attachment.input :description, :as => "string", :label => "Image Description" %>
+      <%= attachment.input :description, :as => "string", :label => "Image Caption" %>
       <%= attachment.input :image, :as => "file", :label => "Choose File to upload" %>
     <% end %>
   <% end %>
   
   
   <%= f.inputs :name => "Editor Notes" do %>
-    <%= f.input :editor_notes %>
+    <%= f.input :author_status, 
+          :as => :select, 
+          :label => "Author Status",
+          :collection => ["Ready to go", "Needs Editing", "Needs Translation", "Needs Image"]
+    %>
+    <%= f.input :editor_notes, :as => "string" %>
   <% end %>
+  
+  <%= f.input(:user_id, :label => false, :as => :hidden, :value => current_admin_user.id) if f.object.new_record? %>
   
   <%= f.buttons :commit %>
 <% end %>

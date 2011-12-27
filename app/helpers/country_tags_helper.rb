@@ -1,0 +1,2 @@
+module CountryTagsHelper
+end

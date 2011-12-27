@@ -1,0 +1,12 @@
+<div class="row categories">
+  <% for category in @categories %>
+    <div class="span6 box" id="<%= category.slug %>">
+      <h1><%= link_to category.title, category %></h1>
+      <ul>
+        <% category.top_items(8).each do |item|%>
+          <li><%= link_to item.title, item %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
