@@ -17,6 +17,15 @@
 </div>
 
 <div class="panel">
+  <h3>Abstract</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @item.abstract %>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
   <h3>Main Category</h3>
   <div class="panel_contents">
     <div class="attributes_table item">
@@ -145,6 +154,25 @@
               %>
             </p>
           </span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="panel">
+  <h3>Revisions</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <% @item.versions.each do |v| %>
+        <% if v.whodunnit%>
+          <% user = User.where(:id => v.whodunnit).first %>
+          <p>
+            <%= link_to(user.title, admin_user_path(v.whodunnit)) if user %> 
+            did a '<%= v.event %>' action on
+            '<%= v.created_at.to_s(:long) %>'
+          </p>
         <% end %>
       <% end %>
     </div>

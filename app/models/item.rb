@@ -20,12 +20,16 @@ class Item < ActiveRecord::Base
 
   has_and_belongs_to_many :tags, :join_table => "taggings", 
     :foreign_key => "taggable_id", :association_foreign_key => "tag_id"
+
   has_and_belongs_to_many :general_tags, :join_table => "taggings", 
     :foreign_key => "taggable_id", :association_foreign_key => "tag_id"
+
   has_and_belongs_to_many :region_tags, :join_table => "taggings",
     :foreign_key => "taggable_id", :association_foreign_key => "tag_id"
+
   has_and_belongs_to_many :country_tags, :join_table => "taggings",
     :foreign_key => "taggable_id", :association_foreign_key => "tag_id"
+
   # Nested Attributes
   accepts_nested_attributes_for :attachments, :allow_destroy => true, :reject_if => lambda { |t| t['image'].nil? }
   

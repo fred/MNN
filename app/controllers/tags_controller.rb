@@ -1,16 +1,15 @@
-class CategoriesController < ApplicationController
+class TagsController < ApplicationController
   
   layout "items"
   
   def index
-    @categories = Category.all
   end
 
   def show
     @show_breadcrumb = true
-    @category = Category.find(params[:id])
+    @tag = Tag.find(params[:id])
     # @items = @category.published_items.paginate(per_page: 20, page: params[:page])
-    @items = @category.
+    @items = @tag.
       items.
       where(:draft => false).
       where("published_at is not NULL").

@@ -139,9 +139,12 @@ ActiveAdmin::Dashboards.build do
   
   # paper_trail
   section "Recently Updated Content", :priority => 40 do
-    table_for Version.order('id desc').limit(10) do
+    table_for Version.order('id desc').limit(20) do
       column "Type" do |v| 
-        v.item_type.underscore.humanize
+        link_to(
+          "#{v.item_type.underscore.humanize} ##{v.item_id}",
+          url_for(:controller => "admin/#{v.item_type.underscore.pluralize}", :action => 'show', :id => v.item_id)
+        )
       end
       column "Action" do |v| 
         v.event
@@ -180,7 +183,7 @@ ActiveAdmin::Dashboards.build do
       end
       column :user
       column "Title", :sortable => :title do |item|
-        link_to item.title, admin_item_path(item)
+        link_to item.title, admin_item_path(item), :class => "featured_#{item.featured}"
       end
       column :draft, :sortable => :draft do |item|
         bol_to_word(item.draft)
@@ -188,10 +191,10 @@ ActiveAdmin::Dashboards.build do
       column :featured, :sortable => :featured do |item|
         bol_to_word(item.featured)
       end
-      column "Updated", :sortable => :updated_at do |item|
+      column "Update", :sortable => :updated_at do |item|
         item.updated_at.to_s(:short)
       end
-      column "Published", :sortable => :published_at do |item|
+      column "Publish", :sortable => :published_at do |item|
         item.published_at.to_s(:short)
       end
       default_actions
@@ -256,6 +259,35 @@ ActiveAdmin::Dashboards.build do
   # Images and File
   ActiveAdmin.register Attachment do
     menu :priority => 22
+    # index do
+    #   column :id
+    #   column :image do |attachment|
+    #     if attachment.image
+    #       link_to(
+    #         image_tag(attachment.image.thumb.url),
+    #         admin_attachment_path(attachment)
+    #       )
+    #     end
+    #   end
+    #   column :title
+    #   column :description
+    #   column :created_at
+    # end
+    default_per_page = 80
+    index :as => :block do |attachment|
+      div :for => attachment, :class => "grid_images" do
+        h4 auto_link(attachment.attachable)
+        div do
+          link_to(
+            image_tag(attachment.image.medium.url),
+            admin_attachment_path(attachment),
+            :title => "Click on image to see details"
+          )
+        end
+        h4 auto_link(attachment.title)
+        h4 auto_link(attachment.description)
+      end
+    end
     show do
       render "show"
     end

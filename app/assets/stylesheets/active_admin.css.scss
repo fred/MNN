@@ -118,10 +118,11 @@ span.image p {
 .index_as_block .grid_images {
   float: left;
   margin-right: 6px;
-  width: 220px;
-  height: 260px;
+  width: 280px;
+  height: 320px;
   text-align: left;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #ccc;
 }
 .index_as_block .grid_images img {
   margin: 8px;
@@ -132,3 +133,7 @@ span.image p {
   border: 1px solid #eee;
 }
 
+
+a.featured_true {
+  font-weight: bold;
+}

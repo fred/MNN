@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
     @item = Item.find(params[:id])
-
+    @show_breadcrumb = true
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @item }

@@ -26,28 +26,25 @@
   <body>
     <%= render :partial => "/shared/topbar" %>
 
-    <div class="container-fluid">
-      <div class="sidebar">
-        <div class="well">
-          <h4>Sections</h4>
-          <ul>
-            <% Category.order("title ASC").all.each do |category| %>
-              <li><%= link_to category.title, category %></li>
-            <% end %>
-          </ul>
-          <h4>Tags</h4>
-          <ul>
-            <% GeneralTag.order("title ASC").all.each do |tag| %>
-              <li><%= link_to tag.title, tag %></li>
-            <% end %>
-          </ul>
+    <div class="container">
+      <div class="row">
+        <div class="span16">
+          
+          
+          <div class="row">
+            <div class="span3">
+              <%= render :partial => "/shared/sidebar" %>
+            </div>
+            
+            <div class="span13">
+              <div class="content">
+                <%#= render :partial => "/shared/highlights" %>
+                <%= yield %>
+              </div>
+            </div>
+          </div>
+          
         </div>
-      </div>
-      
-      <div class="content">
-        <%#= render :partial => "/shared/highlights" %>
-        <%= yield %>
-        <%= render :partial => "/shared/footer" %>
       </div>
     </div>
 

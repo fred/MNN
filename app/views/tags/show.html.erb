@@ -1,5 +1,5 @@
 <% @items.each do |item| %>
-  <article class="category" id="category_<%=@category.id%>">
+  <article class="category" id="tag_<%=@tag.id%>">
     <header>
       <% unless item.attachments.empty?%>
         <%= image_tag(item.attachments.first.image.thumb, :class => "show_item_image") %>
@@ -29,6 +29,6 @@
     <span class="divider">/</span>
   </li>
   <li class="active">
-    <%= @category.title %>
+    <%= @tag.title %>
   </li>
 <% end %>

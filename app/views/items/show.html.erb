@@ -1,14 +1,20 @@
-<article>
+<article id="<%= @item.id %>">
   
   <h1><%= @item.title %></h1>
   
   <section>
+    <% unless @item.attachments.empty?%>
+      <% if @item.featured %>
+        <%= image_tag(@item.attachments.first.image.large, :class => "show_item_image") %>
+      <% else %>
+        <%= image_tag(@item.attachments.first.image.medium, :class => "show_item_image") %>
+      <% end %>
+    <% end %>
     <p><i><%= @item.highlight %></i></p>
     <%= @item.body.html_safe %>
   </section>
   
   <footer>
-    
     <span class="date">
       Published on 
       <%= time_tag(@item.published_at, :pubdate => true) %>
@@ -23,9 +29,28 @@
     <ul class="tags">
       Tags:
       <% @item.tags.each do |tag| %>
-        <li><%= link_to tag.title, tag %> </li>
+        <li><%= link_to tag.title, tag_path(tag) %> </li>
       <% end %>
     </ul>
   </footer>
   
 </article>
+
+
+<% content_for :breadcrumb do %>
+  <li>
+    <a href="/">Home</a>
+    <span class="divider">/</span>
+  </li>
+  <li>
+    <%= link_to @item.category.title, @item.category %>
+    <span class="divider">/</span>
+  </li>
+  <li>
+    <%= @item.published_at.strftime("%Y-%M-%d") %>
+    <span class="divider">/</span>
+  </li>
+  <li class="active">
+    <%= @item.title %>
+  </li>
+<% end %>
