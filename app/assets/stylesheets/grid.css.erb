@@ -1,0 +1,134 @@
+@media only screen and (min-width: 1280px) {
+  body {
+    padding-top: 60px;
+  }
+  .container-fluid {
+     min-width: 1280px;
+  }
+  .container-fluid > .sidebar {
+    float: left;
+    width: 240px;
+    left: 20px;
+    position: absolute;
+    display: block;
+  }
+  .container-fluid > .content {
+    margin-left: 260px;
+  }
+}
+@media only screen and (min-width: 940px) {
+  body {
+    padding-top: 60px;
+  }
+  .container-fluid {
+     min-width: 940px;
+  }
+  .container-fluid > .sidebar {
+    float: left;
+    width: 220px;
+  }
+  .container-fluid > .content {
+    margin-left: 240px;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+
+	body {
+    padding-top: 60px;
+  }
+  .container-fluid {
+     min-width: 640px;
+  }
+  .container-fluid > .sidebar {
+    float: left;
+    width: 200px;
+    left: 20px;
+    position: absolute;
+    display: block;
+  }
+  .container-fluid > .content {
+    margin-left: 220px;
+  }
+  
+  #wrapper {
+    width: 768px;
+	}
+	
+	#left_column {
+    width: 436px;
+    float:left;
+  }
+  #middle_column {
+    width: 184px;
+    float:left;
+  }
+  #right_column {
+    width: 184px;
+    float:left;
+  }
+  .lastcol {
+    clear:both;
+  }
+	#fifth_column {
+    display:inline;
+  }  
+}
+
+
+/* Highend Mobile */
+@media handheld and (max-width: 480px), screen and (max-device-width: 480px), screen and (max-width: 767px) {
+
+	body {
+    font-size: 15px;
+  	-webkit-text-size-adjust: auto;
+    padding-top: 96px;
+	}
+	.container-fluid {
+     min-width: 480px;
+  }
+  .container-fluid > .sidebar {
+    float: left;
+    width: 160px;
+    left: 20px;
+    position: absolute;
+    display: block;
+  }
+  .container-fluid > .content {
+    margin-left: 180px;
+  }
+  a.brand{
+    display:none;
+  }
+}
+
+/* Lowend Mobile */
+
+@media handheld and (max-width: 320px), screen and (max-device-width: 320px), screen and (max-width: 480px) {
+  body {
+    font-size: 15px;
+    -webkit-text-size-adjust: auto;
+    padding-top: 140px;
+  }
+  .container-fluid {
+     min-width: 320px;
+  }
+  .container-fluid > .sidebar {
+    float: left;
+    width: 240px;
+    left: 10px;
+    position: inherit;
+    display: none;
+  }
+  .container-fluid > .content {
+    margin-left: 10px;
+    float: left;
+    position: inherit;
+  }
+  a.brand{
+    display:none;
+  }
+  .topbar p {
+    display:none;
+  }
+}

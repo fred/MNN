@@ -7,7 +7,7 @@
           <li><%= link_to "Home", root_path %></li>
         
           <li class="dropdown" data-dropdown="dropdown">
-            <a href="#" class="dropdown-toggle">Browse by Sections</a>
+            <a href="#" class="dropdown-toggle">Section Tags</a>
             <ul class="dropdown-menu">
               <% Category.order("title ASC").all.each do |category|%>
                 <li><%= link_to category.title, category %></li>
@@ -16,7 +16,7 @@
           </li>
         
           <li class="dropdown" data-dropdown="dropdown">
-            <a href="#" class="dropdown-toggle">Browse by Region</a>
+            <a href="#" class="dropdown-toggle">Region Tags</a>
             <ul class="dropdown-menu">
               <% RegionTag.order("title ASC").all.each do |tag|%>
                 <li><%= link_to tag.title, tag_path(tag) %></li>

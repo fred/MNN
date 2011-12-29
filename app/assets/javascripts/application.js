@@ -8,4 +8,4 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require jquery-ui
-//= require_tree .
+//= require css3-mediaqueries
