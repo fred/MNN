@@ -43,6 +43,9 @@ class Item < ActiveRecord::Base
     self.expires_on   ||= Time.now+10.years
   end
   
+  def self.last_item
+    published.order("updated_at DESC").first
+  end
   
   # Set to draft automatically upon creation
   def set_status_code

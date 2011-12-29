@@ -13,7 +13,7 @@
                   )
               %>
               <%= link_to item.title, item, :title => item.abstract %>
-              <%= item.abstract.to_s.truncate(80) %>
+              <span class="abstract"><%= item.abstract.to_s.truncate(80) %></span>
             <% else %>
               <%= link_to item.title, item, :title => item.abstract %>
             <% end %>

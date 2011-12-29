@@ -43,7 +43,7 @@
     <span class="divider">/</span>
   </li>
   <li>
-    <%= link_to @item.category.title, @item.category %>
+    <%= link_to_if(@item.category, @item.category_title, @item.category) %>
     <span class="divider">/</span>
   </li>
   <li>
