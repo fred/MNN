@@ -140,7 +140,7 @@ ActiveAdmin::Dashboards.build do
   # paper_trail
   section "Recently Updated Content", :priority => 40 do
     table_for Version.order('id desc').limit(20) do
-      column "Type" do |v| 
+      column "Record" do |v| 
         link_to(
           "#{v.item_type.underscore.humanize} ##{v.item_id}",
           url_for(:controller => "admin/#{v.item.class.to_s.underscore.pluralize}", :action => 'show', :id => v.item_id)
@@ -148,6 +148,9 @@ ActiveAdmin::Dashboards.build do
       end
       column "Action" do |v| 
         v.event
+      end
+      column "Reason" do |v| 
+        v.tag
       end
       column "When" do |v| 
         v.created_at.to_s :short 

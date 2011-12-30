@@ -166,12 +166,13 @@
   <div class="panel_contents">
     <div class="attributes_table item">
       <% @item.versions.each do |v| %>
-        <% if v.whodunnit%>
+        <% if v.whodunnit %>
           <% user = User.where(:id => v.whodunnit).first %>
           <p>
-            <%= link_to(user.title, admin_user_path(v.whodunnit)) if user %> 
-            did a '<%= v.event %>' action on
-            '<%= v.created_at.to_s(:long) %>'
+            <%= v.event %>
+            by <%= link_to(user.title, admin_user_path(v.whodunnit)) if user %> 
+            on '<%= v.created_at.to_s(:long) %>' 
+            Reason: <%= v.tag %>
           </p>
         <% end %>
       <% end %>

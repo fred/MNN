@@ -1,8 +1,10 @@
 class Item < ActiveRecord::Base
   include Rails.application.routes.url_helpers # neeeded for _path helpers to work in models
+
+  attr_accessor :updated_reason
   
   # Versioning System
-  has_paper_trail
+  has_paper_trail :meta => { :tag  => :updated_reason }
   
   # Comment System
   # opinio_subjectum

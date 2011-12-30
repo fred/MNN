@@ -82,6 +82,8 @@
           :collection => ["Ready to go", "Needs Editing", "Needs Translation", "Needs Image"]
     %>
     <%= f.input :editor_notes, :as => "string" %>
+    <%= f.input :updated_reason, :as => "string", :hint => "Provide reason for editing short as possible, 2-4 words." %>
+    
   <% end %>
   
   <%= f.input(:user_id, :label => false, :as => :hidden, :value => current_admin_user.id) if f.object.new_record? %>
