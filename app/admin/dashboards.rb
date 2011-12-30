@@ -143,7 +143,7 @@ ActiveAdmin::Dashboards.build do
       column "Type" do |v| 
         link_to(
           "#{v.item_type.underscore.humanize} ##{v.item_id}",
-          url_for(:controller => "admin/#{v.item_type.underscore.pluralize}", :action => 'show', :id => v.item_id)
+          url_for(:controller => "admin/#{v.item.class.to_s.underscore.pluralize}", :action => 'show', :id => v.item_id)
         )
       end
       column "Action" do |v| 
@@ -240,6 +240,11 @@ ActiveAdmin::Dashboards.build do
   
   
   # TAGS
+  ActiveAdmin.register Tag do
+    config.comments = false
+    menu :parent => "Tags", :priority => 15
+    form :partial => "form"
+  end
   ActiveAdmin.register GeneralTag do
     config.comments = false
     menu :parent => "Tags", :priority => 15

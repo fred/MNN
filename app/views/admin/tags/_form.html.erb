@@ -1,0 +1,12 @@
+<%#= semantic_form_for [:admin, @tag]  do |f| %>
+  <%#= f.inputs :title => "Required Info" do %>
+    <%#= f.input :title, :label => "Tag Name", :required => true %>
+    <%#= f.input :type, 
+          :as => :select, 
+          :label => "Tag Type",
+          :required => true,
+          :collection => ["GeneralTag", "CountryTag", "RegionTag", "Tag"]
+    %>        
+  <%# end %>
+  <%#= f.buttons :commit %>
+<%# end %>
