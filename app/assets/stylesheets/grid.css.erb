@@ -50,29 +50,6 @@
   .container-fluid > .content {
     margin-left: 220px;
   }
-  
-  #wrapper {
-    width: 768px;
-	}
-	
-	#left_column {
-    width: 436px;
-    float:left;
-  }
-  #middle_column {
-    width: 184px;
-    float:left;
-  }
-  #right_column {
-    width: 184px;
-    float:left;
-  }
-  .lastcol {
-    clear:both;
-  }
-	#fifth_column {
-    display:inline;
-  }  
 }
 
 
@@ -80,9 +57,9 @@
 @media handheld and (max-width: 480px), screen and (max-device-width: 480px), screen and (max-width: 767px) {
 
 	body {
-    font-size: 15px;
+/*    font-size: 15px;*/
   	-webkit-text-size-adjust: auto;
-    padding-top: 96px;
+    padding-top: 60px;
 	}
 	.container-fluid {
      min-width: 480px;
@@ -97,21 +74,56 @@
   .container-fluid > .content {
     margin-left: 180px;
   }
-  a.brand{
-    display:none;
+  .topbar .brand{
+    padding: 10px 0px 0px 30px;
+  }
+  article {
+    padding: 8px 20px;
+  }
+  article h1 {
+    font-size: 26px;
+    line-height: 32px;
+    margin-bottom: 12px;
+  }
+  article h3 {
+      font-size: 20px;
+      line-height: 26px;
+  }
+  .input-xlarge, input.xlarge, textarea.xlarge, select.xlarge {
+      width: 200px;
+  }
+  .categories .box {
+    padding: 3px 5px 5px 1px;
+    height: auto;
+    min-height: 200px;
+  }
+}
+
+
+@media screen and (max-width: 640px) {
+
+	body {
+  	-webkit-text-size-adjust: auto;
+    padding-top: 94px;
+	}
+	.categories .box {
+    padding: 3px 5px 5px 1px;
+    height: auto;
+    min-height: 200px;
   }
 }
 
 /* Lowend Mobile */
 
-@media handheld and (max-width: 320px), screen and (max-device-width: 320px), screen and (max-width: 480px) {
+@media handheld and (max-width: 320px), screen and (max-device-width: 320px), screen and (max-width: 520px) {
   body {
     font-size: 15px;
     -webkit-text-size-adjust: auto;
-    padding-top: 140px;
+    padding-top: 84px;
   }
   .container-fluid {
      min-width: 320px;
+     padding-left: 8px;
   }
   .container-fluid > .sidebar {
     float: left;
@@ -125,10 +137,38 @@
     float: left;
     position: inherit;
   }
-  a.brand{
-    display:none;
+  .topbar .brand{
+    padding: 10px 0px 0px 30px;
   }
   .topbar p {
     display:none;
+  }
+  .topbar div > ul a, .nav a {
+    padding: 10px;
+    line-height: 16px;
+  }
+  .breadcrumb {
+    margin: 0 0 10px;
+    padding: 7px 10px;
+  }
+  article {
+    padding: 6px 16px;
+  }
+  article h1 {
+    font-size: 22px;
+    line-height: 30px;
+    margin-bottom: 12px;
+  }
+  article h3 {
+      font-size: 18px;
+      line-height: 22px;
+  }
+  .input-xlarge, input.xlarge, textarea.xlarge, select.xlarge {
+      width: 200px;
+  }
+  .categories .box {
+    padding: 3px 5px 5px 1px;
+    height: auto;
+    min-height: 200px;
   }
 }

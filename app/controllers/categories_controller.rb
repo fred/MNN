@@ -4,15 +4,15 @@ class CategoriesController < ApplicationController
   
   def index
     @categories = Category.all
-    # headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
-    # headers['Last-Modified'] = Item.last_item.updated_at.httpdate
+    headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
+    headers['Last-Modified'] = Item.last_item.updated_at.httpdate
   end
 
   def show
     @show_breadcrumb = true
     @category = Category.find(params[:id])
-    # @items = @category.published_items.paginate(per_page: 20, page: params[:page])
-    # headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
+    @items = @category.published_items.page(params[:page])
+    headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
     @items = @category.
       items.
       where(:draft => false).

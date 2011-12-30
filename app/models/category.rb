@@ -23,7 +23,7 @@ class Category < ActiveRecord::Base
       order("published_at DESC")
   end
   
-  def top_items(lmt=10)
+  def top_items(lmt=8)
     self.
       items.
       where(:draft => false).

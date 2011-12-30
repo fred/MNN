@@ -12,10 +12,10 @@
                     :title => item.abstract
                   )
               %>
-              <%= link_to item.title, item, :title => item.abstract %>
+              <%= link_to item.title.to_s.truncate(80), item, :title => item.abstract %>
               <span class="abstract"><%= item.abstract.to_s.truncate(80) %></span>
             <% else %>
-              <%= link_to item.title, item, :title => item.abstract %>
+              <%= link_to item.title.to_s.truncate(80), item, :title => item.abstract %>
             <% end %>
           </li>
         <% end %>
