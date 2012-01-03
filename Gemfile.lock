@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: a0d58288cdd5fc2e2f166500d6d9ac169809d293
+  revision: 7cd7f440ab043a19cd485ad3be1f8365fdd2f641
   specs:
     activeadmin (0.3.4)
       bourbon (>= 1.0.0)
@@ -32,18 +32,17 @@ GIT
 
 GIT
   remote: git://github.com/norman/friendly_id.git
-  revision: 8e852bea05e6d11b03aec36cbea5427d21016a09
+  revision: e4045ab5d7a3d5d2b5e3757ef0f49b03e6593e35
   specs:
-    friendly_id (4.0.0.rc2)
+    friendly_id (4.0.0)
 
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: bc8b8f7630f0803f153c3ec3a614b38cd74038e7
+  revision: b747bae72b55122dd326067a5f7b624c68163f15
   specs:
-    twitter-bootstrap-rails (1.4.2)
+    twitter-bootstrap-rails (1.4.3)
       actionpack
-      jquery-rails (~> 1.0)
-      less
+      jquery-rails (>= 1.0)
       less-rails (~> 2.1.0)
       railties
 
@@ -53,6 +52,13 @@ GIT
   specs:
     i18n-active_record (0.0.2)
       i18n (>= 0.5.0)
+
+GIT
+  remote: https://github.com/smartinez87/exception_notification.git
+  revision: e61453710ec385592c8795a0916287b7bc505b3c
+  specs:
+    exception_notification (2.5.2)
+      actionmailer (>= 3.0.4)
 
 GEM
   remote: http://rubygems.org/
@@ -148,7 +154,7 @@ GEM
     jquery-rails (1.0.19)
       railties (~> 3.0)
       thor (~> 0.14)
-    json (1.6.3)
+    json (1.6.4)
     kaminari (0.13.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -183,8 +189,7 @@ GEM
     orm_adapter (0.0.5)
     paper_trail (2.5.0)
       rails (~> 3)
-    pg (0.12.0)
-      rake-compiler (~> 0.7)
+    pg (0.12.1)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -216,8 +221,6 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.6)
     rake (0.9.2.2)
-    rake-compiler (0.7.9)
-      rake
     rakismet (1.1.2)
     rdoc (3.12)
       json (~> 1.4)
@@ -268,7 +271,7 @@ GEM
     turn (0.8.3)
       ansi
     tzinfo (0.3.31)
-    uglifier (1.2.0)
+    uglifier (1.2.1)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
     warden (1.1.0)
@@ -285,6 +288,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.1.1)
   devise
+  exception_notification!
   execjs
   factory_girl_rails (~> 1.2)
   fog
