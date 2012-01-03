@@ -141,10 +141,14 @@ ActiveAdmin::Dashboards.build do
   section "Recently Updated Content", :priority => 40 do
     table_for Version.order('id desc').limit(20) do
       column "Record" do |v| 
-        link_to(
-          "#{v.item_type.underscore.humanize} ##{v.item_id}",
-          url_for(:controller => "admin/#{v.item.class.to_s.underscore.pluralize}", :action => 'show', :id => v.item_id)
-        )
+        if v.item
+          link_to(
+            "#{v.item_type.underscore.humanize} ##{v.item_id}",
+            url_for(:controller => "admin/#{v.item.class.to_s.underscore.pluralize}", :action => 'show', :id => v.item_id)
+          )
+        else
+          "#{v.item_type.underscore.humanize} ##{v.item_id}"
+        end
       end
       column "Action" do |v| 
         v.event
