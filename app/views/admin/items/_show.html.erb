@@ -7,20 +7,21 @@
   </div>
 </div>
 
-<div class="panel">
-  <h3>Highlight</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <%= @item.highlight %>
-    </div>
-  </div>
-</div>
 
 <div class="panel">
   <h3>Abstract</h3>
   <div class="panel_contents">
     <div class="attributes_table item">
       <%= @item.abstract %>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Body</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @item.body.html_safe %>
     </div>
   </div>
 </div>
@@ -112,15 +113,6 @@
   </div>
 </div>
 
-
-<div class="panel">
-  <h3>Body</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <%= @item.body.html_safe %>
-    </div>
-  </div>
-</div>
 
 <div class="panel">
   <h3>Editor Notes</h3>

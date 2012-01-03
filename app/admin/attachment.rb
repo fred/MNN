@@ -14,6 +14,13 @@ ActiveAdmin.register Attachment do
       end
       h4 auto_link(attachment.title)
       h4 auto_link(attachment.description)
+      link_to(
+        "Delete",
+        admin_attachment_path(attachment),
+        :method => "delete",
+        :confirm => "Really delete this image?",
+        :title => "Click on image to see details"
+      )
     end
   end
   show do
