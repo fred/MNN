@@ -1,8 +1,10 @@
 class ItemsController < ApplicationController
+  
+
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.published.not_draft.order("published_at DESC").page(params[:page], :per_page => 20)
     headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
     respond_to do |format|
       format.html # index.html.erb

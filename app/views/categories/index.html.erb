@@ -1,4 +1,45 @@
 <div class="row categories">
+  
+  <div class="span6 box" id="main_highlights">
+    <ul>
+      <% @highlights[0..1].each do |item| %>
+        <li class="featured_item" id="item_<%=item.id%>">
+          <%= link_to(
+                image_tag(item.attachments.first.image.medium, :class => "featured_item_image"),
+                item, 
+                :title => item.abstract
+              )
+          %>
+          <span class="title"><%= link_to item.title.to_s.truncate(160), item, :title => item.abstract %></span>
+          <span class="abstract"><%= item.abstract.to_s.truncate(180) %></span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="span6 box" id="highlights">
+    <h2><%= link_to "Latest News", items_path %></h2>
+    <ul>
+    <% @highlights[2..5].each do |item| %>
+      <li class="list_item" id="item_<%=item.id%>">
+        <%= link_to(
+              image_tag(item.attachments.first.image.small, :class => "list_item_image"),
+              item, 
+              :title => item.abstract
+            )
+        %>
+        <span class="title"><%= link_to item.title.to_s.truncate(120), item, :title => item.abstract %></span>
+        <span class="abstract"><%= item.abstract.to_s.truncate(160) %></span>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+  
+</div>
+
+
+<div class="row categories">
+  
   <% for category in @categories %>
     <div class="span6 box" id="<%= category.slug %>">
       <h1><%= link_to category.title, category %></h1>
@@ -20,6 +61,7 @@
           </li>
         <% end %>
       </ul>
+      <span class="more"><%= link_to "more...", category %></h2>
     </div>
   <% end %>
 </div>

@@ -1,27 +1,39 @@
-<h1>Listing items</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Highlight</th>
-    <th>Body</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @items.each do |item| %>
-  <tr>
-    <td><%= item.title %></td>
-    <td><%= item.highlight %></td>
-    <td><%= item.body %></td>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+  <article class="category" id="item_<%=item.id%>">
+    <header>
+      <% unless item.attachments.empty?%>
+        <%= image_tag(item.attachments.first.image.thumb, :class => "show_item_image") %>
+      <% end %>
+      <h3><%= link_to item.title, item %></h3>
+    </header>
+    <section>
+      <%= item.abstract.to_s.html_safe %>
+    </section>
+    <section>
+      <span class="date">
+        Published on 
+        <%= time_tag(item.published_at, :pubdate => true) %>
+      </span>
+      <% if item.user %>
+        <span class="author"> by <%= link_to_if(item.user, item.user.title, item.user) %></span>
+      <% else %>
+        <span class="author"> <%= item.author_name %></span>
+      <% end %>
+    </section>
+  </article>
 <% end %>
-</table>
 
-<br />
+<% content_for :breadcrumb do %>
+  <li>
+    <a href="/">Home</a>
+    <span class="divider">/</span>
+  </li>
+  <li class="active">
+    Latest News
+  </li>
+<% end %>
 
-<%= link_to 'New Item', new_item_path %>
+
+<div class="pagination">
+  <%= paginate @items %>
+</div>

@@ -70,8 +70,21 @@ class Item < ActiveRecord::Base
   def self.published
     where("published_at is not NULL")
   end
+  def self.not_draft
+    where(:draft => false)
+  end
   def self.draft
     where(:draft => true)
+  end
+  
+  # Highlights
+  def self.highlights(limit=6,offset=1)
+    published.
+    where(:draft => false).
+    order("published_at DESC").
+    limit(limit).
+    offset(offset).
+    all
   end
   
   # Returns the last 10 approved items (not draft anymore)

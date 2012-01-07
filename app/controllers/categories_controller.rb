@@ -1,9 +1,10 @@
 class CategoriesController < ApplicationController
   
   layout "items"
-  
+    
   def index
-    @categories = Category.all
+    @highlights = Item.highlights
+    @categories = Category.order("priority ASC, title DESC").all
     headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
     headers['Last-Modified'] = Item.last_item.updated_at.httpdate
   end
