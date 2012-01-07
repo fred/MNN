@@ -1,4 +1,120 @@
+@media only screen and (min-width: 1280px) {
+  body {
+    padding-top: 60px;
+  }
+  .container-fluid {
+     min-width: 1280px;
+  }
+  .container-fluid > .sidebar {
+    float: left;
+    width: 240px;
+    left: 20px;
+    position: absolute;
+    display: block;
+  }
+  .container-fluid > .content {
+    margin-left: 260px;
+  }
+}
+@media only screen and (min-width: 940px) {
+  body {
+    padding-top: 60px;
+  }
+  .container-fluid {
+     min-width: 940px;
+  }
+  .container-fluid > .sidebar {
+    float: left;
+    width: 220px;
+  }
+  .container-fluid > .content {
+    margin-left: 240px;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+
+	body {
+    padding-top: 60px;
+  }
+  .container-fluid {
+     min-width: 640px;
+  }
+  .container-fluid > .sidebar {
+    float: left;
+    width: 200px;
+    left: 20px;
+    position: absolute;
+    display: block;
+  }
+  .container-fluid > .content {
+    margin-left: 220px;
+  }
+}
+
+
+/* Highend Mobile */
+@media handheld and (max-width: 480px), screen and (max-device-width: 480px), screen and (max-width: 767px) {
+
+	body {
+/*    font-size: 15px;*/
+  	-webkit-text-size-adjust: auto;
+    padding-top: 60px;
+	}
+	.container-fluid {
+     min-width: 480px;
+  }
+  .container-fluid > .sidebar {
+    float: left;
+    width: 160px;
+    left: 20px;
+    position: absolute;
+    display: block;
+  }
+  .container-fluid > .content {
+    margin-left: 180px;
+  }
+  .topbar .brand{
+    padding: 10px 0px 0px 30px;
+  }
+  article {
+    padding: 8px 20px;
+  }
+  article h1 {
+    font-size: 26px;
+    line-height: 32px;
+    margin-bottom: 12px;
+  }
+  article h3 {
+      font-size: 20px;
+      line-height: 26px;
+  }
+  .input-xlarge, input.xlarge, textarea.xlarge, select.xlarge {
+      width: 200px;
+  }
+  .categories .box {
+    padding: 3px 5px 5px 1px;
+    height: auto;
+    min-height: 200px;
+  }
+}
+
+
+@media screen and (max-width: 640px) {
+
+	body {
+  	-webkit-text-size-adjust: auto;
+    padding-top: 94px;
+	}
+	.categories .box {
+    padding: 3px 5px 5px 1px;
+    height: auto;
+    min-height: 200px;
+  }
+}
+
 /* Lowend Mobile */
+
 @media handheld and (max-width: 320px), screen and (max-device-width: 320px), screen and (max-width: 520px) {
   body {
     -webkit-text-size-adjust: auto;
@@ -52,146 +168,3 @@
     min-height: 200px;
   }
 }
-
-
-
-@media screen and (max-width: 640px) {
-
-	body {
-  	-webkit-text-size-adjust: auto;
-    padding-top: 94px;
-	}
-	.categories .box {
-    padding: 3px 5px 5px 1px;
-    height: auto;
-    min-height: 200px;
-  }
-  .topbar .brand{
-    padding: 10px 0px 0px 30px;
-  }
-}
-
-
-
-/* Highend Mobile */
-@media handheld and (max-width: 480px), screen and (max-device-width: 480px), screen and (max-width: 767px) {
-
-	body {
-/*    font-size: 15px;*/
-  	-webkit-text-size-adjust: auto;
-    padding-top: 60px;
-	}
-	.container-fluid {
-     min-width: 480px;
-  }
-  .container-fluid > .sidebar {
-    float: left;
-    width: 160px;
-    left: 20px;
-    position: absolute;
-    display: block;
-  }
-  .container-fluid > .content {
-    margin-left: 180px;
-  }
-  .topbar .brand{
-    padding: 10px 0px 0px 30px;
-  }
-  article {
-    padding: 8px 20px;
-  }
-  article h1 {
-    font-size: 26px;
-    line-height: 32px;
-    margin-bottom: 12px;
-  }
-  article h3 {
-      font-size: 20px;
-      line-height: 26px;
-  }
-  .input-xlarge, input.xlarge, textarea.xlarge, select.xlarge {
-      width: 200px;
-  }
-  .categories .box {
-    padding: 3px 5px 5px 1px;
-    height: auto;
-    min-height: 200px;
-  }
-}
-
-
-
-@media only screen and (min-width: 640px) {
-
-	body {
-    padding-top: 60px;
-  }
-  .container-fluid {
-     min-width: 640px;
-  }
-  .container-fluid > .sidebar {
-    float: left;
-    width: 200px;
-    left: 20px;
-    position: absolute;
-    display: block;
-  }
-  .container-fluid > .content {
-    margin-left: 220px;
-  }
-  .topbar .brand{
-    padding: 10px 20px 0px 30px;
-  }
-}
-
-
-
-@media only screen and (min-width: 940px) {
-  body {
-    padding-top: 60px;
-  }
-  .container-fluid {
-     min-width: 940px;
-  }
-  .container-fluid > .sidebar {
-    float: left;
-    width: 220px;
-  }
-  .container-fluid > .content {
-    margin-left: 240px;
-  }
-  .topbar .brand{
-    padding: 10px 30px 0px 30px;
-  }
-}
-
-
-
-@media only screen and (min-width: 1280px) {
-  body {
-    padding-top: 60px;
-  }
-  .container-fluid {
-     min-width: 1280px;
-  }
-  .container-fluid > .sidebar {
-    float: left;
-    width: 240px;
-    left: 20px;
-    position: absolute;
-    display: block;
-  }
-  .container-fluid > .content {
-    margin-left: 260px;
-  }
-  .topbar .brand{
-    padding: 10px 40px 0px 30px;
-  }
-}
-
-
-
-
-
-
-
