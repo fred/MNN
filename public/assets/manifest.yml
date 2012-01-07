@@ -3,6 +3,7 @@ tinymce/jquery-tinymce.js: tinymce/jquery-tinymce-35903f8760a7bc4eee13993059ebf4
 tinymce/tiny_mce.js: tinymce/tiny_mce-22fcb158819ecc7f11212e4d57423a14.js
 tinymce/tiny_mce_jquery.js: tinymce/tiny_mce_jquery-cd1b9c48f60103fd6bdc725e5366344a.js
 tinymce/preinit.js: tinymce/preinit-154cd1fda783ebdb0634d7611d1eca38.js
+bg_texture.jpg: bg_texture-0efdb34f410091e3bb7a81c97ef454cc.jpg
 jquery-ui/ui-bg_glass_55_fcf0ba_1x400.png: jquery-ui/ui-bg_glass_55_fcf0ba_1x400-c47c24b8d7cfaf5f21f3027c39599af8.png
 jquery-ui/ui-bg_gloss-wave_100_ece8da_500x100.png: jquery-ui/ui-bg_gloss-wave_100_ece8da_500x100-f489cff065b2e3aa0985f94412983c2a.png
 jquery-ui/ui-bg_highlight-hard_100_f5f3e5_1x100.png: jquery-ui/ui-bg_highlight-hard_100_f5f3e5_1x100-2657441000f84a7ab672bff2e5a17b3f.png
@@ -22,7 +23,7 @@ rails.png: rails-e4b51606cd77fda2615e7439907bfc92.png
 active_admin.js: active_admin-360de106dcf56b69d3476c9d0a500206.js
 application.js: application-23b0f97bec66570e185c0f3554ce7ea0.js
 active_admin.css: active_admin-0575aec72dddcc273e661ae2910ed177.css
-application.css: application-caaedc4347b203d63b841178284f984b.css
+application.css: application-bc9864c6376afc0fd9f54ee9d7a36e57.css
 active_admin/admin_notes_icon.png: active_admin/admin_notes_icon-d3076b67b8655afc5cf14bf244c34db5.png
 active_admin/datepicker/datepicker-header-bg.png: active_admin/datepicker/datepicker-header-bg-c73514e723fd274903d96ff0afd8e7f7.png
 active_admin/datepicker/datepicker-input-icon.png: active_admin/datepicker/datepicker-input-icon-e48beac5b8da2344985c5d2afe6159dd.png

@@ -1,16 +1,21 @@
 <%= semantic_form_for [:admin, @item], :html => { :enctype => "multipart/form-data" }  do |f| %>
 
   <%= f.inputs :name => "Required Main Information" do %>
-    <%= f.input :category, :as => :select, 
-           :label_method => 'title', 
-           :value_method => :id, 
-           :label => "Category",
-           :required => true
+    <%= f.input :category, 
+                :as => :select, 
+                :label_method => 'title', 
+                :value_method => :id, 
+                :label => "Category",
+                :required => true, 
+                :hint => "It's required to pick a category"
     %>
-    <%= f.input :title, :label => "Main Title", :required => true %>
-    <%= f.input :highlight, :label => "Article Highlight", :required => true %>
+    <%= f.input :title, 
+                :label => "Main Title", 
+                :required => true, 
+                :hint => "Required, 60-100 characters max" %>
+                
     <%= f.input :abstract, 
-                :hint => "Use a Single Paragraph for Abstract", 
+                :hint => "Required, Use a Single Paragraph for Abstract, 80-160 characters max", 
                 :required => true, 
                 :input_html => { :rows => 10 } 
     %>
@@ -41,7 +46,7 @@
   <%= f.inputs :name => "Optional" do %>
     <%= f.input :author_name, :hint => "If blank, your 'Name' will be used" %>
     <%= f.input :author_email, :hint => "If blank, your 'Email' will be used" %>
-    <%= f.input :source_url %>
+    <%= f.input :source_url, :hint => "Required, if you wrote the aricle, then put your name" %>
   <% end %>
   
   
@@ -88,7 +93,7 @@
           :collection => ["Ready to go", "Needs Editing", "Needs Translation", "Needs Image"]
     %>
     <%= f.input :editor_notes, :as => "string" %>
-    <%= f.input :updated_reason, :as => "string", :hint => "Provide reason for editing short as possible, 2-4 words." %>
+    <%= f.input :updated_reason, :as => "string", :hint => "Provide a reason for editing, as short as possible, 2-4 words." %>
     
   <% end %>
   
