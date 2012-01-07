@@ -13,5 +13,6 @@ ActiveAdmin.register Category do
     column "Updated" do |category|
       category.updated_at.to_s(:short)
     end
+    default_actions
   end
 end
