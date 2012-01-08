@@ -9,6 +9,14 @@
                 :required => true, 
                 :hint => "It's required to pick a category"
     %>
+    <%= f.input :language, 
+                :as => :select, 
+                :label_method => 'description', 
+                :value_method => :id, 
+                :label => "Language",
+                :required => true, 
+                :hint => "Select a language for this article"
+    %>
     <%= f.input :title, 
                 :label => "Main Title", 
                 :required => true, 

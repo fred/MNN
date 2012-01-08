@@ -16,7 +16,7 @@ class Item < ActiveRecord::Base
   # Relationships
   belongs_to :user
   belongs_to :category
-  
+  belongs_to :language
   has_many :attachments, :as => :attachable
   has_many :item_stats
 

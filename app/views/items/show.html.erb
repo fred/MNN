@@ -16,7 +16,7 @@
   
   <footer>
     <span class="date">
-      Published on 
+      Published 
       <%= time_tag(@item.published_at, :pubdate => true) %>
     </span>
     <% if @item.user %>
@@ -47,7 +47,7 @@
     <span class="divider">/</span>
   </li>
   <li>
-    <%= @item.published_at.strftime("%Y-%M-%d") %>
+    <%= @item.published_at.strftime("%Y-%m-%d") %>
     <span class="divider">/</span>
   </li>
   <li class="active">

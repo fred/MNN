@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111230225314) do
+ActiveRecord::Schema.define(:version => 20120108062603) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20111230225314) do
     t.string   "author_status"
     t.datetime "deleted_at"
     t.string   "updated_reason"
+    t.integer  "language_id"
   end
 
   add_index "items", ["allow_comments"], :name => "index_items_on_allow_comments"
@@ -122,6 +123,7 @@ ActiveRecord::Schema.define(:version => 20111230225314) do
   add_index "items", ["category_id"], :name => "index_items_on_category_id"
   add_index "items", ["draft"], :name => "index_items_on_draft"
   add_index "items", ["featured"], :name => "index_items_on_featured"
+  add_index "items", ["language_id"], :name => "index_items_on_language_id"
   add_index "items", ["locale"], :name => "index_items_on_locale"
   add_index "items", ["member_only"], :name => "index_items_on_member_only"
   add_index "items", ["meta_enabled"], :name => "index_items_on_meta_enabled"
@@ -130,6 +132,13 @@ ActiveRecord::Schema.define(:version => 20111230225314) do
   add_index "items", ["status_code"], :name => "index_items_on_status_code"
   add_index "items", ["updated_by"], :name => "index_items_on_updated_by"
   add_index "items", ["user_id"], :name => "index_items_on_user_id"
+
+  create_table "languages", :force => true do |t|
+    t.string   "locale"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "title"
