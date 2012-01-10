@@ -8,6 +8,10 @@
     <span class="divider">/</span>
   </li>
   <% if @language %>
+    <li>
+      <%= link_to "All Languages", languages_path %>
+      <span class="divider">/</span>
+    </li>
     <li class="active">
       <%= @language.description %>
     </li>
