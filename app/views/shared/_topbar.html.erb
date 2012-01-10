@@ -4,26 +4,36 @@
       <div class="container-fluid">
         <a class="brand" href="/">Publication System</a>
         <ul class="nav">
+          
           <li><%= link_to "Home", root_path %></li>
-        
+          
           <li class="dropdown" data-dropdown="dropdown">
-            <a href="#" class="dropdown-toggle">Section Tags</a>
+            <a href="#" class="dropdown-toggle">Sections</a>
             <ul class="dropdown-menu">
               <% Category.order("title ASC").all.each do |category|%>
                 <li><%= link_to category.title, category %></li>
               <% end %>
             </ul>
           </li>
-        
+          
           <li class="dropdown" data-dropdown="dropdown">
-            <a href="#" class="dropdown-toggle">Region Tags</a>
+            <a href="#" class="dropdown-toggle">Regions</a>
             <ul class="dropdown-menu">
               <% RegionTag.order("title ASC").all.each do |tag|%>
                 <li><%= link_to tag.title, tag_path(tag) %></li>
               <% end %>
             </ul>
           </li>
-        
+          
+          <li class="dropdown" data-dropdown="dropdown">
+            <a href="#" class="dropdown-toggle">Languages</a>
+            <ul class="dropdown-menu">
+              <% Language.order("locale ASC").all.each do |language|%>
+                <li><%= link_to language.description, language %></li>
+              <% end %>
+            </ul>
+          </li>
+          
           <li class="dropdown" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle">Account</a>
             <ul class="dropdown-menu">
