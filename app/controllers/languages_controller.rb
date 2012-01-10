@@ -3,7 +3,7 @@ class LanguagesController < ApplicationController
   layout "items"
   
   def index
-    @languages = Language.all
+    @languages = Language.with_articles
   end
 
   def show

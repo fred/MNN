@@ -13,4 +13,14 @@ class Language < ActiveRecord::Base
       order("published_at DESC").
       limit(lmt)
   end
+  
+  # only give languages with more than 1 item
+  def self.with_articles
+    find(:all,
+      :select => '"languages".*, count("items".id) as counter',
+      :joins => :items,
+      :group => '"languages".id',
+      :order => 'languages.locale DESC'
+    )
+  end
 end
