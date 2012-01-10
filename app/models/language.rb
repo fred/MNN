@@ -5,11 +5,8 @@ class Language < ActiveRecord::Base
   friendly_id :description, :use => :slugged
   
   def top_items(lmt=8)
-    self.
-      items.
-      where(:draft => false).
-      where("published_at is not NULL").
-      where("published_at < '#{Time.now.to_s(:db)}'").
+    Item.published.not_draft.
+      where(:language_id => self.id).
       order("published_at DESC").
       limit(lmt)
   end

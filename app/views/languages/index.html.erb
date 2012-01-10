@@ -1,28 +1,26 @@
 <div class="row categories">
   <% for language in @languages %>
-    <% if language.items.count > 0 %>
-      <div class="span6 box" id="<%= language.slug %>">
-        <h1><%= link_to language.description, language %></h1>
-        <ul>
-          <% language.top_items(8).each_with_index do |item,index|%>
-            <li class="list_item" id="item_<%=item.id%>">
-              <% if index==0 && !item.attachments.empty? %>
-                <%= link_to(
-                      image_tag(item.attachments.first.image.small, :class => "list_item_image"),
-                      item,
-                      :title => item.abstract
-                    )
-                %>
-                <%= link_to item.title.to_s.truncate(100), item, :title => item.abstract %>
-                <span class="abstract"><%= item.abstract.to_s.truncate(80) %></span>
-              <% else %>
-                <%= link_to item.title.to_s.truncate(160), item, :title => item.abstract %>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-        <span class="more"><%= link_to "more...", language %></h2>
-      </div>
-    <% end %>
+    <div class="span6 box" id="<%= language.slug %>">
+      <h1><%= link_to language.description, language %></h1>
+      <ul>
+        <% language.top_items(8).each_with_index do |item,index|%>
+          <li class="list_item" id="item_<%=item.id%>">
+            <% if index==0 && !item.attachments.empty? %>
+              <%= link_to(
+                    image_tag(item.attachments.first.image.small, :class => "list_item_image"),
+                    item,
+                    :title => item.abstract
+                  )
+              %>
+              <%= link_to item.title.to_s.truncate(100), item, :title => item.abstract %>
+              <span class="abstract"><%= item.abstract.to_s.truncate(80) %></span>
+            <% else %>
+              <%= link_to item.title.to_s.truncate(160), item, :title => item.abstract %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+      <span class="more"><%= link_to "more...", language %></h2>
+    </div>
   <% end %>
 </div>
