@@ -1,6 +1,7 @@
 # Categories
 ActiveAdmin.register Category do
   config.comments = false
+  config.sort_order = "priority_asc"
   menu :priority => 10
   index do
     column :id

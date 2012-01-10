@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120108062603) do
+ActiveRecord::Schema.define(:version => 20120110123554) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -138,7 +138,10 @@ ActiveRecord::Schema.define(:version => 20120108062603) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "languages", ["slug"], :name => "index_languages_on_slug", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string   "title"

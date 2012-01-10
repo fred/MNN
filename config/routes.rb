@@ -1,19 +1,5 @@
 Publication::Application.routes.draw do
-  get "country_tags/index"
 
-  get "country_tags/show"
-
-  get "region_tags/index"
-
-  get "region_tags/show"
-
-  get "general_tags/index"
-
-  get "general_tags/show"
-
-  get "categories/index"
-  get "categories/show"
-    
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -21,7 +7,11 @@ Publication::Application.routes.draw do
 
   # opinio_model
 
-  resources :items
+  resources :items do
+    resources :language
+    resources :category
+    resources :comments
+  end
   resources :roles
   resources :tags
   resources :general_tags
@@ -32,6 +22,9 @@ Publication::Application.routes.draw do
   resources :scores
   resources :translations
   resources :comments
+  resources :languages do
+    resources :items
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,36 @@
+<article class="category" id="item_<%=item.id%>">
+  <header>
+    <% unless item.attachments.empty?%>
+      <%= image_tag(item.attachments.first.image.thumb, :class => "show_item_image") %>
+    <% end %>
+    <h3><%= link_to item.title, item %></h3>
+  </header>
+  <section>
+    <%= item.abstract.to_s.html_safe %>
+  </section>
+  <section>
+    <span class="source_url">
+      <% if item.source_url %>
+        <%= link_to "Source", item.source_url %>
+      <% end %>
+      <% if item.author_name %>
+        by <span class="author"> <%= item.author_name %></span>
+      <% end %>
+    </span>
+    <span class="date">
+      <%= time_tag(item.published_at, :pubdate => true) %>
+    </span>
+    <% if item.user %>
+      Submitted by <span class="author"><%= link_to_if(item.user, item.user.title, item.user) %></span>
+    <% end %>
+    <ul class="tags">
+      Tags:
+      <% item.tags.each do |tag| %>
+        <li><%= link_to tag.title, tag_path(tag) %> </li>
+      <% end %>
+      <% if item.language %>
+        <li><%= link_to item.language.description, language_items_path(item.language) %></li>
+      <% end %>
+    </ul>
+  </section>
+</article>

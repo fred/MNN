@@ -128,7 +128,8 @@ article.category {
 }
 article h1 {
   letter-spacing: 1px;
-  font-size: 30px;
+  font-size: 28px;
+  margin-bottom: 0px;
 }
 article h2 {
   letter-spacing: 1px;
@@ -150,9 +151,13 @@ article span.author {
   color: #555;
   font-weight: bold;
   font-size: 13px;
-  padding: 2px 2px 0 4px;
+  padding: 2px 2px 0 2px;
 }
 
+article span.source_url {
+  display:block;
+  clear: both;
+}
 article header h1 a:hover,
 article header h2 a:hover,
 article header h3 a:hover {
@@ -168,22 +173,26 @@ article header h3 a {
 
 article section {
   margin-bottom: 14px;
-  margin-top: 8px;
+  margin-top: 2px;
 }
 
 article footer {
   margin: 10px 0 10px 0;
   padding: 10px 0 10px 0;
-  border-top: 1px solid #EEE;
+  border-top: 1px solid #DDD;
 }
+section ul.tags,
 article footer ul.tags {
+  font-size: 12px;
   margin: 10px 0 0 0;
 }
+section ul.tags li,
 article footer ul.tags li {
   display: inline;
   padding: 0 3px 0 5px;
   border-right: 1px solid #888;
 }
+section ul.tags li:last-child,
 article footer ul.tags li:last-child {
   border-right: none;
 }
@@ -218,7 +227,7 @@ article footer ul.tags li:last-child {
 }
 
 .categories .box h1 {
-  font-size: 26px;
+  font-size: 22px;
   padding: 1px 1px 1px 12px;
   margin-bottom: 3px;
 }
@@ -320,7 +329,7 @@ article footer ul.tags li:last-child {
 
 .content article.category img.show_item_image {
   margin-top: 6px;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
   margin-right: 12px;
 }
 

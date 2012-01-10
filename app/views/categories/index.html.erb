@@ -1,5 +1,4 @@
 <div class="row categories">
-  
   <div class="span6 box" id="main_highlights">
     <ul>
       <% @highlights[0..1].each do |item| %>
@@ -18,7 +17,7 @@
   </div>
   
   <div class="span6 box" id="highlights">
-    <h2><%= link_to "Latest News", items_path %></h2>
+    <h1><%= link_to "Latest News", items_path %></h1>
     <ul>
     <% @highlights[2..5].each do |item| %>
       <li class="list_item" id="item_<%=item.id%>">
@@ -34,12 +33,10 @@
     <% end %>
     </ul>
   </div>
-  
 </div>
 
 
 <div class="row categories">
-  
   <% for category in @categories %>
     <div class="span6 box" id="<%= category.slug %>">
       <h1><%= link_to category.title, category %></h1>

@@ -1,4 +1,5 @@
 ActiveAdmin.register Item do
+  config.sort_order = "id_desc"
   menu :priority => 1
   show do
     render "show"
@@ -9,24 +10,28 @@ ActiveAdmin.register Item do
       if !item.attachments.empty?
         link_to(
           image_tag(item.attachments.first.image.thumb.url), 
-          admin_attachment_path(item.attachments.first)
+          admin_attachment_path(item.attachments.first),
+          :title => item.abstract,
         ) 
       end
     end
     column :user
     column "Title", :sortable => :title do |item|
-      link_to item.title, admin_item_path(item), :class => "featured_#{item.featured}"
+      link_to item.title, admin_item_path(item), :title => item.abstract, :class => "featured_#{item.featured}"
     end
     column :draft, :sortable => :draft do |item|
       bol_to_word(item.draft)
     end
-    column :featured, :sortable => :featured do |item|
+    column "Feat.", :featured, :sortable => :featured do |item|
       bol_to_word(item.featured)
     end
-    column "Update", :sortable => :updated_at do |item|
+    column :language, :sortable => :language_id do |item|
+      item.language.description if item.language
+    end
+    column "Updated", :sortable => :updated_at do |item|
       item.updated_at.to_s(:short)
     end
-    column "Publish", :sortable => :published_at do |item|
+    column "Published", :sortable => :published_at do |item|
       item.published_at.to_s(:short)
     end
     default_actions

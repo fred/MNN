@@ -1,6 +1,14 @@
 <article id="<%= @item.id %>">
-  
   <h1><%= @item.title %></h1>
+  
+  <span class="source_url">
+    <% if @item.source_url %>
+      <%= link_to "Source", @item.source_url %>
+    <% end %>
+    <% if @item.author_name %>
+      by <span class="author"> <%= @item.author_name %></span>
+    <% end %>
+  </span>
   
   <section>
     <% unless @item.attachments.empty?%>
@@ -13,16 +21,10 @@
     <p><i><%= @item.highlight %></i></p>
     <%= @item.body.html_safe %>
   </section>
-  
   <footer>
-    <span class="date">
-      Published 
-      <%= time_tag(@item.published_at, :pubdate => true) %>
-    </span>
+    <span class="date"><%= time_tag(@item.published_at, :pubdate => true) %></span>
     <% if @item.user %>
-      <span class="author"> by <%= link_to_if(@item.user, @item.user.title, @item.user) %></span>
-    <% elsif @item.author_name %>
-      <span class="author"> by <%= @item.author_name %></span>
+      <span class="author"> Submitted by <%= link_to_if(@item.user, @item.user.title, @item.user) %></span>
     <% else %>
       by User
     <% end %>
@@ -30,6 +32,9 @@
       Tags:
       <% @item.tags.each do |tag| %>
         <li><%= link_to tag.title, tag_path(tag) %> </li>
+      <% end %>
+      <% if @item.language %>
+        <li><%= link_to @item.language.description, language_items_path(@item.language) %></li>
       <% end %>
     </ul>
   </footer>

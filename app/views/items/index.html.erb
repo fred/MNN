@@ -1,26 +1,5 @@
 <% @items.each do |item| %>
-  <article class="category" id="item_<%=item.id%>">
-    <header>
-      <% unless item.attachments.empty?%>
-        <%= image_tag(item.attachments.first.image.thumb, :class => "show_item_image") %>
-      <% end %>
-      <h3><%= link_to item.title, item %></h3>
-    </header>
-    <section>
-      <%= item.abstract.to_s.html_safe %>
-    </section>
-    <section>
-      <span class="date">
-        Published on 
-        <%= time_tag(item.published_at, :pubdate => true) %>
-      </span>
-      <% if item.user %>
-        <span class="author"> by <%= link_to_if(item.user, item.user.title, item.user) %></span>
-      <% else %>
-        <span class="author"> <%= item.author_name %></span>
-      <% end %>
-    </section>
-  </article>
+  <%= render :partial => "/shared/item", :locals => {:item => item } %>
 <% end %>
 
 <% content_for :breadcrumb do %>
@@ -28,9 +7,15 @@
     <a href="/">Home</a>
     <span class="divider">/</span>
   </li>
-  <li class="active">
-    Latest News
-  </li>
+  <% if @language %>
+    <li class="active">
+      <%= @language.description %>
+    </li>
+  <% else %>
+    <li class="active">
+      Latest News
+    </li>
+  <% end %>
 <% end %>
 
 
