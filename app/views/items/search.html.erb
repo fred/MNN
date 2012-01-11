@@ -1,19 +1,16 @@
+<% if @search.total > 0 %>
+  <div class="alert-message success">
+    <p><%= @title %></p>
+  </div>
+<% else %>
+  <div class="alert-message warning">
+    <p>Sorry, we find nothing about "<%= params[:q] %>"</p>
+  </div>
+<% end %>
+
 <% @items.each do |item| %>
   <%= render :partial => "/shared/item", :locals => {:item => item } %>
 <% end %>
-
-<% content_for :breadcrumb do %>
-  <li>
-    <a href="/">Home</a>
-    <span class="divider">/</span>
-  </li>
-  <% if params[:q] %>
-    <li class="active">
-      <%= @title %>
-    </li>
-  <% end %>
-<% end %>
-
 
 <div class="pagination">
   <%= paginate @items %>
