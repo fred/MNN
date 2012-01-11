@@ -93,17 +93,28 @@ gem 'i18n-active_record',
 
   
 group :development do
-  gem 'rspec-rails', '>= 2.6.1'
+  gem 'rspec', "2.8.0"
+  gem "rspec-rails", "2.8.1"
   gem 'nifty-generators'
   gem 'hirb'
 end
 
 group :test do
-  # Pretty printed test output
+  gem 'webrat', "0.7.3"
+  gem 'rspec', "2.8.0"
+  gem "rspec-rails", "2.8.1"
+  gem "factory_girl_rails", '~> 1.2'
+  gem "cucumber-rails", ">= 1.0.2"
+  gem "capybara", ">= 1.0.1"
+  gem "database_cleaner", ">= 0.6.7"
+  gem "launchy", ">= 2.0.5"
+  gem "sqlite3"
+  gem 'autotest'
+  gem 'autotest-rails'
+  gem 'sunspot_test'
   gem 'turn', '~> 0.8.3', :require => false
-  gem 'rspec-rails', '>= 2.6.1'
-  gem 'factory_girl_rails', '~> 1.2'
 end
+
 
 
 ### Active Admin, loaded at end. 
@@ -119,3 +130,11 @@ gem 'twitter-bootstrap-rails',
 # Error Emails
 gem "exception_notification", :require => 'exception_notifier', 
   :git => "https://github.com/smartinez87/exception_notification.git"
+
+
+###############
+## Searching ##
+###############
+
+gem 'sunspot', :git => "git://github.com/sunspot/sunspot.git"
+gem 'sunspot_rails', :git => "git://github.com/sunspot/sunspot.git"

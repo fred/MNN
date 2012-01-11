@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe LanguagesController do
+  
+  before(:each) do
+    @item = Factory(:item)
+    @language = @item.language
+  end
 
   describe "GET 'index'" do
     it "returns http success" do
@@ -11,8 +16,8 @@ describe LanguagesController do
 
   describe "GET 'show'" do
     it "returns http success" do
-      get 'show'
-      response.should be_success
+      get 'show', :id => @language.id
+      response.should redirect_to(language_items_path(@language))
     end
   end
 

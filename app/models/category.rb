@@ -5,6 +5,7 @@ class Category < ActiveRecord::Base
   
   # Validations
   validates_presence_of :title
+  validates_presence_of :description
   validates_uniqueness_of :title
   
   # Relationships

@@ -63,5 +63,4 @@ Publication::Application.configure do
   
   # Production URL
   config.action_mailer.default_url_options = { :host => 'mnn.heroku.com' }
-  
 end

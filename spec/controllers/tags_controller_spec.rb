@@ -1,6 +1,11 @@
 require 'spec_helper'
 
-describe GeneralTagsController do
+describe TagsController do
+  
+  before(:each) do
+    @item = Factory(:item)
+    @tag = Factory(:tag)
+  end
 
   describe "GET 'index'" do
     it "returns http success" do
@@ -11,7 +16,7 @@ describe GeneralTagsController do
 
   describe "GET 'show'" do
     it "returns http success" do
-      get 'show'
+      get 'show', :id => @tag.id
       response.should be_success
     end
   end

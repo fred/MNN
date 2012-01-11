@@ -4,6 +4,9 @@ class Language < ActiveRecord::Base
   extend FriendlyId
   friendly_id :description, :use => :slugged
   
+  validates_presence_of :locale, :description
+  validates_uniqueness_of :locale
+  
   def top_items(lmt=8)
     Item.published.not_draft.
       where(:language_id => self.id).

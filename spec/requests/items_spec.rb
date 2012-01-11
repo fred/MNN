@@ -1,9 +1,9 @@
 require 'spec_helper'
 
+
 describe "Items" do
-  describe "GET /items" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
+  describe "GET /items not logged in" do
+    it "should render index" do
       get items_path
       response.status.should be(200)
     end

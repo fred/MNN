@@ -1,5 +1,20 @@
 require 'spec_helper'
 
 describe Language do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "A Language" do 
+    before(:each) do
+      @language = Factory(:language)
+    end
+    it "should be valid" do
+      assert_equal true, @language.valid?
+    end
+    it "should require locale" do
+      @language.locale = nil
+      assert_equal false, @language.valid?
+    end
+    it "should require description" do
+      @language.description = nil
+      assert_equal false, @language.valid?
+    end
+  end
 end

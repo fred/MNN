@@ -35,6 +35,7 @@ class Item < ActiveRecord::Base
   # Nested Attributes
   accepts_nested_attributes_for :attachments, :allow_destroy => true, :reject_if => lambda { |t| t['image'].nil? }
   
+  validates_presence_of :title, :category_id, :body
   
   # Filter hooks
   before_update :set_status_code
