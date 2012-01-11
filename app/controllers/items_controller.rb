@@ -19,6 +19,7 @@ class ItemsController < ApplicationController
     end
     
     headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
+    headers['Last-Modified'] = Item.last_item.updated_at.httpdate
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
@@ -31,8 +32,8 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @show_breadcrumb = true
     # Set the Last-Modified header so the client can cache the timestamp (used for later conditional requests)
-    # headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
-    # headers['Last-Modified'] = @item.updated_at.httpdate
+    headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
+    headers['Last-Modified'] = @item.updated_at.httpdate
     
     respond_to do |format|
       format.html

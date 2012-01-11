@@ -11,6 +11,7 @@ FactoryGirl.define do
     draft false
     published_at Time.now-600
   end
+  
   factory :item2, :class => 'Item' do
     title 'Some News'
     abstract "Some Abstract"
@@ -55,6 +56,7 @@ FactoryGirl.define do
     association :category, :factory => :category2
     association :user, :factory => :admin
     draft true
+    published_at Time.now-600
   end
 
 end

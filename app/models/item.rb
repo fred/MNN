@@ -35,10 +35,30 @@ class Item < ActiveRecord::Base
   # Nested Attributes
   accepts_nested_attributes_for :attachments, :allow_destroy => true, :reject_if => lambda { |t| t['image'].nil? }
   
-  validates_presence_of :title, :category_id, :body
+  validates_presence_of :title, :category_id, :body, :published_at
   
   # Filter hooks
   before_update :set_status_code
+  
+  
+  ################
+  ####  SOLR  ####
+  ################
+  searchable do
+    text :title, :boost => 1.8
+    text :abstract, :boost => 1.4
+    text :body
+    text :category_title, :boost => 2.2
+    integer :category_id, :references => Category
+    boolean :draft
+    boolean :featured
+    time :updated_at
+    time :published_at
+    boost { 3.0 if featured }
+    text :tags do
+      tags.map { |tag| tag.title }
+    end
+  end
 
   def after_initialize
     self.draft ||= true
@@ -79,7 +99,7 @@ class Item < ActiveRecord::Base
   end
   
   # Highlights
-  def self.highlights(limit=6,offset=1)
+  def self.highlights(limit=6,offset=0)
     published.
     where(:draft => false).
     order("published_at DESC").

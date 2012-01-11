@@ -13,6 +13,7 @@ class CategoriesController < ApplicationController
     @show_breadcrumb = true
     @category = Category.find(params[:id])
     headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
+    headers['Last-Modified'] = @category.items.last_item.updated_at.httpdate
     @items = @category.
       items.
       where(:draft => false).

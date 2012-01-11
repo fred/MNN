@@ -2,8 +2,8 @@
 # (Tomcat6 + SOLR-3.5 multiple-core)
 production:
   solr:
-    hostname: '46.19.34.39'
-    port: 8080
+    hostname: 'pm.frederico-araujo.com'
+    port: 80
     path: '/solr/mnn_production'
 
 development:
