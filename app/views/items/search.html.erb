@@ -1,0 +1,20 @@
+<% @items.each do |item| %>
+  <%= render :partial => "/shared/item", :locals => {:item => item } %>
+<% end %>
+
+<% content_for :breadcrumb do %>
+  <li>
+    <a href="/">Home</a>
+    <span class="divider">/</span>
+  </li>
+  <% if params[:q] %>
+    <li class="active">
+      <%= @title %>
+    </li>
+  <% end %>
+<% end %>
+
+
+<div class="pagination">
+  <%= paginate @items %>
+</div>

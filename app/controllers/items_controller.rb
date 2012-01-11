@@ -18,8 +18,8 @@ class ItemsController < ApplicationController
         page(params[:page], :per_page => 20)
     end
     
-    headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
-    headers['Last-Modified'] = Item.last_item.updated_at.httpdate
+    # headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
+    # headers['Last-Modified'] = Item.last_item.updated_at.httpdate
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
@@ -32,8 +32,8 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @show_breadcrumb = true
     # Set the Last-Modified header so the client can cache the timestamp (used for later conditional requests)
-    headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
-    headers['Last-Modified'] = @item.updated_at.httpdate
+    # headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
+    # headers['Last-Modified'] = @item.updated_at.httpdate
     
     respond_to do |format|
       format.html
@@ -100,4 +100,58 @@ class ItemsController < ApplicationController
   #     format.json { head :ok }
   #   end
   # end
+  
+  
+  
+  
+  
+  def search
+    @show_breadcrumb = true
+    if params[:per_page]
+      @per_page = params[:per_page]
+    else
+      @per_page = 20
+    end
+    if params[:category_id]
+      category = Category.where(:id => params[:category_id]).first
+    end
+    if params[:language_id]
+      language = Language.where(:id => params[:language_id]).first
+    end
+    if params[:q] && !params[:q].to_s.empty?
+      term = params[:q].downcase
+      @search = Item.solr_search do
+        keywords term
+        if category
+          with(:category_id, category.id)
+        end
+        if language
+          with(:language_id, language.id)
+        end
+        with(:draft, false)
+        facet(:category_id)
+        facet(:language_id)
+        order_by(:published_at,:desc)
+        paginate :page => params[:page], :per_page => 20
+      end
+
+      # showing Sponsored Listings
+      @items = @search.results
+      
+      @title = "Found #{@search.total} results with '#{params[:q]}' "
+    else
+      # If no search term has been given, empty search
+      @items = Item.published.not_draft.
+        order("published_at DESC").
+        page(params[:page], :per_page => 20)
+    end
+
+    # client side cache for 10 minutes
+    headers['Cache-Control'] = 'public, max-age=600'
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+  
 end

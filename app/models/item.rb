@@ -45,11 +45,12 @@ class Item < ActiveRecord::Base
   ####  SOLR  ####
   ################
   searchable do
-    text :title, :boost => 1.8
+    text :title, :boost => 2.4
     text :abstract, :boost => 1.4
     text :body
     text :category_title, :boost => 2.2
     integer :category_id, :references => Category
+    integer :language_id, :references => Language
     boolean :draft
     boolean :featured
     time :updated_at

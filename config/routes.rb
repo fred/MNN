@@ -5,6 +5,8 @@ Publication::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users
 
+  match 'search' => 'items#search', :as => :search
+  
   # opinio_model
 
   resources :items do

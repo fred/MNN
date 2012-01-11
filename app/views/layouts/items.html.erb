@@ -28,23 +28,7 @@
     <%= render :partial => "/shared/topbar" %>
 
     <div class="container-fluid">
-      <div class="sidebar">
-        <div class="well">
-          <h4>Sections</h4>
-          <ul>
-            <% Category.order("title ASC").all.each do |category| %>
-              <li><%= link_to category.title, category %></li>
-            <% end %>
-          </ul>
-          <h4>Tags</h4>
-          <ul>
-            <% GeneralTag.order("title ASC").all.each do |tag| %>
-              <li><%= link_to tag.title, tag_path(tag) %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-      
+      <%= render :partial => "/shared/sidebar" %>
       <div class="content">
         <% if @show_breadcrumb %>
           <ul class="breadcrumb">
