@@ -1,6 +1,6 @@
 class RegenImages < ActiveRecord::Migration
   def up
-    Attachment.each do |at|
+    Attachment.all.each do |at|
       at.image.recreate_versions!
     end
   end

@@ -4,8 +4,7 @@
       <% @highlights.each do |item| %>
         <li class="featured_item" id="item_<%=item.id%>">
           <%= link_to(
-                image_tag(item.attachments.first.image.large, 
-                  :class => "featured_item_image", :width => 300, :height => 300),
+                image_tag(item.attachments.first.image.large, :class => "featured_item_image"),
                 item, 
                 :title => item.abstract
               )
@@ -23,7 +22,7 @@
     <% @latest_items.each do |item| %>
       <li class="list_item" id="item_<%=item.id%>">
         <%= link_to(
-              image_tag(item.attachments.first.image.small, :class => "list_item_image", :width => 100, :height => 100),
+              image_tag(item.attachments.first.image.small, :class => "list_item_image"),
               item, 
               :title => item.abstract
             )
@@ -46,7 +45,7 @@
           <li class="list_item" id="item_<%=item.id%>">
             <% if index==0 && !item.attachments.empty? %>
               <%= link_to(
-                    image_tag(item.attachments.first.image.small, :class => "list_item_image", :width => 100, :height => 100),
+                    image_tag(item.attachments.first.image.small, :class => "list_item_image"),
                     item, 
                     :title => item.abstract
                   )
