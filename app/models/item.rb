@@ -18,7 +18,7 @@ class Item < ActiveRecord::Base
   belongs_to :category
   belongs_to :language
   has_many :attachments, :as => :attachable
-  has_many :item_stats
+  has_one :item_stat
 
   has_and_belongs_to_many :tags, :join_table => "taggings", 
     :foreign_key => "taggable_id", :association_foreign_key => "tag_id"
@@ -39,6 +39,7 @@ class Item < ActiveRecord::Base
   
   # Filter hooks
   before_update :set_status_code
+  before_create :build_stat
   
   
   ################
@@ -59,6 +60,11 @@ class Item < ActiveRecord::Base
     text :tags do
       tags.map { |tag| tag.title }
     end
+  end
+  
+  
+  def build_stat
+    self.item_stat = ItemStat.new(:views_counter => 0)
   end
 
   def after_initialize

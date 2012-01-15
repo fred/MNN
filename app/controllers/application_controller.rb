@@ -1,7 +1,16 @@
 class ApplicationController < ActionController::Base
+  require 'set'
+  
   protect_from_forgery
   
-  before_filter :set_time_zone
+  before_filter :set_time_zone, :set_view_items
+  
+  
+  def set_view_items
+    unless session[:view_items]
+      session[:view_items] = Set.new
+    end
+  end
   
   def set_time_zone
     if current_user && current_user.time_zone

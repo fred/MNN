@@ -37,6 +37,9 @@
         <li><%= link_to @item.language.description, language_items_path(@item.language) %></li>
       <% end %>
     </ul>
+    <ul class="tags">
+      <li>Page hits: <%= @item_stat.views_counter if @item_stat %></li>
+    </ul>
   </footer>
   
 </article>

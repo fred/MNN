@@ -3,16 +3,18 @@ class CategoriesController < ApplicationController
   layout "items"
     
   def index
-    @highlights = Item.highlights
+    tmp = Item.highlights
+    @highlights = [tmp.first]
+    @latest_items = tmp[1..4]
     @categories = Category.order("priority ASC, title DESC").all
-    headers['Cache-Control'] = 'public, max-age=60' # 5 min cache
+    headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
     headers['Last-Modified'] = Item.last_item.updated_at.httpdate
   end
 
   def show
     @show_breadcrumb = true
     @category = Category.find(params[:id])
-    headers['Cache-Control'] = 'public, max-age=60' # 5 min cache
+    headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
     headers['Last-Modified'] = @category.items.last_item.updated_at.httpdate
     @items = @category.
       items.

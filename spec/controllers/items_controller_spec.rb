@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ItemsController do
   include ItemSpecHelper
-
+  
   before(:each) do
     @item = Factory(:item)
     @category = @item.category
@@ -15,7 +15,7 @@ describe ItemsController do
       assigns(:items).should eq([@item])
     end
   end
-
+  
   describe "GET show" do
     it "assigns the requested item as @item" do
       # item = Item.create! valid_item_attributes
@@ -23,7 +23,14 @@ describe ItemsController do
       assigns(:item).should eq(@item)
     end
   end
-
+  
+  describe "GET show" do
+    it "increases the views_counter of @item" do
+      get :show, :id => @item.id
+      assert_equal 1, Item.find(@item.id).item_stat.views_counter
+    end
+  end
+  
   # describe "GET new" do
   #   it "assigns a new item as @item" do
   #     get :new
