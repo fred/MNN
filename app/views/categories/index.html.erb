@@ -4,7 +4,8 @@
       <% @highlights.each do |item| %>
         <li class="featured_item" id="item_<%=item.id%>">
           <%= link_to(
-                image_tag(item.attachments.first.image.large, :class => "featured_item_image"),
+                image_tag(item.attachments.first.image.medium, 
+                  :class => "featured_item_image", :width => 300, :height => 300),
                 item, 
                 :title => item.abstract
               )
