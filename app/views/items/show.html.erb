@@ -37,9 +37,24 @@
         <li><%= link_to @item.language.description, language_items_path(@item.language) %></li>
       <% end %>
     </ul>
-    <ul class="tags">
-      <li>Page hits: <%= @item_stat.views_counter if @item_stat %></li>
-    </ul>
+    <div class="share">
+      <%= link_to image_tag("icons/social/facebook_32.png", :alt => "Facebook"), 
+            "#",
+            :title => "Share on Facebook" %>
+      <%= link_to image_tag("icons/social/twitter_32.png", :alt => "Twitter"), 
+            "#",
+            :title => "Share on Twitter" %>
+      <%= link_to image_tag("icons/social/reddit_32.png", :alt => "Reddit"), 
+            "#",
+            :title => "Reddit" %>
+      <%= link_to image_tag("icons/social/email_32.png", :alt => "Email"), 
+            "#",
+            :title => "Share by Email" %>
+      <%= link_to image_tag("icons/social/rss_32.png"), "#", :title => "RSS Feed"  %>
+    </div>
+    <div class="page_views">
+      Views: <%= @item_stat.views_counter if @item_stat %>
+    </div>
   </footer>
   
 </article>

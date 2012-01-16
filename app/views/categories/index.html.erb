@@ -4,8 +4,8 @@
       <% @highlights.each do |item| %>
         <li class="featured_item" id="item_<%=item.id%>">
           <%= link_to(
-                image_tag(item.attachments.first.image.medium, 
-                  :class => "featured_item_image", :width => 300, :height => 300),
+                image_tag(item.attachments.first.image.main, 
+                  :class => "featured_item_image"),
                 item, 
                 :title => item.abstract
               )
@@ -29,7 +29,7 @@
             )
         %>
         <span class="title"><%= link_to item.title.to_s.truncate(120), item, :title => item.abstract %></span>
-        <span class="abstract"><%= item.abstract.to_s.truncate(160) %></span>
+        <span class="abstract"><%= item.abstract.to_s.truncate(120) %></span>
       </li>
     <% end %>
     </ul>

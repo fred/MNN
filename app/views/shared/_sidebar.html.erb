@@ -12,44 +12,45 @@
       <button class="btn primary" type="submit">Search</button>
     <% end %>
     
-    <% if @search && @search.total > 0 %>
-      <div class='widget'>
-        <h5>Filter by Category</h5>
-        <div class='widget_content'>
-          <ul>
-            <% @search.facet(:category_id).rows.each do |facet| %>
-              <% category = Category.find(facet.value) %>
-              <li><%= link_to("#{category.title} (#{facet.count})", params.merge(:category_id => category.id)) if category %></li>
-            <% end %>
-          </ul>
+    <div class="sidebar_secions">
+      <% if @search && @search.total > 0 %>
+        <div class='widget'>
+          <h5>Filter by Category</h5>
+          <div class='widget_content'>
+            <ul>
+              <% @search.facet(:category_id).rows.each do |facet| %>
+                <% category = Category.find(facet.value) %>
+                <li><%= link_to("#{category.title} (#{facet.count})", params.merge(:category_id => category.id)) if category %></li>
+              <% end %>
+            </ul>
+          </div>
+          <h5>Filter by Language</h5>
+          <div class='widget_content'>
+            <ul>
+              <% @search.facet(:language_id).rows.each do |facet| %>
+                <% language = Language.find(facet.value) %>
+                <li><%= link_to("#{language.description} (#{facet.count})", params.merge(:language => language.id)) if language %></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-
-        <h5>Filter by Language</h5>
-        <div class='widget_content'>
-          <ul>
-            <% @search.facet(:language_id).rows.each do |facet| %>
-              <% language = Language.find(facet.value) %>
-              <li><%= link_to("#{language.description} (#{facet.count})", params.merge(:language => language.id)) if language %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-      
-    <% end %>
-    
-    <h4>Sections</h4>
-    <ul>
-      <% Category.order("title ASC").all.each do |category| %>
-        <li><%= link_to category.title, category %></li>
       <% end %>
-    </ul>
+    </div>
     
-    <h4>Tags</h4>
-    <ul>
-      <% GeneralTag.order("title ASC").all.each do |tag| %>
-        <li><%= link_to tag.title, tag_path(tag) %></li>
-      <% end %>
-    </ul>
+    <div class="sidebar_secions">
+      <h4>Sections</h4>
+      <ul>
+        <% Category.order("title ASC").all.each do |category| %>
+          <li><%= link_to category.title, category %></li>
+        <% end %>
+      </ul>
     
+      <h4>Tags</h4>
+      <ul>
+        <% GeneralTag.order("title ASC").all.each do |tag| %>
+          <li><%= link_to tag.title, tag_path(tag) %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
