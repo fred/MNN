@@ -7,7 +7,7 @@ gem 'rack-cache'
 gem 'rake', '0.9.2.2'
 gem 'rails', '3.1.3'
 gem 'bundler', '>= 1.0.0'
-gem 'thin', '1.3.1', :require => false
+gem 'thin', :require => false
 
 ### Database Adapter
 # Using Postgresql for all environments.
