@@ -1,2 +1,0 @@
-class RedditShare < Share
-end

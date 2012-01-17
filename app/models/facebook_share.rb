@@ -1,2 +1,0 @@
-class FacebookShare < Share
-end
