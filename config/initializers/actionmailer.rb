@@ -1,4 +1,4 @@
-if Rails.env.producion?
+if Rails.env.production?
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
     :port           => '587',
@@ -8,4 +8,6 @@ if Rails.env.producion?
     :domain         => 'herokuapp.com'
   }
   ActionMailer::Base.delivery_method = :smtp
+else
+  ActionMailer::Base.delivery_method = :sendmail
 end
