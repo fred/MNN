@@ -28,7 +28,7 @@ class Comment < ActiveRecord::Base
   def akismet_attributes
     {
       :key                  => AKISMET_KEY,
-      :blog                 => 'http://mnn.heroku.com',
+      :blog                 => 'http://mnn.herokuapp.com',
       :user_ip              => user_ip,
       :user_agent           => user_agent,
       :comment_author       => name,

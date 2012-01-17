@@ -2,5 +2,5 @@ AKISMET_KEY=ENV["AKISMET_KEY"].to_s
 
 if defined?(Rakismet)
   Publication::Application.config.rakismet.key = AKISMET_KEY
-  Publication::Application.config.rakismet.url = 'http://mnn.heroku.com/'
+  Publication::Application.config.rakismet.url = 'http://mnn.herokuapp.com/'
 end

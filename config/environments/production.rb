@@ -62,5 +62,5 @@ Publication::Application.configure do
   config.active_support.deprecation = :notify
   
   # Production URL
-  config.action_mailer.default_url_options = { :host => 'mnn.heroku.com' }
+  config.action_mailer.default_url_options = { :host => 'mnn.herokuapp.com' }
 end
