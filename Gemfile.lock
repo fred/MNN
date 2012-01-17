@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 7cd7f440ab043a19cd485ad3be1f8365fdd2f641
+  revision: dec6ca3a5384c9529af9f80c874c18e0a6c0d14a
   specs:
     activeadmin (0.3.4)
       bourbon (>= 1.0.0)
@@ -18,7 +18,7 @@ GIT
       formtastic (>= 2.0.0)
       inherited_resources (< 1.3.0)
       jquery-rails (>= 1.0.0)
-      kaminari (>= 0.12.4)
+      kaminari (>= 0.13.0)
       meta_search (>= 0.9.2)
       rails (>= 3.0.0)
       sass (>= 3.1.0)
@@ -32,13 +32,13 @@ GIT
 
 GIT
   remote: git://github.com/norman/friendly_id.git
-  revision: e4045ab5d7a3d5d2b5e3757ef0f49b03e6593e35
+  revision: 1fc14a54f0a6fa9661da62dc1325f2037ccc6ac7
   specs:
     friendly_id (4.0.0)
 
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: b747bae72b55122dd326067a5f7b624c68163f15
+  revision: 7389015df48ad2c6bba1e20fc45be90e3080bb84
   specs:
     twitter-bootstrap-rails (1.4.3)
       actionpack
@@ -67,7 +67,7 @@ GIT
 
 GIT
   remote: https://github.com/smartinez87/exception_notification.git
-  revision: e61453710ec385592c8795a0916287b7bc505b3c
+  revision: 0e65d8a882e5c643fedab422635539510d5671cb
   specs:
     exception_notification (2.5.2)
       actionmailer (>= 3.0.4)
@@ -107,7 +107,7 @@ GEM
     addressable (2.2.6)
     ansi (1.4.1)
     arel (2.2.1)
-    asset_sync (0.2.3)
+    asset_sync (0.2.5)
       activemodel
       fog
     autotest (4.4.6)
@@ -115,7 +115,7 @@ GEM
     autotest-rails (4.1.1)
       ZenTest (= 4.5)
     bcrypt-ruby (3.0.1)
-    bourbon (1.2.0)
+    bourbon (1.3.0)
       sass (>= 3.1)
     builder (3.0.0)
     cancan (1.6.7)
@@ -128,7 +128,7 @@ GEM
       xpath (~> 0.1.4)
     carrierwave (0.5.8)
       activesupport (~> 3.0)
-    childprocess (0.2.8)
+    childprocess (0.3.0)
       ffi (~> 1.0.6)
     coffee-rails (3.1.1)
       coffee-script (>= 2.2.0)
@@ -150,7 +150,7 @@ GEM
       cucumber (>= 1.1.3)
       nokogiri (>= 1.5.0)
     daemons (1.1.5)
-    database_cleaner (0.7.0)
+    database_cleaner (0.7.1)
     devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -159,13 +159,13 @@ GEM
     erubis (2.7.0)
     escape (0.0.4)
     eventmachine (0.12.10)
-    excon (0.9.4)
+    excon (0.9.5)
     execjs (1.2.13)
       multi_json (~> 1.0)
-    factory_girl (2.3.2)
+    factory_girl (2.4.0)
       activesupport
-    factory_girl_rails (1.4.0)
-      factory_girl (~> 2.3.0)
+    factory_girl_rails (1.5.0)
+      factory_girl (~> 2.4.0)
       railties (>= 3.0.0)
     fastercsv (1.5.4)
     fattr (2.2.0)
@@ -183,7 +183,7 @@ GEM
     formatador (0.2.1)
     formtastic (2.0.2)
       rails (~> 3.0)
-    gherkin (2.7.2)
+    gherkin (2.7.3)
       json (>= 1.4.6)
     has_scope (0.5.1)
     highline (1.6.9)
@@ -196,7 +196,7 @@ GEM
     jquery-rails (1.0.19)
       railties (~> 3.0)
       thor (~> 0.14)
-    json (1.6.4)
+    json (1.6.5)
     kaminari (0.13.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -225,15 +225,15 @@ GEM
     multi_json (1.0.4)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
-    net-ssh (2.2.1)
+    net-ssh (2.3.0)
     nifty-generators (0.4.6)
     nokogiri (1.5.0)
     options (2.3.0)
       fattr
-    orm_adapter (0.0.5)
-    paper_trail (2.5.0)
+    orm_adapter (0.0.6)
+    paper_trail (2.5.2)
       rails (~> 3)
-    pg (0.12.1)
+    pg (0.12.2)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -293,7 +293,7 @@ GEM
       railties (~> 3.1.0)
       sass (~> 3.1.10)
       tilt (~> 1.3.2)
-    selenium-webdriver (2.16.0)
+    selenium-webdriver (2.17.0)
       childprocess (>= 0.2.5)
       ffi (~> 1.0.9)
       multi_json (~> 1.0.4)
@@ -328,7 +328,7 @@ GEM
     turn (0.8.3)
       ansi
     tzinfo (0.3.31)
-    uglifier (1.2.1)
+    uglifier (1.2.2)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
     warden (1.1.0)
