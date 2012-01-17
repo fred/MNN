@@ -1,0 +1,2 @@
+class RedditShare < Share
+end

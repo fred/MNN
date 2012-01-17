@@ -1,0 +1,2 @@
+class TwitterShare < Share
+end

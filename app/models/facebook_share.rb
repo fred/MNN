@@ -1,0 +1,2 @@
+class FacebookShare < Share
+end
