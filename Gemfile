@@ -40,7 +40,6 @@ gem 'nokogiri'
 gem 'stringex'
 gem 'friendly_id', :git => 'git://github.com/norman/friendly_id.git'
 
-
 ### Comment System
 gem 'opinio', :git => "git://github.com/Draiken/opinio.git"
 gem 'rakismet'
@@ -78,8 +77,6 @@ gem 'jquery-rails'
 # gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
 # gem 'sunspot_with_kaminari'
 
-# Nice progress when rake indexing with solr
-gem 'progress_bar'
 
 # Settings
 gem 'rails-settings-cached', 
@@ -97,6 +94,9 @@ group :development do
   gem "rspec-rails", "2.8.1"
   gem 'nifty-generators'
   gem 'hirb'
+  # Nice progress when rake indexing with solr
+  gem 'progress_bar'
+  gem 'foreman'
 end
 
 group :test do
@@ -138,5 +138,3 @@ gem "exception_notification", :require => 'exception_notifier',
 
 gem 'sunspot', :git => "git://github.com/sunspot/sunspot.git"
 gem 'sunspot_rails', :git => "git://github.com/sunspot/sunspot.git"
-
-gem 'foreman'
