@@ -46,7 +46,7 @@ gem 'opinio', :git => "git://github.com/Draiken/opinio.git"
 gem 'rakismet'
 
 ### Queue
-# gem 'resque'
+gem 'resque'
 # gem 'resque-timeout', '1.0.0'
 # gem 'resque-ensure-connected'
 # gem 'SystemTimer', '1.2.1', :platforms => :ruby_18 #(not using ruby 1.8)
@@ -138,3 +138,5 @@ gem "exception_notification", :require => 'exception_notifier',
 
 gem 'sunspot', :git => "git://github.com/sunspot/sunspot.git"
 gem 'sunspot_rails', :git => "git://github.com/sunspot/sunspot.git"
+
+gem 'foreman'
