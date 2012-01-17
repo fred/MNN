@@ -79,9 +79,9 @@ gem 'jquery-rails'
 
 
 # Settings
-gem 'rails-settings-cached', 
-    :require => 'rails-settings', 
-    :git => 'git://github.com/huacnlee/rails-settings-cached.git'
+gem 'rails-settings-cached', "0.1.2",
+    :require => 'rails-settings'
+    # :git => 'git://github.com/huacnlee/rails-settings-cached.git'
 
 ### i18n Translation on DB
 gem 'i18n-active_record',
@@ -124,17 +124,17 @@ gem 'activeadmin', :git => "git://github.com/gregbell/active_admin.git"
 gem 'tinymce-rails'
 
 # Twitter Bootstrap for Rails 3.1 Asset Pipeline
-gem 'twitter-bootstrap-rails', 
-  :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git"
+gem 'twitter-bootstrap-rails', "1.4.3"
+  # :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git"
 
 # Error Emails
-gem "exception_notification", :require => 'exception_notifier', 
-  :git => "https://github.com/smartinez87/exception_notification.git"
+gem "exception_notification", :require => 'exception_notifier',
+  :git => "git://github.com/smartinez87/exception_notification.git"
 
 
 ###############
 ## Searching ##
 ###############
 
-gem 'sunspot', :git => "git://github.com/sunspot/sunspot.git"
-gem 'sunspot_rails', :git => "git://github.com/sunspot/sunspot.git"
+gem 'sunspot', "2.0.0.pre.111215" #:git => "git://github.com/sunspot/sunspot.git"
+gem 'sunspot_rails', "2.0.0.pre.111215" #:git => "git://github.com/sunspot/sunspot.git"
