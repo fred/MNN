@@ -69,8 +69,8 @@ class Item < ActiveRecord::Base
 
   def after_initialize
     self.draft ||= true
-    self.published_at ||= Time.now  # will set the default value only if it's nil
-    self.expires_on   ||= Time.now+10.years
+    self.published_at ||= Time.zone.now  # will set the default value only if it's nil
+    self.expires_on   ||= Time.zone.now+10.years
   end
   
   def self.last_item
@@ -79,7 +79,7 @@ class Item < ActiveRecord::Base
   
   # Set to draft automatically upon creation
   def set_status_code
-    if self.published_at && (self.published_at > Time.now)
+    if self.published_at && (self.published_at > Time.zone.now)
       self.status_code = "Not Live"
     else
       self.status_code = "Live"

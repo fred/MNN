@@ -41,7 +41,7 @@ ActiveAdmin.register Item do
     def new
       @item = Item.new
       @now = Time.zone.now
-      @item.published_at = @now+3600
+      @item.published_at = @now+600
       @item.expires_on = @now+10.years
       @item.draft = true
       @item.author_name = current_admin_user.title

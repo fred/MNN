@@ -10,8 +10,8 @@
                 :title => item.abstract
               )
           %>
-          <span class="title"><%= link_to item.title.to_s.truncate(255), item, :title => item.abstract %></span>
-          <span class="abstract"><%= item.abstract.to_s.truncate(255) %></span>
+          <span class="title"><%= link_to item.title.to_s.truncate(120), item, :title => item.abstract %></span>
+          <span class="abstract"><%= item.abstract.to_s.truncate(145) %></span>
         <% end %>
       </li>
     </ul>

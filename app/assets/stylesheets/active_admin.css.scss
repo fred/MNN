@@ -14,13 +14,31 @@
   background-color: rgba(0,0,0,.5);
   -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }
+body {
+  font-size: 80%;
+}
+#title_bar #titlebar_right {
+  text-align: center;
+}
 
-form input[type="text"], form input[type="password"], form input[type="email"], form input[type="url"], form input[type="tel"], form textarea {
-  font-size: 1.1em;
+form input[type="select"],
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form input[type="url"],
+form input[type="tel"],
+form textarea {
+  font-size: 16px;
+}
+fieldset legend.label label, 
+form label.label {
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 24px;
 }
 
 ol.choices-group {
-  height: 190px;
+  height: 360px;
   overflow: scroll;
   padding-right: 20px;
   -webkit-box-shadow: 0px 0px 8px #CCC;
@@ -30,10 +48,33 @@ ol.choices-group {
   padding-right: 20px;
   min-width: 150px;
 }
+form fieldset.choices {
+  margin-bottom: 0px;
+}
 
+li.boolean label,
+li.input label,
+li.optional label,
+form fieldset label, 
+form fieldset.choices li.choice label {
+  font-size: 14px;
+  font-weight: normal;
+  padding-left: 2px;
+}
+li.choice input[type="checkbox"] {
+  font-size: 14px;
+  margin-right: 6px;
+}
+
+form input[type="submit"] {
+  font-size: 14px;
+}
+form fieldset legend span {
+  font-size: 15px;
+}
 form fieldset > ol > li fieldset legend {
   padding-top: 6px;
-  padding-left: 12px;
+  padding-left: 2px;
 }
 form hr {
   color:#fff;
@@ -147,4 +188,9 @@ nav.pagination {
 }
 #index_footer {
   font-size: 1em;
+}
+
+
+body#tinymce {
+font-size: 14px;
 }

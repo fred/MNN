@@ -40,12 +40,12 @@
       %>
     </div>
     <div class="medium_box">
-      <%= f.input :region_tags, :as => :check_boxes, :labels => "Regional",
+      <%= f.input :region_tags, :as => :check_boxes, :label => "Regional",
           :collection => RegionTag.find(:all, :order => "title ASC") 
       %>
     </div>
     <div class="medium_box">
-      <%= f.input :country_tags, :as => :check_boxes, :labels => "Countries",
+      <%= f.input :country_tags, :as => :check_boxes, :label => "Countries",
           :collection => CountryTag.find(:all, :order => "title ASC") 
       %>
     </div>
@@ -65,12 +65,12 @@
     <%= f.input :protected_record, :hint => "Locked from editing, use with caution." %><br />
     <%#= f.input :share_twitter, :hint => "Post on twitter?" %>
     <%#= f.input :share_facebook, :hint => "Share on facebook?" %>
-    <%#= f.input :share_facebook, :hint => "Share on linkedin?" %>
+    <%#= f.input :share_reddit, :hint => "Share on Reddit?" %>
   <% end %>
   
   <%= f.inputs :name => "Dates and Status" do %>
-    <%= f.input :published_at, :hint => "When article will go live (default: 1 hour from now)", :time => true %>
-    <%= f.input :expires_on, :hint => "Expiration Date of article (default: never)", :time => true %>
+    <%= f.input :published_at, :label => "Publication Date",  :hint => "When article will go live (default: 10 minutes from now)", :time => true %>
+    <%= f.input :expires_on, :label => "Expire Date", :hint => "Expiration Date of article (default: 10 years)", :time => true %>
   <% end %>
 
   <% f.object.attachments.build %>
