@@ -174,7 +174,13 @@ class Item < ActiveRecord::Base
       "Uncategorized"
     end
   end
-  
+  def language_title
+    if self.language
+      self.language.description
+    else
+      ""
+    end
+  end
 
   def self.import_wordpress_xml
     require 'nokogiri'
