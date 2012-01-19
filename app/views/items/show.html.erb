@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= render :partial => "og" %>
+<% end %>
+
 <article id="<%= @item.id %>">
   <h1><%= @item.title %></h1>
   
@@ -38,23 +42,51 @@
       <% end %>
     </ul>
     <div class="share">
-      <%= link_to image_tag("icons/social/facebook_32.png", :alt => "Facebook"), 
-            "#",
+      <%= link_to image_tag("icons/social/facebook_16.png", :alt => "Facebook"),
+            facebook_share(@item),
             :title => "Share on Facebook" %>
-      <%= link_to image_tag("icons/social/twitter_32.png", :alt => "Twitter"), 
-            "#",
+
+      <%= link_to image_tag("icons/social/twitter_16.png", :alt => "Twitter"),
+            twitter_share(@item),
             :title => "Share on Twitter" %>
-      <%= link_to image_tag("icons/social/reddit_32.png", :alt => "Reddit"), 
-            "#",
+
+      <%= link_to image_tag("icons/social/reddit_16.png", :alt => "Reddit"),
+            reddit_share(@item),
             :title => "Reddit" %>
-      <%= link_to image_tag("icons/social/email_32.png", :alt => "Email"), 
+
+      <%= link_to image_tag("icons/social/digg_16.png", :alt => "Digg"),
+            digg_share(@item),
+            :rev => "news, world_news, #{@item.category_title}",
+            :title => "Digg it" %>
+
+      <%= link_to image_tag("icons/social/google_plus_16.png", :alt => "GooglePlus"),
+            gplus_share(@item),
+            :title => "GooglePlus" %>
+
+      <%= link_to image_tag("icons/social/slashdot_16.png", :alt => "Slashdot"),
+            slashdot_share(@item),
+            :title => "Slashdot Share" %>
+
+      <%= link_to image_tag("icons/social/posterous_16.png", :alt => "Posterous"),
+            posterous_share(@item),
+            :title => "Posterous Share" %>
+
+      <%= link_to image_tag("icons/social/delicious_16.png", :alt => "Delicious"),
+            delicious_share(@item),
+            :title => "Delicious Share" %>
+
+      <%#= link_to image_tag("icons/social/email_16.png", :alt => "Email"), 
             "#",
             :title => "Share by Email" %>
-      <%= link_to image_tag("icons/social/rss_32.png"), "#", :title => "RSS Feed"  %>
+
+      <%= link_to image_tag("icons/social/rss_16.png"), "#", :title => "RSS Feed"  %>
+      <%#= render :partial => "/shared/gplus" %>
     </div>
+    
     <div class="page_views">
       Views: <%= @item_stat.views_counter if @item_stat %>
     </div>
+    
   </footer>
   
 </article>

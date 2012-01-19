@@ -62,6 +62,22 @@ class Item < ActiveRecord::Base
     end
   end
   
+  def has_image?
+    if !self.attachments.empty? && self.attachments.first.image
+      true
+    else
+      false
+    end
+  end
+  
+  def tag_list
+    array = []
+    self.tags.each do |t|
+      array << t.title
+    end
+    array.join(', ')
+  end
+  
   
   def build_stat
     self.item_stat = ItemStat.new(:views_counter => 0)
