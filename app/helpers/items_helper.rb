@@ -18,7 +18,7 @@ module ItemsHelper
   
   def facebook_share(item)
     url = "https://www.facebook.com/sharer.php?u="
-    url += url_for(item_path(item, :only_path => false, :protocol => 'http'))
+    url += url_for(item_path(item.id, :only_path => false, :protocol => 'http'))
     url += "&t=#{meta_title(item)}"
     return url
   end
