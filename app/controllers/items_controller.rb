@@ -9,7 +9,9 @@ class ItemsController < ApplicationController
     if params[:language_id]
       @language = Language.find(params[:language_id])
       @rss_title = "Latest News in #{@language.description}"
+      @rss_description = "MNN - Latest News in #{@language.description}"
       @rss_language = @language.description
+      @rss_source = items_path(:language_id => params[:language_id], :only_path => false, :protocol => 'http')
       @items = Item.published.
         not_draft.
         includes(:language, :attachments, :tags, :item_stat, :user).
@@ -18,6 +20,9 @@ class ItemsController < ApplicationController
         page(params[:page], :per_page => 20)
     else
       @rss_title = "Latest News"
+      @rss_description = "MNN - Latest News"
+      @rss_source = items_path(:only_path => false, :protocol => 'http')
+      @rss_language = "en"
       @items = Item.published.
         not_draft.
         includes(:language, :attachments, :tags, :item_stat, :user).
@@ -36,8 +41,8 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
-      format.atom
-      format.rss  { render :layout => false }
+      format.atom { render :partial => "/shared/items", :layout => false }
+      format.rss  { render :partial => "/shared/items", :layout => false }
       format.xml { render @items }
     end
   end

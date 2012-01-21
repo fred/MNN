@@ -32,13 +32,15 @@ class TagsController < ApplicationController
     # RSS
     @last_published = @items.first.published_at
     @rss_title = "Latest News tagged in #{@tag.title}"
+    @rss_description = "MNN - Latest News tagged in #{@tag.title}"
     @rss_category = @tag.title
+    @rss_source = tags_path(@tag, :only_path => false, :protocol => 'http', :format => "html")
     
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
-      format.atom
-      format.rss  { render :layout => false }
+      format.atom { render :partial => "/shared/items", :layout => false }
+      format.rss  { render :partial => "/shared/items", :layout => false }
       format.xml { render @items }
     end
   end

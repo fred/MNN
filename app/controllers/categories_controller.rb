@@ -27,15 +27,18 @@ class CategoriesController < ApplicationController
     
     # RSS configuration
     @rss_title = "Latest News for #{@category.title}"
-    @rss_category = @category.title
-    @last_published = @items.first.published_at
+    @rss_description = "MNN - Latest News for #{@category.title}"
     @rss_source = url_for(@category)
+    @rss_category = @category.title
+    @rss_language = "en"
+    
+    @last_published = @items.first.published_at
     
     respond_to do |format|
       format.html # index.html.erb
+      format.atom { render :partial => "/shared/items", :layout => false }
+      format.rss  { render :partial => "/shared/items", :layout => false }
       format.json { render json: @items }
-      format.atom
-      format.rss  { render :layout => false }
       format.xml { render @items }
     end
   end
