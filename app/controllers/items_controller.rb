@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
       @language = Language.find(params[:language_id])
       @rss_title = "Latest News in #{@language.description}"
       @rss_description = "MNN - Latest News in #{@language.description}"
-      @rss_language = @language.description
+      @rss_language = @language.locale
       @rss_source = items_path(:language_id => params[:language_id], :only_path => false, :protocol => 'http')
       @items = Item.published.
         not_draft.

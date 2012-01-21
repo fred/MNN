@@ -1,27 +1,36 @@
 <article class="category" id="item_<%=item.id%>">
-  <header>
-    <% unless item.attachments.empty?%>
-      <%= image_tag(item.attachments.first.image.small, :class => "show_item_image") %>
-    <% end %>
+  <div>
     <h3><%= link_to item.title, item %></h3>
-  </header>
+  </div>
+  <div>
+    <% unless item.attachments.empty?%>
+      <span style="float:left; margin-right:10px;">
+        <%= image_tag(item.attachments.first.image.small) %>
+      </span>
+    <% end %>
+    <%= sanitize item.abstract,
+          :tags => %w(table tr td p b i strong ol ul li div span h1 h2 h3 h4 h5),
+          :attributes => %w(id class style) %>
+    <br />
+    <%= sanitize item.body,
+          :tags => %w(table tr td p b i strong ol ul li div span h1 h2 h3 h4 h5),
+          :attributes => %w(id class style) %>
+    <%#= item.body.to_s.html_safe %>
+  </div>
   <section>
-    <%= item.abstract.to_s.html_safe %>
-  </section>
-  <section>
-    <%= item.body.to_s.html_safe %>
-  </section>
-  <section>
-    <span class="source_url">
+    <p class="source_url">
+      Category: <%= item.category_title %>
+    </p>
+    <p class="source_url">
       Tags: <%= item.tag_list %>
       <% if item.language %>
         <%= item.language.description %>
       <% end %>
-    </span>
-    <div class="page_views">
+    </p>
+    <p class="page_views">
       <% if item.item_stat %>
         Views: <%= item.item_stat.views_counter %>
       <% end %>
-    </div>
+    </p>
   </section>
 </article>

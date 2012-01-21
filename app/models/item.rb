@@ -183,9 +183,9 @@ class Item < ActiveRecord::Base
     end
   end
   def user_title
-    if self.user && self.user.name
+    if self.user && !self.user.name.empty?
       self.user.name
-    elsif self.author_name
+    elsif !self.author_name.empty?
       self.author_name
     else
       "mnn"
