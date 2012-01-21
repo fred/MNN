@@ -2,6 +2,12 @@
   <% @tags.each do |tag| %>
     <div class="tag">
       <%= link_to tag.title, tag_path(tag) %> (<%= tag.items.count %>)
+      <%= link_to(
+            image_tag("icons/social/rss_16.png", :alt => "RSS for #{tag.title}"), 
+            tag_path(tag, :format => "rss"),
+            :title => "RSS feed for #{tag.title} tagged items"
+          )
+      %>
     </div>
   <% end %>
 </div>

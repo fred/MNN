@@ -8,6 +8,7 @@ CHANGELOG
 * Authors RSS - /authors/2.rss
 * Authors Page - /authors/2
 * Big icons on left for RSS and Social Media
+* Added RSS on /tags/ page for each tag
 
 == Jan 20, 2012
 * Improved Twitter share, cut title + URL to fit on 140 chars
