@@ -10,7 +10,8 @@ div.entry > h3 {
   margin: 8px 0px;
 }
 div.entry > h3 div.lastUpdated {
-  font
+  font-size: 12px;
+  color: #444;
 }
 div.entry > div.feedEntryContent {
   margin-bottom: 10px;
