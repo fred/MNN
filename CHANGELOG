@@ -1,0 +1,36 @@
+CHANGELOG
+
+== Jan 21, 2012
+* All Items RSS Feeds - /rss or /atom
+* Languages RSS - /languages/english/items.rss
+* Tags RSS - /tags/war.rss
+* Categories RSS - /categories/politics.rss
+* Authors RSS - /authors/2.rss
+* Authors Page - /authors/2
+* Big icons on left for RSS and Social Media
+
+== Jan 20, 2012
+* Improved Twitter share, cut title + URL to fit on 140 chars
+  no matter how long title, twitter share will always work
+* Improved Facebook share
+* Improved Slashdot sharing
+
+== Jan 18, 2012
+* Share item icons/links for social media
+
+== Jan 17, 2012
+* Bigger Fonts on Admin interface
+
+== Jan 16, 2012
+* Added all social Icons for item
+* Showing 3 items on Latest NEws
+* Showing 1 Item on highlights 
+* better box size for highlights
+
+== Jan 12, 2012
+* Site Searching with SOLR
+
+== Jan 11, 2012 
+* Languages Menu
+* Added Languages Pages /languages/english
+* added languages to breadcrumbs
