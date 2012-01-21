@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
     str
   end
   
+  def has_image?
+    !self.attachments.empty? && self.attachments.first && self.attachments.first.image
+  end
+  
   def has_role?(role)
     self.roles.where(:title => role.to_s.downcase).count > 0
   end

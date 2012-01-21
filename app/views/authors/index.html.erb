@@ -1,0 +1,15 @@
+<% @authors.each do |author| %>
+  
+  <article class="category" id="author_<%=author.id%>">
+    <header>
+      <% if author.has_image? %>
+        <%= image_tag(author.attachments.first.image.small, :class => "show_item_image") %>
+      <% end %>
+      <h3><%= link_to author.name, author_path(author) %></h3>
+    </header>
+    <section>
+      <%= author.bio %>
+    </section>
+  </article>
+  
+<% end %>

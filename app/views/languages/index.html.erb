@@ -1,7 +1,15 @@
 <div class="row categories">
   <% for language in @languages %>
     <div class="span6 box" id="<%= language.slug %>">
-      <h1><%= link_to language.description, language %></h1>
+      <h1>
+        <%= link_to language.description, language %>
+        <%= link_to(
+              image_tag("icons/social/rss_16.png", :alt => "RSS for #{language.description}"), 
+              language_items_path(language, :format => "rss"),
+              :title => "RSS feed for #{language.description} News only"
+            )
+        %>
+      </h1>
       <ul>
         <% language.top_items(8).each_with_index do |item,index|%>
           <li class="list_item" id="item_<%=item.id%>">

@@ -60,7 +60,7 @@
             reddit_share(@item),
             :title => "Reddit" %>
 
-      <%= link_to image_tag("icons/social/digg_16.png", :alt => "Digg"),
+      <%= link_to image_tag("icons/social/digg_alt_16.png", :alt => "Digg"),
             digg_share(@item),
             :rev => "news, world_news, #{@item.category_title}",
             :title => "Digg it" %>
@@ -81,8 +81,8 @@
             delicious_share(@item),
             :title => "Delicious Share" %>
 
-      <%#= link_to image_tag("icons/social/email_16.png", :alt => "Email"), 
-            "#",
+      <%= link_to image_tag("icons/social/email_16.png", :alt => "Email"), 
+            email_share(@item),
             :title => "Share by Email" %>
 
       <%= link_to image_tag("icons/social/rss_16.png"), "#", :title => "RSS Feed"  %>

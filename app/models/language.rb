@@ -11,6 +11,7 @@ class Language < ActiveRecord::Base
     Item.published.not_draft.
       where(:language_id => self.id).
       order("published_at DESC").
+      includes(:attachments).
       limit(lmt)
   end
   

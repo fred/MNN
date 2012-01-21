@@ -1,6 +1,6 @@
 FactoryGirl.define do
   
-  factory :item, :class => 'Item' do
+  factory :item, :class => 'Item' do 
     title 'Some News'
     abstract "Some Abstract"
     body "Some body"

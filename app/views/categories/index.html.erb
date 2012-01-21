@@ -1,3 +1,8 @@
+<% content_for :head do %>
+  <%= auto_discovery_link_tag(:rss,  items_rss_path,  :format => "rss") %>
+  <%= auto_discovery_link_tag(:atom, items_atom_path, :format => "atom") %>
+<% end %>
+
 <div class="row categories">
   <div class="span6 box" id="main_highlights">
     <ul>

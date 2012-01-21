@@ -21,7 +21,7 @@
       <%= time_tag(item.published_at, :pubdate => true) %>
     </span>
     <% if item.user %>
-      Submitted by <span class="author"><%= link_to_if(item.user, item.user.title, item.user) %></span>
+      Submitted by <span class="author"><%= link_to_if(item.user, item.user.title, author_path(item.user)) %></span>
     <% end %>
     <ul class="tags">
       Tags:

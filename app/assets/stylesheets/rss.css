@@ -1,0 +1,23 @@
+div.entry {
+  border: 1px solid #ddd;
+  box-shadow: 0px 0px 4px #ccc;
+  border-radius: 4px;
+  padding: 2px;
+  margin: 2px;
+}
+div.entry > h3 {
+  font-size: 15px;
+  margin: 8px 0px;
+}
+div.entry > h3 div.lastUpdated {
+  font
+}
+div.entry > div.feedEntryContent {
+  margin-bottom: 10px;
+}
+
+div.entry > div.feedEntryContent > div.image img {
+  box-shadow: 0px 0px 4px #ccc;
+  float: left;
+  margin-right: 4px;
+}

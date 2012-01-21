@@ -8,22 +8,37 @@ class ItemsController < ApplicationController
     @show_breadcrumb = true
     if params[:language_id]
       @language = Language.find(params[:language_id])
-      @items = Item.published.not_draft.
+      @rss_title = "Latest News in #{@language.description}"
+      @rss_language = @language.description
+      @items = Item.published.
+        not_draft.
+        includes(:language, :attachments, :tags, :item_stat, :user).
         where(:language_id => @language.id).
         order("published_at DESC").
         page(params[:page], :per_page => 20)
     else
-      @items = Item.published.not_draft.
+      @rss_title = "Latest News"
+      @items = Item.published.
+        not_draft.
+        includes(:language, :attachments, :tags, :item_stat, :user).
         order("published_at DESC").
         page(params[:page], :per_page => 20)
     end
+    if @items.empty?
+      @last_published = Time.now
+    else
+      @last_published = @items.first.published_at
+    end
     
-    # headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
-    # headers['Last-Modified'] = Item.last_item.updated_at.httpdate if Item.last_item
+    # headers['Cache-Control'] = 'public, max-age=300' # 5 minutes cache
+    # headers['Last-Modified'] = @last_published.httpdate
     
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
+      format.atom
+      format.rss  { render :layout => false }
+      format.xml { render @items }
     end
   end
 
@@ -33,11 +48,6 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @show_breadcrumb = true
     if @item
-      
-      # Set the Last-Modified header so the client can cache the timestamp (used for later conditional requests)
-      # headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
-      # headers['Last-Modified'] = @item.updated_at.httpdate
-      
       if @item.item_stat
         @item_stat = @item.item_stat
         if session[:view_items] && !session[:view_items].include?(@item.id)
@@ -48,6 +58,8 @@ class ItemsController < ApplicationController
         @item_stat = ItemStat.create(:item_id => @item.id, :views_counter => 1)
       end
     end
+    # headers['Cache-Control'] = 'public, max-age=300' # 5 minutes cache
+    # headers['Last-Modified'] = @item.updated_at.httpdate
     respond_to do |format|
       format.html
       format.json { render json: @item }

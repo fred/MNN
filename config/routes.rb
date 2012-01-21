@@ -9,8 +9,14 @@ Publication::Application.routes.draw do
 
   match 'search' => 'items#search', :as => :search
   
+  match 'languages/:language_id/items/page/:page' => 'items#index'
+  match 'categories/:category_id/:page' => 'items#index'
+  
   # opinio_model
-
+  resources :authors do
+    resources :items
+  end
+  
   resources :items do
     resources :language
     resources :category
@@ -30,6 +36,10 @@ Publication::Application.routes.draw do
     resources :items
   end
 
+  # Main Items feed
+  match '/atom' => 'items#index', :as => :items_atom, :defaults => { :format => 'atom' }
+  match '/rss'  => 'items#index', :as => :items_rss,  :defaults => { :format => 'rss' }
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

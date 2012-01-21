@@ -127,6 +127,7 @@ class Item < ActiveRecord::Base
     where(:draft => false).
     order("published_at DESC").
     limit(limit).
+    includes(:attachments).
     offset(offset).
     all
   end
@@ -179,6 +180,22 @@ class Item < ActiveRecord::Base
       self.language.description
     else
       ""
+    end
+  end
+  def user_title
+    if self.user && self.user.name
+      self.user.name
+    elsif self.author_name
+      self.author_name
+    else
+      "mnn"
+    end
+  end
+  def user_email
+    if self.user && self.user.email
+      self.user.email
+    else
+      "info@mnn.herokuapp.com"
     end
   end
 

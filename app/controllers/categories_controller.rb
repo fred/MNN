@@ -19,10 +19,25 @@ class CategoriesController < ApplicationController
     @items = @category.
       items.
       where(:draft => false).
+      includes(:language, :attachments, :tags, :item_stat, :user).
       where("published_at is not NULL").
       where("published_at < '#{Time.now.to_s(:db)}'").
       order("published_at DESC").
-      page(params[:page]).per(20)
+      page(params[:page]).per(10)
+    
+    # RSS configuration
+    @rss_title = "Latest News for #{@category.title}"
+    @rss_category = @category.title
+    @last_published = @items.first.published_at
+    @rss_source = url_for(@category)
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @items }
+      format.atom
+      format.rss  { render :layout => false }
+      format.xml { render @items }
+    end
   end
 
 end

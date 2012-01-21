@@ -1,5 +1,17 @@
 module ItemsHelper
   
+  def rss_description(item)
+    html = ""
+    if item.has_image?
+      html += "<div class='image'>"
+      html += image_tag(item.attachments.first.image.small)
+      html += "</div>"
+    end
+    html += "<div class='abstract'>"
+    html += item.abstract
+    html += "</div>"
+  end
+  
   def meta_title(item)
     str = item.title
     str += " - #{item.abstract}" if item.abstract
@@ -25,7 +37,7 @@ module ItemsHelper
   
   def twitter_share(item)
     url = "https://twitter.com/home?status="
-    url += item.title
+    url += item.title.truncate(116)
     url += " "
     url += url_for(item_path(item, :only_path => false, :protocol => 'http'))
     return url
@@ -48,6 +60,8 @@ module ItemsHelper
   def reddit_share(item)
     url = "http://www.reddit.com/submit?url="
     url += url_for(item_path(item, :only_path => false, :protocol => 'http'))
+    url += "&title="
+    url += item.title
     return url
   end
   
@@ -60,6 +74,8 @@ module ItemsHelper
   def slashdot_share(item)
     url = "http://slashdot.org/slashdot-it.pl?op=basic&url="
     url += url_for(item_path(item, :only_path => false, :protocol => 'http'))
+    url += "&title="
+    url += item.title
     return url
   end
   
@@ -68,7 +84,16 @@ module ItemsHelper
     url += url_for(item_path(item, :only_path => false, :protocol => 'http'))
     url += "&title="
     url += item.title
+    url += "&notes="
+    url += item.abstract
     return url
+  end
+  
+  def email_share(item)
+    sbj = item.title
+    body = "#{item.abstract} - "
+    body += url_for(item_path(item, :only_path => false, :protocol => 'http'))
+    "mailto:?subject=#{sbj}&body=#{body}"
   end
   
 end

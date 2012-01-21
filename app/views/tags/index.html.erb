@@ -1,0 +1,8 @@
+<div class="row all_tags">
+  <% @tags.each do |tag| %>
+    <div class="tag">
+      <%= link_to tag.title, tag_path(tag) %> (<%= tag.items.count %>)
+    </div>
+  <% end %>
+</div>
+<div clas="clearfix"></div>

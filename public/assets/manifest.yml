@@ -24,6 +24,7 @@ icons/social/designmoo_16.png: icons/social/designmoo_16-cb6ac9e8dd7fd3a6fc41071
 icons/social/designmoo_32.png: icons/social/designmoo_32-c8e6a1471f2875189fd3a4a5a0eedf4c.png
 icons/social/deviantart_16.png: icons/social/deviantart_16-0d7ff63871ff50d69bbd358fee7fb62a.png
 icons/social/deviantart_32.png: icons/social/deviantart_32-32453430359230218f688fb76907387a.png
+icons/social/diaspora.png: icons/social/diaspora-f4857d12ecc42066793d45ef6640c115.png
 icons/social/digg_16.png: icons/social/digg_16-e35d3578e0bc46b0881f638c01a78e67.png
 icons/social/digg_32.png: icons/social/digg_32-e04be7fcae53ca4133d41135805f7056.png
 icons/social/digg_alt_16.png: icons/social/digg_alt_16-198a01ae6091712057872d385cc77729.png
@@ -173,7 +174,7 @@ rails.png: rails-e4b51606cd77fda2615e7439907bfc92.png
 active_admin.js: active_admin-889571cf109fb36327691cd52d2c487b.js
 application.js: application-e049588089625060c6bd6aeeff930089.js
 active_admin.css: active_admin-e9bee9e039f02cb0d9f83d0e72352ce0.css
-application.css: application-338ae6c3cb8343334c5339a74aae009e.css
+application.css: application-464a9f03f86aa973e94e475b5b4b16de.css
 active_admin/admin_notes_icon.png: active_admin/admin_notes_icon-d3076b67b8655afc5cf14bf244c34db5.png
 active_admin/datepicker/datepicker-header-bg.png: active_admin/datepicker/datepicker-header-bg-c73514e723fd274903d96ff0afd8e7f7.png
 active_admin/datepicker/datepicker-input-icon.png: active_admin/datepicker/datepicker-input-icon-e48beac5b8da2344985c5d2afe6159dd.png

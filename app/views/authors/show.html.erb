@@ -1,0 +1,38 @@
+<% content_for :head do %>
+  <%= auto_discovery_link_tag(:rss, author_path(@author), :format => "rss") %>
+  <%= auto_discovery_link_tag(:atom, author_path(@author), :format => "atom") %>
+<% end %>
+
+<h3><%= @author.name %> Articles</h3>
+<p>
+  <%= @author.attachments.first.image.small if @author.has_image? %>
+  <%= @author.bio %>
+</p>
+
+<% @items.each do |item| %>
+  <%= render :partial => "/shared/item", :locals => {:item => item } %>
+<% end %>
+
+<% content_for :breadcrumb do %>
+  <li>
+    <a href="/">Home</a>
+    <span class="divider">/</span>
+  </li>
+  <li>
+    <%= link_to "Authors", authors_path %>
+    <span class="divider">/</span>
+  </li>
+  <li class="active">
+    <%= link_to @author.name, author_path(@author) %>
+    <%= link_to(
+          image_tag("icons/social/rss_16.png", :alt => "RSS for #{@author.name}"), 
+          author_path(@author, :format => "rss"),
+          :title => "RSS feed for #{@author.name}"
+        )
+    %>
+  </li>
+<% end %>
+
+<div class="pagination">
+  <%= paginate @items %>
+</div>
