@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20120123061003) do
 
   add_index "pages", ["active"], :name => "index_pages_on_active"
   add_index "pages", ["language_id"], :name => "index_pages_on_language_id"
+  add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string   "title"
