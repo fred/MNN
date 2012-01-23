@@ -9,7 +9,7 @@ xml.rss(:version=>"2.0", 'xmlns:atom' =>"http://www.w3.org/2005/Atom"){
     xml.generator("Ruby on Rails")
     xml.managingEditor("editor@mnn.herokuapp.com (Editor)")
     xml.webMaster("admin@mnn.herokuapp.com (Admin)")
-    xml.copyright("Opensource News, free to copy and redistribute.")
+    xml.copyright("Please see our copyrights page.")
     if @rss_source
       xml.link(@rss_source)
     else

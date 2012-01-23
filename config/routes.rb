@@ -22,6 +22,7 @@ Publication::Application.routes.draw do
     resources :category
     resources :comments
   end
+  resources :pages
   resources :roles
   resources :tags
   resources :general_tags

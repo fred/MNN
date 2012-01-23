@@ -5,7 +5,7 @@ atom_feed({ 'xmlns' => "http://www.w3.org/2005/Atom",
   xml.title(@rss_title) if @rss_title
   xml.updated(@last_published.utc) if @last_published
   xml.generator("Ruby on Rails")
-  xml.rights("OpenSource News, free to redistribute")
+  xml.rights("Please see our copyrights page.")
   for item in @items
     xml.entry(item) do
       xml.title(item.title)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120117080854) do
+ActiveRecord::Schema.define(:version => 20120123061003) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -141,7 +141,24 @@ ActiveRecord::Schema.define(:version => 20120117080854) do
     t.string   "slug"
   end
 
+  add_index "languages", ["locale"], :name => "index_languages_on_locale"
   add_index "languages", ["slug"], :name => "index_languages_on_slug", :unique => true
+
+  create_table "pages", :force => true do |t|
+    t.string   "title"
+    t.string   "link_title"
+    t.string   "slug"
+    t.integer  "priority"
+    t.integer  "language_id"
+    t.integer  "user_id"
+    t.boolean  "active"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pages", ["active"], :name => "index_pages_on_active"
+  add_index "pages", ["language_id"], :name => "index_pages_on_language_id"
 
   create_table "roles", :force => true do |t|
     t.string   "title"
@@ -176,6 +193,9 @@ ActiveRecord::Schema.define(:version => 20120117080854) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "shares", ["item_id", "processed"], :name => "index_shares_on_item_id_and_processed"
+  add_index "shares", ["type"], :name => "index_shares_on_type"
 
   create_table "taggings", :id => false, :force => true do |t|
     t.integer "tag_id"
