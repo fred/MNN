@@ -15,6 +15,10 @@ class Language < ActiveRecord::Base
       limit(lmt)
   end
   
+  def title
+    self.description
+  end
+  
   # only give languages with more than 1 item
   def self.with_articles
     find(:all, :order => 'languages.locale DESC')

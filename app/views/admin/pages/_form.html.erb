@@ -1,0 +1,60 @@
+<%= semantic_form_for [:admin, @page], :html => { :enctype => "multipart/form-data" }  do |f| %>
+
+  <%= f.inputs :name => "Required Main Information" do %>
+    <%= f.input :title, 
+                :label => "Main Title", 
+                :required => true, 
+                :hint => "Title is required, 20-40 characters max"
+    %>
+    <%= f.input :link_title, 
+                :label => "Link Title", 
+                :required => true, 
+                :hint => "What to display on the Page Link"
+    %>
+    <%= f.input :language, 
+                :as => :select, 
+                :label_method => 'description', 
+                :value_method => :id, 
+                :label => "Language",
+                :required => false, 
+                :hint => "Select a language for this Page"
+    %>
+
+    <%= f.input :body, 
+                :label => "Main Content", 
+                :required => true, 
+                :input_html => { :rows => 60, :cols => 120}
+    %>
+    <%= f.input :priority, :hint => "Order in which it will show on the website. 1=higher 100=lowest" %>
+    <%= f.input :active, :hint => "Only Actives pages will be visible on website." %><br />
+  <% end %>
+    
+  <%= f.buttons :commit %>
+<% end %>
+
+
+
+<script type="text/javascript">
+  $(function() {
+    $('#page_body').tinymce({
+      theme : "advanced",
+      height : "640px",
+      plugins : "autolink,lists,spellchecker,pagebreak,style,layer,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+      // Theme options
+      theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+      theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+      theme_advanced_buttons3 : "hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+      theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
+      theme_advanced_toolbar_location : "top",
+      theme_advanced_toolbar_align : "left",
+      theme_advanced_statusbar_location : "bottom",
+      theme_advanced_resizing : true,
+
+      // Replace values for the template plugin
+      template_replace_values : {
+        username : "<%= current_admin_user.email %>",
+        staffid : "<%= current_admin_user.id %>"
+      }
+    });
+  });
+</script>

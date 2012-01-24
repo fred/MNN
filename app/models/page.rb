@@ -1,5 +1,8 @@
 class Page < ActiveRecord::Base
   
+  belongs_to :language
+  belongs_to :user
+  
   attr_accessor :updated_reason
   
   # Versioning System
