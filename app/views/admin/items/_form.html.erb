@@ -74,7 +74,8 @@
           :hint => "When article will go live (default: 10 minutes from now)", 
           :time => true 
     %>
-    <%= f.input :published_at,
+    <%= f.input :published_at, 
+          :value => f.object.published_at.localtime,
           :as => "string",
           :label => "Publication Date",
           :hint => "When to go live. Timezone used for picking date: '#{Time.zone}' (from your Profile). It will be converted to UTC after saving."
@@ -85,6 +86,7 @@
     <%= f.input :expires_on,
         :as => "string",
         :label => "Expire Date",
+        :value => f.object.expires_on.localtime,
         :hint => "Expiration Date of article (default: 10 years). It will be converted to UTC after saving."
     %>
     
@@ -157,14 +159,14 @@
   // item_published_at
   $("#item_published_at").AnyTime_picker(
       { 
-        format: "%Y-%m-%d %H:%i:%s",
+        format: "%Y-%m-%d %H:%i:%s %+",
         formatUtcOffset: "%: (%@)",
         hideInput: false
       }
   );
   $("#item_expires_on").AnyTime_picker(
       { 
-        format: "%Y-%m-%d %H:%i:%s",
+        format: "%Y-%m-%d %H:%i:%s %+",
         formatUtcOffset: "%: (%@)",
         hideInput: false
       }

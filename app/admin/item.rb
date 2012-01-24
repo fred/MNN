@@ -48,5 +48,10 @@ ActiveAdmin.register Item do
       @item.author_email = current_admin_user.email
       @item.user_id = current_admin_user.id
     end
+    def edit
+      @item = Item.find(params[:id])
+      @item.published_at = @item.published_at.localtime
+      @item.expires_on = @item.expires_on.localtime
+    end
   end
 end
