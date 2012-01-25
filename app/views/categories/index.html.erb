@@ -39,10 +39,7 @@
     <% end %>
     </ul>
   </div>
-</div>
 
-
-<div class="row categories">
   <% for category in @categories %>
     <div class="span6 box" id="<%= category.slug %>">
       <h1><%= link_to category.title, category %></h1>
