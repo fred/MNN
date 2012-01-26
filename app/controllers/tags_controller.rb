@@ -30,7 +30,11 @@ class TagsController < ApplicationController
       page(params[:page]).per(20)
     
     # RSS
-    @last_published = @items.first.published_at
+    if @items.empty?
+      @last_published = Time.now
+    else
+      @last_published = @items.first.published_at
+    end
     @rss_title = "Latest News tagged in #{@tag.title}"
     @rss_description = "MNN - Latest News tagged in #{@tag.title}"
     @rss_category = @tag.title
