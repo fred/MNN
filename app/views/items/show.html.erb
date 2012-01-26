@@ -6,6 +6,17 @@
 
 <%= content_for :head do %>
   <%= render :partial => "og" %>
+  
+  <!-- Update your html tag to include the itemscope and itemtype attributes -->
+  <html itemscope itemtype="http://schema.org/Article">
+
+  <!-- Add the following three tags inside head -->
+  <meta itemprop="name" content="<%= @item.title %>">
+  <meta itemprop="description" content="<%= @item.abstract %>">
+  <% unless @item.attachments.empty? %>
+    <meta itemprop="image" content="<%= @item.attachments.first.image.medium %>">
+  <% end %>
+  
 <% end %>
 
 <article id="<%= @item.id %>">
@@ -50,43 +61,59 @@
     <div class="share">
       <%= link_to image_tag("icons/social/facebook_16.png", :alt => "Facebook"),
             facebook_share(@item),
-            :title => "Share on Facebook" %>
-
+            :title => "Share on Facebook",
+            :target => "_blank"
+      %>
       <%= link_to image_tag("icons/social/twitter_16.png", :alt => "Twitter"),
             twitter_share(@item),
-            :title => "Share on Twitter" %>
-
+            :title => "Share on Twitter",
+            :target => "_blank",
+            'data-via'=>"WorldMathaba"
+      %>
       <%= link_to image_tag("icons/social/reddit_16.png", :alt => "Reddit"),
             reddit_share(@item),
-            :title => "Reddit" %>
-
+            :title => "Reddit",
+            :target => "_blank"
+      %>
       <%= link_to image_tag("icons/social/digg_alt_16.png", :alt => "Digg"),
             digg_share(@item),
             :rev => "news, world_news, #{@item.category_title}",
-            :title => "Digg it" %>
-
-      <%= link_to image_tag("icons/social/google_plus_16.png", :alt => "GooglePlus"),
-            gplus_share(@item),
-            :title => "GooglePlus" %>
-
+            :title => "Digg it",
+            :target => "_blank"
+      %>
       <%= link_to image_tag("icons/social/slashdot_16.png", :alt => "Slashdot"),
             slashdot_share(@item),
-            :title => "Slashdot Share" %>
-
+            :title => "Slashdot Share",
+            :target => "_blank"
+      %>
       <%= link_to image_tag("icons/social/posterous_16.png", :alt => "Posterous"),
             posterous_share(@item),
-            :title => "Posterous Share" %>
-
+            :title => "Posterous Share",
+            :target => "_blank"
+      %>
       <%= link_to image_tag("icons/social/delicious_16.png", :alt => "Delicious"),
             delicious_share(@item),
-            :title => "Delicious Share" %>
-
+            :title => "Delicious Share",
+            :target => "_blank"
+      %>
+      <%= link_to image_tag("icons/social/google_plus_16.png", :alt => "GooglePlus"),
+            gplus_share(@item),
+            :title => "GooglePlus",
+            :popup => ['GooglePlus','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes'],
+            :target => "_blank"
+      %>
       <%= link_to image_tag("icons/social/email_16.png", :alt => "Email"), 
             email_share(@item),
-            :title => "Share by Email" %>
-
-      <%= link_to image_tag("icons/social/rss_16.png"), "#", :title => "RSS Feed"  %>
-      <%#= render :partial => "/shared/gplus" %>
+            :title => "Share by Email",
+            :target => "_blank"
+      %>
+      <%= link_to image_tag("icons/social/rss_16.png"), 
+            "#",
+            :title => "RSS Feed",
+            :target => "_blank"
+      %>
+      <%= render :partial => "/shared/gplus" %>
+      <%#= render :partial => "/shared/twitter" %>
     </div>
     
     <div class="page_views">
@@ -114,4 +141,15 @@
   <li class="active">
     <%= @item.title %>
   </li>
+<% end %>
+
+<%= content_for :scripts do %>
+  <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+  <script type="text/javascript">
+    twttr.events.bind('tweet', function(event) {
+      window.location = "<%= url_for(item_path(@item.id, :only_path => false, :protocol => 'http')) %>"
+    });
+  </script>
+  
+  
 <% end %>
