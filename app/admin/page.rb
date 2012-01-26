@@ -12,6 +12,7 @@ ActiveAdmin.register Page do
     column :language
     column :created_at
     column :updated_at
+    default_actions
   end
   
   form :partial => "form"
