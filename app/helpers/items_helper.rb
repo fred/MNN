@@ -1,5 +1,9 @@
 module ItemsHelper
   
+  def twitter_link
+    "https://twitter.com/#/worldmathaba"
+  end
+  
   def rss_description(item)
     html = ""
     if item.has_image?

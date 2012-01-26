@@ -8,9 +8,23 @@ Publication::Application.routes.draw do
   devise_for :users
 
   match 'search' => 'items#search', :as => :search
-  
+  match 'feed' => "items#feed", :as => :feed
   match 'languages/:language_id/items/page/:page' => 'items#index'
   match 'categories/:category_id/:page' => 'items#index'
+  
+  # Omniauth
+  # match '/auth/:provider/callback', to: 'services#create'
+  # match '/auth/failure' => 'services#failure'
+  # resources :services, :only => [:index, :create, :destroy] do
+  #   collection do
+  #     get 'signin'
+  #     get 'signout'
+  #     get 'signup'
+  #     post 'newaccount'
+  #     get 'failure'
+  #   end
+  # end
+  
   
   # opinio_model
   resources :authors do

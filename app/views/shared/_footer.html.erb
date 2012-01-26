@@ -1,12 +1,10 @@
 <footer>
   <ul class="footer_menu">
     <li>&copy; Publication System </li>
-    
-    <li><%= link_to "Help", "#"%> </li>
-    
-    <li><%= link_to "Terms & Policy", "#"%> </li>
-    
-    <li><%= link_to "Contact", "#"%> </li>
+    <li><%= link_to "Feeds", feed_path %> </li>
+    <li><%= link_to "Help", "#" %> </li>
+    <li><%= link_to "Terms & Policy", "#" %> </li>
+    <li><%= link_to "Contact", "#" %> </li>
     
     <% if user_signed_in? %>
       <li><%= link_to "Edit Profile", edit_user_registration_path %></li>

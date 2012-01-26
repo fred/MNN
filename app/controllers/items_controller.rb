@@ -2,6 +2,9 @@ class ItemsController < ApplicationController
   
   layout "items"
   
+  def feed
+  end
+  
   # GET /items
   # GET /items.json
   def index
