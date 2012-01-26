@@ -138,3 +138,12 @@ gem "exception_notification", :require => 'exception_notifier',
 
 gem 'sunspot', "2.0.0.pre.111215" #:git => "git://github.com/sunspot/sunspot.git"
 gem 'sunspot_rails', "2.0.0.pre.111215" #:git => "git://github.com/sunspot/sunspot.git"
+
+
+### OpenID 
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-openid'
+gem 'omniauth-github'
+gem 'omniauth-google_oauth2'

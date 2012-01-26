@@ -14,7 +14,7 @@
   <meta itemprop="name" content="<%= @item.title %>">
   <meta itemprop="description" content="<%= @item.abstract %>">
   <% unless @item.attachments.empty? %>
-    <meta itemprop="image" content="<%= @item.attachments.first.image.medium %>">
+    <meta itemprop="image" content="<%= @item.attachments.first.image.thumb %>">
   <% end %>
   
 <% end %>
@@ -150,6 +150,4 @@
       window.location = "<%= url_for(item_path(@item.id, :only_path => false, :protocol => 'http')) %>"
     });
   </script>
-  
-  
 <% end %>
