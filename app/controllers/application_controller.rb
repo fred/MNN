@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  require 'uri'
   require 'set'
   
   protect_from_forgery
@@ -19,6 +20,31 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  # This method uses the useragentstring API, 
+  # TODO, only use this on a resque worker
+  def is_human_api?
+    uas = request.env["HTTP_USER_AGENT"].to_s
+    site = "http://www.useragentstring.com/?uas=#{uas}&getJSON=all"
+    uri = URI.escape(site)
+
+    begin
+      Timeout::timeout(2) do
+        json = JSON.parse Net::HTTP.get(URI(uri))
+      end
+    rescue Timeout::Error
+      Rails.logger.debug("  UA: useragentstring.com Timed out")
+      return false
+    end
+    
+    res = json["agent_type"].to_s.match("(Browser|Feed)")
+    if res
+      Rails.logger.debug("  UA: user found: #{uas}")
+      return true
+    else
+      Rails.logger.debug("  UA: bot found: #{uas}")
+      return false
+    end
+  end
   
   def set_view_items
     unless session[:view_items]
