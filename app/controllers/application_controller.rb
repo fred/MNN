@@ -5,6 +5,20 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_time_zone, :set_view_items
   
+  # this should give 99% of users
+  def is_human?
+    s = request.env["HTTP_USER_AGENT"].to_s.downcase
+    valid="(firefox|chrome|opera|safari|webkit|gecko|msie|windows|blackberry|iphone|ipad|nokia|android|fedora|ubuntu|centos)"
+    bot="(bot|spider)"
+    if !s.match(bot) && s.match(valid)
+      Rails.logger.debug("  UA: user found: #{s}")
+      return true
+    else
+      Rails.logger.debug("  UA: bot found: #{s}")
+      return false
+    end
+  end
+  
   
   def set_view_items
     unless session[:view_items]

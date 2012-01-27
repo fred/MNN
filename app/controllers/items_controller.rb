@@ -62,7 +62,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @show_breadcrumb = true
-    if @item
+    if @item && is_human?
       if @item.item_stat
         @item_stat = @item.item_stat
         if session[:view_items] && !session[:view_items].include?(@item.id)
