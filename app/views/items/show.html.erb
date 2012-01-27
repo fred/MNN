@@ -124,6 +124,15 @@
   
 </article>
 
+<!-- <section id="item_<%#= @item.id %>_comments">
+  <%#= render_comments @item %>
+  <%#= render_comments_form @item %>
+</article> -->
+
+<section id="item_<%#= @item.id %>_comments">
+  <%= render :partial => "/shared/intense" %>
+</article>
+
 
 <% content_for :breadcrumb do %>
   <li>

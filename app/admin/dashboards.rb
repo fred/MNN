@@ -113,12 +113,11 @@ ActiveAdmin::Dashboards.build do
     ul do
       Comment.pending(10).collect do |comment|
         li(link_to(
-            "#{comment.commentable.email} Wrote #{time_ago_in_words(comment.created_at)}:", 
-            admin_comment_path(comment), 
+            "#{comment.owner.email} - #{time_ago_in_words(comment.created_at)} ago", 
+            admin_user_comment_path(comment), 
             :title => comment.body
           )
         )
-        li "#{comment.body.truncate(50)} ago"
       end
     end
   end
@@ -126,12 +125,11 @@ ActiveAdmin::Dashboards.build do
     ul do
       Comment.as_spam(10).collect do |comment|
         li(link_to(
-            "#{comment.commentable.email} Wrote #{time_ago_in_words(comment.created_at)}:", 
+            "#{comment.commentable.email} - #{time_ago_in_words(comment.created_at)} ago", 
             admin_comment_path(comment), 
             :title => comment.body
           )
         )
-        li "#{comment.body.truncate(50)} ago"
       end
     end
   end

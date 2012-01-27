@@ -7,7 +7,7 @@ class Item < ActiveRecord::Base
   has_paper_trail :meta => { :tag  => :updated_reason }
   
   # Comment System
-  # opinio_subjectum
+  opinio_subjectum
   
   # Permalink URLS
   extend FriendlyId

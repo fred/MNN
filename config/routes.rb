@@ -34,7 +34,8 @@ Publication::Application.routes.draw do
   resources :items do
     resources :language
     resources :category
-    resources :comments
+    resources :comments, :controller => 'opinio/comments'
+    opinio
   end
   resources :pages
   resources :roles
@@ -46,7 +47,7 @@ Publication::Application.routes.draw do
   resources :attachments
   resources :scores
   resources :translations
-  resources :comments
+  resources :comments, :controller => 'opinio/comments'
   resources :languages do
     resources :items
   end

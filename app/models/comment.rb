@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  # opinio
+  opinio
   include Rakismet::Model  
   # author        : name submitted with the comment
   # author_url    : URL submitted with the comment
@@ -13,6 +13,13 @@ class Comment < ActiveRecord::Base
   
   # belongs_to :user
   belongs_to :approving_user, :foreign_key => :approved_by, :class_name => "User"
+  
+  before_create :auto_approve
+  
+  def auto_approve
+    self.approved = true
+    true
+  end
   
   ### Askimet helpers ###
   def author

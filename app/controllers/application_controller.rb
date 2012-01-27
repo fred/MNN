@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_time_zone, :set_view_items
   
+  comment_destroy_conditions do |comment|
+    comment.owner == current_user
+  end
+  
   # this should give 99% of users
   def is_human?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase

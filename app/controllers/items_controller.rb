@@ -42,18 +42,29 @@ class ItemsController < ApplicationController
     # headers['Last-Modified'] = @last_published.httpdate
     
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @items }
-      format.atom { 
+      format.html {
+        headers['Cache-Control'] = 'public, max-age=600' # 10 min cache
+        headers['Last-Modified'] = @last_published.httpdate
+      }
+      format.json {
+        headers['Cache-Control'] = 'public, max-age=600' # 10 min cache
+        headers['Last-Modified'] = @last_published.httpdate
+        render json: @items 
+      }
+      format.atom {
         headers['Cache-Control'] = 'public, max-age=3600' # 1 hour cache
         headers['Last-Modified'] = @last_published.httpdate
         render :partial => "/shared/items", :layout => false }
-      format.rss  { 
+      format.rss {
         headers['Cache-Control'] = 'public, max-age=3600' # 1 hour cache
         headers['Last-Modified'] = @last_published.httpdate
         render :partial => "/shared/items", :layout => false 
       }
-      format.xml { render @items }
+      format.xml {
+        headers['Cache-Control'] = 'public, max-age=600' # 10 min cache
+        headers['Last-Modified'] = @last_published.httpdate
+        render @items
+      }
     end
   end
 
@@ -73,7 +84,7 @@ class ItemsController < ApplicationController
         @item_stat = ItemStat.create(:item_id => @item.id, :views_counter => 1)
       end
     end
-    # headers['Cache-Control'] = 'public, max-age=300' # 5 minutes cache
+    # headers['Cache-Control'] = 'public, max-age=300' # 5 minutes cache, because of comments
     # headers['Last-Modified'] = @item.updated_at.httpdate
     respond_to do |format|
       format.html
@@ -188,6 +199,7 @@ class ItemsController < ApplicationController
 
     # client side cache for 10 minutes
     headers['Cache-Control'] = 'public, max-age=600'
+    
     respond_to do |format|
       format.html
       format.js
