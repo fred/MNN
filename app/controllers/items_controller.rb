@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   layout "items"
   
   def feed
+    headers['Cache-Control'] = 'public, max-age=3600' # 60 minutes cache
   end
   
   # GET /items
@@ -84,8 +85,10 @@ class ItemsController < ApplicationController
         @item_stat = ItemStat.create(:item_id => @item.id, :views_counter => 1)
       end
     end
-    # headers['Cache-Control'] = 'public, max-age=300' # 5 minutes cache, because of comments
-    # headers['Last-Modified'] = @item.updated_at.httpdate
+    @related = @item.solr_similar
+    
+    headers['Cache-Control'] = 'private, max-age=600, must-revalidate' # 10 minutes cache, because of comments
+    headers['Last-Modified'] = @item.updated_at.httpdate
     respond_to do |format|
       format.html
       format.json { render json: @item }

@@ -50,6 +50,11 @@ class Item < ActiveRecord::Base
     text :abstract, :boost => 1.4
     text :body
     text :category_title, :boost => 2.2
+    text :author_name, :boost => 1.2
+    text :author_email
+    text :article_source
+    text :source_url
+    integer :id
     integer :category_id, :references => Category
     integer :language_id, :references => Language
     boolean :draft
@@ -70,12 +75,12 @@ class Item < ActiveRecord::Base
     end
   end
   
-  def tag_list
+  def tag_list(join=", ")
     array = []
     self.tags.each do |t|
       array << t.title
     end
-    array.join(', ')
+    array.join(join)
   end
   
   
@@ -198,6 +203,40 @@ class Item < ActiveRecord::Base
       "info@mnn.herokuapp.com"
     end
   end
+  
+  # This builds the solr keyword for search articles
+  def keyword_for_solr
+    @str = ""
+    @str += self.tag_list(" ")
+    # self.title.split(" ").each do |t|
+    #   if t.size > 3
+    #     @str += " "
+    #     @str += t
+    #   end
+    # end
+    @str
+  end
+  
+  
+  # Find Similar listings based on information only.
+  def solr_similar(limit=6)
+    # IF no bedrooms or bathrooms
+    @search = Item.solr_search do
+      fulltext self.keyword_for_solr
+      if self.language_id
+        with(:language_id, self.language_id)
+      end
+      # if self.category_id
+      #   with(:category_id, self.category_id)
+      # end
+      without(:id, self.id)
+      with(:draft, false)
+      paginate :page => 1, :per_page => limit
+    end
+    @search.results
+  end
+  
+  
 
   def self.import_wordpress_xml
     require 'nokogiri'

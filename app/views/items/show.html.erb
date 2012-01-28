@@ -52,7 +52,7 @@
     <ul class="tags">
       Tags:
       <% @item.tags.each do |tag| %>
-        <li><%= link_to tag.title, tag_path(tag) %> </li>
+        <li><%= link_to tag.title, tag_path(tag), :title => "View all items in '#{tag.title}'" %> </li>
       <% end %>
       <% if @item.language %>
         <li><%= link_to @item.language.description, language_items_path(@item.language) %></li>
@@ -72,7 +72,7 @@
       %>
       <%= link_to image_tag("icons/social/reddit_16.png", :alt => "Reddit"),
             reddit_share(@item),
-            :title => "Reddit",
+            :title => "Reddit Share",
             :target => "_blank"
       %>
       <%= link_to image_tag("icons/social/digg_alt_16.png", :alt => "Digg"),
@@ -98,7 +98,7 @@
       %>
       <%= link_to image_tag("icons/social/google_plus_16.png", :alt => "GooglePlus"),
             gplus_share(@item),
-            :title => "GooglePlus",
+            :title => "GooglePlus Share",
             :popup => ['GooglePlus','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes'],
             :target => "_blank"
       %>
@@ -122,6 +122,16 @@
     
   </footer>
   
+  <% unless @related.empty? %>
+    <section id="related">
+      <h4>Related items</h4>
+      <ul>
+        <% @related.each do |item| %>
+          <li><%= link_to item.title, item, :title => item.abstract %></li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
 </article>
 
 <!-- <section id="item_<%#= @item.id %>_comments">
@@ -129,8 +139,12 @@
   <%#= render_comments_form @item %>
 </article> -->
 
-<section id="item_<%#= @item.id %>_comments">
-  <%= render :partial => "/shared/intense" %>
+<section id="item_<%= @item.id %>_comments">
+  <% if @item.allow_comments %>
+    <%= render :partial => "/shared/intense" %>
+  <% else %>
+    <h4>Comments are disabled for this item</h4>
+  <% end %>
 </article>
 
 

@@ -103,9 +103,10 @@ article {
   text-rendering: optimizeLegibility;
   background-color: whiteSmoke;
   border: 1px solid #DDDDDD;
-  border-radius: 3px;
-  box-shadow: 0 1px 0 #FFFFFF inset;  
-  
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 #FFFFFF inset;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#ffffff), to(#f5f5f5));
   background-image: -moz-linear-gradient(top, #ffffff, #f5f5f5);
@@ -115,18 +116,18 @@ article {
   background-image: -o-linear-gradient(top, #ffffff, #f5f5f5);
   background-image: linear-gradient(top, #ffffff, #f5f5f5);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f5f5f5', GradientType=0);
+  box-shadow: 0px 0px 4px #CCC;
 }
 article.category {  
   background-color: #F5F5F5;
   border: 1px solid #DDDDDD;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
   box-shadow: 0 1px 0 #FFFFFF inset;
   margin: 0 0 18px;
   padding: 5px 5px 5px 12px;
   min-height: 91px;
-  
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#ffffff), to(#f5f5f5));
   background-image: -moz-linear-gradient(top, #ffffff, #f5f5f5);
@@ -136,6 +137,7 @@ article.category {
   background-image: -o-linear-gradient(top, #ffffff, #f5f5f5);
   background-image: linear-gradient(top, #ffffff, #f5f5f5);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f5f5f5', GradientType=0);
+  box-shadow: 0px 0px 5px #CCC;
 }
 article h1 {
   letter-spacing: 1px;
@@ -401,6 +403,9 @@ span.googleplus {
   margin-bottom: 4px;
 }
 
+.breadcrumb {
+  box-shadow: 0px 0px 5px #CCC;
+}
 ul.breadcrumb li img {
   vertical-align: bottom;
   margin-bottom: 2px;

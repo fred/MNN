@@ -1,5 +1,9 @@
 CHANGELOG
 
+== Jan 28, 2012
+* Added "Related Items" to the bottom of the article.
+  An algorithm that uses tags to find related items based the body or title.
+
 == Jan 27, 2012
 * Added IntenseDebate commenting system
 
