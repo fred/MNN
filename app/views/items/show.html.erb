@@ -167,7 +167,7 @@
 <% end %>
 
 <%= content_for :scripts do %>
-  <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+  <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
   <script type="text/javascript">
     twttr.events.bind('tweet', function(event) {
       window.location = "<%= url_for(item_path(@item.id, :only_path => false, :protocol => 'https')) %>"
