@@ -146,7 +146,9 @@
       theme_advanced_toolbar_align : "left",
       theme_advanced_statusbar_location : "bottom",
       theme_advanced_resizing : true,
-
+      
+      content_css : "<%= asset_path 'tinymce.css' %>",
+      
       // Replace values for the template plugin
       template_replace_values : {
         username : "<%= current_admin_user.email %>",

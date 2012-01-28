@@ -87,7 +87,10 @@ gem 'i18n-active_record',
     :require => 'i18n/active_record',
     :git => 'git://github.com/svenfuchs/i18n-active_record.git'
 
-  
+group :production do
+  gem 'rack-ssl-enforcer', :require => 'rack/ssl-enforcer'
+end
+
 group :development do
   gem 'rspec', "2.8.0"
   gem "rspec-rails", "2.8.1"
