@@ -30,4 +30,6 @@ Publication::Application.configure do
   
   # Develpment URL
   config.action_mailer.default_url_options = { :host => 'localhost:3015' }
+  
+  # config.action_controller.asset_host = "http://d12nekpa7as6ci.cloudfront.net"
 end
