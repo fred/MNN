@@ -1,6 +1,9 @@
 CHANGELOG
 
 == Jan 28, 2012
+* Better CSS for tinyMCE text editor
+* Enforced SSL for /admin pages
+* Enforced SSL for sign_in and sign_up pages
 * Added "Related Items" to the bottom of the article.
   An algorithm that uses tags to find related items based the body or title.
 
