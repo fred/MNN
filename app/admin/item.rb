@@ -19,6 +19,9 @@ ActiveAdmin.register Item do
     column "Title", :sortable => :title do |item|
       link_to item.title, admin_item_path(item), :title => item.abstract, :class => "featured_#{item.featured}"
     end
+    column :tags do |item|
+      item.tags.count
+    end
     column :draft, :sortable => :draft do |item|
       bol_to_word(item.draft)
     end
@@ -50,8 +53,16 @@ ActiveAdmin.register Item do
     end
     def edit
       @item = Item.find(params[:id])
-      @item.published_at = @item.published_at.localtime
-      @item.expires_on = @item.expires_on.localtime
+      if @item.published_at
+        @item.published_at = @item.published_at.localtime
+      else
+        @item.published_at = Time.zone.now
+      end
+      if @item.expires_on
+        @item.expires_on = @item.expires_on.localtime
+      else
+        @item.expires_on = Time.zone.now+10.years
+      end
     end
   end
 end
