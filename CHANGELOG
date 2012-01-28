@@ -1,6 +1,7 @@
 CHANGELOG
 
 == Jan 28, 2012
+* Added link to search for external author
 * Better CSS for tinyMCE text editor
 * Enforced SSL for "EVERY PAGE"
 * Added "Related Items" to the bottom of the article.
