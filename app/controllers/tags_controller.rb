@@ -38,7 +38,7 @@ class TagsController < ApplicationController
     @rss_title = "Latest News tagged in #{@tag.title}"
     @rss_description = "MNN - Latest News tagged in #{@tag.title}"
     @rss_category = @tag.title
-    @rss_source = tags_path(@tag, :only_path => false, :protocol => 'http', :format => "html")
+    @rss_source = tags_path(@tag, :only_path => false, :protocol => 'https', :format => "html")
     
     respond_to do |format|
       format.html # index.html.erb

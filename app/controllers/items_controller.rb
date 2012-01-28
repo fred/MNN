@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
       @rss_title = "Latest News in #{@language.description}"
       @rss_description = "MNN - Latest News in #{@language.description}"
       @rss_language = @language.locale
-      @rss_source = items_path(:language_id => params[:language_id], :only_path => false, :protocol => 'http')
+      @rss_source = items_path(:language_id => params[:language_id], :only_path => false, :protocol => 'https')
       @items = Item.published.
         not_draft.
         includes(:language, :attachments, :tags, :item_stat, :user).
@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
     else
       @rss_title = "Latest News"
       @rss_description = "MNN - Latest News"
-      @rss_source = items_path(:only_path => false, :protocol => 'http')
+      @rss_source = items_path(:only_path => false, :protocol => 'https')
       @rss_language = "en"
       @items = Item.published.
         not_draft.

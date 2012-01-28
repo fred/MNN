@@ -16,7 +16,7 @@ atom_feed({ 'xmlns' => "http://www.w3.org/2005/Atom",
       xml.author {
         xml.name item.user_title
         xml.email item.user_email
-        xml.uri(url_for(author_path(item.user, :only_path => false, :protocol => 'http')))
+        xml.uri(url_for(author_path(item.user, :only_path => false, :protocol => 'https')))
       }
     end
   end

@@ -19,7 +19,7 @@ class AuthorsController < ApplicationController
     @rss_title = "Items from #{@author.name} (#{@author.email})"
     @rss_description = "MNN - Items from #{@author.name} (#{@author.email})"
     @rss_category = "author_#{@author.name}"
-    @rss_source = author_path(@author, :only_path => false, :protocol => 'http')
+    @rss_source = author_path(@author, :only_path => false, :protocol => 'https')
     @rss_language = "en"
     
     respond_to do |format|

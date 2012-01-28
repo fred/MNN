@@ -22,12 +22,12 @@ xml.rss(:version=>"2.0", 'xmlns:atom' =>"http://www.w3.org/2005/Atom"){
     for item in @items
       xml.item do
         xml.title(item.title)
-        xml.guid(url_for(item_path(item.id, :only_path => false, :protocol => 'http')))
+        xml.guid(url_for(item_path(item.id, :only_path => false, :protocol => 'https')))
         xml.category(item.category_title)
         xml.description(rss_description(item))
         xml.author("#{item.user_email} (#{item.user_title})")
         xml.pubDate(item.published_at.rfc2822)
-        xml.link(url_for(item_path(item, :only_path => false, :protocol => 'http')))
+        xml.link(url_for(item_path(item, :only_path => false, :protocol => 'https')))
       end
     end
   }

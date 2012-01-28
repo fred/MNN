@@ -170,7 +170,7 @@
   <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
   <script type="text/javascript">
     twttr.events.bind('tweet', function(event) {
-      window.location = "<%= url_for(item_path(@item.id, :only_path => false, :protocol => 'http')) %>"
+      window.location = "<%= url_for(item_path(@item.id, :only_path => false, :protocol => 'https')) %>"
     });
   </script>
 <% end %>
