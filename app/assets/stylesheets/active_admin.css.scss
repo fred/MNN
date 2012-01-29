@@ -22,6 +22,10 @@ body {
   text-align: center;
 }
 
+#active_admin_content {
+  padding: 12px 20px;
+}
+
 form input[type="select"],
 form input[type="text"],
 form input[type="password"],
@@ -212,4 +216,8 @@ table.dashboard .dashboard_section > div {
   color: #666;
   font-style: italic;
   padding: 1px;
+}
+
+table.index_table td {
+  padding: 10px 6px;
 }

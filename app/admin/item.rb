@@ -29,7 +29,7 @@ ActiveAdmin.register Item do
     column "Feat.", :featured, :sortable => :featured do |item|
       bol_to_word(item.featured)
     end
-    column :language, :sortable => :language_id do |item|
+    column "Lang", :language, :sortable => :language_id do |item|
       item.language.description if item.language
     end
     column "Update", :sortable => :updated_at do |item|
@@ -37,6 +37,9 @@ ActiveAdmin.register Item do
     end
     column "Live", :sortable => :published_at do |item|
       item.published_at.localtime.to_s(:short) if item.published_at
+    end
+    column "Site", :sortable => false do |item|
+      link_to "Show", item
     end
     default_actions
   end

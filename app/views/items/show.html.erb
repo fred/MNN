@@ -32,12 +32,8 @@
   </span>
   
   <section>
-    <% unless @item.attachments.empty?%>
-      <% if @item.featured %>
-        <%= image_tag(@item.attachments.first.image.large, :class => "show_item_image") %>
-      <% else %>
-        <%= image_tag(@item.attachments.first.image.medium, :class => "show_item_image") %>
-      <% end %>
+    <% if @item.has_image?%>
+      <%= image_tag(@item.attachments.first.image.medium, :class => "show_item_image") %>
     <% end %>
     <p><i><%= @item.highlight %></i></p>
     <%= @item.body.html_safe %>
@@ -140,7 +136,9 @@
 </article> -->
 
 <section id="item_<%= @item.id %>_comments">
-  <% if @item.allow_comments %>
+  <% if is_mobile? %>
+    <p>Comments are disabled on mobile devices, please visit desktop site.</p>
+  <% elsif @item.allow_comments %>
     <%= render :partial => "/shared/intense" %>
   <% else %>
     <h4>Comments are disabled for this item</h4>
