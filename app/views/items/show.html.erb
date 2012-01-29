@@ -122,11 +122,11 @@
     
   </footer>
   
-  <% unless @related.empty? %>
+  <% if @related && @related.total > 0 %>
     <section id="related">
       <h4>Related items</h4>
       <ul>
-        <% @related.each do |item| %>
+        <% @related.results.each do |item| %>
           <li><%= link_to item.title, item, :title => item.abstract %></li>
         <% end %>
       </ul>

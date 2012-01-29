@@ -1,5 +1,9 @@
 CHANGELOG
 
+== Jan 29, 2012
+* Added Keyword field for searching related articles
+* Added word count to Headline and Abstract
+
 == Jan 28, 2012
 * Added link to search for external author
 * Better CSS for tinyMCE text editor

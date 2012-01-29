@@ -217,7 +217,7 @@ class Item < ActiveRecord::Base
   # Find Similar listings based on information only.
   def solr_similar(limit=6)
     # IF no bedrooms or bathrooms
-    @search = Item.solr_search do
+    Item.solr_search do
       fulltext self.keyword_for_solr
       if self.language_id
         with(:language_id, self.language_id)
@@ -226,7 +226,6 @@ class Item < ActiveRecord::Base
       with(:draft, false)
       paginate :page => 1, :per_page => limit
     end
-    @search.results
   end
   
   def self.import_wordpress_xml

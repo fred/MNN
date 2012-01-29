@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe "items/show.html.erb" do
+  include EnableSunspot
   before(:each) do
     @item = assign(:item, stub_model(Item,
       :title => "Title",
@@ -11,6 +12,7 @@ describe "items/show.html.erb" do
       :updated_at => Time.now,
       :published_at => Time.now
     ))
+    Sunspot.commit
   end
 
   it "renders attributes in <p>" do

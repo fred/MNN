@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
   
   # this should give 99% of users
   def is_human?
+    return true if Rails.env.test?
+    
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
     valid="(firefox|chrome|opera|safari|webkit|gecko|msie|windows|blackberry|iphone|ipad|nokia|android|fedora|ubuntu|centos)"
     bot="(bot|spider)"
