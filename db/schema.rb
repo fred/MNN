@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120123061003) do
+ActiveRecord::Schema.define(:version => 20120129071507) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20120123061003) do
     t.datetime "deleted_at"
     t.string   "updated_reason"
     t.integer  "language_id"
+    t.string   "keywords"
   end
 
   add_index "items", ["allow_comments"], :name => "index_items_on_allow_comments"

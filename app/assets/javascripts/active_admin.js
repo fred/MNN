@@ -4,3 +4,4 @@
 //= require tinymce-jquery
 //= require anytimec
 //= require anytimetz
+//= require jquery-counter-min

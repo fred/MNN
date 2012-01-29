@@ -1,36 +1,43 @@
 <%= semantic_form_for [:admin, @item], :html => { :enctype => "multipart/form-data" }  do |f| %>
 
   <%= f.inputs :name => "Required Main Information" do %>
-    <%= f.input :category, 
-                :as => :select, 
-                :label_method => 'title', 
-                :value_method => :id, 
+    <%= f.input :category,
+                :as => :select,
+                :label_method => 'title',
+                :value_method => :id,
                 :label => "Category",
-                :required => true, 
+                :required => true,
                 :hint => "It's required to pick a category"
     %>
-    <%= f.input :language, 
-                :as => :select, 
-                :label_method => 'description', 
-                :value_method => :id, 
+    <%= f.input :language,
+                :as => :select,
+                :label_method => 'description',
+                :value_method => :id,
                 :label => "Language",
-                :required => true, 
+                :required => true,
                 :hint => "Select a language for this article"
     %>
-    <%= f.input :title, 
-                :label => "Main Title", 
-                :required => true, 
-                :hint => "Required, 60-100 characters max" %>
+    <%= f.input :title,
+                :label => "Headline",
+                :required => true,
+                :hint => "Required, ideal 60-80 characters" %>
                 
-    <%= f.input :abstract, 
-                :hint => "Required, Use a Single Paragraph for Abstract, 80-160 characters max", 
-                :required => true, 
-                :input_html => { :rows => 2 } 
+    <%= f.input :abstract,
+                :hint => "Required, use a single paragraph. 80-120 characters for long headline, 120-160 for short headline",
+                :required => true,
+                :input_html => { :rows => 2 }
     %>
-    <%= f.input :body, 
-                :label => "Main Content", 
-                :required => true, 
-                :input_html => { :rows => 60, :cols => 120} %>
+    
+    <%= f.input :body,
+                :label => "Main Content",
+                :required => true,
+                :input_html => { :rows => 60, :cols => 120}
+    %>
+    <%= f.input :keywords,
+                :label => "Keywords",
+                :required => false,
+                :hint => "Keywords related to the article, such as names, locations, events, name and any keyword that are not available in Tags sections. e.g. Obama ACTA SOPA mathaba Ford Monsanto GMO Pepsi gold bank money cocaine drug etc... It will greatly improve discovery of related items. You may also use special keywords to relate other items. It's invisble to users."
+    %>
   <% end %>
   
   <%= f.inputs :name => "Tags" do %>
@@ -173,6 +180,25 @@
         hideInput: false
       }
   );
+
+  $("#item_abstract").counter({
+      count: 'up', 
+      goal: 250
+  });
+  $("#item_title").counter({
+      count: 'up', 
+      goal: 200
+  });
+  
+  // $(document).ready(function(){
+  //   // get current number of characters
+  //   $('#item_abstract_counter').html($('#item_abstract').val().length + ' chars');
+  //   $('#item_abstract').keyup(function() {
+  //     // get new length of characters
+  //     $('#item_abstract_counter').html($(this).val().length + ' chars');
+  //   });
+  // });
+  
 </script>
 
 

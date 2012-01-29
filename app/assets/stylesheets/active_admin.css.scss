@@ -8,7 +8,7 @@
 
 ::-webkit-scrollbar {
   -webkit-appearance: always;
-  width: 7px;
+  width: 8px;
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
@@ -204,4 +204,12 @@ nav.pagination {
 
 table.dashboard .dashboard_section > div {
   padding: 2px 0px 2px 8px;
+}
+
+#item_title_counter,
+#item_abstract_counter {
+  margin-left: 20%;
+  color: #666;
+  font-style: italic;
+  padding: 1px;
 }

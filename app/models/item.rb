@@ -48,12 +48,13 @@ class Item < ActiveRecord::Base
   searchable do
     text :title, :boost => 2.4
     text :abstract, :boost => 1.4
-    text :body
-    text :category_title, :boost => 2.2
+    text :keywords, :boost => 1.4
+    text :category_title, :boost => 2.0
     text :author_name, :boost => 1.2
     text :author_email
     text :article_source
     text :source_url
+    text :body
     integer :id
     integer :category_id, :references => Category
     integer :language_id, :references => Language
@@ -61,7 +62,7 @@ class Item < ActiveRecord::Base
     boolean :featured
     time :updated_at
     time :published_at
-    boost { 3.0 if featured }
+    # boost { 3.0 if featured }
     text :tags do
       tags.map { |tag| tag.title }
     end
@@ -206,14 +207,9 @@ class Item < ActiveRecord::Base
   
   # This builds the solr keyword for search articles
   def keyword_for_solr
-    @str = ""
+    @str = self.keywords.to_s.gsub(","," ")
+    @str += " "
     @str += self.tag_list(" ")
-    # self.title.split(" ").each do |t|
-    #   if t.size > 3
-    #     @str += " "
-    #     @str += t
-    #   end
-    # end
     @str
   end
   
@@ -226,9 +222,6 @@ class Item < ActiveRecord::Base
       if self.language_id
         with(:language_id, self.language_id)
       end
-      # if self.category_id
-      #   with(:category_id, self.category_id)
-      # end
       without(:id, self.id)
       with(:draft, false)
       paginate :page => 1, :per_page => limit
@@ -236,8 +229,6 @@ class Item < ActiveRecord::Base
     @search.results
   end
   
-  
-
   def self.import_wordpress_xml
     require 'nokogiri'
     file = File.join(Rails.root, "config", "wp.xml")
