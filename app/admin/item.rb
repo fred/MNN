@@ -19,8 +19,9 @@ ActiveAdmin.register Item do
     column "Title", :sortable => :title do |item|
       link_to item.title, admin_item_path(item), :title => item.abstract, :class => "featured_#{item.featured}"
     end
+    column :keywords
     column :tags do |item|
-      item.tags.count
+      item.tag_list(", ")
     end
     column :draft, :sortable => :draft do |item|
       bol_to_word(item.draft)
@@ -31,11 +32,11 @@ ActiveAdmin.register Item do
     column :language, :sortable => :language_id do |item|
       item.language.description if item.language
     end
-    column "Updated", :sortable => :updated_at do |item|
-      item.updated_at.to_s(:short)
+    column "Update", :sortable => :updated_at do |item|
+      item.updated_at.localtime.to_s(:short)
     end
-    column "Published", :sortable => :published_at do |item|
-      item.published_at.to_s(:short)
+    column "Live", :sortable => :published_at do |item|
+      item.published_at.localtime.to_s(:short) if item.published_at
     end
     default_actions
   end
