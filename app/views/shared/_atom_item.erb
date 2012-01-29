@@ -9,11 +9,11 @@
       </span>
     <% end %>
     <%= sanitize item.abstract,
-          :tags => %w(table tr td p b i strong ol ul li div span h1 h2 h3 h4 h5),
+          :tags => %w(table tr td p b i u strong ol ul li dl dd div span h1 h2 h3 h4 h5),
           :attributes => %w(id class style) %>
     <br />
     <%= sanitize item.body,
-          :tags => %w(table tr td p b i strong ol ul li div span h1 h2 h3 h4 h5),
+          :tags => %w(table tr td p b i u strong ol ul li dl dd div span h1 h2 h3 h4 h5),
           :attributes => %w(id class style) %>
     <%#= item.body.to_s.html_safe %>
   </div>

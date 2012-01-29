@@ -14,7 +14,7 @@
         <%= link_to "Source", item.source_url %>
       <% end %>
       <% if item.author_name %>
-        by <span class="author"> <%= item.author_name %></span>
+        by <span class="author"><%= link_to item.author_name, search_path(:q => item.author_name) %></span>
       <% end %>
     </span>
     <span class="date">
@@ -37,5 +37,18 @@
         Views: <%= item.item_stat.views_counter %>
       <% end %>
     </div>
+    
+    <% @related = item.solr_similar(4) %>
+    <% if @related && @related.total > 0 %>
+      <section id="related">
+        <h4>Related items</h4>
+        <ul>
+          <% @related.results.each do |item| %>
+            <li><%= link_to item.title, item, :title => item.abstract %></li>
+          <% end %>
+        </ul>
+      </section>
+    <% end %>
+    
   </section>
 </article>
