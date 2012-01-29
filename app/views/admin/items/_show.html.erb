@@ -53,6 +53,22 @@
   </div>
 </div>
 
+
+<% if @related && @related.total > 0 %>
+  <div class="panel">
+    <h3>Related Items</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        <ul>
+          <% @related.results.each do |item| %>
+            <li><%= link_to item.title, admin_item_path(item), :title => item.abstract %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <div class="panel">
   <h3>General Tags</h3>
   <div class="panel_contents">

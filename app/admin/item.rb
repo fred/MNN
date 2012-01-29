@@ -51,6 +51,10 @@ ActiveAdmin.register Item do
       @item.author_email = current_admin_user.email
       @item.user_id = current_admin_user.id
     end
+    def show
+      @item = Item.find(params[:id])
+      @related = @item.solr_similar(10)
+    end
     def edit
       @item = Item.find(params[:id])
       if @item.published_at
