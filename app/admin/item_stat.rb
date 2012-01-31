@@ -1,6 +1,6 @@
 ActiveAdmin.register ItemStat do
   actions :index
-  menu :parent => "Settings", :priority => 95
+  menu :priority => 95
   config.comments = false
   index do
     column :id
