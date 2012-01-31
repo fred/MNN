@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120129071507) do
+ActiveRecord::Schema.define(:version => 20120131105526) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -77,8 +77,10 @@ ActiveRecord::Schema.define(:version => 20120129071507) do
   add_index "comments", ["suspicious"], :name => "index_comments_on_suspicious"
 
   create_table "item_stats", :force => true do |t|
-    t.integer "item_id"
-    t.integer "views_counter"
+    t.integer  "item_id"
+    t.integer  "views_counter"
+    t.datetime "updated_at"
+    t.datetime "created_at"
   end
 
   create_table "items", :force => true do |t|

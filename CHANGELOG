@@ -1,6 +1,10 @@
 CHANGELOG
 
+== Jan 30, 2012
+* Added item_stat to admin interface /admin/item_stats
+
 == Jan 29, 2012
+* Remove Cropping for medium images on article page
 * Added Keyword field for searching related articles
 * Added word count to Headline and Abstract
 
