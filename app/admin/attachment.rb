@@ -1,6 +1,7 @@
 # Images and File
 ActiveAdmin.register Attachment do
-  menu :priority => 22
+  config.sort_order = "id_desc"
+  menu :parent => "Items", :priority => 2
   default_per_page = 80
   index :as => :block do |attachment|
     div :for => attachment, :class => "grid_images" do

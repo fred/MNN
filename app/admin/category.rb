@@ -2,7 +2,7 @@
 ActiveAdmin.register Category do
   config.comments = false
   config.sort_order = "priority_asc"
-  menu :priority => 10
+  menu :parent => "Settings", :priority => 80
   index do
     column :id
     column :title

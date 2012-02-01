@@ -1,6 +1,7 @@
 ActiveAdmin.register ItemStat do
+  config.sort_order = "updated_at_desc"
   actions :index
-  menu :priority => 95
+  menu :parent => "Items", :priority => 3
   config.comments = false
   index do
     column :id
