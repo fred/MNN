@@ -112,6 +112,7 @@ ActiveAdmin.setup do |config|
   # Active Admin resources from here.
   #
   # config.before_filter :do_something_awesome
+  # config.before_filter :current_ability
 
 
   # == Register Stylesheets & Javascripts

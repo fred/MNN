@@ -185,6 +185,7 @@ class ItemsController < ApplicationController
         with(:draft, false)
         facet(:category_id)
         facet(:language_id)
+        facet(:user_id)
         order_by(:published_at,:desc)
         paginate :page => params[:page], :per_page => 20
       end

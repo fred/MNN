@@ -4,11 +4,20 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery
   
-  before_filter :set_time_zone, :set_view_items
+  before_filter :set_time_zone, :set_view_items, :current_ability
   
   comment_destroy_conditions do |comment|
     comment.owner == current_user
   end
+
+  def current_ability
+    @current_ability ||= Ability.new(current_admin_user) if current_admin_user
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to dashboard_admin_path, :alert => exception.message
+  end
+  
   
   # this should give 99% of users
   def is_human?
@@ -62,8 +71,7 @@ class ApplicationController < ActionController::Base
     if current_user && current_user.time_zone
       Rails.logger.info("*** Setting timezone for user to #{current_user.time_zone}")
       Time.zone = current_user.time_zone
-    end
-    if current_admin_user && current_admin_user.time_zone
+    elsif current_admin_user && current_admin_user.time_zone
       Rails.logger.info("*** Setting timezone for user to #{current_admin_user.time_zone}")
       Time.zone = current_admin_user.time_zone
     end

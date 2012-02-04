@@ -1,5 +1,7 @@
 # Roles
 ActiveAdmin.register Role do
+  controller.authorize_resource
+  
   config.comments = false
   menu :parent => "Members", :priority => 50
   filter :title
@@ -9,7 +11,7 @@ ActiveAdmin.register Role do
       f.input :description
     end
     f.inputs "Users" do
-      f.input :users, :as => :select, :label_method => 'title' , :value_method => :id
+      f.input :users, :as => :check_boxes, :label_method => 'title' , :value_method => :id
     end
     f.buttons
   end

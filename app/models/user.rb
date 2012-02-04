@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  # attr_accessible :email, :password, :password_confirmation, :remember_me
+  # attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :skype, :twitter, :diaspora, :jabber, :time_zone, :role_ids
   
   # Relationships
   has_many :items
@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   end
   
   def has_role?(role)
-    self.roles.where(:title => role.to_s.downcase).count > 0
+    self.roles.where(:title => role.to_s).count > 0
   end
   
   def role_titles

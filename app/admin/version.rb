@@ -1,4 +1,5 @@
-ActiveAdmin.register Version, :as => "Revisions" do
+ActiveAdmin.register Version do
+  controller.authorize_resource
   actions :index, :show
   menu :priority => 99
   config.comments = false

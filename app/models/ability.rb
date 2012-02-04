@@ -25,7 +25,7 @@ class Ability
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     
-    user ||= AdminUser.new       
+    user ||= User.new       
     # case user.role      
     # when user.has_role? :admin
     #   can :manage, :all
@@ -33,32 +33,47 @@ class Ability
     #   can :manage, Post   
     #   cannot [:destroy,:edit], Post   
     # end
-       
-    if user
+    
+    # can :manage, :all
+    
+    if user.has_role? :admin
       can :manage, :all
+    end
       
-      if user.has_role? :admin
-        can :manage, :all
-        
-      elsif user.has_role? :publisher
-        can :manage, [Item]
-        
-      elsif user.has_role? :editor
-        can :manage, [Item]
-        cannot [:publish], Item
-        
-      elsif user.has_role? :writer
-        can :manage, [Item]
-        cannot [:publish], Item
-        
-      elsif user.has_role? :reader
-        can :read, :all
-        
-      elsif user.has_role? :user
-        can :read, [Item]
-      end
+    if user.has_role? :moderator
+      can :manage, Comment
     end
     
+    # Editor can manager all Items, Tags and Categories
+    if user.has_role? :editor
+      can :manage, [Item,Tag,Category,Page,Language,Attachment]
+      can :read, [ItemStat,Version]
+    end
+    
+    # Authors can create and edit/delete own articles
+    if user.has_role? :author
+      can :read,    Item, :draft => false
+      can :update,  Item, :user_id => user.id
+      can :destroy, Item, :user_id => user.id
+      can :create,  Item
+      can [:read, :create], Attachment
+      can :read,    [ItemStat,Category,Tag,Language,Version]
+    end
+    
+    if user.has_role? :security
+      can :manage, [Role,User,AdminUser,ItemStat,Language,Version]
+    end
+    
+    if user.has_role? :reader
+      can :read, Item, :draft => false
+      can :read, [Attachment,ItemStat,Category,Tag,Language,Version]
+    end
+    
+    # Readers can manage own items
+    if user.has_role? :basic
+      can :read, [Tag,Category,Attachment,Score,Item,Language,Page,ItemStat,Version]
+    end
+
     # Role.create!(:title => "Admin", :description => "Only For Administration Purposes")
     # Role.create!(:title => "Publisher", :description => "Publish Articles to Main Site")
     # Role.create!(:title => "Destroyer", :description => "Delete Others Articles")

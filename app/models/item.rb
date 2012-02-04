@@ -58,6 +58,7 @@ class Item < ActiveRecord::Base
     integer :id
     integer :category_id, :references => Category
     integer :language_id, :references => Language
+    integer :user_id,     :references => User
     boolean :draft
     boolean :featured
     time :updated_at

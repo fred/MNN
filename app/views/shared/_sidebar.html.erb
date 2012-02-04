@@ -34,7 +34,7 @@
             <ul>
               <% @search.facet(:language_id).rows.each do |facet| %>
                 <% language = Language.find(facet.value) %>
-                <li><%= link_to("#{language.description} (#{facet.count})", params.merge(:language => language.id)) if language %></li>
+                <li><%= link_to("#{language.description} (#{facet.count})", params.merge(:language_id => language.id)) if language %></li>
               <% end %>
             </ul>
           </div>

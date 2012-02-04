@@ -1,24 +1,26 @@
 <div class="row">
   <div class="span8">
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= custom_devise_error_messages! %>
+    
       <fieldset class="withBorder">
         <legend>Sign up</legend>
         <div class="clearfix">
           <%= f.label :email %>
           <div class="input">
-            <%= f.text_field :email, :required => false, :autofocus => true, :type => "email", :class => "xlarge" %>
+            <%= f.text_field :email, :required => true, :autofocus => true, :type => "email", :class => "xlarge" %>
           </div>
         </div>
         <div class="clearfix">
           <%= f.label :password %>
           <div class="input">
-            <%= f.password_field :password, :required => false, :class => "xlarge"  %>
+            <%= f.password_field :password, :required => true, :class => "xlarge"  %>
           </div>
         </div>
         <div class="clearfix">
           <%= f.label :password_confirmation %>
           <div class="input">
-            <%= f.password_field :password_confirmation, :required => false, :class => "xlarge"  %>
+            <%= f.password_field :password_confirmation, :required => true, :class => "xlarge"  %>
           </div>
         </div>
         <div class="actions">

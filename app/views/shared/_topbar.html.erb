@@ -38,9 +38,13 @@
         <li class="dropdown" data-dropdown="dropdown">
           <a href="#" class="dropdown-toggle">Account</a>
           <ul class="dropdown-menu">
-            <% if user_signed_in? %>
-              <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+            <% if current_user %>
+              <li><%= link_to "Profile", edit_user_registration_path %></li>
               <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+            <% elsif current_admin_user %>
+              <li><%= link_to "Admin", admin_dashboard_path %></li>
+              <li><%= link_to "Profile", edit_admin_user_registration_path %></li>
+              <li><%= link_to 'Sign out', destroy_admin_user_session_path, :method => :delete %></li>
             <% else %>
               <li><%= link_to "Sign in", new_session_path(:user) %></li>
               <%- if Devise.mappings[:user].registerable?  %>
@@ -59,6 +63,8 @@
     
       <% if user_signed_in? %>
         <p class="pull-right"><%= link_to current_user.title, edit_user_registration_path %></p>
+      <% elsif admin_user_signed_in? %>
+        <p class="pull-right"><%= link_to current_admin_user.title, edit_admin_user_registration_path %></p>
       <% else %>
         <p class="pull-right"><%= link_to "Sign in", new_session_path(:user) %></p>
       <% end %>

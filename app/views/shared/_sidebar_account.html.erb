@@ -1,6 +1,12 @@
 <div class="sidebar">
   <div class="well">
-    <% if user_signed_in? %>
+    <% if current_admin_user %>
+      <h5>My Account</h5>
+      <ul>
+        <li><%= link_to "Edit Profile", edit_admin_user_registration_path %></li>
+        <li><%= link_to 'Sign out', destroy_admin_user_session_path, :method => :delete %></li>
+      </ul>
+    <% elsif current_user %>
       <h5>My Account</h5>
       <ul>
         <li><%= link_to "Edit Profile", edit_user_registration_path %></li>

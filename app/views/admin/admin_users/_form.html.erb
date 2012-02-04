@@ -1,0 +1,26 @@
+<%= semantic_form_for [:admin, @admin_user], :html => { :enctype => "multipart/form-data" }  do |f| %>
+
+  <%= f.inputs :login => "Login Information" do %>
+    <%= f.input :email, :required => true, :hint => "Required: Valid Email address"%>
+    <%#= f.input :password, :required => false, :hint => "New Password" %>
+    <%#= f.input :password_confirmation, :required => false, :hint => "Confirm New Password" %>
+  <% end %>
+  
+  <%= f.inputs :name => "User Information" do %>
+    <%= f.input :name, :hint => "Recommended: Full Name"%>
+    <%= f.input :address, :hint => "Optional: Address"%>
+    <%= f.input :skype, :hint => "Optional: Skype ID"%>
+    <%= f.input :twitter, :hint => "Optional: Twitter username"%>
+    <%= f.input :diaspora, :hint => "Optional: Diaspora Handle"%>
+    <%= f.input :jabber, :hint => "Optional: Jabber address"%>
+    <%= f.input :time_zone, :hint => "Recommended: Select Time Zone for system dates."%>
+  <% end %>
+  
+  <%= f.inputs :role => "Roles" do %>
+    <div class="medium_box">
+      <%= f.input :roles, :as => :check_boxes, :label_method => 'title' , :value_method => :id %>
+    </div>
+  <% end %>
+  
+  <%= f.buttons :commit %>
+<% end %>

@@ -53,10 +53,10 @@
         <% if flash[:error] %>
           <div class="alert-message error fade in" data-alert="error">
             <a class="close" href="#">×</a>
-            <p><%= error %></p>
+            <p><%= flash[:error] %></p>
           </div>
         <% end %>
-
+        
         <%= yield %>
         <%= render :partial => "/shared/footer" %>
       </div>

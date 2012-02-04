@@ -1,4 +1,6 @@
 ActiveAdmin.register ItemStat do
+  controller.authorize_resource
+  
   config.sort_order = "updated_at_desc"
   actions :index
   menu :parent => "Items", :priority => 3

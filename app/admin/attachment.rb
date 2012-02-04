@@ -1,5 +1,6 @@
 # Images and File
 ActiveAdmin.register Attachment do
+  controller.authorize_resource
   config.sort_order = "id_desc"
   menu :parent => "Items", :priority => 2
   default_per_page = 80

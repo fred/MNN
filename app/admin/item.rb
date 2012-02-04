@@ -1,4 +1,6 @@
 ActiveAdmin.register Item do
+  controller.authorize_resource
+  
   config.sort_order = "id_desc"
   menu :priority => 1
   show do
@@ -44,6 +46,7 @@ ActiveAdmin.register Item do
     default_actions
   end
   form :partial => "form"
+  
   controller do
     def new
       @item = Item.new
