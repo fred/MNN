@@ -1,5 +1,10 @@
 CHANGELOG
 
+== Feb 5, 2012
+* Implemented Roles, 75% completed.
+* Treat Admin Users as users on front end
+* Admin interface bug fixes and improvements
+
 == Jan 30, 2012
 * Added item_stat to admin interface /admin/item_stats
 
