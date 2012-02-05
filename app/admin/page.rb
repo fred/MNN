@@ -18,6 +18,11 @@ ActiveAdmin.register Page do
   end
   
   form :partial => "form"
+  
+  show do
+    render "show"
+  end
+  
   controller do
     def new
       @page = Page.new

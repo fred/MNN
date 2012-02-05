@@ -1,0 +1,91 @@
+<div class="panel">
+  <h3>Page ID</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @page.id %>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Title</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @page.title %>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Link Title</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @page.link_title %>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>URL Slug</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @page.slug %>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Priority</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @page.priority %>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Language</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @page.language.title if @page.language %>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Active</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @page.active %>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Body Content</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @page.body.html_safe %>
+    </div>
+  </div>
+</div>
+
+
+<div class="panel">
+  <h3>Created at</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @page.created_at %>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Updated at</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @page.updated_at %>
+    </div>
+  </div>
+</div>
+

@@ -36,6 +36,7 @@ class Ability
     
     # can :manage, :all
     
+    # Can Manage Everything
     if user.has_role? :admin
       can :manage, :all
     end
@@ -44,13 +45,14 @@ class Ability
       can :manage, Comment
     end
     
-    # Editor can manager all Items, Tags and Categories
+    # Editor can manager all Items, Tags and Categories, 
     if user.has_role? :editor
       can :manage, [Item,Tag,Category,Page,Language,Attachment]
       can :read, [ItemStat,Version]
     end
     
-    # Authors can create and edit/delete own articles
+    # Authors can create, and edit/delete own articles
+    # also read most of other resources.
     if user.has_role? :author
       can :read,    Item, :draft => false
       can :update,  Item, :user_id => user.id
@@ -60,10 +62,13 @@ class Ability
       can :read,    [ItemStat,Category,Tag,Language,Version]
     end
     
+    # Security Role
     if user.has_role? :security
       can :manage, [Role,User,AdminUser,ItemStat,Language,Version]
     end
     
+    # A Reader can read all items that are not draft
+    # A Reader can read all other records
     if user.has_role? :reader
       can :read, Item, :draft => false
       can :read, [Attachment,ItemStat,Category,Tag,Language,Version]
