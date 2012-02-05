@@ -19,9 +19,10 @@
   
 <% end %>
 
+
 <article id="<%= @item.id %>">
   <h1><%= @item.title %></h1>
-  
+
   <span class="source_url">
     <% if @item.source_url %>
       <%= link_to "Source", @item.source_url %>
@@ -30,7 +31,7 @@
       by <span class="author"> <%= link_to @item.author_name, search_path(:q => @item.author_name) %></span>
     <% end %>
   </span>
-  
+
   <section>
     <% if @item.has_image?%>
       <%= image_tag(@item.attachments.first.image.medium, :class => "show_item_image") %>
@@ -111,13 +112,13 @@
       <%= render :partial => "/shared/gplus" %>
       <%#= render :partial => "/shared/twitter" %>
     </div>
-    
+  
     <div class="page_views">
       Views: <%= @item_stat.views_counter if @item_stat %>
     </div>
-    
-  </footer>
   
+  </footer>
+
   <% if @related && @related.total > 0 %>
     <section id="related">
       <h4>Related items</h4>
@@ -129,6 +130,7 @@
     </section>
   <% end %>
 </article>
+
 
 <!-- <section id="item_<%#= @item.id %>_comments">
   <%#= render_comments @item %>

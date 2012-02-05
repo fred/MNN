@@ -48,6 +48,7 @@ ActiveAdmin.register Item do
   form :partial => "form"
   
   controller do
+    # cache_sweeper :item_sweeper
     def new
       @item = Item.new
       @now = Time.zone.now

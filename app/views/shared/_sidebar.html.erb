@@ -43,6 +43,7 @@
     </div>
     
     <div class="sidebar_secions">
+      
       <h4>Sections</h4>
       <ul>
         <% Category.order("title ASC").all.each do |category| %>
@@ -56,6 +57,15 @@
           <li><%= link_to tag.title, tag_path(tag) %></li>
         <% end %>
       </ul>
+      
+      <h4>Sections</h4>
+      <ul>
+        <% Page.order("priority ASC").all.each do |page| %>
+          <li><%= link_to page.title, page %></li>
+        <% end %>
+      </ul>
+      
     </div>
+    
   </div>
 </div>

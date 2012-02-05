@@ -86,3 +86,4 @@ capybara-*html
 
 unicorn.rb
 unicorn.dev.rb
+config/heroku.conf

@@ -31,7 +31,9 @@
 
     <div class="container-fluid">
       
-      <%= render :partial => "/shared/sidebar" %>
+      <%# cache("sidebar") do %>
+        <%= render :partial => "/shared/sidebar" %>
+      <%# end %>
       
       <div class="content">
         <% if @show_breadcrumb %>
