@@ -4,7 +4,7 @@ class PagesController < InheritedResources::Base
   
   def show
     @page = Page.find(params[:id])
-    headers['Cache-Control'] = 'public, max-age=600' # 10 minutes cache
+    headers['Cache-Control'] = 'private, max-age=600' # 10 minutes cache
     headers['Last-Modified'] = @page.updated_at.httpdate if @page
   end
   
