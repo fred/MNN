@@ -1,5 +1,4 @@
 FactoryGirl.define do
-  
   factory :category, :class => "category" do
     title 'Category'
     description "Category"
@@ -12,5 +11,4 @@ FactoryGirl.define do
     title 'Category 2'
     description "Category 2"
   end
-
 end

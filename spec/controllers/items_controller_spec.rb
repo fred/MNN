@@ -8,6 +8,14 @@ describe ItemsController do
     @category = @item.category
   end
   
+  describe "GET feed" do
+    it "show show feed page" do
+      get :feed
+      response.should be_success
+    end
+  end
+  
+  
   describe "GET index" do
     it "assigns all items as @items" do
       # item = Item.create! valid_item_attributes

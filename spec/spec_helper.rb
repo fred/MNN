@@ -4,6 +4,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 # Sunspot.session = Sunspot::Rails::StubSessionProxy.new(Sunspot.session)
 
+include ActionDispatch::TestProcess
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
@@ -52,6 +54,17 @@ module ItemSpecHelper
       :draft => false,
       :featured => false,
       :user_id => 1
+    }
+  end
+end
+
+module UserSpecHelper
+  def valid_user_attributes
+    { 
+      :email => "welcome@gmail.com",
+      :name => 'My Name',
+      :password => 'welcome',
+      :password_confirmation => 'welcome'
     }
   end
 end

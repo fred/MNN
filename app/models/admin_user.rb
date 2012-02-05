@@ -12,6 +12,6 @@ class AdminUser < User
          :recoverable, :rememberable, :trackable, :validatable
   
   # Versioning System
-  has_paper_trail
+  # has_paper_trail
   
 end

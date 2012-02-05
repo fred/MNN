@@ -15,7 +15,7 @@ gem 'pg'
 
 ### Roles and Authentication
 gem 'cancan' 
-gem 'devise' # Devise must be required before RailsAdmin
+gem 'devise', "~> 2.0" # Devise must be required before RailsAdmin
 
 ### Versioning
 gem 'paper_trail'
@@ -121,8 +121,8 @@ end
 
 
 ### Active Admin, loaded at end. 
-gem "meta_search", '1.1.1'
-gem 'activeadmin', :git => "git://github.com/gregbell/active_admin.git"
+gem "meta_search", "~> 1.1.3"
+gem 'activeadmin', "~> 0.4.0"
 
 gem 'tinymce-rails'
 
@@ -139,8 +139,8 @@ gem "exception_notification", :require => 'exception_notifier',
 ## Searching ##
 ###############
 
-gem 'sunspot', "2.0.0.pre.111215" #:git => "git://github.com/sunspot/sunspot.git"
-gem 'sunspot_rails', "2.0.0.pre.111215" #:git => "git://github.com/sunspot/sunspot.git"
+gem 'sunspot', "2.0.0.pre.111215" # :git => "git://github.com/sunspot/sunspot.git"
+gem 'sunspot_rails', "2.0.0.pre.111215" # :git => "git://github.com/sunspot/sunspot.git"
 
 
 ### OpenID 
