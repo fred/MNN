@@ -208,10 +208,11 @@ class Item < ActiveRecord::Base
   
   # This builds the solr keyword for search articles
   def keyword_for_solr
-    @str = self.keywords.to_s.gsub(","," ")
-    @str += " "
-    @str += self.tag_list(" ")
-    @str
+    # @str = self.keywords.to_s.gsub(","," ")
+    # @str += " "
+    # @str += self.tag_list(" ")
+    # @str
+    self.keywords.to_s.gsub(","," ")
   end
   
   

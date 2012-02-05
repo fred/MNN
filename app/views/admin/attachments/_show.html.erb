@@ -6,7 +6,7 @@
       <p>Description: <b><%= @attachment.description %></b></p>
 
       <% if @attachment.attachable && @attachment.attachable.user %>
-        <p>User: <b><%= link_to(@attachment.attachable.user.email, admin_user_path(@attachment.attachable.user)) %></b></p>
+        <p>Uploaded by: <b><%= link_to(@attachment.attachable.user.email, admin_user_path(@attachment.attachable.user)) %></b></p>
       <% end %>
       <p>Created at: <b><%= @attachment.created_at.to_s(:long) %></b></p>
     </div>
