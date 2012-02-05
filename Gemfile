@@ -124,7 +124,7 @@ end
 gem "meta_search", "~> 1.1.3"
 gem 'activeadmin', "~> 0.4.0"
 
-gem 'tinymce-rails'
+gem 'tinymce-rails', "3.4.7.0.1"
 
 # Twitter Bootstrap for Rails 3.1 Asset Pipeline
 gem 'twitter-bootstrap-rails', "1.4.3"
