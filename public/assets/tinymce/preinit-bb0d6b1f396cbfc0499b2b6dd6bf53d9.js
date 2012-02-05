@@ -1,1 +1,0 @@
-window.tinyMCEPreInit=window.tinyMCEPreInit||{base:"https://d12nekpa7as6ci.cloudfront.net/assets/tinymce",query:"3.4.8",suffix:""};
