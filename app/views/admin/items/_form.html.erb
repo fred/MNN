@@ -31,7 +31,8 @@
     <%= f.input :body,
                 :label => "Main Content",
                 :required => true,
-                :input_html => { :rows => 60, :cols => 120}
+                :input_html => { :rows => 60, :cols => 120},
+                :hint => "If you want a new paragraph, simply hit 'RETURN'. If you don’t want a new paragraph and just want a line break, hit 'SHIFT RETURN'. - If you are copying and pasting from a website, it is recommended to paste first to Notepad.exe/TextEdit.app then copy again to paste here."
     %>
     <%= f.input :keywords,
                 :label => "Keywords",
@@ -153,9 +154,7 @@
       theme_advanced_toolbar_align : "left",
       theme_advanced_statusbar_location : "bottom",
       theme_advanced_resizing : true,
-      
       content_css : "<%= asset_path 'tinymce.css' %>",
-      
       // Replace values for the template plugin
       template_replace_values : {
         username : "<%= current_admin_user.email %>",
