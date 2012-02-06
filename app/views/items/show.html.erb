@@ -28,7 +28,7 @@
       <%= link_to "Source", @item.source_url %>
     <% end %>
     <% if @item.author_name %>
-      by <span class="author"> <%= link_to @item.author_name, search_path(:q => @item.author_name) %></span>
+      - by <span class="author"> <%= link_to @item.author_name, search_path(:q => @item.author_name) %></span>
     <% end %>
   </span>
 
