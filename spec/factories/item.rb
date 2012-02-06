@@ -10,6 +10,7 @@ FactoryGirl.define do
     featured false
     draft false
     published_at Time.now-600
+    source_url "http://hello.world"
   end
   
   factory :item2, :class => 'Item' do

@@ -1,23 +1,16 @@
 require 'spec_helper'
 
-describe "items/index.html.erb" do
+describe "tags/show.html.erb" do
   before(:each) do
+    @tag = Factory(:tag)
     @item = Factory(:item)
-    @item2 = Factory(:item2)
-    @items = Item.published.not_draft.order("published_at DESC").page(params[:page], :per_page => 20)
+    @item.tags << @tag
+    @items = @tag.items.page(1)
+    @tags = Tag.all
+    assign(:tags, @tags)
     assign(:items, @items)
     render
   end
-
-  it "renders a list of items" do
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "article>header>h3", :text => "Some News".to_s, :count => 2
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "article>section", :text => "Some Abstract".to_s, :count => 2
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    # assert_select "article>section", :text => "MyText".to_s, :count => 2
-  end
-  
   
   it "renders a list of items with headline as link" do
     assert_select "article#item_#{@item.id} > header > h3 > a", :text => @item.title.to_s, :count => 1
@@ -35,5 +28,10 @@ describe "items/index.html.erb" do
   it "renders a list of items with pubdate is a date field" do
     assert_select "article#item_#{@item.id} > section > span.date", :pubdate => time_tag(@item.published_at, :pubdate => true), :count => 1
   end
+  
+  it "renders a list of items with tags" do
+    assert_select "article#item_#{@item.id} > section > ul.tags > li > a", :text => @tag.title.to_s, :count => 1
+  end
+  
   
 end
