@@ -15,7 +15,6 @@ ActiveAdmin.register Attachment do
         )
       end
       h4 auto_link(attachment.title)
-      h4 auto_link(attachment.description)
       link_to(
         "Delete",
         admin_attachment_path(attachment),
@@ -28,4 +27,5 @@ ActiveAdmin.register Attachment do
   show do
     render "show"
   end
+  form :partial => "form"
 end

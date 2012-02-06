@@ -20,10 +20,10 @@
     <%= f.input :title,
                 :label => "Headline",
                 :required => true,
-                :hint => "Required, ideal 60-80 characters" %>
+                :hint => "Required, ideal 60 characters. Max 100." %>
                 
     <%= f.input :abstract,
-                :hint => "Required, use a single paragraph. 80-120 characters for long headline, 120-160 for short headline",
+                :hint => "Required, ideal 80 characters. Max 120.",
                 :required => true,
                 :input_html => { :rows => 2 }
     %>
@@ -103,7 +103,7 @@
   <%= f.inputs :name => "Main Image", :multipart => true do %>
     <%= f.semantic_fields_for :attachments do |attachment| %>
       <% if attachment.object.new_record? %>
-        <%= attachment.input :description, :as => "string", :label => "Image Caption" %>
+        <%= attachment.input :title, :as => "string", :label => "Image Caption" %>
         <%= attachment.input :image, :as => "file", :label => "Choose File to upload" %>
       <% else %>
         <h3>Current Images: </h3>
@@ -182,12 +182,17 @@
   );
 
   $("#item_abstract").counter({
-      count: 'up', 
-      goal: 250
+      count: 'up',
+      goal: 120
   });
   $("#item_title").counter({
-      count: 'up', 
-      goal: 200
+      count: 'up',
+      goal: 100
+  });
+  
+  $("#item_attachments_attributes_0_title").counter({
+      count: 'up',
+      goal: 36
   });
   
   // $(document).ready(function(){

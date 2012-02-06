@@ -33,8 +33,15 @@
   </span>
 
   <section>
-    <% if @item.has_image?%>
-      <%= image_tag(@item.attachments.first.image.medium, :class => "show_item_image") %>
+    <% if @item.has_image? %>
+      <figure>
+        <%= image_tag(@item.attachments.first.image.medium, :class => "show_item_image") %>
+        <% if @item.attachments.first.title %>
+          <figcaption>
+            <%= @item.attachments.first.title.to_s.truncate(32) %>
+          </figcaption>
+        <% end %>
+      </figure>
     <% end %>
     <p><i><%= @item.highlight %></i></p>
     <%= @item.body.html_safe %>

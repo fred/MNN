@@ -58,7 +58,7 @@
         <% end %>
       </ul>
       
-      <h4>Sections</h4>
+      <h4>Useful Pages</h4>
       <ul>
         <% Page.order("priority ASC").all.each do |page| %>
           <li><%= link_to page.title, page %></li>

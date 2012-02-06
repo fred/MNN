@@ -2,9 +2,7 @@
   <h3>Image Details</h3>
   <div class="panel_contents">
     <div class="attributes_table image">
-      <p>Title: <b><%= @attachment.title %></b></p>
-      <p>Description: <b><%= @attachment.description %></b></p>
-
+      <p>Image Caption: <b><%= @attachment.title %></b></p>
       <% if @attachment.attachable && @attachment.attachable.user %>
         <p>Uploaded by: <b><%= link_to(@attachment.attachable.user.email, admin_user_path(@attachment.attachable.user)) %></b></p>
       <% end %>

@@ -2,6 +2,10 @@ body {
   padding-top: 60px;
   background: #EEE url(<%= asset_path "bg_texture.jpg" %>) repeat-x scroll 0px 0px;
 }
+figure {
+  margin: 0;
+  padding: 0;
+}
 .pull-right {
   color: #777;
 }
@@ -155,7 +159,7 @@ article h4 {
   font-size: 16px;
 }
 article span.date {
-  color: #666;
+  color: #555;
   font-style: italic;
   font-size: 13px;
   padding: 2px 4px 2px 0;
@@ -180,7 +184,7 @@ article header h3 a:hover {
 article header h1 a,
 article header h2 a,
 article header h3 a {
-  color: #666;
+  color: #555;
   text-decoration: none;
 }
 
@@ -205,7 +209,7 @@ section ul.tags li,
 article footer ul.tags li {
   display: inline;
   padding: 0 5px;
-  border-right: 1px solid #888;
+  border-right: 1px solid #777;
 }
 footer ul.footer_menu li:last-child,
 section ul.tags li:last-child,
@@ -233,9 +237,9 @@ article footer div.share a {
   box-shadow: 0px 0px 4px #ddd;
   padding: 3px 5px 5px 1px;
   margin-bottom: 20px;
-  height: 420px;
+  height: 432px;
   overflow: hidden;
-  color: #666;
+  color: #444;
   background-color: #FFF;
   border: 1px solid #DDDDDD;
   -webkit-border-radius: 4px;
@@ -271,7 +275,7 @@ article footer div.share a {
 }
 .categories .box ul li.list_item span.abstract {
   display: block;
-  color: #666;
+  color: #444;
 }
 
 .categories .box ul li.list_item img.list_item_image {
@@ -306,7 +310,7 @@ article footer div.share a {
   text-align: left;
   font-size: 13px;
   margin-bottom: 2px;
-  color: #666;
+  color: #444;
 }
 #main_highlights.box ul li.featured_item span.title {
   float: left;
@@ -335,8 +339,8 @@ article footer div.share a {
 #highlights.box ul li.list_item img {
   box-shadow: 0px 0px 6px #ccc;
   border: 1px solid #ddd;
-  padding: 1px;  
-  margin-bottom: 12px;
+  padding: 1px;
+  margin-bottom: 20px;
 }
 
 .categories .box h2 {
@@ -347,14 +351,14 @@ article footer div.share a {
 }
 
 #main_highlights.box {
-  height: 420px;
+  height: 422px;
 }
 #highlights.box {
-  height: 420px;
+  height: 422px;
 }
 #highlights.box ul li.list_item {
-  margin-top: 2px;
-  margin-bottom: 2px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .content article img.show_item_image {
@@ -387,7 +391,7 @@ blockquote {
 span.more a {
   float: left;
   margin-left: 10px;
-  color: #888;
+  color: #777;
   font-style: italic;
   font-size: 0.9em;
 }
@@ -451,4 +455,45 @@ ul.feed_list li {
 
 .field_with_errors input {
   border-color: pink;
+}
+
+.hidden {
+  display: none;
+}
+
+figure {
+  float: left;
+}
+figure figcaption {
+  float: left;
+  display: block;
+  clear: both;
+  margin: 0px 2px 10px 0px;
+  color: #777;
+  min-width: 160px;
+  max-width: 220px;
+  border-bottom: 1px solid #DDD;
+}
+
+span.noroll {
+  text-overflow: ellipsis;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden; 
+}
+
+#easyTooltip{
+  padding:5px;
+  background: #f1f1f1;
+  border-radius: 6px;
+  border: 4px solid #AAA;
+  max-width: 360px;
+  font-size: 14px;
+}
+
+img.tooltip_image {
+  float: left;
+  margin-right: 5px;
+  border: 1px solid #fff;
+  padding: 1px;
 }

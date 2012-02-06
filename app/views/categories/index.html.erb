@@ -15,8 +15,8 @@
                 :title => item.abstract
               )
           %>
-          <span class="title"><%= link_to item.title.to_s.truncate(120), item, :title => item.abstract %></span>
-          <span class="abstract"><%= item.abstract.to_s.truncate(145) %></span>
+          <span class="title"><%= link_to item.title.to_s.truncate(100), item, :title => item.abstract %></span>
+          <span class="abstract"><%= item.abstract.to_s.truncate(120) %></span>
         <% end %>
       </li>
     </ul>
@@ -44,7 +44,7 @@
     <div class="span6 box" id="<%= category.slug %>">
       <h1><%= link_to category.title, category %></h1>
       <ul>
-        <% category.top_items(8).each_with_index do |item,index|%>
+        <% category.top_items(13).each_with_index do |item,index|%>
           <li class="list_item" id="item_<%=item.id%>">
             <% if index==0 && !item.attachments.empty? %>
               <%= link_to(
@@ -53,15 +53,32 @@
                     :title => item.abstract
                   )
               %>
-              <%= link_to item.title.to_s.truncate(100), item, :title => item.abstract %>
+              <%= link_to item.title.to_s.truncate(100), item, 
+                      :title => "<strong>#{item.title}</strong> <br/> #{item.abstract}"
+              %>
               <span class="abstract"><%= item.abstract.to_s.truncate(100) %></span>
             <% else %>
-              <%= link_to item.title.to_s.truncate(160), item, :title => item.abstract %>
+              <span class="noroll">
+                <%= link_to item.title.to_s.truncate(100), item, 
+                      :title => item_title(item)
+                %>
+              </span>
             <% end %>
           </li>
         <% end %>
       </ul>
-      <span class="more"><%= link_to "more...", category %></span>
+      <span class="more"><%= link_to "more...", category, :title => "Read more articles in this category" %></span>
     </div>
   <% end %>
 </div>
+
+<%= content_for :scripts do %>
+  <script>
+    $(document).ready(function(){
+      $("a").easyTooltip({
+        yOffset: 0,
+        xOffset: 40
+      });
+    });
+  </script>
+<% end %>

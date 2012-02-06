@@ -1,5 +1,12 @@
 CHANGELOG
 
+== Feb 6, 2012
+* Added Tooltip for items on main page boxes.
+* wrap text and make items fill the boxes.
+* darker font
+* added image caption and using <figure> tag for main item image
+* Main item image now shows on Safari Reader
+
 == Feb 5, 2012
 * Implemented Roles, 75% completed.
 * Treat Admin Users as users on front end

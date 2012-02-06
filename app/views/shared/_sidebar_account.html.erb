@@ -44,13 +44,12 @@
           <% end -%>
         <% end -%>
       </ul>
-      <h5>Help</h5>
-      <ul>
-        <li><%= link_to "Help", "/pages/help" %></li>
-        <li><%= link_to "Contact us", "/messages/new" %></li>
-        <li><%= link_to "Privacy Policy", "/pages/policy" %></li>
-      </ul>
-
     <% end %>
+    <h5>Useful Pages</h5>
+    <ul>
+      <% Page.order("priority ASC").all.each do |page| %>
+        <li><%= link_to page.title, page %></li>
+      <% end %>
+    </ul>
   </div>
 </div>

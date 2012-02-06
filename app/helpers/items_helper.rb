@@ -1,5 +1,14 @@
 module ItemsHelper
   
+  def item_title(item)
+    str = ""
+    str += "#{image_tag(item.attachments.first.image.thumb, :class => "tooltip_image")}" if item.has_image?
+    str += "<strong>#{item.title}</strong>"
+    str += "<br/>"
+    str += "#{item.abstract}"
+    str
+  end
+  
   def twitter_link
     "https://twitter.com/#/worldmathaba"
   end

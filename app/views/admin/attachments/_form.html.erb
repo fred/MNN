@@ -1,0 +1,21 @@
+<%= semantic_form_for [:admin, @attachment], :html => { :enctype => "multipart/form-data" }  do |f| %>
+
+  <%= f.inputs :name => "Required Main Information" do %>
+    <%= f.input :title, :label => "Image Caption" %>
+    <%= f.input :image, :as => "file", 
+                        :label => "Choose Image to upload", 
+                        :hint => "New Image will overwrite curret image (old image will be deleted)" %>
+  <% end %>
+  
+  <%= f.buttons :commit %>
+<% end %>
+
+
+
+<script type="text/javascript">
+  $("#attachment_title").counter({
+      count: 'up',
+      goal: 36
+  });
+</script>
+
