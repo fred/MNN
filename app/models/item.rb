@@ -46,11 +46,11 @@ class Item < ActiveRecord::Base
   ####  SOLR  ####
   ################
   searchable do
-    text :title, :boost => 2.4
-    text :abstract, :boost => 1.4
-    text :keywords, :boost => 1.4
-    text :category_title, :boost => 2.0
-    text :author_name, :boost => 1.2
+    text :title, :boost => 2.2
+    text :abstract, :boost => 1.6
+    text :keywords, :boost => 5.0
+    text :category_title, :boost => 1.8
+    text :author_name, :boost => 1.4
     text :author_email
     text :article_source
     text :source_url

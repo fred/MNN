@@ -176,7 +176,13 @@ class ItemsController < ApplicationController
     if params[:q] && !params[:q].to_s.empty?
       term = params[:q].downcase
       @search = Item.solr_search do
-        keywords term
+        fulltext term do
+          phrase_fields :title => 1.8
+          phrase_fields :abstract => 1.6
+          phrase_fields :tags => 1.5
+          phrase_fields :body => 1.4
+          phrase_slop   1
+        end
         if category
           with(:category_id, category.id)
         end
