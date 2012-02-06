@@ -9,18 +9,18 @@
       <li><%= link_to "Feeds", feed_path %></li>
     
     <% if current_admin_user %>
-      <li><%= link_to "Edit Profile", edit_admin_user_registration_path %></li>
-      <li><%= link_to 'Sign out', destroy_admin_user_session_path, :method => :delete %></li>
+      <li><%= link_to "Edit Profile", edit_admin_user_registration_url(:protocol => 'https') %></li>
+      <li><%= link_to 'Sign out', destroy_admin_user_session_url(:protocol => 'https'), :method => :delete %></li>
     <% elsif current_user %>
-      <li><%= link_to "Edit Profile", edit_admin_user_registration_path %></li>
-      <li><%= link_to 'Sign out', destroy_admin_user_session_path, :method => :delete %></li>
+      <li><%= link_to "Edit Profile", edit_admin_user_registration_url(:protocol => 'https') %></li>
+      <li><%= link_to 'Sign out', destroy_admin_user_session_url(:protocol => 'https'), :method => :delete %></li>
     <% else %>
-      <li><%= link_to "Sign in", new_session_path(:user) %></li>
+      <li><%= link_to "Sign in", new_session_url(:user, :protocol => 'https') %></li>
       <%- if Devise.mappings[:user].registerable?  %>
-        <li><%= link_to "Sign up", new_registration_path(:user) %></li>
+        <li><%= link_to "Sign up", new_registration_url(:user, :protocol => 'https') %></li>
       <% end -%>
       <%- if Devise.mappings[:user].recoverable? && controller_name != 'passwords' %>
-        <li><%= link_to "Forgot your password?", new_password_path(:user) %></li>
+        <li><%= link_to "Forgot your password?", new_password_url(:user, :protocol => 'https') %></li>
       <% end -%>
     <% end %>
   </ul>

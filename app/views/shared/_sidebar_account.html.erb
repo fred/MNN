@@ -3,39 +3,39 @@
     <% if current_admin_user %>
       <h5>My Account</h5>
       <ul>
-        <li><%= link_to "Edit Profile", edit_admin_user_registration_path %></li>
-        <li><%= link_to 'Sign out', destroy_admin_user_session_path, :method => :delete %></li>
+        <li><%= link_to "Edit Profile", edit_admin_user_registration_url(:protocol => 'https') %></li>
+        <li><%= link_to 'Sign out', destroy_admin_user_session_url(:protocol => 'https'), :method => :delete %></li>
       </ul>
     <% elsif current_user %>
       <h5>My Account</h5>
       <ul>
-        <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-        <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+        <li><%= link_to "Edit Profile", edit_user_registration_url(:protocol => 'https') %></li>
+        <li><%= link_to 'Sign out', destroy_user_session_url(:protocol => 'https'), :method => :delete %></li>
       </ul>
     <% else %>
       <h5>Account</h5>
       <ul>
         <%- if controller_name != 'sessions' %>
-          <li><%= link_to "Sign in", new_session_path(resource_name) %></li>
+          <li><%= link_to "Sign in", new_session_url(resource_name, :protocol => "https") %></li>
         <% end -%>
 
         <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-          <li><%= link_to "Sign up", new_registration_path(resource_name) %></li>
+          <li><%= link_to "Sign up", new_registration_url(resource_name, :protocol => "https") %></li>
         <% end -%>
       </ul>
       
       <h5>Account Recovery</h5>
       <ul>
         <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-          <li><%= link_to "Forgot your password?", new_password_path(resource_name) %></li>
+          <li><%= link_to "Forgot your password?", new_password_url(resource_name, :protocol => "https") %></li>
         <% end -%>
 
         <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-          <li><%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %></li>
+          <li><%= link_to "Didn't receive confirmation instructions?", new_confirmation_url(resource_name, :protocol => "https") %></li>
         <% end -%>
 
         <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-          <li><%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %></li>
+          <li><%= link_to "Didn't receive unlock instructions?", new_unlock_url(resource_name, :protocol => 'https') %></li>
         <% end -%>
 
         <%- if devise_mapping.omniauthable? %>

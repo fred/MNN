@@ -66,6 +66,6 @@ Publication::Application.configure do
   config.action_mailer.default_url_options = { :host => 'mnn.herokuapp.com' }
   
   
-  config.middleware.use Rack::SslEnforcer, :hsts => true
+  # config.middleware.use Rack::SslEnforcer, :hsts => true
   
 end
