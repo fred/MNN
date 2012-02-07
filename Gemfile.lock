@@ -1,35 +1,27 @@
 GIT
   remote: git://github.com/smartinez87/exception_notification.git
-  revision: d46f833d863ebdcb38a8012140218fce05d4c384
+  revision: 63d9d483fab05340dd5392269c3a6f5b08721267
   specs:
     exception_notification (2.5.2)
       actionmailer (>= 3.0.4)
-
-GIT
-  remote: git://github.com/svenfuchs/i18n-active_record.git
-  revision: b631b05a96d578b6c01c4751cc1a0ba8a84406af
-  specs:
-    i18n-active_record (0.0.2)
-      i18n (>= 0.5.0)
 
 GEM
   remote: http://rubygems.org/
   specs:
     ZenTest (4.5.0)
-    actionmailer (3.1.3)
-      actionpack (= 3.1.3)
-      mail (~> 2.3.0)
-    actionpack (3.1.3)
-      activemodel (= 3.1.3)
-      activesupport (= 3.1.3)
+    actionmailer (3.2.1)
+      actionpack (= 3.2.1)
+      mail (~> 2.4.0)
+    actionpack (3.2.1)
+      activemodel (= 3.2.1)
+      activesupport (= 3.2.1)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
-      i18n (~> 0.6)
-      rack (~> 1.3.5)
+      journey (~> 1.0.1)
+      rack (~> 1.4.0)
       rack-cache (~> 1.1)
-      rack-mount (~> 0.8.2)
       rack-test (~> 0.6.1)
-      sprockets (~> 2.0.3)
+      sprockets (~> 2.1.2)
     activeadmin (0.4.0)
       bourbon (>= 1.0.0)
       devise (>= 1.1.2)
@@ -41,23 +33,23 @@ GEM
       meta_search (>= 0.9.2)
       rails (>= 3.0.0)
       sass (>= 3.1.0)
-    activemodel (3.1.3)
-      activesupport (= 3.1.3)
+    activemodel (3.2.1)
+      activesupport (= 3.2.1)
       builder (~> 3.0.0)
-      i18n (~> 0.6)
-    activerecord (3.1.3)
-      activemodel (= 3.1.3)
-      activesupport (= 3.1.3)
-      arel (~> 2.2.1)
+    activerecord (3.2.1)
+      activemodel (= 3.2.1)
+      activesupport (= 3.2.1)
+      arel (~> 3.0.0)
       tzinfo (~> 0.3.29)
-    activeresource (3.1.3)
-      activemodel (= 3.1.3)
-      activesupport (= 3.1.3)
-    activesupport (3.1.3)
+    activeresource (3.2.1)
+      activemodel (= 3.2.1)
+      activesupport (= 3.2.1)
+    activesupport (3.2.1)
+      i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.2.6)
     ansi (1.4.2)
-    arel (2.2.1)
+    arel (3.0.0)
     asset_sync (0.2.9)
       activemodel
       fog
@@ -79,11 +71,11 @@ GEM
       xpath (~> 0.1.4)
     carrierwave (0.5.8)
       activesupport (~> 3.0)
-    childprocess (0.3.0)
+    childprocess (0.3.1)
       ffi (~> 1.0.6)
-    coffee-rails (3.1.1)
+    coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
-      railties (~> 3.1.0)
+      railties (~> 3.2.0)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -100,7 +92,7 @@ GEM
       capybara (>= 1.1.2)
       cucumber (>= 1.1.3)
       nokogiri (>= 1.5.0)
-    daemons (1.1.6)
+    daemons (1.1.7)
     database_cleaner (0.7.1)
     devise (2.0.0)
       bcrypt-ruby (~> 3.0)
@@ -154,8 +146,9 @@ GEM
     inherited_resources (1.2.2)
       has_scope (~> 0.5.0)
       responders (~> 0.6.0)
-    jquery-rails (1.0.19)
-      railties (~> 3.0)
+    journey (1.0.1)
+    jquery-rails (2.0.0)
+      railties (>= 3.2.0.beta, < 5.0)
       thor (~> 0.14)
     json (1.6.5)
     kaminari (0.13.0)
@@ -171,7 +164,7 @@ GEM
       actionpack (>= 3.1)
       less (~> 2.0.7)
     libv8 (3.3.10.4)
-    mail (2.3.0)
+    mail (2.4.1)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -181,8 +174,8 @@ GEM
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
     mime-types (1.17.2)
-    mini_magick (3.3)
-      subexec (~> 0.1.0)
+    mini_magick (3.4)
+      subexec (~> 0.2.1)
     multi_json (1.0.4)
     multipart-post (1.1.4)
     net-scp (1.0.4)
@@ -233,11 +226,9 @@ GEM
     progress_bar (0.4.0)
       highline (~> 1.6.1)
       options (~> 2.3.0)
-    rack (1.3.5)
+    rack (1.4.1)
     rack-cache (1.1)
       rack (>= 0.4)
-    rack-mount (0.8.3)
-      rack (>= 1.0.0)
     rack-openid (1.3.1)
       rack (>= 1.1.0)
       ruby-openid (>= 2.1.8)
@@ -248,19 +239,19 @@ GEM
     rack-ssl-enforcer (0.2.4)
     rack-test (0.6.1)
       rack (>= 1.0)
-    rails (3.1.3)
-      actionmailer (= 3.1.3)
-      actionpack (= 3.1.3)
-      activerecord (= 3.1.3)
-      activeresource (= 3.1.3)
-      activesupport (= 3.1.3)
+    rails (3.2.1)
+      actionmailer (= 3.2.1)
+      actionpack (= 3.2.1)
+      activerecord (= 3.2.1)
+      activeresource (= 3.2.1)
+      activesupport (= 3.2.1)
       bundler (~> 1.0)
-      railties (= 3.1.3)
+      railties (= 3.2.1)
     rails-settings-cached (0.1.2)
       rails (>= 3.0.0)
-    railties (3.1.3)
-      actionpack (= 3.1.3)
-      activesupport (= 3.1.3)
+    railties (3.2.1)
+      actionpack (= 3.2.1)
+      activesupport (= 3.2.1)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
@@ -296,22 +287,21 @@ GEM
     ruby-hmac (0.4.0)
     ruby-openid (2.1.8)
     rubyzip (0.9.5)
-    sass (3.1.13)
-    sass-rails (3.1.5)
-      actionpack (~> 3.1.0)
-      railties (~> 3.1.0)
-      sass (~> 3.1.10)
-      tilt (~> 1.3.2)
+    sass (3.1.14)
+    sass-rails (3.2.4)
+      railties (~> 3.2.0)
+      sass (>= 3.1.10)
+      tilt (~> 1.3)
     selenium-webdriver (2.18.0)
       childprocess (>= 0.2.5)
       ffi (~> 1.0.9)
       multi_json (~> 1.0.4)
       rubyzip
-    sinatra (1.3.1)
-      rack (~> 1.3, >= 1.3.4)
-      rack-protection (~> 1.1, >= 1.1.2)
+    sinatra (1.3.2)
+      rack (~> 1.3, >= 1.3.6)
+      rack-protection (~> 1.2)
       tilt (~> 1.3, >= 1.3.3)
-    sprockets (2.0.3)
+    sprockets (2.1.2)
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
@@ -321,7 +311,7 @@ GEM
       activesupport (~> 3.0)
       polyamorous (~> 0.5.0)
     stringex (1.3.0)
-    subexec (0.1.0)
+    subexec (0.2.1)
     sunspot (2.0.0.pre.111215)
       escape (~> 0.0.4)
       pr_geohash (~> 1.0)
@@ -378,8 +368,8 @@ DEPENDENCIES
   bundler (>= 1.0.0)
   cancan
   capybara (>= 1.0.1)
-  carrierwave
-  coffee-rails (~> 3.1.1)
+  carrierwave (~> 0.5.8)
+  coffee-rails (~> 3.2.1)
   cucumber-rails (>= 1.0.2)
   database_cleaner (>= 0.6.7)
   devise (~> 2.0)
@@ -387,18 +377,17 @@ DEPENDENCIES
   execjs
   factory_girl (~> 2.5.0)
   factory_girl_rails (~> 1.6.0)
-  fog
+  fog (~> 1.1.2)
   foreman
   friendly_id (~> 4.0.0)
   hirb
-  i18n-active_record!
   jquery-rails
   json
   kaminari
   launchy (>= 2.0.5)
   libv8
   meta_search (~> 1.1.3)
-  mini_magick (= 3.3)
+  mini_magick (~> 3.4)
   nifty-generators
   nokogiri
   omniauth
@@ -411,18 +400,18 @@ DEPENDENCIES
   paper_trail
   pg
   progress_bar
-  rack (= 1.3.5)
+  rack
   rack-cache
   rack-ssl-enforcer
-  rails (= 3.1.3)
-  rails-settings-cached (= 0.1.2)
-  rake (= 0.9.2.2)
+  rails (= 3.2.1)
+  rails-settings-cached (~> 0.1.2)
+  rake
   rakismet
   resque
-  rspec (= 2.8.0)
-  rspec-rails (= 2.8.1)
+  rspec (~> 2.8.0)
+  rspec-rails (~> 2.8.1)
   sass
-  sass-rails (~> 3.1.5)
+  sass-rails (~> 3.2.3)
   sqlite3
   squeel
   stringex
@@ -433,6 +422,6 @@ DEPENDENCIES
   thin
   tinymce-rails (= 3.4.7.0.1)
   turn (~> 0.8.3)
-  twitter-bootstrap-rails (= 1.4.3)
+  twitter-bootstrap-rails (~> 1.4.3)
   uglifier (>= 1.0.3)
-  webrat (= 0.7.3)
+  webrat (~> 0.7.3)

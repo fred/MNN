@@ -2,10 +2,10 @@ source 'http://rubygems.org'
 
 
 ### Basic
-gem 'rack', '1.3.5'
+gem 'rack' #, '1.3.5'
 gem 'rack-cache'
-gem 'rake', '0.9.2.2'
-gem 'rails', '3.1.3'
+gem 'rake' #, '0.9.2.2'
+gem 'rails', '3.2.1'
 gem 'bundler', '>= 1.0.0'
 gem 'thin', :require => false
 
@@ -25,9 +25,9 @@ gem 'kaminari'
 gem 'squeel'
 
 ### File Uploading and Image Processing
-gem 'mini_magick', '3.3'
-gem 'fog'
-gem 'carrierwave'
+gem 'mini_magick', '~> 3.4'
+gem 'fog', "~> 1.1.2"
+gem 'carrierwave', "~> 0.5.8"
 
 ### S3 Asset hosting
 gem "asset_sync"
@@ -59,14 +59,15 @@ gem "execjs"
 gem "therubyracer", :require => 'v8'
 gem 'json'
 gem 'sass'
-gem 'sass-rails',   '~> 3.1.5'
+gem 'sass-rails',   '~> 3.2.3'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'coffee-rails', '~> 3.1.1'
+  gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
+
 
 # jQuery
 gem 'jquery-rails'
@@ -79,21 +80,21 @@ gem 'jquery-rails'
 
 
 # Settings
-gem 'rails-settings-cached', "0.1.2", :require => 'rails-settings'
+gem 'rails-settings-cached', "~> 0.1.2", :require => 'rails-settings'
     # :git => 'git://github.com/huacnlee/rails-settings-cached.git'
 
 ### i18n Translation on DB
-gem 'i18n-active_record',
-    :require => 'i18n/active_record',
-    :git => 'git://github.com/svenfuchs/i18n-active_record.git'
+# gem 'i18n-active_record',
+#     :require => 'i18n/active_record',
+#     :git => 'git://github.com/svenfuchs/i18n-active_record.git'
 
 group :production do
   gem 'rack-ssl-enforcer', :require => 'rack/ssl-enforcer'
 end
 
 group :development do
-  gem 'rspec', "2.8.0"
-  gem "rspec-rails", "2.8.1"
+  gem 'rspec', "~> 2.8.0"
+  gem "rspec-rails", "~> 2.8.1"
   gem 'nifty-generators'
   gem 'hirb'
   # Nice progress when rake indexing with solr
@@ -102,9 +103,9 @@ group :development do
 end
 
 group :test do
-  gem 'webrat', "0.7.3"
-  gem 'rspec', "2.8.0"
-  gem "rspec-rails", "2.8.1"
+  gem 'webrat', "~> 0.7.3"
+  gem 'rspec', "~> 2.8.0"
+  gem "rspec-rails", "~> 2.8.1"
   gem "factory_girl", "~> 2.5.0"
   gem "factory_girl_rails", '~> 1.6.0'
   gem "cucumber-rails", ">= 1.0.2"
@@ -127,7 +128,7 @@ gem 'activeadmin', "~> 0.4.0"
 gem 'tinymce-rails', "3.4.7.0.1"
 
 # Twitter Bootstrap for Rails 3.1 Asset Pipeline
-gem 'twitter-bootstrap-rails', "1.4.3"
+gem 'twitter-bootstrap-rails', "~> 1.4.3"
   # :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git"
 
 # Error Emails

@@ -1,7 +1,7 @@
 <div class="sidebar">
   <div class="well">
-    <%= link_to(image_tag("icons/social/rss_32.png"), feed_path) %>
-    <%= link_to(image_tag("icons/social/twitter_32.png"), twitter_link)%>
+    <%= link_to(image_tag("icons/social/rss_32.png"), feed_path, :title => "Multiple RSS Feeds") %>
+    <%= link_to(image_tag("icons/social/twitter_32.png"), twitter_link, :title => "Visit our Twitter")%>
     <%= image_tag "icons/social/facebook_32.png" %>
     <%= image_tag "icons/social/diaspora.png" %>
   </div>
@@ -47,7 +47,7 @@
       <h4>Sections</h4>
       <ul>
         <% Category.order("title ASC").all.each do |category| %>
-          <li><%= link_to category.title, category %></li>
+          <li><%= link_to category.title, category, :title => category.description %></li>
         <% end %>
       </ul>
     
