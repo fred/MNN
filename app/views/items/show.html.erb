@@ -56,7 +56,7 @@
     <ul class="tags">
       Tags:
       <% @item.tags.each do |tag| %>
-        <li><%= link_to tag.title, tag_path(tag), :title => "View all items in '#{tag.title}'" %> </li>
+        <li><%= link_to tag.title, tag_path(tag), :title => "View all items in '#{tag.title}'" %></li>
       <% end %>
       <% if @item.language %>
         <li><%= link_to @item.language.description, language_items_path(@item.language) %></li>
@@ -106,12 +106,12 @@
             :popup => ['GooglePlus','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes'],
             :target => "_blank"
       %>
-      <%= link_to image_tag("icons/social/email_16.png", :alt => "Email"), 
+      <%= link_to image_tag("icons/social/email_16.png", :alt => "Email"),
             email_share(@item),
             :title => "Share by Email",
             :target => "_blank"
       %>
-      <%= link_to image_tag("icons/social/rss_16.png"), 
+      <%= link_to image_tag("icons/social/rss_16.png"),
             "#",
             :title => "RSS Feed",
             :target => "_blank"

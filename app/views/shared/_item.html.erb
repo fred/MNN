@@ -1,54 +1,54 @@
-<article class="category" id="item_<%=item.id%>">
-  <header>
-    <% unless item.attachments.empty?%>
-      <%= image_tag(item.attachments.first.image.small, :class => "show_item_image") %>
-    <% end %>
-    <h3><%= link_to item.title, item %></h3>
-  </header>
-  <section>
-    <%= item.abstract.to_s.html_safe %>
-  </section>
-  <section>
-    <span class="source_url">
-      <% if item.source_url %>
-        <%= link_to "Source", item.source_url %>
+<% cache("shared/item/#{item.id}") do %>
+  <article class="category" id="item_<%=item.id%>">
+    <header>
+      <% unless item.attachments.empty?%>
+        <%= image_tag(item.attachments.first.image.small, :class => "show_item_image") %>
       <% end %>
-      <% if item.author_name %>
-        by <span class="author"><%= link_to item.author_name, search_path(:q => item.author_name) %></span>
+      <h3><%= link_to item.title, item %></h3>
+    </header>
+    <section>
+      <%= item.abstract.to_s.html_safe %>
+    </section>
+    <section>
+      <span class="source_url">
+        <% if item.source_url %>
+          <%= link_to "Source", item.source_url %>
+        <% end %>
+        <% if item.author_name %>
+          by <span class="author"><%= link_to item.author_name, search_path(:q => item.author_name) %></span>
+        <% end %>
+      </span>
+      <span class="date">
+        <%= time_tag(item.published_at, :pubdate => true) %>
+      </span>
+      <% if item.user %>
+        Submitted by <span class="author"><%= link_to_if(item.user, item.user.title, author_path(item.user)) %></span>
       <% end %>
-    </span>
-    <span class="date">
-      <%= time_tag(item.published_at, :pubdate => true) %>
-    </span>
-    <% if item.user %>
-      Submitted by <span class="author"><%= link_to_if(item.user, item.user.title, author_path(item.user)) %></span>
-    <% end %>
-    <ul class="tags">
-      Tags:
-      <% item.tags.each do |tag| %>
-        <li><%= link_to tag.title, tag_path(tag) %></li>
+      <ul class="tags">
+        Tags:
+        <% item.tags.each do |tag| %>
+          <li><%= link_to tag.title, tag_path(tag) %></li>
+        <% end %>
+        <% if item.language %>
+          <li><%= link_to item.language.description, language_items_path(item.language) %></li>
+        <% end %>
+      </ul>
+      <div class="page_views">
+        <% if item.item_stat %>
+          Views: <%= item.item_stat.views_counter %>
+        <% end %>
+      </div>
+      <% @related = item.solr_similar(4) %>
+      <% if @related && @related.total > 0 %>
+        <section id="related">
+          <h4>Related items</h4>
+          <ul>
+            <% @related.results.each do |item| %>
+              <li><%= link_to item.title, item, :title => item.abstract %></li>
+            <% end %>
+          </ul>
+        </section>
       <% end %>
-      <% if item.language %>
-        <li><%= link_to item.language.description, language_items_path(item.language) %></li>
-      <% end %>
-    </ul>
-    <div class="page_views">
-      <% if item.item_stat %>
-        Views: <%= item.item_stat.views_counter %>
-      <% end %>
-    </div>
-    
-    <% @related = item.solr_similar(4) %>
-    <% if @related && @related.total > 0 %>
-      <section id="related">
-        <h4>Related items</h4>
-        <ul>
-          <% @related.results.each do |item| %>
-            <li><%= link_to item.title, item, :title => item.abstract %></li>
-          <% end %>
-        </ul>
-      </section>
-    <% end %>
-    
-  </section>
-</article>
+    </section>
+  </article>
+<% end %>

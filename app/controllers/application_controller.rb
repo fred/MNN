@@ -19,6 +19,15 @@ class ApplicationController < ActionController::Base
   end
   
   
+  def per_page
+    if params[:per_page]
+      @per_page = params[:per_page]
+    else
+      @per_page = 24
+    end
+    @per_page
+  end
+  
   # this should give 99% of users
   def is_human?
     return true if Rails.env.test?

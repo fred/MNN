@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
         includes(:language, :attachments, :tags, :item_stat, :user).
         where(:language_id => @language.id).
         order("published_at DESC").
-        page(params[:page], :per_page => 20)
+        page(params[:page]).per(per_page)
     else
       @rss_title = "Latest News"
       @rss_description = "MNN - Latest News"
@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
         not_draft.
         includes(:language, :attachments, :tags, :item_stat, :user).
         order("published_at DESC").
-        page(params[:page], :per_page => 20)
+        page(params[:page]).per(per_page)
     end
     if @items.empty?
       @last_published = Time.now
@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
     
     respond_to do |format|
       format.html {
-        headers['Cache-Control'] = 'public, max-age=600' unless (current_admin_user or current_user) # 10 min cache
+        # headers['Cache-Control'] = 'public, max-age=600' unless (current_admin_user or current_user) # 10 min cache
         headers['Last-Modified'] = @last_published.httpdate
       }
       format.json {
@@ -162,11 +162,6 @@ class ItemsController < ApplicationController
   
   def search
     @show_breadcrumb = false
-    if params[:per_page]
-      @per_page = params[:per_page]
-    else
-      @per_page = 20
-    end
     if params[:category_id]
       category = Category.where(:id => params[:category_id]).first
     end
@@ -194,7 +189,7 @@ class ItemsController < ApplicationController
         facet(:language_id)
         facet(:user_id)
         order_by(:published_at,:desc)
-        paginate :page => params[:page], :per_page => 20
+        paginate :page => params[:page], :per_page => per_page
       end
 
       # showing Sponsored Listings
@@ -205,7 +200,7 @@ class ItemsController < ApplicationController
       # If no search term has been given, empty search
       @items = Item.published.not_draft.
         order("published_at DESC").
-        page(params[:page], :per_page => 20)
+        page(params[:page]).per(per_page)
     end
 
     # client side cache for 15 minutes
@@ -216,5 +211,6 @@ class ItemsController < ApplicationController
       format.js
     end
   end
+  
   
 end

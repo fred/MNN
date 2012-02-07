@@ -1,36 +1,38 @@
-<article class="category" id="item_<%=item.id%>">
-  <div>
-    <h3><%= link_to item.title, item %></h3>
-  </div>
-  <div>
-    <% unless item.attachments.empty?%>
-      <span style="float:left; margin-right:10px;">
-        <%= image_tag(item.attachments.first.image.small) %>
-      </span>
-    <% end %>
-    <%= sanitize item.abstract,
-          :tags => %w(table tr td p b i u strong ol ul li dl dd div span h1 h2 h3 h4 h5),
-          :attributes => %w(id class style) %>
-    <br />
-    <%= sanitize item.body,
-          :tags => %w(table tr td p b i u strong ol ul li dl dd div span h1 h2 h3 h4 h5),
-          :attributes => %w(id class style) %>
-    <%#= item.body.to_s.html_safe %>
-  </div>
-  <section>
-    <p class="source_url">
-      Category: <%= item.category_title %>
-    </p>
-    <p class="source_url">
-      Tags: <%= item.tag_list %>
-      <% if item.language %>
-        <%= item.language.description %>
+<% cache("shared/item/#{item.id}/atom") do %>
+  <article class="category" id="item_<%=item.id%>">
+    <div>
+      <h3><%= link_to item.title, item %></h3>
+    </div>
+    <div>
+      <% unless item.attachments.empty?%>
+        <span style="float:left; margin-right:10px;">
+          <%= image_tag(item.attachments.first.image.small) %>
+        </span>
       <% end %>
-    </p>
-    <p class="page_views">
-      <% if item.item_stat %>
-        Views: <%= item.item_stat.views_counter %>
-      <% end %>
-    </p>
-  </section>
-</article>
+      <%= sanitize item.abstract,
+            :tags => %w(table tr td p b i u strong ol ul li dl dd div span h1 h2 h3 h4 h5),
+            :attributes => %w(id class style) %>
+      <br />
+      <%= sanitize item.body,
+            :tags => %w(table tr td p b i u strong ol ul li dl dd div span h1 h2 h3 h4 h5),
+            :attributes => %w(id class style) %>
+      <%#= item.body.to_s.html_safe %>
+    </div>
+    <section>
+      <p class="source_url">
+        Category: <%= item.category_title %>
+      </p>
+      <p class="source_url">
+        Tags: <%= item.tag_list %>
+        <% if item.language %>
+          <%= item.language.description %>
+        <% end %>
+      </p>
+      <p class="page_views">
+        <% if item.item_stat %>
+          Views: <%= item.item_stat.views_counter %>
+        <% end %>
+      </p>
+    </section>
+  </article>
+<% end %>

@@ -62,18 +62,17 @@
   <%= f.inputs :name => "Optional" do %>
     <%= f.input :author_name, :hint => "If blank, your 'Name' will be used" %>
     <%= f.input :author_email, :hint => "If blank, your 'Email' will be used" %>
-    <%= f.input :source_url, :hint => "Required, if you wrote the aricle, then put your name" %>
+    <%= f.input :source_url, :hint => "If you wrote the article, leave empty" %>
   <% end %>
-  
   
   <%= f.inputs :name => "Status Codes" do %>
     <%= f.input :draft, :hint => "Set to draft if you have not finished with editing." %><br />
     <%= f.input :featured, :hint => "Will be featured on front page." %><br />
     <%= f.input :allow_comments, :hint => "Allow users to comment" %><br />
     <%= f.input :protected_record, :hint => "Locked from editing, use with caution." %><br />
-    <%#= f.input :share_twitter, :hint => "Post on twitter?" %>
-    <%#= f.input :share_facebook, :hint => "Share on facebook?" %>
-    <%#= f.input :share_reddit, :hint => "Share on Reddit?" %>
+    <%#= f.input :share_twitter, :hint => "Auto post to twitter upon publication?" %>
+    <%#= f.input :share_facebook, :hint => "Auto share on facebook upon publication?" %>
+    <%#= f.input :share_reddit, :hint => "Auto post to Reddit upon publication?" %>
   <% end %>
   
   <%= f.inputs :name => "Dates and Status" do %>
@@ -88,16 +87,13 @@
           :label => "Publication Date",
           :hint => "When to go live. Timezone used for picking date: '#{Time.zone}' (from your Profile). It will be converted to UTC after saving."
     %>
-      
     <%#= f.input :expires_on, :label => "Expire Date", :hint => "Expiration Date of article (default: 10 years)", :time => true %>
-    
     <%= f.input :expires_on,
         :as => "string",
         :label => "Expire Date",
         :value => f.object.expires_on.localtime,
         :hint => "Expiration Date of article (default: 10 years). It will be converted to UTC after saving."
     %>
-    
   <% end %>
 
   <% f.object.attachments.build %>
@@ -129,7 +125,6 @@
     %>
     <%= f.input :editor_notes, :as => "string" %>
     <%= f.input :updated_reason, :as => "string", :hint => "Provide a reason for editing, as short as possible, 2-4 words." %>
-    
   <% end %>
   
   <%= f.input(:user_id, :label => false, :as => :hidden, :value => current_admin_user.id) if f.object.new_record? %>

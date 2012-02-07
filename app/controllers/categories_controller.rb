@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
       where("published_at is not NULL").
       where("published_at < '#{Time.now.to_s(:db)}'").
       order("published_at DESC").
-      page(params[:page]).per(10)
+      page(params[:page]).per(per_page)
     
     # RSS configuration
     @rss_title = "Latest News for #{@category.title}"
