@@ -37,7 +37,7 @@
     <%= f.input :keywords,
                 :label => "Keywords",
                 :required => false,
-                :hint => "Keywords related to the article, such as names, locations, events, name and any keyword that are not available in Tags sections. e.g. Obama ACTA SOPA mathaba Ford Monsanto GMO Pepsi gold bank money cocaine drug etc... It will greatly improve discovery of related items. You may also use special keywords to relate other items. It's invisble to users."
+                :hint => "Keywords related to the article, such as names, events, and any keyword that are not available in Tags sections. i.e. Obama, ACTA, SOPA, PIPA, Monsanto, GMO, Pepsi, gold, bank, money, cocaine, etc... It will greatly improve discovery of related items. You may also use special keywords to relate other items. It's invisble to the users."
     %>
   <% end %>
   
@@ -61,15 +61,15 @@
   
   <%= f.inputs :name => "Optional" do %>
     <%= f.input :author_name, :hint => "If blank, your 'Name' will be used" %>
-    <%= f.input :author_email, :hint => "If blank, your 'Email' will be used" %>
+    <%= f.input :author_email %>
     <%= f.input :source_url, :hint => "If you wrote the article, leave empty" %>
   <% end %>
   
   <%= f.inputs :name => "Status Codes" do %>
-    <%= f.input :draft, :hint => "Set to draft if you have not finished with editing." %><br />
-    <%= f.input :featured, :hint => "Will be featured on front page." %><br />
-    <%= f.input :allow_comments, :hint => "Allow users to comment" %><br />
-    <%= f.input :protected_record, :hint => "Locked from editing, use with caution." %><br />
+    <%= f.input :draft, :hint => "Keep as draft if you haven't finished editing." %><br />
+    <%= f.input :featured, :hint => "Will be featured on front page" %><br />
+    <%= f.input :allow_comments, :hint => "Allow users to comment using IntenseDebate" %><br />
+    <%#= f.input :protected_record, :hint => "Locked from editing, use with caution." %>
     <%#= f.input :share_twitter, :hint => "Auto post to twitter upon publication?" %>
     <%#= f.input :share_facebook, :hint => "Auto share on facebook upon publication?" %>
     <%#= f.input :share_reddit, :hint => "Auto post to Reddit upon publication?" %>
@@ -186,7 +186,7 @@
   
   $("#item_attachments_attributes_0_title").counter({
       count: 'up',
-      goal: 36
+      goal: 50
   });
   
   // $(document).ready(function(){

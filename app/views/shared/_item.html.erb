@@ -19,7 +19,7 @@
         <% end %>
       </span>
       <span class="date">
-        <%= time_tag(item.published_at, :pubdate => true) %>
+        <%= time_tag(item.published_at.in_time_zone("UTC"), :pubdate => true) %> (UTC)
       </span>
       <% if item.user %>
         Submitted by <span class="author"><%= link_to_if(item.user, item.user.title, author_path(item.user)) %></span>

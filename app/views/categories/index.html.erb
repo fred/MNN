@@ -60,7 +60,7 @@
               <%= link_to item.title.to_s.truncate(100), item, 
                       :title => "<strong>#{item.title}</strong> <br/> #{item.abstract}"
               %>
-              <span class="abstract"><%= item.abstract.to_s.truncate(100) %></span>
+              <span class="abstract"><%= item.abstract.to_s.truncate(120) %></span>
             <% else %>
               <span class="noroll">
                 <%= link_to item.title.to_s.truncate(100), item, 
@@ -76,13 +76,22 @@
   <% end %>
 </div>
 
-<%= content_for :scripts do %>
-  <script>
-    $(document).ready(function(){
-      $("a").easyTooltip({
-        yOffset: 0,
-        xOffset: 40
+<% unless is_mobile? %>
+  <%= content_for :scripts do %>
+    <script>
+      $(document).ready(function(){
+        $("a").easyTooltip({
+          yOffset: 0,
+          xOffset: 40
+        });
       });
-    });
-  </script>
+      $(document).ready(function() {
+        $(".fancybox").fancybox();
+        // $(".fancybox").fancybox({
+        //   openEffect  : 'none',
+        //   closeEffect  : 'none'
+        // });
+      });
+    </script>
+  <% end %>
 <% end %>

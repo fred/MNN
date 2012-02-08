@@ -10,3 +10,4 @@
 //= require jquery-ui
 //= require css3-mediaqueries
 //= require easyTooltip
+//= require fancybox
