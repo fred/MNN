@@ -131,7 +131,7 @@ class Item < ActiveRecord::Base
   # Highlights
   def self.highlights(limit=6,offset=0)
     published.
-    where(:draft => false).
+    where(:draft => false, :featured => true).
     order("published_at DESC").
     limit(limit).
     includes(:attachments).

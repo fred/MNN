@@ -76,8 +76,10 @@
   <% end %>
 </div>
 
-<% unless is_mobile? %>
-  <%= content_for :scripts do %>
+
+<%= content_for :scripts do %>
+
+  <% unless is_mobile? %>
     <script>
       $(document).ready(function(){
         $("a").easyTooltip({
@@ -85,13 +87,20 @@
           xOffset: 40
         });
       });
+    </script>
+  <% end %>
+  
+  <% unless is_touch? %>
+    <script>
       $(document).ready(function() {
-        $(".fancybox").fancybox();
-        // $(".fancybox").fancybox({
-        //   openEffect  : 'none',
-        //   closeEffect  : 'none'
-        // });
+        $(".fancybox").fancybox({
+          openEffect  : 'none',
+          closeEffect  : 'none'
+        });
       });
     </script>
   <% end %>
+  
 <% end %>
+
+
