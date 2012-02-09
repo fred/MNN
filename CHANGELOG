@@ -1,5 +1,15 @@
 CHANGELOG
 
+== Feb 9, 2012
+* Added Font asjustment to items, can increase/decrease font size
+* Better Anti-alising for readability
+* slight larger font
+* More rspec tests for views
+
+== Feb 7, 2012
+* Upgraded to Rails 3.2.1, Devise 2.0.1, and all gems
+* A lot of RSPEC Test
+
 == Feb 6, 2012
 * Added Tooltip for items on main page boxes.
 * wrap text and make items fill the boxes.

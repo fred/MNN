@@ -15,18 +15,11 @@ describe "items/show.html.erb" do
     Sunspot.commit
   end
 
-  it "renders attributes in <p>" do
+  it "should render required attributes from item" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     # rendered.should match(/Title/)
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    # rendered.should match(/Abstract/)
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    # rendered.should match(/MyTextBody/)
-    
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "article>h1", :text => "Title".to_s, :count => 1
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "article>section", :text => "Some body".to_s, :count => 1
+    assert_select "article>h1", :text => @item.title.to_s, :count => 1
+    assert_select "span#item_body", :text => @item.body.to_s, :count => 1
   end
 end

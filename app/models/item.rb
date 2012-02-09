@@ -143,9 +143,10 @@ class Item < ActiveRecord::Base
   def self.recent_updated(limit=10)
     published.
     where(:draft => false).
+    where("updated_at > created_at").
     order("updated_at DESC").
     limit(limit).
-    all(:conditions => "updated_at > created_at")
+    all
   end
     
   # Returns the last 10 approved items (not draft anymore)

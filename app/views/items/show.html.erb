@@ -20,7 +20,13 @@
 <% end %>
 
 
-<article id="<%= @item.id %>">
+<article id="item_<%= @item.id %>">
+  <span class="font_control">
+    <a id="decreaseFont" href="#" title="Reduce Size">A-</a>
+    <a id="resetFont" href="#" title="Default Font">A</a>
+    <a id="increaseFont" href="#" title="Increase Size">A+</a>
+  </span>
+  
   <h1><%= @item.title %></h1>
 
   <span class="source_url">
@@ -45,8 +51,9 @@
         <% end %>
       </figure>
     <% end %>
-    <p><i><%= @item.highlight %></i></p>
-    <%= @item.body.html_safe %>
+    <span id="item_body">
+      <%= @item.body.html_safe %>
+    </span>
   </section>
   <footer>
     <span class="date">
@@ -182,8 +189,10 @@
   <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
   
   <script type="text/javascript">
-    twttr.events.bind('tweet', function(event) {
-      window.location = "<%= url_for(item_path(@item.id, :only_path => false, :protocol => 'https')) %>"
+    $(document).ready(function() {
+      twttr.events.bind('tweet', function(event) {
+        window.location = "<%= url_for(item_path(@item.id, :only_path => false, :protocol => 'https')) %>"
+      });
     });
   </script>
   
@@ -198,4 +207,86 @@
     </script>
   <% end %>
   
+  <% unless is_touch? %>
+    <script>
+      $(document).ready(function(){
+        $("a").easyTooltip({
+          yOffset: -30,
+          xOffset: -60
+        });
+      });
+    </script>
+  <% end %>
+  
+  <script>
+    // $(document).ready(function() {
+      // $("item_<%= @item.id %>").jfontsize();
+    // });
+    // $(document).ready(function(){
+    //   // Reset Font Size
+    //   var originalFontSize = $('#resizable').css('font-size');
+    //     $("#resetFont").click(function(){
+    //     $('#resizable').css('font-size', originalFontSize);
+    //   });
+    //   // Increase Font Size
+    //   $("#increaseFont").click(function(){
+    //     var currentFontSize = $('#resizable').css('font-size');
+    //     var currentFontSizeNum = parseFloat(currentFontSize, 10);
+    //     var newFontSize = currentFontSizeNum+1;
+    //     $('#resizable').css('font-size', newFontSize);
+    //     return false;
+    //   });
+    //   // Decrease Font Size
+    //   $("#decreaseFont").click(function(){
+    //     var currentFontSize = $('#resizable').css('font-size');
+    //     var currentFontSizeNum = parseFloat(currentFontSize, 10);
+    //     var newFontSize = currentFontSizeNum-1;
+    //     $('#resizable').css('font-size', newFontSize);
+    //     return false;
+    //   });
+    // });
+    
+    $(document).ready(function(){
+      var min=9;
+      var normal=14;
+      var max=20;
+      $("#resetFont").click(function() {
+         var p = document.getElementsByTagName('p');
+         for(i=0;i<p.length;i++) {
+            p[i].style.fontSize = normal+"px";
+         }
+      });
+      $("#increaseFont").click(function() {
+         var p = document.getElementsByTagName('p');
+         for(i=0;i<p.length;i++) {
+            if(p[i].style.fontSize) {
+               var s = parseInt(p[i].style.fontSize.replace("px",""));
+            } else {
+               var s = normal;
+            }
+            if(s!=max) {
+               s += 1;
+            }
+            p[i].style.fontSize = s+"px";
+         }
+      });
+      $("#decreaseFont").click(function() {
+      // function decreaseFontSize() {
+         var p = document.getElementsByTagName('p');
+         for(i=0;i<p.length;i++) {
+            if(p[i].style.fontSize) {
+               var s = parseInt(p[i].style.fontSize.replace("px",""));
+            } else {
+               var s = normal;
+            }
+            if(s!=min) {
+               s -= 1;
+            }
+            p[i].style.fontSize = s+"px";
+         }
+      });
+    });
+  </script>
+  
+
 <% end %>
