@@ -46,7 +46,7 @@
         %>
         <% if @item.attachments.first.title %>
           <figcaption>
-            <%= @item.attachments.first.title.to_s.truncate(32) %>
+            <%= @item.attachments.first.title.to_s.truncate(60) %>
           </figcaption>
         <% end %>
       </figure>

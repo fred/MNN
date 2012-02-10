@@ -1,5 +1,11 @@
 CHANGELOG
 
+== Feb 10, 2012
+* Larger image captio, up to 60 chars.
+* updated PG gem
+* removed tooltip and image gallery for touch screen devices
+* fixed bug of highlight items
+
 == Feb 9, 2012
 * Added Font asjustment to items, can increase/decrease font size
 * Better Anti-alising for readability
