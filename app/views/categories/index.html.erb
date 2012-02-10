@@ -79,7 +79,7 @@
 
 <%= content_for :scripts do %>
 
-  <% unless is_mobile? %>
+  <% unless (is_touch? or is_touch?)%>
     <script>
       $(document).ready(function(){
         $("a").easyTooltip({
@@ -87,11 +87,6 @@
           xOffset: 40
         });
       });
-    </script>
-  <% end %>
-  
-  <% unless is_touch? %>
-    <script>
       $(document).ready(function() {
         $(".fancybox").fancybox({
           openEffect  : 'none',

@@ -101,7 +101,7 @@
     <%= f.semantic_fields_for :attachments do |attachment| %>
       <% if attachment.object.new_record? %>
         <%= attachment.input :title, :as => "string", :label => "Image Caption" %>
-        <%= attachment.input :image, :as => "file", :label => "Choose File to upload" %>
+        <%= attachment.input :image, :as => "file", :label => "Choose File to upload", :hint => "Max Size: 2MB" %>
       <% else %>
         <h3>Current Images: </h3>
         <h4><%= attachment.object.title %></h4>
