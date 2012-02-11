@@ -2,7 +2,7 @@ module ItemsHelper
   
   def item_title(item)
     str = ""
-    str += "#{image_tag(item.attachments.first.image.thumb, :class => "tooltip_image")}" if item.has_image?
+    str += "#{image_tag(item.main_image.image.thumb, :class => "tooltip_image")}" if item.has_image?
     str += "<strong>#{item.title}</strong>"
     str += "<br/>"
     str += "#{item.abstract}"
@@ -17,7 +17,7 @@ module ItemsHelper
     html = ""
     if item.has_image?
       html += "<div class='image'>"
-      html += image_tag(item.attachments.first.image.small)
+      html += image_tag(item.main_image.image.small)
       html += "</div>"
     end
     html += "<div class='abstract'>"

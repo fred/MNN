@@ -13,8 +13,8 @@
   <!-- Add the following three tags inside head -->
   <meta itemprop="name" content="<%= @item.title %>">
   <meta itemprop="description" content="<%= @item.abstract %>">
-  <% unless @item.attachments.empty? %>
-    <meta itemprop="image" content="<%= @item.attachments.first.image.thumb %>">
+  <% if @item.has_image? %>
+    <meta itemprop="image" content="<%= @item.main_image.image.thumb %>">
   <% end %>
   
 <% end %>
@@ -41,12 +41,12 @@
   <section>
     <% if @item.has_image? %>
       <figure>
-        <%= link_to image_tag(@item.attachments.first.image.medium, :class => "show_item_image", :id => "main_image"),
-                    @item.attachments.first.image.large.url, :id => "main_image", :target => "blank"
+        <%= link_to image_tag(@item.main_image.image.medium, :class => "show_item_image", :id => "main_image"),
+                    @item.main_image.image.large.url, :id => "main_image", :target => "blank"
         %>
-        <% if @item.attachments.first.title %>
+        <% if @item.main_image.title %>
           <figcaption>
-            <%= @item.attachments.first.title.to_s.truncate(60) %>
+            <%= @item.main_image.title.to_s.truncate(60) %>
           </figcaption>
         <% end %>
       </figure>

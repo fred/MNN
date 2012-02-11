@@ -28,4 +28,12 @@ ActiveAdmin.register Attachment do
     render "show"
   end
   form :partial => "form"
+  controller do 
+    def manage
+      @attachments = Attachment.order('created_at DESC').page(params[:page])
+      render :update do |page|
+        page.replace_html :dynamic_images_list, :partial => '/admin/attachments/show_attachment_list'
+      end
+    end
+  end
 end

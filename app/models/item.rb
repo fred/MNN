@@ -42,6 +42,8 @@ class Item < ActiveRecord::Base
   before_create :build_stat
   
   
+  validate :record_freshness
+  
   ################
   ####  SOLR  ####
   ################
@@ -67,6 +69,32 @@ class Item < ActiveRecord::Base
     text :tags do
       tags.map { |tag| tag.title }
     end
+  end
+  
+  # WORKING
+  def record_freshness
+    unless self.new_record?
+      last_date = Item.find(self.id).updated_at.to_f
+      self_date = self.updated_at.to_f
+      if last_date > self_date
+        errors.add(:title, "Item is not fresh. Someone else have updated this while you were editing it")
+      end
+    end
+  end
+
+  # NOT WORKING
+  def record_freshness_by_version
+    unless self.new_record?
+      last_version = self.versions.last.created_at.to_f
+      current_date = self.updated_at.to_f
+      if last_version >= current_date
+        errors.add(:title, "Item is not fresh. Someone else have updated this while you were editing it")
+      end
+    end
+  end
+  
+  def main_image
+    self.attachments.last
   end
   
   def has_image?

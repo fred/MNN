@@ -9,10 +9,10 @@ ActiveAdmin.register Item do
   index do
     column :id
     column :image do |item|
-      if !item.attachments.empty?
+      if item.has_image?
         link_to(
-          image_tag(item.attachments.first.image.thumb.url), 
-          admin_attachment_path(item.attachments.first),
+          image_tag(item.main_image.image.thumb.url), 
+          admin_attachment_path(item.main_image),
           :title => item.abstract,
         ) 
       end

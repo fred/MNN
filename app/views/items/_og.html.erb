@@ -7,5 +7,5 @@
 
 <!-- Image -->
 <% if @item.has_image? %>
-  <meta property="og:image" content="<%= @item.attachments.first.image.small %>"/>
+  <meta property="og:image" content="<%= @item.main_image.image.small %>"/>
 <% end %>

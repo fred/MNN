@@ -4,9 +4,9 @@
       <h3><%= link_to item.title, item %></h3>
     </div>
     <div>
-      <% unless item.attachments.empty?%>
+      <% if item.has_image?%>
         <span style="float:left; margin-right:10px;">
-          <%= image_tag(item.attachments.first.image.small) %>
+          <%= image_tag(item.main_image.image.small) %>
         </span>
       <% end %>
       <%= sanitize item.abstract,

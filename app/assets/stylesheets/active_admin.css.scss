@@ -81,6 +81,14 @@ form fieldset > ol > li fieldset legend {
   padding-top: 6px;
   padding-left: 2px;
 }
+form fieldset img,
+form fieldset p,
+form fieldset h2,
+form fieldset li,
+form fieldset h3,
+form fieldset h4 {
+  padding-left: 10px;
+}
 form hr {
   color:#fff;
   border-color:#fff;
@@ -212,7 +220,7 @@ table.dashboard .dashboard_section > div {
 
 #item_title_counter,
 #item_abstract_counter {
-  margin-left: 20%;
+  margin-left: 21%;
   color: #666;
   font-style: italic;
   padding: 1px;
