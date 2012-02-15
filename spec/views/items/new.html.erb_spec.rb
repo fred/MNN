@@ -1,6 +1,6 @@
 # require 'spec_helper'
 # 
-# describe "items/new.html.erb" do
+# describe "items/new" do
 #   before(:each) do
 #     assign(:item, stub_model(Item,
 #       :title => "MyString",

@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe "languages/show.html.erb" do
+describe "languages/show" do
   pending "add some examples to (or delete) #{__FILE__}"
 end

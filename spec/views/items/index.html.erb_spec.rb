@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "items/index.html.erb" do
+describe "items/index" do
   before(:each) do
     @item = Factory(:item)
     @item2 = Factory(:item2)

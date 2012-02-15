@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "items/show.html.erb" do
+describe "items/show" do
   include EnableSunspot
   before(:each) do
     @item = assign(:item, stub_model(Item,

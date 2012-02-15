@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "tags/show.html.erb" do
+describe "tags/show" do
   before(:each) do
     @tag = Factory(:tag)
     @item = Factory(:item)
