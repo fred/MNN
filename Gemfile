@@ -91,6 +91,7 @@ gem 'rails-settings-cached', "~> 0.1.2", :require => 'rails-settings'
 
 group :production do
   gem 'rack-ssl-enforcer', :require => 'rack/ssl-enforcer'
+  gem 'unicorn', :require => false
 end
 
 group :development do
@@ -128,9 +129,12 @@ gem 'activeadmin', "~> 0.4.0"
 
 gem 'tinymce-rails', "3.4.7.0.1"
 
-# Twitter Bootstrap for Rails 3.1 Asset Pipeline
+# Twitter Bootstrap for Rails 3 Asset Pipeline
 gem 'twitter-bootstrap-rails', "~> 1.4.3"
   # :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git"
+
+# Posting status to twitter
+gem 'twitter'
 
 # Error Emails
 gem "exception_notification", :require => 'exception_notifier',
