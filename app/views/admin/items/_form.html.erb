@@ -71,7 +71,7 @@
     <%= f.input :allow_comments, :hint => "Allow users to comment using IntenseDebate" %><br />
     <%#= f.input :protected_record, :hint => "Locked from editing, use with caution." %>
     
-    <% if f.object.shares.empty? %>
+    <% if f.object.twitter_shares.empty? %>
       <%= f.input :share_twitter, :as => "boolean", 
           :hint => "Auto post to twitter upon publication? Only set it if item is ready and not Draft. I can only be posted once." %>
     <% else %>
