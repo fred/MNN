@@ -70,9 +70,18 @@
     <%= f.input :featured, :hint => "Will be featured on front page" %><br />
     <%= f.input :allow_comments, :hint => "Allow users to comment using IntenseDebate" %><br />
     <%#= f.input :protected_record, :hint => "Locked from editing, use with caution." %>
-    <%#= f.input :share_twitter, :hint => "Auto post to twitter upon publication?" %>
+    
+    <% if f.object.shares.empty? %>
+      <%= f.input :share_twitter, :as => "boolean", 
+          :hint => "Auto post to twitter upon publication? Only set it if item is ready and not Draft. I can only be posted once." %>
+    <% else %>
+      <li class="boolean input optional">
+        <label><b>Already posted to twitter</b></label>
+      </li>
+    <% end %>
     <%#= f.input :share_facebook, :hint => "Auto share on facebook upon publication?" %>
     <%#= f.input :share_reddit, :hint => "Auto post to Reddit upon publication?" %>
+    <br />
   <% end %>
   
   <%= f.inputs :name => "Dates and Status" do %>

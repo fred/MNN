@@ -7,7 +7,9 @@ else
   Resque.redis = Redis.new(:host => "127.0.0.1", :port => 6379)
 end
 
-AUTH_PASSWORD = "welcomez" || ENV['AUTH']
+RESQUE_USERNAME = "admin" || ENV['RESQUE_USERNAME']
+RESQUE_PASSWORD = "welcomez" || ENV['RESQUE_PASSWORD']
 Resque::Server.use Rack::Auth::Basic do |username, password|
-  password == AUTH_PASSWORD
+  username = RESQUE_USERNAME
+  password = RESQUE_PASSWORD
 end

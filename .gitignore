@@ -87,3 +87,5 @@ capybara-*html
 unicorn.rb
 unicorn.dev.rb
 config/heroku.conf
+config/deploy.rb
+config/initializers/00_keys.rb

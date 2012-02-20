@@ -128,8 +128,8 @@
       <p>Draft: <%= @item.draft %></p>
       <p>Featured: <%= @item.featured %></p>
       <p>Comments Enabled: <%= @item.allow_comments %></p>
-      <p>Star Rating Enabled: <%= @item.allow_star_rating %></p>
-      <p>Protected Record: <%= @item.protected_record %></p>
+      <!-- <p>Star Rating Enabled: <%#= @item.allow_star_rating %></p> -->
+      <p>Posted to Twitter: <%= @item.posted_to_twitter? %></p>
     </div>
   </div>
 </div>

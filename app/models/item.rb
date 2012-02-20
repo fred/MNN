@@ -1,7 +1,7 @@
 class Item < ActiveRecord::Base
   include Rails.application.routes.url_helpers # neeeded for _path helpers to work in models
 
-  attr_accessor :updated_reason
+  attr_accessor :updated_reason, :share_twitter
   
   # Versioning System
   has_paper_trail :meta => { :tag  => :updated_reason }
@@ -19,7 +19,8 @@ class Item < ActiveRecord::Base
   belongs_to :language
   has_many :attachments, :as => :attachable
   has_one :item_stat
-
+  has_many :twitter_shares, :dependent => :destroy
+  
   has_and_belongs_to_many :tags, :join_table => "taggings", 
     :foreign_key => "taggable_id", :association_foreign_key => "tag_id"
 
@@ -38,8 +39,14 @@ class Item < ActiveRecord::Base
   validates_presence_of :title, :category_id, :body, :published_at
   
   # Filter hooks
+  before_save   :create_twitter_share
   before_update :set_status_code
   before_create :build_stat
+  
+  # if Rails.env.production?
+    after_commit   :resque_solr_update
+    before_destroy :resque_solr_remove
+  # end
   
   
   validate :record_freshness
@@ -69,6 +76,27 @@ class Item < ActiveRecord::Base
     text :tags do
       tags.map { |tag| tag.title }
     end
+  end
+  
+  def posted_to_twitter?
+    if !self.twitter_shares.empty? && self.twitter_shares.first.processed_at
+      true
+    else
+      false
+    end
+  end
+  
+  def create_twitter_share
+    if self.share_twitter && !self.draft && self.twitter_shares.empty?
+      self.twitter_shares << TwitterShare.new
+    end
+  end
+  
+  def twitter_status
+    url  = self.title.truncate(115)
+    url += " "
+    url += url_for(item_path(self, :host => "mnn.herokuapp.com", :only_path => false, :protocol => 'http'))
+    return url
   end
   
   # WORKING
@@ -295,5 +323,17 @@ class Item < ActiveRecord::Base
       )
     end
   end
-    
+  
+  
+  
+  protected
+    # From https://gist.github.com/1282013
+    # Use Resque for SOLR indexing
+    def resque_solr_update
+      Resque.enqueue(SolrUpdate, self, id)
+    end
+    def resque_solr_remove
+      Resque.enqueue(SolrRemove, self, id)
+    end
+
 end
