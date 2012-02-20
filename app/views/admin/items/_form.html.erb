@@ -73,7 +73,7 @@
     
     <% if f.object.twitter_shares.empty? %>
       <%= f.input :share_twitter, :as => "boolean", 
-          :hint => "Auto post to twitter upon publication? Only set it if item is ready and not Draft. I can only be posted once." %>
+          :hint => "Auto post to twitter upon publication? Only set it if item is ready and not Draft. It can only be posted once." %>
     <% else %>
       <li class="boolean input optional">
         <label><b>Already posted to twitter</b></label>

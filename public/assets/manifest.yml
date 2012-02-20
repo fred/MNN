@@ -3,6 +3,7 @@
 !binary "dGlueW1jZS90aW55X21jZS5qcw==": tinymce/tiny_mce-2092cfa9d0b18eab0ef16f5ad6b6cf2f.js
 !binary "dGlueW1jZS90aW55X21jZV9qcXVlcnkuanM=": tinymce/tiny_mce_jquery-b295fe171c7e415d086e0efca6f2b85c.js
 !binary "dGlueW1jZS9wcmVpbml0Lmpz": tinymce/preinit-99c7d51782505284f48db8a0e207173b.js
+!binary "YW5vbi5wbmc=": anon-d0e84b0ccf1808a2c2e24a4b3a88f8c7.png
 !binary "YXRvbS5naWY=": atom-f75fc61a4a82e0c3859bd5b455f8c1d3.gif
 !binary "YXRvbV8xNi5wbmc=": atom_16-4375b2aa1bfbf45b325323cb1f53273d.png
 !binary "YmdfdGV4dHVyZS5qcGc=": bg_texture-09f9022ed74a8af8c83487cc8184d569.jpg
@@ -10,6 +11,7 @@
 !binary "ZmFuY3lib3hfYnV0dG9ucy5wbmc=": fancybox_buttons-3b1fffe611728a59e6753fceabb95a33.png
 !binary "ZmFuY3lib3hfbG9hZGluZy5naWY=": fancybox_loading-df2a5d19b11608088e9c0a0c53b51824.gif
 !binary "ZmFuY3lib3hfc3ByaXRlLnBuZw==": fancybox_sprite-156828cb0883def0d60b53ec3b98fb73.png
+!binary "ZmF2aWNvbi5wbmc=": favicon-7b987fa5bff0578f60439f100a86d583.png
 !binary "aWNvbnMvc29jaWFsL2FpbV8xNi5wbmc=": icons/social/aim_16-0437bc4f719826d98fd66d179f1dca83.png
 !binary "aWNvbnMvc29jaWFsL2FpbV8zMi5wbmc=": icons/social/aim_32-f0e63999b3e28d7804f6c19038585c33.png
 !binary "aWNvbnMvc29jaWFsL2FwcGxlXzE2LnBuZw==": icons/social/apple_16-0b4c00531c02e1686d72d02577598744.png
@@ -206,7 +208,7 @@
 !binary "cnNzX2ljb25fZ2xhc3NfYmx1ZTY0LnBuZw==": rss_icon_glass_blue64-61df6deacbeb5248f4076e2d439d1296.png
 !binary "YWN0aXZlX2FkbWluLmpz": active_admin-988c2e1b60e131f5936e04abde36cff9.js
 !binary "YXBwbGljYXRpb24uanM=": application-2dce31bd6f5dffc738581a4b85f7ada3.js
-!binary "YWN0aXZlX2FkbWluLmNzcw==": active_admin-308167128f9fd0c2e0697e1829399fe6.css
+!binary "YWN0aXZlX2FkbWluLmNzcw==": active_admin-5789f9f1559cb4ce4b475af57793774f.css
 !binary "YXBwbGljYXRpb24uY3Nz": application-366398e86ee7b45a3264628afa33f60c.css
 !binary "aWRjLmNzcw==": idc-112bc2afd06e7f612a8057e8f19ec7fe.css
 !binary "cnNzLmNzcw==": rss-c051bdc4dd2a8c3d04fa9c8624e34a76.css
