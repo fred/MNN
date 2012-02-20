@@ -46,7 +46,7 @@ Publication::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
   # Using Cloudfront url for assets
   # config.action_controller.asset_host = "http://d4b3aux6dw2bz.cloudfront.net"
-  config.action_controller.asset_host = "https://d12nekpa7as6ci.cloudfront.net" # download mode
+  # config.action_controller.asset_host = "https://d12nekpa7as6ci.cloudfront.net" # download mode
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
