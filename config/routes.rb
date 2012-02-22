@@ -3,7 +3,6 @@ Publication::Application.routes.draw do
   mount Resque::Server, :at => "/resque"
 
   ActiveAdmin.routes(self)
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users
 

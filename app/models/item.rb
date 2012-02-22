@@ -44,8 +44,8 @@ class Item < ActiveRecord::Base
   before_create :build_stat
   
   # if Rails.env.production?
-    after_commit   :resque_solr_update
-    before_destroy :resque_solr_remove
+  # after_commit   :resque_solr_update
+  # before_destroy :resque_solr_remove
   # end
   
   
