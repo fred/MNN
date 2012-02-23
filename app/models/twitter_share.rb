@@ -5,7 +5,11 @@ class TwitterShare < Share
   protected
   
   def enqueue
-    TwitterQueue.perform(self.id)
+    if Rails.env.production?
+      TwitterQueue.perform(self.id)
+    else
+      Rails.logger.info("*** Resque: Updating twitter status: #{self.id}")
+    end
   end
   
 end

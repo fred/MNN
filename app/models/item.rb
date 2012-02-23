@@ -95,7 +95,7 @@ class Item < ActiveRecord::Base
   def twitter_status
     url  = self.title.truncate(115)
     url += " "
-    url += url_for(item_path(self, :host => "mnn.herokuapp.com", :only_path => false, :protocol => 'http'))
+    url += url_for(item_path(self, :host => "worldmathaba.net", :only_path => false, :protocol => 'http'))
     return url
   end
   
@@ -259,7 +259,7 @@ class Item < ActiveRecord::Base
     if self.user && self.user.email
       self.user.email
     else
-      "info@mnn.herokuapp.com"
+      "worldmathaba@gmail.com"
     end
   end
   

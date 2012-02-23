@@ -6,15 +6,16 @@
 // To customize the Active Admin interfaces, add your
 // styles here:
 
-::-webkit-scrollbar {
-  -webkit-appearance: always;
-  width: 8px;
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background-color: rgba(0,0,0,.5);
-  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
-}
+//::-moz-scrollbar {
+//  -webkit-appearance: always;
+//  width: 8px;
+//}
+//::-webkit-scrollbar-thumb {
+//  border-radius: 4px;
+//  background-color: rgba(0,0,0,.5);
+//  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+//}
+
 body {
   font-size: 80%;
 }
@@ -25,7 +26,6 @@ body {
 #active_admin_content {
   padding: 12px 20px;
 }
-
 form input[type="select"],
 form input[type="text"],
 form input[type="password"],
@@ -34,6 +34,7 @@ form input[type="url"],
 form input[type="tel"],
 form textarea {
   font-size: 16px;
+  padding: 6px 8px;
 }
 fieldset legend.label label, 
 form label.label {
@@ -41,13 +42,25 @@ form label.label {
   font-weight: normal;
   line-height: 24px;
 }
+.sidebar_sction input[type="text"],
+.sidebar_section input[type="password"],
+.sidebar_section input[type="email"],
+.sidebar_section input[type="url"],
+.sidebar_section input[type="tel"],
+.sidebar_section textarea {
+  font-size: 13px;
+  padding: 3px 6px;
+}
+.sidebar_section form label.label,
+.panel_contents form label.label {
+  font-size: 12px;
+  line-height: 20px;
+}
 
 ol.choices-group {
   height: 360px;
   overflow: scroll;
   padding-right: 20px;
-  -webkit-box-shadow: 0px 0px 8px #CCC;
-  -moz-box-shadow: 0px 0px 8px #CCC;
   box-shadow: 0px 0px 8px #CCC;
   width: auto;
   padding-right: 20px;
@@ -143,8 +156,6 @@ form div.medium_box fieldset ol > li label {
 
 img.show_listing_img {
   margin: 9px;
-  -webkit-box-shadow: 0px 0px 8px #888;
-  -moz-box-shadow: 0px 0px 8px #888;
   box-shadow: 0px 0px 8px #888;
   padding: none;
   border: 1px solid #eee;
@@ -184,8 +195,6 @@ span.image p {
 }
 .index_as_block .grid_images img {
   margin: 8px;
-  -webkit-box-shadow: 0px 0px 7px #888;
-  -moz-box-shadow: 0px 0px 7px #888;
   box-shadow: 0px 0px 7px #888;
   padding: none;
   border: 1px solid #eee;

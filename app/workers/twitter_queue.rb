@@ -3,9 +3,12 @@ class TwitterQueue
   
   def self.perform(share_id)
     share = Share.find(share_id)
-    Rails.logger.info("*** Resque: updating twitter status with share id: #{share.item_id}")
-    share.processed_at = Time.now
-    share.status = "success"
-    share.save
+    item = share.item if share
+    if (share && item && Twitter.update(item.twitter_status))
+      Rails.logger.info("*** Resque: Updating twitter status: #{item.twitter_status}")
+      share.processed_at = Time.now
+      share.status = "success"
+      share.save
+    end
   end
 end

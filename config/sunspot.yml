@@ -1,10 +1,16 @@
 # Using SOLR locally, with multiple cores 
 # (Tomcat6 + SOLR-3.5 multiple-core)
 
+# production:
+#   solr:
+#     hostname: '149.255.102.176'
+#     port: 80
+#     path: '/solr/mnn_production'
+
 production:
   solr:
-    hostname: '149.255.102.176'
-    port: 80
+    hostname: '127.0.0.1'
+    port: 8080
     path: '/solr/mnn_production'
 
 development:
