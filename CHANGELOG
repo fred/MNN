@@ -1,5 +1,23 @@
 CHANGELOG
 
+== Feb 23, 2012
+* Fixed date on item breadcrumb
+* Auto Posting to Twitter stable
+* added Favicon
+* Hopefully fixed forced logout issues
+
+== Feb 22, 2012
+* removed SOLR resque
+* changed SOLR to be local machine
+
+== Feb 21, 2012
+* Disabled Cloudfront for now
+
+== Feb 20, 2012
+* fixed small bug on form
+* updated Gems
+* unicorn on production server
+
 == Feb 10, 2012
 * Larger image captio, up to 60 chars.
 * updated PG gem

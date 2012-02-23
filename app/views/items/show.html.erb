@@ -176,7 +176,8 @@
     <span class="divider">/</span>
   </li>
   <li>
-    <%= @item.published_at.strftime("%Y-%m-%d") %>
+    <%= @item.published_at.in_time_zone("UTC").strftime("%Y-%m-%d") %>
+    <%#= @item.published_at.strftime("%Y-%m-%d") %>
     <span class="divider">/</span>
   </li>
   <li class="active">

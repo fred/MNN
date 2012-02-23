@@ -123,7 +123,7 @@ end
 
 
 
-### Active Admin, loaded at end. 
+### Active Admin, loaded at end.
 gem "meta_search", "~> 1.1.3"
 gem 'activeadmin', "~> 0.4.0"
 
@@ -148,11 +148,13 @@ gem "exception_notification", :require => 'exception_notifier',
 gem 'sunspot', "2.0.0.pre.111215" # :git => "git://github.com/sunspot/sunspot.git"
 gem 'sunspot_rails', "2.0.0.pre.111215" # :git => "git://github.com/sunspot/sunspot.git"
 
+### Memcache
+gem 'dalli'
 
 ### OpenID 
-gem 'omniauth'
-gem 'omniauth-twitter'
-gem 'omniauth-facebook'
-gem 'omniauth-openid'
-gem 'omniauth-github'
-gem 'omniauth-google_oauth2'
+# gem 'omniauth'
+# gem 'omniauth-twitter'
+# gem 'omniauth-facebook'
+# gem 'omniauth-openid'
+# gem 'omniauth-github'
+# gem 'omniauth-google_oauth2'
