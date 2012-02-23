@@ -1,20 +1,21 @@
 CHANGELOG
 
 == Feb 23, 2012
-* Fixed date on item breadcrumb
-* Auto Posting to Twitter stable
+* fixed date on item breadcrumb
+* auto Posting to Twitter stable
 * added Favicon
-* Hopefully fixed forced logout issues
+* hopefully fixed forced logout issues
+* using Dalli as memcached server
 
 == Feb 22, 2012
 * removed SOLR resque
 * changed SOLR to be local machine
 
 == Feb 21, 2012
-* Disabled Cloudfront for now
+* disabled Cloudfront for now
 
 == Feb 20, 2012
-* fixed small bug on form
+* fixed small bug on the new item form
 * updated Gems
 * unicorn on production server
 
