@@ -23,6 +23,14 @@
             <%= f.password_field :password_confirmation, :required => true, :class => "xlarge"  %>
           </div>
         </div>
+        
+        <div class="clearfix">
+          <div class="input">
+            <%#= show_simple_captcha(:object=>resource_name.to_s) %>
+            <%= f.simple_captcha :label => "Please, enter the letters above" %>
+          </div>
+        </div>
+        
         <div class="actions">
           <%= f.submit "Sign up", :class => "btn primary", :disable_with => 'Processing...' %>
         </div>
@@ -37,4 +45,21 @@
     <span class="divider">/</span>
   </li>
   <li class="active">Sign Up</li>
+<% end %>
+
+
+<% content_for :footer do %>
+  <%= javascript_include_tag "jquery.validate.js" %>
+  <script>
+    if ($("form#new_user")){
+      $("form#new_user").validate({
+        rules: {
+          "user[captcha]": {required: true, minlength: 5},
+          "user[email]": {required: true, minlength: 4},
+          "user[password]": {required: true, minlength: 6},
+          "user[password_confirmation]": {required: true, minlength: 6}
+        }
+      });
+    }
+  </script>
 <% end %>

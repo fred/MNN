@@ -5,6 +5,22 @@ body {
   font-smoothing: auto;
   -webkit-font-smoothing: auto;
 }
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  display: inline-block;
+}
+* html .clearfix {
+  height: 1%;
+} /* Hides from IE-mac \*/
+.clearfix {
+  display: block;
+}
 p {
   font-size: 14px;
   font-weight: normal;
@@ -548,11 +564,10 @@ img.tooltip_image {
   border: solid 1px #ccc;
   border-radius: 3px;
 }
- 
+
 .font_control a:hover {
   text-decoration: none;
   background: #DDD;
   border: solid 1px #888;
   box-shadow: 0px 0px 5px #CCC;
 }
- 

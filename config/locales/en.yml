@@ -3,3 +3,5 @@
 
 en:
   hello: "Hello world"
+  simple_captcha: 
+    label: "Please, enter the letters above"

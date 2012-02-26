@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   
   accepts_nested_attributes_for :attachments, :allow_destroy => true
   
+  apply_simple_captcha
   
   def title
     if self.name

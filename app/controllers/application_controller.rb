@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include SimpleCaptcha::ControllerHelpers
   require 'uri'
   require 'set'
   

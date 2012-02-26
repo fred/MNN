@@ -7,6 +7,7 @@ CHANGELOG
 *   Auto add Youtube screenshot to main article view
 * Slightly increased image size for article page
 * Slightly reduced image size for mobile view to fit on smaller devices
+* Added Captcha to registration page.
 
 == Feb 23, 2012
 * fixed date on item breadcrumb

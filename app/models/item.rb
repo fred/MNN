@@ -36,7 +36,8 @@ class Item < ActiveRecord::Base
   # Nested Attributes
   accepts_nested_attributes_for :attachments, :allow_destroy => true, :reject_if => lambda { |t| t['image'].nil? }
   
-  validates_presence_of :title, :category_id, :body, :published_at
+  validates_presence_of :title, :category_id, :published_at
+  validates_presence_of :body, :if => Proc.new { |item| item.youtube_id.blank? }
   
   # Filter hooks
   before_save   :create_twitter_share
