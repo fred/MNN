@@ -13,8 +13,8 @@
     %>
     <%= f.input :language, 
                 :as => :select, 
-                :label_method => 'description', 
-                :value_method => :id, 
+                :member_label => 'description', 
+                :member_value => :id, 
                 :label => "Language",
                 :required => false, 
                 :hint => "Select a language for this Page"

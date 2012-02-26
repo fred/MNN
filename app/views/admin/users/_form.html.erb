@@ -18,7 +18,7 @@
   
   <%= f.inputs :role => "Roles" do %>
     <div class="medium_box">
-      <%= f.input :roles, :as => :check_boxes, :label_method => 'title' , :value_method => :id %>
+      <%= f.input :roles, :as => :check_boxes, :member_label => 'title' , :member_value => :id %>
     </div>
   <% end %>
   

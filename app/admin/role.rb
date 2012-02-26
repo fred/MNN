@@ -11,7 +11,7 @@ ActiveAdmin.register Role do
       f.input :description
     end
     f.inputs "Users" do
-      f.input :users, :as => :check_boxes, :label_method => 'title' , :value_method => :id
+      f.input :users, :as => :check_boxes, :member_value => :id, :member_label => :title
     end
     f.buttons
   end

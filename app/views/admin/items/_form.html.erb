@@ -3,16 +3,16 @@
   <%= f.inputs :name => "Required Main Information" do %>
     <%= f.input :category,
                 :as => :select,
-                :label_method => 'title',
-                :value_method => :id,
+                :member_label => 'title',
+                :member_value => :id,
                 :label => "Category",
                 :required => true,
                 :hint => "It's required to pick a category"
     %>
     <%= f.input :language,
                 :as => :select,
-                :label_method => 'description',
-                :value_method => :id,
+                :member_label => 'description',
+                :member_value => :id,
                 :label => "Language",
                 :required => true,
                 :hint => "Select a language for this article"
@@ -37,18 +37,21 @@
     <%= f.input :keywords,
                 :label => "Keywords",
                 :required => false,
-                :hint => "Keywords related to the article, such as names, events, and any keyword that are not available in Tags sections. i.e. Obama, ACTA, SOPA, PIPA, Monsanto, GMO, Pepsi, gold, bank, money, cocaine, etc... It will greatly improve discovery of related items. You may also use special keywords to relate other items. It's invisble to the users."
+                :hint => "Keywords related to the article, such as names, events, and any keyword that are not available in Tags sections. i.e. Obama, ACTA, SOPA, PIPA, Monsanto, GMO, Pepsi, gold, bank, money, cocaine, etc... It will greatly improve discovery of related items. You may also use special keywords to relate other items. It's invisble to the users. Less keywords will give more related items but less accurate, more keywords will give less related items but more accurate. You need to find a good balance."
     %>
   <% end %>
   
   <%= f.inputs :name => "Youtube Video" do %>
-    <%= f.input :youtube_id, :label => "Youtube Video ID", 
-          :hint => "Needed if one of options below are used." %>
-    <%= f.input :youtube_vid, :label => "Youtube Video",
-          :hint => "Automatically embed the youtube video at the bottom of the article." 
+    <%= f.input :youtube_id, :label => "Youtube Video ID",
+          :hint => "Needed if one of the options below are checked. example: JW5meKfy3fY"
+    %>
+    <%= f.input :youtube_vid, :label => "Automatically Embed Youtube Video",
+          :hint => "The youtube video will be added to the bottom of the article."
     %>
     <br />
-    <%= f.input :youtube_img, :label => "Youtube Image", :hint => "Automatically set main image from the youtube screenshot" %>
+    <%= f.input :youtube_img, :label => "Automatically Set Youtube Image",
+          :hint => "Automatically set main image from a youtube screenshot"
+    %>
     <br />
   <% end %>
   
