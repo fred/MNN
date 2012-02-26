@@ -11,3 +11,4 @@
 //= require css3-mediaqueries
 //= require easyTooltip
 //= require fancybox
+//= require modernizr

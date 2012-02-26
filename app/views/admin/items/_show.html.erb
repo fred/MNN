@@ -1,4 +1,22 @@
 <div class="panel">
+  <h3>Main Category</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @item.category_title %>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Language</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <%= @item.language.description if @item.language %>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
   <h3>Title</h3>
   <div class="panel_contents">
     <div class="attributes_table item">
@@ -36,19 +54,12 @@
 </div>
 
 <div class="panel">
-  <h3>Main Category</h3>
+  <h3>Youtube</h3>
   <div class="panel_contents">
     <div class="attributes_table item">
-      <%= @item.category_title %>
-    </div>
-  </div>
-</div>
-
-<div class="panel">
-  <h3>Language</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <%= @item.language.description if @item.language %>
+      <p>Video ID: <b><%= @item.youtube_id.to_s %></b></p>
+      <p>Auto Video: <b><%= @item.youtube_img %></b></p>
+      <p>Auto Image: <b><%= @item.youtube_img %></b></p>
     </div>
   </div>
 </div>

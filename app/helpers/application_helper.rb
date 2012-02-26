@@ -2,21 +2,22 @@ module ApplicationHelper
   
   def is_mobile?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
-    valid="(iphone|nokia|blackberry|opera mini|mobile|iemobile)"
-    invalid="(tablet|ipad)"
+    valid="(iphone|ipod|nokia|series60|symbian|blackberry|opera mini|mobile|iemobile|android|smartphone)"
+    invalid="(tablet|ipad|playbook|xoom)"
     if !s.match(invalid) && s.match(valid)
-      Rails.logger.debug("  UA: mobile found: #{s}")
+      Rails.logger.debug("  UA: Mobile found: #{s}")
       return true
     else
       return false
     end
   end
   
-  def is_touch?
+  def is_tablet?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
-    valid="(iphone|ipad|tablet|nokia|blackberry|opera mini|mobile|iemobile)"
-    if s.match(valid)
-      Rails.logger.debug("  UA: Touch device found: #{s}")
+    valid="(tablet|ipad|galaxytab|opera mini|honeycomb|p1000|playbook|xoom|android|sch-i800|kindle)"
+    invalid="(mobile|iphone|ipod)"
+    if !s.match(invalid) && s.match(valid)
+      Rails.logger.debug("  UA: Tablet found: #{s}")
       return true
     else
       return false

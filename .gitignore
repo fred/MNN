@@ -90,3 +90,4 @@ config/heroku.conf
 config/deploy.rb
 config/initializers/00_keys.rb
 backup/
+config/certs/

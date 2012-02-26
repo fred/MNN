@@ -87,9 +87,9 @@ class ItemsController < ApplicationController
     end
     @related = @item.solr_similar
     
-    headers['Cache-Control'] = 'private, max-age=900, must-revalidate' unless (current_admin_user or current_user) 
+    # headers['Cache-Control'] = 'private, max-age=900, must-revalidate' unless (current_admin_user or current_user) 
     # 15 minutes cache, because of comments.
-    headers['Last-Modified'] = @item.updated_at.httpdate
+    # headers['Last-Modified'] = @item.updated_at.httpdate
     respond_to do |format|
       format.html
       format.json { render json: @item }

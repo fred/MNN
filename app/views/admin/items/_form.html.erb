@@ -41,6 +41,18 @@
     %>
   <% end %>
   
+  <%= f.inputs :name => "Youtube Video" do %>
+    <%= f.input :youtube_id, :label => "Youtube Video ID", 
+          :hint => "Needed if one of options below are used." %>
+    <%= f.input :youtube_vid, :label => "Youtube Video",
+          :hint => "Automatically embed the youtube video at the bottom of the article." 
+    %>
+    <br />
+    <%= f.input :youtube_img, :label => "Youtube Image", :hint => "Automatically set main image from the youtube screenshot" %>
+    <br />
+  <% end %>
+  
+  
   <%= f.inputs :name => "Tags" do %>
     <div class="medium_box">
       <%= f.input :general_tags, :as => :check_boxes, :label => "General",
@@ -197,7 +209,7 @@
   
   $("#item_attachments_attributes_0_title").counter({
       count: 'up',
-      goal: 60
+      goal: 80
   });
   
   // $(document).ready(function(){

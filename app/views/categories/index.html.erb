@@ -79,7 +79,7 @@
 
 <%= content_for :scripts do %>
 
-  <% unless (is_touch? or is_touch?)%>
+  <% unless (is_mobile?)%>
     <script>
       $(document).ready(function(){
         $("a").easyTooltip({

@@ -1,5 +1,10 @@
 CHANGELOG
 
+== Feb 25, 2012
+* Youtube Video Helper:
+*   Auto embed video given the youtube video ID
+*   Auto adjust video size according to screen resolution
+
 == Feb 23, 2012
 * fixed date on item breadcrumb
 * auto Posting to Twitter stable
@@ -20,7 +25,7 @@ CHANGELOG
 * unicorn on production server
 
 == Feb 10, 2012
-* Larger image captio, up to 60 chars.
+* Larger image caption, up to 60 chars.
 * updated PG gem
 * removed tooltip and image gallery for touch screen devices
 * fixed bug of highlight items

@@ -42,13 +42,12 @@ Publication::Application.configure do
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
   # Keep Cache for 24 hours only
-  config.cache_store = :dalli_store, "127.0.0.1", { :namespace => "mnn", :expires_in => '86400', :compression => false }
+  config.cache_store = :dalli_store, "127.0.0.1", {:namespace => "mnn", :expires_in => '86400', :compression => false}
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
   # Using Cloudfront url for assets
-  # config.action_controller.asset_host = "http://d4b3aux6dw2bz.cloudfront.net"
-  # config.action_controller.asset_host = "https://d12nekpa7as6ci.cloudfront.net" # download mode
+  # config.action_controller.asset_host = "https://dgjzw2byz04ny.cloudfront.net" # download mode
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
