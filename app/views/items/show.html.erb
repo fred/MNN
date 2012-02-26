@@ -30,12 +30,10 @@
   <h1><%= @item.title %></h1>
 
   <span class="source_url">
-    <% if @item.source_url %>
-      <% if @item.youtube_id && @item.youtube_vid %>
-        <%= link_to "Youtube Source", @item.source_url %>
-      <% else %>
-        <%= link_to "Source", @item.source_url %>
-      <% end %>
+    <% if @item.youtube_id && @item.youtube_vid %>
+      <%= link_to "Youtube Source", "http://www.youtube.com/watch?v=#{@item.youtube_id}" %>
+    <% elsif @item.source_url %>
+      <%= link_to "Source", @item.source_url %>
     <% end %>
     <% if @item.author_name %>
       - by <span class="author"> <%= link_to @item.author_name, search_path(:q => @item.author_name) %></span>

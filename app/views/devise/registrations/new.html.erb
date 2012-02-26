@@ -24,12 +24,12 @@
           </div>
         </div>
         
-        <div class="clearfix">
+        <!-- <div class="clearfix">
           <div class="input">
             <%#= show_simple_captcha(:object=>resource_name.to_s) %>
-            <%= f.simple_captcha :label => "Please, enter the letters above" %>
+            <%#= f.simple_captcha :label => "Please, enter the letters above" %>
           </div>
-        </div>
+        </div> -->
         
         <div class="actions">
           <%= f.submit "Sign up", :class => "btn primary", :disable_with => 'Processing...' %>
@@ -54,7 +54,6 @@
     if ($("form#new_user")){
       $("form#new_user").validate({
         rules: {
-          "user[captcha]": {required: true, minlength: 5},
           "user[email]": {required: true, minlength: 4},
           "user[password]": {required: true, minlength: 6},
           "user[password_confirmation]": {required: true, minlength: 6}

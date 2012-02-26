@@ -8,6 +8,8 @@ CHANGELOG
 * Slightly increased image size for article page
 * Slightly reduced image size for mobile view to fit on smaller devices
 * Added Captcha to registration page.
+* Show Youtube Video above item body if set by the user.
+* Show "Youtube Source" if the item is a youtube video.
 
 == Feb 23, 2012
 * fixed date on item breadcrumb
