@@ -158,3 +158,5 @@ gem 'dalli'
 # gem 'omniauth-openid'
 # gem 'omniauth-github'
 # gem 'omniauth-google_oauth2'
+
+gem 'galetahub-simple_captcha', :require => 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'

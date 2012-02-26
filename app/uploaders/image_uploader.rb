@@ -55,13 +55,13 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [100, 100]
   end
   version :medium do
-    process :resize_to_fit => [200, 200]
+    process :resize_to_fit => [240, 240]
   end
   version :main do
     process :resize_to_fill => [300, 300]
   end
   version :large do
-    process :resize_to_fit => [360, 360]
+    process :resize_to_fit => [400, 400]
   end
   version :full do
     process :resize_to_fit => [600, 600]

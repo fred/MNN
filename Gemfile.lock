@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/galetahub/simple-captcha.git
+  revision: 926268e07b4f010bfaf70c8d34ec0ca57ec3fc8e
+  specs:
+    galetahub-simple_captcha (0.1.3)
+
+GIT
   remote: git://github.com/smartinez87/exception_notification.git
   revision: 63d9d483fab05340dd5392269c3a6f5b08721267
   specs:
@@ -369,6 +375,7 @@ DEPENDENCIES
   fog (~> 1.1.2)
   foreman
   friendly_id (~> 4.0.0)
+  galetahub-simple_captcha!
   hirb
   jquery-rails
   json
