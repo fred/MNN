@@ -1,5 +1,5 @@
 <% if @item.youtube_id && @item.youtube_vid %>
-
+  <div class="clearfix"></div>
   <html>
     <body>
       <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
@@ -7,17 +7,19 @@
       <script>
         <% if is_mobile? %>
           // if we are mobile, show smaller resolution video
-          var custom_width = "320";
+          var custom_width = "360";
           var custom_height = "240";
         <% else %>
           // if Tablet or Desktop the show larger resolution video
-          
-          if (Modernizr.mq('only screen and (min-width:1200px)')) {
+          if (Modernizr.mq('only screen and (min-width:1600px)')) {
+            var custom_width = "1100";
+            var custom_height = "760";
+          } else if (Modernizr.mq('only screen and (min-width:1200px)')) {
             var custom_width = "760";
             var custom_height = "520";
           } else if (Modernizr.mq('only screen and (min-width:960px)')) {
-            var custom_width = "520";
-            var custom_height = "360";
+            var custom_width = "540";
+            var custom_height = "400";
           } else if (Modernizr.mq('only screen and (min-width:760px)')) {
             var custom_width = "480";
             var custom_height = "360";
@@ -69,5 +71,5 @@
       </script>
     </body>
   </html>
-
+  <div class="clearfix"></div>
 <% end %>
