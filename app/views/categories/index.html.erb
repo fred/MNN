@@ -89,7 +89,7 @@
 
 <%= content_for :scripts do %>
   <script>
-    if !(Modernizr.touch) {
+    if (!(Modernizr.touch)) {
       $(document).ready(function(){
         $("a").easyTooltip({
           yOffset: 0,

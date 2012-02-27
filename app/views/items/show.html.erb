@@ -21,11 +21,11 @@
 
 
 <article id="item_<%= @item.id %>">
-  <span class="font_control">
+  <div class="font_control" id="font_control" style="display:none;">
     <a id="decreaseFont" href="#" title="Reduce Size">A-</a>
     <a id="resetFont" href="#" title="Default Font">A</a>
     <a id="increaseFont" href="#" title="Increase Size">A+</a>
-  </span>
+  </div>
   
   <h1><%= @item.title %></h1>
 
@@ -189,7 +189,9 @@
 <% end %>
 
 <%= content_for :scripts do %>
-
+  
+  <%= javascript_include_tag "font_resizer" %>
+  
   <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
   
   <script type="text/javascript">
@@ -198,63 +200,19 @@
         window.location = "<%= url_for(item_path(@item.id, :only_path => false, :protocol => 'https')) %>"
       });
     });
+    if (!(Modernizr.touch)) {
+      // Image Gallery
+      $("#main_image").fancybox({
+        openEffect  : 'none',
+        closeEffect  : 'none'
+      });
+      
+      // Tooltips
+      $("a").easyTooltip({
+        yOffset: -30,
+        xOffset: -60
+      });
+    }
   </script>
   
-  <% unless is_mobile? %>
-    
-    <script>
-      $(document).ready(function(){
-        // Image Gallery
-        $("#main_image").fancybox({
-          openEffect  : 'none',
-          closeEffect  : 'none'
-        });
-        // Tooltips
-        $("a").easyTooltip({
-          yOffset: -30,
-          xOffset: -60
-        });
-        // Font Resizer
-        var min=9;
-        var normal=14;
-        var max=20;
-        $("#resetFont").click(function() {
-           var p = document.getElementsByTagName('p');
-           for(i=0;i<p.length;i++) {
-              p[i].style.fontSize = normal+"px";
-           }
-        });
-        $("#increaseFont").click(function() {
-           var p = document.getElementsByTagName('p');
-           for(i=0;i<p.length;i++) {
-              if(p[i].style.fontSize) {
-                 var s = parseInt(p[i].style.fontSize.replace("px",""));
-              } else {
-                 var s = normal;
-              }
-              if(s!=max) {
-                 s += 1;
-              }
-              p[i].style.fontSize = s+"px";
-           }
-        });
-        $("#decreaseFont").click(function() {
-           var p = document.getElementsByTagName('p');
-           for(i=0;i<p.length;i++) {
-              if(p[i].style.fontSize) {
-                 var s = parseInt(p[i].style.fontSize.replace("px",""));
-              } else {
-                 var s = normal;
-              }
-              if(s!=min) {
-                 s -= 1;
-              }
-              p[i].style.fontSize = s+"px";
-           }
-        });
-      });
-    </script>
-    
-  <% end %>
-
 <% end %>
