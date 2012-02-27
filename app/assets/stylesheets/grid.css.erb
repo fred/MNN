@@ -1,6 +1,6 @@
 @media only screen and (min-width: 640px) {
 
-	body {
+  body {
     padding-top: 60px;
     font-size: 13px;
   }
@@ -36,6 +36,10 @@
   }
   article section {
     font-size: 13px;
+  }
+  article section span#item_body img {
+    max-width: 460px;
+    max-height: 400px;
   }
 }
 
@@ -76,6 +80,10 @@
   }
   article section {
     font-size: 14px;
+  }
+  article section span#item_body img {
+    max-width: 640px;
+    max-height: 560px;
   }
 }
 
@@ -119,6 +127,10 @@
   article section {
     font-size: 14px;
   }
+  article section span#item_body img {
+    max-width: 1200px;
+    max-height: 900px;
+  }
 }
 
 
@@ -127,12 +139,11 @@
 /* Highend Mobile */
 @media handheld and (max-width: 480px), screen and (max-device-width: 480px), screen and (max-width: 767px) {
 
-	body {
-/*    font-size: 15px;*/
-  	-webkit-text-size-adjust: auto;
+  body {
+    -webkit-text-size-adjust: auto;
     padding-top: 95px;
-	}
-	.container-fluid {
+  }
+  .container-fluid {
      min-width: 480px;
   }
   .container-fluid > .sidebar {
@@ -157,8 +168,8 @@
     margin-bottom: 12px;
   }
   article h3 {
-      font-size: 20px;
-      line-height: 26px;
+    font-size: 20px;
+    line-height: 26px;
   }
   .input-xlarge, input.xlarge, textarea.xlarge, select.xlarge {
       width: 200px;
@@ -190,16 +201,20 @@
   article section {
     font-size: 13px;
   }
+  article section span#item_body img {
+    max-width: 420px;
+    max-height: 380px;
+  }
 }
 
 
 @media screen and (max-width: 680px) {
 
-	body {
-  	-webkit-text-size-adjust: auto;
+  body {
+    -webkit-text-size-adjust: auto;
     padding-top: 95px;
-	}
-	.categories .box {
+  }
+  .categories .box {
     padding: 3px 5px 5px 1px;
     height: auto;
     min-height: 200px;
@@ -225,6 +240,10 @@
   }
   article section {
     font-size: 13px;
+  }
+  article section span#item_body img {
+    max-width: 360px;
+    max-height: 320px;
   }
 }
 
@@ -320,5 +339,9 @@
   .content article img.youtube {
     max-width: 180px;
     max-height: 180px;
+  }
+  article section span#item_body img {
+    max-width: 320px;
+    max-height: 280px;
   }
 }
