@@ -1,5 +1,5 @@
 class TwitterQueue
-  @queue = :twitter_queue
+  @queue = :twitter
   
   def self.perform(share_id)
     share = Share.find(share_id)

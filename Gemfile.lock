@@ -11,17 +11,6 @@ GIT
     exception_notification (2.5.2)
       actionmailer (>= 3.0.4)
 
-GIT
-  remote: https://github.com/hone/resque.git
-  revision: c528f41f384b904296ef42df59e162747269df0a
-  branch: keepalive
-  specs:
-    resque (1.19.0)
-      multi_json (~> 1.0)
-      redis-namespace (~> 1.0.2)
-      sinatra (>= 0.9.2)
-      vegas (~> 0.1.2)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -254,6 +243,11 @@ GEM
     redis-namespace (1.0.3)
       redis (< 3.0.0)
     responders (0.6.5)
+    resque (1.20.0)
+      multi_json (~> 1.0)
+      redis-namespace (~> 1.0.2)
+      sinatra (>= 0.9.2)
+      vegas (~> 0.1.2)
     rsolr (1.0.7)
       builder (>= 2.1.2)
     rspec (2.8.0)
@@ -397,7 +391,7 @@ DEPENDENCIES
   rails-settings-cached (~> 0.1.2)
   rake
   rakismet
-  resque!
+  resque (~> 1.20.0)
   rspec (~> 2.8.0)
   rspec-rails (~> 2.8.1)
   sass

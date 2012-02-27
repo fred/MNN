@@ -1,5 +1,5 @@
 class RedditQueue
-  @queue = :reddit_queue
+  @queue = :reddit
   
   def self.perform(share_id)
     share = Share.find(share_id)

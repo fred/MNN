@@ -1,5 +1,5 @@
 class DiggQueue
-  @queue = :digg_queue
+  @queue = :digg
   
   def self.perform(share_id)
     share = Share.find(share_id)

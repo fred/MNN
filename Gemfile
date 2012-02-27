@@ -46,7 +46,8 @@ gem 'rakismet'
 
 ### Queue
 # Resque Heroku aware branch
-gem 'resque', :git => 'https://github.com/hone/resque.git', :branch => 'keepalive'
+gem 'resque', "~> 1.20.0"
+# gem 'resque', :git => 'https://github.com/hone/resque.git', :branch => 'keepalive'
 # gem 'resque-timeout', '1.0.0'
 # gem 'resque-ensure-connected'
 # gem 'SystemTimer', '1.2.1', :platforms => :ruby_18 #(not using ruby 1.8)
