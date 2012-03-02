@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   layout "items"
   
   def feed
-    headers['Cache-Control'] = 'public, max-age=3600' unless (current_admin_user or current_user) # 60 minutes cache
+    headers['Cache-Control'] = 'public, max-age=3600' # 60 minutes cache
   end
   
   # GET /items
@@ -39,12 +39,9 @@ class ItemsController < ApplicationController
       @last_published = @items.first.published_at
     end
     
-    # headers['Cache-Control'] = 'public, max-age=300' # 5 minutes cache
-    # headers['Last-Modified'] = @last_published.httpdate
-    
     respond_to do |format|
       format.html {
-        # headers['Cache-Control'] = 'public, max-age=600' unless (current_admin_user or current_user) # 10 min cache
+        headers['Cache-Control'] = 'public, max-age=600' unless (current_admin_user or current_user) # 10 min cache
         headers['Last-Modified'] = @last_published.httpdate
       }
       format.json {
@@ -87,9 +84,9 @@ class ItemsController < ApplicationController
     end
     @related = @item.solr_similar
     
-    # headers['Cache-Control'] = 'private, max-age=900, must-revalidate' unless (current_admin_user or current_user) 
-    # 15 minutes cache, because of comments.
-    # headers['Last-Modified'] = @item.updated_at.httpdate
+    headers['Cache-Control'] = 'private, max-age=300, must-revalidate' unless (current_admin_user or current_user)
+    # 5 minutes cache, because of comments.
+    headers['Last-Modified'] = @item.updated_at.httpdate
     respond_to do |format|
       format.html
       format.json { render json: @item }
@@ -194,7 +191,6 @@ class ItemsController < ApplicationController
 
       # showing Sponsored Listings
       @items = @search.results
-      
       @title = "Found #{@search.total} results with '#{params[:q]}' "
     else
       # If no search term has been given, empty search
@@ -202,10 +198,8 @@ class ItemsController < ApplicationController
         order("published_at DESC").
         page(params[:page]).per(per_page)
     end
-
     # client side cache for 15 minutes
     headers['Cache-Control'] = 'public, max-age=900' unless (current_admin_user or current_user)
-    
     respond_to do |format|
       format.html
       format.js
