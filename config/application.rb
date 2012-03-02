@@ -60,6 +60,6 @@ module Publication
     config.assets.initialize_on_precompile = false
     
     # RailsAdmin Assets
-    config.assets.precompile += %w( font_resizer.js jquery.validate.js active_admin.js active_admin.css rss.css idc.css tinymce.css )
+    config.assets.precompile += %w( font_resizer.js jquery.validate.js active_admin.js active_admin.css rss.css idc.css tinymce.css active_admin/print.css )
   end
 end
