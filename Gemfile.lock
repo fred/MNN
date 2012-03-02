@@ -1,4 +1,21 @@
 GIT
+  remote: git://github.com/fred/active_admin.git
+  revision: 76bf162c36c104b7e5495c5a701c0c6f157b521a
+  branch: 594
+  specs:
+    activeadmin (0.4.2)
+      bourbon (>= 1.0.0)
+      devise (>= 1.1.2)
+      fastercsv
+      formtastic (>= 2.0.0)
+      inherited_resources (> 0)
+      jquery-rails (>= 1.0.0)
+      kaminari (>= 0.13.0)
+      meta_search (>= 0.9.2)
+      rails (>= 3.0.0)
+      sass (>= 3.1.0)
+
+GIT
   remote: git://github.com/galetahub/simple-captcha.git
   revision: 926268e07b4f010bfaf70c8d34ec0ca57ec3fc8e
   specs:
@@ -28,17 +45,6 @@ GEM
       rack-cache (~> 1.1)
       rack-test (~> 0.6.1)
       sprockets (~> 2.1.2)
-    activeadmin (0.4.2)
-      bourbon (>= 1.0.0)
-      devise (>= 1.1.2)
-      fastercsv
-      formtastic (>= 2.0.0)
-      inherited_resources (> 0)
-      jquery-rails (>= 1.0.0)
-      kaminari (>= 0.13.0)
-      meta_search (>= 0.9.2)
-      rails (>= 3.0.0)
-      sass (>= 3.1.0)
     activemodel (3.2.1)
       activesupport (= 3.2.1)
       builder (~> 3.0.0)
@@ -349,7 +355,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activeadmin (~> 0.4.0)
+  activeadmin!
   asset_sync
   autotest
   autotest-rails

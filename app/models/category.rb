@@ -18,6 +18,7 @@ class Category < ActiveRecord::Base
   def published_items
     self.
       items.
+      includes(:attachments).
       where(:draft => false).
       where("published_at is not NULL").
       where("published_at < '#{Time.now.to_s(:db)}'").
@@ -27,6 +28,7 @@ class Category < ActiveRecord::Base
   def top_items(lmt=8)
     self.
       items.
+      includes(:attachments).
       where(:draft => false).
       where("published_at is not NULL").
       where("published_at < '#{Time.now.to_s(:db)}'").

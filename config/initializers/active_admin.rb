@@ -129,4 +129,10 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
+  
+  # == Dashboard
+  #
+  # Change how many Columns to display on the Dashboard
+  # default: 3
+  config.dashboard_columns = 2
 end

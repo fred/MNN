@@ -1,75 +1,112 @@
 <div class="row">
-  <div class="span16">
-    <div class="row">
-      <div class="span12">
-        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-          <fieldset class="withBorder">
-            <legend>Personal Information</legend>
-            <div class="clearfix">
-              <%= f.label :name %>
-              <div class="input">
-                <%= f.text_field :name, :required => true, :autofocus => true, :class => "xlarge" %>
-              </div>
-            </div>
-            <div class="clearfix">
-              <%= f.label :address %>
-              <div class="input">
-                <%= f.text_field :address, :required => false, :class => "xlarge"  %>
-              </div>
-            </div>
+  <div class="span7">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <fieldset class="withBorder">
+        <legend>Personal Information</legend>
+        <div class="clearfix">
+          <%= f.label :name %>
+          <div class="input">
+            <%= f.text_field :name, :required => true, :autofocus => true, :class => "large" %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.label :address %>
+          <div class="input">
+            <%= f.text_field :address, :required => false, :class => "large" %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.label :twitter %>
+          <div class="input">
+            <%= f.text_field :twitter, :required => false, :class => "large", 
+                  :placeholder => "@twitter" %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.label :diaspora %>
+          <div class="input">
+            <%= f.text_field :diaspora, :required => false, :class => "large", 
+                  :placeholder => "handle@host.net", :type => "email" %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.label :skype %>
+          <div class="input">
+            <%= f.text_field :skype, :required => false, :class => "large", 
+                  :placeholder => "skype username" %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.label :gtalk, "Google Chat" %>
+          <div class="input">
+            <%= f.text_field :gtalk, :required => false, :class => "large", 
+                  :placeholder => "xxxxx@gmail.com", :type => "email" %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.label :jabber, "Jabber" %>
+          <div class="input">
+            <%= f.text_field :jabber, :required => false, :class => "large", 
+                  :placeholder => "xxxxx@jabber.com", :type => "email" %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.label :phone_number %>
+          <div class="input">
+            <%= f.text_field :phone_number, :required => false, :class => "large", 
+                  :placeholder => "+11 123123456", :type => "tel" %>
+          </div>
+        </div>
 
-            <div class="clearfix">
-              <%= f.label :time_zone %>
-              <div class="input">
-                <%= f.time_zone_select :time_zone %>
-              </div>
-            </div>
-          </fieldset>
-          
-          <fieldset class="withBorder">
-            <legend>Login Information</legend>
-            <div class="clearfix">
-              <%= f.label :email %>
-              <div class="input">
-                <%= f.text_field :email, :required => false, :type => "email", :class => "xlarge" %>
-              </div>
-            </div>
-            <div class="clearfix">
-              <%= f.label :password %>
-              <div class="input">
-                <%= f.password_field :password, :required => false, :class => "xlarge"  %>
-                <span class="help-block">
-                  Leave this field black if you want to change password
-                </span>
-              </div>
-            </div>
-            <div class="clearfix">
-              <%= f.label :password_confirmation %>
-              <div class="input">
-                <%= f.password_field :password_confirmation, :required => false, :class => "xlarge"  %>
-              </div>
-            </div>
-            <div class="clearfix">
-              <%= f.label :current_password %>
-              <div class="input">
-                <%= f.password_field :current_password, :required => false, :class => "xlarge"  %>
-                <span class="help-block">
-                  We need your current password to confirm your changes
-                </span>
-              </div>
-            </div>
-            <div class="actions">
-              <%= f.submit "Update", :class => "btn primary", :disable_with => 'Processing...' %>
-              &nbsp;
-              <%= link_to "Delete my account".html_safe, registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class=>'btn danger' %>
-          </fieldset>
-          
-        <% end %> <!-- End Form -->
-      </div> <!-- End span11-->
+        <div class="clearfix">
+          <%= f.label :time_zone %>
+          <div class="input">
+            <%= f.time_zone_select :time_zone %>
+          </div>
+        </div>
+      </fieldset>
       
-    </div> <!-- End row -->
-  </div> <!-- End span16 -->
-</div>
+      <fieldset class="withBorder">
+        <legend>Login Information</legend>
+        <div class="clearfix">
+          <%= f.label :email %>
+          <div class="input">
+            <%= f.text_field :email, :required => false, :type => "email", :class => "large" %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.label :password %>
+          <div class="input">
+            <%= f.password_field :password, :required => false, :class => "large"  %>
+            <span class="help-block">
+              Leave this field black if you want to change password
+            </span>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.label :password_confirmation %>
+          <div class="input">
+            <%= f.password_field :password_confirmation, :required => false, :class => "large"  %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.label :current_password %>
+          <div class="input">
+            <%= f.password_field :current_password, :required => false, :class => "large"  %>
+            <span class="help-block">
+              We need your current password to confirm your changes
+            </span>
+          </div>
+        </div>
+        <div class="actions">
+          <%= f.submit "Update", :class => "btn primary", :disable_with => 'Processing...' %>
+          &nbsp;
+          <%= link_to "Delete my account".html_safe, registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class=>'btn danger' %>
+      </fieldset>
+      
+    <% end %> <!-- End Form -->
+  </div> <!-- End span7-->
+</div> <!-- End row -->
 
 <% content_for :breadcrumb do %>
   <li>

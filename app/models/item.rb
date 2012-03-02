@@ -65,6 +65,7 @@ class Item < ActiveRecord::Base
     text :article_source
     text :source_url
     text :body
+    text :youtube_id
     integer :id
     integer :category_id, :references => Category
     integer :language_id, :references => Language
@@ -209,7 +210,6 @@ class Item < ActiveRecord::Base
   # Returns the last 10 approved items (not draft anymore)
   def self.recent(limit=10)
     published.
-    draft.
     order("id DESC").
     limit(limit).
     all
@@ -225,7 +225,7 @@ class Item < ActiveRecord::Base
   
   # Returns the last 10 pending items (not draft anymore)
   def self.pending(limit=10)
-    published.
+    where(:published_at => nil).
     where(:draft => false).
     order("updated_at DESC").
     limit(limit).

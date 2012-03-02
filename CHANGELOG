@@ -1,4 +1,10 @@
 CHANGELOG
+== Mar 2, 2012
+* Showing 2 columns on the Admin Dashboard instead of 3
+* Temporarily Removed comments from the Admin Dashboard
+* Improved SQL performance for index page
+* Improve layout for iPad
+* Added links to Version History lists (WIP for full Versioning system)
 
 == Feb 25, 2012
 * Youtube Video Helper:

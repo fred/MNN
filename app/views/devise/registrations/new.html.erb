@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="span8">
+  <div class="span7">
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
     <%= custom_devise_error_messages! %>
     
@@ -8,19 +8,19 @@
         <div class="clearfix">
           <%= f.label :email %>
           <div class="input">
-            <%= f.text_field :email, :required => true, :autofocus => true, :type => "email", :class => "xlarge" %>
+            <%= f.text_field :email, :required => true, :autofocus => true, :type => "email", :class => "large" %>
           </div>
         </div>
         <div class="clearfix">
           <%= f.label :password %>
           <div class="input">
-            <%= f.password_field :password, :required => true, :class => "xlarge"  %>
+            <%= f.password_field :password, :required => true, :class => "large"  %>
           </div>
         </div>
         <div class="clearfix">
           <%= f.label :password_confirmation %>
           <div class="input">
-            <%= f.password_field :password_confirmation, :required => true, :class => "xlarge"  %>
+            <%= f.password_field :password_confirmation, :required => true, :class => "large"  %>
           </div>
         </div>
         

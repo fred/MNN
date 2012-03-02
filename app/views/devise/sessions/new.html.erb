@@ -1,18 +1,18 @@
 <div class="row">
-  <div class="span8">
+  <div class="span7">
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
       <fieldset class="withBorder">
         <legend>Sign in</legend>
         <div class="clearfix">
           <%= f.label :email %>
           <div class="input">
-            <%= f.text_field :email, :required => false, :autofocus => true, :type => "email", :class => "xlarge" %>
+            <%= f.text_field :email, :required => false, :autofocus => true, :type => "email", :class => "large" %>
           </div>
         </div>
         <div class="clearfix">
           <%= f.label :password %>
           <div class="input">
-            <%= f.password_field :password, :required => false, :class => "xlarge"  %>
+            <%= f.password_field :password, :required => false, :class => "large"  %>
           </div>
         </div>
         <div class="clearfix">

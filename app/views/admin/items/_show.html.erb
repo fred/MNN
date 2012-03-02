@@ -206,10 +206,12 @@
         <% if v.whodunnit %>
           <% user = User.where(:id => v.whodunnit).first %>
           <p>
-            <%= v.event %>
+            <%= link_to v.event,admin_version_path(v) %>
             by <%= link_to(user.title, admin_user_path(v.whodunnit)) if user %> 
             on '<%= v.created_at.to_s(:long) %>' 
-            Reason: <%= v.tag %>
+            Reason: 
+            <%= v.tag %> &nbsp; --- &nbsp;
+            <%= link_to "Details",admin_version_path(v) %>
           </p>
         <% end %>
       <% end %>

@@ -7,15 +7,15 @@ class CategoriesController < ApplicationController
     @highlights = [@top_items.first]
     @latest_items = @top_items[1..3]
     @categories = Category.order("priority ASC, title DESC").all
-    # headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
-    # headers['Last-Modified'] = Item.last_item.updated_at.httpdate
+    headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
+    headers['Last-Modified'] = Item.last_item.updated_at.httpdate
   end
 
   def show
     @show_breadcrumb = true
     @category = Category.find(params[:id])
-    # headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
-    # headers['Last-Modified'] = @category.items.last_item.updated_at.httpdate
+    headers['Cache-Control'] = 'public, max-age=300' # 5 min cache
+    headers['Last-Modified'] = @category.items.last_item.updated_at.httpdate
     @items = @category.
       items.
       where(:draft => false).

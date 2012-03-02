@@ -39,30 +39,20 @@ ActiveAdmin::Dashboards.build do
   ##################
   ### DASHBOARD ####
   ##################
-  
-  section "Recently Updated Items", :priority => 2 do
-    ul do
-      Item.recent_updated(10).collect do |item|
-        li(
-          link_to("#{item.category_title} - #{item.title} - #{time_ago_in_words(item.updated_at)} ago",
-          admin_item_path(item))
-        )
-      end
-    end
-  end
-  
-  section "Draft Items", :priority => 8 do
+  section "Draft Items", :priority => 2 do
     ul do
       Item.recent_drafts(10).collect do |item|
         li link_to("#{item.category_title} - #{item.title} - #{time_ago_in_words(item.updated_at)} ago", admin_item_path(item))
       end
     end
   end
-  
-  section "Pending Items", :priority => 14 do
+  section "Recently Updated Items", :priority => 8 do
     ul do
-      Item.pending(10).collect do |item|
-        li link_to("#{item.category_title} - #{item.title}", admin_item_path(item))
+      Item.recent_updated(10).collect do |item|
+        li(
+          link_to("#{item.category_title} - #{item.title} - #{time_ago_in_words(item.updated_at)} ago",
+          admin_item_path(item))
+        )
       end
     end
   end
@@ -82,7 +72,7 @@ ActiveAdmin::Dashboards.build do
       end
     end
   end
-  section "Recent Logged in Users", :priority => 16 do
+  section "Recent Logged in Users", :priority => 18 do
     ul do
       User.logged_in(10).collect do |user|
         li(
@@ -95,48 +85,9 @@ ActiveAdmin::Dashboards.build do
     end
   end
 
-  ### COMMENTS ###
-  section "Recent Comments", :priority => 6 do
-    ul do
-      Comment.recent(10).collect do |comment|
-        li(link_to(
-            "#{comment.commentable.email} Wrote #{time_ago_in_words(comment.created_at)}:", 
-            admin_comment_path(comment), 
-            :title => comment.body
-          )
-        )
-        li "#{comment.body.truncate(50)} ago"
-      end
-    end
-  end
-  section "Pending Comments", :priority => 12 do
-    ul do
-      Comment.pending(10).collect do |comment|
-        li(link_to(
-            "#{comment.owner.email} - #{time_ago_in_words(comment.created_at)} ago", 
-            admin_user_comment_path(comment), 
-            :title => comment.body
-          )
-        )
-      end
-    end
-  end
-  section "Spam Comments", :priority => 18 do
-    ul do
-      Comment.as_spam(10).collect do |comment|
-        li(link_to(
-            "#{comment.commentable.email} - #{time_ago_in_words(comment.created_at)} ago", 
-            admin_comment_path(comment), 
-            :title => comment.body
-          )
-        )
-      end
-    end
-  end
-  
   
   # paper_trail
-  section "Recently Updated Content", :priority => 40 do
+  section "Database History", :priority => 16 do
     table_for Version.order('id desc').limit(20) do
       column "Record" do |v| 
         if v.item
@@ -148,16 +99,16 @@ ActiveAdmin::Dashboards.build do
           "#{v.item_type.underscore.humanize} ##{v.item_id}"
         end
       end
-      column "Action" do |v| 
-        v.event
+      column "Action" do |v|
+        link_to(v.event,admin_version_path(v))
       end
-      column "Reason" do |v| 
+      column "Reason" do |v|
         v.tag
       end
-      column "When" do |v| 
-        v.created_at.to_s :short 
+      column "When" do |v|
+        v.created_at.to_s :short
       end
-      column "User" do |v| 
+      column "User" do |v|
         user = User.where(:id => v.whodunnit).first
         if user
           (link_to user.title, admin_user_path(v.whodunnit))
@@ -165,7 +116,50 @@ ActiveAdmin::Dashboards.build do
           ""
         end
       end
+      column "View" do |v|
+        link_to('Details',admin_version_path(v))
+      end
     end
   end
+  
+  
+  ### COMMENTS ###
+  # section "Recent Comments", :priority => 6 do
+  #   ul do
+  #     Comment.recent(10).collect do |comment|
+  #       li(link_to(
+  #           "#{comment.commentable.email} Wrote #{time_ago_in_words(comment.created_at)}:", 
+  #           admin_comment_path(comment), 
+  #           :title => comment.body
+  #         )
+  #       )
+  #       li "#{comment.body.truncate(50)} ago"
+  #     end
+  #   end
+  # end
+  # section "Pending Comments", :priority => 12 do
+  #   ul do
+  #     Comment.pending(10).collect do |comment|
+  #       li(link_to(
+  #           "#{comment.owner.email} - #{time_ago_in_words(comment.created_at)} ago", 
+  #           admin_user_comment_path(comment), 
+  #           :title => comment.body
+  #         )
+  #       )
+  #     end
+  #   end
+  # end
+  # section "Spam Comments", :priority => 18 do
+  #   ul do
+  #     Comment.as_spam(10).collect do |comment|
+  #       li(link_to(
+  #           "#{comment.commentable.email} - #{time_ago_in_words(comment.created_at)} ago", 
+  #           admin_comment_path(comment), 
+  #           :title => comment.body
+  #         )
+  #       )
+  #     end
+  #   end
+  # end
   
 end

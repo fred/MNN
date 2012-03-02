@@ -20,6 +20,11 @@ describe Item do
       @item.body = nil
       @item.should_not be_valid
     end
+    it "should not require a body if it is a youtube video" do
+      @item.youtube_id = "a1b2c3d4e5"
+      @item.body = nil
+      @item.should be_valid
+    end
     it "should not require abstract" do
       @item.abstract = nil
       @item.should be_valid

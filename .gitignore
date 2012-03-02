@@ -91,3 +91,4 @@ config/deploy.rb
 config/initializers/00_keys.rb
 backup/
 config/certs/
+vendor/gems/
