@@ -39,18 +39,19 @@ class TagsController < ApplicationController
     @rss_description = "MNN - Latest News tagged in #{@tag.title}"
     @rss_category = @tag.title
     @rss_source = tags_path(@tag, :only_path => false, :protocol => 'https', :format => "html")
+    headers['Last-Modified'] = @last_published.httpdate
     
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {
+        headers['Cache-Control'] = 'public, max-age=600' unless (current_admin_user or current_user) # 10 min cache
+      }
       format.json { render json: @items }
       format.atom {
         headers['Cache-Control'] = 'public, max-age=3600' # 1 hour cache
-        headers['Last-Modified'] = @last_published.httpdate
         render :partial => "/shared/items", :layout => false
       }
       format.rss {
         headers['Cache-Control'] = 'public, max-age=3600' # 1 hour cache
-        headers['Last-Modified'] = @last_published.httpdate
         render :partial => "/shared/items", :layout => false
       }
       format.xml { render @items }
