@@ -5,6 +5,9 @@ CHANGELOG
 * Improved SQL performance for index page
 * Improve layout for iPad
 * Added links to Version History lists (WIP for full Versioning system)
+* Disable caching for logged in users
+* Reduced Cache to 12 hour for Staled content
+* Reduced Cache to 10 minutes for Active content
 
 == Feb 25, 2012
 * Youtube Video Helper:

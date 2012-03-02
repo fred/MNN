@@ -20,13 +20,14 @@
 <% end %>
 
 
+<% cache("items/#{@item.id}/#{@item.updated_at.to_i}") do %>
 <article id="item_<%= @item.id %>">
   <div class="font_control" id="font_control" style="display:none;">
     <a id="decreaseFont" href="#" title="Reduce Size">A-</a>
     <a id="resetFont" href="#" title="Default Font">A</a>
     <a id="increaseFont" href="#" title="Increase Size">A+</a>
   </div>
-  
+
   <h1><%= @item.title %></h1>
 
   <span class="source_url">
@@ -133,11 +134,9 @@
       <%= render :partial => "/shared/gplus" %>
       <%#= render :partial => "/shared/twitter" %>
     </div>
-  
     <div class="page_views">
       Views: <%= @item_stat.views_counter if @item_stat %>
     </div>
-  
   </footer>
 
   <% if @related && @related.total > 0 %>
@@ -151,7 +150,7 @@
     </section>
   <% end %>
 </article>
-
+<% end %>
 
 <!-- <section id="item_<%#= @item.id %>_comments">
   <%#= render_comments @item %>
@@ -167,7 +166,6 @@
     <h4>Comments are disabled for this item</h4>
   <% end %>
 </section>
-
 
 <% content_for :breadcrumb do %>
   <li>
