@@ -2,8 +2,8 @@
   <div class="well">
     <%= link_to(image_tag("icons/social/rss_32.png"), feed_path, :title => "Multiple RSS Feeds") %>
     <%= link_to(image_tag("icons/social/twitter_32.png"), twitter_link, :title => "Visit our Twitter")%>
-    <%= image_tag "icons/social/facebook_32.png" %>
-    <%= image_tag "icons/social/diaspora.png" %>
+    <%= link_to(image_tag("icons/social/facebook_32.png"), "https://facebook.com/mathaba.net", :title => "WorldMathaba Facebook Page")%>
+    <%= link_to(image_tag("icons/social/diaspora.png"), "https://social.mathaba.net", :title => "WorldMathaba Social Networking by Diaspora")%>
   </div>
   <div class="well">
     <%= form_tag(search_path, :method => :get, :class => "clearfix") do |f| %>

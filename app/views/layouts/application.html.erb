@@ -7,7 +7,9 @@
     
     <title>News Publication System</title>
     <%= stylesheet_link_tag    "application" %>
+    <%= yield(:stylesheets) %>
     <%= javascript_include_tag "application" %>
+    <%= yield(:javascripts) %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width; height=device-height; maximum-scale=1.2; initial-scale=0.8; user-scalable=yes"/>
     <meta name="HandheldFriendly" content="true"/>

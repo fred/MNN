@@ -31,10 +31,20 @@
           </div>
         </div> -->
         
+        <div id="termsofservice-form-element" class="clearfix">
+          &nbsp;&nbsp;
+          <%= f.check_box :terms_of_service %>
+          <strong>
+            I agree to the
+            <a href="/pages/privacy-and-policy" target="popup">Terms of Service and Privacy Policy</a>
+          </strong>
+          </div>
+        
         <div class="actions">
           <%= f.submit "Sign up", :class => "btn primary", :disable_with => 'Processing...' %>
         </div>
       </fieldset>
+      
     <% end %> <!-- End Form -->
   </div> <!-- End span8-->
 </div> <!-- End row -->
@@ -61,4 +71,10 @@
       });
     }
   </script>
+<% end %>
+
+
+
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "jquery.fancybox.css" %>
 <% end %>
