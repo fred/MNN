@@ -34,8 +34,7 @@
         <%= render :partial => "/shared/footer" %>
       </div>
     </div>
-
+    <%= yield(:footer) %>
+    <%= yield(:scripts) %>
   </body>
-  <%= yield(:footer) %>
-  <%= yield(:scripts) %>
 </html>
