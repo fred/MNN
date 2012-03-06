@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" <%= yield(:html_tag) %>>
   <head>
     <%= render :partial => "/shared/head" %>
     <%= stylesheet_link_tag "application" %>

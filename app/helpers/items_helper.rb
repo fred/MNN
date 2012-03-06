@@ -39,7 +39,7 @@ module ItemsHelper
     # http://www.linkedin.com/shareArticle?mini=true&url=CONTENT-URL&title=CONTENT-TITLE&summary=DEATILS-OPTIONAL&source=YOURWEBSITE-NAME
     url = "http://www.linkedin.com/shareArticle?mini=true&url="
     url += url_for(item_path(item.id, :only_path => false, :protocol => 'https'))
-    url += "&title=#{item.title}"
+    url += "&title=#{url_encode(item.title)}"
     url += "&source=MNN"
     return url
   end
@@ -47,14 +47,14 @@ module ItemsHelper
   def facebook_share(item)
     url = "https://www.facebook.com/sharer.php?u="
     url += url_for(item_path(item.id, :only_path => false, :protocol => 'https'))
-    url += "&t=#{meta_title(item)}"
+    url += "&t=#{url_encode(meta_title(item))}"
     return url
   end
   
   def twitter_share(item)
     url = "https://twitter.com/home?status="
-    url += item.title.truncate(116)
-    url += " "
+    url += url_encode(item.title.truncate(116))
+    url += "%20"
     url += url_for(item_path(item, :only_path => false, :protocol => 'https'))
     return url
   end
@@ -63,7 +63,7 @@ module ItemsHelper
     url = "http://digg.com/submit?url="
     url += url_for(item_path(item, :only_path => false, :protocol => 'https'))
     url += "&title="
-    url += item.title
+    url += url_encode(item.title)
     return url
   end
   
@@ -77,7 +77,7 @@ module ItemsHelper
     url = "http://www.reddit.com/submit?url="
     url += url_for(item_path(item, :only_path => false, :protocol => 'https'))
     url += "&title="
-    url += item.title
+    url += url_encode(item.title)
     return url
   end
   
@@ -91,7 +91,7 @@ module ItemsHelper
     url = "http://slashdot.org/slashdot-it.pl?op=basic&url="
     url += url_for(item_path(item, :only_path => false, :protocol => 'https'))
     url += "&title="
-    url += item.title
+    url += url_encode(item.title)
     return url
   end
   
@@ -99,9 +99,9 @@ module ItemsHelper
     url = "http://www.delicious.com/save?url="
     url += url_for(item_path(item, :only_path => false, :protocol => 'https'))
     url += "&title="
-    url += item.title
+    url += url_encode(item.title)
     url += "&notes="
-    url += item.abstract
+    url += url_encode(item.abstract)
     return url
   end
   
@@ -109,7 +109,7 @@ module ItemsHelper
     sbj = item.title
     body = "#{item.abstract} - "
     body += url_for(item_path(item, :only_path => false, :protocol => 'https'))
-    "mailto:?subject=#{sbj}&body=#{body}"
+    "mailto:?subject=#{url_encode(sbj)}&body=#{url_encode(body)}"
   end
   
 end

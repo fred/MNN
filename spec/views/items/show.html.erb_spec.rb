@@ -20,6 +20,6 @@ describe "items/show" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     # rendered.should match(/Title/)
     assert_select "article>h1", :text => @item.title.to_s, :count => 1
-    assert_select "span#item_body", :text => @item.body.to_s, :count => 1
+    assert_select "div#item_body", :text => @item.body.to_s, :count => 1
   end
 end

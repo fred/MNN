@@ -1,4 +1,4 @@
-<% cache("shared/item/#{item.id}") do %>
+<%# cache("shared/item/#{item.id}") do %>
   <article class="category" id="item_<%=item.id%>">
     <header>
       <% if item.has_image? %>
@@ -11,7 +11,7 @@
     <section>
       <%= item.abstract.to_s.html_safe %>
     </section>
-    <section>
+    <section class="small_font">
       <span class="source_url">
         <% if item.source_url %>
           <%= link_to "Source", item.source_url %>
@@ -24,10 +24,10 @@
         <%= time_tag(item.published_at.in_time_zone("UTC"), :pubdate => false) %> (UTC)
       </span>
       <% if item.user %>
-        Submitted by <span class="author"><%= link_to_if(item.user, item.user.title, author_path(item.user)) %></span>
+        <span class="author">Submitted by <%= link_to_if(item.user, item.user.title, author_path(item.user)) %></span>
       <% end %>
+      
       <ul class="tags">
-        Tags:
         <% item.tags.each do |tag| %>
           <li><%= link_to tag.title, tag_path(tag) %></li>
         <% end %>
@@ -35,11 +35,11 @@
           <li><%= link_to item.language.description, language_items_path(item.language) %></li>
         <% end %>
       </ul>
-      <div class="page_views">
+      <span class="page_views">
         <% if item.item_stat %>
           Views: <%= item.item_stat.views_counter %>
         <% end %>
-      </div>
+      </span>
       <% @related = item.solr_similar(4) %>
       <% if @related && @related.total > 0 %>
         <section class="related">
@@ -53,4 +53,4 @@
       <% end %>
     </section>
   </article>
-<% end %>
+<%# end %>
