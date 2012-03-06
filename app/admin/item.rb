@@ -76,5 +76,19 @@ ActiveAdmin.register Item do
         @item.expires_on = Time.zone.now+10.years
       end
     end
+    def create
+      @item = Item.new(params[:item])
+      @item.user_id = current_admin_user.id
+      respond_to do |format|
+        if @item.save
+          format.html { redirect_to admin_item_path(@item), notice: 'Item was successfully created.' }
+          format.json { render json: @item, status: :created, location: @item }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @item.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+    
   end
 end

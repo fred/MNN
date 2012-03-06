@@ -54,7 +54,6 @@ module ItemSpecHelper
       :body => "some body...",
       :draft => false,
       :featured => false,
-      :user_id => 1,
       :published_at => Time.now-3600
     }
   end

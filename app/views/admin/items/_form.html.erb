@@ -153,7 +153,7 @@
     <%= f.input :updated_reason, :as => "string", :hint => "Provide a reason for editing, as short as possible, 2-4 words." %>
   <% end %>
   
-  <%= f.input(:user_id, :label => false, :as => :hidden, :value => current_admin_user.id) if f.object.new_record? %>
+  <%#= f.input(:user_id, :label => false, :as => :hidden, :value => current_admin_user.id) if f.object.new_record? %>
   
   <%= f.buttons :commit %>
 <% end %>

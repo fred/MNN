@@ -7,8 +7,8 @@ class CategoriesController < ApplicationController
     @highlights = [@top_items.first]
     @latest_items = @top_items[1..3]
     @categories = Category.order("priority ASC, title DESC").all
-    headers['Cache-Control'] = 'public, max-age=600' unless (current_admin_user or current_user) # 10 min cache
-    headers['Last-Modified'] = Item.last_item.updated_at.httpdate
+    # headers['Cache-Control'] = 'public, max-age=300' unless (current_admin_user or current_user) # 10 min cache
+    # headers['Last-Modified'] = Item.last_item.updated_at.httpdate
   end
 
   def show
