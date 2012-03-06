@@ -14,4 +14,6 @@ class AdminUser < User
   # Versioning System
   # has_paper_trail
   
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :bio, :name, :address, :twitter, :diaspora, :skype, :gtalk, :jabber, :phone_number, :time_zone, :type, :role_ids, :roles
+  
 end

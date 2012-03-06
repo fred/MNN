@@ -1,6 +1,8 @@
 class Item < ActiveRecord::Base
   include Rails.application.routes.url_helpers # neeeded for _path helpers to work in models
-
+  
+  attr_protected :user_id, :slug, :updated_by, :deleted_at
+  
   attr_accessor :updated_reason, :share_twitter
   
   # Versioning System
@@ -232,6 +234,13 @@ class Item < ActiveRecord::Base
     all
   end
   
+  def language_title_short
+    if self.language
+      self.language.locale
+    else
+      "en"
+    end
+  end
   
   def category_title
     if self.category

@@ -1,56 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="description" content="News Publication System">
-    <meta name="author" content="News Publication System">
-    
-    <title>News Publication System</title>
-    <%= stylesheet_link_tag    "application" %>
+    <%= render :partial => "/shared/head" %>
+    <%= stylesheet_link_tag "application" %>
     <%= yield(:stylesheets) %>
     <%= javascript_include_tag "application" %>
     <%= yield(:javascripts) %>
     <%= csrf_meta_tags %>
-    <meta name="viewport" content="width=device-width; height=device-height; maximum-scale=1.0; initial-scale=1.0; user-scalable=yes"/>
-    <meta name="HandheldFriendly" content="true"/>
-    
-    <link rel="icon" type="image/png" href="/assets/favicon.png" />
-     
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    
-    <!-- Le fav and touch icons -->
-    <!-- 
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png"> 
-    -->
     <%= yield(:head) %>
   </head>
-
+  
   <body>
     <%= render :partial => "/shared/topbar" %>
 
     <div class="container">
       <div class="row">
         <div class="span16">
-          
-          
           <div class="row">
+            
             <div class="span3">
               <%= render :partial => "/shared/sidebar" %>
             </div>
             
             <div class="span13">
               <div class="content">
-                <%#= render :partial => "/shared/highlights" %>
                 <%= yield %>
               </div>
             </div>
+            
           </div>
-          
         </div>
       </div>
     </div>

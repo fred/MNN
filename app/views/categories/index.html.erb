@@ -7,7 +7,7 @@
   <div class="span6 box" id="main_highlights">
     <ul>
       <% @highlights.each do |item| %>
-        <li class="featured_item" id="item_<%=item.id%>">
+        <li class="featured_item" id="highlight_item_<%=item.id%>">
           <% if item.has_image? %>
             <%= link_to(
                   image_tag(item.main_image.image.main, :class => "featured_item_image"),
@@ -32,7 +32,7 @@
     <h1><%= link_to "Latest News", items_path %></h1>
     <ul>
     <% @latest_items.each do |item| %>
-      <li class="list_item" id="item_<%=item.id%>">
+      <li class="list_item" id="highlight_item_<%=item.id%>">
         <% if item.has_image? %>
           <%= link_to(
                 image_tag(item.main_image.image.small, :class => "list_item_image"),
@@ -88,7 +88,7 @@
 
 
 <%= content_for :scripts do %>
-  <script>
+  <script type="text/javascript">
     if (!(Modernizr.touch)) {
       $(document).ready(function(){
         $("a").easyTooltip({

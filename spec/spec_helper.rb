@@ -66,7 +66,7 @@ module UserSpecHelper
       :email => "welcome@gmail.com",
       :name => 'My Name',
       :password => 'welcome',
-      :password_confirmation => 'welcome'
+      :password_confirmation => 'welcome',
     }
   end
 end

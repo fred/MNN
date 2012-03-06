@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  # attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :skype, :twitter, :diaspora, :jabber, :time_zone, :role_ids
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :bio, :name, :address, :twitter, :diaspora, :skype, :gtalk, :jabber, :phone_number, :time_zone
   
-  validates_acceptance_of :terms_of_service, :allow_nil => false, :accept => true
+  validates_acceptance_of :terms_of_service, :allow_nil => false, :accept => true unless Rails.env.test?
   
   # Relationships
   has_many :items

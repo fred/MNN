@@ -27,7 +27,10 @@ module ItemsHelper
   
   def meta_title(item)
     str = item.title
-    str += " - #{item.abstract}" if item.abstract
+    return str
+  end
+  def meta_description(item)
+    str = item.abstract
     return str
   end
   
