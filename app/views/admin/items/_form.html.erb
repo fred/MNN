@@ -1,13 +1,13 @@
 <%= semantic_form_for [:admin, @item], :html => { :enctype => "multipart/form-data" }  do |f| %>
 
-  <%= f.inputs :name => "Required Main Information" do %>
+  <%= f.inputs :name => "All fields with * are required" do %>
     <%= f.input :category,
                 :as => :select,
                 :member_label => 'title',
                 :member_value => :id,
                 :label => "Category",
                 :required => true,
-                :hint => "It's required to pick a category"
+                :hint => "Select Article category"
     %>
     <%= f.input :language,
                 :as => :select,
@@ -20,10 +20,10 @@
     <%= f.input :title,
                 :label => "Headline",
                 :required => true,
-                :hint => "Required, ideal 60 characters. Max 100." %>
+                :hint => "Ideally 60 characters. Max 100." %>
                 
     <%= f.input :abstract,
-                :hint => "Required, ideal 80 characters. Max 120.",
+                :hint => "Ideally 80 characters. Max 120.",
                 :required => true,
                 :input_html => { :rows => 2 }
     %>

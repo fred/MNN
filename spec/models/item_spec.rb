@@ -56,7 +56,7 @@ describe Item do
   
   describe "Creating Item with Social Shares" do
     before(:each) do
-      @item = Factory(:item, :share_twitter => true)
+      @item = Factory(:item, :share_twitter => "1")
     end
     it "should create a share twitter model" do
       @item.twitter_shares.should_not eq([])
@@ -68,6 +68,16 @@ describe Item do
     end
   end
   
+  describe "Creating Item without Social Shares" do
+    before(:each) do
+      @item = Factory(:item, :share_twitter => "0")
+    end
+    it "should not create a share twitter model" do
+      @item.twitter_shares.should eq([])
+      @item.twitter_shares.count.should eq(0)
+    end
+  end
+  
   describe "Updating an Item with Social Shares" do
     before(:each) do
       @item = Factory(:item)
@@ -75,15 +85,46 @@ describe Item do
     it "should not have a twitter share by default" do
       @item.twitter_shares.should eq([])
     end
-    it "should create a share twitter after update" do
-      @item.share_twitter = true
+    it "should create a share twitter after update if share_twitter = 1" do
+      @item.share_twitter = 1
       @item.save
       @new_item = Item.find(@item.id)
       @new_item.twitter_shares.should_not eq([])
       @new_item.twitter_shares.last.should eq(TwitterShare.first)
     end
+    it "should create a share twitter after update if share_twitter = true" do
+      @item.share_twitter = true
+      @item.save
+      @new_item = Item.find(@item.id)
+      @new_item.twitter_shares.should_not eq([])
+      @new_item.twitter_shares.last.should eq(TwitterShare.first)
+      @new_item.twitter_shares.count.should eq(1)
+    end
+    it "should not create a share twitter after update if share_twitter = false" do
+      @item.share_twitter = false
+      @item.save
+      @new_item = Item.find(@item.id)
+      @new_item.twitter_shares.should eq([])
+    end
+    it "should not create a share twitter after update if share_twitter = 0" do
+      @item.share_twitter = 0
+      @item.save
+      @new_item = Item.find(@item.id)
+      @new_item.twitter_shares.should eq([])
+    end
   end
   
+  describe "Updating an Item with already Social Shares" do
+    before(:each) do
+      @item = Factory(:item, :share_twitter => "1")
+    end
+    it "should not create a new share twitter it item already has one" do
+      @item = Item.first
+      @item.share_twitter = 1
+      @item.save
+      @item.twitter_shares.count.should eq(1)
+    end
+  end
   
   describe "Updating an Editing Item with SOLR enabled" do
     include EnableSunspot

@@ -242,3 +242,8 @@ table.index_table td {
 .hidden {
   display: none;
 }
+
+form fieldset ol > li label abbr {
+  color: #555;
+  padding-left: 2px;
+}

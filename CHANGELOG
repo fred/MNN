@@ -1,4 +1,15 @@
 CHANGELOG
+
+== Mar 6, 2012
+* Fixed HTML5 spec bugs. Main Index and Category Index with Zero errors
+* 100% passing the http://validator.w3.org/check test
+* Fixed bug on twitter sharing not respecting the checkbox
+* Added longer remember me for logged in users
+* Better live preview for TinyMCE item editor
+* Improved site performance
+* Rspec tests for twitter share
+
+
 == Mar 2, 2012
 * Showing 2 columns on the Admin Dashboard instead of 3
 * Temporarily Removed comments from the Admin Dashboard

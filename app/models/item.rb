@@ -91,7 +91,7 @@ class Item < ActiveRecord::Base
   end
   
   def create_twitter_share
-    if self.share_twitter && !self.draft && self.twitter_shares.empty?
+    if (self.share_twitter.to_s=="1" or self.share_twitter==true) && !self.draft && self.twitter_shares.empty?
       self.twitter_shares << TwitterShare.new
     end
   end
