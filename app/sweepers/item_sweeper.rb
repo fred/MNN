@@ -25,10 +25,10 @@ class ItemSweeper < ActionController::Caching::Sweeper
     # Expire the index page now that we added a new item
     # expire_page(:controller => 'items', :action => 'index')
     # Expire a fragment
-    expire_fragment("item/#{item.id}")
-    expire_fragment("shared/item/#{item.id}")
-    expire_fragment("shared/item/#{item.id}/atom")
-    expire_fragment("shared/item/#{item.id}/rss")
-    # Rails.logger.debug("Going to sweep 'item/#{item.id}'")
+    expire_fragment("highlights")
+    # expire_fragment("item/#{item.id}")
+    # expire_fragment("shared/item/#{item.id}")
+    # expire_fragment("shared/item/#{item.id}/atom")
+    # expire_fragment("shared/item/#{item.id}/rss")
   end
 end

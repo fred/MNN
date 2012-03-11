@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
   def show
     @show_breadcrumb = true
     @category = Category.find(params[:id])
-    headers['Cache-Control'] = 'public, max-age=600' unless (current_admin_user or current_user) # 10 min cache
+    headers['Cache-Control'] = 'public, max-age=300' unless (current_admin_user or current_user) # 5 min cache
     headers['Last-Modified'] = @category.items.last_item.updated_at.httpdate
     @items = @category.
       items.

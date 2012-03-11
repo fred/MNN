@@ -29,6 +29,7 @@
   </div>
   
   <div class="span6 box" id="highlights">
+    <% cache("highlights") do %>
     <h1><%= link_to "Latest News", items_path %></h1>
     <ul>
     <% @latest_items.each do |item| %>
@@ -48,41 +49,44 @@
       </li>
     <% end %>
     </ul>
+    <% end %>
   </div>
 
   <% for category in @categories %>
-    <div class="span6 box" id="<%= category.slug %>">
-      <h1><%= link_to category.title, category %></h1>
-      <ul>
-        <% category.top_items(13).each_with_index do |item,index|%>
-          <li class="list_item" id="item_<%=item.id%>">
-            <% if index==0 %>
-              <% if item.has_image? %>
-                <%= link_to(
-                      image_tag(item.main_image.image.small, :class => "list_item_image"),
-                      item, 
-                      :title => "<strong>#{item.title}</strong> <br/> #{item.abstract}"
-                    )
-                %>
-              <% elsif item.youtube_id && item.youtube_img %>
-                <%= image_tag("https://img.youtube.com/vi/#{item.youtube_id}/0.jpg", :class=>"list_item_image youtube_small")%>
-              <% end %>
-              <%= link_to item.title.to_s.truncate(100), item, 
-                      :title => "<strong>#{item.title}</strong> <br/> #{item.abstract}"
-              %>
-              <span class="abstract"><%= item.abstract.to_s.truncate(120) %></span>
-            <% else %>
-              <span class="noroll">
+    <% cache("box/#{category.id}/#{category.last_item.updated_at.to_i}") do %>
+      <div class="span6 box" id="<%= category.slug %>">
+        <h1><%= link_to category.title, category %></h1>
+        <ul>
+          <% category.top_items(13).each_with_index do |item,index|%>
+            <li class="list_item" id="item_<%=item.id%>">
+              <% if index==0 %>
+                <% if item.has_image? %>
+                  <%= link_to(
+                        image_tag(item.main_image.image.small, :class => "list_item_image"),
+                        item, 
+                        :title => "<strong>#{item.title}</strong> <br/> #{item.abstract}"
+                      )
+                  %>
+                <% elsif item.youtube_id && item.youtube_img %>
+                  <%= image_tag("https://img.youtube.com/vi/#{item.youtube_id}/0.jpg", :class=>"list_item_image youtube_small")%>
+                <% end %>
                 <%= link_to item.title.to_s.truncate(100), item, 
-                      :title => item_title(item)
+                        :title => "<strong>#{item.title}</strong> <br/> #{item.abstract}"
                 %>
-              </span>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-      <span class="more"><%= link_to "more...", category, :title => "Read more articles in this category" %></span>
-    </div>
+                <span class="abstract"><%= item.abstract.to_s.truncate(120) %></span>
+              <% else %>
+                <span class="noroll">
+                  <%= link_to item.title.to_s.truncate(100), item, 
+                        :title => item_title(item)
+                  %>
+                </span>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+        <span class="more"><%= link_to "more...", category, :title => "Read more articles in this category" %></span>
+      </div>
+    <% end %>
   <% end %>
 </div>
 

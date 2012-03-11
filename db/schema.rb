@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120302083309) do
+ActiveRecord::Schema.define(:version => 20120311054315) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(:version => 20120302083309) do
     t.string   "youtube_id"
     t.boolean  "youtube_vid"
     t.boolean  "youtube_img"
+    t.boolean  "sticky",            :default => false
   end
 
   add_index "items", ["allow_comments"], :name => "index_items_on_allow_comments"
@@ -137,6 +138,7 @@ ActiveRecord::Schema.define(:version => 20120302083309) do
   add_index "items", ["published_at"], :name => "index_items_on_published_at", :order => {"published_at"=>:desc}
   add_index "items", ["slug"], :name => "index_items_on_slug", :unique => true
   add_index "items", ["status_code"], :name => "index_items_on_status_code"
+  add_index "items", ["sticky"], :name => "index_items_on_sticky"
   add_index "items", ["updated_by"], :name => "index_items_on_updated_by"
   add_index "items", ["user_id"], :name => "index_items_on_user_id"
 

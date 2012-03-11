@@ -1,6 +1,13 @@
 CHANGELOG
 
 == Mar 6, 2012
+* Highly improved performance, from 1600ms to 220ms average (6-10x faster)
+* Using fragment cache with memcached
+* Upgraded Rails to 3.2.2
+* Updated Gems
+* Fix Font Color for item text, it was too light (CSS fix).
+
+== Mar 6, 2012
 * Fixed HTML5 spec bugs. Main Index and Category Index with Zero errors
 * 100% passing the http://validator.w3.org/check test
 * Fixed bug on twitter sharing not respecting the checkbox

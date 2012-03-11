@@ -1,4 +1,4 @@
-<% cache("shared/item/#{item.id}/atom") do %>
+<% cache("shared/item_atom/#{item.id}/#{item.updated_at.to_i}") do %>
   <article class="category" id="item_<%=item.id%>">
     <div>
       <h3><%= link_to item.title, item %></h3>

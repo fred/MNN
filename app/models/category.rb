@@ -36,4 +36,8 @@ class Category < ActiveRecord::Base
       limit(lmt)
   end
   
+  def last_item
+    self.items.order("updated_at DESC").first
+  end
+  
 end
