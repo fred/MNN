@@ -5,10 +5,15 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery
   
-  before_filter :set_time_zone, :set_view_items, :current_ability
+  before_filter :set_start_time, :set_time_zone, :set_view_items, :current_ability
   
   comment_destroy_conditions do |comment|
     comment.owner == current_user
+  end
+  
+  
+  def set_start_time
+    @start_time = Time.now.usec
   end
 
   def current_ability

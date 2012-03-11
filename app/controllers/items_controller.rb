@@ -192,11 +192,11 @@ class ItemsController < ApplicationController
       # showing Sponsored Listings
       @items = @search.results
       @title = "Found #{@search.total} results with '#{params[:q]}' "
-    else
-      # If no search term has been given, empty search
-      @items = Item.published.not_draft.
-        order("published_at DESC").
-        page(params[:page]).per(per_page)
+    # else
+    #   # If no search term has been given, empty search
+    #   @items = Item.published.not_draft.
+    #     order("published_at DESC").
+    #     page(params[:page]).per(per_page)
     end
     # client side cache for 15 minutes
     headers['Cache-Control'] = 'public, max-age=900' unless (current_admin_user or current_user)

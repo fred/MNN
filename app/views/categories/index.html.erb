@@ -29,7 +29,7 @@
   </div>
   
   <div class="span6 box" id="highlights">
-    <% cache("highlights") do %>
+    <% cache("highlights/#{@latest_items.first.updated_at.to_i}") do %>
     <h1><%= link_to "Latest News", items_path %></h1>
     <ul>
     <% @latest_items.each do |item| %>
