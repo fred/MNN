@@ -48,7 +48,7 @@
           <figure>
             <span itemprop="image">
               <%= link_to image_tag(@item.main_image.image.medium, :class => "show_item_image", :id => "main_image"),
-                    @item.main_image.image.large.url, :target => "blank"
+                    @item.main_image.image.large.url, :target => "blank", :id => "main_image_popup"
               %>
             </span>
             <% if @item.main_image.title %>
@@ -207,7 +207,7 @@
     });
     if (!(Modernizr.touch)) {
       // Image Gallery
-      $("#main_image").fancybox({
+      $("#main_image_popup").fancybox({
         openEffect  : 'none',
         closeEffect  : 'none'
       });
