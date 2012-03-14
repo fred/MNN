@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: git://github.com/smartinez87/exception_notification.git
-  revision: 63d9d483fab05340dd5392269c3a6f5b08721267
+  revision: 363efb0cf37a691a67a3f095088d080f7ae84525
   specs:
     exception_notification (2.5.2)
       actionmailer (>= 3.0.4)
@@ -147,7 +147,7 @@ GEM
     formatador (0.2.1)
     formtastic (2.1.1)
       actionpack (~> 3.0)
-    friendly_id (4.0.1)
+    friendly_id (4.0.2)
     gherkin (2.9.0)
       json (>= 1.4.6)
     has_scope (0.5.1)
@@ -203,7 +203,7 @@ GEM
     options (2.3.0)
       fattr
     orm_adapter (0.0.6)
-    paper_trail (2.6.0)
+    paper_trail (2.6.2)
       rails (~> 3)
     pg (0.13.2)
     polyamorous (0.5.0)
@@ -323,7 +323,7 @@ GEM
       polyglot (>= 0.3.1)
     turn (0.8.3)
       ansi
-    twitter (2.1.0)
+    twitter (2.1.1)
       activesupport (>= 2.3.9, < 4)
       faraday (~> 0.7)
       multi_json (~> 1.0)
@@ -360,7 +360,7 @@ DEPENDENCIES
   asset_sync
   autotest
   autotest-rails
-  bundler (>= 1.0.0)
+  bundler (>= 1.1.0)
   cancan
   capybara (>= 1.0.1)
   carrierwave (~> 0.5.8)

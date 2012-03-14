@@ -1,6 +1,15 @@
 CHANGELOG
 
-== Mar 6, 2012
+== Mar 14, 2012
+* Add Unique UID to the images path
+* Changed keywords examples to be more appropriate on admin site
+* Gems updated
+* Testing watermark on images
+
+== Mar 12, 2012
+* Popup image bug fix
+
+== Mar 11, 2012
 * Highly improved performance, from 1600ms to 220ms average (6-10x faster)
 * Using fragment cache with memcached
 * Upgraded Rails to 3.2.2

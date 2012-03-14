@@ -7,6 +7,12 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
   include CarrierWave::MiniMagick
   include CarrierWave::MimeTypes
+  
+  # Set quality to 90 (default: 85)
+  process :quality => 90
+  
+  # Set Watermark
+  process :watermark => "#{Rails.root}/public/watermark.png"
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
@@ -81,5 +87,23 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  
+  def filename
+     @name ||= "#{secure_token}.#{file.extension}" if original_filename.present?
+  end
 
+  protected
+  def secure_token
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+  end
+
+
+  def watermark(path_to_file)
+    manipulate! do |img|
+      img = img.composite(MiniMagick::Image.open(path_to_file), "jpg") do |c|
+        c.gravity "South"
+      end
+    end
+  end
 end

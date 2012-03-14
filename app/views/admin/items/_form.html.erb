@@ -37,13 +37,13 @@
     <%= f.input :keywords,
                 :label => "Keywords",
                 :required => false,
-                :hint => "Keywords related to the article, such as names, events, and any keyword that are not available in Tags sections. i.e. Obama, ACTA, SOPA, PIPA, Monsanto, GMO, Pepsi, gold, bank, money, cocaine, etc... It will greatly improve discovery of related items. You may also use special keywords to relate other items. It's invisble to the users. Less keywords will give more related items but less accurate, more keywords will give less related items but more accurate. You need to find a good balance."
+                :hint => "Keywords related to the article, such as names, events, special keywords, or any keyword that might have ralation to other articles. Examples: Jamahiriya, USA, Illuminati, Rockefeller, New World Order, Free Energy, Monsanto, GMO, IMF, Pepsi, Gold, banking, cocaine, etc... It will greatly improve discovery of related items. You may also use special keywords to relate other items. It's invisble to the users. Less keywords will give more related items but less accurate, more keywords will give less related items but more accurate. You need to find a good balance."
     %>
   <% end %>
   
   <%= f.inputs :name => "Youtube Video" do %>
     <%= f.input :youtube_id, :label => "Youtube Video ID",
-          :hint => "Needed if one of the options below are checked. example: JW5meKfy3fY"
+          :hint => "Needed if one of the options below are checked. example: aJURNC0e6Ek"
     %>
     <%= f.input :youtube_vid, :label => "Automatically Embed Youtube Video",
           :hint => "The youtube video will be added to the Top of the article."
