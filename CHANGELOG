@@ -1,5 +1,8 @@
 CHANGELOG
 
+== Mar 17, 2012
+* Fixed caching bug on the Category Boxes on main page
+
 == Mar 14, 2012
 * Add Unique UID to the images path
 * Changed keywords examples to be more appropriate on admin site

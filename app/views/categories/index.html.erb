@@ -53,11 +53,12 @@
   </div>
 
   <% for category in @categories %>
-    <% cache("box/#{category.id}/#{category.last_item.updated_at.to_i}") do %>
+    <% @top_items = category.top_items(13) %>
+    <% cache("box/#{category.id}/#{@top_items.first.updated_at.to_i}") do %>
       <div class="span6 box" id="<%= category.slug %>">
         <h1><%= link_to category.title, category %></h1>
         <ul>
-          <% category.top_items(13).each_with_index do |item,index|%>
+          <% @top_items.each_with_index do |item,index|%>
             <li class="list_item" id="item_<%=item.id%>">
               <% if index==0 %>
                 <% if item.has_image? %>

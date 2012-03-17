@@ -37,7 +37,13 @@ class Category < ActiveRecord::Base
   end
   
   def last_item
-    self.items.order("updated_at DESC").first
+    self.
+      items.
+      where(:draft => false).
+      where("published_at is not NULL").
+      where("published_at < '#{Time.now.to_s(:db)}'").
+      order("updated_at DESC").
+      first
   end
   
 end
