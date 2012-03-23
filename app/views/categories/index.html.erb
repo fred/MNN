@@ -30,6 +30,7 @@
   
   <div class="span6 box" id="highlights">
     <% cache("highlights/#{@latest_items.first.updated_at.to_i}") do %>
+    <!-- CACHE KEY: <%= "highlights/#{@latest_items.first.updated_at.to_i}" %> -->
     <h1><%= link_to "Latest News", items_path %></h1>
     <ul>
     <% @latest_items.each do |item| %>
@@ -55,6 +56,7 @@
   <% for category in @categories %>
     <% @top_items = category.top_items(13) %>
     <% cache("box/#{category.id}/#{@top_items.first.updated_at.to_i}") do %>
+      <!-- CACHE KEY: <%= "box/#{category.id}/#{@top_items.first.updated_at.to_i}" %> -->
       <div class="span6 box" id="<%= category.slug %>">
         <h1><%= link_to category.title, category %></h1>
         <ul>

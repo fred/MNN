@@ -15,7 +15,7 @@ gem 'pg'
 
 ### Roles and Authentication
 gem 'cancan' 
-gem 'devise', "~> 2.0" # Devise must be required before RailsAdmin
+gem 'devise', "~> 2.0.4" # Devise must be required before RailsAdmin
 
 ### Versioning
 gem 'paper_trail'
@@ -33,7 +33,7 @@ gem 'carrierwave', "~> 0.5.8"
 gem "asset_sync"
 
 ### Parsing
-gem 'nokogiri'
+# gem 'nokogiri'
 
 ### Permalink
 # gem 'RedCloth'
@@ -163,3 +163,6 @@ gem 'dalli'
 # gem 'omniauth-google_oauth2'
 
 gem 'galetahub-simple_captcha', :require => 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
+
+
+# gem 'jquery_mobile_rails', :git => "git://github.com/fred/jquery-mobile-rails.git", :branch => "110-rc1"

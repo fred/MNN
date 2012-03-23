@@ -34,6 +34,31 @@ class ApplicationController < ActionController::Base
     @per_page
   end
   
+  
+  def is_mobile?
+    s = request.env["HTTP_USER_AGENT"].to_s.downcase
+    valid="(iphone|ipod|nokia|series60|symbian|blackberry|opera mini|mobile|iemobile|android|smartphone)"
+    invalid="(tablet|ipad|playbook|xoom)"
+    if !s.match(invalid) && s.match(valid)
+      Rails.logger.debug("  UA: Mobile found: #{s}")
+      return true
+    else
+      return false
+    end
+  end
+  
+  def is_tablet?
+    s = request.env["HTTP_USER_AGENT"].to_s.downcase
+    valid="(tablet|ipad|galaxytab|opera mini|honeycomb|p1000|playbook|xoom|android|sch-i800|kindle)"
+    invalid="(mobile|iphone|ipod)"
+    if !s.match(invalid) && s.match(valid)
+      Rails.logger.debug("  UA: Tablet found: #{s}")
+      return true
+    else
+      return false
+    end
+  end
+  
   # this should give 99% of users
   def is_human?
     return true if Rails.env.test?
@@ -90,6 +115,20 @@ class ApplicationController < ActionController::Base
       Rails.logger.info("*** Setting timezone for user to #{current_admin_user.time_zone}")
       Time.zone = current_admin_user.time_zone
     end
+  end
+  
+  # temporarily use mobile by setting by URL
+  def get_layout
+    if params[:mobile_mode] or session[:mobile_mode] == "1"
+      session[:mobile_mode] = "1"
+      layout_name = "mobile"
+    elsif params[:desktop_mode]
+      session[:mobile_mode] = nil
+      layout_name = "items"
+    else
+      layout_name = "items"
+    end
+    reuturn "items"
   end
   
   protected

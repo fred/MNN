@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   
-  layout "items"
+  layout :get_layout
     
   def index
     @top_items = Item.highlights(4)
