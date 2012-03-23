@@ -128,7 +128,7 @@ class ApplicationController < ActionController::Base
     else
       layout_name = "items"
     end
-    reuturn "items"
+    return "items"
   end
   
   protected
