@@ -12,7 +12,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   process :quality => 90
   
   # Set Watermark
-  process :watermark => "#{Rails.root}/public/watermark.png"
+  # process :watermark => "#{Rails.root}/public/watermark.png"
 
   # Choose what kind of storage to use for this uploader:
   # storage :file

@@ -17,4 +17,18 @@ ActiveAdmin.register User do
     column "Logins", :sign_in_count
     default_actions
   end
+  controller do
+    def update
+      @user = User.find(params[:id])
+      respond_to do |format|
+        if @item.update_without_password(params[:user])
+          format.html { redirect_to admin_users_path, notice: 'User was successfully updated.' }
+          format.json { head :ok }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+  end
 end

@@ -1,5 +1,9 @@
 CHANGELOG
 
+== Mar 25, 2012
+* Fixed bug on editing user info
+* Disabled WaterMarking temporarily
+
 == Mar 17, 2012
 * Fixed caching bug on the Category Boxes on main page
 
