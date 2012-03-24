@@ -1,6 +1,7 @@
 CHANGELOG
 
 == Mar 25, 2012
+* Fixed Author Link on article page
 * Fixed bug on editing user info
 * Disabled WaterMarking temporarily
 
