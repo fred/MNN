@@ -28,8 +28,11 @@ ActiveAdmin.register Item do
     column :draft, :sortable => :draft do |item|
       bol_to_word(item.draft)
     end
-    column "Feat.", :featured, :sortable => :featured do |item|
+    column "Highlight", :featured, :sortable => :featured do |item|
       bol_to_word(item.featured)
+    end
+    column "Stick", :sticky, :sortable => :sticky do |item|
+      bol_to_word(item.sticky)
     end
     column "Lang", :language, :sortable => :language_id do |item|
       item.language.description if item.language

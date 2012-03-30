@@ -74,6 +74,7 @@ class Item < ActiveRecord::Base
     integer :user_id,     :references => User
     boolean :draft
     boolean :featured
+    boolean :sticky
     time :updated_at
     time :published_at
     # boost { 3.0 if featured }
@@ -130,11 +131,7 @@ class Item < ActiveRecord::Base
   end
   
   def has_image?
-    if !self.attachments.empty? && self.attachments.first.image
-      true
-    else
-      false
-    end
+    !self.attachments.empty? && self.attachments.first.image
   end
   
   def tag_list(join=", ")
@@ -173,10 +170,10 @@ class Item < ActiveRecord::Base
   def admin_permalink
     admin_item_path(self)
   end
-
+  
   def published?
     !self.published_at.nil?
-  end  
+  end
   
   def self.published
     where("published_at is not NULL")
@@ -188,10 +185,21 @@ class Item < ActiveRecord::Base
     where(:draft => true)
   end
   
-  # Highlights
+  # Returns the top sticky item
+  # Used on the Front End, joining attachments
+  def self.top_sticky
+    published.
+    where(:draft => false, :sticky => true).
+    order("published_at DESC").
+    includes(:attachments).
+    first
+  end
+  
+  # Returns top Highlight Items
+  # Used on the Front End, joining attachments
   def self.highlights(limit=6,offset=0)
     published.
-    where(:draft => false, :featured => true).
+    where(:draft => false, :featured => true, :sticky => false).
     order("published_at DESC").
     limit(limit).
     includes(:attachments).
@@ -200,6 +208,7 @@ class Item < ActiveRecord::Base
   end
   
   # Returns the last 10 approved items (not draft anymore)
+  # Used on the dashboard
   def self.recent_updated(limit=10)
     published.
     where(:draft => false).
@@ -208,8 +217,9 @@ class Item < ActiveRecord::Base
     limit(limit).
     all
   end
-    
+  
   # Returns the last 10 approved items (not draft anymore)
+  # Used on the Admin Dashboard
   def self.recent(limit=10)
     published.
     order("id DESC").
@@ -218,6 +228,7 @@ class Item < ActiveRecord::Base
   end
   
   # Returns the last 10 draft items
+  # Used on the Admin Dashboard
   def self.recent_drafts(limit=10)
     draft.
     order("updated_at DESC").
@@ -226,6 +237,7 @@ class Item < ActiveRecord::Base
   end
   
   # Returns the last 10 pending items (not draft anymore)
+  # Used on the Admin Dashboard
   def self.pending(limit=10)
     where(:published_at => nil).
     where(:draft => false).
@@ -249,6 +261,7 @@ class Item < ActiveRecord::Base
       "Uncategorized"
     end
   end
+  
   def language_title
     if self.language
       self.language.description
@@ -256,6 +269,7 @@ class Item < ActiveRecord::Base
       ""
     end
   end
+  
   def user_title
     if self.user && !self.user.name.empty?
       self.user.name
@@ -265,6 +279,7 @@ class Item < ActiveRecord::Base
       "mnn"
     end
   end
+  
   def user_email
     if self.user && self.user.email
       self.user.email

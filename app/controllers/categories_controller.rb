@@ -3,9 +3,15 @@ class CategoriesController < ApplicationController
   layout :get_layout
     
   def index
-    @top_items = Item.highlights(4)
-    @highlights = [@top_items.first]
-    @latest_items = @top_items[1..3]
+    @sticky_item = Item.top_sticky
+    if @sticky_item
+      @highlights = [@sticky_item]
+      @latest_items = Item.highlights(3)
+    else
+      @top_items = Item.highlights(4)
+      @highlights = [@top_items.first]
+      @latest_items = @top_items[1..3]
+    end
     @categories = Category.order("priority ASC, title DESC").all
     # headers['Cache-Control'] = 'public, max-age=300' unless (current_admin_user or current_user) # 10 min cache
     # headers['Last-Modified'] = Item.last_item.updated_at.httpdate

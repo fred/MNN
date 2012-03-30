@@ -30,26 +30,26 @@
   
   <div class="span6 box" id="highlights">
     <% cache("highlights/#{@latest_items.first.updated_at.to_i}") do %>
-    <!-- CACHE KEY: <%= "highlights/#{@latest_items.first.updated_at.to_i}" %> -->
-    <h1><%= link_to "Latest News", items_path %></h1>
-    <ul>
-    <% @latest_items.each do |item| %>
-      <li class="list_item" id="highlight_item_<%=item.id%>">
-        <% if item.has_image? %>
-          <%= link_to(
-                image_tag(item.main_image.image.small, :class => "list_item_image"),
-                item,
-                :title => item.abstract
-              )
-          %>
-        <% elsif item.youtube_id && item.youtube_img %>
-          <%= image_tag("https://img.youtube.com/vi/#{item.youtube_id}/0.jpg", :class=>"list_item_image youtube")%>
-        <% end %>
-        <span class="title"><%= link_to item.title.to_s.truncate(120), item, :title => item.abstract %></span>
-        <span class="abstract"><%= item.abstract.to_s.truncate(120) %></span>
-      </li>
-    <% end %>
-    </ul>
+      <!-- CACHE KEY: <%= "highlights/#{@latest_items.first.updated_at.to_i}" %> -->
+      <h1><%= link_to "Latest News", items_path %></h1>
+      <ul>
+      <% @latest_items.each do |item| %>
+        <li class="list_item" id="highlight_item_<%=item.id%>">
+          <% if item.has_image? %>
+            <%= link_to(
+                  image_tag(item.main_image.image.small, :class => "list_item_image"),
+                  item,
+                  :title => item.abstract
+                )
+            %>
+          <% elsif item.youtube_id && item.youtube_img %>
+            <%= image_tag("https://img.youtube.com/vi/#{item.youtube_id}/0.jpg", :class=>"list_item_image youtube")%>
+          <% end %>
+          <span class="title"><%= link_to item.title.to_s.truncate(120), item, :title => item.abstract %></span>
+          <span class="abstract"><%= item.abstract.to_s.truncate(120) %></span>
+        </li>
+      <% end %>
+      </ul>
     <% end %>
   </div>
 

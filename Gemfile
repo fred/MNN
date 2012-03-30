@@ -7,7 +7,6 @@ gem 'rack-cache'
 gem 'rake' #, '0.9.2.2'
 gem 'rails', '3.2.2'
 gem 'bundler', '>= 1.1.0'
-gem 'thin', :require => false
 
 ### Database Adapter
 # Using Postgresql for all environments.
@@ -103,6 +102,7 @@ group :development do
   # Nice progress when rake indexing with solr
   gem 'progress_bar'
   gem 'foreman'
+  gem 'thin', :require => false
 end
 
 group :test do
@@ -152,7 +152,8 @@ gem 'sunspot', "2.0.0.pre.111215" # :git => "git://github.com/sunspot/sunspot.gi
 gem 'sunspot_rails', "2.0.0.pre.111215" # :git => "git://github.com/sunspot/sunspot.git"
 
 ### Memcache
-gem 'dalli'
+# gem 'dalli', "~> 1.1.5"
+gem 'dalli', :git => "git://github.com/mperham/dalli.git"
 
 ### OpenID 
 # gem 'omniauth'

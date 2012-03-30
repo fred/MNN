@@ -81,8 +81,9 @@
   <% end %>
   
   <%= f.inputs :name => "Status Codes" do %>
-    <%= f.input :draft, :hint => "Keep as draft if you haven't finished editing." %><br />
-    <%= f.input :featured, :hint => "Will be featured on front page" %><br />
+    <%= f.input :draft,     :hint => "Keep as draft if you haven't finished editing." %><br />
+    <%= f.input :featured,  :label => "Highlight",:hint => "Article will be featured on Highlights box in front page" %><br />
+    <%= f.input :sticky,    :label => "Sticky",   :hint => "Article will remain first on top of Highlights box" %><br />
     <%= f.input :allow_comments, :hint => "Allow users to comment using IntenseDebate" %><br />
     <%#= f.input :protected_record, :hint => "Locked from editing, use with caution." %>
     
@@ -100,12 +101,12 @@
   <% end %>
   
   <%= f.inputs :name => "Dates and Status" do %>
-    <%#= f.input :published_at, 
-          :label => "Publication Date",  
+    <%#= f.input :published_at,
+          :label => "Publication Date",
           :hint => "When article will go live (default: 10 minutes from now)", 
           :time => true 
     %>
-    <%= f.input :published_at, 
+    <%= f.input :published_at,
           :value => f.object.published_at.localtime,
           :as => "string",
           :label => "Publication Date",
@@ -142,10 +143,9 @@
     </div>
   <% end %>
   
-  
   <%= f.inputs :name => "Editor Notes" do %>
-    <%= f.input :author_status, 
-          :as => :select, 
+    <%= f.input :author_status,
+          :as => :select,
           :label => "Author Status",
           :collection => ["Ready to go", "Needs Editing", "Needs Translation", "Needs Image"]
     %>
