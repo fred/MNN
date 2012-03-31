@@ -29,7 +29,8 @@ Other Features:
 * Taggings and Categories
 * Multi-Language
 * Versioning System
-* and other features alike wordpress 
+* and other features alike wordpress
+
 
 
 Note: this system is not a wordpress replacement, it's a different system geared towards Ruby on Rails developer and News Website. This is a news engine. 
@@ -52,6 +53,11 @@ h3. Secure comments
 
 Comments spam protection with Akismet, Swearing and bad words detection to flag comment.
 Comments moderation is managed by admin users.
+
+h3. RSS and Atom feeds
+
+A fully compliant RSS and Atom feed is available for Items, Tags, categories, languages and even authors.
+Readers can follow RSS feeds for a desired category, or a favorite author and even just one language.
 
 h3. Roles System
 
