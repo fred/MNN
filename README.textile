@@ -1,30 +1,57 @@
 h2. Welcome to MNN
 
-This is a news publication bridge aimed to be flexible, highly customizable and very fast. 
+This is a news publication system aimed to be flexible, highly customizable and extremely fast and scalable. 
+It can be hosted for free in heroku or on a small 512MB VPS. 
 
-It's in extremely ALPHA stage.
-The database will change constantly in a non-revesible way, but aiming to have fully functional migrations. 
-
-Developers and Contributors highly welcome.
+It's still in Beta stage. The database has been moved into Stable mode now. It should be fairly safe now to run on production.
 
 
 h2. Features
 
-h3. Searchable
+h3. Multi platform Front end
 
-It provided Search ability with Sunspot SOLR indexing. SOLR is very fast and highly customizable indexing engine by LUCENE. 
-Users should be able to search posts by Author, Category, Tags, HashTags, Content, Title, etc. 
+Front end interface is based the excellent TwitterBootstrap layout
+http://twitter.github.com/bootstrap/
+It also features a grid systems that perfectly works on most devices, such as smartphones, tables, netbooks, notebooks, and partiallyy most simple phones. 
+Other Features:
 
-h3. Karma System
+* Auto Post to Twitter
+* Nice Tooltips
+* ipad,iPhone,Android,BB,maemo devices fully supported
+* Extremely fast Caching with dalli
+* Private comment system or IntenseDebate/Disqus comments
+* Image resizing
+* TinyMCE live html editor
+* Editor/Writes/Authors roles
+* Registration system, Password recovery
+* High security agains XSS attacks 
+* Automatic related items engine
+* Taggings and Categories
+* Multi-Language
+* Versioning System
+* and other features alike wordpress 
 
-Users with most comments, and general contribution to the system will gain higher points in the karma system. 
-Inspired by Daemon/Freedom TM (http://thedaemon.com/)
-Algorithm developed by David Kemp. 
+
+Note: this system is not a wordpress replacement, it's a different system geared towards Ruby on Rails developer and News Website. This is a news engine. 
+
+h3. Powerful Admin interface
+
+Admin interface powered by ActiveAdmin, very flexible and highly customizable.
+http://activeadmin.info/
+
+h3. Rock Solid Search
+
+It provided Search ability with Sunspot SOLR indexing. SOLR is very fast and highly customizable indexing engine by LUCENE.
+Users should be able to search posts by Author, Category, Tags, HashTags, Content, Title, etc.
+
+h3. Automatic Related items
+
+Automatic related items are calculated using Solr search and Stem algorithm for related words.
 
 h3. Secure comments
 
 Comments spam protection with Akismet, Swearing and bad words detection to flag comment.
-Comments moderation requires karma level socores. Users with low scores cannot fully moderate on system.
+Comments moderation is managed by admin users.
 
 h3. Roles System
 
@@ -39,30 +66,28 @@ All changes on the system *Should* be reversible, with a few exceptions.
 h3. Caching with memcached and Rack-Cache
 
 Items cached are served very fast to the front-user.
-Future: enable Amazon Elasticache
+using dalli fragment cache
 
 h3. Image uploading to S3
 
 With carrierwave, Fog and RMagick, images are resized and uploaded to S3.
 So that images are quickly served to users all around the world.
-Optionally enabled with Amazon CDN.
+Optionally enabled with Amazon Cloudfront CDN.
 
 h3. Articles Versioning
 
 Posts with Multi Versions, using Paper-Trail (https://github.com/airblade/paper_trail)
 Articles history, trash and draft modes.
 
-...and many more....
+...and many more features....
 
 
 h2. Installation:
 
 
-
-h2. Contributors: 
+h2. Contributors:
 
 # Frederico Araujo
-# David Kemp
 # other anonymous contributors
 
 h2. Inspired By: 
@@ -71,5 +96,6 @@ Diaspora
 LocomotiveCMS 
 Refinerycms 
 Wordpress 
-Daemon/Freedom TM by Daniel Suarez (http://thedaemon.com/)
 
+
+Developers and Contributors highly welcome.

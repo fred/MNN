@@ -152,8 +152,7 @@ gem 'sunspot', "2.0.0.pre.111215" # :git => "git://github.com/sunspot/sunspot.gi
 gem 'sunspot_rails', "2.0.0.pre.111215" # :git => "git://github.com/sunspot/sunspot.git"
 
 ### Memcache
-# gem 'dalli', "~> 1.1.5"
-gem 'dalli', :git => "git://github.com/mperham/dalli.git"
+gem 'dalli', "~> 2.0.2"
 
 ### OpenID 
 # gem 'omniauth'
@@ -167,3 +166,7 @@ gem 'galetahub-simple_captcha', :require => 'simple_captcha', :git => 'git://git
 
 
 # gem 'jquery_mobile_rails', :git => "git://github.com/fred/jquery-mobile-rails.git", :branch => "110-rc1"
+
+
+gem 'capistrano', "~> 2.9.0", :require => false
+gem 'rvm-capistrano', :require => false
