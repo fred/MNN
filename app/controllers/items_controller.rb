@@ -12,8 +12,8 @@ class ItemsController < ApplicationController
     @show_breadcrumb = true
     if params[:language_id]
       @language = Language.find(params[:language_id])
-      @rss_title = "Latest News in #{@language.description}"
-      @rss_description = "MNN - Latest News in #{@language.description}"
+      @rss_title = "World Mathaba - Latest in #{@language.description}"
+      @rss_description = "World Mathaba - Latest News in #{@language.description}"
       @rss_language = @language.locale
       @rss_source = items_path(:language_id => params[:language_id], :only_path => false, :protocol => 'https')
       @items = Item.published.
@@ -23,8 +23,8 @@ class ItemsController < ApplicationController
         order("published_at DESC").
         page(params[:page]).per(per_page)
     else
-      @rss_title = "Latest News"
-      @rss_description = "MNN - Latest News"
+      @rss_title = "World Mathaba - Latest News"
+      @rss_description = "World Mathaba - Latest News"
       @rss_source = items_path(:only_path => false, :protocol => 'https')
       @rss_language = "en"
       @items = Item.published.

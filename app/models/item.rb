@@ -130,9 +130,27 @@ class Item < ActiveRecord::Base
     self.attachments.last
   end
   
-  def has_image?
-    !self.attachments.empty? && self.attachments.first.image
+  def main_image_cache_key
+    if self.has_image?
+      self.main_image.updated_at.to_s(:number)
+    else
+      ""
+    end
   end
+  
+  def has_image?
+    if !self.attachments.empty? && self.attachments.last.image
+      true
+    else
+      false
+    end
+  end
+  
+  # Returns an improved cache_key that includes the last image on the item
+  def cache_key_full
+    self.cache_key + "/" + self.main_image_cache_key
+  end
+  
   
   def tag_list(join=", ")
     array = []
@@ -273,7 +291,7 @@ class Item < ActiveRecord::Base
   def user_title
     if self.user && !self.user.name.empty?
       self.user.name
-    elsif !self.author_name.empty?
+    elsif self.author_name && !self.author_name.empty?
       self.author_name
     else
       "mnn"

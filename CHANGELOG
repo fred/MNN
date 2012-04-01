@@ -1,5 +1,13 @@
 CHANGELOG
 
+== Apr 01, 2012
+* Fixed caching bug if item Images were modified
+* Improved Item Cache Key to included last image timestamp
+* Improved Item cache key to use human readable timestamps
+* Revamped RSS/Atom Feeds
+* Added basic Rspec Tests for RSS/Atom feeds
+* Updated Feed Titles to match site name
+
 == Mar 30, 2012
 * Added sticky highlight feature for articles
 * Updated Dalli gem to 2.0.1, fater memcached

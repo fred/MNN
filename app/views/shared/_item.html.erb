@@ -1,4 +1,4 @@
-<% cache("shared/item/#{item.id}/#{item.updated_at.to_i}") do %>
+<% cache("_item/#{item.cache_key_full}") do %>
   <article class="category" id="item_<%=item.id%>">
     <header>
       <% if item.has_image? %>

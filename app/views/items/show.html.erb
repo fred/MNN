@@ -19,8 +19,8 @@
 <% end %>
 
 
-<% cache("items/#{@item.id}/#{@item.updated_at.to_i}") do %>
-  <!-- CACHE KEY: <%= "items/#{@item.id}/#{@item.updated_at.to_i}" %> -->
+<% cache("show/#{@item.cache_key_full}") do %>
+  <!-- CACHE KEY: <%= "show/#{@item.cache_key_full}" %> -->
   <div itemscope itemtype="http://schema.org/Article">
     <article id="item_<%= @item.id %>">
       

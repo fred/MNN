@@ -17,9 +17,14 @@
   <div class="panel_contents">
     <div class="attributes_table images">
       <% @attachment.image.versions.each do |t| %>
-          <h3><%= t.inspect %></h3>
-          <%= image_tag(t[1], :class => "show_listing_img")  %>
+        <%= image_tag(t[1], :class => "show_listing_img") %>
+        <br />
+        <h4><%= t[0] %>: <%= link_to "#{t[1]}", @attachment.image.url(t[0].to_sym), :target => "blank" %></h4>
+        <br />
+        <hr />
       <% end %>
+      <%= image_tag(@attachment.image.url, :class => "show_listing_img")  %>
+      <h4>Original Image: <%= link_to @attachment.image.url, @attachment.image.url, :target => "blank" %></h4>
     </div>
   </div>
 </div>

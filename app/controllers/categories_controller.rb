@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
     
     # RSS configuration
     @rss_title = "Latest News for #{@category.title}"
-    @rss_description = "MNN - Latest News for #{@category.title}"
+    @rss_description = "World Mathaba - Latest News for #{@category.title}"
     @rss_source = url_for(@category)
     @rss_category = @category.title
     @rss_language = "en"

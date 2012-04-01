@@ -1,21 +1,29 @@
-<% cache("shared/item_atom/#{item.id}/#{item.updated_at.to_i}") do %>
+<% cache("atom/#{item.cache_key_full}") do %>
   <article class="category" id="item_<%=item.id%>">
     <div>
-      <h3><%= link_to item.title, item %></h3>
+      <h3>
+      <%= sanitize item.abstract,
+            :tags => %w(table tr td p b i u strong ol ul li dl dd div span h1 h2 h3 h4 h5),
+            :attributes => %w(id class style) %>
+      </h3>
     </div>
     <div>
+      <p>
       <% if item.has_image?%>
         <span style="float:left; margin-right:10px;">
           <%= image_tag(item.main_image.image.small) %>
         </span>
       <% end %>
-      <%= sanitize item.abstract,
-            :tags => %w(table tr td p b i u strong ol ul li dl dd div span h1 h2 h3 h4 h5),
-            :attributes => %w(id class style) %>
-      <br />
-      <%= sanitize item.body,
-            :tags => %w(table tr td p b i u strong ol ul li dl dd div span h1 h2 h3 h4 h5),
-            :attributes => %w(id class style) %>
+      <%= truncate(
+            sanitize(item.body,
+              :tags => %w(),
+              :attributes => %w()
+            ),
+            :length => 400,
+            :omission => ' ... (click link to read full article)'
+          )
+      %>
+      </p>
       <%#= item.body.to_s.html_safe %>
     </div>
     <section>

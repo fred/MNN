@@ -15,6 +15,18 @@ describe ItemsController do
     end
   end
   
+  describe 'GET index' do
+    it 'should render RSS XML' do
+      get :index, :format => 'rss', :lang => 'en'
+      response.should be_success
+      response.headers["Content-Type"].should eql("application/rss+xml; charset=utf-8")
+    end
+    it 'should render Atom XML' do
+      get :index, :format => 'atom', :lang => 'en'
+      response.should be_success
+      response.headers["Content-Type"].should eql("application/atom+xml; charset=utf-8")
+    end
+  end
   
   describe "GET index" do
     it "assigns all items as @items" do
