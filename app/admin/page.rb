@@ -30,6 +30,10 @@ ActiveAdmin.register Page do
       @page.priority = 10
       @page.user_id = current_admin_user.id
     end
+
+    def scoped_collection
+       Page.includes(:user, :language)
+    end
   end
   
 end

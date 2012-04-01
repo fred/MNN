@@ -92,6 +92,8 @@ ActiveAdmin.register Item do
         end
       end
     end
-    
+    def scoped_collection
+       Item.includes(:language, :attachments, :tags, :user, :category)
+    end
   end
 end

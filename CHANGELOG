@@ -8,6 +8,8 @@ CHANGELOG
 * Added basic Rspec Tests for RSS/Atom feeds
 * Updated Feed Titles to match site name
 * Improved Attachments Admin interface (/admin/attachments/1234)
+* Improved performance of admin interface by adding Include joins sql queries.
+* Changed per_page from 40 to 24 for faster loading.
 
 == Mar 30, 2012
 * Added sticky highlight feature for articles

@@ -3,7 +3,6 @@ ActiveAdmin.register Attachment do
   controller.authorize_resource
   config.sort_order = "id_desc"
   menu :parent => "Items", :priority => 2
-  default_per_page = 80
   index :as => :block do |attachment|
     div :for => attachment, :class => "grid_images" do
       h4 auto_link(attachment.attachable)

@@ -18,4 +18,9 @@ ActiveAdmin.register ItemStat do
       t.created_at.to_s(:short) if t.created_at
     end
   end
+  controller do
+    def scoped_collection
+       ItemStat.includes(:item)
+    end
+  end
 end

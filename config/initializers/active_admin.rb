@@ -1,6 +1,6 @@
 ActiveAdmin.setup do |config|
   
-  config.default_per_page = 40
+  config.default_per_page = 24
 
   # == Site Title
   #
