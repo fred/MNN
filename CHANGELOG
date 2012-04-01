@@ -10,6 +10,7 @@ CHANGELOG
 * Improved Attachments Admin interface (/admin/attachments/1234)
 * Improved performance of admin interface by adding Include joins sql queries.
 * Changed per_page from 40 to 24 for faster loading.
+* Upgraded ActiveAdmin to version 4.0.3
 
 == Mar 30, 2012
 * Added sticky highlight feature for articles
