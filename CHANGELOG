@@ -7,6 +7,7 @@ CHANGELOG
 * Revamped RSS/Atom Feeds
 * Added basic Rspec Tests for RSS/Atom feeds
 * Updated Feed Titles to match site name
+* Improved Attachments Admin interface (/admin/attachments/1234)
 
 == Mar 30, 2012
 * Added sticky highlight feature for articles
