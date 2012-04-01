@@ -12,7 +12,8 @@ CHANGELOG
 * Changed per_page from 40 to 24 for faster loading.
 * Upgraded ActiveAdmin to version 4.0.3
 * Removed jQuery-ui js and css, custom minimal Modernizr.js
-* highly improved loading time, Assets decreased by 100Kb.
+* Improved assets page loading time
+* CSS and JS decreased by 80K after gzip, 300K before gzip
 
 == Mar 30, 2012
 * Added sticky highlight feature for articles
