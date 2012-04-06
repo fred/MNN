@@ -1,5 +1,10 @@
 CHANGELOG
 
+== Apr 06, 2012
+* Twitter update now using Resque Queue
+* jQuery-rails 1.7.2 update
+* Back to using Resque
+
 == Apr 01, 2012
 * Fixed caching bug if item Images were modified
 * Improved Item Cache Key to included last image timestamp
