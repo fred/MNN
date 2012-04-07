@@ -1,7 +1,12 @@
 CHANGELOG
 
+== Apr 07, 2012
+* Removed twitter Javascript helper
+* Changed links from https to http for sharing icons
+* Added resque take task back
+
 == Apr 06, 2012
-* Twitter update now using Resque Queue
+* Twitter updating is now using a Resque Queue
 * jQuery-rails 1.7.2 update
 * Back to using Resque
 

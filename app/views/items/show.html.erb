@@ -198,27 +198,21 @@
   
   <%= javascript_include_tag "font_resizer" %>
   
-  <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
-  
   <script type="text/javascript">
     $(document).ready(function() {
-      twttr.events.bind('tweet', function(event) {
-        window.location = "<%= url_for(item_path(@item.id, :only_path => false, :protocol => 'https')) %>"
-      });
+      if (!(Modernizr.touch)) {
+        // Image Gallery
+        $("#main_image_popup").fancybox({
+          openEffect  : 'none',
+          closeEffect  : 'none'
+        });
+        // Tooltips
+        $("a").easyTooltip({
+          yOffset: -30,
+          xOffset: -60
+        });
+      }
     });
-    if (!(Modernizr.touch)) {
-      // Image Gallery
-      $("#main_image_popup").fancybox({
-        openEffect  : 'none',
-        closeEffect  : 'none'
-      });
-      
-      // Tooltips
-      $("a").easyTooltip({
-        yOffset: -30,
-        xOffset: -60
-      });
-    }
   </script>
   
 <% end %>
