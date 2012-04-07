@@ -1,5 +1,7 @@
 Publication::Application.routes.draw do
   
+  resources :contacts
+
   mount Resque::Server, :at => "/resque"
 
   ActiveAdmin.routes(self)

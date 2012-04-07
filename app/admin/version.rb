@@ -1,7 +1,7 @@
 ActiveAdmin.register Version do
   controller.authorize_resource
   actions :index, :show
-  menu :priority => 99
+  menu :priority => 99, :label => "History"
   config.comments = false
   index do
     column :id

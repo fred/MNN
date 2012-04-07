@@ -175,6 +175,10 @@
   <% end %>
 </section>
 
+<section id="item_<%= @item.id %>_comments">
+  <%= render :partial => "comments" %>
+</section>
+
 <% content_for :breadcrumb do %>
   <li>
     <a href="/">Home</a>

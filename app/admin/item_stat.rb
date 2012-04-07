@@ -11,10 +11,10 @@ ActiveAdmin.register ItemStat do
       link_to t.item.title, admin_item_path(t.item) if t.item
     end
     column "Total Hits", :views_counter
-    column "Last Hit" do |t|
+    column "Last Hit", :sortable => :updated_at do |t|
       t.updated_at.to_s(:short) if t.updated_at
     end
-    column "First Hit" do |t|
+    column "First Hit", :sortable => :created_at do |t|
       t.created_at.to_s(:short) if t.created_at
     end
   end

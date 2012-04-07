@@ -170,3 +170,5 @@ gem 'galetahub-simple_captcha', :require => 'simple_captcha', :git => 'git://git
 
 gem 'capistrano', "~> 2.9.0", :require => false
 gem 'rvm-capistrano', :require => false
+
+gem 'country-select'
