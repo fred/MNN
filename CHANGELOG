@@ -1,4 +1,6 @@
 CHANGELOG
+== Apr 10, 2012
+* Updated to Rails 3.2.3, fixed security vulnerabilities
 
 == Apr 07, 2012
 * Removed twitter Javascript helper
