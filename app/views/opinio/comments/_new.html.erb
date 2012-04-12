@@ -1,21 +1,14 @@
 <div id="new_comment">
   <% if send(Opinio.current_user_method) %>
-  
+    <h3>Send Comments</h3>
     <%= form_for Comment.new, :remote => true do |f| %>
-      <fieldset class="withBorder">
-        <legend>Post a Comment</legend>
-        <div class="clearfix">
-          <%= f.label :body, "Comment" %>
-          <div class="input">
-            <%= f.text_area :body, :required => true, :autofocus => false, :class => "xlarge", :rows => 8 %>
-          </div>
-        </div>
-        <%= hidden_field_tag :commentable_id, commentable.id %>
-        <%= hidden_field_tag :commentable_type, commentable.class.base_class.name.to_s %>
-        <div class="actions">
-          <%= f.submit "Send Comment", :class => "btn primary", :disable_with => 'Processing...' %>
-        </div>
-      </fieldset>
+      <p>
+        <%= f.label :body, "Comment" %>
+        <%= f.text_area :body, :id => "Comment" %>
+      </p>
+      <%= hidden_field_tag :commentable_id, commentable.id %>
+      <%= hidden_field_tag :commentable_type, commentable.class.base_class.name.to_s %>
+      <%= f.submit "Send Comment" %>
     <% end %>
   <% else %>
     <p>

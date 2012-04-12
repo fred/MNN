@@ -40,7 +40,7 @@ gem 'stringex'
 gem 'friendly_id', '~> 4.0.0'
 
 ### Comment System
-gem 'opinio', '~> 0.3.3'
+gem 'opinio', '~> 0.4.1'
 gem 'rakismet'
 
 ### Queue

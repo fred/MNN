@@ -1,10 +1,10 @@
 <% reply = defined?(reply) ? reply : false %>
-<section id="comment_<%= comment.id %>">
-  <span><%= comment.owner.title %></span>
+<li id="comment_<%= comment.id %>">
+  <span>User: <%= comment.owner.id %></span>
   <p>
     <%= comment.body %>
   </p>
-  <%#= link_to 'Destroy', comment_path(comment), :method => :delete, :remote => true %>
+  <%= link_to 'Destroy', comment_path(comment), :method => :delete, :remote => true %>
   <%# this enables only 1 level of replies %>
   <% if Opinio.accept_replies && !reply %>
     <span><%= link_to t("opinio.reply", :default => "Reply"), reply_comment_path(comment), :remote => true %></span>
@@ -12,4 +12,4 @@
       <%= render :partial => "opinio/comments/comment", :collection => comment.comments, :locals => {:reply => true} %>
     </ul>
   <% end %>
-</section>
+</li>

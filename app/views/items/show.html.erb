@@ -165,15 +165,18 @@
   <%#= render_comments_form @item %>
 </article> -->
 
-<section id="item_<%= @item.id %>_comments">
-  <% if is_mobile? %>
-    <p>Comments are disabled on mobile devices, please visit desktop site.</p>
-  <% elsif @item.allow_comments %>
-    <%= render :partial => "/shared/intense" %>
-  <% else %>
-    <h4>Comments are disabled for this item</h4>
-  <% end %>
-</section>
+<!-- Disabling Intensedebate -->
+<% if false %>
+  <section id="item_<%= @item.id %>_comments">
+    <% if is_mobile? %>
+      <p>Comments are disabled on mobile devices, please visit desktop site.</p>
+    <% elsif @item.allow_comments %>
+      <%= render :partial => "/shared/intense" %>
+    <% else %>
+      <h4>Comments are disabled for this item</h4>
+    <% end %>
+  </section>
+<% end %>
 
 <section id="item_<%= @item.id %>_comments">
   <%= render :partial => "comments" %>
