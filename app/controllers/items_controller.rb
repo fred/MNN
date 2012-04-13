@@ -82,10 +82,8 @@ class ItemsController < ApplicationController
         @item_stat = ItemStat.create(:item_id => @item.id, :views_counter => 1)
       end
     end
-    @related = @item.solr_similar
-    
+    # @related = @item.solr_similar
     headers['Cache-Control'] = 'private, no-cache'
-    
     respond_to do |format|
       format.html
       format.json { render json: @item }
