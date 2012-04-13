@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
   opinio
-  include Rakismet::Model  
+  include Rakismet::Model
   # author        : name submitted with the comment
   # author_url    : URL submitted with the comment
   # author_email  : email submitted with the comment
@@ -11,25 +11,38 @@ class Comment < ActiveRecord::Base
   # user_agent    : user agent string
   # referrer      : referring URL (note the spelling)
   
+  attr_accessible :body, :commentable_id, :commentable_type
+  
   # belongs_to :user
   belongs_to :approving_user, :foreign_key => :approved_by, :class_name => "User"
   
-  before_create :auto_approve
+  before_create :check_for_spam
   
-  def auto_approve
-    self.approved = true
+  def check_for_spam
+    if self.spam?
+      self.marked_spam = true
+      self.approved = false
+    else
+      self.marked_spam = false
+      self.approved = true
+    end
     true
   end
   
   ### Askimet helpers ###
   def author
-    self.user.name if self.user
+    if self.owner
+      self.owner.title
+    else
+      ""
+    end
   end
   def author_email
-    self.user.email if self.user
-  end
-  def content
-    self.user.body if self.user
+    if self.owner
+      self.owner.email
+    else
+      ""
+    end
   end
   
   def akismet_attributes
@@ -38,10 +51,10 @@ class Comment < ActiveRecord::Base
       :blog                 => 'http://worldmathaba.net',
       :user_ip              => user_ip,
       :user_agent           => user_agent,
-      :comment_author       => name,
-      :comment_author_email => email,
-      :comment_author_url   => site_url,
-      :comment_content      => content
+      :comment_author       => author,
+      :comment_author_email => author_email,
+      # :comment_author_url   => site_url,
+      :comment_content      => body
     }
   end
   

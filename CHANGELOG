@@ -1,4 +1,9 @@
 CHANGELOG
+
+== Apr 13, 2012
+* Internal Commenting System completed
+* Added avatar image to user profile
+
 == Apr 10, 2012
 * Updated to Rails 3.2.3, fixed security vulnerabilities
 

@@ -9,7 +9,14 @@ $('#no_comments').fadeOut()
   <% else %>
     $('#comments').prepend("<%= escape_javascript( render @comment, :locals => {:reply => @reply} ) %>")
   <% end %>
+  alert("Comment received succesfully")
+  $('html, body').animate({scrollTop: $('#comment_<%= @comment.id %>').offset().top}, 2000);
+  $('#comment_<%= @comment.id %>').animate({
+      borderWidth: "4px"
+  });
 <% else %>
+  $('#comments').prepend("<div class='alert-message success'>");
   $('#comments').prepend("<%= escape_javascript(flash[:notice]) %>");
   $('#comments').prepend("<%= escape_javascript(flash[:error]) %>");
+  $('#comments').prepend("</div>");
 <% end %>

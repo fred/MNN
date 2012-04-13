@@ -8,20 +8,20 @@
     
       <li><%= link_to "Feeds", feed_path, :title => "Multiple RSS Feeds" %></li>
     
-    <% if current_admin_user %>
+    <% if current_user %>
       <li>
         <%= link_to "Edit Profile", 
-              edit_admin_user_registration_url(:protocol => 'https'),
-              :title => "Edit your Profile information" 
+              edit_user_registration_url(:protocol => 'https'),
+              :title => "Edit your Profile information"
         %>
       </li>
       <li>
-        <%= link_to 'Sign out', 
-              destroy_admin_user_session_url(:protocol => 'https'),
-              :method => :delete, 
-              :title => "Logout from the system" %>
+        <%= link_to 'Logout', 
+              destroy_user_session_url(:protocol => 'https'),
+              :method => :delete, :title => "Logout"
+        %>
       </li>
-    <% elsif current_user %>
+    <% elsif current_admin_user %>
       <li>
         <%= link_to "Edit Profile", 
               edit_admin_user_registration_url(:protocol => 'https'),
@@ -29,18 +29,18 @@
         %>
       </li>
       <li>
-        <%= link_to 'Sign out', 
+        <%= link_to 'Logout', 
               destroy_admin_user_session_url(:protocol => 'https'),
               :method => :delete, :title => "Logout"
         %>
       </li>
     <% else %>
       <li>
-        <%= link_to "Sign in", new_session_url(:user, :protocol => 'https'), :title => "Login Securely" %>
+        <%= link_to "Login", new_session_url(:user, :protocol => 'https'), :title => "Login Securely" %>
       </li>
       <%- if Devise.mappings[:user].registerable?  %>
         <li>
-          <%= link_to "Sign up", 
+          <%= link_to "Registration", 
                 new_registration_url(:user, :protocol => 'https'),
                 :title => "Please Join us" 
           %>

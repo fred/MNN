@@ -57,12 +57,34 @@
                   :placeholder => "+11 123123456", :type => "tel" %>
           </div>
         </div>
-
         <div class="clearfix">
           <%= f.label :time_zone %>
           <div class="input">
             <%= f.time_zone_select :time_zone %>
           </div>
+        </div>
+      </fieldset>
+      
+      <fieldset class="withBorder">
+        <legend>Avatar Image</legend>
+        <div class="clearfix">
+          <%= f.label :avatar, "Upload Avatar"%>
+          <div class="input">
+            <%= f.file_field :avatar %>
+            <p class="help-block">
+              Your avatar image will be shown in the comments section.
+            </p>
+          </div>
+          <% if f.object.has_image? %>
+            <div class="input">
+              <%= link_to(
+                    image_tag(f.object.avatar.small, :class => "show_item_img"),
+                    f.object.avatar.url,
+                    :target => "blank"
+                  )
+              %>
+            </div>
+          <% end %>
         </div>
       </fieldset>
       
@@ -101,7 +123,11 @@
         <div class="actions">
           <%= f.submit "Update", :class => "btn primary", :disable_with => 'Processing...' %>
           &nbsp;
-          <%= link_to "Delete my account".html_safe, registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class=>'btn danger' %>
+          <%= link_to "Delete my account".html_safe,
+              registration_path(resource_name),
+              :confirm => "Are you sure you want to delete your account from our system?",
+              :method => :delete, :class=>'btn danger'
+          %>
       </fieldset>
       
     <% end %> <!-- End Form -->

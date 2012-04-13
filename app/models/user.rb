@@ -1,11 +1,14 @@
 class User < ActiveRecord::Base
+  
+  mount_uploader :avatar, AvatarUploader
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :lockable, #:confirmable, 
          :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :bio, :name, :address, :twitter, :diaspora, :skype, :gtalk, :jabber, :phone_number, :time_zone
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :bio, :name, :address, :twitter, :diaspora, :skype, :gtalk, :jabber, :phone_number, :time_zone, :avatar
   
   validates_acceptance_of :terms_of_service, :allow_nil => true, :accept => true unless Rails.env.test?
   
@@ -13,10 +16,8 @@ class User < ActiveRecord::Base
   has_many :items
   has_many :scores
   # has_many :comments
-  has_many :attachments
   has_and_belongs_to_many :roles
   
-  accepts_nested_attributes_for :attachments, :allow_destroy => true
   
   apply_simple_captcha
   
@@ -30,7 +31,7 @@ class User < ActiveRecord::Base
   end
   
   def has_image?
-    !self.attachments.empty? && self.attachments.first && self.attachments.first.image
+    self.avatar?
   end
   
   def has_role?(role)

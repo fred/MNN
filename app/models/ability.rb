@@ -25,13 +25,13 @@ class Ability
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     
-    user ||= User.new       
-    # case user.role      
+    user ||= User.new
+    # case user.role
     # when user.has_role? :admin
     #   can :manage, :all
     # when user.has_role? :editor
-    #   can :manage, Post   
-    #   cannot [:destroy,:edit], Post   
+    #   can :manage, Post
+    #   cannot [:destroy,:edit], Post
     # end
     
     # can :manage, :all

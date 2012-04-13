@@ -5,8 +5,10 @@ Publication::Application.routes.draw do
   mount Resque::Server, :at => "/resque"
 
   ActiveAdmin.routes(self)
+  
   devise_for :admin_users, ActiveAdmin::Devise.config
-  devise_for :users
+  
+  devise_for :users, :controllers => { :registrations => :registrations }
 
   match 'search' => 'items#search', :as => :search
   match 'feed' => "items#feed", :as => :feed
@@ -35,9 +37,13 @@ Publication::Application.routes.draw do
   resources :items do
     resources :language
     resources :category
-    resources :comments, :controller => 'opinio/comments'
     opinio
   end
+
+  resources :comments, :controller => 'opinio/comments' do
+    get 'reply', :on => :member
+  end
+
   resources :pages
   resources :roles
   resources :tags
@@ -48,7 +54,6 @@ Publication::Application.routes.draw do
   resources :attachments
   resources :scores
   resources :translations
-  resources :comments, :controller => 'opinio/comments'
   resources :languages do
     resources :items
   end

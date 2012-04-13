@@ -69,7 +69,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
-    @item = Item.find(params[:id])
+    @item = Item.includes([:attachments, :comments, :user]).find(params[:id])
     @show_breadcrumb = true
     if @item && is_human?
       if @item.item_stat
@@ -206,5 +206,7 @@ class ItemsController < ApplicationController
     end
   end
   
-  
+  comment_destroy_conditions do |comment|
+    current_admin_user && (can? :destroy, Comment)
+  end
 end

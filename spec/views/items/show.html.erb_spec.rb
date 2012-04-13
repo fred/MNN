@@ -1,8 +1,10 @@
 require 'spec_helper'
 
 describe "items/show" do
+  include Devise::TestHelpers
   include EnableSunspot
   before(:each) do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
     @item = assign(:item, stub_model(Item,
       :title => "Title",
       :category_id => 1,

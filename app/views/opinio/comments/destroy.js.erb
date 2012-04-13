@@ -1,3 +1,7 @@
-jQuery('#comment_<%= @comment.id %>').remove();
-jQuery('#comments').prepend("<%= escape_javascript(flash[:notice]) %>");
-jQuery('#comments').prepend("<%= escape_javascript(flash[:error]) %>");
+// jQuery('#comment_<%= @comment.id %>').remove();
+<% if flash[:notice] %>
+  jQuery("#comment_<%=@comment.id%>").html("<div class='alert-message success'><%= escape_javascript(flash[:notice]) %></div>");
+<% end %>
+<% if flash[:error] %>
+  jQuery("#comment_<%=@comment.id%>").html("<div class='alert-message error'><%= escape_javascript(flash[:error]) %></div>");
+<% end %>

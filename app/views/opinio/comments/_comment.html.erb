@@ -1,13 +1,40 @@
 <% reply = defined?(reply) ? reply : false %>
 <li id="comment_<%= comment.id %>">
-  <span>User: <%= comment.owner.id %></span>
+  <span class="comment_owner">
+    <% if comment.owner %>
+      <%= image_tag(comment.owner.avatar.thumb) if comment.owner.avatar? %>
+      <i><%= comment.owner.title %></i> said:
+    <% end %>
+  </span>
   <p>
-    <%= comment.body %>
+    <%= sanitize comment.body,
+          :tags => %w(p b i u strong),
+          :attributes => %w() %>
   </p>
-  <%= link_to 'Destroy', comment_path(comment), :method => :delete, :remote => true %>
+  <span class="comment_date"><%= time_ago_in_words(comment.created_at) %> ago </span>
+
+
   <%# this enables only 1 level of replies %>
+  
+  <div class="comment-actions">
+    <% if Opinio.accept_replies && !reply %>
+      <%= link_to t("opinio.reply", :default => "Reply"),
+          reply_comment_path(comment),
+          :remote => true,
+          :class=> "btn small primary"
+      %>
+    <% end %>
+    <% if current_admin_user && can?(:destroy, comment) %>
+      <%= link_to 'Delete Comment',
+          comment_path(comment),
+          :method => :delete, :remote => true, :class=> "btn small danger",
+          :disable_with => "Deleting...",
+          :confirm => "Are you sure you want to delete this comment?"
+      %>
+    <% end %>
+  </div>
+  
   <% if Opinio.accept_replies && !reply %>
-    <span><%= link_to t("opinio.reply", :default => "Reply"), reply_comment_path(comment), :remote => true %></span>
     <ul id="comment_<%= comment.id %>_replies" class="replies">
       <%= render :partial => "opinio/comments/comment", :collection => comment.comments, :locals => {:reply => true} %>
     </ul>
