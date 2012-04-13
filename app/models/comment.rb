@@ -63,6 +63,7 @@ class Comment < ActiveRecord::Base
   def self.recent(limit=10)
     where(:approved => true).
     order("updated_at DESC").
+    includes([:owner, :commentable]).
     limit(limit).
     all
   end
@@ -86,6 +87,7 @@ class Comment < ActiveRecord::Base
   # Returns the last 10 comments marked as spam
   def self.as_spam(limit=10)
     where(:marked_spam => true).
+    includes([:owner, :commentable]).
     order("updated_at DESC").
     limit(limit).
     all

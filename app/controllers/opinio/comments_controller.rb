@@ -9,7 +9,13 @@ class Opinio::CommentsController < ApplicationController
 
   def create
     @comment = resource.comments.build(params[:comment])
-    @comment.owner = send(Opinio.current_user_method)
+    if current_admin_user
+      @comment.owner = current_admin_user
+    elsif current_user
+      @comment.owner = current_user
+    else
+      @comment.owner = nil
+    end
     @comment.user_ip = request.remote_ip.to_s if @comment.respond_to?(:user_ip)
     @comment.user_agent = request.user_agent.to_s if @comment.respond_to?(:user_agent)
 

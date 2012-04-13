@@ -134,5 +134,5 @@ ActiveAdmin.setup do |config|
   #
   # Change how many Columns to display on the Dashboard
   # default: 3
-  config.dashboard_columns = 2
+  config.dashboard_columns = 1
 end

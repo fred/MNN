@@ -5,6 +5,7 @@ CHANGELOG
 * Added avatar image to user profile
 * Reduced memcached caching to 2 hours
 * Moved solr similar items to cached fragment block
+* Added Comments to Admin interface
 
 == Apr 10, 2012
 * Updated to Rails 3.2.3, fixed security vulnerabilities
