@@ -9,7 +9,7 @@ Opinio.setup do |config|
   # config.owner_class_name = "User"
 
   # Change this if you do not want to allow replies on your comments
-  config.accept_replies = true
+  config.accept_replies = false
   
   # Here you can change the method called to check who is the current user
   # config.current_user_method = :current_user

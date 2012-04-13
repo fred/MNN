@@ -84,7 +84,7 @@ class ItemsController < ApplicationController
     end
     @related = @item.solr_similar
     
-    headers['Cache-Control'] = 'private, max-age=300, must-revalidate' unless (current_admin_user or current_user)
+    headers['Cache-Control'] = 'private, no-cache'
     headers['Last-Modified'] = @item.updated_at.httpdate
     
     respond_to do |format|
