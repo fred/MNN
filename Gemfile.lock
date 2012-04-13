@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: git://github.com/fred/opinio.git
-  revision: 603255e26061e6e2c1271d02159f37defebfdd1f
+  revision: 1614b8a0ea0c91667d0628333761b6cb24f886e4
   branch: fred
   specs:
     opinio (0.4.1)
