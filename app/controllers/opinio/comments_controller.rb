@@ -4,6 +4,7 @@ class Opinio::CommentsController < ApplicationController
 
   def index
     @comments = resource.comments.page(params[:page])
+    headers['Cache-Control'] = 'private, no-cache'
   end
 
   def create
@@ -17,7 +18,7 @@ class Opinio::CommentsController < ApplicationController
     else
       messages = { :error => t('opinio.messages.comment_sending_error') }
     end
-
+    headers['Cache-Control'] = 'private, no-cache'
     respond_to do |format|
       format.js
       format.html { redirect_to( resource, :flash => messages ) }

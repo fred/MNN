@@ -85,7 +85,6 @@ class ItemsController < ApplicationController
     @related = @item.solr_similar
     
     headers['Cache-Control'] = 'private, no-cache'
-    headers['Last-Modified'] = @item.updated_at.httpdate
     
     respond_to do |format|
       format.html
