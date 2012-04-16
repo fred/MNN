@@ -140,8 +140,8 @@ gem 'twitter-bootstrap-rails', "~> 1.4.3"
 gem 'twitter'
 
 # Error Emails
-gem "exception_notification", :require => 'exception_notifier',
-  :git => "git://github.com/smartinez87/exception_notification.git"
+gem "exception_notification", "~> 2.6.0", :require => 'exception_notifier'
+# :git => "git://github.com/smartinez87/exception_notification.git"
 
 
 ###############

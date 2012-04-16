@@ -1,6 +1,9 @@
 <div id="new_comment">
   <% if current_user or current_admin_user %>
-    <h3>Your Comment</h3>
+    <h3>
+      Your Comment
+      (as <%= current_user.title if current_user %> <%= current_admin_user.title if current_admin_user %>)
+    </h3>
     <%= form_for Comment.new, :remote => true do |f| %>
       <p>
         <%= f.text_area :body, :rows => 8, :id => "Comment", :class=> "input-xlarge" %>
@@ -10,7 +13,7 @@
       <div class="form-actions">
         <%= f.submit "Send Comment", :class => "btn primary", :disable_with => 'Sending...' %>
       </div>
-      
+      <p>
     <% end %>
   <% else %>
     <p>

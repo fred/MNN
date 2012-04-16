@@ -1,5 +1,11 @@
 CHANGELOG
 
+== Apr 16, 2012
+* Added Flattr
+* Removed Facebook
+* Added for testing jquery.wysiwyg Editor
+* Improved Comment style
+
 == Apr 13, 2012
 * Internal Commenting System completed
 * Added avatar image to user profile

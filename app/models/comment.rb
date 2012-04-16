@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
   opinio
   include Rakismet::Model
+  # AKISMET parameters:
   # author        : name submitted with the comment
   # author_url    : URL submitted with the comment
   # author_email  : email submitted with the comment
@@ -11,6 +12,7 @@ class Comment < ActiveRecord::Base
   # user_agent    : user agent string
   # referrer      : referring URL (note the spelling)
   
+  validates_presence_of :body
   attr_accessible :body, :commentable_id, :commentable_type
   
   # belongs_to :user

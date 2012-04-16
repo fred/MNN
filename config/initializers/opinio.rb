@@ -15,7 +15,7 @@ Opinio.setup do |config|
   # config.current_user_method = :current_user
 
   # Strip html tags on save comment
-  config.strip_html_tags_on_save = true
+  config.strip_html_tags_on_save = false
 
   # Comments sort order by created_at (DESC or ASC)
   config.sort_order = 'DESC'

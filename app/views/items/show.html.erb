@@ -15,7 +15,6 @@
   <% if @item.has_image? %>
     <meta itemprop="image" content="<%= @item.main_image.image.thumb %>">
   <% end %>
-  
 <% end %>
 
 
@@ -85,6 +84,11 @@
             <% end %>
           </ul>
         </span>
+        
+        <span class="page_views">
+          Views: <%= @item_stat.views_counter if @item_stat %>
+        </span>
+        
         <span class="share">
           <%= link_to image_tag("icons/social/facebook_16.png", :alt => "Facebook"),
                 facebook_share(@item),
@@ -139,9 +143,7 @@
           %>
           <%= render :partial => "/shared/gplus" %>
           <%#= render :partial => "/shared/twitter" %>
-        </span>
-        <span class="page_views">
-          Views: <%= @item_stat.views_counter if @item_stat %>
+          <%= flattr_large %>
         </span>
       </footer>
 
@@ -203,9 +205,7 @@
 <% end %>
 
 <%= content_for :scripts do %>
-  
   <%= javascript_include_tag "font_resizer" %>
-  
   <script type="text/javascript">
     $(document).ready(function() {
       if (!(Modernizr.touch)) {
@@ -222,5 +222,37 @@
       }
     });
   </script>
+<% end %>
+
+<%# if !is_handheld? %>
+<% if false %>
+  <%= content_for :scripts do %>
+  <%= javascript_include_tag "jquery.wysiwyg.js" %>
+  <%= javascript_include_tag "wysiwyg.link.js" %>
+    <!-- jwysiwyg -->
+    <script type="text/javascript">
+      (function($) {
+        $(document).ready(function() {
+          $('#Comment').wysiwyg({
+            initialContent: "",
+            rmUnusedControls: true,
+            controls: {
+              bold          : { visible : true },
+              italic        : { visible : true },
+              underline     : { visible : true },
+              link          : { visible : true },
+              createLink    : { visible : true },
+              removeFormat        : { visible : true },
+              insertOrderedList   : { visible : true },
+              insertUnorderedList : { visible : true }
+            },
+          });
+        });
+      })(jQuery);
+    </script>
+  <% end %>
   
+  <%= content_for :stylesheets do %>
+    <%= stylesheet_link_tag "jquery.wysiwyg.css" %>
+  <% end %>
 <% end %>

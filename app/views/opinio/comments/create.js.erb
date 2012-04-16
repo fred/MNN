@@ -16,8 +16,9 @@ if ($('#no_comments').is(':visible')) {
   $('#comment_<%= @comment.id %>').animate({borderWidth: "4px"});
   $("#new_comment textarea").val('')
 <% else %>
-  $('#comments').prepend("<div class='alert-message success'>");
-  $('#comments').prepend("<%= escape_javascript(flash[:notice]) %>");
-  $('#comments').prepend("<%= escape_javascript(flash[:error]) %>");
-  $('#comments').prepend("</div>");
+  // $('#comments').prepend("<div class='alert-message error'>");
+  // $('#comments').prepend("<%= escape_javascript(flash[:notice]) %>");
+  // $('#comments').prepend("<%= escape_javascript(flash[:error]) %>");
+  // $('#comments').prepend("</div>");
+  alert("There was an error with your comment");
 <% end %>

@@ -12,6 +12,7 @@ pids/*
 database.yml
 keys.sh
 start.sh
+reload_db.sh
 
 # Documentation
 doc/
