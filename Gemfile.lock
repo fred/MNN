@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/fred/active_admin.git
-  revision: 3fc5df247fa08a06f14eaa2ca30b07d20203c82d
+  revision: b4e7d834779d59a255822cd16a32302d7d5abd63
   branch: 594
   specs:
     activeadmin (0.4.3)
@@ -24,6 +24,15 @@ GIT
       jquery-rails
       kaminari
       rails (~> 3)
+
+GIT
+  remote: git://github.com/fred/resque-history.git
+  revision: d4bdf7fc10e583636b92a1700c0c96d1e6d4a948
+  specs:
+    resque-history (1.6.0)
+      rake
+      resque
+      resque-history
 
 GIT
   remote: git://github.com/galetahub/simple-captcha.git
@@ -306,7 +315,7 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.5)
+    sqlite3 (1.3.6)
     squeel (0.9.5)
       activerecord (~> 3.0)
       activesupport (~> 3.0)
@@ -415,6 +424,7 @@ DEPENDENCIES
   rake
   rakismet
   resque (~> 1.20.0)
+  resque-history!
   rspec (~> 2.8.0)
   rspec-rails (~> 2.8.1)
   rvm-capistrano

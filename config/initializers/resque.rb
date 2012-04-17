@@ -1,4 +1,5 @@
 require 'resque/server'
+require 'resque-history/server'
 
 if ENV["REDISTOGO_URL"]
   uri = URI.parse(ENV["REDISTOGO_URL"])
@@ -13,3 +14,5 @@ RESQUE_PASSWORD = "welcomez" || ENV['RESQUE_PASSWORD']
 Resque::Server.use Rack::Auth::Basic, "Resque-WorldMathaba" do |username, password|
   [username, password] == [RESQUE_USERNAME, RESQUE_PASSWORD]
 end
+
+# Resque::Plugins::History::MAX_HISTORY_SIZE = 100

@@ -1,5 +1,11 @@
 CHANGELOG
 
+== Apr 17, 2012
+* Added Site Settings
+* Resque-History
+* Added GA
+* Test job added
+
 == Apr 16, 2012
 * Added Flattr
 * Removed Facebook

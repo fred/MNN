@@ -7,7 +7,7 @@ ActiveAdmin.register Item do
     render "show"
   end
   index do
-    column :id
+    id_column
     column :image do |item|
       if item.has_image?
         link_to(
