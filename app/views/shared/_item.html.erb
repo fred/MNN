@@ -35,11 +35,15 @@
           <li><%= link_to item.language.description, language_items_path(item.language) %></li>
         <% end %>
       </ul>
-      <span class="page_views">
+      <div class="page_views">
         <% if item.item_stat %>
           Views: <%= item.item_stat.views_counter %>
         <% end %>
-      </span>
+      </div>
+      <div class="comments_count">
+        Comments: <%= item.comments.count %>
+      </div>
+      <div class="clearfix"></div>
       <% @related = item.solr_similar(4) %>
       <% if @related && @related.total > 0 %>
         <section class="related">

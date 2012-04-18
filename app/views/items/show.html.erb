@@ -85,9 +85,11 @@
           </ul>
         </span>
         
-        <span class="page_views">
-          Views: <%= @item_stat.views_counter if @item_stat %>
-        </span>
+        <div class="page_views">
+          <% if @item.item_stat %>
+            Views: <%= @item_stat.views_counter if @item_stat %>
+          <% end %>
+        </div>
         
         <span class="share">
           <%= link_to image_tag("icons/social/facebook_16.png", :alt => "Facebook"),

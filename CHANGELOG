@@ -9,6 +9,8 @@ CHANGELOG
 * Added Youtube ID with link to admin/items
 * Thumbnail on admin/items opens the item itself
 * Added Video to item page in admin
+* Added Comments count under mini item divs
+* Increased padding in some parts for nicer look
 
 == Apr 17, 2012
 * Added Site Settings
