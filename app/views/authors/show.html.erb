@@ -17,7 +17,7 @@
     <% unless @author.diaspora.to_s.empty? %>
       <p>Diaspora: <%= @author.diaspora %></p>
     <% end %>
-    <p>Articles: <%= @author.items.count %></p>
+    <p>Submitted Articles: <%= @author.items.count %></p>
     <br />
     <%= @author.bio %>
   </section>

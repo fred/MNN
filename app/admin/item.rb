@@ -11,16 +11,25 @@ ActiveAdmin.register Item do
     column :image do |item|
       if item.has_image?
         link_to(
-          image_tag(item.main_image.image.thumb.url), 
-          admin_attachment_path(item.main_image),
+          image_tag(item.main_image.image.thumb.url),
+          admin_item_path(item),
           :title => item.abstract,
-        ) 
+        )
+      elsif item.youtube_id && item.youtube_img
+        link_to(
+          image_tag("https://img.youtube.com/vi/#{item.youtube_id}/1.jpg",
+            :class =>"youtube_mini"
+          ),
+          admin_item_path(item),
+          :title => "Youtube ID: #{item.youtube_id}"
+        )
       end
     end
     column :user
     column "Title", :sortable => :title do |item|
       link_to item.title, admin_item_path(item), :title => item.abstract, :class => "featured_#{item.featured}"
     end
+    column :category, :sortable => :category_id
     column :keywords
     column :tags do |item|
       item.tag_list(", ")
@@ -28,7 +37,16 @@ ActiveAdmin.register Item do
     column :draft, :sortable => :draft do |item|
       bol_to_word(item.draft)
     end
-    column "Highlight", :featured, :sortable => :featured do |item|
+    column "Youtube", :youtube_id, :sortable => :youtube_id do |item|
+      if item.youtube_id
+        link_to(item.youtube_id,
+          "http://www.youtube.com/watch?v=#{item.youtube_id}",
+          :title => "Open Youtube video page",
+          :target => "blank"
+        )
+      end
+    end
+    column "Highlt", :featured, :sortable => :featured do |item|
       bol_to_word(item.featured)
     end
     column "Stick", :sticky, :sortable => :sticky do |item|
@@ -37,7 +55,7 @@ ActiveAdmin.register Item do
     column "Lang", :language, :sortable => :language_id do |item|
       item.language.description if item.language
     end
-    column "Update", :sortable => :updated_at do |item|
+    column "Updated", :sortable => :updated_at do |item|
       item.updated_at.localtime.to_s(:short)
     end
     column "Live", :sortable => :published_at do |item|

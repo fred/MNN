@@ -4,6 +4,11 @@ CHANGELOG
 * Improved Author Page
 * Added more Rspec Tests
 * fixed bug on author page with avatar
+* Added Category to admin/items index page
+* Added Youtube screenshot to admin/items
+* Added Youtube ID with link to admin/items
+* Thumbnail on admin/items opens the item itself
+* Added Video to item page in admin
 
 == Apr 17, 2012
 * Added Site Settings

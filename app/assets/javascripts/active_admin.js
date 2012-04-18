@@ -5,3 +5,4 @@
 //= require anytimec
 //= require anytimetz
 //= require jquery-counter-min
+//= require modernizr

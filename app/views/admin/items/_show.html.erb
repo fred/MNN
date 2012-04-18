@@ -57,9 +57,34 @@
   <h3>Youtube</h3>
   <div class="panel_contents">
     <div class="attributes_table item">
-      <p>Video ID: <b><%= @item.youtube_id.to_s %></b></p>
-      <p>Auto Video: <b><%= @item.youtube_img %></b></p>
-      <p>Auto Image: <b><%= @item.youtube_img %></b></p>
+      <p>Video ID: 
+        <% if @item.youtube_id %>
+          <b><%= link_to(@item.youtube_id.to_s,
+              "http://www.youtube.com/watch?v=#{@item.youtube_id}",
+              :title => "Open Youtube video page",
+              :target => "blank"
+            )
+          %></b>
+        <% end %>
+      </p>
+      <p>Auto Embed Video: <b><%= @item.youtube_img %></b></p>
+      <p>Auto Image Screenshot: <b><%= @item.youtube_img %></b></p>
+      <p>
+        Screenshots:
+        <br />
+        <%= image_tag("https://img.youtube.com/vi/#{@item.youtube_id}/1.jpg",
+              :alt => "screnshot 1", :title => "screnshot 1")
+        %>
+        <%= image_tag("https://img.youtube.com/vi/#{@item.youtube_id}/2.jpg",
+              :alt => "screnshot 2", :title => "screnshot 2")
+        %>
+        <%= image_tag("https://img.youtube.com/vi/#{@item.youtube_id}/3.jpg",
+              :alt => "screnshot 3", :title => "screnshot 3")
+        %>
+      </p>
+      <p>
+        <%= render :partial => "/shared/youtube_video" %>
+      </p>
     </div>
   </div>
 </div>
