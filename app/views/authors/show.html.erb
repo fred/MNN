@@ -3,11 +3,27 @@
   <%= auto_discovery_link_tag(:atom, author_path(@author), :format => "atom") %>
 <% end %>
 
+<article id="author_<%=@author.id%>">
+  <header>
+    <% if @author.avatar? %>
+      <%= link_to(image_tag(@author.avatar.small, :class => "show_item_image"), author_path(@author)) %>
+    <% end %>
+    <h3><%= link_to @author.title, author_path(@author) %></h3>
+  </header>
+  <section>
+    <% unless @author.twitter.to_s.empty? %>
+      <p>Twitter: <%= twitter_user_link(@author.twitter) %></p>
+    <% end %>
+    <% unless @author.diaspora.to_s.empty? %>
+      <p>Diaspora: <%= @author.diaspora %></p>
+    <% end %>
+    <p>Articles: <%= @author.items.count %></p>
+    <br />
+    <%= @author.bio %>
+  </section>
+</article>
+
 <h3><%= @author.name %> Articles</h3>
-<p>
-  <%= @author.attachments.first.image.small if @author.has_image? %>
-  <%= @author.bio %>
-</p>
 
 <% @items.each do |item| %>
   <%= render :partial => "/shared/item", :locals => {:item => item } %>

@@ -1,6 +1,11 @@
 CHANGELOG
 
 == Apr 17, 2012
+* Improved Author Page
+* Added more Rspec Tests
+* fixed bug on author page with avatar
+
+== Apr 17, 2012
 * Added Site Settings
 * Resque-History
 * Added GA

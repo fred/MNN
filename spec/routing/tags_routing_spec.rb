@@ -11,5 +11,13 @@ describe TagsController do
       get("/tags/1").should route_to("tags#show", :id => "1")
     end
 
+    it "routes to #show.rss" do
+      get("/tags/1.rss").should route_to("tags#show", :id => "1", :format => "rss")
+    end
+
+    it "routes to #show.atom" do
+      get("/tags/1.atom").should route_to("tags#show", :id => "1", :format => "atom")
+    end
+
   end
 end

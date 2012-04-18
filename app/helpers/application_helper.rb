@@ -1,5 +1,9 @@
 module ApplicationHelper
   
+  def twitter_user_link(str)
+    link_to "@#{str}", "https://twitter.com/#{str}"
+  end
+  
   def flattr_large
     link_to(
       image_tag("flattr-badge-large.png"),
