@@ -11,7 +11,7 @@
           <% if item.has_image? %>
             <%= link_to(
                   image_tag(item.main_image.image.main, :class => "featured_item_image"),
-                  item, :title => "<strong>#{item.title}</strong> <br/> #{item.abstract}"
+                  item, :title => item_title_small(item)
                 )
             %>
           <% elsif item.youtube_id && item.youtube_img %>
@@ -19,7 +19,7 @@
           <% end %>
           <span class="title">
             <%= link_to item.title.to_s.truncate(100), item,
-                  :title => "<strong>#{item.title}</strong> <br/> #{item.abstract}"
+                  :title => item_title_small(item)
             %>
           </span>
           <span class="abstract"><%= item.abstract.to_s.truncate(120) %></span>
@@ -39,13 +39,13 @@
             <%= link_to(
                   image_tag(item.main_image.image.small, :class => "list_item_image"),
                   item,
-                  :title => item.abstract
+                  :title => item_title_small(item)
                 )
             %>
           <% elsif item.youtube_id && item.youtube_img %>
             <%= image_tag("https://img.youtube.com/vi/#{item.youtube_id}/0.jpg", :class=>"list_item_image youtube")%>
           <% end %>
-          <span class="title"><%= link_to item.title.to_s.truncate(120), item, :title => item.abstract %></span>
+          <span class="title"><%= link_to item.title.to_s.truncate(120), item, :title => item_title_small(item) %></span>
           <span class="abstract"><%= item.abstract.to_s.truncate(120) %></span>
         </li>
       <% end %>
@@ -67,19 +67,19 @@
                   <%= link_to(
                         image_tag(item.main_image.image.small, :class => "list_item_image"),
                         item, 
-                        :title => "<strong>#{item.title}</strong> <br/> #{item.abstract}"
+                        :title => item_title_small(item)
                       )
                   %>
                 <% elsif item.youtube_id && item.youtube_img %>
                   <%= image_tag("https://img.youtube.com/vi/#{item.youtube_id}/0.jpg", :class=>"list_item_image youtube_small")%>
                 <% end %>
                 <%= link_to item.title.to_s.truncate(100), item, 
-                        :title => "<strong>#{item.title}</strong> <br/> #{item.abstract}"
+                        :title => item_title_small(item)
                 %>
                 <span class="abstract"><%= item.abstract.to_s.truncate(120) %></span>
               <% else %>
                 <span class="noroll">
-                  <%= link_to item.title.to_s.truncate(100), item, 
+                  <%= link_to item.title.to_s.truncate(100), item,
                         :title => item_title(item)
                   %>
                 </span>

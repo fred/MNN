@@ -1,11 +1,20 @@
 module ItemsHelper
   
+  def item_title_small(item)
+    str = ""
+    str += "<b>#{item.title}</b> <br/> #{item.abstract}"
+    str += "<br/>"
+    str += "<span class='date_small'>#{time_ago_in_words(item.published_at)} ago - by #{item.author_name}</span>"
+  end
+  
   def item_title(item)
     str = ""
     str += "#{image_tag(item.main_image.image.thumb, :class => "tooltip_image")}" if item.has_image?
-    str += "<strong>#{item.title}</strong>"
+    str += "<b>#{item.title}</b>"
     str += "<br/>"
     str += "#{item.abstract}"
+    str += "<br/>"
+    str += "<span class='date_small'>#{time_ago_in_words(item.published_at)} ago - by #{item.author_name}</span>"
     str
   end
   

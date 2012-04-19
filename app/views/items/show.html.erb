@@ -75,7 +75,6 @@
         <% end %>
         <span itemprop="keywords">
           <ul class="tags">
-            Tags:
             <% @item.tags.each do |tag| %>
               <li><%= link_to tag.title, tag_path(tag), :title => "View all items in '#{tag.title}'" %></li>
             <% end %>
@@ -153,9 +152,9 @@
       <% if @related && @related.total > 0 %>
         <section id="related">
           <h4>Related items</h4>
-          <ul>
+          <ul class="related">
             <% @related.results.each do |item| %>
-              <li><%= link_to item.title, item, :title => item.abstract %></li>
+              <li><%= link_to item.title, item, :title => item_title(item) %></li>
             <% end %>
           </ul>
         </section>

@@ -206,8 +206,15 @@ article span.date {
   color: #555;
   font-style: italic;
   font-size: 13px;
-  padding: 2px 4px 2px 0;
+  padding: 2px 2px 2px 0;
 }
+.date_small {
+  color: #666;
+  font-style: italic;
+  font-size: 12px;
+  padding: 2px 2px 2px 0;
+}
+
 article span.author {
   color: #555;
   font-weight: bold;
@@ -255,29 +262,56 @@ footer ul.footer_menu,
 section ul.tags,
 article footer ul.tags {
   font-size: 13px;
-  margin: 10px 0px 18px 0px;
+  margin: 14px 0px 20px 0px;
+  border: none;
 }
 footer ul.footer_menu li,
 section ul.tags li,
 article footer ul.tags li {
   display: inline;
-  padding: 0px 5px 0px 1px;
-  border-right: 1px solid #777;
+  border: none;
 }
+
+footer ul.footer_menu li a,
+section ul.tags li a,
+article footer ul.tags li a {
+  overflow: visible;
+  text-decoration: none;
+  white-space: nowrap;
+  height: auto;
+  display: inline-block;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid #CCC;
+  box-shadow: 0px 0px 6px #bbb;
+  padding: 2px 8px;
+}
+
+footer ul.footer_menu li a:hover,
+section ul.tags li a:hover,
+article footer ul.tags li a:hover {
+  border: 1px solid #bbb;
+  box-shadow: 0px 0px 8px #aaa;
+}
+
 footer ul.footer_menu li:last-child,
 section ul.tags li:last-child,
 article footer ul.tags li:last-child {
   border-right: none;
 }
 
-article div.page_views, 
+ul.related li {
+  margin: 4px 0px;
+}
+
+article div.page_views,
 article div.comments_count {
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  margin: 6px 6px 6px 0px;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  margin: 6px 10px 6px 1px;
   display: inline;
-  padding: 4px 8px;
-  box-shadow: 0px 0px 4px #bbb;
+  padding: 3px 8px;
+  box-shadow: 0px 0px 6px #bbb;
 }
 
 article footer .share {

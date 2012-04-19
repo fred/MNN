@@ -21,7 +21,8 @@
         <% end %>
       </span>
       <span class="date">
-        <%= time_tag(item.published_at.in_time_zone("UTC"), :pubdate => false) %> (UTC)
+        <%#= time_tag(item.published_at.in_time_zone("UTC"), :pubdate => false) %>
+        <%= time_ago_in_words(item.published_at) %> ago
       </span>
       <% if item.user %>
         <span class="author">Submitted by <%= link_to_if(item.user, item.user.title, author_path(item.user)) %></span>
@@ -46,9 +47,9 @@
       <div class="clearfix"></div>
       <% @related = item.solr_similar(4) %>
       <% if @related && @related.total > 0 %>
-        <section class="related">
+        <section id="related">
           <h4>Related items</h4>
-          <ul>
+          <ul class="related">
             <% @related.results.each do |item| %>
               <li><%= link_to item.title, item, :title => item.abstract %></li>
             <% end %>
