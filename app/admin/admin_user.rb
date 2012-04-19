@@ -14,6 +14,9 @@ ActiveAdmin.register AdminUser do
     column :ranking
     column :role_titles
     column :type
+    column "Subscribed", :sortable => false do |user|
+      user.has_subscription?
+    end
     column "Logins", :sign_in_count
     default_actions
   end
