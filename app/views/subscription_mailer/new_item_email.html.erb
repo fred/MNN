@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <div class="content">
+        <article class="category" id="item_<%=@item.id%>">
+          <div>
+            <h3>
+              <%= link_to(sanitize(@item.abstract,
+                        :tags => %w(table tr td p b i u strong ol ul li dl dd div span h1 h2 h3 h4 h5),
+                        :attributes => %w(id class style)
+                      ),
+                    @url
+                  )
+              %>
+            </h3>
+          </div>
+          <div>
+            <p>
+            <% if @item.has_image?%>
+              <span style="float:left; margin-right:10px;">
+                <%= image_tag(@item.main_image.image.small) %>
+              </span>
+            <% end %>
+            <%= truncate(
+                  sanitize(@item.body,
+                    :tags => %w(),
+                    :attributes => %w()
+                  ),
+                  :length => 500,
+                  :omission => ' ... (click link to read full article)'
+                )
+            %>
+            </p>
+            Link: <%= @url %>
+          </div>
+          <section>
+            <br />
+            <p class="source_url">
+              Category: <%= @item.category_title %>
+            </p>
+            <p class="source_url">
+              Tags: <%= @item.tag_list %>
+              <% if @item.language %>
+                <%= @item.language.description %>
+              <% end %>
+            </p>
+            <p>
+              To disabled email notifications follow this link 
+              <%= link_to "https://worldmathaba.net/users/edit", "https://worldmathaba.net/users/edit" %>
+            </p>
+          </section>
+        </article>
+    </div>
+  </body>
+</html>
+

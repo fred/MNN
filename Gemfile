@@ -46,6 +46,7 @@ gem 'rakismet'
 ### Queue
 # Resque Heroku aware branch
 gem 'resque', "~> 1.20.0"
+gem 'resque_mailer'
 gem "resque-history", :git => "git://github.com/fred/resque-history.git"
 
 ### ASYNC Mailing
@@ -169,3 +170,5 @@ gem 'capistrano', "~> 2.9.0", :require => false
 gem 'rvm-capistrano', :require => false
 
 gem 'country-select'
+
+gem 'postmark-rails'

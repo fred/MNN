@@ -8,7 +8,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :bio, :name, :address, :twitter, :diaspora, :skype, :gtalk, :jabber, :phone_number, :time_zone, :avatar
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :bio, :name, :address, 
+    :twitter, :diaspora, :skype, :gtalk, :jabber, :phone_number, :time_zone, :avatar,
+    :subscribe, :unsubscribe, :unsubscribe_all
+
+  attr_accessor :subscribe, :unsubscribe, :unsubscribe_all
   
   validates_acceptance_of :terms_of_service, :allow_nil => true, :accept => true unless Rails.env.test?
   
@@ -17,7 +21,10 @@ class User < ActiveRecord::Base
   has_many :scores
   # has_many :comments
   has_and_belongs_to_many :roles
+  has_many :subscriptions, :dependent => :destroy, :conditions => {:item_id => nil}
+  has_many :item_subscriptions, :dependent => :destroy, :conditions => "item_id is not NULL", :class_name => "Subscription"
   
+  before_save :update_subscriptions, :cancel_subscriptions
   
   apply_simple_captcha
   
@@ -51,6 +58,26 @@ class User < ActiveRecord::Base
   end
   
   
+  def has_subscription?
+    !self.subscriptions.empty?
+  end
+  
+  def update_subscriptions
+    if (self.subscribe.to_s == "1" or self.subscribe == true) && self.subscriptions.empty?
+      self.subscriptions << Subscription.new(:email => self.email)
+    elsif (self.unsubscribe.to_s == "1" or self.unsubscribe == true) && !self.subscriptions.empty?
+      self.subscriptions.destroy_all
+    end
+    true
+  end
+  
+  def cancel_subscriptions
+    if (self.unsubscribe_all.to_s == "1" or self.unsubscribe_all == true) && !self.subscriptions.empty?
+      self.subscriptions.destroy_all
+      self.item_subscriptions.destroy_all
+    end
+    true
+  end
   
   
   # Returns approved Users

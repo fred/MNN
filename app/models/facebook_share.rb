@@ -8,7 +8,7 @@ class FacebookShare < Share
     if Rails.env.production?
       Resque.enqueue(FacebookQueue,self.id)
     else
-      Rails.logger.info("*** Resque: Updating Facebook status: #{self.id}")
+      Rails.logger.info("  Resque: Updating Facebook status: #{self.id}")
     end
   end
   

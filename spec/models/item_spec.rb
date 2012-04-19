@@ -54,6 +54,39 @@ describe Item do
     end
   end
   
+  describe "Creating Item with Subscription" do
+    before(:each) do
+      @item = Factory(:item, :draft => false)
+    end
+    it "should create an EmailDelivery resource" do
+      @item.email_deliveries.should_not eq([])
+      @item.email_deliveries.last.should eq(EmailDelivery.first)
+    end
+    it "should have only one EmailDelivery resource" do
+      @item.email_deliveries.count.should eq(1)
+    end
+    it "should not re-create an EmailDelivery resource after saving" do
+      @item.draft = false
+      @item.save
+      @item.email_deliveries.count.should eq(1)
+    end
+  end
+  
+  describe "Creating Item without Subscription" do
+    before(:each) do
+      @item = Factory(:item, :draft => true)
+    end
+    it "should not create an EmailDelivery resource" do
+      @item.email_deliveries.should eq([])
+      @item.email_deliveries.count.should eq(0)
+    end
+    it "should re-create an EmailDelivery resource after saving" do
+      @item.draft = false
+      @item.save
+      @item.email_deliveries.count.should eq(1)
+    end
+  end
+  
   describe "Creating Item with Social Shares" do
     before(:each) do
       @item = Factory(:item, :share_twitter => "1")

@@ -19,9 +19,10 @@ class Item < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   belongs_to :language
+  has_one  :item_stat
   has_many :attachments, :as => :attachable
-  has_one :item_stat
-  has_many :twitter_shares, :dependent => :destroy
+  has_many :twitter_shares,   :dependent => :destroy
+  has_many :email_deliveries, :dependent => :destroy
   
   has_and_belongs_to_many :tags, :join_table => "taggings", 
     :foreign_key => "taggable_id", :association_foreign_key => "tag_id"
@@ -45,6 +46,7 @@ class Item < ActiveRecord::Base
   before_save   :create_twitter_share
   before_update :set_status_code
   before_create :build_stat
+  before_save   :send_email_deliveries
   
   # if Rails.env.production?
   # after_commit   :resque_solr_update
@@ -83,6 +85,15 @@ class Item < ActiveRecord::Base
     end
   end
   
+  
+  def send_email_deliveries
+    if !self.draft && self.email_deliveries.empty?
+      Rails.logger.info("  Email-Delivery: Creating Email Delivery for item: #{self.id}")
+      self.email_deliveries << EmailDelivery.new
+    end
+    true
+  end
+  
   def posted_to_twitter?
     if !self.twitter_shares.empty? && self.twitter_shares.first.processed_at
       true
@@ -93,8 +104,10 @@ class Item < ActiveRecord::Base
   
   def create_twitter_share
     if (self.share_twitter.to_s=="1" or self.share_twitter==true) && !self.draft && self.twitter_shares.empty?
+      Rails.logger.info("  Twitter: Creating Twitter Share for item: #{self.id}")
       self.twitter_shares << TwitterShare.new
     end
+    true
   end
   
   def twitter_status

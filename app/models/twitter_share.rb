@@ -9,7 +9,7 @@ class TwitterShare < Share
       # TwitterQueue.perform(self.id)
       Resque.enqueue(TwitterQueue,self.id)
     else
-      Rails.logger.info("*** Resque: Updating twitter status: #{self.id}")
+      Rails.logger.info("  Resque: Updating twitter status: #{self.id}")
     end
   end
   

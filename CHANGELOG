@@ -1,6 +1,12 @@
 CHANGELOG
 
 == Apr 17, 2012
+* Added Email Subscriptions
+* Added PostmarkApp for sending emails
+* Changed Logging style
+* Added Rspec Tests for email subscriptions
+
+== Apr 17, 2012
 * Improved Author Page
 * Added more Rspec Tests
 * fixed bug on author page with avatar

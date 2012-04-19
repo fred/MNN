@@ -1,0 +1,24 @@
+New Post at http://WorldMathaba.net
+====================================
+
+<%=h @item.title %>
+
+<%= truncate(
+      sanitize(@item.body,
+        :tags => %w(),
+        :attributes => %w()
+      ),
+      :length => 400,
+      :omission => ' ... (click link to read full article)'
+    )
+%>
+
+- Posted by <%= @item.user_title %>
+- Category: <%= @item.category_title %>
+- Tags: <%= @item.tag_list %>
+
+To see the full article, just follow this link: <%= @url %>
+
+To disabled email notifications follow this link: https://worldmathaba.net/users/edit 
+
+Have a great day!

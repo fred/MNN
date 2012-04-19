@@ -13,4 +13,57 @@ describe User do
       assert_equal false, @user.valid?
     end
   end
+  
+  
+  describe "Users with subscription" do
+    before(:each) do
+      @user = Factory(:user, :subscribe => "1")
+    end
+    it "should create a subscription model" do
+      @user.subscriptions.should_not eq([])
+      @user.subscriptions.last.should eq(Subscription.first)
+    end
+    it "should create a subscription with the user email" do
+      @subscription = @user.subscriptions.last
+      @subscription.email.should eq(@user.email)
+    end
+    it "should delete the user subscription when unsubscribed" do
+      @user.subscribe = nil
+      @user.unsubscribe = "1"
+      @user.save
+      @user.subscriptions.should eq([])
+    end
+    it "should delete the user subscription when unsubscribe_all" do
+      @user.unsubscribe_all = "1"
+      @user.subscribe = nil
+      @user.save
+      @user.subscriptions.should eq([])
+      @user.subscriptions.count.should eq(0)
+    end
+    
+  end
+  
+  describe "Users with unsubscribe or unsubscribe_all" do
+    before(:each) do
+      @user = Factory(:user, :unsubscribe => "1")
+    end
+    it "should not create a subscription" do
+      @user.subscriptions.should eq([])
+      @user.subscriptions.count.should eq(0)
+    end
+    it "should delete the user subscription when unsubscribe_all" do
+      @user.unsubscribe_all = "1"
+      @user.subscribe = nil
+      @user.save
+      @user.subscriptions.should eq([])
+      @user.subscriptions.count.should eq(0)
+    end
+    it "should create the user subscription when subscribed" do
+      @user.unsubscribe = nil
+      @user.subscribe = "1"
+      @user.save
+      @user.subscriptions.should_not eq([])
+    end
+  end
+  
 end

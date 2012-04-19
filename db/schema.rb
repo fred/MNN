@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120417003048) do
+ActiveRecord::Schema.define(:version => 20120419110028) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -88,6 +88,16 @@ ActiveRecord::Schema.define(:version => 20120417003048) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  create_table "email_deliveries", :force => true do |t|
+    t.integer  "item_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "email_deliveries", ["item_id"], :name => "index_email_deliveries_on_item_id"
+  add_index "email_deliveries", ["user_id"], :name => "index_email_deliveries_on_user_id"
 
   create_table "item_stats", :force => true do |t|
     t.integer  "item_id"
@@ -239,6 +249,17 @@ ActiveRecord::Schema.define(:version => 20120417003048) do
   end
 
   add_index "simple_captcha_data", ["key"], :name => "idx_key"
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "subscriptions", ["item_id"], :name => "index_subscriptions_on_item_id"
+  add_index "subscriptions", ["user_id"], :name => "index_subscriptions_on_user_id"
 
   create_table "taggings", :id => false, :force => true do |t|
     t.integer "tag_id"
