@@ -42,33 +42,27 @@
         </div>
       <% end %>
     </div>
-    
+
     <div class="sidebar_secions">
-      
       <h4>Sections</h4>
       <ul>
         <% Category.order("title ASC").all.each do |category| %>
           <li><%= link_to category.title, category, :title => category.description %></li>
         <% end %>
       </ul>
-    
       <h4>Tags</h4>
       <ul>
         <% GeneralTag.order("title ASC").all.each do |tag| %>
           <li><%= link_to tag.title, tag_path(tag) %></li>
         <% end %>
       </ul>
-      
       <h4>Useful Pages</h4>
       <ul>
         <% Page.order("priority ASC").all.each do |page| %>
           <li><%= link_to page.title, page %></li>
         <% end %>
       </ul>
-      
-      
-      <a href="https://mixpanel.com/f/partner"><img src="https://mixpanel.com/site_media/images/partner/badge_light.png" alt="Mobile and Web Analytics" /></a>
     </div>
-    
+
   </div>
 </div>
