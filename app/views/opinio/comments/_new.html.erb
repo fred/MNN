@@ -2,7 +2,13 @@
   <% if current_user or current_admin_user %>
     <h3>
       Your Comment
-      (as <%= current_user.title if current_user %> <%= current_admin_user.title if current_admin_user %>)
+      (as 
+      <% if current_user %>
+        <%= current_user.title %>
+      <% elsif current_admin_user %>
+        <%= current_admin_user.title %>>
+      <% end %>
+      )
     </h3>
     <%= form_for Comment.new, :remote => true do |f| %>
       <p>
