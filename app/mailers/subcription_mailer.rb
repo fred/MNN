@@ -16,9 +16,10 @@ class SubscriptionMailer < ActionMailer::Base
         :sender => "inbox@worldmathaba.net",
         :from => "WorldMathaba <inbox@worldmathaba.net>",
         :reply_to => "inbox@worldmathaba.net",
-        :to => @emails_list,
+        :to => "inbox@worldmathaba.net",
+        :bbc => @emails_list,
         :subject => "[New post] #{@item.title}",
-        :tag => "user-#{t.user_id.to_s}"
+        :tag => "item-#{@item.id}"
       )
     end
   end

@@ -315,7 +315,7 @@ class Item < ActiveRecord::Base
     if self.user && self.user.email
       self.user.email
     else
-      "worldmathaba@gmail.com"
+      "inbox@worldmathaba.net"
     end
   end
   

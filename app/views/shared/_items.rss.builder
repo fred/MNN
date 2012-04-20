@@ -7,8 +7,8 @@ xml.rss(:version=>"2.0", 'xmlns:atom' =>"http://www.w3.org/2005/Atom"){
     xml.description(@rss_description) if @rss_description
     xml.language(@rss_language) if @rss_language
     xml.generator("Ruby on Rails")
-    xml.managingEditor("worldmathaba@gmail.com (Editor)")
-    xml.webMaster("worldmathaba@gmail.com (Admin)")
+    xml.managingEditor("inbox@worldmathaba.net (Editor)")
+    xml.webMaster("admin@worldmathaba.net (Admin)")
     xml.copyright("Please see our copyrights page.")
     if @rss_source
       xml.link(@rss_source)
