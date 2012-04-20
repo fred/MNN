@@ -2,57 +2,118 @@
 <html>
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style type="text/css">
+      body {
+        color: #555;
+        font-size: 14px;
+        text-rendering: optimizeLegibility;
+        background-color: white;
+        margin: 16px 8px;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-weight: normal;
+        line-height: 18px;
+      }
+      article {
+        margin: 10px;
+        border: 1px solid #CCC;
+        padding: 0 10px 10px 10px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 12px #aaa;
+        background-color: #F9F9F9;
+      }
+      a {
+        color: #0069D6;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #00438A;
+        text-decoration: underline;
+      }
+      h2 {
+        margin: 16px 4px;
+        text-align: center;
+      }
+      .small {
+        font-size: 12px;
+        color: #777;
+      }
+      img {
+        border: 1px solid white;
+        box-shadow: 0px 0px 8px #aaa;
+        margin: 1px 2px 4px 1px;
+      }
+      a.tag {
+        overflow: visible;
+        text-decoration: none;
+        white-space: nowrap;
+        height: auto;
+        display: inline-block;
+        background-color: transparent;
+        border-radius: 4px;
+        border: 1px solid #CCC;
+        box-shadow: 0px 0px 6px #ccc;
+        padding: 2px 6px;
+        margin: 3px;
+      }
+      a.tag:hover {
+        border: 1px solid #bbb;
+        box-shadow: 0px 0px 8px #aaa;
+      }
+    </style>
   </head>
   <body>
     <div class="content">
-        <article class="category" id="item_<%=@item.id%>">
-          <div>
-            <h3>
-              <%= link_to(sanitize(@item.abstract,
-                        :tags => %w(table tr td p b i u strong ol ul li dl dd div span h1 h2 h3 h4 h5),
-                        :attributes => %w(id class style)
-                      ),
-                    @url
-                  )
-              %>
-            </h3>
-          </div>
-          <div>
-            <p>
-            <% if @item.has_image?%>
-              <span style="float:left; margin-right:10px;">
-                <%= image_tag(@item.main_image.image.small) %>
-              </span>
-            <% end %>
-            <%= truncate(
-                  sanitize(@item.body,
-                    :tags => %w(),
-                    :attributes => %w()
-                  ),
-                  :length => 500,
-                  :omission => ' ... (click link to read full article)'
+      <h2>New Post at WorldMathaba.net</h2>
+      <article class="category" id="item_<%=@item.id%>">
+        <div>
+          <h3>
+            <%= link_to(sanitize(@item.abstract,
+                      :tags => %w(table tr td p b i u strong ol ul li dl dd div span h1 h2 h3 h4 h5),
+                      :attributes => %w(id class style)
+                    ),
+                  @url
                 )
             %>
-            </p>
-            Link: <%= @url %>
-          </div>
-          <section>
-            <br />
-            <p class="source_url">
-              Category: <%= @item.category_title %>
-            </p>
-            <p class="source_url">
-              Tags: <%= @item.tag_list %>
-              <% if @item.language %>
-                <%= @item.language.description %>
-              <% end %>
-            </p>
-            <p>
-              To disabled email notifications follow this link 
-              <%= link_to "https://worldmathaba.net/users/edit", "https://worldmathaba.net/users/edit" %>
-            </p>
-          </section>
-        </article>
+          </h3>
+        </div>
+        <div>
+          <p>
+          <% if @item.has_image?%>
+            <span style="float:left; margin-right:10px;">
+              <%= image_tag(@item.main_image.image.small) %>
+            </span>
+          <% end %>
+          <%= truncate(
+                sanitize(@item.body,
+                  :tags => %w(),
+                  :attributes => %w()
+                ),
+                :length => 500,
+                :omission => ' ... (click link to read full article)'
+              )
+          %>
+          </p>
+          Link: <%= link_to @url, @url %>
+        </div>
+        <section>
+          <br />
+          <p class="source_url">
+            Category: <%= @item.category_title %>
+          </p>
+          <p class="source_url">
+            Tags:
+            <% @item.tags.each do |tag| %>
+              <span class="tags">
+                <%= link_to tag.title, tag, :class => "tag" %>
+              </span>
+            <% end %>
+          </p>
+          <p>
+            To disabled email notifications follow 
+            <%= link_to "this link", "https://worldmathaba.net/users/edit" %>.
+          </p>
+        </section>
+      </article>
     </div>
   </body>
 </html>
