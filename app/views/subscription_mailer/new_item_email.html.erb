@@ -25,7 +25,7 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>[New post] <%= @item.title %></title>
+  <title>World Mathaba: <%= @item.title %></title>
   
   
   <style type="text/css">
@@ -163,7 +163,7 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
 
 <body>
   <div class="content">
-    <h2>New Post at WorldMathaba.net</h2>
+    <h2>World Mathaba: <%= @item.title %></h2>
     <div class="article">
       <div>
         <h3>
@@ -174,7 +174,11 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
         <p>
         <% if @item.has_image?%>
           <span style="float:left; margin-right:10px;">
-            <%= image_tag(@item.main_image.image.small) %>
+            <% if @item.youtube_id && @item.youtube_img %>
+              <%= image_tag("https://img.youtube.com/vi/#{@item.youtube_id}/0.jpg" %>
+            <% else %>
+              <%= image_tag(@item.main_image.image.small) %>
+            <% end %>
           </span>
         <% end %>
         <%= truncate(

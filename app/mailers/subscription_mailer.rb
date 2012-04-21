@@ -12,7 +12,7 @@ class SubscriptionMailer < ActionMailer::Base
     unless @subscriptions.empty?
       mail(
         :sender => "inbox@worldmathaba.net",
-        :from => "WorldMathaba <inbox@worldmathaba.net>",
+        :from => "WorldMathaba.net <inbox@worldmathaba.net>",
         :reply_to => "inbox@worldmathaba.net",
         :to => "inbox@worldmathaba.net",
         :bcc => @emails_list,
