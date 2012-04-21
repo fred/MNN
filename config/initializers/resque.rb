@@ -1,4 +1,5 @@
 require 'resque/server'
+require 'resque_scheduler'
 require 'resque-history/server'
 
 if ENV["REDISTOGO_URL"]

@@ -13,11 +13,11 @@ gem 'bundler', '>= 1.1.0'
 gem 'pg'
 
 ### Roles and Authentication
-gem 'cancan' 
+gem 'cancan', "~> 1.6.7"
 gem 'devise', "~> 2.0.4" # Devise must be required before RailsAdmin
 
 ### Versioning
-gem 'paper_trail'
+gem 'paper_trail', "~> 2.6.3"
 
 ### Views
 gem 'kaminari'
@@ -25,7 +25,7 @@ gem 'squeel'
 
 ### File Uploading and Image Processing
 gem 'mini_magick', '~> 3.4'
-gem 'fog', "~> 1.1.2"
+gem 'fog', "~> 1.3.1"
 gem 'carrierwave', "~> 0.5.8"
 
 ### S3 Asset hosting
@@ -47,18 +47,24 @@ gem 'rakismet'
 # Resque Heroku aware branch
 gem 'resque', "~> 1.20.0"
 gem 'resque_mailer'
+gem 'resque-scheduler', :require => 'resque_scheduler'
 gem "resque-history", :git => "git://github.com/fred/resque-history.git"
 
 ### ASYNC Mailing
 # gem 'mail'
 # gem 'resque_mailer'
 
+### JSON and Twitter
+gem 'multi_json', "~> 1.3.2"
+gem 'json', "~> 1.6.6"
+# Posting status to twitter
+gem 'twitter', "~> 2.2.2"
+
 gem "libv8"
 gem "execjs"
 gem "therubyracer", :require => 'v8'
-gem 'json'
 gem 'sass'
-gem 'sass-rails',   '~> 3.2.3'
+gem 'sass-rails',  '~> 3.2.3'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -134,8 +140,6 @@ gem 'tinymce-rails', "3.4.7.0.1"
 gem 'twitter-bootstrap-rails', "~> 1.4.3"
   # :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git"
 
-# Posting status to twitter
-gem 'twitter'
 
 # Error Emails
 gem "exception_notification", "~> 2.6.0", :require => 'exception_notifier'

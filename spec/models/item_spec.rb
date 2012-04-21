@@ -1,6 +1,7 @@
 require 'spec_helper'
 
-describe Item do  
+describe Item do
+  include NumericMatchers
   describe "A Simple Item" do 
     before(:each) do
       @item = Factory(:item)
@@ -18,6 +19,10 @@ describe Item do
     end
     it "should require a body" do
       @item.body = nil
+      @item.should_not be_valid
+    end
+    it "should require a published_at" do
+      @item.published_at = nil
       @item.should_not be_valid
     end
     it "should not require a body if it is a youtube video" do
@@ -56,7 +61,7 @@ describe Item do
   
   describe "Creating Item with Subscription" do
     before(:each) do
-      @item = Factory(:item, :draft => false)
+      @item = Factory(:item, :draft => false, :send_emails => "1")
     end
     it "should create an EmailDelivery resource" do
       @item.email_deliveries.should_not eq([])
@@ -70,11 +75,35 @@ describe Item do
       @item.save
       @item.email_deliveries.count.should eq(1)
     end
+    it "should have send_at date" do
+      @item.email_deliveries.first.send_at.should_not eq(nil)
+    end
+    it "should have send_at queue time greater then publication date" do
+      @item.email_deliveries.first.send_at.to_i.should greater_than(@item.published_at.to_i)
+    end
+    
   end
   
-  describe "Creating Item without Subscription" do
+  describe "Creating Draft Item without Subscription" do
     before(:each) do
       @item = Factory(:item, :draft => true)
+    end
+    it "should not create an EmailDelivery resource" do
+      @item.email_deliveries.should eq([])
+      @item.email_deliveries.count.should eq(0)
+    end
+    it "should re-create an EmailDelivery resource after saving" do
+      @item.draft = false
+      @item.send_emails = "1"
+      @item.save
+      @item.email_deliveries.count.should eq(1)
+    end
+  end
+  
+  
+  describe "Creating Non-Draft Item without Subscription" do
+    before(:each) do
+      @item = Factory(:item, :draft => true, :send_emails => "1")
     end
     it "should not create an EmailDelivery resource" do
       @item.email_deliveries.should eq([])

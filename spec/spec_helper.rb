@@ -69,3 +69,11 @@ module UserSpecHelper
     }
   end
 end
+
+module NumericMatchers
+  RSpec::Matchers.define :greater_than do |expected|
+    match do |actual|
+      actual > expected
+    end
+  end
+end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120419110028) do
+ActiveRecord::Schema.define(:version => 20120421083514) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20120419110028) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.datetime "send_at"
   end
 
   add_index "email_deliveries", ["item_id"], :name => "index_email_deliveries_on_item_id"
@@ -236,6 +237,7 @@ ActiveRecord::Schema.define(:version => 20120419110028) do
     t.datetime "processed_at"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+    t.datetime "enqueue_at"
   end
 
   add_index "shares", ["item_id", "processed"], :name => "index_shares_on_item_id_and_processed"

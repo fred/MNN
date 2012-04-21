@@ -86,15 +86,35 @@
     <%= f.input :sticky,    :label => "Sticky",   :hint => "Article will remain first on top of Highlights box" %><br />
     <%= f.input :allow_comments, :hint => "Allow users to comment" %><br />
     <%#= f.input :protected_record, :hint => "Locked from editing, use with caution." %>
-    
+
+
+
     <% if f.object.twitter_shares.empty? %>
-      <%= f.input :share_twitter, :as => "boolean", 
-          :hint => "Auto post to twitter upon publication? Only set it if item is ready and not Draft. It can only be posted once." %>
+      <%= f.input :share_twitter, :as => "boolean",
+          :hint => "Auto post to twitter upon publication? Only set it if item is ready and not Draft. It can only be posted once. Performed 3 minutes after Publication." %>
     <% else %>
       <li class="boolean input optional">
         <label><b>Already posted to twitter</b></label>
       </li>
     <% end %>
+
+    <br />
+
+    <% if !f.object.email_delivery_sent? %>
+      <%= f.input :send_emails, :as => "boolean",
+          :hint => "Send emails upon publication? Only set it if item is ready and not Draft. It can only be posted once. Email will be sent 3 minutes after Publication." %>
+    <% elsif f.object.email_delivery_sent? %>
+      <li class="boolean input optional">
+        <label><b>Already Sent Emails</b></label>
+      </li>
+    <% elsif f.object.email_delivery_queued? %>
+      <li class="boolean input optional">
+        <label><b>Email Queued for delivery</b></label>
+      </li>
+    <% end %>
+
+
+
     <%#= f.input :share_facebook, :hint => "Auto share on facebook upon publication?" %>
     <%#= f.input :share_reddit, :hint => "Auto post to Reddit upon publication?" %>
     <br />
@@ -110,7 +130,8 @@
           :value => f.object.published_at.localtime,
           :as => "string",
           :label => "Publication Date",
-          :hint => "When to go live. Timezone used for picking date: '#{Time.zone}' (from your Profile). It will be converted to UTC after saving."
+          :require => true,
+          :hint => "When to go live. Timezone used for picking date: '#{Time.zone}' (from your Profile). It will be converted to UTC after saving. (Required)"
     %>
     <%#= f.input :expires_on, :label => "Expire Date", :hint => "Expiration Date of article (default: 10 years)", :time => true %>
     <%= f.input :expires_on,

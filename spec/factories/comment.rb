@@ -1,10 +1,10 @@
 FactoryGirl.define do
-  factory :message, :class => 'Comment' do
-    ownner_id 1
-    commentable_id 1
-    commentable_type "User"
+  factory :comment, :class => 'Comment' do
+    association :commentable, :factory => :item
+    association :owner, :factory => :user
     body 'This is a test message'
     approved true
+    user_ip "127.0.0.1"
     # humanizer_bypass true
   end
 end

@@ -3,7 +3,7 @@ class Item < ActiveRecord::Base
   
   attr_protected :user_id, :slug, :updated_by, :deleted_at
   
-  attr_accessor :updated_reason, :share_twitter
+  attr_accessor :updated_reason, :share_twitter, :send_emails
   
   # Versioning System
   has_paper_trail :meta => { :tag  => :updated_reason }
@@ -41,6 +41,7 @@ class Item < ActiveRecord::Base
   
   validates_presence_of :title, :category_id, :published_at
   validates_presence_of :body, :if => Proc.new { |item| item.youtube_id.blank? }
+  validates_presence_of :published_at
   
   # Filter hooks
   before_save   :create_twitter_share
@@ -85,11 +86,41 @@ class Item < ActiveRecord::Base
     end
   end
   
+  def email_delivery_sent?
+    if !self.email_deliveries.empty? && self.email_deliveries.first.send_at &&
+       (self.email_deliveries.first.send_at < Time.now)
+      true
+    else
+      false
+    end
+  end
+  
+  def email_delivery_queued?
+    if !self.email_deliveries.empty? && self.email_deliveries.first.send_at &&
+       (self.email_deliveries.first.send_at > Time.now)
+      true
+    else
+      false
+    end
+  end
+  
+  def email_delivery_queued_at
+    if self.email_delivery_queued?
+      self.email_deliveries.first.send_at
+    else
+      nil
+    end
+  end
   
   def send_email_deliveries
-    if !self.draft && self.email_deliveries.empty?
+    if !self.draft && self.email_deliveries.empty? && (self.send_emails == "1" or self.send_emails == true)
       Rails.logger.info("  Email-Delivery: Creating Email Delivery for item: #{self.id}")
-      self.email_deliveries << EmailDelivery.new
+      if self.published_at.to_i < Time.now.to_i
+        send_time = Time.now+180
+      else
+        send_time = self.published_at+180
+      end
+      self.email_deliveries << EmailDelivery.new(:send_at => send_time)
     end
     true
   end
@@ -102,10 +133,18 @@ class Item < ActiveRecord::Base
     end
   end
   
+  # Creates the twitter sharing JOB
+  # checks the item publication date and set the time to send the twitter share
+  # Set Posting tim to be 3 minutes after the publication_date of item.
   def create_twitter_share
     if (self.share_twitter.to_s=="1" or self.share_twitter==true) && !self.draft && self.twitter_shares.empty?
       Rails.logger.info("  Twitter: Creating Twitter Share for item: #{self.id}")
-      self.twitter_shares << TwitterShare.new
+      if self.published_at < Time.now + 60
+        enqueue_at = self.published_at + 240
+      else
+        enqueue_at = Time.now + 180
+      end
+      self.twitter_shares << TwitterShare.new(:enqueue_at => enqueue_at)
     end
     true
   end
@@ -203,11 +242,11 @@ class Item < ActiveRecord::Base
   end
   
   def published?
-    !self.published_at.nil?
+    self.published_at.to_i < Time.now.to_i
   end
   
   def self.published
-    where("published_at is not NULL")
+    where("published_at < ?", DateTime.now)
   end
   def self.not_draft
     where(:draft => false)

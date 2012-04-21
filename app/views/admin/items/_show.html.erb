@@ -166,6 +166,13 @@
       <p>Comments Enabled: <%= @item.allow_comments %></p>
       <!-- <p>Star Rating Enabled: <%#= @item.allow_star_rating %></p> -->
       <p>Posted to Twitter: <%= @item.posted_to_twitter? %></p>
+      <% if @item.email_delivery_sent? %>
+        <p>Email Delivered: Yes</p>
+      <% elsif @item.email_delivery_queued? %>
+        <p>Email Queue for Delivery at: <%= @item.email_delivery_queued_at %></p>
+      <% else %>
+        <p>Email Delivered: None programmed</p>
+      <% end %>
     </div>
   </div>
 </div>

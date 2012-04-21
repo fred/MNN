@@ -1,5 +1,11 @@
 CHANGELOG
 
+== Apr 21, 2012
+* Added Resque Scheduler for Publication Date in items
+* Scheduling Twitter Status updates (resque-scheduler)
+* Scheduling Email Notifications
+* Updated RSPEC tests
+
 == Apr 20, 2012
 * Added CSS Style for Emails
 
