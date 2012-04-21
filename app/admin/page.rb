@@ -2,6 +2,7 @@ ActiveAdmin.register Page do
   controller.authorize_resource
   
   menu :priority => 100
+  menu :parent => "Settings", :priority => 100
   config.comments = false
   
   index do

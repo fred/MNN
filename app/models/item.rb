@@ -44,6 +44,7 @@ class Item < ActiveRecord::Base
   validates_presence_of :published_at
   
   # Filter hooks
+  before_save   :clear_bad_characters
   before_save   :create_twitter_share
   before_update :set_status_code
   before_create :build_stat
@@ -84,6 +85,15 @@ class Item < ActiveRecord::Base
     text :tags do
       tags.map { |tag| tag.title }
     end
+  end
+  
+  
+  def clear_bad_characters
+    self.body.gsub!("&lsquo;", "&#39;")
+    self.body.gsub!("&rsquo;", "&#39;")
+    self.body.gsub!("&ldquo;", "&#34;")
+    self.body.gsub!("&rdquo;", "&#34;")
+    true
   end
   
   def email_delivery_sent?

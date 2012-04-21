@@ -6,6 +6,7 @@ CHANGELOG
 * Scheduling Email Notifications
 * Updated RSPEC tests
 * Added Subscriptions and Alerts to /admin/
+* html boilerplate for emails [http://htmlemailboilerplate.com]
 
 == Apr 20, 2012
 * Added CSS Style for Emails
