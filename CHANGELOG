@@ -5,6 +5,7 @@ CHANGELOG
 * Scheduling Twitter Status updates (resque-scheduler)
 * Scheduling Email Notifications
 * Updated RSPEC tests
+* Added Subscriptions and Alerts to /admin/
 
 == Apr 20, 2012
 * Added CSS Style for Emails

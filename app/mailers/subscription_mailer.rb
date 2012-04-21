@@ -9,8 +9,6 @@ class SubscriptionMailer < ActionMailer::Base
     @subscriptions = Subscription.where("email is not NULL AND item_id is NULL").all
     @emails_list = @subscriptions.map{|t| t.email}.join(",")
     
-    # @subscriptions.each do |t|
-    # end
     unless @subscriptions.empty?
       mail(
         :sender => "inbox@worldmathaba.net",
