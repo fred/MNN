@@ -101,10 +101,11 @@ class ItemsController < ApplicationController
   #   end
   # end
   # 
-  # # GET /items/1/edit
-  # def edit
-  #   @item = Item.find(params[:id])
-  # end
+  # GET /items/1/edit
+  def edit
+    redirect_to root_path
+    # @item = Item.find(params[:id])
+  end
   # 
   # # POST /items
   # # POST /items.json

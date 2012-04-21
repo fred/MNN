@@ -30,8 +30,14 @@
         text-decoration: underline;
       }
       h2 {
-        margin: 16px 4px;
+        margin: 2px 4px 10px 4px;
         text-align: center;
+        font-size: 20px;
+      }
+      h3 {
+        font-size: 18px;
+        line-height: 18px;
+        margin: 10px 2px;
       }
       .small {
         font-size: 12px;
@@ -67,13 +73,7 @@
       <article class="category" id="item_<%=@item.id%>">
         <div>
           <h3>
-            <%= link_to(sanitize(@item.abstract,
-                      :tags => %w(table tr td p b i u strong ol ul li dl dd div span h1 h2 h3 h4 h5),
-                      :attributes => %w(id class style)
-                    ),
-                  @url
-                )
-            %>
+            <%= link_to @item.abstract, @url %>
           </h3>
         </div>
         <div>
@@ -98,13 +98,13 @@
         <section>
           <br />
           <p class="source_url">
-            Category: <%= @item.category_title %>
+            Category: <%= link_to @item.category_title, @item.category, :only_path => false, :protocol => 'http' %>
           </p>
           <p class="source_url">
             Tags:
             <% @item.tags.each do |tag| %>
               <span class="tags">
-                <%= link_to tag.title, tag, :class => "tag" %>
+                <%= link_to tag.title, tag, :class => "tag", :only_path => false, :protocol => 'http' %>
               </span>
             <% end %>
           </p>
