@@ -99,8 +99,8 @@ describe Item do
       @item.email_deliveries.count.should eq(1)
     end
   end
-  
-  
+
+
   describe "Creating Non-Draft Item without Subscription" do
     before(:each) do
       @item = Factory(:item, :draft => true, :send_emails => "1")
@@ -115,7 +115,23 @@ describe Item do
       @item.email_deliveries.count.should eq(1)
     end
   end
-  
+
+
+
+  describe "Creating Item with future publication with Social Shares" do
+    before(:each) do
+      @item = Factory(:item, :published_at => Time.now+600, :share_twitter => "1")
+    end
+    it "should create a share twitter model with future enqueue_at date" do
+      @item.twitter_shares.last.enqueue_at.to_i.should greater_than(@item.published_at.to_i)
+    end
+    it "should create the share twitter model with processed_at nil" do
+      @share = @item.twitter_shares.last
+      @share.processed_at.should eq(nil)
+    end
+  end
+
+
   describe "Creating Item with Social Shares" do
     before(:each) do
       @item = Factory(:item, :share_twitter => "1")

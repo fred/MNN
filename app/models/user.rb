@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   has_many :subscriptions, :dependent => :destroy, :conditions => {:item_id => nil}
   has_many :item_subscriptions, :dependent => :destroy, :conditions => "item_id is not NULL", :class_name => "Subscription"
   
-  before_save :update_subscriptions, :cancel_subscriptions
+  before_save :create_subscriptions, :cancel_subscriptions, :update_subscriptions
   
   apply_simple_captcha
   
@@ -62,11 +62,18 @@ class User < ActiveRecord::Base
     !self.subscriptions.empty?
   end
   
-  def update_subscriptions
+  def create_subscriptions
     if (self.subscribe.to_s == "1" or self.subscribe == true) && self.subscriptions.empty?
       self.subscriptions << Subscription.new(:email => self.email)
     elsif (self.unsubscribe.to_s == "1" or self.unsubscribe == true) && !self.subscriptions.empty?
       self.subscriptions.destroy_all
+    end
+    true
+  end
+  
+  def update_subscriptions
+    if self.email_changed? && !self.subscriptions.empty? 
+      self.subscriptions.last.update_attribute(:email, self.email)
     end
     true
   end
@@ -78,7 +85,6 @@ class User < ActiveRecord::Base
     end
     true
   end
-  
   
   # Returns approved Users
   def self.approved

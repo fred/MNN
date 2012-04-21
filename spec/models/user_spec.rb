@@ -40,7 +40,11 @@ describe User do
       @user.subscriptions.should eq([])
       @user.subscriptions.count.should eq(0)
     end
-    
+    it "should update the user subscription email when saving user" do
+      @user.email = "123456@new_email.com"
+      @user.save
+      @user.subscriptions.last.email.should eq(@user.email)
+    end
   end
   
   describe "Users with unsubscribe or unsubscribe_all" do
@@ -63,6 +67,11 @@ describe User do
       @user.subscribe = "1"
       @user.save
       @user.subscriptions.should_not eq([])
+    end
+    it "should update the user email but not create subscription" do
+      @user.email = "123456@new_email.com"
+      @user.save
+      @user.subscriptions.should eq([])
     end
   end
   

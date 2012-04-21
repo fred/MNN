@@ -137,14 +137,9 @@ class Item < ActiveRecord::Base
   # checks the item publication date and set the time to send the twitter share
   # Set Posting tim to be 3 minutes after the publication_date of item.
   def create_twitter_share
-    if (self.share_twitter.to_s=="1" or self.share_twitter==true) && !self.draft && self.twitter_shares.empty?
+    if !self.draft && (self.share_twitter.to_s=="1" or self.share_twitter==true) && self.twitter_shares.empty?
       Rails.logger.info("  Twitter: Creating Twitter Share for item: #{self.id}")
-      if self.published_at < Time.now + 60
-        enqueue_at = self.published_at + 240
-      else
-        enqueue_at = Time.now + 180
-      end
-      self.twitter_shares << TwitterShare.new(:enqueue_at => enqueue_at)
+      self.twitter_shares << TwitterShare.new(:enqueue_at => self.published_at+180)
     end
     true
   end
