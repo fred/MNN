@@ -17,7 +17,7 @@ class SubscriptionMailer < ActionMailer::Base
         :from => "WorldMathaba <inbox@worldmathaba.net>",
         :reply_to => "inbox@worldmathaba.net",
         :to => "inbox@worldmathaba.net",
-        :bbc => @emails_list,
+        :bcc => @emails_list,
         :subject => "[New post] #{@item.title}",
         :tag => "item-#{@item.id}"
       )
