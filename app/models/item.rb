@@ -93,6 +93,11 @@ class Item < ActiveRecord::Base
     self.body.gsub!("&rsquo;", "&#39;")
     self.body.gsub!("&ldquo;", "&#34;")
     self.body.gsub!("&rdquo;", "&#34;")
+    self.body.gsub!("&nbsp;", " ")
+    self.body.gsub!("&ndash;", "&#45;")
+    self.body.gsub!("&mdash;", "&#45;")
+    self.body.gsub!("&#180;", "&#39;")
+    self.body.gsub!("&#96;", "&#39;")
     true
   end
   

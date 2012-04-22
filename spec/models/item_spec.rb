@@ -46,6 +46,62 @@ describe Item do
       lambda {@item.save}.should_not raise_error
     end
   end
+
+
+  describe "Updating Items with undesirable HTML Codes" do
+    before(:each) do
+      @item = Factory(:item, :body => "&lsquo; An &rsquo; Item &ldquo; and &rdquo; &nbsp;")
+    end
+    it "should not allow to Left/Right Single/Double Quotes" do
+      @item.body.should eq("&#39; An &#39; Item &#34; and &#34;  ")
+    end
+    it "should replace [Left Single Curly Quotes] with [normal single quote]" do
+      @item.body = "Item &lsquo;"
+      @item.save
+      @item.body.should eq("Item &#39;")
+    end
+    it "should replace [Left Double Curly Quotes] with [normal double quotes]" do
+      @item.body = "Item &ldquo;"
+      @item.save
+      @item.body.should eq("Item &#34;")
+    end
+    it "should replace [Right Single Curly Quotes] with [normal single quote]" do
+      @item.body = "Item &rsquo;"
+      @item.save
+      @item.body.should eq("Item &#39;")
+    end
+    it "should replace [Right Double Curly Quotes] with [normal double quotes]" do
+      @item.body = "Item &rdquo;"
+      @item.save
+      @item.body.should eq("Item &#34;")
+    end
+    it "should replace &nbsp; with normal spaces" do
+      @item.body = "The&nbsp;Item"
+      @item.save
+      @item.body.should eq("The Item")
+    end
+    it "should replace [en dash &ndash;] with [minus sign]" do
+      @item.body = "The&ndash;Item"
+      @item.save
+      @item.body.should eq("The&#45;Item")
+    end
+    it "should replace [em dash &mdash;] with [minus sign]" do
+      @item.body = "The&mdash;Item"
+      @item.save
+      @item.body.should eq("The&#45;Item")
+    end
+    it "should replace [acute accent with no letter] with [single quote]" do
+      @item.body = "The&#180;Item"
+      @item.save
+      @item.body.should eq("The&#39;Item")
+    end
+    it "should replace [grave accent/reversed apostrophe with no letter] with [single quote]" do
+      @item.body = "The&#96;Item"
+      @item.save
+      @item.body.should eq("The&#39;Item")
+    end
+  end
+
   describe "Editing an a Dirty Item" do
     before(:each) do
       @item = Factory(:item, :title => "Old Title")
