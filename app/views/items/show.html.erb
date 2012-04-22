@@ -39,7 +39,9 @@
         <% end %>
         <% if @item.author_name %>
           - by 
-          <span class="author" itemprop="author"><%= link_to @item.author_name, search_path(:q => @item.author_name) %></span>
+          <span class="author" itemprop="author">
+            <%= link_to @item.author_name, search_path(:q => @item.author_name), :title => "Author Page: #{@item.author_name}" %>
+          </span>
         <% end %>
       </span>
 
@@ -47,8 +49,15 @@
         <% if @item.has_image? %>
           <figure>
             <span itemprop="image">
-              <%= link_to image_tag(@item.main_image.image.medium, :class => "show_item_image", :id => "main_image"),
-                    @item.main_image.image.large.url, :target => "blank", :id => "main_image_popup"
+              <%= link_to image_tag(@item.main_image.image.medium,
+                              :class => "show_item_image",
+                              :id => "main_image",
+                              :alt => @item.main_image.title
+                    ),
+                    @item.main_image.image.large.url,
+                    :target => "blank",
+                    :id => "main_image_popup",
+                    :title => @item.title
               %>
             </span>
             <% if @item.main_image.title %>
@@ -76,7 +85,7 @@
         <span itemprop="keywords">
           <ul class="tags">
             <% @item.tags.each do |tag| %>
-              <li><%= link_to tag.title, tag_path(tag), :title => "View all items in '#{tag.title}'" %></li>
+              <li><%= link_to tag.title, tag_path(tag), :title => "See all Articles tagged as '#{tag.title}'" %></li>
             <% end %>
             <% if @item.language %>
               <li><%= link_to @item.language.description, language_items_path(@item.language) %></li>

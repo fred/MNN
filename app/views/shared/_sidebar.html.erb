@@ -53,16 +53,16 @@
       <h4>Tags</h4>
       <ul>
         <% GeneralTag.order("title ASC").all.each do |tag| %>
-          <li><%= link_to tag.title, tag_path(tag) %></li>
+          <li><%= link_to tag.title, tag_path(tag), :title => "See all Articles tagged in '#{tag.title}'" %></li>
         <% end %>
       </ul>
       <h4>Useful Pages</h4>
       <ul>
         <% Page.order("priority ASC").all.each do |page| %>
-          <li><%= link_to page.title, page %></li>
+          <li><%= link_to page.title, page, :title => page.title %></li>
         <% end %>
       </ul>
     </div>
-    <%= image_tag "adfreesite.png", :alt => "AdFree Site", :title => "AdFree Site" %>
+    <%= image_tag "adfreesite.png", :alt => "AdFree Site", :title => "This is an Advertisement Free Site" %>
   </div>
 </div>

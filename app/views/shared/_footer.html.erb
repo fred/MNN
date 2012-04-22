@@ -1,6 +1,5 @@
 <footer>
   <ul class="footer_menu">
-    <li>&copy; Publication System</li>
     
     <% Page.all(:order => "priority ASC").each do |page| %>
       <li><%= link_to page.title, page, :title => page.title %></li>
@@ -56,6 +55,9 @@
       <% end -%>
     <% end %>
   </ul>
+  <p class="footer_logo">
+    World Mathaba
+  </p>
   <p class="render_time">
     Page Rendered in <strong><%= sprintf('%.3f', (Time.now.usec - @start_time).abs / 1000000.0) %></strong> seconds
   </p>
