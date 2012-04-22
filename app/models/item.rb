@@ -1,20 +1,20 @@
 class Item < ActiveRecord::Base
   include Rails.application.routes.url_helpers # neeeded for _path helpers to work in models
-  
+
   attr_protected :user_id, :slug, :updated_by, :deleted_at
-  
+
   attr_accessor :updated_reason, :share_twitter, :send_emails
-  
+
   # Versioning System
-  has_paper_trail :meta => { :tag  => :updated_reason }
-  
+  has_paper_trail :meta => { :tag => :updated_reason }
+
   # Comment System
   opinio_subjectum :conditions => {:approved => true}, :include => :owner
-  
+
   # Permalink URLS
   extend FriendlyId
   friendly_id :title, :use => :slugged
-  
+
   # Relationships
   belongs_to :user
   belongs_to :category
@@ -23,7 +23,7 @@ class Item < ActiveRecord::Base
   has_many :attachments, :as => :attachable
   has_many :twitter_shares,   :dependent => :destroy
   has_many :email_deliveries, :dependent => :destroy
-  
+
   has_and_belongs_to_many :tags, :join_table => "taggings", 
     :foreign_key => "taggable_id", :association_foreign_key => "tag_id"
 
@@ -39,9 +39,11 @@ class Item < ActiveRecord::Base
   # Nested Attributes
   accepts_nested_attributes_for :attachments, :allow_destroy => true, :reject_if => lambda { |t| t['image'].nil? }
   
+  # Validations
   validates_presence_of :title, :category_id, :published_at
   validates_presence_of :body, :if => Proc.new { |item| item.youtube_id.blank? }
   validates_presence_of :published_at
+  validate :record_freshness
   
   # Filter hooks
   before_save   :clear_bad_characters
@@ -50,17 +52,10 @@ class Item < ActiveRecord::Base
   before_create :build_stat
   before_save   :send_email_deliveries
   
-  # if Rails.env.production?
-  # after_commit   :resque_solr_update
-  # before_destroy :resque_solr_remove
-  # end
-  
-  
-  validate :record_freshness
-  
   ################
   ####  SOLR  ####
   ################
+  # searchable :auto_index => false, :auto_remove => false do # if using resque
   searchable do
     text :title, :boost => 2.4
     text :abstract, :boost => 1.6
@@ -86,8 +81,23 @@ class Item < ActiveRecord::Base
       tags.map { |tag| tag.title }
     end
   end
-  
-  
+
+  # if Rails.env.production? # and using solr resque?
+  # after_commit   :resque_solr_update
+  # before_destroy :resque_solr_remove
+  # end
+
+
+  ######################
+  ### Instance Methods
+  ######################
+
+  def after_initialize
+    self.draft ||= true
+    self.published_at ||= Time.zone.now  # will set the default value only if it's nil
+    self.expires_on   ||= Time.zone.now+10.years
+  end
+
   def clear_bad_characters
     self.body.gsub!("&lsquo;", "&#39;")
     self.body.gsub!("&rsquo;", "&#39;")
@@ -100,7 +110,7 @@ class Item < ActiveRecord::Base
     self.body.gsub!("&#96;", "&#39;")
     true
   end
-  
+
   def email_delivery_sent?
     if !self.email_deliveries.empty? && self.email_deliveries.first.send_at &&
        (self.email_deliveries.first.send_at < Time.now)
@@ -109,7 +119,7 @@ class Item < ActiveRecord::Base
       false
     end
   end
-  
+
   def email_delivery_queued?
     if !self.email_deliveries.empty? && self.email_deliveries.first.send_at &&
        (self.email_deliveries.first.send_at > Time.now)
@@ -118,7 +128,7 @@ class Item < ActiveRecord::Base
       false
     end
   end
-  
+
   def email_delivery_queued_at
     if self.email_delivery_queued?
       self.email_deliveries.first.send_at
@@ -126,7 +136,7 @@ class Item < ActiveRecord::Base
       nil
     end
   end
-  
+
   def send_email_deliveries
     if !self.draft && self.email_deliveries.empty? && (self.send_emails == "1" or self.send_emails == true)
       Rails.logger.info("  Email-Delivery: Creating Email Delivery for item: #{self.id}")
@@ -139,7 +149,7 @@ class Item < ActiveRecord::Base
     end
     true
   end
-  
+
   def posted_to_twitter?
     if !self.twitter_shares.empty? && self.twitter_shares.first.processed_at
       true
@@ -147,7 +157,7 @@ class Item < ActiveRecord::Base
       false
     end
   end
-  
+
   # Creates the twitter sharing JOB
   # checks the item publication date and set the time to send the twitter share
   # Set Posting tim to be 3 minutes after the publication_date of item.
@@ -158,14 +168,14 @@ class Item < ActiveRecord::Base
     end
     true
   end
-  
+
   def twitter_status
     url  = self.title.truncate(115)
     url += " "
     url += url_for(item_path(self, :host => "worldmathaba.net", :only_path => false, :protocol => 'http'))
     return url
   end
-  
+
   # WORKING
   def record_freshness
     unless self.new_record?
@@ -187,11 +197,11 @@ class Item < ActiveRecord::Base
       end
     end
   end
-  
+
   def main_image
     self.attachments.last
   end
-  
+
   def main_image_cache_key
     if self.has_image?
       self.main_image.updated_at.to_s(:number)
@@ -199,7 +209,7 @@ class Item < ActiveRecord::Base
       ""
     end
   end
-  
+
   def has_image?
     if !self.attachments.empty? && self.attachments.last.image
       true
@@ -207,36 +217,24 @@ class Item < ActiveRecord::Base
       false
     end
   end
-  
+
   # Returns an improved cache_key that includes the last image on the item
   def cache_key_full
     self.cache_key + "/" + self.main_image_cache_key
   end
-  
-  
+
   def tag_list(join=", ")
     array = []
     self.tags.each do |t|
       array << t.title
     end
-    array.join(join)
+    return array.join(join)
   end
-  
-  
+
   def build_stat
     self.item_stat = ItemStat.new(:views_counter => 0)
   end
 
-  def after_initialize
-    self.draft ||= true
-    self.published_at ||= Time.zone.now  # will set the default value only if it's nil
-    self.expires_on   ||= Time.zone.now+10.years
-  end
-  
-  def self.last_item
-    published.order("updated_at DESC").first
-  end
-  
   # Set to draft automatically upon creation
   def set_status_code
     if self.published_at && (self.published_at > Time.zone.now)
@@ -246,7 +244,6 @@ class Item < ActiveRecord::Base
     end
   end
   
-  
   def admin_permalink
     admin_item_path(self)
   end
@@ -254,78 +251,8 @@ class Item < ActiveRecord::Base
   def published?
     self.published_at.to_i < Time.now.to_i
   end
-  
-  def self.published
-    where("published_at < ?", DateTime.now)
-  end
-  def self.not_draft
-    where(:draft => false)
-  end
-  def self.draft
-    where(:draft => true)
-  end
-  
-  # Returns the top sticky item
-  # Used on the Front End, joining attachments
-  def self.top_sticky
-    published.
-    where(:draft => false, :sticky => true).
-    order("published_at DESC").
-    includes(:attachments).
-    first
-  end
-  
-  # Returns top Highlight Items
-  # Used on the Front End, joining attachments
-  def self.highlights(limit=6,offset=0)
-    published.
-    where(:draft => false, :featured => true, :sticky => false).
-    order("published_at DESC").
-    limit(limit).
-    includes(:attachments).
-    offset(offset).
-    all
-  end
-  
-  # Returns the last 10 approved items (not draft anymore)
-  # Used on the dashboard
-  def self.recent_updated(limit=10)
-    published.
-    where(:draft => false).
-    where("updated_at > created_at").
-    order("updated_at DESC").
-    limit(limit).
-    all
-  end
-  
-  # Returns the last 10 approved items (not draft anymore)
-  # Used on the Admin Dashboard
-  def self.recent(limit=10)
-    published.
-    order("id DESC").
-    limit(limit).
-    all
-  end
-  
-  # Returns the last 10 draft items
-  # Used on the Admin Dashboard
-  def self.recent_drafts(limit=10)
-    draft.
-    order("updated_at DESC").
-    limit(limit).
-    all
-  end
-  
-  # Returns the last 10 pending items (not draft anymore)
-  # Used on the Admin Dashboard
-  def self.pending(limit=10)
-    where(:published_at => nil).
-    where(:draft => false).
-    order("updated_at DESC").
-    limit(limit).
-    all
-  end
-  
+
+
   def language_title_short
     if self.language
       self.language.locale
@@ -333,7 +260,7 @@ class Item < ActiveRecord::Base
       "en"
     end
   end
-  
+
   def category_title
     if self.category
       self.category.title
@@ -341,7 +268,7 @@ class Item < ActiveRecord::Base
       "Uncategorized"
     end
   end
-  
+
   def language_title
     if self.language
       self.language.description
@@ -349,7 +276,8 @@ class Item < ActiveRecord::Base
       ""
     end
   end
-  
+
+  # Returns the article's author formated name
   def user_title
     if self.user && !self.user.name.empty?
       self.user.name
@@ -359,7 +287,8 @@ class Item < ActiveRecord::Base
       "mnn"
     end
   end
-  
+
+  # Returns the article's author formated email
   def user_email
     if self.user && self.user.email
       self.user.email
@@ -367,8 +296,8 @@ class Item < ActiveRecord::Base
       "inbox@worldmathaba.net"
     end
   end
-  
-  # This builds the solr keyword for search articles
+
+  # This builds the solr keyword for related articles
   def keyword_for_solr
     # @str = self.keywords.to_s.gsub(","," ")
     # @str += " "
@@ -376,9 +305,8 @@ class Item < ActiveRecord::Base
     # @str
     self.keywords.to_s.gsub(","," ")
   end
-  
-  
-  # Find Similar listings based on information only.
+
+  # Return Similar listings based on keywords only.
   def solr_similar(limit=6)
     # IF no bedrooms or bathrooms
     Item.solr_search do
@@ -391,7 +319,87 @@ class Item < ActiveRecord::Base
       paginate :page => 1, :per_page => limit
     end
   end
-  
+
+  ####################
+  ### CLASS METHODS
+  ####################
+
+  # Some Basic Scopes for finder chaining
+  def self.last_item
+    published.order("updated_at DESC").first
+  end
+  def self.published
+    where("published_at < ?", DateTime.now)
+  end
+  def self.not_draft
+    where(:draft => false)
+  end
+  def self.draft
+    where(:draft => true)
+  end
+
+  # Returns the top sticky item
+  # Used on the Front End, joining attachments
+  def self.top_sticky
+    published.
+    where(:draft => false, :sticky => true).
+    order("published_at DESC").
+    includes(:attachments).
+    first
+  end
+
+  # Returns top Highlight Items
+  # Used on the Front End, joining attachments
+  def self.highlights(limit=6,offset=0)
+    published.
+    where(:draft => false, :featured => true, :sticky => false).
+    order("published_at DESC").
+    limit(limit).
+    includes(:attachments).
+    offset(offset).
+    all
+  end
+
+  # Returns the last 10 approved items (not draft anymore)
+  # Used on the dashboard
+  def self.recent_updated(limit=10)
+    published.
+    where(:draft => false).
+    where("updated_at > created_at").
+    order("updated_at DESC").
+    limit(limit).
+    all
+  end
+
+  # Returns the last 10 approved items (not draft anymore)
+  # Used on the Admin Dashboard
+  def self.recent(limit=10)
+    published.
+    order("id DESC").
+    limit(limit).
+    all
+  end
+
+  # Returns the last 10 draft items
+  # Used on the Admin Dashboard
+  def self.recent_drafts(limit=10)
+    draft.
+    order("updated_at DESC").
+    limit(limit).
+    all
+  end
+
+  # Returns the last 10 pending items (not draft anymore)
+  # Used on the Admin Dashboard
+  def self.pending(limit=10)
+    where(:published_at => nil).
+    where(:draft => false).
+    order("updated_at DESC").
+    limit(limit).
+    all
+  end
+
+
   def self.import_wordpress_xml
     require 'nokogiri'
     file = File.join(Rails.root, "config", "wp.xml")
@@ -435,10 +443,10 @@ class Item < ActiveRecord::Base
     # From https://gist.github.com/1282013
     # Use Resque for SOLR indexing
     def resque_solr_update
-      Resque.enqueue(SolrUpdate, self, id)
+      Resque.enqueue(SolrUpdate, self.class.to_s, id)
     end
     def resque_solr_remove
-      Resque.enqueue(SolrRemove, self, id)
+      Resque.enqueue(SolrRemove, self.class.to_s, id)
     end
 
 end

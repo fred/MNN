@@ -4,7 +4,7 @@ class TwitterQueue
   extend Resque::Plugins::History
   @queue = :twitter
   @max_history = 100
-  
+
   def self.perform(share_id)
     share = Share.find(share_id)
     item = share.item if share

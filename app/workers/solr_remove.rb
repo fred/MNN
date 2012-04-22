@@ -1,8 +1,7 @@
 class SolrRemove
-  @queue = :solr
-  
-  def self.perform(klass, id)
-    Sunspot.remove_by_id(klass, id)
+  @queue = :solr_remove
+
+  def self.perform(classname, id)
+    classname.constantize.find(id).solr_remove_from_index
   end
-  
 end
