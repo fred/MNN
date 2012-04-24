@@ -1,5 +1,11 @@
 CHANGELOG
 
+== Apr 24, 2012
+* Fixed bug in mail links
+* Fixed Replacing of unwanted characters
+* Updated Gems
+* Added Alt tag to images
+
 == Apr 21, 2012
 * Added Resque Scheduler for Publication Date in items
 * Scheduling Twitter Status updates (resque-scheduler)

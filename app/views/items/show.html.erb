@@ -52,7 +52,7 @@
               <%= link_to image_tag(@item.main_image.image.medium,
                               :class => "show_item_image",
                               :id => "main_image",
-                              :alt => @item.main_image.title
+                              :alt => image_alt(@item.main_image)
                     ),
                     @item.main_image.image.large.url,
                     :target => "blank",

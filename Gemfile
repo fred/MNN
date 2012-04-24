@@ -31,11 +31,7 @@ gem 'carrierwave', "~> 0.5.8"
 ### S3 Asset hosting
 gem "asset_sync"
 
-### Parsing
-# gem 'nokogiri'
-
 ### Permalink
-# gem 'RedCloth'
 gem 'stringex'
 gem 'friendly_id', '~> 4.0.0'
 
@@ -44,44 +40,31 @@ gem 'opinio', :git => "git://github.com/fred/opinio.git", :branch => "fred"
 gem 'rakismet'
 
 ### Queue
-# Resque Heroku aware branch
 gem 'resque', "~> 1.20.0"
 gem 'resque_mailer'
 gem 'resque-scheduler', :require => 'resque_scheduler'
 gem "resque-history", :git => "git://github.com/fred/resque-history.git"
 
-### ASYNC Mailing
-# gem 'mail'
-# gem 'resque_mailer'
 
 ### JSON and Twitter
 gem 'multi_json', "~> 1.3.2"
 gem 'json', "~> 1.6.6"
-# Posting status to twitter
+gem 'simple_oauth', "~> 0.1.7"
 gem 'twitter', "~> 2.2.2"
 
-gem "libv8"
-gem "execjs"
-gem "therubyracer", :require => 'v8'
 gem 'sass'
 gem 'sass-rails',  '~> 3.2.3'
+gem 'jquery-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem "libv8"
+  gem "execjs"
+  gem "therubyracer", :require => 'v8'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
-
-
-# jQuery
-gem 'jquery-rails'
-
-# Search and Indexing
-# gem 'sunspot'
-# gem 'sunspot_rails'
-# gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
-# gem 'sunspot_with_kaminari'
 
 
 # Settings
@@ -165,14 +148,7 @@ gem 'dalli', "~> 2.0.2"
 # gem 'omniauth-google_oauth2'
 
 gem 'galetahub-simple_captcha', :require => 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
-
-
-# gem 'jquery_mobile_rails', :git => "git://github.com/fred/jquery-mobile-rails.git", :branch => "110-rc1"
-
-
 gem 'capistrano', "~> 2.9.0", :require => false
 gem 'rvm-capistrano', :require => false
-
 gem 'country-select'
-
 gem 'postmark-rails'

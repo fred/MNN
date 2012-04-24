@@ -13,7 +13,7 @@
           <a href="#" class="dropdown-toggle">Sections</a>
           <ul class="dropdown-menu">
             <% Category.order("title ASC").all.each do |category|%>
-              <li><%= link_to category.title, category, :title => "Go to category #{category.title}" %></li>
+              <li><%= link_to category.title, category %></li>
             <% end %>
           </ul>
         </li>
@@ -22,7 +22,7 @@
           <a href="#" class="dropdown-toggle">Regions</a>
           <ul class="dropdown-menu">
             <% RegionTag.order("title ASC").all.each do |tag|%>
-              <li><%= link_to tag.title, tag_path(tag), :title => "Go to Tag #{tag.title}" %></li>
+              <li><%= link_to tag.title, tag_path(tag) %></li>
             <% end %>
           </ul>
         </li>
@@ -31,7 +31,7 @@
           <a href="#" class="dropdown-toggle">Languages</a>
           <ul class="dropdown-menu">
             <% Language.order("locale ASC").all.each do |language|%>
-              <li><%= link_to language.description, language, :title => "Browse by #{language.title} Language" %></li>
+              <li><%= link_to language.description, language %></li>
             <% end %>
           </ul>
         </li>

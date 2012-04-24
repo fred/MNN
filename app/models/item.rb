@@ -99,15 +99,23 @@ class Item < ActiveRecord::Base
   end
 
   def clear_bad_characters
-    self.body.gsub!("&lsquo;", "&#39;")
-    self.body.gsub!("&rsquo;", "&#39;")
-    self.body.gsub!("&ldquo;", "&#34;")
-    self.body.gsub!("&rdquo;", "&#34;")
+    # self.body.gsub!("&lsquo;", "&#39;")
+    # self.body.gsub!("&rsquo;", "&#39;")
+    # self.body.gsub!("&ldquo;", "&#34;")
+    # self.body.gsub!("&rdquo;", "&#34;")
+    # self.body.gsub!("&ndash;", "&#45;")
+    # self.body.gsub!("&mdash;", "&#45;")
+    # self.body.gsub!("&#180;", "&#39;")
+    # self.body.gsub!("&#96;", "&#39;")
+    self.body.gsub!("&lsquo;", "\'")
+    self.body.gsub!("&rsquo;", "\'")
+    self.body.gsub!("&ldquo;", "\"")
+    self.body.gsub!("&rdquo;", "\"")
+    self.body.gsub!("&ndash;", "-")
+    self.body.gsub!("&mdash;", "-")
+    self.body.gsub!("&#180;", "\'")
+    self.body.gsub!("&#96;", "\'")
     self.body.gsub!("&nbsp;", " ")
-    self.body.gsub!("&ndash;", "&#45;")
-    self.body.gsub!("&mdash;", "&#45;")
-    self.body.gsub!("&#180;", "&#39;")
-    self.body.gsub!("&#96;", "&#39;")
     true
   end
 

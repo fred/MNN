@@ -21,5 +21,4 @@ class SubscriptionMailer < ActionMailer::Base
       )
     end
   end
-  
 end
