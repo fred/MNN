@@ -2,9 +2,18 @@
   <article class="category" id="item_<%=item.id%>">
     <header>
       <% if item.has_image? %>
-        <%= link_to image_tag(item.main_image.image.small, :class => "show_item_image", :alt => item.main_image.title), item %>
+        <%= link_to image_tag(item.main_image.image.small,
+                      :class => "show_item_image",
+                      :alt => alt_for_image(item.main_image),
+                      :title => alt_for_image(item.main_image)
+                    ),
+            item,
+            :title => item.title
+        %>
       <% elsif item.youtube_id && item.youtube_img %>
-        <%= image_tag("https://img.youtube.com/vi/#{item.youtube_id}/0.jpg", :class=>"show_item_image youtube_small") %>
+        <%= image_tag("https://img.youtube.com/vi/#{item.youtube_id}/0.jpg", 
+            :class => "show_item_image youtube_small")
+        %>
       <% end %>
       <h3><%= link_to item.title, item, :title => item.title %></h3>
     </header>

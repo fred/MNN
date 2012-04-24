@@ -1,4 +1,14 @@
 module ItemsHelper
+
+  def alt_for_image(image)
+    if !image.title.to_s.empty?
+      image.title
+    elsif image.attachable
+      image.attachable.title
+    else
+      image.image
+    end
+  end
   
   def item_title_small(item)
     str = ""

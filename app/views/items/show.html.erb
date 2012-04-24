@@ -52,12 +52,13 @@
               <%= link_to image_tag(@item.main_image.image.medium,
                               :class => "show_item_image",
                               :id => "main_image",
-                              :alt => image_alt(@item.main_image)
+                              :alt => alt_for_image(@item.main_image),
+                              :alt => alt_for_image(@item.main_image)
                     ),
                     @item.main_image.image.large.url,
                     :target => "blank",
                     :id => "main_image_popup",
-                    :title => @item.title
+                    :title => alt_for_image(@item.main_image)
               %>
             </span>
             <% if @item.main_image.title %>
