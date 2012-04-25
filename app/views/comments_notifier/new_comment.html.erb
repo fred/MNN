@@ -25,7 +25,7 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>World Mathaba: <%= @item.title %></title>
+  <title>New Comment at World Mathaba</title>
   
   
   <style type="text/css">
@@ -163,57 +163,28 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
 
 <body>
   <div class="content">
-    <h2>World Mathaba: <%= @item.title %></h2>
     <div class="article">
       <div>
         <h3>
-          <%= link_to @item.abstract, @url %>
+          <%= @comment.display_name %> Wrote:
         </h3>
       </div>
       <div>
+        <%= sanitize(@comment.body, :tags => %w(p div a i em b strong pre), :attributes => %w(href)) %>
         <p>
-          <span style="float:left; margin-right:10px;">
-            <% if @item.has_image? %>
-              <%= image_tag(@item.main_image.image.small) %>
-            <% elsif @item.youtube_id && @item.youtube_img %>
-              <%= image_tag("https://img.youtube.com/vi/#{@item.youtube_id}/2.jpg") %>
-            <% end %>
-          </span>
-          <%= truncate(
-                sanitize(@item.body,
-                  :tags => %w(),
-                  :attributes => %w()
-                ),
-                :length => 500,
-                :omission => ' ... (click link to read full article)'
-              )
-          %>
-        </p>
-        Link: <%= link_to @url, @url %>
-      </div>
-      <div>
-        <br />
-        <p class="source_url">
-          Category: 
-          <%= link_to @item.category_title, 
-                url_for(category_path(@item.category, :only_path => false, :protocol => 'http'))
-          %>
-        </p>
-        <p class="source_url">
-          Tags:
-          <% @item.tags.each do |tag| %>
-            <span class="tags">
-              <%= link_to tag.title, 
-                    url_for(tag_path(tag, :only_path => false, :protocol => 'http')),
-                     :class => "tag"
-              %>
-            </span>
-          <% end %>
+          Comment Link: <%= link_to @url, @url %>
         </p>
         <p>
-          To disabled email notifications follow <%= link_to "this link", "https://worldmathaba.net/users/edit" %>.
+          Item: <%= @comment.commentable_title %>
+        </p>
+        <p>
+          Date: <%= @comment.created_at.to_s(:long) %>
         </p>
       </div>
+      <p>
+        To disabled email notifications follow 
+        <%= link_to "this link", "https://worldmathaba.net/admin/comment_subscriptions" %>.
+      </p>
     </div>
   </div>
 </body>

@@ -150,7 +150,7 @@
           <%= attachment.input :image, :as => "file", :label => "Choose File to upload", :hint => "Max Size: 4MB" %>
           <br />
           <%= attachment.input :title, :as => "string", :label => "Image Caption ", :hint => "It is Highly Recommended to Add an Image Caption." %>
-        <% else %>
+        <% elsif f.object.has_image? %>
           <h3>Current Images: </h3>
           <h4><%= attachment.object.title %></h4>
           <%= link_to(image_tag(attachment.object.image.medium, :class => "show_item_img"), admin_attachment_path(attachment.object)) %>
@@ -177,7 +177,10 @@
   
   <%#= f.input(:user_id, :label => false, :as => :hidden, :value => current_admin_user.id) if f.object.new_record? %>
   
-  <%= f.buttons :commit %>
+  <%#= f.buttons :commit, :button_html => { :class => "primary", :disable_with => 'Wait...' } %>
+  <%= f.actions do %>
+    <%= f.action :submit, :button_html => { :class => "primary", :disable_with => 'Wait...' } %>
+  <% end %>
 <% end %>
 
 

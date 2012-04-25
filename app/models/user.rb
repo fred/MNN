@@ -10,9 +10,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :bio, :name, :address, 
     :twitter, :diaspora, :skype, :gtalk, :jabber, :phone_number, :time_zone, :avatar,
-    :subscribe, :unsubscribe, :unsubscribe_all
+    :subscribe, :unsubscribe, :unsubscribe_all, :upgrade, :downgrade
 
-  attr_accessor :subscribe, :unsubscribe, :unsubscribe_all
+  attr_accessor :subscribe, :unsubscribe, :unsubscribe_all, :upgrade, :downgrade
   
   validates_acceptance_of :terms_of_service, :allow_nil => true, :accept => true unless Rails.env.test?
   
@@ -24,9 +24,22 @@ class User < ActiveRecord::Base
   has_many :subscriptions, :dependent => :destroy, :conditions => {:item_id => nil}
   has_many :item_subscriptions, :dependent => :destroy, :conditions => "item_id is not NULL", :class_name => "Subscription"
   
-  before_save :create_subscriptions, :cancel_subscriptions, :update_subscriptions
+  before_save :create_subscriptions, :cancel_subscriptions, :update_subscriptions, :check_upgrade
   
   apply_simple_captcha
+
+  def check_upgrade
+    if (self.upgrade.to_s == "1" or self.upgrade == true) && !self.is_admin?
+      self.type = "AdminUser"
+    elsif (self.downgrade.to_s == "1" or self.downgrade == true) && self.is_admin?
+      self.type = "User"
+    end
+    true
+  end
+
+  def is_admin?
+    self.type == "AdminUser"
+  end
   
   def title
     if self.name

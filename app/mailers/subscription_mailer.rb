@@ -1,4 +1,5 @@
 class SubscriptionMailer < ActionMailer::Base
+
   # include Resque::Mailer
   
   # default from: "WorldMathaba <inbox@worldmathaba.net>"

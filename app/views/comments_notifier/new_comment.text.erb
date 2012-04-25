@@ -1,0 +1,16 @@
+New Comment at http://WorldMathaba.net
+====================================
+
+<%=h @comment.display_name %> Wrote: 
+
+<%=h @comment.body %>
+
+- Item: <%= @comment.commentable_title %>
+
+- Date: <%= @comment.created_at.to_s(:long) %>
+
+To see the full article, just follow this link: <%= @url %>
+
+To disabled email notifications follow this link: https://worldmathaba.net/admin/comment_subscriptions
+
+Have a great day!

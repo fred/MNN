@@ -1,0 +1,2 @@
+class CommentSubscription < Subscription
+end

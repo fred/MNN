@@ -19,7 +19,13 @@ class Comment < ActiveRecord::Base
   belongs_to :approving_user, :foreign_key => :approved_by, :class_name => "User"
   
   before_create :check_for_spam
-  
+  after_create  :email_notify
+
+  # Send the email notifications after creation
+  def email_notify
+    Resque.enqueue(CommentNotification, self.id)
+  end
+
   def check_for_spam
     if self.spam?
       self.marked_spam = true
@@ -29,6 +35,22 @@ class Comment < ActiveRecord::Base
       self.approved = true
     end
     true
+  end
+
+  def commentable_title
+    if self.commentable
+      self.commentable.title
+    else
+      ""
+    end
+  end
+
+  def display_name
+    if self.author.empty?
+      self.author
+    else
+      self.author_email
+    end
   end
   
   ### Askimet helpers ###

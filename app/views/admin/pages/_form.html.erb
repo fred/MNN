@@ -29,7 +29,10 @@
     <%= f.input :active, :hint => "Only Actives pages will be visible on website." %><br />
   <% end %>
     
-  <%= f.buttons :commit %>
+  <%#= f.buttons :commit %>
+  <%= f.actions do %>
+    <%= f.action :submit, :button_html => { :class => "primary", :disable_with => 'Wait...' } %>
+  <% end %>
 <% end %>
 
 

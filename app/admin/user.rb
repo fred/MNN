@@ -24,7 +24,7 @@ ActiveAdmin.register User do
     def update
       @user = User.find(params[:id])
       respond_to do |format|
-        if @item.update_without_password(params[:user])
+        if @user.update_without_password(params[:user])
           format.html { redirect_to admin_users_path, notice: 'User was successfully updated.' }
           format.json { head :ok }
         else

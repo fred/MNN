@@ -10,12 +10,24 @@
         <li class="featured_item" id="highlight_item_<%=item.id%>">
           <% if item.has_image? %>
             <%= link_to(
-                  image_tag(item.main_image.image.main, :class => "featured_item_image", :alt => item.main_image.title),
-                  item, :title => item_title_small(item)
+                  image_tag(item.main_image.image.main, 
+                    :class => "featured_item_image", 
+                    :alt => item.main_image.title
+                  ),
+                  item, 
+                  :title => item_title_small(item)
                 )
             %>
           <% elsif item.youtube_id && item.youtube_img %>
-            <%= image_tag("https://img.youtube.com/vi/#{item.youtube_id}/0.jpg", :class => "show_item_image youtube", :alt => item.youtube_id) %>
+            <%= link_to(
+                  image_tag("https://img.youtube.com/vi/#{item.youtube_id}/0.jpg", 
+                    :class => "youtube_main", 
+                    :alt => item.youtube_id
+                  ),
+                  item, 
+                  :title => item_title_small(item)
+                )
+            %>
           <% end %>
           <span class="title">
             <%= link_to item.title.to_s.truncate(100), item, :title => item_title_small(item) %>
@@ -41,7 +53,7 @@
                 )
             %>
           <% elsif item.youtube_id && item.youtube_img %>
-            <%= image_tag("https://img.youtube.com/vi/#{item.youtube_id}/0.jpg",
+            <%= image_tag("https://img.youtube.com/vi/#{item.youtube_id}/2.jpg",
                   :class => "list_item_image youtube", :alt => item.youtube_id
                 )
             %>

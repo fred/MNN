@@ -1,5 +1,17 @@
 CHANGELOG
 
+== Apr 25, 2012
+* Fix for Double submitting button on forms
+* Added Upgrade/Dowgrade option for Users/AdminUsers 
+* Roles are only apliable to Admin Users
+* Allow to create users/adminUsers on admin interface
+* Added email alert for new Comments /admin/comment_subscriptions
+* Added youtube image to email if it's a video
+* Youtube image bug fix on Highlights
+* Added a few Rspec tests
+* other various fixes and improvements
+* Updated Gems
+
 == Apr 24, 2012
 * Fixed bug in mail links
 * Fixed Replacing of unwanted characters

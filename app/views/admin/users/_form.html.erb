@@ -2,8 +2,10 @@
 
   <%= f.inputs :login => "Login Information" do %>
     <%= f.input :email, :required => true, :hint => "Required: Valid Email address"%>
-    <%#= f.input :password, :required => false, :hint => "New Password" %>
-    <%#= f.input :password_confirmation, :required => false, :hint => "Confirm New Password" %>
+    <% if f.object.new_record? %>
+      <%= f.input :password, :required => true, :hint => "New Password" %>
+      <%= f.input :password_confirmation, :required => true, :hint => "Confirm New Password" %>
+    <% end %>
   <% end %>
   
   <%= f.inputs :name => "User Information" do %>
@@ -14,13 +16,11 @@
     <%= f.input :diaspora, :hint => "Optional: Diaspora Handle"%>
     <%= f.input :jabber, :hint => "Optional: Jabber address"%>
     <%= f.input :time_zone, :hint => "Recommended: Select Time Zone for system dates."%>
+    <%= f.input :upgrade, :label => "Upgrade", :as => :boolean, :hint => "Upgrade this User to AdminUser?"%>
+    <br />
   <% end %>
   
-  <%= f.inputs :role => "Roles" do %>
-    <div class="medium_box">
-      <%= f.input :roles, :as => :check_boxes, :member_label => 'title' , :member_value => :id %>
-    </div>
+  <%= f.actions do %>
+    <%= f.action :submit, :button_html => { :class => "primary", :disable_with => 'Wait...' } %>
   <% end %>
-  
-  <%= f.buttons :commit %>
 <% end %>

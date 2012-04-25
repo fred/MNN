@@ -12,8 +12,17 @@ describe User do
       @user.email = nil
       assert_equal false, @user.valid?
     end
+    it "should return false on is_admin?" do
+      @user.is_admin?.should eq(false)
+    end
+    it "should allow to Upgrade user" do
+      @user.upgrade = "1"
+      @user.save
+      @user.is_admin?.should eq(true)
+    end
   end
   
+
   
   describe "Users with subscription" do
     before(:each) do

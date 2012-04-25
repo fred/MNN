@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   before_filter :set_start_time, :set_time_zone, :set_view_items, :current_ability
+  before_filter :log_additional_data
+  
   
   comment_destroy_conditions do |comment|
     comment.owner == current_user
@@ -133,14 +135,23 @@ class ApplicationController < ActionController::Base
   
   protected
 
-  def user_for_paper_trail
-    if admin_user_signed_in?
-      current_admin_user
-    elsif user_signed_in?
-      current_user
-    else
-      "Unknown user"
+    def log_additional_data
+      request.env["exception_notifier.exception_data"] = {
+        :current_user => current_user
+      } if current_user
+      request.env["exception_notifier.exception_data"] = {
+        :current_admin_user => current_admin_user
+      } if current_admin_user
     end
-  end
+
+    def user_for_paper_trail
+      if admin_user_signed_in?
+        current_admin_user
+      elsif user_signed_in?
+        current_user
+      else
+        "Unknown user"
+      end
+    end
   
 end
