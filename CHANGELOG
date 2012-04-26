@@ -1,5 +1,11 @@
 CHANGELOG
 
+== Apr 26, 2012
+* Rspec and Factory_Girl updated to latest
+* Updated all rspec tests for new versions of gem
+* Added Image Uploading specs for carrierwave
+* Adjusted Youtube image size to be 100px wide max
+
 == Apr 25, 2012
 * Fix for Double submitting button on forms
 * Added Upgrade/Dowgrade option for Users/AdminUsers 

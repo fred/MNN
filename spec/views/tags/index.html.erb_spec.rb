@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "tags/index" do
   before(:each) do
-    @tag = Factory(:tag)
+    @tag = FactoryGirl.create(:tag)
     @tags = Tag.all
     assign(:tags, @tags)
   end

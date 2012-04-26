@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Page do
   describe "A Page" do 
     before(:each) do
-      @page = Factory(:page)
+      @page = FactoryGirl.create(:page)
     end
     it "should be valid" do
       assert_equal true, @page.valid?

@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe "items/index" do
   before(:each) do
-    @item = Factory(:item)
-    @item2 = Factory(:item2)
+    @item = FactoryGirl.create(:item)
+    @item2 = FactoryGirl.create(:item2)
     @items = Item.published.not_draft.order("published_at DESC").page(params[:page], :per_page => 20)
     assign(:items, @items)
     render

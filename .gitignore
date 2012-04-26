@@ -24,8 +24,9 @@ doc/app
 config/aws_keys
 
 # Public Uploads
-public/system/*
-public/themes/*
+public/system/
+public/themes/
+public/uploads/
 
 # Public Cache
 public/javascripts/cache

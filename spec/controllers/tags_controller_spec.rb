@@ -3,8 +3,8 @@ require 'spec_helper'
 describe TagsController do
   
   before(:each) do
-    @item = Factory(:item)
-    @tag = Factory(:tag)
+    @item = FactoryGirl.create(:item)
+    @tag = FactoryGirl.create(:tag)
     @item.tags << @tag
   end
 

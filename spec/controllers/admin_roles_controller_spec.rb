@@ -14,15 +14,15 @@
 #   describe "Logged in users" do
 #     before (:each) do
 #       @request.env["devise.mapping"] = Devise.mappings[:admin_user]
-#       @user = Factory(:admin_user)
-#       @role = Factory(:role_admin)
+#       @user = FactoryGirl.create(:admin_user)
+#       @role = FactoryGirl.create(:role_admin)
 #       @user.roles << @role
 #       sign_in @user
 #     end
 #     
 #     describe "Existing Item" do
 #       before (:each) do
-#         @item = Factory(:item)
+#         @item = FactoryGirl.create(:item)
 #       end
 #       describe "GET index" do
 #         it "Should Show @items array" do

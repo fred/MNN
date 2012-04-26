@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Translation do
   describe "A Translation" do 
     before(:each) do
-      @translation = Factory(:translation)
+      @translation = FactoryGirl.create(:translation)
     end
     it "should be valid" do
       assert_equal true, @translation.valid?

@@ -4,7 +4,7 @@ describe ItemsController do
   include ItemSpecHelper
   
   before(:each) do
-    @item = Factory(:item)
+    @item = FactoryGirl.create(:item)
     @category = @item.category
   end
   
@@ -47,7 +47,8 @@ describe ItemsController do
   describe "GET show" do
     it "increases the views_counter of @item" do
       get :show, :id => @item.id
-      assert_equal 1, Item.find(@item.id).item_stat.views_counter
+      @new_item = Item.find(@item.id)
+      assert_equal 1, @new_item.item_stat.views_counter
     end
   end
   

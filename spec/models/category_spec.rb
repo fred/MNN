@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Category do
   describe "A Category" do 
     before(:each) do
-      @category = Factory(:category)
+      @category = FactoryGirl.create(:category)
     end
     it "should be valid" do
       assert_equal true, @category.valid?

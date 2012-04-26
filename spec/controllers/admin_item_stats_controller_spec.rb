@@ -14,8 +14,8 @@ describe Admin::ItemStatsController do
   describe "Logged in users" do
     before (:each) do
       @request.env["devise.mapping"] = Devise.mappings[:admin_user]
-      @user = Factory(:admin_user)
-      @role = Factory(:role_admin)
+      @user = FactoryGirl.create(:admin_user)
+      @role = FactoryGirl.create(:role_admin)
       @user.roles << @role
       sign_in @user
     end
@@ -27,7 +27,7 @@ describe Admin::ItemStatsController do
       end
       
       it "Should have one item_stat in the array" do
-        @item = Factory(:item)
+        @item = FactoryGirl.create(:item)
         get :index
         assigns(:item_stats).should eq([@item.item_stat])
       end

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe GeneralTag do
   describe "A GeneralTag" do 
     before(:each) do
-      @general_tag = Factory(:general_tag)
+      @general_tag = FactoryGirl.create(:general_tag)
     end
     it "should be valid" do
       assert_equal true, @general_tag.valid?

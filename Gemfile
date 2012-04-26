@@ -81,26 +81,26 @@ group :production do
   gem 'unicorn', :require => false
 end
 
+group :test, :development do
+  gem 'rspec', "~> 2.9.0"
+  gem "rspec-rails", "~> 2.9.0"
+  gem "factory_girl"
+  gem "factory_girl_rails"
+end
+
 group :development do
-  gem 'rspec', "~> 2.8.0"
-  gem "rspec-rails", "~> 2.8.1"
   gem 'nifty-generators'
   gem 'hirb'
-  # Nice progress when rake indexing with solr
-  gem 'progress_bar'
+  gem 'progress_bar' # Nice progress when rake indexing with solr
   gem 'foreman'
   gem 'thin', :require => false
 end
 
 group :test do
   gem 'webrat', "~> 0.7.3"
-  gem 'rspec', "~> 2.8.0"
-  gem "rspec-rails", "~> 2.8.1"
-  gem "factory_girl", "~> 2.5.0"
-  gem "factory_girl_rails", '~> 1.6.0'
   gem "cucumber-rails", ">= 1.0.2"
   gem "capybara", ">= 1.0.1"
-  gem "database_cleaner", ">= 0.6.7"
+  gem "database_cleaner"
   gem "launchy", ">= 2.0.5"
   gem "sqlite3"
   gem 'autotest'

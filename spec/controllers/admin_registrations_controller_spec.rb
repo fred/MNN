@@ -28,7 +28,7 @@ describe Devise::RegistrationsController do
   describe "A Logged in User" do
     before (:each) do
       @request.env["devise.mapping"] = Devise.mappings[:admin_user]
-      @user = Factory(:admin_user)
+      @user = FactoryGirl.create(:admin_user)
       sign_in @user
     end
     describe "GET edit" do

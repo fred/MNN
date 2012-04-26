@@ -54,7 +54,7 @@
             %>
           <% elsif item.youtube_id && item.youtube_img %>
             <%= image_tag("https://img.youtube.com/vi/#{item.youtube_id}/2.jpg",
-                  :class => "list_item_image youtube", :alt => item.youtube_id
+                  :class => "list_item_image youtube_small", :alt => item.youtube_id
                 )
             %>
           <% end %>

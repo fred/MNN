@@ -15,15 +15,15 @@ describe Admin::ItemsController do
   describe "Logged in users" do
     before (:each) do
       @request.env["devise.mapping"] = Devise.mappings[:admin_user]
-      @user = Factory(:admin_user)
-      @role = Factory(:role_admin)
+      @user = FactoryGirl.create(:admin_user)
+      @role = FactoryGirl.create(:role_admin)
       @user.roles << @role
       sign_in @user
     end
     
     describe "Existing Item" do
       before (:each) do
-        @item = Factory(:item)
+        @item = FactoryGirl.create(:item)
       end
       describe "GET index" do
         it "Should Show @items array" do
@@ -100,7 +100,7 @@ describe Admin::ItemsController do
     
     describe "PUT update" do
       before (:each) do
-        @item = Factory(:item)
+        @item = FactoryGirl.create(:item)
       end
       describe "with valid params" do
         it "updates the requested item" do
@@ -129,7 +129,7 @@ describe Admin::ItemsController do
     
     describe "DELETE destroy" do
       before (:each) do
-        @item = Factory(:item)
+        @item = FactoryGirl.create(:item)
       end
       it "destroys the requested item" do
         # item = Item.create! valid_item_attributes

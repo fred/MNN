@@ -14,15 +14,15 @@ describe Admin::AttachmentsController do
   describe "Logged in users" do
     before (:each) do
       @request.env["devise.mapping"] = Devise.mappings[:admin_user]
-      @user = Factory(:admin_user)
-      @role = Factory(:role_admin)
+      @user = FactoryGirl.create(:admin_user)
+      @role = FactoryGirl.create(:role_admin)
       @user.roles << @role
       sign_in @user
     end
     
     describe "Existing Attachment" do
       before (:each) do
-        @attachment = Factory(:attachment)
+        @attachment = FactoryGirl.create(:attachment)
       end
       describe "GET index" do
         it "Should Show @attachments array" do

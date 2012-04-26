@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Role do
   describe "A Role" do 
     before(:each) do
-      @role = Factory(:role)
+      @role = FactoryGirl.create(:role)
     end
     it "should be valid" do
       assert_equal true, @role.valid?

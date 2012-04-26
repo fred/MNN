@@ -3,7 +3,7 @@ require 'spec_helper'
 describe CategoriesController do
   
   before(:each) do
-    @item = Factory(:item)
+    @item = FactoryGirl.create(:item)
     @category = @item.category
   end
 

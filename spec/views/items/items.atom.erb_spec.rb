@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe "/shared/items" do
   before(:each) do
-    @item = Factory(:item)
-    @item2 = Factory(:item2)
+    @item = FactoryGirl.create(:item)
+    @item2 = FactoryGirl.create(:item2)
     @items = Item.all
     assign(:items, @items)
     render '/shared/items', :format => [:atom], :handlers => [:builder]

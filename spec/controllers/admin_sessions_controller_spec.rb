@@ -18,7 +18,7 @@ describe ActiveAdmin::Devise::SessionsController do
   describe "An AdminUser" do
     before (:each) do
       @request.env["devise.mapping"] = Devise.mappings[:admin_user]
-      @user = Factory(:admin_user)
+      @user = FactoryGirl.create(:admin_user)
     end
     describe "POST create" do
       it "should login and redirect to admin_dashboard_path" do

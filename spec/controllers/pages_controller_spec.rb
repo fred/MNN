@@ -17,7 +17,7 @@ describe PagesController do
   end
   
   before(:each) do
-    @page = Factory(:page)
+    @page = FactoryGirl.create(:page)
   end
 
   describe "GET index" do

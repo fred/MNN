@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Tag do
   describe "A Tag" do 
     before(:each) do
-      @tag = Factory(:tag)
+      @tag = FactoryGirl.create(:tag)
     end
     it "should be valid" do
       assert_equal true, @tag.valid?

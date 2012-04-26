@@ -4,7 +4,7 @@ describe Item do
   include NumericMatchers
   describe "A Simple Item" do 
     before(:each) do
-      @item = Factory(:item)
+      @item = FactoryGirl.create(:item)
     end
     it "should be valid" do
       @item.should be_valid
@@ -50,7 +50,7 @@ describe Item do
 
   describe "Updating Items with undesirable HTML Codes" do
     before(:each) do
-      @item = Factory(:item, :body => "&lsquo; An &rsquo; Item &ldquo; and &rdquo; &nbsp;")
+      @item = FactoryGirl.create(:item, :body => "&lsquo; An &rsquo; Item &ldquo; and &rdquo; &nbsp;")
     end
     it "should not allow to Left/Right Single/Double Quotes" do
       # @item.body.should eq("&#39; An &#39; Item &#34; and &#34;  ")
@@ -115,7 +115,7 @@ describe Item do
 
   describe "Editing an a Dirty Item" do
     before(:each) do
-      @item = Factory(:item, :title => "Old Title")
+      @item = FactoryGirl.create(:item, :title => "Old Title")
     end
     it "should not allow to update a dirty item" do
       @outdated_item = Item.find(@item.id)
@@ -128,7 +128,7 @@ describe Item do
   
   describe "Creating Item with Subscription" do
     before(:each) do
-      @item = Factory(:item, :draft => false, :send_emails => "1")
+      @item = FactoryGirl.create(:item, :draft => false, :send_emails => "1")
     end
     it "should create an EmailDelivery resource" do
       @item.email_deliveries.should_not eq([])
@@ -153,7 +153,7 @@ describe Item do
   
   describe "Creating Draft Item without Subscription" do
     before(:each) do
-      @item = Factory(:item, :draft => true)
+      @item = FactoryGirl.create(:item, :draft => true)
     end
     it "should not create an EmailDelivery resource" do
       @item.email_deliveries.should eq([])
@@ -170,7 +170,7 @@ describe Item do
 
   describe "Creating Non-Draft Item without Subscription" do
     before(:each) do
-      @item = Factory(:item, :draft => true, :send_emails => "1")
+      @item = FactoryGirl.create(:item, :draft => true, :send_emails => "1")
     end
     it "should not create an EmailDelivery resource" do
       @item.email_deliveries.should eq([])
@@ -187,7 +187,7 @@ describe Item do
 
   describe "Creating Item with future publication with Social Shares" do
     before(:each) do
-      @item = Factory(:item, :published_at => Time.now+600, :share_twitter => "1")
+      @item = FactoryGirl.create(:item, :published_at => Time.now+600, :share_twitter => "1")
     end
     it "should create a share twitter model with future enqueue_at date" do
       @item.twitter_shares.last.enqueue_at.to_i.should greater_than(@item.published_at.to_i)
@@ -201,7 +201,7 @@ describe Item do
 
   describe "Creating Item with Social Shares" do
     before(:each) do
-      @item = Factory(:item, :share_twitter => "1")
+      @item = FactoryGirl.create(:item, :share_twitter => "1")
     end
     it "should create a share twitter model" do
       @item.twitter_shares.should_not eq([])
@@ -215,7 +215,7 @@ describe Item do
   
   describe "Creating Item without Social Shares" do
     before(:each) do
-      @item = Factory(:item, :share_twitter => "0")
+      @item = FactoryGirl.create(:item, :share_twitter => "0")
     end
     it "should not create a share twitter model" do
       @item.twitter_shares.should eq([])
@@ -225,7 +225,7 @@ describe Item do
   
   describe "Updating an Item with Social Shares" do
     before(:each) do
-      @item = Factory(:item)
+      @item = FactoryGirl.create(:item)
     end
     it "should not have a twitter share by default" do
       @item.twitter_shares.should eq([])
@@ -261,7 +261,7 @@ describe Item do
   
   describe "Updating an Item with already Social Shares" do
     before(:each) do
-      @item = Factory(:item, :share_twitter => "1")
+      @item = FactoryGirl.create(:item, :share_twitter => "1")
     end
     it "should not create a new share twitter it item already has one" do
       @item = Item.first
@@ -276,7 +276,7 @@ describe Item do
     include ItemSpecHelper
     Sunspot.commit
     before(:each) do
-      @item = Factory(:item)
+      @item = FactoryGirl.create(:item)
     end
     it "should create an item" do
       lambda {Item.create(valid_item_attributes)}.should_not raise_error

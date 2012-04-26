@@ -3,7 +3,7 @@ require 'spec_helper'
 describe AuthorsController do
   
   before(:each) do
-    @item = Factory(:item_highlight)
+    @item = FactoryGirl.create(:item_highlight)
     @author = @item.user
   end
 

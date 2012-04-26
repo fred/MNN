@@ -3,7 +3,7 @@ require 'spec_helper'
 describe LanguagesController do
   
   before(:each) do
-    @item = Factory(:item)
+    @item = FactoryGirl.create(:item)
     @language = @item.language
   end
 

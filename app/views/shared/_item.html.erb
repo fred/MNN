@@ -12,7 +12,7 @@
         %>
       <% elsif item.youtube_id && item.youtube_img %>
         <%= image_tag("https://img.youtube.com/vi/#{item.youtube_id}/2.jpg", 
-            :class => "show_item_image youtube_small")
+            :class => "show_item_image youtube_medium")
         %>
       <% end %>
       <h3><%= link_to item.title, item, :title => item.title %></h3>

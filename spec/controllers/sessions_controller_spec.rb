@@ -18,7 +18,7 @@ describe Devise::SessionsController do
   describe "A Normal User" do
     before (:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
     end
     describe "POST create" do
       it "should login user and redirect to root_path" do

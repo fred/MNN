@@ -11,5 +11,15 @@ require 'spec_helper'
 #   end
 # end
 describe ItemsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # pending "add some examples to (or delete) #{__FILE__}"
+
+  before(:each) do
+    @item = FactoryGirl.create(:item)
+  end
+
+  describe "Twitter Link" do
+    it "Gives twitter page Link" do
+      helper.twitter_link.should == "https://twitter.com/#/worldmathaba"
+    end
+  end
 end

@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe "tags/show" do
   before(:each) do
-    @tag = Factory(:tag)
-    @item = Factory(:item)
+    @tag = FactoryGirl.create(:tag)
+    @item = FactoryGirl.create(:item)
     @item.tags << @tag
     @items = @tag.items.page(1)
     @tags = Tag.all
