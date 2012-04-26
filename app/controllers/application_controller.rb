@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to dashboard_admin_path, :alert => exception.message
+    redirect_to admin_dashboard_path, :alert => exception.message
   end
   
   
