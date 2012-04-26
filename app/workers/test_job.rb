@@ -3,7 +3,7 @@ require 'resque-history'
 module TestJob
   extend Resque::Plugins::History
   @queue = :test_queue
-  @max_history = 100
+  @max_history = 50
   
   def self.perform()
     

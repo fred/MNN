@@ -43,7 +43,7 @@ gem 'rakismet'
 gem 'resque', "~> 1.20.0"
 gem 'resque_mailer'
 gem 'resque-scheduler', :require => 'resque_scheduler'
-gem "resque-history", :git => "git://github.com/fred/resque-history.git"
+gem "resque-history", :git => "git://github.com/fred/resque-history.git", :branch => "fred"
 
 
 ### JSON and Twitter

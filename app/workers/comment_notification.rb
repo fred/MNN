@@ -3,7 +3,7 @@ require 'resque-history'
 class CommentNotification
   extend Resque::Plugins::History
   @queue = :comment_notification
-  @max_history = 200
+  @max_history = 50
   
   def self.perform(comment_id)
     Rails.logger.info("  Resque: Delivering emails for Comment: #{comment_id}")

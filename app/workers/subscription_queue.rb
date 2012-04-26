@@ -3,7 +3,7 @@ require 'resque-history'
 class SubscriptionQueue
   extend Resque::Plugins::History
   @queue = :subscriptions
-  @max_history = 200
+  @max_history = 50
   
   def self.perform(item_id)
     Rails.logger.info("  Resque: Delivering emails for: #{item_id}")

@@ -27,9 +27,10 @@ GIT
 
 GIT
   remote: git://github.com/fred/resque-history.git
-  revision: d4bdf7fc10e583636b92a1700c0c96d1e6d4a948
+  revision: 3cac8a783861c0b743217a923c531498665fa9bf
+  branch: fred
   specs:
-    resque-history (1.6.0)
+    resque-history (1.7.0)
       rake
       resque
       resque-history

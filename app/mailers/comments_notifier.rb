@@ -1,15 +1,14 @@
 class CommentsNotifier < ActionMailer::Base
-  self.delivery_method = :test
+  self.delivery_method = :smtp
 
   default from: "inbox@worldmathaba.net"
   # include Resque::Mailer
-  
+
   def new_comment(comment_id)
     @comment = Comment.includes(:owner).find(comment_id)
     @url  = url_for(admin_comment_path(@comment, :only_path => false, :protocol => 'http'))
     @subscriptions = CommentSubscription.where("email is not NULL").all
     @emails = @subscriptions.map{|t| t.email}.join(",")
-    
     @@smtp_settings = {
       :domain         => "worldmathaba.com",
       :address        => "localhost",
@@ -23,7 +22,7 @@ class CommentsNotifier < ActionMailer::Base
         :to => "inbox@worldmathaba.net",
         :bcc => @emails,
         :subject => "[New Comment] by #{@comment.display_name}",
-        :tag => "user-#{@comment.owner.id}"
+        :tag => "comment-notification"
       )
     end
   end

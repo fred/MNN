@@ -18,7 +18,7 @@ class SubscriptionMailer < ActionMailer::Base
         :to => "inbox@worldmathaba.net",
         :bcc => @emails_list,
         :subject => "[New post] #{@item.title}",
-        :tag => "item-#{@item.id}"
+        :tag => "item_subscription"
       )
     end
   end
