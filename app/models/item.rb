@@ -116,6 +116,7 @@ class Item < ActiveRecord::Base
     self.body.gsub!("&#180;", "\'")
     self.body.gsub!("&#96;", "\'")
     self.body.gsub!("&nbsp;", " ")
+    self.body.gsub!("&hellip;", "...")
     true
   end
 
