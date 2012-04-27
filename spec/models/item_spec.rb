@@ -111,6 +111,11 @@ describe Item do
       @item.body.should eq("The\'Item")
       @item.body.should eq("The'Item")
     end
+    it "should replace [hellip] with [...]" do
+      @item.body = "The&hellip;Item"
+      @item.save
+      @item.body.should eq("The...Item")
+    end
   end
 
   describe "Editing an a Dirty Item" do
