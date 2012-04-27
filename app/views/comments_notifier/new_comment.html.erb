@@ -169,13 +169,36 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
           <%= @comment.display_name %> Wrote:
         </h3>
       </div>
+      <% if @comment.marked_spam or @comment.suspicious %>
+        <% color = "red" %>
+      <% else %>
+        <% color = "#333" %>
+      <% end %>
       <div>
-        <%= sanitize(@comment.body, :tags => %w(p div a i em b strong pre), :attributes => %w(href)) %>
-        <p>
-          Comment Link: <%= link_to @url, @url %>
+        <span style="color:<%=color%>;">
+          <%= sanitize(@comment.body,
+                :tags => %w(p div a i em b strong pre),
+                :attributes => %w(href))
+          %>
+        </span>
+        <p style="color:<%=color%>;">
+          Suspicious: <%= @comment.suspicious %>
+        </p>
+        <p style="color:<%=color%>;">
+          Spam: <%= @comment.marked_spam %>
         </p>
         <p>
-          Item: <%= @comment.commentable_title %>
+          Comment Details: <%= link_to @url, @url %>
+        </p>
+        <p>
+          Item: 
+          <%= link_to @comment.commentable_title, 
+                url_for(admin_item_path(@comment.commentable_id, 
+                        :only_path => false,
+                        :protocol => 'http'
+                      )
+                )
+          %>
         </p>
         <p>
           Date: <%= @comment.created_at.to_s(:long) %>
