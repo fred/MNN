@@ -1,5 +1,11 @@
 CHANGELOG
 
+== Apr 27, 2012
+* Improved Comments email
+* Improved the Roles Permissions for admin pages
+* Changed TinyMCE Editor to html5 mode (fix character encoding)
+* Emails now should be better formatted
+
 == Apr 26, 2012
 * Rspec and Factory_Girl updated to latest
 * Updated all rspec tests for new versions of gem
