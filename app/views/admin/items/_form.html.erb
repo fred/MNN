@@ -188,6 +188,11 @@
 <script type="text/javascript">
   $(function() {
     $('#item_body').tinymce({
+      entity_encoding : "raw",
+      // Schema is HTML5 instead of default HTML4
+      schema: "html5",
+      // End container block element when pressing enter inside an empty block
+      end_container_on_empty_block: true,
       theme : "advanced",
       height : "640px",
       plugins : "autolink,lists,spellchecker,pagebreak,style,layer,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
