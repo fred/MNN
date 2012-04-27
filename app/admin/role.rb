@@ -2,8 +2,12 @@
 ActiveAdmin.register Role do
   controller.authorize_resource
   
+  menu :parent => "Members", :priority => 50, :if => lambda{|tabs_renderer|
+    controller.current_ability.can?(:manage, Role)
+  }
+  
   config.comments = false
-  menu :parent => "Members", :priority => 50
+
   filter :title
   form do |f|
     f.inputs "Role" do

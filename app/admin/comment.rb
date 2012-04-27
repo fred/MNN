@@ -2,7 +2,10 @@
 ActiveAdmin.register Comment do
   controller.authorize_resource
   config.comments = false
-  menu :priority => 8, :label => "Comments"
+  menu :priority => 8, :label => "Comments", :if => lambda{|tabs_renderer|
+    controller.current_ability.can?(:manage, Comment)
+  }
+
   index do
     selectable_column
     id_column

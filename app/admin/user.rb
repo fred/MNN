@@ -2,7 +2,9 @@
 ActiveAdmin.register User do
   controller.authorize_resource
   config.comments = false
-  menu :parent => "Members", :priority => 24
+  menu :parent => "Members", :priority => 24, :if => lambda{|tabs_renderer|
+    controller.current_ability.can?(:manage, User)
+  }
   form :partial => "form"
   # show do
   #   render "show"

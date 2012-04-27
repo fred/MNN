@@ -1,7 +1,10 @@
 # Comments
 ActiveAdmin.register EmailDelivery do
+  controller.authorize_resource
   config.comments = false
-  menu :parent => "Members", :priority => 57, :label => "Email Delivery"
+  menu :parent => "Members", :priority => 57, :label => "Email Delivery", :if => lambda{|tabs_renderer|
+    controller.current_ability.can?(:manage, EmailDelivery)
+  }
   actions  :index
   index do
     id_column

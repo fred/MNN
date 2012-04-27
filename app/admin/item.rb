@@ -1,8 +1,11 @@
 ActiveAdmin.register Item do
   controller.authorize_resource
-  
   config.sort_order = "id_desc"
-  menu :priority => 1
+  
+  menu :priority => 1, :if => lambda{|tabs_renderer|
+    controller.current_ability.can?(:manage, Item)
+  }
+
   show do
     render "show"
   end
