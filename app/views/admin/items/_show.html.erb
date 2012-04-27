@@ -58,7 +58,7 @@
   <div class="panel_contents">
     <div class="attributes_table item">
       <p>Video ID: 
-        <% if @item.youtube_id %>
+        <% unless @item.youtube_id.blank? %>
           <b><%= link_to(@item.youtube_id.to_s,
               "http://www.youtube.com/watch?v=#{@item.youtube_id}",
               :title => "Open Youtube video page",
@@ -69,7 +69,7 @@
       </p>
       <p>Auto Embed Video: <b><%= @item.youtube_img %></b></p>
       <p>Auto Image Screenshot: <b><%= @item.youtube_img %></b></p>
-      <% if @item.youtube_id %>
+      <% unless @item.youtube_id.blank? %>
         <p>
           Youtube Available Screenshots:
           <br />
