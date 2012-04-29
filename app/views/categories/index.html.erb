@@ -12,7 +12,8 @@
             <%= link_to(
                   image_tag(item.main_image.image.main, 
                     :class => "featured_item_image", 
-                    :alt => item.main_image.title
+                    :alt => item.main_image.title,
+                    :width => 300, :height => 300
                   ),
                   item, 
                   :title => item_title_small(item)
@@ -47,7 +48,11 @@
         <li class="list_item" id="highlight_item_<%=item.id%>">
           <% if item.has_image? %>
             <%= link_to(
-                  image_tag(item.main_image.image.small, :class => "list_item_image", :alt => item.main_image.title),
+                  image_tag(item.main_image.image.small, 
+                      :class => "list_item_image", 
+                      :alt => item.main_image.title,
+                      :width => 100, :height => 100
+                  ),
                   item,
                   :title => item_title_small(item)
                 )
@@ -80,7 +85,8 @@
                   <%= link_to(
                         image_tag(item.main_image.image.small,
                           :class => "list_item_image", 
-                          :alt => item.main_image.title
+                          :alt => item.main_image.title,
+                          :width => 100, :height => 100
                         ),
                         item, 
                         :title => item_title_small(item)

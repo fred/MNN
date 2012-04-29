@@ -10,7 +10,7 @@ module ApplicationHelper
   
   def flattr_large
     link_to(
-      image_tag("flattr-badge-large.png"),
+      image_tag("flattr-badge-large.png", :width => 93, :height => 20),
       "http://flattr.com/thing/631126/WorldMathaba",
       :target => "blank",
       :alt => "Flattr This Site",
@@ -20,7 +20,7 @@ module ApplicationHelper
   
   def flattr_medium
     link_to(
-      image_tag("flattr-badge-medium.png"),
+      image_tag("flattr-badge-medium.png", :width => 32, :height => 32),
       "http://flattr.com/thing/631126/WorldMathaba",
       :target => "blank",
       :alt => "Flattr This Site",
