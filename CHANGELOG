@@ -1,5 +1,14 @@
 CHANGELOG
 
+== Apr 29, 2012
+* Added Opensearch.xml (to search in Chrome url bar)
+* [OpenSearch 1.1 Draft 5] with rss, atom, and pagination
+* Greatly improved performance of Search and Indexes
+* Added eager loading joins to SQL search
+* Added RSS/Atom support for search
+* Upgraded Carrierwave to 0.6.2 
+* Upgraded other gems
+
 == Apr 27, 2012
 * Improved Comments email
 * Improved the Roles Permissions for admin pages

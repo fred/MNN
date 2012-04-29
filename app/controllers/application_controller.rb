@@ -132,6 +132,12 @@ class ApplicationController < ActionController::Base
     end
     return "items"
   end
+
+
+  def opensearch
+    response.headers['Content-Type'] = 'application/opensearchdescription+xml; charset=utf-8'
+  end
+
   
   protected
 

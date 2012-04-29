@@ -165,7 +165,7 @@ class ItemsController < ApplicationController
     end
     if params[:q] && !params[:q].to_s.empty?
       term = params[:q].downcase
-      @search = Item.solr_search do
+      @search = Item.solr_search(:include => [:attachments, :comments, :category, :language, :item_stat, :user, :tags]) do
         fulltext term do
           phrase_fields :title => 1.8
           phrase_fields :abstract => 1.6
@@ -190,6 +190,9 @@ class ItemsController < ApplicationController
       # showing Sponsored Listings
       @items = @search.results
       @title = "Found #{@search.total} results with '#{params[:q]}' "
+      @rss_title = "WorldMathaba Search"
+      @rss_description = @title
+      @last_published = @items.first.published_at if @items
     # else
     #   # If no search term has been given, empty search
     #   @items = Item.published.not_draft.
@@ -201,6 +204,15 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html
       format.js
+      format.atom {
+        headers['Cache-Control'] = 'public, max-age=3600' unless (current_admin_user or current_user)
+        headers['Last-Modified'] = @last_published.httpdate
+        render :partial => "/shared/items", :layout => false }
+      format.rss {
+        headers['Cache-Control'] = 'public, max-age=3600' unless (current_admin_user or current_user)
+        headers['Last-Modified'] = @last_published.httpdate
+        render :partial => "/shared/items", :layout => false 
+      }
     end
   end
   

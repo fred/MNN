@@ -51,7 +51,7 @@
         <% end %>
       </div>
       <div class="comments_count">
-        Comments: <%= item.comments.count %>
+        Comments: <%= item.comments.size %>
       </div>
       <div class="clearfix"></div>
       <% @related = item.solr_similar(4) %>

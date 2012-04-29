@@ -26,7 +26,7 @@ gem 'squeel'
 ### File Uploading and Image Processing
 gem 'mini_magick', '~> 3.4'
 gem 'fog', "~> 1.3.1"
-gem 'carrierwave', "~> 0.5.8"
+gem 'carrierwave', "~> 0.6.2"
 
 ### S3 Asset hosting
 gem "asset_sync"
