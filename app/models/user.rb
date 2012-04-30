@@ -54,8 +54,17 @@ class User < ActiveRecord::Base
     self.avatar?
   end
   
-  def has_role?(role)
-    self.roles.where(:title => role.to_s).count > 0
+  def has_role?(role_sym)
+    roles.any? { |r| r.title.underscore.to_sym == role_sym }
+  end
+
+  def has_any_role?(*roles_array)
+    roles_array.each do |t|
+      if has_role?(t.to_sym)
+        return true
+      end
+    end
+    return false
   end
   
   def role_titles

@@ -6,13 +6,18 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   before_filter :set_start_time, :set_time_zone, :set_view_items, :current_ability
-  before_filter :log_additional_data
+  before_filter :log_additional_data, :set_per_page
   
   
   comment_destroy_conditions do |comment|
     comment.owner == current_user
   end
   
+  def set_per_page
+    if params[:per_page]
+      @per_page = params[:per_page].to_i
+    end
+  end
   
   def set_start_time
     @start_time = Time.now.usec

@@ -2,7 +2,7 @@ ActiveAdmin.register Version do
   controller.authorize_resource
   actions :index, :show
   menu :priority => 99, :label => "History", :if => lambda{|tabs_renderer|
-    controller.current_ability.can?(:manage, Version)
+    controller.current_ability.can?(:read, Version)
   }
   config.comments = false
   index do

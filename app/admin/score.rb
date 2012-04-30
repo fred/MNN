@@ -4,6 +4,6 @@ ActiveAdmin.register Score do
   
   config.comments = false
   menu :parent => "Members", :priority => 35, :if => lambda{|tabs_renderer|
-    controller.current_ability.can?(:manage, Score)
+    controller.current_ability.can?(:read, Score)
   }
 end

@@ -3,8 +3,15 @@ ActiveAdmin.register Item do
   config.sort_order = "id_desc"
   
   menu :priority => 1, :if => lambda{|tabs_renderer|
-    controller.current_ability.can?(:manage, Item)
+    controller.current_ability.can?(:read, Item)
   }
+  sidebar :per_page, :partial => "per_page"
+
+  before_filter :only => :index do
+    if params[:per_page]
+      @per_page = params[:per_page].to_i
+    end
+  end
 
   show do
     render "show"
@@ -67,7 +74,9 @@ ActiveAdmin.register Item do
     column "Site", :sortable => false do |item|
       link_to "Show", item
     end
-    default_actions
+    if controller.current_ability.can?(:create, Item)
+      default_actions
+    end
   end
   form :partial => "form"
   

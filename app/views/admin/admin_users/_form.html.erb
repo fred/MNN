@@ -16,7 +16,15 @@
     <%= f.input :diaspora, :hint => "Optional: Diaspora Handle"%>
     <%= f.input :jabber, :hint => "Optional: Jabber address"%>
     <%= f.input :time_zone, :hint => "Recommended: Select Time Zone for system dates."%>
-    <%= f.input :downgrade, :as => :boolean, :hint => "Downgrade this AdminUser to Normal User?"%>
+    <% if !f.object.new_record? && f.object.type == "AdminUser" %>
+      <%= f.input :downgrade, :as => :boolean,
+          :hint => "Downgrade this AdminUser to Normal User?"
+      %>
+    <% elsif !f.object.new_record? && f.object.type != "AdminUser" %>
+      <%= f.input :upgrade, :label => "Upgrade", :as => :boolean,
+            :hint => "Upgrade this User to AdminUser?"
+      %>
+    <% end %>
     </br />
   <% end %>
   

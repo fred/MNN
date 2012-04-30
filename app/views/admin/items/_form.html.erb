@@ -80,45 +80,52 @@
     <%= f.input :source_url, :hint => "If you wrote the article, leave empty" %>
   <% end %>
   
-  <%= f.inputs :name => "Status Codes" do %>
-    <%= f.input :draft,     :hint => "Keep as draft if you haven't finished editing." %><br />
-    <%= f.input :featured,  :label => "Highlight",:hint => "Article will be featured on Highlights box in front page" %><br />
-    <%= f.input :sticky,    :label => "Sticky",   :hint => "Article will remain first on top of Highlights box" %><br />
-    <%= f.input :allow_comments, :hint => "Allow users to comment" %><br />
-    <%#= f.input :protected_record, :hint => "Locked from editing, use with caution." %>
+  <% if current_admin_user.has_any_role?(:editor,:admin,:security) %>
 
-
-
-    <% if f.object.twitter_shares.empty? %>
-      <%= f.input :share_twitter, :as => "boolean",
-          :hint => "Auto post to twitter upon publication? Only set it if item is ready and not Draft. It can only be posted once. Performed 3 minutes after Publication." %>
-    <% else %>
-      <li class="boolean input optional">
-        <label><b>Already posted to twitter</b></label>
-      </li>
+    <%= f.inputs :name => "Status Codes" do %>
+      <%= f.input :draft,     :hint => "Keep as draft if you haven't finished editing." %><br />
+      <%= f.input :featured,  :label => "Highlight",:hint => "Article will be featured on Highlights box in front page" %><br />
+      <%= f.input :sticky,    :label => "Sticky",   :hint => "Article will remain first on top of Highlights box" %><br />
+      <%= f.input :allow_comments, :hint => "Allow users to comment" %><br />
+      <% if f.object.twitter_shares.empty? %>
+        <%= f.input :share_twitter, :as => "boolean",
+            :hint => "Auto post to twitter upon publication? Only set it if item is ready and not Draft. It can only be posted once. Performed 3 minutes after Publication." %>
+      <% else %>
+        <li class="boolean input optional">
+          <label><b>Already posted to twitter</b></label>
+        </li>
+      <% end %>
+      <br />
+      <% if !f.object.email_delivery_sent? %>
+        <%= f.input :send_emails, :as => "boolean",
+            :hint => "Send emails upon publication? Only set it if item is ready and not Draft. It can only be posted once. Email will be sent 3 minutes after Publication." %>
+      <% elsif f.object.email_delivery_sent? %>
+        <li class="boolean input optional">
+          <label><b>Already Sent Emails</b></label>
+        </li>
+      <% elsif f.object.email_delivery_queued? %>
+        <li class="boolean input optional">
+          <label><b>Email Queued for delivery</b></label>
+        </li>
+      <% end %>
+      <br />
     <% end %>
 
-    <br />
-
-    <% if !f.object.email_delivery_sent? %>
-      <%= f.input :send_emails, :as => "boolean",
-          :hint => "Send emails upon publication? Only set it if item is ready and not Draft. It can only be posted once. Email will be sent 3 minutes after Publication." %>
-    <% elsif f.object.email_delivery_sent? %>
-      <li class="boolean input optional">
-        <label><b>Already Sent Emails</b></label>
-      </li>
-    <% elsif f.object.email_delivery_queued? %>
-      <li class="boolean input optional">
-        <label><b>Email Queued for delivery</b></label>
-      </li>
+  <% else %>
+    <%= f.inputs :name => "Status Codes" do %>
+      <%= f.input :draft,
+            :as => :hidden,
+            :value => true
+      %>
+      <br />
+      <%= f.input :featured,
+            :label => "Highlight", 
+            :hint => "Article will be featured on Highlights box in front page"
+      %>
+      <br />
     <% end %>
-
-
-
-    <%#= f.input :share_facebook, :hint => "Auto share on facebook upon publication?" %>
-    <%#= f.input :share_reddit, :hint => "Auto post to Reddit upon publication?" %>
-    <br />
   <% end %>
+
   
   <%= f.inputs :name => "Dates and Status" do %>
     <%#= f.input :published_at,

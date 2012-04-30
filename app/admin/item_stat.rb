@@ -2,7 +2,7 @@ ActiveAdmin.register ItemStat do
   controller.authorize_resource  
   config.sort_order = "updated_at_desc"
   menu :parent => "Items", :priority => 3, :if => lambda{|tabs_renderer|
-    controller.current_ability.can?(:manage, ItemStat)
+    controller.current_ability.can?(:read, ItemStat)
   }
   actions :index
   config.comments = false
