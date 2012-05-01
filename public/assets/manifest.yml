@@ -36,7 +36,10 @@ icons/social/designmoo_16.png: icons/social/designmoo_16-3f600ac41e3e715d7b50be7
 icons/social/designmoo_32.png: icons/social/designmoo_32-73c08117cb166b252faaeed1bdce6062.png
 icons/social/deviantart_16.png: icons/social/deviantart_16-bb26bf2f85208ae0fc5105aa61ae178b.png
 icons/social/deviantart_32.png: icons/social/deviantart_32-b92e73348a56f4ff394935f14db671dc.png
-icons/social/diaspora.png: icons/social/diaspora-2b7a2507be631dbb2964b004704b5e47.png
+icons/social/diaspora-16.jpg: icons/social/diaspora-16-327d75b33f9528046c3ef561950d190f.jpg
+icons/social/diaspora-16.png: icons/social/diaspora-16-5fa0ec9f929bc2924feb5ce6409755d4.png
+icons/social/diaspora-32.jpg: icons/social/diaspora-32-b595a10183566841ffaf9ed1271d43d2.jpg
+icons/social/diaspora-32.png: icons/social/diaspora-32-4e6fb9a9583878db943b00b8fb4e02ec.png
 icons/social/digg_16.png: icons/social/digg_16-b3de8c99440cf7a4e65421253b451378.png
 icons/social/digg_32.png: icons/social/digg_32-5fcebc8ede30959cb5e3bf9347625e4f.png
 icons/social/digg_alt_16.png: icons/social/digg_alt_16-518a9efba9f3e990dce3b935fb071c8a.png

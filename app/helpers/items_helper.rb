@@ -130,5 +130,13 @@ module ItemsHelper
     body += url_for(item_path(item, :only_path => false, :protocol => 'http'))
     "mailto:?subject=#{url_encode(sbj)}&body=#{url_encode(body)}"
   end
+
+  def diaspora_share(item)
+    url = "http://sharetodiaspora.github.com/?url="
+    url += url_for(item_path(item, :only_path => false, :protocol => 'http'))
+    url += "&title="
+    url += url_encode(item.title)
+    return url
+  end
   
 end

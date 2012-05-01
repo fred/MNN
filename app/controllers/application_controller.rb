@@ -116,10 +116,10 @@ class ApplicationController < ActionController::Base
   
   def set_time_zone
     if current_user && current_user.time_zone
-      Rails.logger.info("  Timezone: #{current_user.time_zone}")
+      Rails.logger.debug("  Timezone: #{current_user.time_zone}")
       Time.zone = current_user.time_zone
     elsif current_admin_user && current_admin_user.time_zone
-      Rails.logger.info("  Timezone: #{current_admin_user.time_zone}")
+      Rails.logger.debug("  Timezone: #{current_admin_user.time_zone}")
       Time.zone = current_admin_user.time_zone
     end
   end

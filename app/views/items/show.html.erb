@@ -140,9 +140,9 @@
                 :title => "Delicious Share",
                 :target => "_blank"
           %>
-          <%= link_to image_tag("icons/social/google_plus_16.png", :alt => "GooglePlus"),
-                gplus_share(@item),
-                :title => "GooglePlus Share",
+          <%= link_to image_tag("icons/social/diaspora-16.jpg", :alt => "Diaspora"),
+                diaspora_share(@item),
+                :title => "Share on Diaspora",
                 :target => "_blank"
           %>
           <%= link_to image_tag("icons/social/email_16.png", :alt => "Email"),
@@ -150,9 +150,14 @@
                 :title => "Share by Email",
                 :target => "_blank"
           %>
-          <%= link_to image_tag("icons/social/rss_16.png"),
+          <%#= link_to image_tag("icons/social/rss_16.png"),
                 "#",
                 :title => "RSS Feed",
+                :target => "_blank"
+          %>
+          <%= link_to image_tag("icons/social/google_plus_16.png", :alt => "GooglePlus"),
+                gplus_share(@item),
+                :title => "GooglePlus Share",
                 :target => "_blank"
           %>
           <%= render :partial => "/shared/gplus" %>
