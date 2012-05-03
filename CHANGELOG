@@ -1,5 +1,12 @@
 CHANGELOG
 
+== May 2, 2012
+* Jobs History now in Descending order (latest first) [resque-history].
+* Clear History button in jobs history [resque-history].
+* Improved Roles Authorization code.
+* Added Rspec tests for Admin Authorization.
+* Added 'ref' to email links.
+
 == Apr 29, 2012
 * Added Opensearch.xml (to search in Chrome url bar)
 * [OpenSearch 1.1 Draft 5] with rss, atom, and pagination

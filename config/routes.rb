@@ -14,6 +14,8 @@ Publication::Application.routes.draw do
   match 'feed' => "items#feed", :as => :feed
   match 'languages/:language_id/items/page/:page' => 'items#index'
   match 'categories/:category_id/:page' => 'items#index'
+
+  match 'news/:category/:id' => 'items#show', :as => :news_path
   
   # Omniauth
   # match '/auth/:provider/callback', to: 'services#create'

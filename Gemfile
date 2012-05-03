@@ -50,7 +50,7 @@ gem "resque-history", :git => "git://github.com/fred/resque-history.git", :branc
 gem 'multi_json', "~> 1.3.2"
 gem 'json', "~> 1.6.6"
 gem 'simple_oauth', "~> 0.1.7"
-gem 'twitter', "~> 2.2.2"
+gem 'twitter', "~> 2.2.5"
 
 gem 'sass'
 gem 'sass-rails',  '~> 3.2.3'

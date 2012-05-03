@@ -31,6 +31,7 @@ ActiveAdmin.register Comment do
   controller do
     def destroy
       @comment = Comment.find(params[:id])
+      authorize! :destroy, @comment
       @old_id = @comment.id
       @comment.destroy if @comment
       respond_to do |format|

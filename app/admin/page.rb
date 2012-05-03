@@ -32,6 +32,7 @@ ActiveAdmin.register Page do
       @page.active = true
       @page.priority = 10
       @page.user_id = current_admin_user.id
+      authorize! :create, Page
     end
 
     def scoped_collection

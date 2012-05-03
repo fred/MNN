@@ -172,12 +172,11 @@
           <h4>Related items</h4>
           <ul class="related">
             <% @related.results.each do |item| %>
-              <li><%= link_to item.title, item, :title => item_title(item) %></li>
+              <li><%= link_to item.title, item, :title => item_title(item), :id => "tooltip" %></li>
             <% end %>
           </ul>
         </section>
       <% end %>
-      
     </article>
   </div>
 <% end %>
@@ -223,24 +222,27 @@
   </li>
 <% end %>
 
+
 <%= content_for :scripts do %>
   <%= javascript_include_tag "font_resizer" %>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      if (!(Modernizr.touch)) {
-        // Image Gallery
-        $("#main_image_popup").fancybox({
-          openEffect  : 'none',
-          closeEffect  : 'none'
-        });
-        // Tooltips
-        $("a").easyTooltip({
-          yOffset: -30,
-          xOffset: -60
-        });
-      }
-    });
-  </script>
+  <% unless is_handheld? %>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        if (!(Modernizr.touch)) {
+          // Image Gallery
+          $("#main_image_popup").fancybox({
+            openEffect  : 'none',
+            closeEffect  : 'none'
+          });
+          // Tooltips
+          $("a#tooltip").easyTooltip({
+            yOffset: -30,
+            xOffset: -60
+          });
+        }
+      });
+    </script>
+  <% end %>
 <% end %>
 
 <%# if !is_handheld? %>

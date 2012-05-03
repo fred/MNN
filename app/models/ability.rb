@@ -56,11 +56,10 @@ class Ability
     # Authors can create, and edit/delete own articles
     # also read most of other resources.
     if user.has_role? :author
-      # can :read,    Item, :draft => false
-      # can :update,  Item, :user_id => user.id
-      # can :destroy, Item, :user_id => user.id
-      # can :create,  Item
-      can :manage,  Item
+      can :read,    Item
+      can :update,  Item, :user_id => user.id
+      can :destroy, Item, :user_id => user.id
+      can :create,  Item
       can [:read, :create, :update], Attachment
       can :read,    [ItemStat,Category,Tag,Language,Version,Page]
     end

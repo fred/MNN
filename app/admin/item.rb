@@ -5,7 +5,7 @@ ActiveAdmin.register Item do
   menu :priority => 1, :if => lambda{|tabs_renderer|
     controller.current_ability.can?(:read, Item)
   }
-  sidebar :per_page, :partial => "per_page"
+  sidebar :per_page, :partial => "per_page", :only => :index
 
   before_filter :only => :index do
     if params[:per_page]
@@ -74,15 +74,15 @@ ActiveAdmin.register Item do
     column "Site", :sortable => false do |item|
       link_to "Show", item
     end
-    if controller.current_ability.can?(:create, Item)
-      default_actions
-    end
+    default_actions
   end
   form :partial => "form"
   
   controller do
     cache_sweeper :item_sweeper
+
     def new
+      authorize! :create, Item
       @item = Item.new
       @now = Time.zone.now
       @item.published_at = @now+600
@@ -92,12 +92,17 @@ ActiveAdmin.register Item do
       @item.author_email = current_admin_user.email
       @item.user_id = current_admin_user.id
     end
+    
     def show
       @item = Item.find(params[:id])
       @related = @item.solr_similar(10)
+      authorize! :read, @item
     end
+
     def edit
       @item = Item.find(params[:id])
+      authorize! :edit, @item
+
       if @item.published_at
         @item.published_at = @item.published_at.localtime
       else
@@ -109,9 +114,14 @@ ActiveAdmin.register Item do
         @item.expires_on = Time.zone.now+10.years
       end
     end
+
     def create
       @item = Item.new(params[:item])
       @item.user_id = current_admin_user.id
+      authorize! :create, @item
+      unless (current_admin_user.has_any_role?(:admin,:editor,:security))
+        @item.draft = true
+      end
       respond_to do |format|
         if @item.save
           format.html { redirect_to admin_item_path(@item), notice: 'Item was successfully created.' }
@@ -120,6 +130,23 @@ ActiveAdmin.register Item do
           format.html { render action: "new" }
           format.json { render json: @item.errors, status: :unprocessable_entity }
         end
+      end
+    end
+
+    def destroy
+      @item = Item.find(params[:id])
+      authorize! :destroy, @item
+      if (current_admin_user.has_any_role?(:admin,:editor,:security)) or (current_admin_user.id == @item.user_id)
+        @item.destroy
+        flash[:notice]= "Item successfully deleted"
+      else
+        flash[:notice]= "You are not allowed to delete this Item"
+      end
+      respond_to do |format|
+        format.html {redirect_to admin_items_path}
+        format.js {render :layout => false}
+        format.json
+        format.xml
       end
     end
     def scoped_collection

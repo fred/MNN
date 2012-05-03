@@ -81,7 +81,6 @@
   <% end %>
   
   <% if current_admin_user.has_any_role?(:editor,:admin,:security) %>
-
     <%= f.inputs :name => "Status Codes" do %>
       <%= f.input :draft,     :hint => "Keep as draft if you haven't finished editing." %><br />
       <%= f.input :featured,  :label => "Highlight",:hint => "Article will be featured on Highlights box in front page" %><br />
@@ -116,11 +115,6 @@
       <%= f.input :draft,
             :as => :hidden,
             :value => true
-      %>
-      <br />
-      <%= f.input :featured,
-            :label => "Highlight", 
-            :hint => "Article will be featured on Highlights box in front page"
       %>
       <br />
     <% end %>
