@@ -15,17 +15,17 @@ class ItemsController < ApplicationController
       @rss_title = "World Mathaba - Latest in #{@language.description}"
       @rss_description = "World Mathaba - Latest News in #{@language.description}"
       @rss_language = @language.locale
-      @rss_source = items_path(:language_id => params[:language_id], :only_path => false, :protocol => 'https')
+      @rss_source = items_path(language_id: params[:language_id], only_path: false, protocol: 'https')
       @items = Item.published.
         not_draft.
         includes(:language, :attachments, :tags, :item_stat, :user).
-        where(:language_id => @language.id).
+        where(language_id: @language.id).
         order("published_at DESC").
         page(params[:page]).per(per_page)
     else
       @rss_title = "World Mathaba - Latest News"
       @rss_description = "World Mathaba - Latest News"
-      @rss_source = items_path(:only_path => false, :protocol => 'https')
+      @rss_source = items_path(only_path: false, protocol: 'https')
       @rss_language = "en"
       @items = Item.published.
         not_draft.
@@ -52,11 +52,11 @@ class ItemsController < ApplicationController
       format.atom {
         headers['Cache-Control'] = 'public, max-age=3600' unless (current_admin_user or current_user) # 1 hour
         headers['Last-Modified'] = @last_published.httpdate
-        render :partial => "/shared/items", :layout => false }
+        render partial: "/shared/items", layout: false }
       format.rss {
         headers['Cache-Control'] = 'public, max-age=3600' unless (current_admin_user or current_user) # 1 hour
         headers['Last-Modified'] = @last_published.httpdate
-        render :partial => "/shared/items", :layout => false 
+        render partial: "/shared/items", layout: false 
       }
       format.xml {
         headers['Cache-Control'] = 'public, max-age=600' unless (current_admin_user or current_user) # 10 min
@@ -158,19 +158,19 @@ class ItemsController < ApplicationController
   def search
     @show_breadcrumb = false
     if params[:category_id]
-      category = Category.where(:id => params[:category_id]).first
+      category = Category.where(id: params[:category_id]).first
     end
     if params[:language_id]
-      language = Language.where(:id => params[:language_id]).first
+      language = Language.where(id: params[:language_id]).first
     end
     if params[:q] && !params[:q].to_s.empty?
       term = params[:q].downcase
       @search = Item.solr_search(:include => [:attachments, :comments, :category, :language, :item_stat, :user, :tags]) do
         fulltext term do
-          phrase_fields :title => 1.8
-          phrase_fields :abstract => 1.6
-          phrase_fields :tags => 1.5
-          phrase_fields :body => 1.4
+          phrase_fields title: 1.8
+          phrase_fields abstract: 1.6
+          phrase_fields tags: 1.5
+          phrase_fields body: 1.4
           phrase_slop   1
         end
         if category
@@ -184,7 +184,7 @@ class ItemsController < ApplicationController
         facet(:language_id)
         facet(:user_id)
         order_by(:published_at,:desc)
-        paginate :page => params[:page], :per_page => per_page
+        paginate page: params[:page], per_page: per_page
       end
 
       # showing Sponsored Listings
@@ -207,11 +207,11 @@ class ItemsController < ApplicationController
       format.atom {
         headers['Cache-Control'] = 'public, max-age=3600' unless (current_admin_user or current_user)
         headers['Last-Modified'] = @last_published.httpdate
-        render :partial => "/shared/items", :layout => false }
+        render partial: "/shared/items", layout: false }
       format.rss {
         headers['Cache-Control'] = 'public, max-age=3600' unless (current_admin_user or current_user)
         headers['Last-Modified'] = @last_published.httpdate
-        render :partial => "/shared/items", :layout => false 
+        render partial: "/shared/items", layout: false 
       }
     end
   end

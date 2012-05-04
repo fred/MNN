@@ -57,35 +57,35 @@ describe Devise::RegistrationsController do
     describe "with valid params" do
       it "creates a new User" do
         expect {
-          post :create, :user => valid_user_attributes
+          post :create, user: valid_user_attributes
         }.to change(User, :count).by(1)
       end
   
       it "assigns a newly created user as @user" do
-        post :create, :user => valid_user_attributes
+        post :create, user: valid_user_attributes
         assigns(:user).should be_a(User)
         assigns(:user).should be_persisted
       end
         
       it "redirects to the created user" do
-        post :create, :user => valid_user_attributes
+        post :create, user: valid_user_attributes
         response.should redirect_to(root_path)
       end
       
       it "assigns current_user to the newly created user" do
-        post :create, :user => valid_user_attributes
+        post :create, user: valid_user_attributes
         subject.current_user.should_not be_nil
       end
     end
   
     describe "with invalid params" do
       it "assigns a newly created but unsaved user as @user" do
-        post :create, :user => {}
+        post :create, user: {}
         assigns(:user).should be_a_new(User)
       end
   
       it "re-renders the 'new' template" do
-        post :create, :user => {}
+        post :create, user: {}
         response.should render_template("new")
       end
     end

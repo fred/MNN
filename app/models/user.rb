@@ -14,15 +14,15 @@ class User < ActiveRecord::Base
 
   attr_accessor :subscribe, :unsubscribe, :unsubscribe_all, :upgrade, :downgrade
   
-  validates_acceptance_of :terms_of_service, :allow_nil => true, :accept => true unless Rails.env.test?
+  validates_acceptance_of :terms_of_service, allow_nil: true, accept: true unless Rails.env.test?
   
   # Relationships
   has_many :items
   has_many :scores
   # has_many :comments
   has_and_belongs_to_many :roles
-  has_many :subscriptions, :dependent => :destroy, :conditions => {:item_id => nil}
-  has_many :item_subscriptions, :dependent => :destroy, :conditions => "item_id is not NULL", :class_name => "Subscription"
+  has_many :subscriptions, dependent: :destroy, conditions: {item_id: nil}
+  has_many :item_subscriptions, dependent: :destroy, conditions: "item_id is not NULL", class_name: "Subscription"
   
   before_save :create_subscriptions, :cancel_subscriptions, :update_subscriptions, :check_upgrade
   
@@ -86,7 +86,7 @@ class User < ActiveRecord::Base
   
   def create_subscriptions
     if (self.subscribe.to_s == "1" or self.subscribe == true) && self.subscriptions.empty?
-      self.subscriptions << Subscription.new(:email => self.email)
+      self.subscriptions << Subscription.new(email: self.email)
     elsif (self.unsubscribe.to_s == "1" or self.unsubscribe == true) && !self.subscriptions.empty?
       self.subscriptions.destroy_all
     end

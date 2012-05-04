@@ -1,5 +1,10 @@
 CHANGELOG
 
+== May 4, 2012
+* Caching Sidebar and Header for 1 hour
+* Converted hash syntax to ruby1.9
+* Global Caching Time increased from 1 to 2 hours
+
 == May 2, 2012
 * Jobs History now in Descending order (latest first) [resque-history].
 * Clear History button in jobs history [resque-history].

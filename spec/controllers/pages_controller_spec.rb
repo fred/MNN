@@ -6,7 +6,7 @@ describe PagesController do
   # Page. As you add validations to Page, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {:title => "title text", :body => "body text"}
+    {title: "title text", body: "body text"}
   end
   
   # This should return the minimal set of values that should be in the session
@@ -29,7 +29,7 @@ describe PagesController do
 
   describe "GET show" do
     it "assigns the requested page as @page" do
-      get :show, {:id => @page.to_param}, valid_session
+      get :show, {id: @page.to_param}, valid_session
       assigns(:page).should eq(@page)
     end
   end
@@ -44,7 +44,7 @@ describe PagesController do
   # describe "GET edit" do
   #   it "assigns the requested page as @page" do
   #     page = Page.create! valid_attributes
-  #     get :edit, {:id => page.to_param}, valid_session
+  #     get :edit, {id: page.to_param}, valid_session
   #     assigns(:page).should eq(page)
   #   end
   # end
@@ -53,18 +53,18 @@ describe PagesController do
   #   describe "with valid params" do
   #     it "creates a new Page" do
   #       expect {
-  #         post :create, {:page => valid_attributes}, valid_session
+  #         post :create, {page: valid_attributes}, valid_session
   #       }.to change(Page, :count).by(1)
   #     end
   # 
   #     it "assigns a newly created page as @page" do
-  #       post :create, {:page => valid_attributes}, valid_session
+  #       post :create, {page: valid_attributes}, valid_session
   #       assigns(:page).should be_a(Page)
   #       assigns(:page).should be_persisted
   #     end
   # 
   #     it "redirects to the created page" do
-  #       post :create, {:page => valid_attributes}, valid_session
+  #       post :create, {page: valid_attributes}, valid_session
   #       response.should redirect_to(Page.last)
   #     end
   #   end
@@ -73,14 +73,14 @@ describe PagesController do
   #     it "assigns a newly created but unsaved page as @page" do
   #       # Trigger the behavior that occurs when invalid params are submitted
   #       Page.any_instance.stub(:save).and_return(false)
-  #       post :create, {:page => {}}, valid_session
+  #       post :create, {page: {}}, valid_session
   #       assigns(:page).should be_a_new(Page)
   #     end
   # 
   #     it "re-renders the 'new' template" do
   #       # Trigger the behavior that occurs when invalid params are submitted
   #       Page.any_instance.stub(:save).and_return(false)
-  #       post :create, {:page => {}}, valid_session
+  #       post :create, {page: {}}, valid_session
   #       response.should render_template("new")
   #     end
   #   end
@@ -95,18 +95,18 @@ describe PagesController do
   #       # receives the :update_attributes message with whatever params are
   #       # submitted in the request.
   #       Page.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-  #       put :update, {:id => page.to_param, :page => {'these' => 'params'}}, valid_session
+  #       put :update, {id: page.to_param, page: {'these' => 'params'}}, valid_session
   #     end
   # 
   #     it "assigns the requested page as @page" do
   #       page = Page.create! valid_attributes
-  #       put :update, {:id => page.to_param, :page => valid_attributes}, valid_session
+  #       put :update, {id: page.to_param, page: valid_attributes}, valid_session
   #       assigns(:page).should eq(page)
   #     end
   # 
   #     it "redirects to the page" do
   #       page = Page.create! valid_attributes
-  #       put :update, {:id => page.to_param, :page => valid_attributes}, valid_session
+  #       put :update, {id: page.to_param, page: valid_attributes}, valid_session
   #       response.should redirect_to(page)
   #     end
   #   end
@@ -116,7 +116,7 @@ describe PagesController do
   #       page = Page.create! valid_attributes
   #       # Trigger the behavior that occurs when invalid params are submitted
   #       Page.any_instance.stub(:save).and_return(false)
-  #       put :update, {:id => page.to_param, :page => {}}, valid_session
+  #       put :update, {id: page.to_param, page: {}}, valid_session
   #       assigns(:page).should eq(page)
   #     end
   # 
@@ -124,7 +124,7 @@ describe PagesController do
   #       page = Page.create! valid_attributes
   #       # Trigger the behavior that occurs when invalid params are submitted
   #       Page.any_instance.stub(:save).and_return(false)
-  #       put :update, {:id => page.to_param, :page => {}}, valid_session
+  #       put :update, {id: page.to_param, page: {}}, valid_session
   #       response.should render_template("edit")
   #     end
   #   end
@@ -134,13 +134,13 @@ describe PagesController do
   #   it "destroys the requested page" do
   #     page = Page.create! valid_attributes
   #     expect {
-  #       delete :destroy, {:id => page.to_param}, valid_session
+  #       delete :destroy, {id: page.to_param}, valid_session
   #     }.to change(Page, :count).by(-1)
   #   end
   # 
   #   it "redirects to the pages list" do
   #     page = Page.create! valid_attributes
-  #     delete :destroy, {:id => page.to_param}, valid_session
+  #     delete :destroy, {id: page.to_param}, valid_session
   #     response.should redirect_to(pages_url)
   #   end
   # end

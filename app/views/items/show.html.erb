@@ -6,7 +6,7 @@
 <%= content_for :html_tag do %>itemscope itemtype="http://schema.org/Article"<% end %>
 
 <%= content_for :head do %>
-  <%= render :partial => "og" %>
+  <%= render partial: "og" %>
 
   <!-- Add the following three tags inside head -->
   <meta itemprop="headline" content="<%= @item.title %>">
@@ -40,7 +40,7 @@
         <% if @item.author_name %>
           - by 
           <span class="author" itemprop="author">
-            <%= link_to @item.author_name, search_path(:q => @item.author_name), :title => "Author Page: #{@item.author_name}" %>
+            <%= link_to @item.author_name, search_path(q: @item.author_name), title: "Author Page: #{@item.author_name}" %>
           </span>
         <% end %>
       </span>
@@ -50,15 +50,15 @@
           <figure>
             <span itemprop="image">
               <%= link_to image_tag(@item.main_image.image.medium,
-                              :class => "show_item_image",
-                              :id => "main_image",
-                              :alt => alt_for_image(@item.main_image),
-                              :alt => alt_for_image(@item.main_image)
+                              class: "show_item_image",
+                              id: "main_image",
+                              alt: alt_for_image(@item.main_image),
+                              alt: alt_for_image(@item.main_image)
                     ),
                     @item.main_image.image.large.url,
-                    :target => "blank",
-                    :id => "main_image_popup",
-                    :title => alt_for_image(@item.main_image)
+                    target: "blank",
+                    id: "main_image_popup",
+                    title: alt_for_image(@item.main_image)
               %>
             </span>
             <% if @item.main_image.title %>
@@ -69,14 +69,14 @@
           </figure>
         <% end %>
         <div id="item_body" itemprop="articleBody">
-          <%= render :partial => "/shared/youtube_video" %>
+          <%= render partial: "/shared/youtube_video" %>
           <%= @item.body.html_safe %>
         </div>
       </section>
       
       <footer>
         <span class="date" itemprop="datePublished" >
-          <%= time_tag(@item.published_at.in_time_zone("UTC"), :pubdate => false) %> (UTC)
+          <%= time_tag(@item.published_at.in_time_zone("UTC"), pubdate: false) %> (UTC)
         </span>
         <% if @item.user %>
           <span class="author">
@@ -89,7 +89,7 @@
         <span itemprop="keywords">
           <ul class="tags">
             <% @item.tags.each do |tag| %>
-              <li><%= link_to tag.title, tag_path(tag), :title => "See all Articles tagged as '#{tag.title}'" %></li>
+              <li><%= link_to tag.title, tag_path(tag), title: "See all Articles tagged as '#{tag.title}'" %></li>
             <% end %>
             <% if @item.language %>
               <li><%= link_to @item.language.description, language_items_path(@item.language) %></li>
@@ -104,64 +104,64 @@
         </div>
         
         <span class="share">
-          <%= link_to image_tag("icons/social/facebook_16.png", :alt => "Facebook"),
+          <%= link_to image_tag("icons/social/facebook_16.png", alt: "Facebook"),
                 facebook_share(@item),
-                :title => "Share on Facebook",
-                :target => "_blank"
+                title: "Share on Facebook",
+                target: "_blank"
           %>
-          <%= link_to image_tag("icons/social/twitter_16.png", :alt => "Twitter"),
+          <%= link_to image_tag("icons/social/twitter_16.png", alt: "Twitter"),
                 twitter_share(@item),
-                :title => "Share on Twitter",
-                :target => "_blank",
+                title: "Share on Twitter",
+                target: "_blank",
                 'data-via'=>"WorldMathaba"
           %>
-          <%= link_to image_tag("icons/social/reddit_16.png", :alt => "Reddit"),
+          <%= link_to image_tag("icons/social/reddit_16.png", alt: "Reddit"),
                 reddit_share(@item),
-                :title => "Reddit Share",
-                :target => "_blank"
+                title: "Reddit Share",
+                target: "_blank"
           %>
-          <%= link_to image_tag("icons/social/digg_alt_16.png", :alt => "Digg"),
+          <%= link_to image_tag("icons/social/digg_alt_16.png", alt: "Digg"),
                 digg_share(@item),
-                :title => "Digg it",
-                :target => "_blank"
+                title: "Digg it",
+                target: "_blank"
           %>
-          <%= link_to image_tag("icons/social/slashdot_16.png", :alt => "Slashdot"),
+          <%= link_to image_tag("icons/social/slashdot_16.png", alt: "Slashdot"),
                 slashdot_share(@item),
-                :title => "Slashdot Share",
-                :target => "_blank"
+                title: "Slashdot Share",
+                target: "_blank"
           %>
-          <%= link_to image_tag("icons/social/posterous_16.png", :alt => "Posterous"),
+          <%= link_to image_tag("icons/social/posterous_16.png", alt: "Posterous"),
                 posterous_share(@item),
-                :title => "Posterous Share",
-                :target => "_blank"
+                title: "Posterous Share",
+                target: "_blank"
           %>
-          <%= link_to image_tag("icons/social/delicious_16.png", :alt => "Delicious"),
+          <%= link_to image_tag("icons/social/delicious_16.png", alt: "Delicious"),
                 delicious_share(@item),
-                :title => "Delicious Share",
-                :target => "_blank"
+                title: "Delicious Share",
+                target: "_blank"
           %>
-          <%= link_to image_tag("icons/social/diaspora-16.jpg", :alt => "Diaspora"),
+          <%= link_to image_tag("icons/social/diaspora-16.jpg", alt: "Diaspora"),
                 diaspora_share(@item),
-                :title => "Share on Diaspora",
-                :target => "_blank"
+                title: "Share on Diaspora",
+                target: "_blank"
           %>
-          <%= link_to image_tag("icons/social/email_16.png", :alt => "Email"),
+          <%= link_to image_tag("icons/social/email_16.png", alt: "Email"),
                 email_share(@item),
-                :title => "Share by Email",
-                :target => "_blank"
+                title: "Share by Email",
+                target: "_blank"
           %>
           <%#= link_to image_tag("icons/social/rss_16.png"),
                 "#",
-                :title => "RSS Feed",
-                :target => "_blank"
+                title: "RSS Feed",
+                target: "_blank"
           %>
-          <%= link_to image_tag("icons/social/google_plus_16.png", :alt => "GooglePlus"),
+          <%= link_to image_tag("icons/social/google_plus_16.png", alt: "GooglePlus"),
                 gplus_share(@item),
-                :title => "GooglePlus Share",
-                :target => "_blank"
+                title: "GooglePlus Share",
+                target: "_blank"
           %>
-          <%= render :partial => "/shared/gplus" %>
-          <%#= render :partial => "/shared/twitter" %>
+          <%= render partial: "/shared/gplus" %>
+          <%#= render partial: "/shared/twitter" %>
           <%= flattr_large %>
         </span>
       </footer>
@@ -172,7 +172,7 @@
           <h4>Related items</h4>
           <ul class="related">
             <% @related.results.each do |item| %>
-              <li><%= link_to item.title, item, :title => item_title(item), :id => "tooltip" %></li>
+              <li><%= link_to item.title, item, title: item_title(item), id: "tooltip" %></li>
             <% end %>
           </ul>
         </section>
@@ -192,7 +192,7 @@
     <% if is_mobile? %>
       <p>Comments are disabled on mobile devices, please visit desktop site.</p>
     <% elsif @item.allow_comments %>
-      <%= render :partial => "/shared/intense" %>
+      <%= render partial: "/shared/intense" %>
     <% else %>
       <h4>Comments are disabled for this item</h4>
     <% end %>
@@ -200,7 +200,7 @@
 <% end %>
 
 <section id="item_<%= @item.id %>_comments">
-  <%= render :partial => "comments" %>
+  <%= render partial: "comments" %>
 </section>
 
 <% content_for :breadcrumb do %>

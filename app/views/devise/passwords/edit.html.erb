@@ -1,6 +1,6 @@
 <div class="row">
   <div class="span7">
-    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
       <fieldset class="withBorder">
         <legend>Change Password</legend>
         
@@ -10,17 +10,17 @@
         <div class="clearfix">
           <%= f.label :password, "New Password" %>
           <div class="input">
-            <%= f.password_field :password, :required => false, :class => "large"  %>
+            <%= f.password_field :password, required: false, class: "large"  %>
           </div>
         </div>
         <div class="clearfix">
           <%= f.label :password_confirmation, "Confirm your new password" %>
           <div class="input">
-            <%= f.password_field :password_confirmation, :required => false, :class => "large"  %>
+            <%= f.password_field :password_confirmation, required: false, class: "large"  %>
           </div>
         </div>
         <div class="actions">
-          <%= f.submit "Change my password", :class => "btn primary" %>
+          <%= f.submit "Change my password", class: "btn primary", disable_with: 'Sending...' %>
         </div>
       </fieldset>
     <% end %> <!-- End Form -->

@@ -6,7 +6,7 @@ class CommentsNotifier < ActionMailer::Base
 
   def new_comment(comment_id)
     @comment = Comment.includes(:owner).find(comment_id)
-    @url  = url_for(admin_comment_path(@comment, :only_path => false, :protocol => 'http'))
+    @url  = url_for(admin_comment_path(@comment, only_path: false, protocol: 'http'))
     @subscriptions = CommentSubscription.where("email is not NULL").all
     @emails = @subscriptions.map{|t| t.email}.join(",")
     @@smtp_settings = {

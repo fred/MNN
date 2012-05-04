@@ -32,17 +32,17 @@ describe Admin::AttachmentsController do
       end
       describe "GET show" do
         it "Should Show @attachment" do
-          get :show, :id => @attachment.id
+          get :show, id: @attachment.id
           assigns(:attachment).should eq(@attachment)
         end
       end
       describe "GET edit" do
         it "Should have @attachment" do
-          get :edit, :id => @attachment.id
+          get :edit, id: @attachment.id
           assigns(:attachment).should eq(@attachment)
         end
         it "Should have @attachment not as new record" do
-          get :edit, :id => @attachment.id
+          get :edit, id: @attachment.id
           assigns(:attachment).should_not be_new_record
         end
       end

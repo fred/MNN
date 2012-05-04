@@ -10,21 +10,21 @@
       <% end %>
       )
     </h3>
-    <%= form_for Comment.new, :remote => true do |f| %>
+    <%= form_for Comment.new, remote: true do |f| %>
       <p>
-        <%= f.text_area :body, :rows => 8, :id => "Comment", :class=> "input-xlarge" %>
+        <%= f.text_area :body, rows: 8, id: "Comment", class: "input-xlarge" %>
       </p>
       <%= hidden_field_tag :commentable_id, commentable.id %>
       <%= hidden_field_tag :commentable_type, commentable.class.base_class.name.to_s %>
       <div class="form-actions">
-        <%= f.submit "Send Comment", :class => "btn primary", :disable_with => 'Sending...' %>
+        <%= f.submit "Send Comment", class: "btn primary", disable_with: 'Sending...' %>
       </div>
       <p>
     <% end %>
   <% else %>
     <p>
       Must be 
-      <%= link_to "logged in", new_session_url(:user, :protocol => 'https'), :title => "Login" %>
+      <%= link_to "logged in", new_session_url(:user, protocol: 'https'), title: "Login" %>
        to comment.
     </p>
   <% end %>

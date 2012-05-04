@@ -9,7 +9,7 @@
 <% end %>
 
 <% @items.each do |item| %>
-  <%= render :partial => "/shared/item", :locals => {:item => item } %>
+  <%= render partial: "/shared/item", locals: {item: item } %>
 <% end %>
 
 <div class="pagination">

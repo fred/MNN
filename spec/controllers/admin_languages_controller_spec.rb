@@ -32,17 +32,17 @@ describe Admin::LanguagesController do
       end
       describe "GET show" do
         it "Should Show @language" do
-          get :show, :id => @language.id
+          get :show, id: @language.id
           assigns(:language).should eq(@language)
         end
       end
       describe "GET edit" do
         it "Should have @language" do
-          get :edit, :id => @language.id
+          get :edit, id: @language.id
           assigns(:language).should eq(@language)
         end
         it "Should have @language not as new record" do
-          get :edit, :id => @language.id
+          get :edit, id: @language.id
           assigns(:language).should_not be_new_record
         end
       end

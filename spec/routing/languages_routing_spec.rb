@@ -8,7 +8,7 @@ describe LanguagesController do
     end
 
     it "routes to #show" do
-      get("/languages/1").should route_to("languages#show", :id => "1")
+      get("/languages/1").should route_to("languages#show", id: "1")
     end
 
   end

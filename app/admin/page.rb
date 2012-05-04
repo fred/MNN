@@ -1,7 +1,7 @@
 ActiveAdmin.register Page do
   controller.authorize_resource
 
-  menu :parent => "Settings", :priority => 100, :if => lambda{|tabs_renderer|
+  menu parent: "Settings", priority: 100, if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, Page)
   }
 
@@ -20,7 +20,7 @@ ActiveAdmin.register Page do
     default_actions
   end
   
-  form :partial => "form"
+  form partial: "form"
   
   show do
     render "show"

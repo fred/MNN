@@ -1,13 +1,13 @@
 <div class="row">
   <div class="span7">
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { method: :put }) do |f| %>
     
       <fieldset class="withBorder">
         <legend>Current Password</legend>
         <div class="clearfix">
           <%= f.label :current_password %>
           <div class="input">
-            <%= f.password_field :current_password, :autocomplete => "off", :required => true, :class => "large"  %>
+            <%= f.password_field :current_password, :autocomplete => "off", required: true, class: "large"  %>
             <span class="help-block">
               Your Current Password is Required to make any changes in profile
             </span>
@@ -20,61 +20,61 @@
         <div class="clearfix">
           <%= f.label :email %>
           <div class="input">
-            <%= f.text_field :email, :required => false, :type => "email", :class => "large" %>
+            <%= f.text_field :email, required: false, type: "email", class: "large" %>
           </div>
         </div>
         <div class="clearfix">
           <%= f.label :name %>
           <div class="input">
-            <%= f.text_field :name, :required => true, :autofocus => true, :class => "large" %>
+            <%= f.text_field :name, required: true, autofocus: true, class: "large" %>
           </div>
         </div>
         <div class="clearfix">
           <%= f.label :address %>
           <div class="input">
-            <%= f.text_field :address, :required => false, :class => "large" %>
+            <%= f.text_field :address, required: false, class: "large" %>
           </div>
         </div>
         <div class="clearfix">
           <%= f.label :twitter %>
           <div class="input">
-            <%= f.text_field :twitter, :required => false, :class => "large", 
-                  :placeholder => "@twitter" %>
+            <%= f.text_field :twitter, required: false, class: "large", 
+                  placeholder: "@twitter" %>
           </div>
         </div>
         <div class="clearfix">
           <%= f.label :diaspora %>
           <div class="input">
-            <%= f.text_field :diaspora, :required => false, :class => "large", 
-                  :placeholder => "handle@host.net", :type => "email" %>
+            <%= f.text_field :diaspora, required: false, class: "large", 
+                  placeholder: "handle@host.net", type: "email" %>
           </div>
         </div>
         <div class="clearfix">
           <%= f.label :skype %>
           <div class="input">
-            <%= f.text_field :skype, :required => false, :class => "large", 
-                  :placeholder => "skype username" %>
+            <%= f.text_field :skype, required: false, class: "large", 
+                  placeholder: "skype username" %>
           </div>
         </div>
         <div class="clearfix">
           <%= f.label :gtalk, "Google Chat" %>
           <div class="input">
-            <%= f.text_field :gtalk, :required => false, :class => "large", 
-                  :placeholder => "xxxxx@gmail.com", :type => "email" %>
+            <%= f.text_field :gtalk, required: false, class: "large", 
+                  placeholder: "xxxxx@gmail.com", type: "email" %>
           </div>
         </div>
         <div class="clearfix">
           <%= f.label :jabber, "Jabber" %>
           <div class="input">
-            <%= f.text_field :jabber, :required => false, :class => "large", 
-                  :placeholder => "xxxxx@jabber.com", :type => "email" %>
+            <%= f.text_field :jabber, required: false, class: "large", 
+                  placeholder: "xxxxx@jabber.com", type: "email" %>
           </div>
         </div>
         <div class="clearfix">
           <%= f.label :phone_number %>
           <div class="input">
-            <%= f.text_field :phone_number, :required => false, :class => "large", 
-                  :placeholder => "+11 123123456", :type => "tel" %>
+            <%= f.text_field :phone_number, required: false, class: "large", 
+                  placeholder: "+11 123123456", type: "tel" %>
           </div>
         </div>
         <div class="clearfix">
@@ -98,9 +98,9 @@
           <% if f.object.has_image? %>
             <div class="input">
               <%= link_to(
-                    image_tag(f.object.avatar.small, :class => "show_item_img"),
+                    image_tag(f.object.avatar.small, class: "show_item_img"),
                     f.object.avatar.url,
-                    :target => "blank"
+                    target: "blank"
                   )
               %>
             </div>
@@ -138,7 +138,7 @@
         <div class="clearfix">
           <%= f.label :password, "New Password" %>
           <div class="input">
-            <%= f.password_field :password, :autocomplete => "off", :required => false, :class => "large"  %>
+            <%= f.password_field :password, :autocomplete => "off", required: false, class: "large"  %>
             <span class="help-block">
               Leave this field black if you want to change password
             </span>
@@ -147,17 +147,17 @@
         <div class="clearfix">
           <%= f.label :password_confirmation, "New Password Again" %>
           <div class="input">
-            <%= f.password_field :password_confirmation, :autocomplete => "off", :required => false, :class => "large"  %>
+            <%= f.password_field :password_confirmation, :autocomplete => "off", required: false, class: "large"  %>
           </div>
         </div>
 
         <div class="actions">
-          <%= f.submit "Update", :class => "btn primary", :disable_with => 'Processing...' %>
+          <%= f.submit "Update", class: "btn primary", disable_with: 'Processing...' %>
           &nbsp;
           <%= link_to "Delete my account".html_safe,
               registration_path(resource_name),
-              :confirm => "Are you sure you want to delete your account from our system?",
-              :method => :delete, :class=>'btn danger'
+              confirm: "Are you sure you want to delete your account from our system?",
+              method: :delete, :class=>'btn danger'
           %>
       </fieldset>
       

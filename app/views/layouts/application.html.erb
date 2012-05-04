@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" <%= yield(:html_tag) %>>
   <head>
-    <%= render :partial => "/shared/head" %>
+    <%= render partial: "/shared/head" %>
     <%= stylesheet_link_tag "application" %>
     <%= yield(:stylesheets) %>
     <%= javascript_include_tag "application" %>
@@ -16,10 +16,10 @@
   </head>
   
   <body>
-    <%= render :partial => "/shared/topbar" %>
+    <%= render partial: "/shared/topbar" %>
     
     <div class="container-fluid">
-      <%= render :partial => "/shared/sidebar_account" %>
+      <%= render partial: "/shared/sidebar_account" %>
       
       <div class="content">
         <!-- Content -->
@@ -49,7 +49,7 @@
         <% end %>
         
         <%= yield %>
-        <%= render :partial => "/shared/footer" %>
+        <%= render partial: "/shared/footer" %>
       </div>
       
     </div>

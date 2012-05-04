@@ -1,6 +1,6 @@
 <meta property="og:title" content="<%= @item.title %>"/>
 <meta property="og:type" content="news, <%= @item.category_title %>, <%= @item.tag_list %>"/>
-<meta property="og:url" content="<%= url_for(item_path(@item.id, :only_path => false, :protocol => 'http')) %>"/>
+<meta property="og:url" content="<%= url_for(item_path(@item.id, only_path: false, protocol: 'http')) %>"/>
 <meta property="og:site_name" content="worldmathaba.net"/>
 <meta property="og:description" content="<%= @item.abstract %>"/>
 

@@ -16,7 +16,7 @@ describe LanguagesController do
 
   describe "GET 'show'" do
     it "returns http success" do
-      get 'show', :id => @language.id
+      get 'show', id: @language.id
       response.should redirect_to(language_items_path(@language))
     end
   end

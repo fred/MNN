@@ -27,7 +27,7 @@ atom_feed({
       xml.author {
         xml.name item.user_title
         xml.email item.user_email
-        xml.uri(url_for(author_path(item.user, :only_path => false, :protocol => 'http')))
+        xml.uri(url_for(author_path(item.user, only_path: false, protocol: 'http')))
       }
     end
   end

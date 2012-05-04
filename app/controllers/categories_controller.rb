@@ -24,7 +24,7 @@ class CategoriesController < ApplicationController
     headers['Last-Modified'] = @category.items.last_item.updated_at.httpdate
     @items = @category.
       items.
-      where(:draft => false).
+      where(draft: false).
       includes(:attachments, :comments, :category, :language, :item_stat, :user, :tags).
       where("published_at is not NULL").
       where("published_at < '#{Time.now.to_s(:db)}'").
@@ -45,12 +45,12 @@ class CategoriesController < ApplicationController
       format.atom {
         headers['Cache-Control'] = 'public, max-age=3600' # 1 hour cache
         headers['Last-Modified'] = @last_published.httpdate
-        render :partial => "/shared/items", :layout => false 
+        render partial: "/shared/items", layout: false 
       }
       format.rss  {
         headers['Cache-Control'] = 'public, max-age=3600' # 1 hour cache
         headers['Last-Modified'] = @last_published.httpdate
-        render :partial => "/shared/items", :layout => false
+        render partial: "/shared/items", layout: false
       }
       format.json { render json: @items }
       format.xml { render @items }

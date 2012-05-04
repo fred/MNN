@@ -9,7 +9,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MimeTypes
   
   # Set quality to 90 (default: 85)
-  process :quality => 90
+  process quality: 90
   
   # Set Watermark
   # process :watermark => "#{Rails.root}/public/watermark.png"
@@ -52,16 +52,16 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   process :scale => [50, 50]
   # end
   version :mini do
-    process :resize_to_fit => [30, 30]
+    process resize_to_fit: [30, 30]
   end
   version :thumb do
-    process :resize_to_fit => [50, 50]
+    process resize_to_fit: [50, 50]
   end
   version :small do
-    process :resize_to_fit => [80, 80]
+    process resize_to_fit: [80, 80]
   end
   version :medium do
-    process :resize_to_fit => [160, 160]
+    process resize_to_fit: [160, 160]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

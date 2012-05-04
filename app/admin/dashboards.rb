@@ -30,8 +30,8 @@ ActiveAdmin::Dashboards.build do
   # bottom right. The default priority is 10. By giving a section numerically lower
   # priority it will be sorted higher. For example:
   #
-  #   section "Recent Posts", :priority => 10
-  #   section "Recent User", :priority => 1
+  #   section "Recent Posts", priority: 10
+  #   section "Recent User", priority: 1
   #
   # Will render the "Recent Users" then the "Recent Posts" sections on the dashboard.  
 
@@ -43,7 +43,7 @@ ActiveAdmin::Dashboards.build do
   
   ### COMMENTS
 
-  section "Recent Comments", :priority => 1 do
+  section "Recent Comments", priority: 1 do
     if controller.current_ability.can?(:read, Comment)
       table_for Comment.recent(16) do
         column "User" do |t|
@@ -54,11 +54,11 @@ ActiveAdmin::Dashboards.build do
           end
         end
         column "Message" do |t|
-          link_to t.body.truncate(60), admin_comment_path(t), :title => t.body
+          link_to t.body.truncate(60), admin_comment_path(t), title: t.body
         end
         column "Item" do |t|
           if t.commentable && t.commentable_type == "Item"
-            link_to t.commentable.title.truncate(50), admin_item_path(t.commentable), :title => t.commentable.title
+            link_to t.commentable.title.truncate(50), admin_item_path(t.commentable), title: t.commentable.title
           elsif t.commentable && t.commentable_type == "Comment"
             link_to t.commentable.commentable.title.truncate(50), admin_item_path(t.commentable.commentable)
             # link_to("Reply to: #{t.commentable.body.truncate(50)}", admin_comment_path(t.commentable))
@@ -68,13 +68,13 @@ ActiveAdmin::Dashboards.build do
           "#{time_ago_in_words(t.created_at)} ago"
         end
         column "IP" do |t|
-          link_to(t.user_ip, "http://www.geoiptool.com/en/?IP=#{t.user_ip}", :target => "_blank")
+          link_to(t.user_ip, "http://www.geoiptool.com/en/?IP=#{t.user_ip}", target: "_blank")
         end
       end
     end
   end
 
-  section "Pending Comments", :priority => 2 do
+  section "Pending Comments", priority: 2 do
     if controller.current_ability.can?(:read, Comment)
       table_for Comment.as_spam(16) do
         column "User" do |t|
@@ -85,7 +85,7 @@ ActiveAdmin::Dashboards.build do
           end
         end
         column "Message" do |t|
-          link_to t.body.truncate(50), admin_comment_path(t), :title => t.body
+          link_to t.body.truncate(50), admin_comment_path(t), title: t.body
         end
         column "Item" do |t|
           if t.commentable && t.commentable_type == "Item"
@@ -98,13 +98,13 @@ ActiveAdmin::Dashboards.build do
           "#{time_ago_in_words(t.created_at)} ago"
         end
         column "IP" do |t|
-          link_to(t.user_ip, "http://www.geoiptool.com/en/?IP=#{t.user_ip}", :target => "_blank")
+          link_to(t.user_ip, "http://www.geoiptool.com/en/?IP=#{t.user_ip}", target: "_blank")
         end
         column "Spam" do |t|
           t.marked_spam
         end
         column "Action" do |t|
-          link_to "Delete", admin_comment_path(t), :method => 'delete', :confirm => "Are you sure you want to delete this comment?", :remote => true
+          link_to "Delete", admin_comment_path(t), method: 'delete', confirm: "Are you sure you want to delete this comment?", remote: true
         end
       end
     end
@@ -112,7 +112,7 @@ ActiveAdmin::Dashboards.build do
 
 
   ### ITEMS
-  section "Draft Items", :priority => 6 do
+  section "Draft Items", priority: 6 do
     if controller.current_ability.can?(:read, Item)
       ul do
         Item.recent_drafts(10).collect do |item|
@@ -122,7 +122,7 @@ ActiveAdmin::Dashboards.build do
     end
   end
   ### ITEMS
-  section "Recently Updated Items", :priority => 10 do
+  section "Recently Updated Items", priority: 10 do
     if controller.current_ability.can?(:read, Item)
       ul do
         Item.recent_updated(10).collect do |item|
@@ -136,7 +136,7 @@ ActiveAdmin::Dashboards.build do
   end
 
   ### USERS
-  section "Pending Users for Approval", :priority => 14 do
+  section "Pending Users for Approval", priority: 14 do
     if controller.current_ability.can?(:read, User)
       ul do
         User.recent_pending(8).collect do |user|
@@ -146,7 +146,7 @@ ActiveAdmin::Dashboards.build do
     end
   end
   ### USERS
-  section "Newly Registered User", :priority => 16 do
+  section "Newly Registered User", priority: 16 do
     if controller.current_ability.can?(:read, User)
       ul do
         User.recent(8).collect do |user|
@@ -156,7 +156,7 @@ ActiveAdmin::Dashboards.build do
     end
   end
   ### USERS
-  section "Recently Logged in Users", :priority => 20 do
+  section "Recently Logged in Users", priority: 20 do
     if controller.current_ability.can?(:read, User)
       ul do
         User.logged_in(8).collect do |user|
@@ -172,14 +172,14 @@ ActiveAdmin::Dashboards.build do
   end
 
   ### HISTORY
-  section "Database History", :priority => 24 do
+  section "Database History", priority: 24 do
     if controller.current_ability.can?(:read, Version)
       table_for Version.order('id desc').limit(20) do
         column "Record" do |v| 
           if v.item
             link_to(
               "#{v.item_type.underscore.humanize} ##{v.item_id}",
-              url_for(:controller => "admin/#{v.item.class.to_s.underscore.pluralize}", :action => 'show', :id => v.item_id)
+              url_for(:controller => "admin/#{v.item.class.to_s.underscore.pluralize}", action: 'show', id: v.item_id)
             )
           else
             "#{v.item_type.underscore.humanize} ##{v.item_id}"
@@ -195,7 +195,7 @@ ActiveAdmin::Dashboards.build do
           v.created_at.to_s :short
         end
         column "User" do |v|
-          user = User.where(:id => v.whodunnit).first
+          user = User.where(id: v.whodunnit).first
           if user
             (link_to user.title, admin_user_path(v.whodunnit))
           else

@@ -1,7 +1,7 @@
 ActiveAdmin.register Version do
   controller.authorize_resource
   actions :index, :show
-  menu :priority => 99, :label => "History", :if => lambda{|tabs_renderer|
+  menu priority: 99, label: "History", if: lambda{|tabs_renderer|
     controller.current_ability.can?(:read, Version)
   }
   config.comments = false
@@ -11,7 +11,7 @@ ActiveAdmin.register Version do
       if v.item
         link_to(
           "#{v.item_type.underscore.humanize} ##{v.item_id}",
-          url_for(:controller => "admin/#{v.item.class.to_s.underscore.pluralize}", :action => 'show', :id => v.item_id)
+          url_for(:controller => "admin/#{v.item.class.to_s.underscore.pluralize}", action: 'show', id: v.item_id)
         )
       else
         "#{v.item_type.underscore.humanize} ##{v.item_id}"
@@ -27,7 +27,7 @@ ActiveAdmin.register Version do
       v.created_at.to_s :short 
     end
     column "User" do |v| 
-      user = User.where(:id => v.whodunnit).first
+      user = User.where(id: v.whodunnit).first
       if user
         (link_to user.title, admin_user_path(v.whodunnit))
       else

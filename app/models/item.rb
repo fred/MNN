@@ -6,42 +6,42 @@ class Item < ActiveRecord::Base
   attr_accessor :updated_reason, :share_twitter, :send_emails
 
   # Versioning System
-  has_paper_trail :meta => { :tag => :updated_reason }
+  has_paper_trail meta: { tag: :updated_reason }
 
   # Comment System
-  opinio_subjectum :conditions => {:approved => true}, :include => :owner
+  opinio_subjectum conditions: {approved: true}, include: :owner
 
   # Permalink URLS
   extend FriendlyId
-  friendly_id :title, :use => :slugged
+  friendly_id :title, use: :slugged
 
   # Relationships
   belongs_to :user
   belongs_to :category
   belongs_to :language
   has_one  :item_stat
-  has_many :attachments, :as => :attachable
-  has_many :twitter_shares,   :dependent => :destroy
-  has_many :email_deliveries, :dependent => :destroy
+  has_many :attachments, as: :attachable
+  has_many :twitter_shares,   dependent: :destroy
+  has_many :email_deliveries, dependent: :destroy
 
-  has_and_belongs_to_many :tags, :join_table => "taggings", 
-    :foreign_key => "taggable_id", :association_foreign_key => "tag_id"
+  has_and_belongs_to_many :tags, join_table: "taggings", 
+    foreign_key: "taggable_id", association_foreign_key: "tag_id"
 
-  has_and_belongs_to_many :general_tags, :join_table => "taggings", 
-    :foreign_key => "taggable_id", :association_foreign_key => "tag_id"
+  has_and_belongs_to_many :general_tags, join_table: "taggings", 
+    foreign_key: "taggable_id", association_foreign_key: "tag_id"
 
-  has_and_belongs_to_many :region_tags, :join_table => "taggings",
-    :foreign_key => "taggable_id", :association_foreign_key => "tag_id"
+  has_and_belongs_to_many :region_tags, join_table: "taggings",
+    foreign_key: "taggable_id", association_foreign_key: "tag_id"
 
-  has_and_belongs_to_many :country_tags, :join_table => "taggings",
-    :foreign_key => "taggable_id", :association_foreign_key => "tag_id"
+  has_and_belongs_to_many :country_tags, join_table: "taggings",
+    foreign_key: "taggable_id", association_foreign_key: "tag_id"
 
   # Nested Attributes
-  accepts_nested_attributes_for :attachments, :allow_destroy => true, :reject_if => lambda { |t| t['image'].nil? }
+  accepts_nested_attributes_for :attachments, allow_destroy: true, reject_if: lambda { |t| t['image'].nil? }
   
   # Validations
   validates_presence_of :title, :category_id, :published_at
-  validates_presence_of :body, :if => Proc.new { |item| item.youtube_id.blank? }
+  validates_presence_of :body, if: Proc.new { |item| item.youtube_id.blank? }
   validates_presence_of :published_at
   validate :record_freshness
   
@@ -55,22 +55,22 @@ class Item < ActiveRecord::Base
   ################
   ####  SOLR  ####
   ################
-  # searchable :auto_index => false, :auto_remove => false do # if using resque
+  # searchable auto_index: false, auto_remove: false do # if using resque
   searchable do
-    text :title, :boost => 2.4
-    text :abstract, :boost => 1.6
-    text :keywords, :boost => 5.0
-    text :category_title, :boost => 1.8
-    text :author_name, :boost => 2.2
+    text :title, boost: 2.4
+    text :abstract, boost:  1.6
+    text :keywords, boost:  5.0
+    text :category_title, boost:  1.8
+    text :author_name, boost:  2.2
     text :author_email
     text :article_source
     text :source_url
     text :body
     text :youtube_id
     integer :id
-    integer :category_id, :references => Category
-    integer :language_id, :references => Language
-    integer :user_id,     :references => User
+    integer :category_id, references: Category
+    integer :language_id, references: Language
+    integer :user_id,     references: User
     boolean :draft
     boolean :featured
     boolean :sticky
@@ -154,7 +154,7 @@ class Item < ActiveRecord::Base
       else
         send_time = self.published_at+180
       end
-      self.email_deliveries << EmailDelivery.new(:send_at => send_time)
+      self.email_deliveries << EmailDelivery.new(send_at: send_time)
     end
     true
   end
@@ -173,7 +173,7 @@ class Item < ActiveRecord::Base
   def create_twitter_share
     if !self.draft && (self.share_twitter.to_s=="1" or self.share_twitter==true) && self.twitter_shares.empty?
       Rails.logger.info("  Twitter: Creating Twitter Share for item: #{self.id}")
-      self.twitter_shares << TwitterShare.new(:enqueue_at => self.published_at+180)
+      self.twitter_shares << TwitterShare.new(enqueue_at: self.published_at+180)
     end
     true
   end
@@ -181,7 +181,7 @@ class Item < ActiveRecord::Base
   def twitter_status
     url  = self.title.truncate(115)
     url += " "
-    url += url_for(item_path(self, :host => "worldmathaba.net", :only_path => false, :protocol => 'http'))
+    url += url_for(item_path(self, host: "worldmathaba.net", only_path: false, protocol: 'http'))
     return url
   end
 
@@ -241,7 +241,7 @@ class Item < ActiveRecord::Base
   end
 
   def build_stat
-    self.item_stat = ItemStat.new(:views_counter => 0)
+    self.item_stat = ItemStat.new(views_counter: 0)
   end
 
   # Set to draft automatically upon creation
@@ -326,7 +326,7 @@ class Item < ActiveRecord::Base
       end
       without(:id, self.id)
       with(:draft, false)
-      paginate :page => 1, :per_page => limit
+      paginate page: 1, per_page: limit
     end
   end
 
@@ -342,17 +342,17 @@ class Item < ActiveRecord::Base
     where("published_at < ?", DateTime.now)
   end
   def self.not_draft
-    where(:draft => false)
+    where(draft: false)
   end
   def self.draft
-    where(:draft => true)
+    where(draft: true)
   end
 
   # Returns the top sticky item
   # Used on the Front End, joining attachments
   def self.top_sticky
     published.
-    where(:draft => false, :sticky => true).
+    where(draft: false, sticky: true).
     order("published_at DESC").
     includes(:attachments).
     first
@@ -362,7 +362,7 @@ class Item < ActiveRecord::Base
   # Used on the Front End, joining attachments
   def self.highlights(limit=6,offset=0)
     published.
-    where(:draft => false, :featured => true, :sticky => false).
+    where(draft: false, featured: true, sticky: false).
     order("published_at DESC").
     limit(limit).
     includes(:attachments).
@@ -374,7 +374,7 @@ class Item < ActiveRecord::Base
   # Used on the dashboard
   def self.recent_updated(limit=10)
     published.
-    where(:draft => false).
+    where(draft: false).
     where("updated_at > created_at").
     order("updated_at DESC").
     limit(limit).
@@ -402,8 +402,8 @@ class Item < ActiveRecord::Base
   # Returns the last 10 pending items (not draft anymore)
   # Used on the Admin Dashboard
   def self.pending(limit=10)
-    where(:published_at => nil).
-    where(:draft => false).
+    where(published_at: nil).
+    where(draft: false).
     order("updated_at DESC").
     limit(limit).
     all
@@ -435,14 +435,14 @@ class Item < ActiveRecord::Base
       end
 
       Item.create(
-        :title => title,
-        :published_at => time,
-        :body => body,
-        :author_name => author_name,
-        :source_url => item_id,
-        :draft => true,
-        :featured => false,
-        :user_id => user.id
+        title: title,
+        published_at: time,
+        body: body,
+        author_name: author_name,
+        source_url: item_id,
+        draft: true,
+        featured: false,
+        user_id: user.id
       )
     end
   end

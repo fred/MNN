@@ -21,7 +21,7 @@ class Ability
     # The third argument is an optional hash of conditions to further filter the objects.
     # For example, here the user can only update published articles.
     #
-    #   can :update, Article, :published => true
+    #   can :update, Article, published: true
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     
@@ -57,8 +57,8 @@ class Ability
     # also read most of other resources.
     if user.has_role? :author
       can :read,    Item
-      can :update,  Item, :user_id => user.id
-      can :destroy, Item, :user_id => user.id
+      can :update,  Item, user_id: user.id
+      can :destroy, Item, user_id: user.id
       can :create,  Item
       can [:read, :create, :update], Attachment
       can :read,    [ItemStat,Category,Tag,Language,Version,Page]
@@ -75,7 +75,7 @@ class Ability
     # A Reader can read all items that are not draft
     # A Reader can read all other records
     if user.has_role? :reader
-      can :read, Item, :draft => false
+      can :read, Item, draft: false
       can :read, [Attachment,ItemStat,Category,Tag,Language,Version]
     end
     
@@ -84,13 +84,13 @@ class Ability
       can :read, [Tag,Category,Attachment,Score,Item,Language,Page,ItemStat,Version]
     end
 
-    # Role.create!(:title => "Admin", :description => "Only For Administration Purposes")
-    # Role.create!(:title => "Publisher", :description => "Publish Articles to Main Site")
-    # Role.create!(:title => "Destroyer", :description => "Delete Others Articles")
-    # Role.create!(:title => "Editor", :description => "Edit Others Articles")
-    # Role.create!(:title => "Writer", :description => "Create New Articles")
-    # Role.create!(:title => "Reader", :description => "Can Read all Articles")
-    # Role.create!(:title => "User", :description => "Can Read, Edit and Delete own Articles")
+    # Role.create!(title: "Admin", description: "Only For Administration Purposes")
+    # Role.create!(title: "Publisher", description: "Publish Articles to Main Site")
+    # Role.create!(title: "Destroyer", description: "Delete Others Articles")
+    # Role.create!(title: "Editor", description: "Edit Others Articles")
+    # Role.create!(title: "Writer", description: "Create New Articles")
+    # Role.create!(title: "Reader", description: "Can Read all Articles")
+    # Role.create!(title: "User", description: "Can Read, Edit and Delete own Articles")
     
   end
 end

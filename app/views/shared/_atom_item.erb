@@ -3,8 +3,8 @@
     <div>
       <h3>
       <%= sanitize item.abstract,
-            :tags => %w(table tr td p b i u strong ol ul li dl dd div span h1 h2 h3 h4 h5),
-            :attributes => %w(id class style) %>
+            tags: %w(table tr td p b i u strong ol ul li dl dd div span h1 h2 h3 h4 h5),
+            attributes: %w(id class style) %>
       </h3>
     </div>
     <div>
@@ -16,11 +16,11 @@
       <% end %>
       <%= truncate(
             sanitize(item.body,
-              :tags => %w(),
-              :attributes => %w()
+              tags: %w(),
+              attributes: %w()
             ),
-            :length => 400,
-            :omission => ' ... (click link to read full article)'
+            length: 400,
+            omission: ' ... (click link to read full article)'
           )
       %>
       </p>

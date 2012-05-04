@@ -6,7 +6,7 @@ describe "/shared/items" do
     @item2 = FactoryGirl.create(:item2)
     @items = Item.all
     assign(:items, @items)
-    render '/shared/items', :format => [:atom], :handlers => [:builder]
+    render '/shared/items', format: [:atom], handlers: [:builder]
   end
   
   it "should have a channel element" do

@@ -13,13 +13,13 @@ class Category < ActiveRecord::Base
   
   # Permalink URLS
   extend FriendlyId
-  friendly_id :title, :use => :slugged
+  friendly_id :title, use: :slugged
   
   def published_items
     self.
       items.
       includes(:attachments).
-      where(:draft => false).
+      where(draft: false).
       where("published_at is not NULL").
       where("published_at < '#{Time.now.to_s(:db)}'").
       order("published_at DESC")
@@ -29,7 +29,7 @@ class Category < ActiveRecord::Base
     self.
       items.
       includes(:attachments).
-      where(:draft => false).
+      where(draft: false).
       where("published_at is not NULL").
       where("published_at < '#{Time.now.to_s(:db)}'").
       order("published_at DESC").
@@ -39,7 +39,7 @@ class Category < ActiveRecord::Base
   def last_item
     self.
       items.
-      where(:draft => false).
+      where(draft: false).
       where("published_at is not NULL").
       where("published_at < '#{Time.now.to_s(:db)}'").
       order("updated_at DESC").

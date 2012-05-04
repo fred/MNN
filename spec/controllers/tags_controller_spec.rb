@@ -17,7 +17,7 @@ describe TagsController do
 
   describe "GET 'show'" do
     it "returns http success" do
-      get 'show', :id => @tag.id
+      get 'show', id: @tag.id
       response.should be_success
     end
   end

@@ -3,10 +3,10 @@ require 'spec_helper'
 describe "pages/show" do
   before(:each) do
     @page = assign(:page, stub_model(Page,
-      :title => "Title",
-      :link_title => "Link Title",
-      :priority => 1,
-      :body => "MyText"
+      title: "Title",
+      link_title: "Link Title",
+      priority: 1,
+      body: "MyText"
     ))
   end
 

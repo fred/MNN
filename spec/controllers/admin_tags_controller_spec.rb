@@ -32,17 +32,17 @@ describe Admin::TagsController do
       end
       describe "GET show" do
         it "Should Show @tag" do
-          get :show, :id => @tag.id
+          get :show, id: @tag.id
           assigns(:tag).should eq(@tag)
         end
       end
       describe "GET edit" do
         it "Should have @tag" do
-          get :edit, :id => @tag.id
+          get :edit, id: @tag.id
           assigns(:tag).should eq(@tag)
         end
         it "Should have @tag not as new record" do
-          get :edit, :id => @tag.id
+          get :edit, id: @tag.id
           assigns(:tag).should_not be_new_record
         end
       end

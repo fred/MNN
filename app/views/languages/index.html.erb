@@ -4,9 +4,9 @@
       <h1>
         <%= link_to language.description, language %>
         <%= link_to(
-              image_tag("icons/social/rss_16.png", :alt => "RSS for #{language.description}"), 
-              language_items_path(language, :format => "rss"),
-              :title => "RSS feed for #{language.description} News only"
+              image_tag("icons/social/rss_16.png", alt: "RSS for #{language.description}"), 
+              language_items_path(language, format: "rss"),
+              title: "RSS feed for #{language.description} News only"
             )
         %>
       </h1>
@@ -15,15 +15,15 @@
           <li class="list_item" id="item_<%=item.id%>">
             <% if index==0 && item.has_image? %>
               <%= link_to(
-                    image_tag(item.main_image.image.small, :class => "list_item_image"),
+                    image_tag(item.main_image.image.small, class: "list_item_image"),
                     item,
-                    :title => item.abstract
+                    title: item.abstract
                   )
               %>
-              <%= link_to item.title.to_s.truncate(100), item, :title => item.abstract %>
+              <%= link_to item.title.to_s.truncate(100), item, title: item.abstract %>
               <span class="abstract"><%= item.abstract.to_s.truncate(80) %></span>
             <% else %>
-              <%= link_to item.title.to_s.truncate(160), item, :title => item.abstract %>
+              <%= link_to item.title.to_s.truncate(160), item, title: item.abstract %>
             <% end %>
           </li>
         <% end %>

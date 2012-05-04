@@ -8,15 +8,15 @@ describe CategoriesController do
     end
 
     it "routes to #show" do
-      get("/categories/1").should route_to("categories#show", :id => "1")
+      get("/categories/1").should route_to("categories#show", id: "1")
     end
 
     it "routes to #show.rss" do
-      get("/categories/1.rss").should route_to("categories#show", :id => "1", :format => "rss")
+      get("/categories/1.rss").should route_to("categories#show", id: "1", format: "rss")
     end
 
     it "routes to #show.atom" do
-      get("/categories/1.atom").should route_to("categories#show", :id => "1", :format => "atom")
+      get("/categories/1.atom").should route_to("categories#show", id: "1", format: "atom")
     end
 
   end

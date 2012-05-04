@@ -23,7 +23,7 @@ class ItemSweeper < ActionController::Caching::Sweeper
   
   def expire_cache_for(item)
     # Expire the index page now that we added a new item
-    # expire_page(:controller => 'items', :action => 'index')
+    # expire_page(controller: 'items', action: 'index')
     # Expire a fragment
     expire_fragment("highlights")
     # expire_fragment("item/#{item.id}")

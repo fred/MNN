@@ -5,11 +5,11 @@ New Post at http://WorldMathaba.net
 
 <%= truncate(
       sanitize(@item.body,
-        :tags => %w(),
-        :attributes => %w()
+        tags: %w(),
+        attributes: %w()
       ),
-      :length => 400,
-      :omission => ' ... (click link to read full article)'
+      length: 400,
+      omission: ' ... (click link to read full article)'
     )
 %>
 

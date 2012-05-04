@@ -16,7 +16,7 @@ class Comment < ActiveRecord::Base
   attr_accessible :body, :commentable_id, :commentable_type
   
   # belongs_to :user
-  belongs_to :approving_user, :foreign_key => :approved_by, :class_name => "User"
+  belongs_to :approving_user, foreign_key: :approved_by, class_name: "User"
   
   before_create :check_for_spam
   after_create  :email_notify
@@ -71,21 +71,20 @@ class Comment < ActiveRecord::Base
   
   def akismet_attributes
     {
-      :key                  => AKISMET_KEY,
-      :blog                 => 'http://worldmathaba.net',
-      :user_ip              => user_ip,
-      :user_agent           => user_agent,
-      :comment_author       => author,
-      :comment_author_email => author_email,
-      # :comment_author_url   => site_url,
-      :comment_content      => body
+      key:                  AKISMET_KEY,
+      blog:                 'http://worldmathaba.net',
+      user_ip:              user_ip,
+      user_agent:           user_agent,
+      comment_author:       author,
+      comment_author_email: author_email,
+      comment_content:      body
     }
   end
   
   
   # Returns the last 10 approved comments
   def self.recent(limit=10)
-    where(:approved => true).
+    where(approved: true).
     order("updated_at DESC").
     includes([:owner, :commentable]).
     limit(limit).
@@ -94,7 +93,7 @@ class Comment < ActiveRecord::Base
 
   # Returns the last 10 pending comments
   def self.pending(limit=10)
-    where(:approved => false).
+    where(approved: false).
     order("updated_at DESC").
     limit(limit).
     all
@@ -102,7 +101,7 @@ class Comment < ActiveRecord::Base
   
   # Returns the last 10 suspicious comments
   def self.suspicious(limit=10)
-    where(:suspicious => true).
+    where(suspicious: true).
     order("updated_at DESC").
     limit(limit).
     all
@@ -110,7 +109,7 @@ class Comment < ActiveRecord::Base
   
   # Returns the last 10 comments marked as spam
   def self.as_spam(limit=10)
-    where(:marked_spam => true).
+    where(marked_spam: true).
     includes([:owner, :commentable]).
     order("updated_at DESC").
     limit(limit).

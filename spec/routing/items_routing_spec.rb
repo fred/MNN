@@ -12,18 +12,18 @@ describe ItemsController do
     end
 
     it "routes to #show" do
-      get("/items/1").should route_to("items#show", :id => "1")
+      get("/items/1").should route_to("items#show", id: "1")
     end
     
     it "routes to #index.rss" do
-      get("/rss").should route_to("items#index", :format => "rss")
+      get("/rss").should route_to("items#index", format: "rss")
     end
     it "routes to #index.atom" do
-      get("/atom").should route_to("items#index", :format => "atom")
+      get("/atom").should route_to("items#index", format: "atom")
     end
 
     # it "routes to #edit" do
-    #   get("/items/1/edit").should route_to("items#edit", :id => "1")
+    #   get("/items/1/edit").should route_to("items#edit", id: "1")
     # end
     # 
     # it "routes to #create" do
@@ -31,11 +31,11 @@ describe ItemsController do
     # end
     # 
     # it "routes to #update" do
-    #   put("/items/1").should route_to("items#update", :id => "1")
+    #   put("/items/1").should route_to("items#update", id: "1")
     # end
     # 
     # it "routes to #destroy" do
-    #   delete("/items/1").should route_to("items#destroy", :id => "1")
+    #   delete("/items/1").should route_to("items#destroy", id: "1")
     # end
 
   end

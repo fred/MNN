@@ -17,7 +17,7 @@ describe Language do
       assert_equal false, @language.valid?
     end
     it "should require unique locale" do
-      new_locale = Language.new(:locale => @language.locale, :description => "blah blah")
+      new_locale = Language.new(locale: @language.locale, description: "blah blah")
       assert_equal false, new_locale.valid?
     end
   end

@@ -12,11 +12,11 @@
 #     end
 # 
 #     it "routes to #show" do
-#       get("/contacts/1").should route_to("contacts#show", :id => "1")
+#       get("/contacts/1").should route_to("contacts#show", id: "1")
 #     end
 # 
 #     it "routes to #edit" do
-#       get("/contacts/1/edit").should route_to("contacts#edit", :id => "1")
+#       get("/contacts/1/edit").should route_to("contacts#edit", id: "1")
 #     end
 # 
 #     it "routes to #create" do
@@ -24,11 +24,11 @@
 #     end
 # 
 #     it "routes to #update" do
-#       put("/contacts/1").should route_to("contacts#update", :id => "1")
+#       put("/contacts/1").should route_to("contacts#update", id: "1")
 #     end
 # 
 #     it "routes to #destroy" do
-#       delete("/contacts/1").should route_to("contacts#destroy", :id => "1")
+#       delete("/contacts/1").should route_to("contacts#destroy", id: "1")
 #     end
 # 
 #   end

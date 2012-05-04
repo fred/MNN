@@ -2,10 +2,10 @@ ActiveAdmin.register Item do
   controller.authorize_resource
   config.sort_order = "id_desc"
   
-  menu :priority => 1, :if => lambda{|tabs_renderer|
+  menu priority: 1, if: lambda{|tabs_renderer|
     controller.current_ability.can?(:read, Item)
   }
-  sidebar :per_page, :partial => "per_page", :only => :index
+  sidebar :per_page, partial: "per_page", :only => :index
 
   before_filter :only => :index do
     if params[:per_page]
@@ -23,7 +23,7 @@ ActiveAdmin.register Item do
         link_to(
           image_tag(item.main_image.image.thumb.url),
           admin_item_path(item),
-          :title => item.abstract,
+          title: item.abstract,
         )
       elsif item.youtube_id && item.youtube_img
         link_to(
@@ -31,52 +31,52 @@ ActiveAdmin.register Item do
             :class =>"youtube_mini"
           ),
           admin_item_path(item),
-          :title => "Youtube ID: #{item.youtube_id}"
+          title: "Youtube ID: #{item.youtube_id}"
         )
       end
     end
     column :user
-    column "Title", :sortable => :title do |item|
-      link_to item.title, admin_item_path(item), :title => item.abstract, :class => "featured_#{item.featured}"
+    column "Title", sortable: :title do |item|
+      link_to item.title, admin_item_path(item), title: item.abstract, class: "featured_#{item.featured}"
     end
-    column :category, :sortable => :category_id
+    column :category, sortable: :category_id
     column :keywords
     column :tags do |item|
       item.tag_list(", ")
     end
-    column :draft, :sortable => :draft do |item|
+    column :draft, sortable: :draft do |item|
       bol_to_word(item.draft)
     end
-    column "Youtube", :youtube_id, :sortable => :youtube_id do |item|
+    column "Youtube", :youtube_id, sortable: :youtube_id do |item|
       if item.youtube_id
         link_to(item.youtube_id,
           "http://www.youtube.com/watch?v=#{item.youtube_id}",
-          :title => "Open Youtube video page",
-          :target => "blank"
+          title: "Open Youtube video page",
+          target: "blank"
         )
       end
     end
-    column "Highlt", :featured, :sortable => :featured do |item|
+    column "Highlt", :featured, sortable: :featured do |item|
       bol_to_word(item.featured)
     end
-    column "Stick", :sticky, :sortable => :sticky do |item|
+    column "Stick", :sticky, sortable: :sticky do |item|
       bol_to_word(item.sticky)
     end
-    column "Lang", :language, :sortable => :language_id do |item|
+    column "Lang", :language, sortable: :language_id do |item|
       item.language.description if item.language
     end
-    column "Updated", :sortable => :updated_at do |item|
+    column "Updated", sortable: :updated_at do |item|
       item.updated_at.localtime.to_s(:short)
     end
-    column "Live", :sortable => :published_at do |item|
+    column "Live", sortable: :published_at do |item|
       item.published_at.localtime.to_s(:short) if item.published_at
     end
-    column "Site", :sortable => false do |item|
+    column "Site", sortable: false do |item|
       link_to "Show", item
     end
     default_actions
   end
-  form :partial => "form"
+  form partial: "form"
   
   controller do
     cache_sweeper :item_sweeper
@@ -144,7 +144,7 @@ ActiveAdmin.register Item do
       end
       respond_to do |format|
         format.html {redirect_to admin_items_path}
-        format.js {render :layout => false}
+        format.js {render layout: false}
         format.json
         format.xml
       end

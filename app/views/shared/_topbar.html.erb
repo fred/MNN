@@ -3,59 +3,57 @@
 <div class="topbar" data-scrollspy="scrollspy" >
   <div class="topbar-inner">
     <div class="container-fluid">
-      <%= link_to "World Mathaba", root_path, :title => "World Mathaba", :class => "brand" %>
+      <%= link_to "World Mathaba", root_path, title: "World Mathaba", class: "brand" %>
       
       <ul class="nav">
-        
-        <li id="home_link"><%= link_to "Home", root_path, :title => "Home" %></li>
-        
-        <li class="dropdown" data-dropdown="dropdown">
-          <a href="#" class="dropdown-toggle">Sections</a>
-          <ul class="dropdown-menu">
-            <% Category.order("title ASC").all.each do |category|%>
-              <li><%= link_to category.title, category %></li>
-            <% end %>
-          </ul>
-        </li>
-        
-        <li class="dropdown" data-dropdown="dropdown">
-          <a href="#" class="dropdown-toggle">Regions</a>
-          <ul class="dropdown-menu">
-            <% RegionTag.order("title ASC").all.each do |tag|%>
-              <li><%= link_to tag.title, tag_path(tag) %></li>
-            <% end %>
-          </ul>
-        </li>
-        
-        <li class="dropdown" data-dropdown="dropdown">
-          <a href="#" class="dropdown-toggle">Languages</a>
-          <ul class="dropdown-menu">
-            <% Language.order("locale ASC").all.each do |language|%>
-              <li><%= link_to language.description, language %></li>
-            <% end %>
-          </ul>
-        </li>
-        
+        <% cache("topbar/#{Time.now.hour}") do %>
+          <li id="home_link"><%= link_to "Home", root_path, title: "Home" %></li>
+          <li class="dropdown" data-dropdown="dropdown">
+            <a href="#" class="dropdown-toggle">Sections</a>
+            <ul class="dropdown-menu">
+              <% Category.order("title ASC").all.each do |category|%>
+                <li><%= link_to category.title, category %></li>
+              <% end %>
+            </ul>
+          </li>
+          <li class="dropdown" data-dropdown="dropdown">
+            <a href="#" class="dropdown-toggle">Regions</a>
+            <ul class="dropdown-menu">
+              <% RegionTag.order("title ASC").all.each do |tag|%>
+                <li><%= link_to tag.title, tag_path(tag) %></li>
+              <% end %>
+            </ul>
+          </li>
+          <li class="dropdown" data-dropdown="dropdown">
+            <a href="#" class="dropdown-toggle">Languages</a>
+            <ul class="dropdown-menu">
+              <% Language.order("locale ASC").all.each do |language|%>
+                <li><%= link_to language.description, language %></li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+
         <li class="dropdown" data-dropdown="dropdown">
           <a href="#" class="dropdown-toggle">Account</a>
           <ul class="dropdown-menu">
             <% if current_user %>
-              <li><%= link_to "Profile", edit_user_registration_url(:protocol => "https"), :title => "Edit your Profile" %></li>
-              <li><%= link_to 'Sign out', destroy_user_session_url(:protocol => "https"), :method => :delete %></li>
+              <li><%= link_to "Profile", edit_user_registration_url(protocol: "https"), title: "Edit your Profile" %></li>
+              <li><%= link_to 'Sign out', destroy_user_session_url(protocol: "https"), method: :delete %></li>
             <% elsif current_admin_user %>
-              <li><%= link_to "Admin", admin_dashboard_url(:protocol => "https") %></li>
-              <li><%= link_to "Profile", edit_admin_user_registration_path, :title => "Edit your Profile" %></li>
-              <li><%= link_to 'Sign out', destroy_admin_user_session_url(:protocol => 'https'), :method => :delete %></li>
+              <li><%= link_to "Admin", admin_dashboard_url(protocol: "https") %></li>
+              <li><%= link_to "Profile", edit_admin_user_registration_path, title: "Edit your Profile" %></li>
+              <li><%= link_to 'Sign out', destroy_admin_user_session_url(protocol: 'https'), method: :delete %></li>
             <% else %>
-              <li><%= link_to "Sign in", new_session_url(:user, :protocol => "https"), :title => "Login" %></li>
+              <li><%= link_to "Sign in", new_session_url(:user, protocol: "https"), title: "Login" %></li>
               <%- if Devise.mappings[:user].registerable?  %>
-                <li><%= link_to "Sign up", new_registration_url(:user, :protocol => "https"), :title => "Sign up" %></li>
+                <li><%= link_to "Sign up", new_registration_url(:user, protocol: "https"), title: "Sign up" %></li>
               <% end -%>
               <%- if Devise.mappings[:user].recoverable? && controller_name != 'passwords' %>
-                <li><%= link_to "Forgot your password?", new_password_url(:user, :protocol => "https") %></li>
+                <li><%= link_to "Forgot your password?", new_password_url(:user, protocol: "https") %></li>
               <% end -%>
               <%- if Devise.mappings[:user].confirmable? && controller_name != 'confirmations' %>
-                <li><%= link_to "Didn't receive confirmation instructions?", new_confirmation_url(:user, :protocol => "https") %></li>
+                <li><%= link_to "Didn't receive confirmation instructions?", new_confirmation_url(:user, protocol: "https") %></li>
               <% end -%>
             <% end %>
           </ul>
@@ -63,11 +61,11 @@
       </ul>
     
       <% if user_signed_in? %>
-        <p class="pull-right"><%= link_to current_user.title, edit_user_registration_url(:protocol => 'https') %></p>
+        <p class="pull-right"><%= link_to current_user.title, edit_user_registration_url(protocol: 'https') %></p>
       <% elsif admin_user_signed_in? %>
-        <p class="pull-right"><%= link_to current_admin_user.title, edit_admin_user_registration_url(:protocol => 'https') %></p>
+        <p class="pull-right"><%= link_to current_admin_user.title, edit_admin_user_registration_url(protocol: 'https') %></p>
       <% else %>
-        <p class="pull-right"><%= link_to "Sign in", new_session_url(:user, :protocol => 'https') %></p>
+        <p class="pull-right"><%= link_to "Sign in", new_session_url(:user, protocol: 'https') %></p>
       <% end %>
     </div>
   </div>

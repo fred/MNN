@@ -1,55 +1,55 @@
 <footer>
   <ul class="footer_menu">
     
-    <% Page.all(:order => "priority ASC").each do |page| %>
-      <li><%= link_to page.title, page, :title => page.title %></li>
+    <% Page.all(order: "priority ASC").each do |page| %>
+      <li><%= link_to page.title, page, title: page.title %></li>
     <% end %>
     
-      <li><%= link_to "Feeds", feed_path, :title => "Multiple RSS Feeds" %></li>
+      <li><%= link_to "Feeds", feed_path, title: "Multiple RSS Feeds" %></li>
     
     <% if current_user %>
       <li>
         <%= link_to "Edit Profile", 
-              edit_user_registration_url(:protocol => 'https'),
-              :title => "Edit your Profile information"
+              edit_user_registration_url(protocol: 'https'),
+              title: "Edit your Profile information"
         %>
       </li>
       <li>
         <%= link_to 'Logout', 
-              destroy_user_session_url(:protocol => 'https'),
-              :method => :delete, :title => "Logout"
+              destroy_user_session_url(protocol: 'https'),
+              method: :delete, title: "Logout"
         %>
       </li>
     <% elsif current_admin_user %>
       <li>
         <%= link_to "Edit Profile", 
-              edit_admin_user_registration_url(:protocol => 'https'),
-              :title => "Edit your Profile information"
+              edit_admin_user_registration_url(protocol: 'https'),
+              title: "Edit your Profile information"
         %>
       </li>
       <li>
         <%= link_to 'Logout', 
-              destroy_admin_user_session_url(:protocol => 'https'),
-              :method => :delete, :title => "Logout"
+              destroy_admin_user_session_url(protocol: 'https'),
+              method: :delete, title: "Logout"
         %>
       </li>
     <% else %>
       <li>
-        <%= link_to "Login", new_session_url(:user, :protocol => 'https'), :title => "Login Securely" %>
+        <%= link_to "Login", new_session_url(:user, protocol: 'https'), title: "Login Securely" %>
       </li>
       <%- if Devise.mappings[:user].registerable?  %>
         <li>
           <%= link_to "Registration", 
-                new_registration_url(:user, :protocol => 'https'),
-                :title => "Please Join us" 
+                new_registration_url(:user, protocol: 'https'),
+                title: "Please Join us" 
           %>
         </li>
       <% end -%>
       <%- if Devise.mappings[:user].recoverable? && controller_name != 'passwords' %>
         <li>
           <%= link_to "Forgot your password?",
-                new_password_url(:user, :protocol => 'https'), 
-                :title => "Click here to recover your password." 
+                new_password_url(:user, protocol: 'https'), 
+                title: "Click here to recover your password." 
           %>
         </li>
       <% end -%>

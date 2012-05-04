@@ -20,7 +20,7 @@
         <br/>
         <%= link_to 'Cancel', 'javascript:void(0)', :onclick => "cancel_image();return false;"%>
     </div>
-      <%= link_to_function( image_tag( p.image.url( :small_thumb ), :alt => p.image.name ), "select_image(this)" )%>
+      <%= link_to_function( image_tag( p.image.url( :small_thumb ), alt: p.image.name ), "select_image(this)" )%>
     <% else%>
       <%= link_to p.original_file_name, p.original.url, :onclick => "select_thumb(this);return false;"%>&nbsp;&nbsp;&nbsp;
     <% end%>
@@ -29,7 +29,7 @@
 </ul>
 <br style="clear:both;" />
 <div style="float:right;margin-bottom:10px;">
-<%= will_paginate @attachments, :class => "pagination", :previous_label => "&laquo; previous",  :next_label => "next &raquo;", :renderer => 'RemoteLinkRenderer' %>
+<%= will_paginate @attachments, class: "pagination", :previous_label => "&laquo; previous",  :next_label => "next &raquo;", :renderer => 'RemoteLinkRenderer' %>
 </div>
 <% else %>
 No <%= params[ :media ]%> Uploaded Yet.

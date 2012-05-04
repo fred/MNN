@@ -2,7 +2,7 @@
 ActiveAdmin.register TwitterShare do
   controller.authorize_resource
   config.comments = false
-  menu :parent => "Items", :priority => 12, :label => "Twitter Shares", :if => lambda{|tabs_renderer|
+  menu parent: "Items", priority: 12, label: "Twitter Shares", if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, TwitterShare)
   }
   actions  :index

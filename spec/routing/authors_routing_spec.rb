@@ -8,15 +8,15 @@ describe AuthorsController do
     end
 
     it "routes to #show" do
-      get("/authors/1").should route_to("authors#show", :id => "1")
+      get("/authors/1").should route_to("authors#show", id: "1")
     end
 
     it "routes to #show.rss" do
-      get("/authors/1.rss").should route_to("authors#show", :id => "1", :format => "rss")
+      get("/authors/1.rss").should route_to("authors#show", id: "1", format: "rss")
     end
 
     it "routes to #show.atom" do
-      get("/authors/1.atom").should route_to("authors#show", :id => "1", :format => "atom")
+      get("/authors/1.atom").should route_to("authors#show", id: "1", format: "atom")
     end
 
   end

@@ -2,10 +2,10 @@
 ActiveAdmin.register User do
   controller.authorize_resource
   config.comments = false
-  menu :parent => "Members", :priority => 24, :if => lambda{|tabs_renderer|
+  menu parent: "Members", priority: 24, if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, User)
   }
-  form :partial => "form"
+  form partial: "form"
   # show do
   #   render "show"
   # end
@@ -16,7 +16,7 @@ ActiveAdmin.register User do
     column :ranking
     column :role_titles
     column :type
-    column "Subscribed", :sortable => false do |user|
+    column "Subscribed", sortable: false do |user|
       user.has_subscription?
     end
     column "Logins", :sign_in_count

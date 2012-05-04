@@ -22,11 +22,11 @@ describe ActiveAdmin::Devise::SessionsController do
     end
     describe "POST create" do
       it "should login and redirect to admin_dashboard_path" do
-        post :create, {:admin_user => {:email => @user.email, :password => "welcome"}}
+        post :create, {admin_user: {email: @user.email, password: "welcome"}}
         response.should redirect_to(admin_dashboard_path)
       end
       it "should login and assign admin_current_user" do
-        post :create, {:admin_user => {:email => @user.email, :password => "welcome"}}
+        post :create, {admin_user: {email: @user.email, password: "welcome"}}
         subject.current_admin_user.should_not be_nil
       end
     end

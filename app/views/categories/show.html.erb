@@ -1,11 +1,11 @@
 <% content_for :head do %>
-  <%= auto_discovery_link_tag(:rss, :action => 'show', :id => @category.id, :format => "rss") %>
-  <%= auto_discovery_link_tag(:atom, :action => 'show', :id => @category.id, :format => "atom") %>
+  <%= auto_discovery_link_tag(:rss, action: 'show', id: @category.id, format: "rss") %>
+  <%= auto_discovery_link_tag(:atom, action: 'show', id: @category.id, format: "atom") %>
 <% end %>
 
 
 <% @items.each do |item| %>
-  <%= render :partial => "/shared/item", :locals => {:item => item } %>
+  <%= render partial: "/shared/item", locals: {item: item } %>
 <% end %>
 
 <% content_for :breadcrumb do %>
@@ -18,9 +18,9 @@
   <li class="active">
     <%= @category.title %>
     <%= link_to(
-          image_tag("icons/social/rss_16.png", :alt => "RSS for #{@category.title}"), 
-          category_path(@category, :format => "rss"),
-          :title => "RSS feed for #{@category.title} items"
+          image_tag("icons/social/rss_16.png", alt: "RSS for #{@category.title}"), 
+          category_path(@category, format: "rss"),
+          title: "RSS feed for #{@category.title} items"
         )
     %>
   </li>

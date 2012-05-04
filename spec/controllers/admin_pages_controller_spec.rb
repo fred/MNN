@@ -32,17 +32,17 @@ describe Admin::PagesController do
       end
       describe "GET show" do
         it "Should Show @page" do
-          get :show, :id => @page.id
+          get :show, id: @page.id
           assigns(:page).should eq(@page)
         end
       end
       describe "GET edit" do
         it "Should have @page" do
-          get :edit, :id => @page.id
+          get :edit, id: @page.id
           assigns(:page).should eq(@page)
         end
         it "Should have @page not as new record" do
-          get :edit, :id => @page.id
+          get :edit, id: @page.id
           assigns(:page).should_not be_new_record
         end
       end

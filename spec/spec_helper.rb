@@ -31,7 +31,7 @@ RSpec.configure do |config|
   # :documentation, :progress, :html, :textmate
   config.formatter = :documentation
   
-  config.include Devise::TestHelpers, :type => :controller
+  config.include Devise::TestHelpers, type: :controller
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -61,13 +61,13 @@ end
 module ItemSpecHelper
   def valid_item_attributes
     { 
-      :category_id => 1,
-      :title => 'Some Listing',
-      :abstract => 'Some Long Abstract',
-      :body => "some body...",
-      :draft => false,
-      :featured => false,
-      :published_at => Time.now-3600
+      category_id: 1,
+      title: 'Some Listing',
+      abstract: 'Some Long Abstract',
+      body: "some body...",
+      draft: false,
+      featured: false,
+      published_at: Time.now-3600
     }
   end
 end
@@ -75,10 +75,10 @@ end
 module UserSpecHelper
   def valid_user_attributes
     { 
-      :email => "welcome@gmail.com",
-      :name => 'My Name',
-      :password => 'welcome',
-      :password_confirmation => 'welcome',
+      email: "welcome@gmail.com",
+      name: 'My Name',
+      password: 'welcome',
+      password_confirmation: 'welcome',
     }
   end
 end

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" <%= yield(:html_tag) %>>
   <head>
-    <%= render :partial => "/shared/head" %>
+    <%= render partial: "/shared/head" %>
     <%= stylesheet_link_tag "application" %>
     <%= yield(:stylesheets) %>
     <%= javascript_include_tag "application" %>
@@ -12,16 +12,16 @@
       <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <%= yield(:head) %>
-    <%= render :partial => "/shared/ga" %>
+    <%= render partial: "/shared/ga" %>
   </head>
   
   <body>
-    <%= render :partial => "/shared/topbar" %>
+    <%= render partial: "/shared/topbar" %>
 
     <div class="container-fluid">
       
       <%# cache("sidebar") do %>
-        <%= render :partial => "/shared/sidebar" %>
+        <%= render partial: "/shared/sidebar" %>
       <%# end %>
       
       <div class="content">
@@ -30,9 +30,9 @@
             <%= yield :breadcrumb %>
           </ul>
         <% end %>
-        <%#= render :partial => "/shared/highlights" %>
+        <%#= render partial: "/shared/highlights" %>
         <%= yield %>
-        <%= render :partial => "/shared/footer" %>
+        <%= render partial: "/shared/footer" %>
       </div>
     </div>
     <%= yield(:footer) %>

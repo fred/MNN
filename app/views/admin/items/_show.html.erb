@@ -61,8 +61,8 @@
         <% unless @item.youtube_id.blank? %>
           <b><%= link_to(@item.youtube_id.to_s,
               "http://www.youtube.com/watch?v=#{@item.youtube_id}",
-              :title => "Open Youtube video page",
-              :target => "blank"
+              title: "Open Youtube video page",
+              target: "blank"
             )
           %></b>
         <% end %>
@@ -74,18 +74,18 @@
           Youtube Available Screenshots:
           <br />
           <%= image_tag("https://img.youtube.com/vi/#{@item.youtube_id}/1.jpg",
-                :alt => "screnshot 1", :title => "screnshot 1")
+                alt: "screnshot 1", title: "screnshot 1")
           %>
           <%= image_tag("https://img.youtube.com/vi/#{@item.youtube_id}/2.jpg",
-                :alt => "screnshot 2", :title => "screnshot 2")
+                alt: "screnshot 2", title: "screnshot 2")
           %>
           <%= image_tag("https://img.youtube.com/vi/#{@item.youtube_id}/3.jpg",
-                :alt => "screnshot 3", :title => "screnshot 3")
+                alt: "screnshot 3", title: "screnshot 3")
           %>
         </p>
       <% end %>
       <p>
-        <%= render :partial => "/shared/youtube_video" %>
+        <%= render partial: "/shared/youtube_video" %>
       </p>
     </div>
   </div>
@@ -99,7 +99,7 @@
       <div class="attributes_table item">
         <ul>
           <% @related.results.each do |item| %>
-            <li><%= link_to item.title, admin_item_path(item), :title => item.abstract %></li>
+            <li><%= link_to item.title, admin_item_path(item), title: item.abstract %></li>
           <% end %>
         </ul>
       </div>
@@ -212,16 +212,16 @@
           <span class='image'>
             <h3>Image</h3>
             <%= link_to(
-                image_tag(attachment.image.medium.url, :class => "show_item_img"), 
+                image_tag(attachment.image.medium.url, class: "show_item_img"), 
                 admin_attachment_path(attachment),
-                :title => "Show full size"
+                title: "Show full size"
               ) 
             %>
             <p><%= attachment.description %></p>
             <p>
               <%= link_to "Edit", edit_admin_attachment_path(attachment) %> - 
-              <%= link_to "Delete", admin_attachment_path(attachment), :method => 'delete', 
-                    :confirm => "Are You sure you want to delete this Image?" 
+              <%= link_to "Delete", admin_attachment_path(attachment), method: 'delete', 
+                    confirm: "Are You sure you want to delete this Image?" 
               %>
             </p>
           </span>
@@ -238,7 +238,7 @@
     <div class="attributes_table item">
       <% @item.versions.each do |v| %>
         <% if v.whodunnit %>
-          <% user = User.where(:id => v.whodunnit).first %>
+          <% user = User.where(id: v.whodunnit).first %>
           <p>
             <%= link_to v.event,admin_version_path(v) %>
             by <%= link_to(user.title, admin_user_path(v.whodunnit)) if user %> 

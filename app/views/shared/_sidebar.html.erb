@@ -1,24 +1,23 @@
 <div class="sidebar">
   <div class="well">
-    <%= link_to(image_tag("icons/social/rss_32.png", :width => 32, :height => 32),
+    <%= link_to(image_tag("icons/social/rss_32.png", width: 32, height: 32),
           feed_path,
-          :title => "Multiple RSS Feeds")
+          title:  "Multiple RSS Feeds")
     %>
-    <%= link_to(image_tag("icons/social/twitter_32.png", :width => 32, :height => 32),
-          twitter_link, :title => "Visit our Twitter")
+    <%= link_to(image_tag("icons/social/twitter_32.png", width: 32, height: 32),
+          twitter_link, title:  "Visit our Twitter")
     %>
-    <%#= link_to(image_tag("icons/social/diaspora.png"), "https://social.mathaba.net", :title => "WorldMathaba Social Networking by Diaspora")%>
-    <%= render :partial => "/shared/flattr_js" %>
+    <%= render partial: "/shared/flattr_js" %>
     <%= flattr_medium %>
   </div>
   <div class="well">
-    <%= form_tag(search_path, :method => :get, :class => "clearfix") do |f| %>
+    <%= form_tag(search_path, method: :get, class: "clearfix") do |f| %>
       <%= text_field_tag :q, 
             params[:q], 
-            :type => "search", 
-            :class => "medium",
-            :placeholder => "Search",
-            :autofocus => true
+            type: "search", 
+            class: "medium",
+            placeholder: "Search",
+            autofocus: true
       %>
       <button class="btn primary" type="submit">Search</button>
     <% end %>
@@ -31,7 +30,7 @@
             <ul>
               <% @search.facet(:category_id).rows.each do |facet| %>
                 <% category = Category.find(facet.value) %>
-                <li><%= link_to("#{category.title} (#{facet.count})", params.merge(:category_id => category.id)) if category %></li>
+                <li><%= link_to("#{category.title} (#{facet.count})", params.merge(category_id: category.id)) if category %></li>
               <% end %>
             </ul>
           </div>
@@ -40,7 +39,7 @@
             <ul>
               <% @search.facet(:language_id).rows.each do |facet| %>
                 <% language = Language.find(facet.value) %>
-                <li><%= link_to("#{language.description} (#{facet.count})", params.merge(:language_id => language.id)) if language %></li>
+                <li><%= link_to("#{language.description} (#{facet.count})", params.merge(language_id: language.id)) if language %></li>
               <% end %>
             </ul>
           </div>
@@ -48,30 +47,33 @@
       <% end %>
     </div>
 
-    <div class="sidebar_secions">
-      <h4>Sections</h4>
-      <ul>
-        <% Category.order("title ASC").all.each do |category| %>
-          <li><%= link_to category.title, category, :title => category.description %></li>
-        <% end %>
-      </ul>
-      <h4>Tags</h4>
-      <ul>
-        <% GeneralTag.order("title ASC").all.each do |tag| %>
-          <li><%= link_to tag.title, tag_path(tag), :title => "See all Articles tagged in '#{tag.title}'" %></li>
-        <% end %>
-      </ul>
-      <h4>Useful Pages</h4>
-      <ul>
-        <% Page.order("priority ASC").all.each do |page| %>
-          <li><%= link_to page.title, page, :title => page.title %></li>
-        <% end %>
-      </ul>
-    </div>
+    <% cache("sidebar/#{Time.now.hour}") do %>
+      <div class="sidebar_secions">
+        <h4>Sections</h4>
+        <ul>
+          <% Category.order("title ASC").all.each do |category| %>
+            <li><%= link_to category.title, category, title:  category.description %></li>
+          <% end %>
+        </ul>
+        <h4>Tags</h4>
+        <ul>
+          <% GeneralTag.order("title ASC").all.each do |tag| %>
+            <li><%= link_to tag.title, tag_path(tag), title:  "See all Articles tagged in '#{tag.title}'" %></li>
+          <% end %>
+        </ul>
+        <h4>Useful Pages</h4>
+        <ul>
+          <% Page.order("priority ASC").all.each do |page| %>
+            <li><%= link_to page.title, page, title:  page.title %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <%= image_tag "adfreesite.png",
-          :alt => "AdFree Site",
-          :title => "This is an Advertisement Free Site",
-          :width => 100, :height => 60
+          alt: "AdFree Site",
+          title:  "This is an Advertisement Free Site",
+          width: 100, height: 60
     %>
   </div>
 </div>

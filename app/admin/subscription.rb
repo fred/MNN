@@ -2,7 +2,7 @@
 ActiveAdmin.register Subscription do
   controller.authorize_resource
   config.comments = false
-  menu :parent => "Members", :priority => 55, :label => "Email Subscriptions", :if => lambda{|tabs_renderer|
+  menu parent: "Members", priority: 55, label: "Email Subscriptions", if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, Subscription)
   }
   index do
@@ -23,7 +23,7 @@ end
 ActiveAdmin.register CommentSubscription do
   controller.authorize_resource
   config.comments = false
-  menu :parent => "Members", :priority => 56, :label => "Comment Subscriptions", :if => lambda{|tabs_renderer|
+  menu parent: "Members", priority: 56, label: "Comment Subscriptions", if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, CommentSubscription)
   }
   index do

@@ -9,7 +9,7 @@ class PagesController < InheritedResources::Base
     respond_to do |format|
       format.html
       format.json { render json: @page }
-      format.js { render :layout => false }
+      format.js { render layout: false }
     end
   end
   

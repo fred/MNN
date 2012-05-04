@@ -3,14 +3,14 @@ require 'spec_helper'
 describe "contacts/show" do
   before(:each) do
     @contact = assign(:contact, stub_model(Contact,
-      :name => "Name",
-      :email => "Email",
-      :website => "Website",
-      :phone_number => "Phone Number",
-      :mobile_number => "Mobile Number",
-      :country => "Country",
-      :notes => "MyText",
-      :user_id => 1
+      name: "Name",
+      email: "Email",
+      website: "Website",
+      phone_number: "Phone Number",
+      mobile_number: "Mobile Number",
+      country: "Country",
+      notes: "MyText",
+      user_id: 1
     ))
   end
 

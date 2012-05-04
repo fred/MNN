@@ -1,6 +1,6 @@
 <%= semantic_form_for [:admin, @site_setting]  do |f| %>
 
-  <%= f.inputs :name => "Site Settings" do %>
+  <%= f.inputs name: "Site Settings" do %>
     <%= f.input :var %>
     <%= f.input :value, :input_html => { :value => @site_setting.value } %>
   <% end %>

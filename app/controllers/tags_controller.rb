@@ -22,7 +22,7 @@ class TagsController < ApplicationController
     # @items = @category.published_items.paginate(per_page: 20, page: params[:page])
     @items = @tag.
       items.
-      where(:draft => false).
+      where(draft: false).
       includes(:attachments, :comments, :category, :language, :item_stat, :user, :tags).
       where("published_at is not NULL").
       where("published_at < '#{Time.now.to_s(:db)}'").
@@ -38,7 +38,7 @@ class TagsController < ApplicationController
     @rss_title = "World Mathaba - News tagged #{@tag.title}"
     @rss_description = "World Mathaba - News tagged #{@tag.title}"
     @rss_category = @tag.title
-    @rss_source = tags_path(@tag, :only_path => false, :protocol => 'https', :format => "html")
+    @rss_source = tags_path(@tag, only_path: false, protocol: 'https', format: "html")
     headers['Last-Modified'] = @last_published.httpdate
     
     respond_to do |format|
@@ -48,11 +48,11 @@ class TagsController < ApplicationController
       format.json { render json: @items }
       format.atom {
         headers['Cache-Control'] = 'public, max-age=3600' # 1 hour cache
-        render :partial => "/shared/items", :layout => false
+        render partial: "/shared/items", layout: false
       }
       format.rss {
         headers['Cache-Control'] = 'public, max-age=3600' # 1 hour cache
-        render :partial => "/shared/items", :layout => false
+        render partial: "/shared/items", layout: false
       }
       format.xml { render @items }
     end

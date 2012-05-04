@@ -1,37 +1,37 @@
 <%= semantic_form_for [:admin, @page], :html => { :enctype => "multipart/form-data" }  do |f| %>
 
-  <%= f.inputs :name => "Required Main Information" do %>
+  <%= f.inputs name: "Required Main Information" do %>
     <%= f.input :title, 
-                :label => "Main Title", 
-                :required => true, 
-                :hint => "Title is required, 20-40 characters max"
+                label: "Main Title", 
+                required: true, 
+                hint: "Title is required, 20-40 characters max"
     %>
     <%= f.input :link_title, 
-                :label => "Link Title", 
-                :required => true, 
-                :hint => "What to display on the Page Link"
+                label: "Link Title", 
+                required: true, 
+                hint: "What to display on the Page Link"
     %>
     <%= f.input :language, 
-                :as => :select, 
+                as: :select, 
                 :member_label => 'description', 
                 :member_value => :id, 
-                :label => "Language",
-                :required => false, 
-                :hint => "Select a language for this Page"
+                label: "Language",
+                required: false, 
+                hint: "Select a language for this Page"
     %>
 
     <%= f.input :body, 
-                :label => "Main Content", 
-                :required => true, 
-                :input_html => { :rows => 60, :cols => 120}
+                label: "Main Content", 
+                required: true, 
+                :input_html => { rows: 60, cols: 120}
     %>
-    <%= f.input :priority, :hint => "Order in which it will show on the website. 1=higher 100=lowest" %>
-    <%= f.input :active, :hint => "Only Actives pages will be visible on website." %><br />
+    <%= f.input :priority, hint: "Order in which it will show on the website. 1=higher 100=lowest" %>
+    <%= f.input :active, hint: "Only Actives pages will be visible on website." %><br />
   <% end %>
     
   <%#= f.buttons :commit %>
   <%= f.actions do %>
-    <%= f.action :submit, :button_html => { :class => "primary", :disable_with => 'Wait...' } %>
+    <%= f.action :submit, :button_html => { class: "primary", disable_with: 'Wait...' } %>
   <% end %>
 <% end %>
 

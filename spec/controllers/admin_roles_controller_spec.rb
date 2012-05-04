@@ -32,17 +32,17 @@
 #       end
 #       describe "GET show" do
 #         it "Should Show @item" do
-#           get :show, :id => @item.id
+#           get :show, id: @item.id
 #           assigns(:item).should eq(@item)
 #         end
 #       end
 #       describe "GET edit" do
 #         it "Should have @item" do
-#           get :edit, :id => @item.id
+#           get :edit, id: @item.id
 #           assigns(:item).should eq(@item)
 #         end
 #         it "Should have @item not as new record" do
-#           get :edit, :id => @item.id
+#           get :edit, id: @item.id
 #           assigns(:item).should_not be_new_record
 #         end
 #       end

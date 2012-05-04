@@ -1,6 +1,6 @@
 <div class="row">
   <div class="span7">
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= custom_devise_error_messages! %>
     
       <fieldset class="withBorder">
@@ -8,26 +8,26 @@
         <div class="clearfix">
           <%= f.label :email %>
           <div class="input">
-            <%= f.text_field :email, :required => true, :autofocus => true, :type => "email", :class => "large" %>
+            <%= f.text_field :email, required: true, autofocus: true, type: "email", class: "large" %>
           </div>
         </div>
         <div class="clearfix">
           <%= f.label :password %>
           <div class="input">
-            <%= f.password_field :password, :required => true, :class => "large"  %>
+            <%= f.password_field :password, required: true, class: "large"  %>
           </div>
         </div>
         <div class="clearfix">
           <%= f.label :password_confirmation %>
           <div class="input">
-            <%= f.password_field :password_confirmation, :required => true, :class => "large"  %>
+            <%= f.password_field :password_confirmation, required: true, class: "large"  %>
           </div>
         </div>
         
         <!-- <div class="clearfix">
           <div class="input">
             <%#= show_simple_captcha(:object=>resource_name.to_s) %>
-            <%#= f.simple_captcha :label => "Please, enter the letters above" %>
+            <%#= f.simple_captcha label: "Please, enter the letters above" %>
           </div>
         </div> -->
         
@@ -41,7 +41,7 @@
           </div>
         
         <div class="actions">
-          <%= f.submit "Sign up", :class => "btn primary", :disable_with => 'Processing...' %>
+          <%= f.submit "Sign up", class: "btn primary", disable_with: 'Processing...' %>
         </div>
       </fieldset>
       

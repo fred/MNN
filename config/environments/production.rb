@@ -41,8 +41,9 @@ Publication::Application.configure do
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
-  # Keep Cache for 1 hour only
-  config.cache_store = :dalli_store, "127.0.0.1", { :namespace => "mnn", :expires_in => 3600, :compress => true }
+  # Keep Cache for 2 hours only
+  config.cache_store = :dalli_store, "127.0.0.1",
+    { namespace: "mnn", expires_in: 7200, compress: true }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -69,5 +70,5 @@ Publication::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   config.active_record.auto_explain_threshold_in_seconds = 1
   
-  config.action_mailer.default_url_options = { :host => 'worldmathaba.net' }
+  config.action_mailer.default_url_options = { host: 'worldmathaba.net' }
 end

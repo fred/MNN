@@ -32,17 +32,17 @@ describe Admin::CategoriesController do
       end
       describe "GET show" do
         it "Should Show @category" do
-          get :show, :id => @category.id
+          get :show, id: @category.id
           assigns(:category).should eq(@category)
         end
       end
       describe "GET edit" do
         it "Should have @category" do
-          get :edit, :id => @category.id
+          get :edit, id: @category.id
           assigns(:category).should eq(@category)
         end
         it "Should have @category not as new record" do
-          get :edit, :id => @category.id
+          get :edit, id: @category.id
           assigns(:category).should_not be_new_record
         end
       end

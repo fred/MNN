@@ -181,11 +181,11 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
           </span>
           <%= truncate(
                 sanitize(@item.body,
-                  :tags => %w(),
-                  :attributes => %w()
+                  tags: %w(),
+                  attributes: %w()
                 ),
-                :length => 500,
-                :omission => ' ... (click link to read full article)'
+                length: 500,
+                omission: ' ... (click link to read full article)'
               )
           %>
         </p>
@@ -196,7 +196,7 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
         <p class="source_url">
           Category: 
           <%= link_to @item.category_title, 
-                url_for(category_path(@item.category, :ref => "email", :only_path => false, :protocol => 'http'))
+                url_for(category_path(@item.category, ref: "email", only_path: false, protocol: 'http'))
           %>
         </p>
         <p class="source_url">
@@ -204,8 +204,8 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
           <% @item.tags.each do |tag| %>
             <span class="tags">
               <%= link_to tag.title, 
-                    url_for(tag_path(tag, :ref => "email", :only_path => false, :protocol => 'http')),
-                     :class => "tag"
+                    url_for(tag_path(tag, ref: "email", only_path: false, protocol: 'http')),
+                     class: "tag"
               %>
             </span>
           <% end %>

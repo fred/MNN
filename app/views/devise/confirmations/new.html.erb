@@ -1,19 +1,19 @@
 <div class="row">
   <div class="span7">
-   <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+   <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), :html => { method: :post }) do |f| %>
       <fieldset class="withBorder">
         <legend>Resend confirmation instructions</legend>
         <div class="clearfix">
           <%= f.label :email %>
           <div class="input">
-            <%= f.text_field :email, :required => false, :autofocus => true, :type => "email", :class => "large" %>
+            <%= f.text_field :email, required: false, autofocus: true, type: "email", class: "large" %>
             <span class="help-block">
               We will send you again the confirmation instructions to activate your account
             </span>
           </div>
         </div>
         <div class="actions">
-          <%= f.submit "Resend confirmation instructions", :class => "btn primary" %>
+          <%= f.submit "Resend confirmation instructions", class: "btn primary", disable_with: 'Sending...' %>
         </div>
       </fieldset>
     <% end %> <!-- End Form -->

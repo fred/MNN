@@ -36,7 +36,7 @@ module ItemsHelper
     html = ""
     if item.has_image?
       html += "<div class='image'>"
-      html += image_tag(item.main_image.image.small, :alt => item.main_image.title)
+      html += image_tag(item.main_image.image.small, alt: item.main_image.title)
       html += "</div>"
     end
     html += "<div class='abstract'>"
@@ -57,7 +57,7 @@ module ItemsHelper
     # Example:
     # http://www.linkedin.com/shareArticle?mini=true&url=CONTENT-URL&title=CONTENT-TITLE&summary=DEATILS-OPTIONAL&source=YOURWEBSITE-NAME
     url = "http://www.linkedin.com/shareArticle?mini=true&url="
-    url += url_for(item_path(item.id, :only_path => false, :protocol => 'http'))
+    url += url_for(item_path(item.id, only_path: false, protocol: 'http'))
     url += "&title=#{url_encode(item.title)}"
     url += "&source=MNN"
     return url
@@ -65,7 +65,7 @@ module ItemsHelper
   
   def facebook_share(item)
     url = "https://www.facebook.com/sharer.php?u="
-    url += url_for(item_path(item.id, :only_path => false, :protocol => 'http'))
+    url += url_for(item_path(item.id, only_path: false, protocol: 'http'))
     url += "&t=#{url_encode(meta_title(item))}"
     return url
   end
@@ -74,13 +74,13 @@ module ItemsHelper
     url = "https://twitter.com/home?status="
     url += url_encode(item.title.truncate(116))
     url += "%20"
-    url += url_for(item_path(item, :only_path => false, :protocol => 'http'))
+    url += url_for(item_path(item, only_path: false, protocol: 'http'))
     return url
   end
   
   def digg_share(item)
     url = "http://digg.com/submit?url="
-    url += url_for(item_path(item, :only_path => false, :protocol => 'http'))
+    url += url_for(item_path(item, only_path: false, protocol: 'http'))
     url += "&title="
     url += url_encode(item.title)
     return url
@@ -88,13 +88,13 @@ module ItemsHelper
   
   def gplus_share(item)
     url = "https://plusone.google.com/_/+1/confirm?hl=en&url="
-    url += url_for(item_path(item, :only_path => false, :protocol => 'http'))
+    url += url_for(item_path(item, only_path: false, protocol: 'http'))
     return url
   end
     
   def reddit_share(item)
     url = "http://www.reddit.com/submit?url="
-    url += url_for(item_path(item, :only_path => false, :protocol => 'http'))
+    url += url_for(item_path(item, only_path: false, protocol: 'http'))
     url += "&title="
     url += url_encode(item.title)
     return url
@@ -102,13 +102,13 @@ module ItemsHelper
   
   def posterous_share(item)
     url = "http://posterous.com/share?linkto="
-    url += url_for(item_path(item, :only_path => false, :protocol => 'http'))
+    url += url_for(item_path(item, only_path: false, protocol: 'http'))
     return url
   end
   
   def slashdot_share(item)
     url = "http://slashdot.org/slashdot-it.pl?op=basic&url="
-    url += url_for(item_path(item, :only_path => false, :protocol => 'http'))
+    url += url_for(item_path(item, only_path: false, protocol: 'http'))
     url += "&title="
     url += url_encode(item.title)
     return url
@@ -116,7 +116,7 @@ module ItemsHelper
   
   def delicious_share(item)
     url = "http://www.delicious.com/save?url="
-    url += url_for(item_path(item, :only_path => false, :protocol => 'http'))
+    url += url_for(item_path(item, only_path: false, protocol: 'http'))
     url += "&title="
     url += url_encode(item.title)
     url += "&notes="
@@ -127,13 +127,13 @@ module ItemsHelper
   def email_share(item)
     sbj = item.title
     body = "#{item.abstract} - "
-    body += url_for(item_path(item, :only_path => false, :protocol => 'http'))
+    body += url_for(item_path(item, only_path: false, protocol: 'http'))
     "mailto:?subject=#{url_encode(sbj)}&body=#{url_encode(body)}"
   end
 
   def diaspora_share(item)
     url = "http://sharetodiaspora.github.com/?url="
-    url += url_for(item_path(item, :only_path => false, :protocol => 'http'))
+    url += url_for(item_path(item, only_path: false, protocol: 'http'))
     url += "&title="
     url += url_encode(item.title)
     return url

@@ -16,7 +16,7 @@ describe CategoriesController do
 
   describe "GET 'show'" do
     it "returns http success" do
-      get 'show', :id => @category.id
+      get 'show', id: @category.id
       response.should be_success
     end
   end

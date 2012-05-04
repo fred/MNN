@@ -26,7 +26,7 @@ describe User do
   
   describe "Users with subscription" do
     before(:each) do
-      @user = FactoryGirl.create(:user, :subscribe => "1")
+      @user = FactoryGirl.create(:user, subscribe: "1")
     end
     it "should create a subscription model" do
       @user.subscriptions.should_not eq([])
@@ -58,7 +58,7 @@ describe User do
   
   describe "Users with unsubscribe or unsubscribe_all" do
     before(:each) do
-      @user = FactoryGirl.create(:user, :unsubscribe => "1")
+      @user = FactoryGirl.create(:user, unsubscribe: "1")
     end
     it "should not create a subscription" do
       @user.subscriptions.should eq([])

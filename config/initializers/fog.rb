@@ -34,3 +34,6 @@ end
 # else
 #   config.storage = :file
 # end
+
+
+Excon.defaults[:ssl_verify_peer] = false

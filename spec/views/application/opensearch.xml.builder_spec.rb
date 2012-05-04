@@ -32,7 +32,7 @@
 
 #   context 'search terms' do
 #     subject { @xml_element.search('Url').attr('template').value }
-#     it { should == CGI.unescape(search_url(:q => '{searchTerms}')) }
+#     it { should == CGI.unescape(search_url(q: '{searchTerms}')) }
 #   end
 
 # end

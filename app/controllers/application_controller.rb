@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to admin_dashboard_path, :alert => exception.message
+    redirect_to admin_dashboard_path, alert: exception.message
   end
   
   
@@ -148,10 +148,10 @@ class ApplicationController < ActionController::Base
 
     def log_additional_data
       request.env["exception_notifier.exception_data"] = {
-        :current_user => current_user
+        current_user: current_user
       } if current_user
       request.env["exception_notifier.exception_data"] = {
-        :current_admin_user => current_admin_user
+        current_admin_user: current_admin_user
       } if current_admin_user
     end
 

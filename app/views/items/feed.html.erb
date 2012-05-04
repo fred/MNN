@@ -8,11 +8,11 @@
   <ul class="feed_list">
     <li>
       <%= link_to "RSS Format (Shorter)", items_rss_path %> 
-      <%= link_to image_tag("icons/social/rss_16.png"), items_rss_path, :title => "RSS", :alt => "Rss" %>
+      <%= link_to image_tag("icons/social/rss_16.png"), items_rss_path, title: "RSS", alt: "Rss" %>
     </li>
     <li>
       <%= link_to "Atom Format (Full Article)", items_atom_path %>
-      <%= link_to image_tag("rss_blue_16.png"), items_atom_path, :title => "Atom", :alt => "Rss" %>
+      <%= link_to image_tag("rss_blue_16.png"), items_atom_path, title: "Atom", alt: "Rss" %>
     </li>
   </ul>
   
@@ -20,9 +20,9 @@
   <ul class="feed_list">
     <% Category.all.each do |category| %>
       <li>
-        <%= link_to category.title, category_path(category, :format => "atom") %>
-        <%= link_to image_tag("icons/social/rss_16.png"), category_path(category, :format => "rss"), :title => "RSS" %>
-        <%= link_to image_tag("rss_blue_16.png"), category_path(category, :format => "atom"), :title => "Atom Feed" %>
+        <%= link_to category.title, category_path(category, format: "atom") %>
+        <%= link_to image_tag("icons/social/rss_16.png"), category_path(category, format: "rss"), title: "RSS" %>
+        <%= link_to image_tag("rss_blue_16.png"), category_path(category, format: "atom"), title: "Atom Feed" %>
       </li>
     <% end %>
   </ul>
@@ -31,9 +31,9 @@
   <ul class="feed_list">
     <% Language.all.each do |language| %>
       <li>
-        <%= link_to language.title, language_items_path(language, :format => "atom") %>
-        <%= link_to image_tag("icons/social/rss_16.png"), language_items_path(language, :format => "rss"), :title => "RSS" %>
-        <%= link_to image_tag("rss_blue_16.png"), language_items_path(language, :format => "atom"), :title => "Atom Feed" %>
+        <%= link_to language.title, language_items_path(language, format: "atom") %>
+        <%= link_to image_tag("icons/social/rss_16.png"), language_items_path(language, format: "rss"), title: "RSS" %>
+        <%= link_to image_tag("rss_blue_16.png"), language_items_path(language, format: "atom"), title: "Atom Feed" %>
       </li>
     <% end %>
   </ul>
@@ -42,9 +42,9 @@
   <ul class="feed_list">
     <% User.all.each do |author| %>
       <li>
-        <%= link_to author.title, author_path(author, :format => "atom") %>
-        <%= link_to image_tag("icons/social/rss_16.png"), author_path(author, :format => "rss"), :title => "RSS" %>
-        <%= link_to image_tag("rss_blue_16.png"), author_path(author, :format => "atom"), :title => "Atom Feed" %>
+        <%= link_to author.title, author_path(author, format: "atom") %>
+        <%= link_to image_tag("icons/social/rss_16.png"), author_path(author, format: "rss"), title: "RSS" %>
+        <%= link_to image_tag("rss_blue_16.png"), author_path(author, format: "atom"), title: "Atom Feed" %>
       </li>
     <% end %>
   </ul>
@@ -53,9 +53,9 @@
   <ul class="feed_list">
     <% RegionTag.order("slug ASC").all.each do |tag| %>
       <li>
-        <%= link_to tag.title, tag_path(tag, :format => "atom") %>
-        <%= link_to image_tag("icons/social/rss_16.png"), tag_path(tag, :format => "rss"), :title => "RSS" %>
-        <%= link_to image_tag("rss_blue_16.png"), tag_path(tag, :format => "atom"), :title => "Atom Feed" %>
+        <%= link_to tag.title, tag_path(tag, format: "atom") %>
+        <%= link_to image_tag("icons/social/rss_16.png"), tag_path(tag, format: "rss"), title: "RSS" %>
+        <%= link_to image_tag("rss_blue_16.png"), tag_path(tag, format: "atom"), title: "Atom Feed" %>
       </li>
     <% end %>
   </ul>
@@ -64,9 +64,9 @@
   <ul class="feed_list">
     <% GeneralTag.order("slug ASC").all.each do |tag| %>
       <li>
-        <%= link_to tag.title, tag_path(tag, :format => "atom") %>
-        <%= link_to image_tag("icons/social/rss_16.png"), tag_path(tag, :format => "rss"), :title => "RSS" %>
-        <%= link_to image_tag("rss_blue_16.png"), tag_path(tag, :format => "atom"), :title => "Atom Feed" %>
+        <%= link_to tag.title, tag_path(tag, format: "atom") %>
+        <%= link_to image_tag("icons/social/rss_16.png"), tag_path(tag, format: "rss"), title: "RSS" %>
+        <%= link_to image_tag("rss_blue_16.png"), tag_path(tag, format: "atom"), title: "Atom Feed" %>
       </li>
     <% end %>
   </ul>
@@ -76,9 +76,9 @@
   <ul class="feed_list">
     <% CountryTag.order("slug ASC").all.each do |tag| %>
       <li>
-        <%= link_to tag.title, tag_path(tag, :format => "atom") %>
-        <%= link_to image_tag("icons/social/rss_16.png"), tag_path(tag, :format => "rss"), :title => "RSS" %>
-        <%= link_to image_tag("rss_blue_16.png"), tag_path(tag, :format => "atom"), :title => "Atom Feed" %>
+        <%= link_to tag.title, tag_path(tag, format: "atom") %>
+        <%= link_to image_tag("icons/social/rss_16.png"), tag_path(tag, format: "rss"), title: "RSS" %>
+        <%= link_to image_tag("rss_blue_16.png"), tag_path(tag, format: "atom"), title: "Atom Feed" %>
       </li>
     <% end %>
   </ul>

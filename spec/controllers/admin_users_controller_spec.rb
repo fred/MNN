@@ -32,17 +32,17 @@ describe Admin::UsersController do
       end
       describe "GET show" do
         it "Should Show @user" do
-          get :show, :id => @user.id
+          get :show, id: @user.id
           assigns(:user).should eq(@user)
         end
       end
       describe "GET edit" do
         it "Should have @user" do
-          get :edit, :id => @user.id
+          get :edit, id: @user.id
           assigns(:user).should eq(@user)
         end
         it "Should have @user not as new record" do
-          get :edit, :id => @user.id
+          get :edit, id: @user.id
           assigns(:user).should_not be_new_record
         end
       end

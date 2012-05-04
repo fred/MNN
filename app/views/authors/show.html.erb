@@ -1,12 +1,12 @@
 <% content_for :head do %>
-  <%= auto_discovery_link_tag(:rss, author_path(@author), :format => "rss") %>
-  <%= auto_discovery_link_tag(:atom, author_path(@author), :format => "atom") %>
+  <%= auto_discovery_link_tag(:rss, author_path(@author), format: "rss") %>
+  <%= auto_discovery_link_tag(:atom, author_path(@author), format: "atom") %>
 <% end %>
 
 <article id="author_<%=@author.id%>">
   <header>
     <% if @author.avatar? %>
-      <%= link_to(image_tag(@author.avatar.small, :class => "show_item_image"), author_path(@author)) %>
+      <%= link_to(image_tag(@author.avatar.small, class: "show_item_image"), author_path(@author)) %>
     <% end %>
     <h3><%= link_to @author.title, author_path(@author) %></h3>
   </header>
@@ -26,7 +26,7 @@
 <h3><%= @author.name %> Articles</h3>
 
 <% @items.each do |item| %>
-  <%= render :partial => "/shared/item", :locals => {:item => item } %>
+  <%= render partial: "/shared/item", locals: {item: item } %>
 <% end %>
 
 <% content_for :breadcrumb do %>
@@ -41,9 +41,9 @@
   <li class="active">
     <%= link_to @author.name, author_path(@author) %>
     <%= link_to(
-          image_tag("icons/social/rss_16.png", :alt => "RSS for #{@author.name}"), 
-          author_path(@author, :format => "rss"),
-          :title => "RSS feed for #{@author.name}"
+          image_tag("icons/social/rss_16.png", alt: "RSS for #{@author.name}"), 
+          author_path(@author, format: "rss"),
+          title: "RSS feed for #{@author.name}"
         )
     %>
   </li>

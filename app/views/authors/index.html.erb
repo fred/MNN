@@ -3,7 +3,7 @@
   <article class="author" id="author_<%=author.id%>">
     <header>
       <% if author.avatar? %>
-        <%= link_to(image_tag(author.avatar.small, :class => "show_item_image"), author_path(author)) %>
+        <%= link_to(image_tag(author.avatar.small, class: "show_item_image"), author_path(author)) %>
       <% end %>
       <h3><%= link_to author.title, author_path(author) %></h3>
     </header>
