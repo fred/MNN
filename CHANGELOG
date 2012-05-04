@@ -1,9 +1,14 @@
 CHANGELOG
 
 == May 4, 2012
-* Caching Sidebar and Header for 1 hour
+* Caching Sidebar and Header for 2 hours
 * Converted hash syntax to ruby1.9
 * Global Caching Time increased from 1 to 2 hours
+* Improved true/false fields with html ticker and cross
+* Improved Suspicious/Spam Comments on dashboard
+* Added Red color to Spam Comments
+* Added Orange color to Suspicious Comments
+* Mark comments suspicious based on a few bad keywords
 
 == May 2, 2012
 * Jobs History now in Descending order (latest first) [resque-history].

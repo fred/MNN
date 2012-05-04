@@ -13,17 +13,26 @@ class Comment < ActiveRecord::Base
   # referrer      : referring URL (note the spelling)
   
   validates_presence_of :body
-  attr_accessible :body, :commentable_id, :commentable_type
+  attr_accessible :body, :commentable_id, :commentable_type, :approved, :marked_spam, :suspicious, :approved_by
   
   # belongs_to :user
   belongs_to :approving_user, foreign_key: :approved_by, class_name: "User"
   
-  before_create :check_for_spam
+  before_create :check_for_spam, :check_for_suspicious
   after_create  :email_notify
 
   # Send the email notifications after creation
   def email_notify
     Resque.enqueue(CommentNotification, self.id)
+  end
+
+  def check_for_suspicious
+    if self.body.match("(fuck|shit|idiot|asshole|suck|sex|free|blowjob|cock)")
+      self.suspicious = true
+    else
+      self.suspicious = false
+    end
+    true
   end
 
   def check_for_spam
@@ -85,6 +94,8 @@ class Comment < ActiveRecord::Base
   # Returns the last 10 approved comments
   def self.recent(limit=10)
     where(approved: true).
+    where(suspicious: false).
+    where(marked_spam: false).
     order("updated_at DESC").
     includes([:owner, :commentable]).
     limit(limit).
@@ -102,6 +113,7 @@ class Comment < ActiveRecord::Base
   # Returns the last 10 suspicious comments
   def self.suspicious(limit=10)
     where(suspicious: true).
+    where(marked_spam: false).
     order("updated_at DESC").
     limit(limit).
     all

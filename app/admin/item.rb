@@ -44,9 +44,6 @@ ActiveAdmin.register Item do
     column :tags do |item|
       item.tag_list(", ")
     end
-    column :draft, sortable: :draft do |item|
-      bol_to_word(item.draft)
-    end
     column "Youtube", :youtube_id, sortable: :youtube_id do |item|
       if item.youtube_id
         link_to(item.youtube_id,
@@ -56,12 +53,11 @@ ActiveAdmin.register Item do
         )
       end
     end
+    bool_column :draft
     column "Highlt", :featured, sortable: :featured do |item|
-      bol_to_word(item.featured)
+      bool_symbol(item.featured)
     end
-    column "Stick", :sticky, sortable: :sticky do |item|
-      bol_to_word(item.sticky)
-    end
+    bool_column :sticky 
     column "Lang", :language, sortable: :language_id do |item|
       item.language.description if item.language
     end

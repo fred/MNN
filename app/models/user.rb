@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   end
   
   def title
-    if self.name
+    if self.name.present?
       str = self.name
     else
       str = self.email

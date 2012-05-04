@@ -409,7 +409,7 @@ class Item < ActiveRecord::Base
     all
   end
 
-
+  # Imports an XML output from wordpress
   def self.import_wordpress_xml
     require 'nokogiri'
     file = File.join(Rails.root, "config", "wp.xml")

@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+  # Cache for a period of time, default 2 hours
+  def cache_expiring(cache_key, cache_period=7200)
+    cache([cache_key, Time.now.to_i / cache_period].join('/')){ yield }
+  end
+
   def full_image_path_helper(img)
     root_url.chomp('/') + asset_path(img)
   end
@@ -65,13 +70,12 @@ module ApplicationHelper
     end
   end
   
+  def bool_symbol(bol)
+    (bol ? '&#x2714;' : '&#x2717;').html_safe
+  end
   
-  def bol_to_word(bol)
-    if bol
-      "yes"
-    else
-      "no"
-    end
+  def bool_word(bol)
+    (bol ? 'yes' : 'no')
   end
   
 end

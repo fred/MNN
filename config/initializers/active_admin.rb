@@ -136,3 +136,23 @@ ActiveAdmin.setup do |config|
   # default: 3
   config.dashboard_columns = 1
 end
+
+
+module ActiveAdmin
+  module Views
+
+    BOOL_LAMBDA = ->(attribute, model) { (model[attribute] ? '&#x2714;' : '&#x2717;').html_safe }
+
+    class TableFor
+      def bool_column(attribute)
+        column attribute, &BOOL_LAMBDA.curry[attribute]
+      end
+    end
+
+    class AttributesTable
+      def bool_row(attribute)
+        row attribute, &BOOL_LAMBDA.curry[attribute]
+      end
+    end
+  end
+end

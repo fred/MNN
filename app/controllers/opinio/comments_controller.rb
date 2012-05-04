@@ -18,6 +18,10 @@ class Opinio::CommentsController < ApplicationController
     end
     @comment.user_ip = request.remote_ip.to_s if @comment.respond_to?(:user_ip)
     @comment.user_agent = request.user_agent.to_s if @comment.respond_to?(:user_agent)
+    @comment.approved = nil
+    @comment.marked_spam = nil
+    @comment.suspicious = nil
+    @comment.approved_by = nil
 
     if @comment.save
       messages = { :notice => t('opinio.messages.comment_sent') }

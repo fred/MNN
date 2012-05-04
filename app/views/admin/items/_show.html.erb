@@ -67,8 +67,8 @@
           %></b>
         <% end %>
       </p>
-      <p>Auto Embed Video: <b><%= @item.youtube_img %></b></p>
-      <p>Auto Image Screenshot: <b><%= @item.youtube_img %></b></p>
+      <p>Auto Embed Video: <b> <%= bool_symbol @item.youtube_img %></b></p>
+      <p>Auto Image Screenshot: <b> <%= bool_symbol  @item.youtube_img %></b></p>
       <% unless @item.youtube_id.blank? %>
         <p>
           Youtube Available Screenshots:
@@ -163,17 +163,17 @@
   <h3>Satus Codes</h3>
   <div class="panel_contents">
     <div class="attributes_table item">
-      <p>Draft: <%= @item.draft %></p>
-      <p>Featured: <%= @item.featured %></p>
-      <p>Comments Enabled: <%= @item.allow_comments %></p>
+      <p>Draft: <%= bool_symbol @item.draft %></p>
+      <p>Highlight: <%= bool_symbol @item.featured %></p>
+      <p>Comments: <%= bool_symbol @item.allow_comments %></p>
       <!-- <p>Star Rating Enabled: <%#= @item.allow_star_rating %></p> -->
-      <p>Posted to Twitter: <%= @item.posted_to_twitter? %></p>
+      <p>Twitter: <%= bool_symbol(@item.posted_to_twitter?) %></p>
       <% if @item.email_delivery_sent? %>
-        <p>Email Delivered: Yes</p>
+        <p>Email Delivered: <%= bool_symbol true %> </p>
       <% elsif @item.email_delivery_queued? %>
         <p>Email Queue for Delivery at: <%= @item.email_delivery_queued_at %></p>
       <% else %>
-        <p>Email Delivered: None programmed</p>
+        <p>Email Delivered: <%= bool_symbol false %></p>
       <% end %>
     </div>
   </div>

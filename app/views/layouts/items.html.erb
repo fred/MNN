@@ -19,22 +19,18 @@
     <%= render partial: "/shared/topbar" %>
 
     <div class="container-fluid">
-      
-      <%# cache("sidebar") do %>
-        <%= render partial: "/shared/sidebar" %>
-      <%# end %>
-      
+      <%= render partial: "/shared/sidebar" %>
       <div class="content">
         <% if @show_breadcrumb %>
           <ul class="breadcrumb">
             <%= yield :breadcrumb %>
           </ul>
         <% end %>
-        <%#= render partial: "/shared/highlights" %>
         <%= yield %>
         <%= render partial: "/shared/footer" %>
       </div>
     </div>
+    
     <%= yield(:footer) %>
     <%= yield(:scripts) %>
     <%= render partial: "/shared/ga_member" %>

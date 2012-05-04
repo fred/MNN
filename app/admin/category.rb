@@ -11,9 +11,7 @@ ActiveAdmin.register Category do
     column :title
     column :description
     column :priority
-    column "Active" do |category|
-      bol_to_word(category.active)
-    end
+    bool_column :active
     column "Updated" do |category|
       category.updated_at.to_s(:short)
     end

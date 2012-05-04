@@ -1,18 +1,18 @@
-<%= semantic_form_for [:admin, @item], :html => { :enctype => "multipart/form-data" }  do |f| %>
+<%= semantic_form_for [:admin, @item], html: { :enctype => "multipart/form-data" }  do |f| %>
 
   <%= f.inputs name: "All fields with * are required" do %>
     <%= f.input :category,
                 as: :select,
-                :member_label => 'title',
-                :member_value => :id,
+                member_label: 'title',
+                member_value: :id,
                 label: "Category",
                 required: true,
                 hint: "Select Article category"
     %>
     <%= f.input :language,
                 as: :select,
-                :member_label => 'description',
-                :member_value => :id,
+                member_label:  'description',
+                member_value: :id,
                 label: "Language",
                 required: true,
                 hint: "Select a language for this article"
@@ -25,13 +25,13 @@
     <%= f.input :abstract,
                 hint: "Ideally 80 characters. Max 120.",
                 required: true,
-                :input_html => { rows: 2 }
+                input_html: { rows: 2 }
     %>
     
     <%= f.input :body,
                 label: "Main Content",
                 required: true,
-                :input_html => { rows: 60, cols: 120},
+                input_html: { rows: 60, cols: 120},
                 hint: "If you want a new paragraph, simply hit 'RETURN'. If you don’t want a new paragraph and just want a line break, hit 'SHIFT RETURN'. - If you are copying and pasting from a website, it is recommended to paste first to Notepad.exe/TextEdit.app then copy again to paste here."
     %>
     <%= f.input :keywords,
@@ -114,7 +114,7 @@
     <%= f.inputs name: "Status Codes" do %>
       <%= f.input :draft,
             as: :hidden,
-            :value => true
+            value: true
       %>
       <br />
     <% end %>
@@ -122,23 +122,17 @@
 
   
   <%= f.inputs name: "Dates and Status" do %>
-    <%#= f.input :published_at,
-          label: "Publication Date",
-          hint: "When article will go live (default: 10 minutes from now)", 
-          :time => true 
-    %>
     <%= f.input :published_at,
-          :value => f.object.published_at.localtime,
+          value: f.object.published_at.localtime,
           as: "string",
           label: "Publication Date",
           :require => true,
           hint: "When to go live. Timezone used for picking date: '#{Time.zone}' (from your Profile). It will be converted to UTC after saving. (Required)"
     %>
-    <%#= f.input :expires_on, label: "Expire Date", hint: "Expiration Date of article (default: 10 years)", :time => true %>
     <%= f.input :expires_on,
         as: "string",
         label: "Expire Date",
-        :value => f.object.expires_on.localtime,
+        value: f.object.expires_on.localtime,
         hint: "Expiration Date of article (default: 10 years). It will be converted to UTC after saving."
     %>
   <% end %>
@@ -176,9 +170,6 @@
     <%= f.input :updated_reason, as: "string", hint: "Provide a reason for editing, as short as possible, 2-4 words." %>
   <% end %>
   
-  <%#= f.input(:user_id, label: false, as: :hidden, :value => current_admin_user.id) if f.object.new_record? %>
-  
-  <%#= f.buttons :commit, :button_html => { class: "primary", disable_with: 'Wait...' } %>
   <%= f.actions do %>
     <%= f.action :submit, :button_html => { class: "primary", disable_with: 'Wait...' } %>
   <% end %>

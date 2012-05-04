@@ -47,7 +47,7 @@
       <% end %>
     </div>
 
-    <% cache("sidebar/#{Time.now.hour}") do %>
+    <% cache_expiring("sidebar") do %>
       <div class="sidebar_secions">
         <h4>Sections</h4>
         <ul>
