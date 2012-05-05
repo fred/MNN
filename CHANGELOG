@@ -1,5 +1,9 @@
 CHANGELOG
 
+== May 5, 2012
+* Updated TinyMCE live editor
+* ruby1.9 syntax updates
+
 == May 4, 2012
 * Caching Sidebar and Header for 2 hours
 * Converted hash syntax to ruby1.9
