@@ -2,7 +2,7 @@
 <li id="comment_<%= comment.id %>">
   <span class="comment_owner">
     <% if comment.owner %>
-      <%= image_tag(comment.owner.avatar.thumb) if comment.owner.avatar? %>
+      <%= image_tag(comment.owner.avatar.thumb) ifc:mment.owner.avatar? %>
       <i><%= comment.owner.title %></i> said:
     <% end %>
   </span>
@@ -36,7 +36,7 @@
   
   <% if Opinio.accept_replies && !reply %>
     <ul id="comment_<%= comment.id %>_replies" class="replies">
-      <%= render partial: "opinio/comments/comment", collection: comment.comments, locals: {:reply => true} %>
+      <%= render partial: "opinio/comments/comment", collection: comment.comments, locals: {reply: true} %>
     </ul>
   <% end %>
 </li>

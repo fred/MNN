@@ -1,6 +1,6 @@
-<%= semantic_form_for [:admin, @user], :html => { :enctype => "multipart/form-data" }  do |f| %>
+<%= semantic_form_for [:admin, @user], html: { enctype: "multipart/form-data" }  do |f| %>
 
-  <%= f.inputs :login => "Login Information" do %>
+  <%= f.inputs login: "Login Information" do %>
     <%= f.input :email, required: true, hint: "Required: Valid Email address"%>
     <% if f.object.new_record? %>
       <%= f.input :password, required: true, hint: "New Password" %>
@@ -29,6 +29,6 @@
   <% end %>
   
   <%= f.actions do %>
-    <%= f.action :submit, :button_html => { class: "primary", disable_with: 'Wait...' } %>
+    <%= f.action :submit, button_html: { class: "primary", disable_with: 'Wait...' } %>
   <% end %>
 <% end %>

@@ -208,7 +208,7 @@ ActiveAdmin::Dashboards.build do
           if v.item
             link_to(
               "#{v.item_type.underscore.humanize} ##{v.item_id}",
-              url_for(:controller => "admin/#{v.item.class.to_s.underscore.pluralize}", action: 'show', id: v.item_id)
+              url_for(controller: "admin/#{v.item.class.to_s.underscore.pluralize}", action: 'show', id: v.item_id)
             )
           else
             "#{v.item_type.underscore.humanize} ##{v.item_id}"

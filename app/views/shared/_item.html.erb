@@ -26,11 +26,11 @@
           <%= link_to "Source", item.source_url %>
         <% end %>
         <% if item.author_name %>
-          by <span class="author"><%= link_to item.author_name, search_path(:q => item.author_name) %></span>
+          by <span class="author"><%= link_to item.author_name, search_path(q: item.author_name) %></span>
         <% end %>
       </span>
       <span class="date">
-        <%#= time_tag(item.published_at.in_time_zone("UTC"), :pubdate => false) %>
+        <%#= time_tag(item.published_at.in_time_zone("UTC"), pubdate: false) %>
         <%= time_ago_in_words(item.published_at) %> ago
       </span>
       <% if item.user %>

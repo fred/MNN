@@ -9,10 +9,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MimeTypes
   
   # Set quality to 90 (default: 85)
-  process :quality => 90
+  process quality: 90
   
   # Set Watermark
-  # process :watermark => "#{Rails.root}/public/watermark.png"
+  # process watermark: "#{Rails.root}/public/watermark.png"
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
@@ -41,7 +41,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  # process :scale => [200, 300]
+  # process scale: [200, 300]
   #
   # def scale(width, height)
   #   # do something
@@ -49,7 +49,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   # version :thumb do
-  #   process :scale => [50, 50]
+  #   process scale: [50, 50]
   # end
   version :mini do
     process resize_to_fit: [32, 32]

@@ -1,4 +1,4 @@
-<%= semantic_form_for [:admin, @item], html: { :enctype => "multipart/form-data" }  do |f| %>
+<%= semantic_form_for [:admin, @item], html: { enctype: "multipart/form-data" }  do |f| %>
 
   <%= f.inputs name: "All fields with * are required" do %>
     <%= f.input :category,
@@ -126,7 +126,7 @@
           value: f.object.published_at.localtime,
           as: "string",
           label: "Publication Date",
-          :require => true,
+          require: true,
           hint: "When to go live. Timezone used for picking date: '#{Time.zone}' (from your Profile). It will be converted to UTC after saving. (Required)"
     %>
     <%= f.input :expires_on,
@@ -138,7 +138,7 @@
   <% end %>
 
   <% f.object.attachments.build %>
-  <%= f.inputs name: "Main Image", :multipart => true do %>
+  <%= f.inputs name: "Main Image", multipart: true do %>
     <div class="item_attachments">
       <%= f.semantic_fields_for :attachments do |attachment| %>
         <% if attachment.object.new_record? %>
@@ -171,7 +171,7 @@
   <% end %>
   
   <%= f.actions do %>
-    <%= f.action :submit, :button_html => { class: "primary", disable_with: 'Wait...' } %>
+    <%= f.action :submit, button_html: { class: "primary", disable_with: 'Wait...' } %>
   <% end %>
 <% end %>
 

@@ -1,13 +1,13 @@
 <div class="row">
   <div class="span7">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { method: :put }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     
       <fieldset class="withBorder">
         <legend>Current Password</legend>
         <div class="clearfix">
           <%= f.label :current_password %>
           <div class="input">
-            <%= f.password_field :current_password, :autocomplete => "off", required: true, class: "large"  %>
+            <%= f.password_field :current_password, autocomplete: "off", required: true, class: "large"  %>
             <span class="help-block">
               Your Current Password is Required to make any changes in profile
             </span>
@@ -138,7 +138,7 @@
         <div class="clearfix">
           <%= f.label :password, "New Password" %>
           <div class="input">
-            <%= f.password_field :password, :autocomplete => "off", required: false, class: "large"  %>
+            <%= f.password_field :password, autocomplete: "off", required: false, class: "large"  %>
             <span class="help-block">
               Leave this field black if you want to change password
             </span>
@@ -147,7 +147,7 @@
         <div class="clearfix">
           <%= f.label :password_confirmation, "New Password Again" %>
           <div class="input">
-            <%= f.password_field :password_confirmation, :autocomplete => "off", required: false, class: "large"  %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", required: false, class: "large"  %>
           </div>
         </div>
 
@@ -157,7 +157,7 @@
           <%= link_to "Delete my account".html_safe,
               registration_path(resource_name),
               confirm: "Are you sure you want to delete your account from our system?",
-              method: :delete, :class=>'btn danger'
+              method: :delete, class: 'btn danger'
           %>
       </fieldset>
       

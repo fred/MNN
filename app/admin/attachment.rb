@@ -6,7 +6,7 @@ ActiveAdmin.register Attachment do
     controller.current_ability.can?(:manage, Attachment)
   }
   index as: :block do |attachment|
-    div :for => attachment, class: "grid_images" do
+    div for: attachment, class: "grid_images" do
       h4 auto_link(attachment.attachable)
       div do
         link_to(

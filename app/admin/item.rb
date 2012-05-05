@@ -5,9 +5,9 @@ ActiveAdmin.register Item do
   menu priority: 1, if: lambda{|tabs_renderer|
     controller.current_ability.can?(:read, Item)
   }
-  sidebar :per_page, partial: "per_page", :only => :index
+  sidebar :per_page, partial: "per_page", only: :index
 
-  before_filter :only => :index do
+  before_filter only: :index do
     if params[:per_page]
       @per_page = params[:per_page].to_i
     end
@@ -28,7 +28,7 @@ ActiveAdmin.register Item do
       elsif item.youtube_id && item.youtube_img
         link_to(
           image_tag("https://img.youtube.com/vi/#{item.youtube_id}/1.jpg",
-            :class =>"youtube_mini"
+            class:"youtube_mini"
           ),
           admin_item_path(item),
           title: "Youtube ID: #{item.youtube_id}"

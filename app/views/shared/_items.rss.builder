@@ -1,12 +1,12 @@
-xml.instruct! :xml, :version=>"1.0"
+xml.instruct! :xml, version: "1.0"
 xml.rss(
-  :version=>"2.0", 
+  version: "2.0", 
   'xmlns:atom' => "http://www.w3.org/2005/Atom", 
   'xmlns:opensearch' => "http://a9.com/-/spec/opensearch/1.1/"
 ){
 
   xml.channel{
-    xml.tag! 'atom:link', :rel => 'self', :type => 'application/rss+xml', :href => request.url
+    xml.tag! 'atom:link', rel: 'self', type: 'application/rss+xml', href: request.url
     if @rss_title
       xml.title(@rss_title)
     else

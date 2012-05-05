@@ -1,4 +1,4 @@
-<%= semantic_form_for [:admin, @page], :html => { :enctype => "multipart/form-data" }  do |f| %>
+<%= semantic_form_for [:admin, @page], html: { enctype: "multipart/form-data" }  do |f| %>
 
   <%= f.inputs name: "Required Main Information" do %>
     <%= f.input :title, 
@@ -13,8 +13,8 @@
     %>
     <%= f.input :language, 
                 as: :select, 
-                :member_label => 'description', 
-                :member_value => :id, 
+                member_label: 'description', 
+                member_value: :id, 
                 label: "Language",
                 required: false, 
                 hint: "Select a language for this Page"
@@ -23,7 +23,7 @@
     <%= f.input :body, 
                 label: "Main Content", 
                 required: true, 
-                :input_html => { rows: 60, cols: 120}
+                input_html: { rows: 60, cols: 120}
     %>
     <%= f.input :priority, hint: "Order in which it will show on the website. 1=higher 100=lowest" %>
     <%= f.input :active, hint: "Only Actives pages will be visible on website." %><br />
@@ -31,7 +31,7 @@
     
   <%#= f.buttons :commit %>
   <%= f.actions do %>
-    <%= f.action :submit, :button_html => { class: "primary", disable_with: 'Wait...' } %>
+    <%= f.action :submit, button_html: { class: "primary", disable_with: 'Wait...' } %>
   <% end %>
 <% end %>
 

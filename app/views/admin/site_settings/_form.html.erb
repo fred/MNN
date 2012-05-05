@@ -2,7 +2,7 @@
 
   <%= f.inputs name: "Site Settings" do %>
     <%= f.input :var %>
-    <%= f.input :value, :input_html => { :value => @site_setting.value } %>
+    <%= f.input :value, input_html: { value: @site_setting.value } %>
   <% end %>
   
   <%= f.buttons :commit %>

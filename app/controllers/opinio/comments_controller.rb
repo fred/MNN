@@ -24,14 +24,14 @@ class Opinio::CommentsController < ApplicationController
     @comment.approved_by = nil
 
     if @comment.save
-      messages = { :notice => t('opinio.messages.comment_sent') }
+      messages = { notice: t('opinio.messages.comment_sent') }
     else
-      messages = { :error => t('opinio.messages.comment_sending_error') }
+      messages = { error: t('opinio.messages.comment_sending_error') }
     end
     headers['Cache-Control'] = 'private, no-cache'
     respond_to do |format|
       format.js
-      format.html { redirect_to( resource, :flash => messages ) }
+      format.html { redirect_to( resource, flash: messages ) }
     end
   end
 
@@ -44,7 +44,7 @@ class Opinio::CommentsController < ApplicationController
     else
       #flash[:error]  = I18n.translate('opinio.comment.not_permitted', default: "Not permitted")
       logger.warn "user #{send(Opinio.current_user_method)} tried to remove a comment from another user #{@comment.owner.id}"
-      render text: "unauthorized", :status => 401 and return
+      render text: "unauthorized", status: 401 and return
     end
 
     respond_to do |format|

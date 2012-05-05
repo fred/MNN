@@ -75,11 +75,11 @@ class ItemsController < ApplicationController
       if @item.item_stat
         @item_stat = @item.item_stat
         if session[:view_items] && !session[:view_items].include?(@item.id)
-          @item_stat.update_attributes(:views_counter => @item_stat.views_counter+1)
+          @item_stat.update_attributes(views_counter: @item_stat.views_counter+1)
           session[:view_items] << @item.id
         end
       else
-        @item_stat = ItemStat.create(:item_id => @item.id, :views_counter => 1)
+        @item_stat = ItemStat.create(item_id: @item.id, views_counter: 1)
       end
     end
     # @related = @item.solr_similar
@@ -165,7 +165,7 @@ class ItemsController < ApplicationController
     end
     if params[:q] && !params[:q].to_s.empty?
       term = params[:q].downcase
-      @search = Item.solr_search(:include => [:attachments, :comments, :category, :language, :item_stat, :user, :tags]) do
+      @search = Item.solr_search(include: [:attachments, :comments, :category, :language, :item_stat, :user, :tags]) do
         fulltext term do
           phrase_fields title: 1.8
           phrase_fields abstract: 1.6

@@ -5,11 +5,11 @@ if ($('#no_comments').is(':visible')) {
   <% if @reply %>
     if($('#comment_<%= @comment.commentable_id %> ul').length == 0)
       $('#comment_<%= @comment.commentable_id %>').append('<ul id="comment_<%= @comment.commentable_id %>_replies" class="replies"></ul>')
-    $('#comment_<%= @comment.commentable_id %>_replies').append("<%= escape_javascript( render @comment, locals: {:reply => @reply} ) %>")
+    $('#comment_<%= @comment.commentable_id %>_replies').append("<%= escape_javascript( render @comment, locals: {reply: @reply} ) %>")
     $('#commentable_id').val('<%= @comment.commentable.commentable_id %>')
     $('#commentable_type').val('<%= @comment.commentable.commentable_type %>')
   <% else %>
-    $('#comments').prepend("<%= escape_javascript( render @comment, locals: {:reply => @reply} ) %>")
+    $('#comments').prepend("<%= escape_javascript( render @comment, locals: {reply: @reply} ) %>")
   <% end %>
   alert("Your comment was received succesfully.")
   $('html, body').animate({scrollTop: $('#comment_<%= @comment.id %>').offset().top}, 2000);

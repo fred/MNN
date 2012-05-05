@@ -36,14 +36,14 @@ gem 'stringex'
 gem 'friendly_id', '~> 4.0.0'
 
 ### Comment System
-gem 'opinio', :git => "git://github.com/fred/opinio.git", :branch => "fred"
+gem 'opinio', git:  "git://github.com/fred/opinio.git", branch: "fred"
 gem 'rakismet'
 
 ### Queue
 gem 'resque', "~> 1.20.0"
 gem 'resque_mailer'
-gem 'resque-scheduler', :require => 'resque_scheduler'
-gem "resque-history", :git => "git://github.com/fred/resque-history.git", :branch => "fred"
+gem 'resque-scheduler', require: 'resque_scheduler'
+gem "resque-history", git:  "git://github.com/fred/resque-history.git", branch: "fred"
 
 
 ### JSON and Twitter
@@ -61,24 +61,24 @@ gem 'jquery-rails'
 group :assets do
   gem "libv8"
   gem "execjs"
-  gem "therubyracer", :require => 'v8'
+  gem "therubyracer", require: 'v8'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
 
 
 # Settings
-gem 'rails-settings-cached', "~> 0.1.2", :require => 'rails-settings'
-    # :git => 'git://github.com/huacnlee/rails-settings-cached.git'
+gem 'rails-settings-cached', "~> 0.1.2", require: 'rails-settings'
+    # git:  'git://github.com/huacnlee/rails-settings-cached.git'
 
 ### i18n Translation on DB
 # gem 'i18n-active_record',
-#     :require => 'i18n/active_record',
-#     :git => 'git://github.com/svenfuchs/i18n-active_record.git'
+#     require: 'i18n/active_record',
+#     git:  'git://github.com/svenfuchs/i18n-active_record.git'
 
 group :production do
-  gem 'rack-ssl-enforcer', :require => 'rack/ssl-enforcer'
-  gem 'unicorn', :require => false
+  gem 'rack-ssl-enforcer', require: 'rack/ssl-enforcer'
+  gem 'unicorn', require: false
 end
 
 group :test, :development do
@@ -93,7 +93,7 @@ group :development do
   gem 'hirb'
   gem 'progress_bar' # Nice progress when rake indexing with solr
   gem 'foreman'
-  gem 'thin', :require => false
+  gem 'thin', require: false
 end
 
 group :test do
@@ -106,7 +106,7 @@ group :test do
   gem 'autotest'
   gem 'autotest-rails'
   gem 'sunspot_test'
-  gem 'turn', '~> 0.8.3', :require => false
+  gem 'turn', '~> 0.8.3', require: false
 end
 
 
@@ -114,27 +114,27 @@ end
 ### Active Admin, loaded at end.
 gem "meta_search", "~> 1.1.3"
 # gem 'activeadmin', "~> 0.4.0"
-# gem 'activeadmin', :path => "vendor/gems/active_admin"
-gem 'activeadmin', :git => "git://github.com/fred/active_admin.git", :branch => "594"
+# gem 'activeadmin', path: "vendor/gems/active_admin"
+gem 'activeadmin', git: "git://github.com/fred/active_admin.git", branch: "594"
 
 gem 'tinymce-rails', "3.4.7.0.1"
 
 # Twitter Bootstrap for Rails 3 Asset Pipeline
 gem 'twitter-bootstrap-rails', "~> 1.4.3"
-  # :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git"
+#   git: "git://github.com/seyhunak/twitter-bootstrap-rails.git"
 
 
 # Error Emails
-gem "exception_notification", "~> 2.6.0", :require => 'exception_notifier'
-# :git => "git://github.com/smartinez87/exception_notification.git"
+gem "exception_notification", "~> 2.6.0", require: 'exception_notifier'
+# git:  "git://github.com/smartinez87/exception_notification.git"
 
 
 ###############
 ## Searching ##
 ###############
 
-gem 'sunspot', "2.0.0.pre.111215" # :git => "git://github.com/sunspot/sunspot.git"
-gem 'sunspot_rails', "2.0.0.pre.111215" # :git => "git://github.com/sunspot/sunspot.git"
+gem 'sunspot', "2.0.0.pre.111215" # git:  "git://github.com/sunspot/sunspot.git"
+gem 'sunspot_rails', "2.0.0.pre.111215" # git:  "git://github.com/sunspot/sunspot.git"
 
 ### Memcache
 gem 'dalli', "~> 2.0.2"
@@ -147,8 +147,8 @@ gem 'dalli', "~> 2.0.2"
 # gem 'omniauth-github'
 # gem 'omniauth-google_oauth2'
 
-gem 'galetahub-simple_captcha', :require => 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
-gem 'capistrano', "~> 2.9.0", :require => false
-gem 'rvm-capistrano', :require => false
+gem 'galetahub-simple_captcha', require: 'simple_captcha', git: 'git://github.com/galetahub/simple-captcha.git'
+gem 'capistrano', "~> 2.9.0", require: false
+gem 'rvm-capistrano', require: false
 gem 'country-select'
 gem 'postmark-rails'

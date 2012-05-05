@@ -319,7 +319,7 @@ class Item < ActiveRecord::Base
   def solr_similar(limit=6)
     # IF no bedrooms or bathrooms
     # Item.solr_search do
-    Item.solr_search(:include => [:attachments]) do
+    Item.solr_search(include: [:attachments]) do
       fulltext self.keyword_for_solr
       if self.language_id
         with(:language_id, self.language_id)

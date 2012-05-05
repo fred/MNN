@@ -12,13 +12,13 @@ class SubscriptionMailer < ActionMailer::Base
     
     unless @subscriptions.empty?
       mail(
-        :sender => "inbox@worldmathaba.net",
-        :from => "WorldMathaba.net <inbox@worldmathaba.net>",
-        :reply_to => "inbox@worldmathaba.net",
-        :to => "inbox@worldmathaba.net",
-        :bcc => @emails_list,
-        :subject => "[New post] #{@item.title}",
-        :tag => "item_subscription"
+        sender:   "inbox@worldmathaba.net",
+        from:     "WorldMathaba.net <inbox@worldmathaba.net>",
+        reply_to: "inbox@worldmathaba.net",
+        to:       "inbox@worldmathaba.net",
+        bcc:      @emails_list,
+        subject:  "[New post] #{@item.title}",
+        tag:      "item_subscription"
       )
     end
   end
