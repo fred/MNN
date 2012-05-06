@@ -1,0 +1,91 @@
+@import "twitter/bootstrap/bootstrap";
+
+@gridColumnWidth: 40px;
+@gridColumns: 16;
+@fluidGridColumnWidth: 4.25531915%;	
+@gridRowWidth:    (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+
+#gridSystem {
+  .generate(@gridColumns, @gridColumnWidth, @gridGutterWidth) {
+    // Default columns
+    .span12 { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 12); }
+    .span13 { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 13); }
+    .span14 { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 14); }
+    .span15 { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 15); }
+    .span16,
+    .container { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 16); }
+    // Offset column options
+    .offset12 { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 12); }    
+    .offset13 { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 13); }    
+    .offset14 { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 14); }    
+    .offset15 { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 15); }    
+  }
+}
+
+// Fluid grid system
+// -------------------------
+#fluidGridSystem {
+  // Take these values and mixins, and make 'em do their thang
+  .generate(@gridColumns, @fluidGridColumnWidth, @fluidGridGutterWidth) {
+    // Row surrounds the columns
+    .row-fluid {
+      // Default columns
+      .span13 { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 13); }
+      .span14 { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 14); }
+      .span15 { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 15); }
+      .span16 { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 16); }
+    }
+  }
+}
+
+
+
+// Input grid system
+// -------------------------
+#inputGridSystem {
+  .generate(@gridColumns, @gridColumnWidth, @gridGutterWidth) {
+    input,
+    textarea,
+    .uneditable-input {
+      &.span13 { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 13); }
+      &.span14 { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 14); }
+      &.span15 { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 15); }
+      &.span16 { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 16); }
+    }
+  }
+}
+
+table {
+  .span13 { .tableColumns(13); }
+  .span14 { .tableColumns(14); }
+  .span15 { .tableColumns(15); }
+  .span16 { .tableColumns(16); }
+}
+
+
+// @import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
+@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: asset-path('fontawesome-webfont.eot');
+@fontAwesomeWoffPath: asset-path('fontawesome-webfont.woff');
+@fontAwesomeTtfPath: asset-path('fontawesome-webfont.ttf');
+@fontAwesomeSvgzPath: asset-path('fontawesome-webfont.svgz');
+@fontAwesomeSvgPath: asset-path('fontawesome-webfont.svg');
+
+// Font Awesome
+@import "fontawesome";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/less.html for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;

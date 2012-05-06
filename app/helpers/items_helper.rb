@@ -9,22 +9,37 @@ module ItemsHelper
       image.image
     end
   end
+
+  def item_popover(item)
+    title_str = ""
+    if item.has_image?
+      title_str += image_tag(item.main_image.image.thumb, class: "tooltip_image", title: item.main_image.title, alt: item.main_image.title)
+    end
+    title_str += item.title.to_s
+    title_str += "<br/>"
+    title_str += "#{item.abstract}"
+    title_str += "<br/>"
+    content_str = "<span class='date_small'>#{time_ago_in_words(item.published_at)} ago - by #{item.author_name}</span>"
+    return {:title => title_str, 'data-content' => content_str, id: 'popover', rel: 'popover'}
+  end
   
   def item_title_small(item)
     str = ""
-    str += "<b>#{item.title}</b> <br/> #{item.abstract}"
+    str += "#{item.title}<br/>#{item.abstract}"
     str += "<br/>"
-    str += "<span class='date_small'>#{time_ago_in_words(item.published_at)} ago - by #{item.author_name}</span>"
+    str += "<div class='date_small'>#{time_ago_in_words(item.published_at)} ago - by #{item.author_name}</div>"
   end
   
   def item_title(item)
     str = ""
-    str += "#{image_tag(item.main_image.image.thumb, class: "tooltip_image", title: item.main_image.title, alt: item.main_image.title)}" if item.has_image?
-    str += "<b>#{item.title}</b>"
+    if item.has_image?
+      str += image_tag(item.main_image.image.thumb, class: "tooltip_image", title: item.main_image.title, alt: item.main_image.title)
+    end
+    str += "#{item.title}"
     str += "<br/>"
     str += "#{item.abstract}"
     str += "<br/>"
-    str += "<span class='date_small'>#{time_ago_in_words(item.published_at)} ago - by #{item.author_name}</span>"
+    str += "<div class='date_small'>#{time_ago_in_words(item.published_at)} ago - by #{item.author_name}</div>"
     str
   end
   
@@ -54,8 +69,6 @@ module ItemsHelper
   end
   
   def linkedin_share(item)
-    # Example:
-    # http://www.linkedin.com/shareArticle?mini=true&url=CONTENT-URL&title=CONTENT-TITLE&summary=DEATILS-OPTIONAL&source=YOURWEBSITE-NAME
     url = "http://www.linkedin.com/shareArticle?mini=true&url="
     url += url_for(item_path(item.id, only_path: false, protocol: 'http'))
     url += "&title=#{url_encode(item.title)}"

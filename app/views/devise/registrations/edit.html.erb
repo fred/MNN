@@ -1,13 +1,18 @@
 <div class="row">
-  <div class="span7">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <div class="span8">
+    <%= form_for(resource,
+          as: resource_name,
+          url: registration_path(resource_name),
+          html: { method: :put, class: 'form-horizontal' }
+        ) do |f|
+    %>
     
       <fieldset class="withBorder">
         <legend>Current Password</legend>
-        <div class="clearfix">
-          <%= f.label :current_password %>
-          <div class="input">
-            <%= f.password_field :current_password, autocomplete: "off", required: true, class: "large"  %>
+        <div class="control-group">
+          <%= f.label :current_password, class: 'control-label' %>
+          <div class="controls">
+            <%= f.password_field :current_password, autocomplete: "off", required: true, class: "span4"  %>
             <span class="help-block">
               Your Current Password is Required to make any changes in profile
             </span>
@@ -17,69 +22,69 @@
 
       <fieldset class="withBorder">
         <legend>Personal Information</legend>
-        <div class="clearfix">
-          <%= f.label :email %>
-          <div class="input">
-            <%= f.text_field :email, required: false, type: "email", class: "large" %>
+        <div class="control-group">
+          <%= f.label :email, class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :email, required: false, type: "email", class: "span4" %>
           </div>
         </div>
-        <div class="clearfix">
-          <%= f.label :name %>
-          <div class="input">
-            <%= f.text_field :name, required: true, autofocus: true, class: "large" %>
+        <div class="control-group">
+          <%= f.label :name, class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :name, required: true, autofocus: true, class: "span4" %>
           </div>
         </div>
-        <div class="clearfix">
-          <%= f.label :address %>
-          <div class="input">
-            <%= f.text_field :address, required: false, class: "large" %>
+        <div class="control-group">
+          <%= f.label :address, class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :address, required: false, class: "span4" %>
           </div>
         </div>
-        <div class="clearfix">
-          <%= f.label :twitter %>
-          <div class="input">
-            <%= f.text_field :twitter, required: false, class: "large", 
+        <div class="control-group">
+          <%= f.label :twitter, class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :twitter, required: false, class: "span4", 
                   placeholder: "@twitter" %>
           </div>
         </div>
-        <div class="clearfix">
-          <%= f.label :diaspora %>
-          <div class="input">
-            <%= f.text_field :diaspora, required: false, class: "large", 
+        <div class="control-group">
+          <%= f.label :diaspora, class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :diaspora, required: false, class: "span4", 
                   placeholder: "handle@host.net", type: "email" %>
           </div>
         </div>
-        <div class="clearfix">
-          <%= f.label :skype %>
-          <div class="input">
-            <%= f.text_field :skype, required: false, class: "large", 
+        <div class="control-group">
+          <%= f.label :skype, class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :skype, required: false, class: "span4", 
                   placeholder: "skype username" %>
           </div>
         </div>
-        <div class="clearfix">
-          <%= f.label :gtalk, "Google Chat" %>
-          <div class="input">
-            <%= f.text_field :gtalk, required: false, class: "large", 
+        <div class="control-group">
+          <%= f.label :gtalk, "Google Chat", class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :gtalk, required: false, class: "span4", 
                   placeholder: "xxxxx@gmail.com", type: "email" %>
           </div>
         </div>
-        <div class="clearfix">
-          <%= f.label :jabber, "Jabber" %>
-          <div class="input">
-            <%= f.text_field :jabber, required: false, class: "large", 
+        <div class="control-group">
+          <%= f.label :jabber, "Jabber", class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :jabber, required: false, class: "span4", 
                   placeholder: "xxxxx@jabber.com", type: "email" %>
           </div>
         </div>
-        <div class="clearfix">
-          <%= f.label :phone_number %>
-          <div class="input">
-            <%= f.text_field :phone_number, required: false, class: "large", 
+        <div class="control-group">
+          <%= f.label :phone_number, class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :phone_number, required: false, class: "span4", 
                   placeholder: "+11 123123456", type: "tel" %>
           </div>
         </div>
-        <div class="clearfix">
-          <%= f.label :time_zone %>
-          <div class="input">
+        <div class="control-group">
+          <%= f.label :time_zone, class: 'control-label' %>
+          <div class="controls">
             <%= f.time_zone_select :time_zone %>
           </div>
         </div>
@@ -87,16 +92,16 @@
       
       <fieldset class="withBorder">
         <legend>Avatar Image</legend>
-        <div class="clearfix">
-          <%= f.label :avatar, "Upload Avatar"%>
-          <div class="input">
-            <%= f.file_field :avatar %>
+        <div class="control-group">
+          <%= f.label :avatar, "Upload Avatar", class: 'control-label' %>
+          <div class="controls">
+            <%= f.file_field :avatar, class: "span4" %>
             <p class="help-block">
               Your avatar image will be shown in the comments section.
             </p>
           </div>
           <% if f.object.has_image? %>
-            <div class="input">
+            <div class="controls">
               <%= link_to(
                     image_tag(f.object.avatar.small, class: "show_item_img"),
                     f.object.avatar.url,
@@ -110,54 +115,56 @@
       
       <fieldset class="withBorder">
         <legend>Email Subscriptions</legend>
-        <div class="clearfix">
-          
-          <% if f.object.has_subscription? %>
-            <%= label_tag "Disable Subscription"%>
-            <div class="input">
+        <% if f.object.has_subscription? %>
+          <div class="control-group">
+            <%= label_tag "Cancel Subscription", nil, class: 'control-label' %>
+            <div class="controls">
               <%= f.check_box :unsubscribe %>
               <p class="help-block">
-                Select this if you wish to <b>Stop</b> receiving an email notification when a new Article is published.
+                Select this if you wish to <b>Stop</b> receiving email notifications when a new Article is published.
               </p>
             </div>
-          <% else %>
-            <%= label_tag "Enable Subscription"%>
-            <div class="input">
+          </div>
+        <% else %>
+          <div class="control-group">
+            <%= label_tag "Subscribe", nil , class: 'control-label' %>
+            <div class="controls">
               <%= f.check_box :subscribe %>
               <p class="help-block">
-                Select this if you wish to receive an email notification when a new Article is published.
+                Select this if you wish to receive email notifications when a new Article is published.
               </p>
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </fieldset>
       
       <fieldset class="withBorder">
         <legend>Change Password</legend>
         
-        <div class="clearfix">
-          <%= f.label :password, "New Password" %>
-          <div class="input">
-            <%= f.password_field :password, autocomplete: "off", required: false, class: "large"  %>
+        <div class="control-group">
+          <%= f.label :password, "New Password", class: 'control-label' %>
+          <div class="controls">
+            <%= f.password_field :password, autocomplete: "off", required: false, class: "span4"  %>
             <span class="help-block">
               Leave this field black if you want to change password
             </span>
           </div>
         </div>
-        <div class="clearfix">
-          <%= f.label :password_confirmation, "New Password Again" %>
-          <div class="input">
-            <%= f.password_field :password_confirmation, autocomplete: "off", required: false, class: "large"  %>
+
+        <div class="control-group">
+          <%= f.label :password_confirmation, "New Password Again", class: 'control-label' %>
+          <div class="controls">
+            <%= f.password_field :password_confirmation, autocomplete: "off", required: false, class: "span4"  %>
           </div>
         </div>
 
-        <div class="actions">
-          <%= f.submit "Update", class: "btn primary", disable_with: 'Processing...' %>
+        <div class="form-actions">
+          <%= f.submit "Update", class: "btn btn-primary", disable_with: 'Processing...' %>
           &nbsp;
           <%= link_to "Delete my account".html_safe,
               registration_path(resource_name),
               confirm: "Are you sure you want to delete your account from our system?",
-              method: :delete, class: 'btn danger'
+              method: :delete, class: 'btn btn-danger'
           %>
       </fieldset>
       

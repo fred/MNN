@@ -2,10 +2,12 @@ require 'spec_helper'
 
 describe ItemsController do
   include ItemSpecHelper
+  include EnableSunspot
   
   before(:each) do
     @item = FactoryGirl.create(:item)
     @category = @item.category
+    Sunspot.commit
   end
   
   describe "GET feed" do
@@ -49,6 +51,27 @@ describe ItemsController do
       get :show, id: @item.id
       @new_item = Item.find(@item.id)
       assert_equal 1, @new_item.item_stat.views_counter
+    end
+  end
+
+  describe "GET search" do
+    describe "with empty search string" do
+      it "should show no items" do
+        get :search, q: ''
+        assigns(:items).should eq([])
+      end
+    end
+    describe "with bad search string" do
+      it "should show no items" do
+        get :search, q: 'asdasdasdasdadadadas'
+        assigns(:items).should eq([])
+      end
+    end
+    describe "with good search string" do
+      it "should show some items" do
+        get :search, q: @item.title
+        assigns(:items).should eq([@item])
+      end
     end
   end
   

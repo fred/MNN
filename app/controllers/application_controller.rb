@@ -143,7 +143,21 @@ class ApplicationController < ActionController::Base
     response.headers['Content-Type'] = 'application/opensearchdescription+xml; charset=utf-8'
   end
 
-  
+  # Customize the Devise after_sign_in_path_for() for redirecct to previous page after login
+  def after_sign_in_path_for(resource)
+    case resource
+    when :user, User
+      store_location = session[:user_return_to]
+      if store_location.nil?
+        root_path
+      else
+        store_location.to_s
+      end
+    else
+      super
+    end
+  end
+
   protected
 
     def log_additional_data

@@ -1,6 +1,6 @@
 body {
-  padding-top: 60px;
-  background: #EEE url(<%= asset_path "bg_texture.jpg" %>) repeat-x scroll 0px 0px;
+  /* padding-top: 60px;*/
+  background: #EEE asset-url('bg_texture.jpg', image) repeat-x scroll 0px 0px;
   text-rendering: optimizeLegibility;
   font-smoothing: auto;
   -webkit-font-smoothing: auto;
@@ -100,21 +100,26 @@ article .content {
   border-bottom: 1px solid #ccc;
 }
 
-
 fieldset.withBorder {
   border: 1px solid #ddd;
   background-color: #f5f5f5;
 }
-fieldset legend {
+
+fieldset.withBorder legend {
+  width: auto;
   padding-left: 1px;
   margin-left: 160px;
+  border: none;
+}
+#termsofservice-form-element input[type="checkbox"] {
+  margin: 0 4px 0 10px;
 }
 .actions {
   margin-bottom: 0;
   padding-left: 160px;
 }
 
-label {
+.form-horizontal .control-label {
   width: 146px;
 }
 form .input {
@@ -300,6 +305,9 @@ article footer ul.tags li:last-child {
   border-right: none;
 }
 
+ul.related {
+  margin: 0 0 8px 16px;
+}
 ul.related li {
   margin: 4px 0px;
 }
@@ -504,9 +512,12 @@ blockquote {
   display: inline-block;
 }
 
-
-.topbar .brand{
-  padding: 10px 0px 0px 28px;
+.navbar .brand{
+  float: left;
+  display: block;
+  padding: 3px;
+  margin-left: -20px;
+  color: #999;
 }
 
 span.more.breaking-news {
@@ -556,7 +567,7 @@ div.all_tags div.tag {
   border: 2px solid #fff;
   margin: 10px;
   padding: 4px 4px 4px 8px;
-  background: #EEE url(<%= asset_path "bg_texture.jpg" %>) repeat-x scroll 0px 0px; 
+  background: #EEE asset-url('bg_texture.jpg', image) repeat-x scroll 0px 0px; 
   box-shadow: 0px 0px 6px #ccc;
   border-radius: 4px;
 }
@@ -609,13 +620,19 @@ span.noroll {
 }
 
 #easyTooltip{
-  padding:5px;
+  padding: 5px;
   background: #f1f1f1;
   border-radius: 6px;
-  border: 4px solid #AAA;
+  border: 3px solid #666;
   max-width: 360px;
   font-size: 14px;
-  box-shadow: 0px 0px 10px #999;
+  box-shadow: 0px 0px 12px #888;
+}
+#easyTooltip div.date_small {
+  border-top: 1px solid #ccc;
+  margin-top: 4px;
+  padding-top-top: 3px;
+  padding-left: 5px;
 }
 
 img.tooltip_image {
@@ -734,4 +751,16 @@ ul#comments li span.comment_owner img {
 .comments .btn.small {
   padding: 6px 9px 6px;
   font-size: 12px;
+}
+
+.popover-title {
+  font-size: 14px;
+  padding: 8px 6px;
+}
+.popover-content {
+  padding: 6px 8px;
+}
+
+.send_button {
+  margin-left: 25px;
 }

@@ -22,29 +22,22 @@
       <%= render partial: "/shared/sidebar_account" %>
       
       <div class="content">
-        <!-- Content -->
-        <!-- <ul class="breadcrumb">
-          <%#= yield :breadcrumb %>
-        </ul> -->
 
         <% if notice %>
-          <div class="alert-message success fade in" data-alert="notice">
-            <a class="close" href="#">×</a>
-            <p><%= notice %></p>
+          <div class="alert alert-success">
+            <%= notice %>
           </div>
         <% end %>
 
         <% if alert %>
-          <div class="alert-message warning fade in" data-alert="alert">
-            <a class="close" href="#">×</a>
-            <p><%= alert %></p>
+          <div class="alert alert-error">
+            <%= alert %>
           </div>
         <% end %>
 
         <% if flash[:error] %>
-          <div class="alert-message error fade in" data-alert="error">
-            <a class="close" href="#">×</a>
-            <p><%= flash[:error] %></p>
+          <div class="alert alert-error">
+            <%= flash[:error] %>
           </div>
         <% end %>
         
@@ -53,6 +46,7 @@
       </div>
       
     </div>
+    <%= render partial: "/shared/login_modal" %>
     <%= yield(:footer) %>
     <%= yield(:scripts) %>
   </body>

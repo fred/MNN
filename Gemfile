@@ -120,8 +120,11 @@ gem 'activeadmin', git: "git://github.com/fred/active_admin.git", branch: "594"
 gem 'tinymce-rails' #, "3.4.7.0.1"
 
 # Twitter Bootstrap for Rails 3 Asset Pipeline
-gem 'twitter-bootstrap-rails', "~> 1.4.3"
-#   git: "git://github.com/seyhunak/twitter-bootstrap-rails.git"
+gem 'twitter-bootstrap-rails', #"~> 1.4.3"
+  git: "git://github.com/seyhunak/twitter-bootstrap-rails.git"
+
+# Twitter Bootstrap SASS
+# gem 'bootstrap-sass'
 
 
 # Error Emails

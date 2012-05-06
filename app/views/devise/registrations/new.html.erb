@@ -1,26 +1,32 @@
 <div class="row">
   <div class="span7">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= custom_devise_error_messages! %>
+
+    <%= form_for(resource,
+          as: resource_name,
+          url: registration_path(resource_name),
+          html: { class: 'form-horizontal' }
+        ) do |f| 
+    %>
+      <%= custom_devise_error_messages! %>
     
       <fieldset class="withBorder">
         <legend>Sign up</legend>
-        <div class="clearfix">
-          <%= f.label :email %>
-          <div class="input">
-            <%= f.text_field :email, required: true, autofocus: true, type: "email", class: "large" %>
+        <div class="control-group">
+          <%= f.label :email, class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :email, required: true, autofocus: true, type: "email", class: "span4" %>
           </div>
         </div>
-        <div class="clearfix">
-          <%= f.label :password %>
-          <div class="input">
-            <%= f.password_field :password, required: true, class: "large"  %>
+        <div class="control-group">
+          <%= f.label :password, class: 'control-label' %>
+          <div class="controls">
+            <%= f.password_field :password, required: true, class: "span4" %>
           </div>
         </div>
-        <div class="clearfix">
-          <%= f.label :password_confirmation %>
-          <div class="input">
-            <%= f.password_field :password_confirmation, required: true, class: "large"  %>
+        <div class="control-group">
+          <%= f.label :password_confirmation, class: 'control-label' %>
+          <div class="controls">
+            <%= f.password_field :password_confirmation, required: true, class: "span4" %>
           </div>
         </div>
         
@@ -31,17 +37,16 @@
           </div>
         </div> -->
         
-        <div id="termsofservice-form-element" class="clearfix">
-          &nbsp;&nbsp;
+        <div id="termsofservice-form-element" class="control-group">
           <%= f.check_box :terms_of_service %>
           <strong>
             I agree to the
             <a href="/pages/privacy-and-policy" target="popup">Terms of Service and Privacy Policy</a>
           </strong>
-          </div>
+        </div>
         
-        <div class="actions">
-          <%= f.submit "Sign up", class: "btn primary", disable_with: 'Processing...' %>
+        <div class="form-actions">
+          <%= f.submit "Sign up", class: "btn btn-primary", disable_with: 'Processing...' %>
         </div>
       </fieldset>
       
@@ -72,3 +77,4 @@
     }
   </script>
 <% end %>
+

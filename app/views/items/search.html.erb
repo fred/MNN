@@ -1,10 +1,10 @@
 <% if @search && @search.total > 0 %>
-  <div class="alert-message success">
-    <p><%= @title %></p>
+  <div class="alert alert-success">
+    <%= @title %>
   </div>
 <% else %>
-  <div class="alert-message warning">
-    <p>Sorry, we've found nothing about "<%= params[:q] %>"</p>
+  <div class="alert alert-error">
+    Sorry, but we've found nothing about "<%= params[:q] %>"
   </div>
 <% end %>
 
@@ -13,5 +13,5 @@
 <% end %>
 
 <div class="pagination">
-  <%= paginate @items %>
+  <%= paginate @items unless @items.empty? %>
 </div>

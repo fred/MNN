@@ -35,7 +35,8 @@
       </li>
     <% else %>
       <li>
-        <%= link_to "Login", new_session_url(:user, protocol: 'https'), title: "Login Securely" %>
+        <%= login_link 'Login' %>
+        <%#= link_to "Login", new_session_url(:user, protocol: 'https'), title: "Login Securely" %>
       </li>
       <%- if Devise.mappings[:user].registerable?  %>
         <li>

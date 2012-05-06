@@ -192,12 +192,14 @@ class ItemsController < ApplicationController
       @title = "Found #{@search.total} results with '#{params[:q]}' "
       @rss_title = "WorldMathaba Search"
       @rss_description = @title
-      @last_published = @items.first.published_at if @items
-    # else
-    #   # If no search term has been given, empty search
-    #   @items = Item.published.not_draft.
-    #     order("published_at DESC").
-    #     page(params[:page]).per(per_page)
+      @last_published = @items.first.published_at unless @items.empty?
+    else
+      # If no search term has been given, empty search
+      # @items = Item.published.not_draft.
+      #   order("published_at DESC").
+      #   page(params[:page]).per(per_page)
+      @items = []
+      @title = "Please type something to search for"
     end
     # client side cache for 15 minutes
     headers['Cache-Control'] = 'public, max-age=900' unless (current_admin_user or current_user)

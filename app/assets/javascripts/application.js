@@ -11,3 +11,4 @@
 //= require easyTooltip
 //= require fancybox
 //= require modernizr
+//= require bootstrap

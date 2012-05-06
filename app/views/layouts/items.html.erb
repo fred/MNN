@@ -18,6 +18,8 @@
   <body>
     <%= render partial: "/shared/topbar" %>
 
+    <%#= render partial: "/shared/grid" %>
+
     <div class="container-fluid">
       <%= render partial: "/shared/sidebar" %>
       <div class="content">
@@ -30,6 +32,7 @@
         <%= render partial: "/shared/footer" %>
       </div>
     </div>
+    <%= render partial: "/shared/login_modal" %>
     
     <%= yield(:footer) %>
     <%= yield(:scripts) %>

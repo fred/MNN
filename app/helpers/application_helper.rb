@@ -1,5 +1,15 @@
 module ApplicationHelper
 
+
+
+  def login_link(str)
+    if is_handheld?
+      link_to str, new_session_url(:user, protocol: 'https'), title: "Login"
+    else
+      "<a data-toggle='modal' data-target='#modal-login' href='#' >#{str}</a>".html_safe
+    end
+  end
+
   # Cache for a period of time, default 2 hours
   def cache_expiring(cache_key, cache_period=7200)
     cache([cache_key, Time.now.to_i / cache_period].join('/')){ yield }
