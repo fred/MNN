@@ -1,5 +1,10 @@
 CHANGELOG
 
+== May 6, 2012
+* Upgraded to Twitter Bootstrap 2.0
+* Added Logo
+* Login Model Box
+
 == May 5, 2012
 * Updated TinyMCE live editor
 * ruby1.9 syntax updates
