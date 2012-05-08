@@ -212,7 +212,8 @@ class Item < ActiveRecord::Base
   end
 
   def main_image_cache_key
-    if self.has_image?
+    # give 10 seconds delay for image uploading and processing
+    if self.has_image? && self.main_image.updated_at.to_i > (self.updated_at.to_i+10)
       self.main_image.updated_at.to_s(:number)
     else
       ""

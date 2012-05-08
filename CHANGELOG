@@ -1,5 +1,9 @@
 CHANGELOG
 
+== May 8, 2012
+* Downgraded resque-scheduler to 1.9.9
+* fixed caching issue if a highlighted item not being first was updated.
+
 == May 6, 2012
 * Upgraded to Twitter Bootstrap 2.0
 * Added Logo

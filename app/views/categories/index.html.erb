@@ -4,48 +4,52 @@
 <% end %>
 
 <div class="row categories">
+
   <div class="span6 box" id="main_highlights">
-    <ul>
-      <% @highlights.each do |item| %>
-        <li class="featured_item" id="highlight_item_<%=item.id%>">
-          <% if item.has_image? %>
-            <%= link_to(
-                  image_tag(item.main_image.image.main, 
-                    class: "featured_item_image", 
-                    alt: item.main_image.title,
-                    width: 300, height: 300
-                  ),
-                  item, 
-                  title: item_title_small(item),
-                  id: 'tooltip'
-                )
-            %>
-          <% elsif item.youtube_id && item.youtube_img %>
-            <%= link_to(
-                  image_tag("https://img.youtube.com/vi/#{item.youtube_id}/0.jpg", 
-                    class: "youtube_main", 
-                    alt: item.youtube_id
-                  ),
-                  item, 
-                  title: item_title_small(item),
-                  id: 'tooltip'
-                )
-            %>
+    <% cache_expiring("main/#{@highlights.first.cache_key}",300) do %>
+      <!-- CACHE KEY: <%= "main/#{@highlights.first.cache_key}" %> 300 seconds -->
+      <ul>
+        <% @highlights.each do |item| %>
+          <li class="featured_item" id="highlight_item_<%=item.id%>">
+            <% if item.has_image? %>
+              <%= link_to(
+                    image_tag(item.main_image.image.main, 
+                      class: "featured_item_image", 
+                      alt: item.main_image.title,
+                      width: 300, height: 300
+                    ),
+                    item, 
+                    title: item_title_small(item),
+                    id: 'tooltip'
+                  )
+              %>
+            <% elsif item.youtube_id && item.youtube_img %>
+              <%= link_to(
+                    image_tag("https://img.youtube.com/vi/#{item.youtube_id}/0.jpg", 
+                      class: "youtube_main", 
+                      alt: item.youtube_id
+                    ),
+                    item, 
+                    title: item_title_small(item),
+                    id: 'tooltip'
+                  )
+              %>
+            <% end %>
+            <span class="title">
+              <%= link_to item.title.to_s.truncate(100),
+                          item, title: item_title_small(item), id: 'tooltip'
+              %>
+            </span>
+            <span class="abstract"><%= item.abstract.to_s.truncate(120) %></span>
           <% end %>
-          <span class="title">
-            <%= link_to item.title.to_s.truncate(100),
-                        item, title: item_title_small(item), id: 'tooltip'
-            %>
-          </span>
-          <span class="abstract"><%= item.abstract.to_s.truncate(120) %></span>
-        <% end %>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    <% end %>
   </div>
   
   <div class="span6 box" id="highlights">
-    <% cache("highlights/#{@latest_items.first.cache_key_full}") do %>
-      <!-- CACHE KEY: <%= "highlights/#{@latest_items.first.cache_key_full}" %> -->
+    <% cache_expiring("hglt/#{@latest_items.first.cache_key_full}",300) do %>
+      <!-- CACHE KEY: <%= "hglt/#{@latest_items.first.cache_key_full}" %> 300 seconds -->
       <h1><%= link_to "Latest News", items_path %></h1>
       <ul>
       <% @latest_items.each do |item| %>
@@ -89,8 +93,8 @@
 
   <% for category in @categories %>
     <% @top_items = category.top_items(13) %>
-    <% cache("box/#{category.id}/#{@top_items.first.cache_key_full}") do %>
-      <!-- CACHE KEY: <%= "box/#{category.id}/#{@top_items.first.cache_key_full}" %> -->
+    <% cache_expiring("box/#{category.id}/#{@top_items.first.cache_key_full}",300) do %>
+      <!-- CACHE KEY: <%= "box/#{category.id}/#{@top_items.first.cache_key_full}" %> 300 seconds -->
       <div class="span6 box" id="<%= category.slug %>">
         <h1><%= link_to category.title, category %></h1>
         <ul>

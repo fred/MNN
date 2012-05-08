@@ -1,7 +1,5 @@
 module ApplicationHelper
 
-
-
   def login_link(str)
     if is_limitted?
       link_to str, new_session_url(:user, protocol: 'https'), title: "Login"
@@ -10,8 +8,8 @@ module ApplicationHelper
     end
   end
 
-  # Cache for a period of time, default 2 hours
-  def cache_expiring(cache_key, cache_period=7200)
+  # Cache for a period of time, default 1 hours
+  def cache_expiring(cache_key, cache_period=3600)
     cache([cache_key, Time.now.to_i / cache_period].join('/')){ yield }
   end
 

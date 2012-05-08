@@ -32,7 +32,9 @@
         <%= render partial: "/shared/footer" %>
       </div>
     </div>
-    <%= render partial: "/shared/login_modal" %>
+    <% unless current_user or current_admin_user %>
+      <%= render partial: "/shared/login_modal" %>
+    <% end %>
     
     <%= yield(:footer) %>
     <%= yield(:scripts) %>

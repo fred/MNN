@@ -1,13 +1,4 @@
 GIT
-  remote: git://github.com/bvandenbos/resque-scheduler.git
-  revision: 74ac86c53211b9a1d193b94ec5c311f6fd3c04d9
-  specs:
-    resque-scheduler (2.0.0)
-      redis (>= 2.0.1)
-      resque (>= 1.20.0)
-      rufus-scheduler
-
-GIT
   remote: git://github.com/fred/active_admin.git
   revision: b4e7d834779d59a255822cd16a32302d7d5abd63
   branch: 594
@@ -298,6 +289,10 @@ GEM
       redis-namespace (~> 1.0.2)
       sinatra (>= 0.9.2)
       vegas (~> 0.1.2)
+    resque-scheduler (1.9.9)
+      redis (>= 2.0.1)
+      resque (>= 1.8.0)
+      rufus-scheduler
     resque_mailer (2.0.3)
       actionmailer (>= 3.0.0)
       resque (>= 1.2.3)
@@ -448,7 +443,7 @@ DEPENDENCIES
   rakismet
   resque (~> 1.20.0)
   resque-history!
-  resque-scheduler!
+  resque-scheduler (~> 1.9.9)
   resque_mailer
   rspec (~> 2.9.0)
   rspec-rails (~> 2.9.0)
