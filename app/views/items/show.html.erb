@@ -1,8 +1,3 @@
-<% @meta_title = @item.title %>
-<% @meta_description = @item.abstract %>
-<% @meta_keywords = "#{@item.category_title}, #{@item.tag_list}" %>
-<% @meta_author = @item.user.title if @item.user %>
-
 <%= content_for :html_tag do %>itemscope itemtype="http://schema.org/Article"<% end %>
 
 <%= content_for :head do %>

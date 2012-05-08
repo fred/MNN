@@ -82,6 +82,11 @@ class ItemsController < ApplicationController
         @item_stat = ItemStat.create(item_id: @item.id, views_counter: 1)
       end
     end
+    @meta_title = @item.title + " - World Mathaba"
+    @meta_description = @item.abstract
+    @meta_keywords = "#{@item.category_title} news, #{@item.tag_list}"
+    @meta_author = @item.user.title if @item.user
+
     # @related = @item.solr_similar
     headers['Cache-Control'] = 'private, no-cache'
     respond_to do |format|
