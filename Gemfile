@@ -42,7 +42,7 @@ gem 'rakismet'
 ### Queue
 gem 'resque', "~> 1.20.0"
 gem 'resque_mailer'
-gem 'resque-scheduler', require: 'resque_scheduler'
+gem 'resque-scheduler', require: 'resque_scheduler', git: 'git://github.com/bvandenbos/resque-scheduler.git'
 gem "resque-history", git:  "git://github.com/fred/resque-history.git", branch: "fred"
 
 
