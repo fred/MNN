@@ -3,7 +3,7 @@ module ApplicationHelper
 
 
   def login_link(str)
-    if is_handheld?
+    if is_limitted?
       link_to str, new_session_url(:user, protocol: 'https'), title: "Login"
     else
       "<a data-toggle='modal' data-target='#modal-login' href='#' >#{str}</a>".html_safe
@@ -55,12 +55,23 @@ module ApplicationHelper
   def is_handheld?
     is_mobile? or is_tablet?
   end
+
+  def is_limitted?
+    s = request.env["HTTP_USER_AGENT"].to_s.downcase
+    valid="(iphone|ipod|nokia|series60|symbian|blackberry|opera mini)"
+    if s.match(valid)
+      Rails.logger.debug("  UA: Limitted Mobile found: #{s}")
+      return true
+    else
+      return false
+    end
+  end
   
   def is_mobile?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
     valid="(iphone|ipod|nokia|series60|symbian|blackberry|opera mini|mobile|phone|android|smartphone)"
     invalid="(tablet|ipad|playbook|xoom)"
-    if !s.match(invalid) && s.match(valid)
+    if s.match(valid)
       Rails.logger.debug("  UA: Mobile found: #{s}")
       return true
     else
@@ -72,7 +83,7 @@ module ApplicationHelper
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
     valid="(tablet|ipad|galaxytab|opera mini|honeycomb|p1000|playbook|xoom|android|sch-i800|kindle)"
     invalid="(mobile|iphone|ipod)"
-    if !s.match(invalid) && s.match(valid)
+    if s.match(valid)
       Rails.logger.debug("  UA: Tablet found: #{s}")
       return true
     else
