@@ -165,21 +165,27 @@ ActiveAdmin::Dashboards.build do
   end
 
   ### USERS
-  section "Pending Users for Approval", priority: 14 do
-    if controller.current_ability.can?(:read, User)
-      ul do
-        User.recent_pending(8).collect do |user|
-          li link_to(user.title, admin_user_path(user))
-        end
-      end
-    end
-  end
+  # section "Pending Users for Approval", priority: 14 do
+  #   if controller.current_ability.can?(:read, User)
+  #     ul do
+  #       User.recent_pending(8).collect do |user|
+  #         li link_to(user.title, admin_user_path(user))
+  #       end
+  #     end
+  #   end
+  # end
   ### USERS
   section "Newly Registered User", priority: 16 do
     if controller.current_ability.can?(:read, User)
-      ul do
-        User.recent(8).collect do |user|
-          li link_to(user.title, admin_user_path(user))
+      table_for User.recent(10).collect do
+        column "Name" do |user|
+          link_to_if(user.name.present?,user.name.to_s, admin_user_path(user))
+        end
+        column "Email" do |user|
+          link_to(user.email, admin_user_path(user))
+        end
+        column "Date" do |user|
+          time_ago_in_words(user.created_at)
         end
       end
     end
@@ -187,14 +193,18 @@ ActiveAdmin::Dashboards.build do
   ### USERS
   section "Recently Logged in Users", priority: 20 do
     if controller.current_ability.can?(:read, User)
-      ul do
-        User.logged_in(8).collect do |user|
-          li(
-            link_to(
-              "#{user.title} - #{time_ago_in_words(user.current_sign_in_at)} ago", 
-              admin_user_path(user)
-            )
-          )
+      table_for User.logged_in(10).collect do
+        column "Name" do |user|
+          link_to_if(user.name.present?,user.name.to_s, admin_user_path(user))
+        end
+        column "Email" do |user|
+          link_to(user.email, admin_user_path(user))
+        end
+        column "Last Activity" do |user|
+          time_ago_in_words(user.current_sign_in_at)
+        end
+        column "Login IP" do |user|
+          user.current_sign_in_ip
         end
       end
     end
