@@ -118,7 +118,6 @@ class User < ActiveRecord::Base
   
   # Returns the last 10 approved users
   def self.recent(limit=10)
-    approved.
     order("id DESC").
     limit(limit)
   end
