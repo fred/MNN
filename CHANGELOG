@@ -18,6 +18,7 @@ CHANGELOG
 * more test coverage with Rspec
 * Updated TinyMCE
 * Updated gems
+* Releasing First Version 1.0.0
 
 == May 8, 2012
 * Downgraded resque-scheduler to 1.9.9
