@@ -1,5 +1,24 @@
 CHANGELOG
 
+== May 13, 2012
+* Fixed font size and color for Blockquote
+* Made Logo a link to home page
+* Decreased box-shadows for a more suttle feeling
+* Bigger font on top-navbar
+* Removed google-plus dynamic share tracking
+* Improved Login modal box
+* using LetterOpener for better testing emails
+* Added "Submitted by: Author Name" to article emails
+* Comment body is set to required(html5)
+* Proper Email validation
+* Recent Comments added to sidebar
+* Top Items in last 90 days added to sidebar
+* Asking user registration reason on register page
+* minor bug fixes
+* more test coverage with Rspec
+* Updated TinyMCE
+* Updated gems
+
 == May 8, 2012
 * Downgraded resque-scheduler to 1.9.9
 * fixed caching issue if a highlighted item not being first was updated.
