@@ -12,7 +12,7 @@
     </h3>
     <%= form_for Comment.new, remote: true do |f| %>
       <p>
-        <%= f.text_area :body, rows: 8, id: "Comment", class: "input-xlarge" %>
+        <%= f.text_area :body, rows: 8, id: "Comment", class: "input-xlarge", required: true %>
       </p>
       <%= hidden_field_tag :commentable_id, commentable.id %>
       <%= hidden_field_tag :commentable_type, commentable.class.base_class.name.to_s %>
@@ -23,10 +23,7 @@
     <% end %>
   <% else %>
     <p>
-      You must be 
-      <%#= link_to "logged in", new_session_url(:user, protocol: 'https'), title: "Login" %>
-      <%= login_link("logged in") %>
-       to comment.
+      You must be <%= login_link("logged in") %> to comment.
     </p>
   <% end %>
 </div>

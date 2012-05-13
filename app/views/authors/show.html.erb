@@ -3,7 +3,7 @@
   <%= auto_discovery_link_tag(:atom, author_path(@author), format: "atom") %>
 <% end %>
 
-<article id="author_<%=@author.id%>">
+<article class="author" id="author_<%=@author.id%>">
   <header>
     <% if @author.avatar? %>
       <%= link_to(image_tag(@author.avatar.small, class: "show_item_image"), author_path(@author)) %>
@@ -17,17 +17,31 @@
     <% unless @author.diaspora.to_s.empty? %>
       <p>Diaspora: <%= @author.diaspora %></p>
     <% end %>
-    <p>Submitted Articles: <%= @author.items.count %></p>
     <br />
     <%= @author.bio %>
   </section>
 </article>
 
-<h3><%= @author.name %> Articles</h3>
-
-<% @items.each do |item| %>
-  <%= render partial: "/shared/item", locals: {item: item } %>
+<% if @items.empty? %>
+  <div class='alert alert-info'>
+    <a class="close" data-dismiss="alert" href="#">×</a>
+    <% if (current_user && @author.id == current_user.id) or (current_admin_user && @author.id == current_admin_user.id) %>
+      <h4 class="alert-heading">You have not submitted any articles yet</h4>
+      Please read this page if you would like to contribute with articles: 
+      <u><b><%= link_to("How To Contribute", @help_page) if @help_page %></b></u>
+    <% else %>
+      <h4 class="alert-heading">This user has no Articles yet.</h4>
+    <% end %>
+  </div>
+<% else %>
+  <h3 class="alert alert-success">
+    <%= @author.name %> Articles (<%= @author.items.count %>)
+  </h3>
+  <% @items.each do |item| %>
+    <%= render partial: "/shared/item", locals: {item: item } %>
+  <% end %>
 <% end %>
+
 
 <% content_for :breadcrumb do %>
   <li>

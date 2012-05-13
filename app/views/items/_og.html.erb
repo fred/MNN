@@ -3,6 +3,7 @@
 <meta property="og:url" content="<%= url_for(item_path(@item.id, only_path: false, protocol: 'http')) %>"/>
 <meta property="og:site_name" content="worldmathaba.net"/>
 <meta property="og:description" content="<%= @item.abstract %>"/>
+<meta name="medium" content="news"/>
 
 <!-- Image -->
 <% if @item.has_image? %>

@@ -48,7 +48,7 @@ ActiveAdmin::Dashboards.build do
       table_for Comment.recent(12) do
         column "User" do |t|
           if t.owner
-            link_to t.owner.title, admin_user_path(t.owner), class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
+            link_to t.name, admin_user_path(t.owner), class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
           else
             t.owner_id
           end
@@ -78,7 +78,7 @@ ActiveAdmin::Dashboards.build do
       table_for Comment.suspicious(12) do
         column "User" do |t|
           if t.owner
-            link_to t.owner.title, admin_user_path(t.owner), class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
+            link_to t.name, admin_user_path(t.owner), class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
           else
             t.owner_id
           end

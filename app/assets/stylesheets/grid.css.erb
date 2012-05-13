@@ -9,7 +9,7 @@
   }
   .container-fluid > .sidebar {
     float: left;
-    width: 200px;
+    width: 208px;
     left: 25px;
     position: absolute;
     display: block;
@@ -17,8 +17,8 @@
   .container-fluid > .content {
     margin-left: 230px;
   }
-  .topbar div > ul, .nav {
-    margin-left: 25px
+  .navbar div > ul, .nav {
+    font-size: 14px;
   }
   div.well form {
     padding: 5px 5px 5px 10px;
@@ -48,15 +48,11 @@
 
 @media only screen and (min-width: 940px) {
   body {
-    /*padding-top: 60px;*/
     font-size: 13px;
   }
-  /*.container-fluid {
-     min-width: 900px;
-  }*/
   .container-fluid > .sidebar {
     float: left;
-    width: 200px;
+    width: 208px;
     left: 25px;
     position: absolute;
     display: block;
@@ -64,8 +60,8 @@
   .container-fluid > .content {
     margin-left: 230px;
   }
-  .topbar div > ul, .nav {
-    margin-left: 30px
+  .navbar div > ul, .nav {
+    font-size: 14px;
   }
   div.well form {
     padding: 5px 5px 5px 10px;
@@ -97,7 +93,6 @@
 
 @media only screen and (min-width: 1280px) {
   body {
-    /*padding-top: 60px;*/
     font-size: 14px;
   }
   .container-fluid {
@@ -105,7 +100,7 @@
   }
   .container-fluid > .sidebar {
     float: left;
-    width: 200px;
+    width: 208px;
     left: 25px;
     position: absolute;
     display: block;
@@ -114,15 +109,11 @@
   .container-fluid > .content {
     margin-left: 230px;
   }
-  .topbar div > ul, .nav {
-    margin-left: 40px
-  }
   div.well form {
     padding: 5px 5px 5px 10px;
     margin-bottom: 2px;
   }
   div.well form input#q {
-    /*width: 130px;*/
     margin-bottom: 12px;
   }
   span.noroll {
@@ -153,14 +144,13 @@
 
   body {
     -webkit-text-size-adjust: auto;
-    /*padding-top: 95px;*/
   }
   .container-fluid {
      min-width: 480px;
   }
   .container-fluid > .sidebar {
     float: left;
-    width: 160px;
+    width: 164px;
     left: 20px;
     position: absolute;
     display: block;
@@ -168,8 +158,11 @@
   .container-fluid > .content {
     margin-left: 180px;
   }
-  .topbar .brand{
-    padding: 10px 0px 0px 30px;
+  .navbar .brand{
+    /*padding: 10px 0px 0px 30px;*/
+  }
+  ul.nav li#home_link {
+    display:none;
   }
   article {
     padding: 8px 20px;
@@ -190,11 +183,6 @@
     padding: 3px 5px 5px 1px;
     height: auto;
     min-height: 200px;
-  }
-  .topbar div > ul, .nav {
-    margin-left: 1px;
-    clear:both;
-    display:block;
   }
   div.well form {
     padding: 1px;
@@ -233,11 +221,6 @@
     padding: 3px 5px 5px 1px;
     height: auto;
     min-height: 200px;
-  }
-  .topbar div > ul, .nav {
-    margin-left: 1px;
-    clear:both;
-    display:block;
   }
   div.well form {
     padding: 1px;
@@ -310,22 +293,9 @@
     float: left;
     position: inherit;
   }
-  .topbar .brand{
+  .navbar .brand{
     padding: 10px 0px 0px 30px;
     text-align:center;
-  }
-  .topbar p {
-    display:none;
-  }
-  .topbar div > ul a, .nav a {
-    line-height: 16px;
-    padding: 10px 5px;
-    font-size: 14px;
-  }
-  .topbar div > ul, .nav {
-    margin-left: 1px;
-    clear:both;
-    display:block;
   }
   .breadcrumb {
     margin: 0 0 10px;

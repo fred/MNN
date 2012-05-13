@@ -29,6 +29,24 @@ module ItemsHelper
     str += "<br/>"
     str += "<div class='date_small'>#{time_ago_in_words(item.published_at)} ago - by #{item.author_name}</div>"
   end
+
+  def item_mini(item)
+    str = ""
+    if item.has_image?
+      str += link_to(
+          image_tag(item.main_image.image.thumb, class: "item-image", title: item.abstract, alt: item.main_image.title),
+          item,
+          title: item.abstract,
+          id: 'tooltip'
+      )
+    end
+    str += "<span class='item-title'>#{link_to item.title, item, title: item.abstract, id: 'tooltip'}</span>"
+    if item.item_stat
+      str += "<span class='item-views'>Viewed #{item.item_stat.views_counter} times</span>"
+    end
+    str += "<span class='item-date'>Published #{time_ago_in_words(item.published_at)} ago</span>"
+    str
+  end
   
   def item_title(item)
     str = ""

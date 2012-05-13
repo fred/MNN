@@ -3,7 +3,7 @@
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <%= image_tag ("world_mathaba11.png"), width: '200px', height: '33px', class: 'brand' %>
+      <%= link_to(image_tag("world_mathaba11.png", width: '200px', height: '33px', class: 'brand'), root_path) %>
       <ul class="nav">
         <% cache_expiring("topbar") do %>
           <li id="home_link"><%= link_to "Home", root_path, title: "Home" %></li>
@@ -23,6 +23,17 @@
               <% end %>
             </ul>
           </li>
+
+          <li class="dropdown" data-dropdown="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tags <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <% GeneralTag.order("title ASC").all.each do |tag| %>
+                <li><%= link_to tag.title, tag_path(tag) %></li>
+              <% end %>
+            </ul>
+          </li>
+
+
           <li class="dropdown" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Languages <b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -51,16 +62,28 @@
         <ul class="dropdown-menu">
           <% if current_user %>
             <li>
-              <%= link_to "Edit Profile", edit_user_registration_url(protocol: "https"), title: "Edit your Profile" %>
+              <%= link_to "Edit Profile", edit_user_registration_url(protocol: "https"), title: "Edit My Profile" %>
+            </li>
+            <li>
+              <%= link_to "My Articles", author_path(current_user), title: "My Articles Page" %>
             </li>
             <li>
               <%= link_to 'Sign out', destroy_user_session_url(protocol: "https"), method: :delete %>
             </li>
           <% elsif current_admin_user %>
-            <li><%= link_to "Admin", admin_dashboard_url(protocol: "https") %></li>
-            <li><%= link_to "Profile", edit_admin_user_registration_path, title: "Edit your Profile" %></li>
+            <li>
+              <%= link_to "Admin Panel", admin_dashboard_url(protocol: "https") %>
+            </li>
+            <li>
+              <%= link_to "Edit Profile", edit_admin_user_registration_path, title: "Edit My Profile" %>
+            </li>
+            <li>
+              <%= link_to "My Articles", author_path(current_admin_user), title: "My Articles Page" %>
+            </li>
             <li class="divider"></li>
-            <li><%= link_to 'Sign out', destroy_admin_user_session_url(protocol: 'https'), method: :delete %></li>
+            <li>
+              <%= link_to 'Sign out', destroy_admin_user_session_url(protocol: 'https'), method: :delete %>
+            </li>
           <% else %>
             <li><%= login_link 'Sign in' %></li>
             <%- if Devise.mappings[:user].registerable?  %>

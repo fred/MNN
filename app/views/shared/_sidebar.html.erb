@@ -30,7 +30,9 @@
             <ul>
               <% @search.facet(:category_id).rows.each do |facet| %>
                 <% category = Category.find(facet.value) %>
-                <li><%= link_to("#{category.title} (#{facet.count})", params.merge(category_id: category.id)) if category %></li>
+                <li>
+                  <%= link_to("#{category.title} (#{facet.count})", params.merge(category_id: category.id)) if category %>
+                </li>
               <% end %>
             </ul>
           </div>
@@ -38,8 +40,11 @@
           <div class='widget_content'>
             <ul>
               <% @search.facet(:language_id).rows.each do |facet| %>
-                <% language = Language.find(facet.value) %>
-                <li><%= link_to("#{language.description} (#{facet.count})", params.merge(language_id: language.id)) if language %></li>
+                <% if language = Language.find(facet.value) %>
+                  <li>
+                    <%= link_to("#{language.description} (#{facet.count})", params.merge(language_id: language.id)) %>
+                  </li>
+                <% end %>
               <% end %>
             </ul>
           </div>
@@ -55,18 +60,43 @@
             <li><%= link_to category.title, category, title:  category.description %></li>
           <% end %>
         </ul>
-        <h4>Tags</h4>
-        <ul>
-          <% GeneralTag.order("title ASC").all.each do |tag| %>
-            <li><%= link_to tag.title, tag_path(tag), title:  "See all Articles tagged in '#{tag.title}'" %></li>
-          <% end %>
-        </ul>
         <h4>Useful Pages</h4>
         <ul>
           <% Page.order("priority ASC").all.each do |page| %>
             <li><%= link_to page.title, page, title:  page.title %></li>
           <% end %>
         </ul>
+      </div>
+    <% end %>
+
+    <% cache_expiring("sidebar_popular", 600) do %>
+      <div class="sidebar_secions">
+        <h4>Most Popular</h4>
+        <% Item.popular(5).each do |item| %>
+          <div class="sidebar-item">
+            <%= item_mini(item).html_safe %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% cache_expiring("sidebar_comments", 300) do %>
+      <div class="sidebar_secions">
+        <h4>Recent Comments</h4>
+        <% Comment.recent(7).each do |comment| %>
+          <div class="sidebar-comment">
+            <span class="comment-author">
+              
+            </span>
+            <span class="comment-body">
+              <%= link_to comment.body.truncate(60), item_path(comment.commentable), title: comment.body, id: 'tooltip' %>
+            </span>
+            <span class="comment-date">
+              <%= time_ago_in_words(comment.created_at) %> ago 
+              by <%= link_to comment.name, author_path(comment.owner.id) %>
+            </span>
+          </div>
+        <% end %>
       </div>
     <% end %>
 

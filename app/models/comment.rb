@@ -21,6 +21,8 @@ class Comment < ActiveRecord::Base
   before_create :check_for_spam, :check_for_suspicious
   after_create  :email_notify
 
+  delegate :name, :to => :owner, :allow_nil => true
+
   # Send the email notifications after creation
   def email_notify
     Resque.enqueue(CommentNotification, self.id)

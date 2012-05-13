@@ -335,6 +335,16 @@ class Item < ActiveRecord::Base
   ### CLASS METHODS
   ####################
 
+  # Returns the most popular Items in the last 90 days
+  def self.popular(limit=10, day_num=90)
+    published.
+    includes(:attachments).
+    joins(:item_stat).
+    where("items.published_at > ?", (DateTime.now - day_num.days)).
+    order("item_stats.views_counter DESC").
+    limit(limit)
+  end
+
   # Some Basic Scopes for finder chaining
   def self.last_item
     published.order("updated_at DESC").first

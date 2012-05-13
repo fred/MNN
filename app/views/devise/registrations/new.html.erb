@@ -14,28 +14,33 @@
         <div class="control-group">
           <%= f.label :email, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :email, required: true, autofocus: true, type: "email", class: "span4" %>
+            <%= f.text_field :email, required: true, autofocus: true, type: "email", class: "span3" %>
           </div>
         </div>
         <div class="control-group">
           <%= f.label :password, class: 'control-label' %>
           <div class="controls">
-            <%= f.password_field :password, required: true, class: "span4" %>
+            <%= f.password_field :password, required: true, class: "span3" %>
           </div>
         </div>
         <div class="control-group">
           <%= f.label :password_confirmation, class: 'control-label' %>
           <div class="controls">
-            <%= f.password_field :password_confirmation, required: true, class: "span4" %>
+            <%= f.password_field :password_confirmation, required: true, class: "span3" %>
           </div>
         </div>
-        
-        <!-- <div class="clearfix">
-          <div class="input">
-            <%#= show_simple_captcha(object: resource_name.to_s) %>
-            <%#= f.simple_captcha label: "Please, enter the letters above" %>
+        <div class="control-group">
+          <%= f.label :registration_role, "Reason for joining us?", class: 'control-label' %>
+          <div class="controls">
+            <%= f.select :registration_role, 
+                  options_for_select([["Just be a member"], ["To Comment"], ["Comment and Submit Articles"], ["I want to be an Editor"]]),
+                  required: false,
+                  include_blank: "-- Please Choose",
+                  class: "span3"
+            %>
           </div>
-        </div> -->
+        </div>
+
         
         <div id="termsofservice-form-element" class="control-group">
           <%= f.check_box :terms_of_service %>
