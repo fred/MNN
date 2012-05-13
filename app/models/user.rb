@@ -9,13 +9,15 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :bio, :name, :address, 
-    :twitter, :diaspora, :skype, :gtalk, :jabber, :phone_number, :time_zone, :avatar,
-    :subscribe, :unsubscribe, :unsubscribe_all, :upgrade, :downgrade
+    :twitter, :diaspora, :skype, :gtalk, :jabber, :phone_number, :time_zone, :avatar, :subscribe,
+    :unsubscribe, :unsubscribe_all, :upgrade, :downgrade, :terms_of_service, :registration_role
 
   attr_accessor :subscribe, :unsubscribe, :unsubscribe_all, :upgrade, :downgrade
   
-  validates_acceptance_of :terms_of_service, allow_nil: true, accept: true unless Rails.env.test?
-  
+  validates_acceptance_of :terms_of_service, accept: '1', on: :create unless Rails.env.test?
+  validates_exclusion_of :password, :in => lambda { |p| [p.name] }, :message => "should not be the same as your name"
+  validates :email, :email_format => {:message => 'is not looking good'}, on: :create
+
   # Relationships
   has_many :items
   has_many :scores
