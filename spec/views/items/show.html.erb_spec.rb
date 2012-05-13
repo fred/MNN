@@ -15,6 +15,7 @@ describe "items/show" do
       published_at: Time.now
     ))
     @item.attachments << FactoryGirl.create(:attachment)
+    @user = FactoryGirl.create(:user)
     Sunspot.commit
   end
 
@@ -30,5 +31,9 @@ describe "items/show" do
   it "should show main image for item" do
     render
     assert_select "img#main_image", src: (@item.main_image.image.medium), count: 1
+  end
+  it "should not see body text_area for comment" do
+    render
+    assert_select "text_area#Comment", count: 0
   end
 end

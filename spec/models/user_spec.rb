@@ -12,6 +12,24 @@ describe User do
       @user.email = nil
       assert_equal false, @user.valid?
     end
+    it "should require a valid email" do
+      @user.email = "mail@mail"
+      assert_equal false, @user.valid?
+      @user.email = "abcd@abcd"
+      assert_equal false, @user.valid?
+      @user.email = "a@b.co"
+      assert_equal true, @user.valid?
+      @user.email = "a@bo.c"
+      assert_equal true, @user.valid?
+      @user.email = "a@b.co"
+      assert_equal true, @user.valid?
+    end
+    it "should not allow name password same as name" do
+      @user.name = "welcome"
+      @user.password = "welcome"
+      @user.password_confirmation = "welcome"
+      assert_equal false, @user.valid?
+    end
     it "should return false on is_admin?" do
       @user.is_admin?.should eq(false)
     end
