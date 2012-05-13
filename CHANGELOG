@@ -1,5 +1,10 @@
 CHANGELOG
 
+== May 14, 2012
+* Changed Favicon
+* GPLv3 License
+* Version 1.0.1
+
 == May 13, 2012
 * Fixed font size and color for Blockquote
 * Made Logo a link to home page
