@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def http_protocol
+    if Rails.env.production?
+      'https'
+    else
+      'http'
+    end
+  end
+
   def login_link(str)
     if is_limitted?
       link_to str, new_session_url(:user, protocol: 'https'), title: "Login"

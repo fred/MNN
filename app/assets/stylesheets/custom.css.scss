@@ -650,19 +650,28 @@ img.tooltip_image {
   box-shadow: 0px 0px 5px #CCC;
 }
 
-
 span#item_body li {
   color: #444;
 }
-footer .footer_logo {
-  font-size: 14px;
-  text-align: center;
-  padding-right: 10px;
-}
-footer .render_time {
-  font-size: 12px;
-  text-align: center;
-  padding-right: 10px;
+
+footer {
+  .footer_logo {
+    font-size: 14px;
+    text-align: center;
+    padding-right: 10px;
+    line-height: 16px;
+  }
+  .render_time {
+    font-size: 12px;
+    text-align: center;
+    padding-right: 10px;
+    line-height: 14px;
+  }
+  .source_footer {
+    text-align: center;
+    font-size: 11px;
+    line-height: 12px;
+  }
 }
 
 

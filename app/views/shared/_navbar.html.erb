@@ -3,15 +3,27 @@
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to(image_tag("world_mathaba11.png", width: '200px', height: '33px', class: 'brand'), root_path) %>
+      <%= link_to(image_tag("world_mathaba11.png",
+                  width: '200px',
+                  height: '33px',
+                  class: 'brand',
+                  title: 'World Mathaba Independent News Agency',
+                  alt: 'World Mathaba'
+                ),
+            root_path,
+            title: 'World Mathaba Independent News Agency'
+          )
+      %>
       <ul class="nav">
         <% cache_expiring("topbar") do %>
-          <li id="home_link"><%= link_to "Home", root_path, title: "Home" %></li>
+          <li id="home_link">
+            <%= link_to "Home", root_path, title: 'World Mathaba Independent News Agency' %>
+          </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sections <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <% Category.order("title ASC").all.each do |category|%>
-                <li><%= link_to category.title, category %></li>
+                <li><%= link_to category.title, category, title: category.title %></li>
               <% end %>
             </ul>
           </li>
@@ -19,7 +31,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Regions <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <% RegionTag.order("title ASC").all.each do |tag|%>
-                <li><%= link_to tag.title, tag_path(tag) %></li>
+                <li><%= link_to tag.title, tag_path(tag), title: tag.title %></li>
               <% end %>
             </ul>
           </li>
@@ -38,7 +50,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Languages <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <% Language.order("locale ASC").all.each do |language|%>
-                <li><%= link_to language.description, language %></li>
+                <li><%= link_to language.description, language, title: language.description %></li>
               <% end %>
             </ul>
           </li>
@@ -62,17 +74,21 @@
         <ul class="dropdown-menu">
           <% if current_user %>
             <li>
-              <%= link_to "Edit Profile", edit_user_registration_url(protocol: "https"), title: "Edit My Profile" %>
+              <%= link_to "Edit Profile", edit_user_registration_url(protocol: http_protocol), title: "Edit My Profile" %>
             </li>
             <li>
               <%= link_to "My Articles", author_path(current_user), title: "My Articles Page" %>
             </li>
             <li>
-              <%= link_to 'Sign out', destroy_user_session_url(protocol: "https"), method: :delete %>
+              <%= link_to 'Sign out',
+                    destroy_user_session_url(protocol: http_protocol),
+                    method: :delete,
+                    title: 'Logout'
+              %>
             </li>
           <% elsif current_admin_user %>
             <li>
-              <%= link_to "Admin Panel", admin_dashboard_url(protocol: "https") %>
+              <%= link_to "Admin Panel", admin_dashboard_url(protocol: http_protocol) %>
             </li>
             <li>
               <%= link_to "Edit Profile", edit_admin_user_registration_path, title: "Edit My Profile" %>
@@ -82,18 +98,26 @@
             </li>
             <li class="divider"></li>
             <li>
-              <%= link_to 'Sign out', destroy_admin_user_session_url(protocol: 'https'), method: :delete %>
+              <%= link_to 'Sign out',
+                    destroy_admin_user_session_url(protocol: http_protocol),
+                    title: 'Logout',
+                    method: :delete
+              %>
             </li>
           <% else %>
             <li><%= login_link 'Sign in' %></li>
             <%- if Devise.mappings[:user].registerable?  %>
-              <li><%= link_to "Sign up", new_registration_url(:user, protocol: "https"), title: "Sign up" %></li>
+              <li>
+                <%= link_to "Sign up",new_registration_url(:user, protocol: http_protocol), title: "Sign up" %>
+              </li>
             <% end -%>
             <%- if Devise.mappings[:user].recoverable? && controller_name != 'passwords' %>
-              <li><%= link_to "Forgot your password?", new_password_url(:user, protocol: "https") %></li>
+              <li><%= link_to "Forgot your password?", new_password_url(:user, protocol: http_protocol) %></li>
             <% end -%>
             <%- if Devise.mappings[:user].confirmable? && controller_name != 'confirmations' %>
-              <li><%= link_to "Didn't receive confirmation instructions?", new_confirmation_url(:user, protocol: "https") %></li>
+              <li>
+                <%= link_to "Didn't receive confirmation instructions?", new_confirmation_url(:user, protocol: http_protocol) %>
+              </li>
             <% end -%>
           <% end %>
         </ul>

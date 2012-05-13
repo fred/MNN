@@ -19,6 +19,8 @@ CHANGELOG
 * Updated TinyMCE
 * Updated gems
 * Releasing First Version 1.0.0
+* Attached License
+* added dynamic http_protocol for dev/prod envs
 
 == May 8, 2012
 * Downgraded resque-scheduler to 1.9.9

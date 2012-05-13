@@ -10,50 +10,49 @@
     <% if current_user %>
       <li>
         <%= link_to "Edit Profile", 
-              edit_user_registration_url(protocol: 'https'),
+              edit_user_registration_url(protocol: http_protocol),
               title: "Edit your Profile information"
         %>
       </li>
       <li>
         <%= link_to 'Logout', 
-              destroy_user_session_url(protocol: 'https'),
+              destroy_user_session_url(protocol: http_protocol),
               method: :delete, title: "Logout"
         %>
       </li>
     <% elsif current_admin_user %>
       <li>
         <%= link_to "Edit Profile", 
-              edit_admin_user_registration_url(protocol: 'https'),
+              edit_admin_user_registration_url(protocol: http_protocol),
               title: "Edit your Profile information"
         %>
       </li>
       <li>
         <%= link_to 'Logout', 
-              destroy_admin_user_session_url(protocol: 'https'),
+              destroy_admin_user_session_url(protocol: http_protocol),
               method: :delete, title: "Logout"
         %>
       </li>
     <% else %>
       <li>
         <%= login_link 'Login' %>
-        <%#= link_to "Login", new_session_url(:user, protocol: 'https'), title: "Login Securely" %>
       </li>
       <%- if Devise.mappings[:user].registerable?  %>
         <li>
           <%= link_to "Registration", 
-                new_registration_url(:user, protocol: 'https'),
+                new_registration_url(:user, protocol: http_protocol),
                 title: "Please Join us" 
           %>
         </li>
-      <% end -%>
+      <% end %>
       <%- if Devise.mappings[:user].recoverable? && controller_name != 'passwords' %>
         <li>
           <%= link_to "Forgot your password?",
-                new_password_url(:user, protocol: 'https'), 
+                new_password_url(:user, protocol: http_protocol), 
                 title: "Click here to recover your password." 
           %>
         </li>
-      <% end -%>
+      <% end %>
     <% end %>
   </ul>
   <p class="footer_logo">
@@ -61,5 +60,8 @@
   </p>
   <p class="render_time">
     Page Rendered in <strong><%= sprintf('%.3f', (Time.now.usec - @start_time).abs / 1000000.0) %></strong> seconds
+  </p>
+  <p class="render_time">
+    <%= link_to 'Source code under GPLv3', "https://github.com/fred/mnn" %>
   </p>
 </footer>

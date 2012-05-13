@@ -9,7 +9,8 @@ blank.gif: blank-99eeeddc62cb4b433bc2c891909ca6f5.gif
 fancybox_buttons.png: fancybox_buttons-ddef24f620bd99979fe23c28ae684255.png
 fancybox_loading.gif: fancybox_loading-e2c100029c7071deabe430b98b5c259d.gif
 fancybox_sprite.png: fancybox_sprite-109caff9d8cdd8d47e0b0dfa91cc4fa3.png
-favicon.png: favicon-9b1dc3f7aee89936aab08fc92ec453c1.png
+favicon.ico: favicon-d2787e0d6e94aa92b9b8df6f3b559af1.ico
+favicon.png: favicon-c3a683bfe1892682c311db92d3a8a612.png
 flattr-badge-large.png: flattr-badge-large-588281e37d2e60015b3248a2ad847ad6.png
 flattr-badge-medium.png: flattr-badge-medium-706662c3cef4e1c7e33ca265c4bef94d.png
 icons/social/aim_16.png: icons/social/aim_16-864c1d5e9aa6cba83c94caa1d392ab8d.png
@@ -197,7 +198,7 @@ jquery.validate.js: jquery.validate-84b31d02cbf60d392f0dc5a496612023.js
 jquery.wysiwyg.js: jquery.wysiwyg-aedab02031f9de7f011d064e91d57b6a.js
 wysiwyg.link.js: wysiwyg.link-aa188e4d8a24f883ef2d97f1ff157ba6.js
 active_admin.css: active_admin-b3a87ed7949f57fcc2f15550656cc4ac.css
-application.css: application-79369b3b5e998602ff6712214cc35d2a.css
+application.css: application-e5d9022aea17df8deff022a25e6ee559.css
 idc.css: idc-4161978634d5f8247b1ccccee164106e.css
 jquery.wysiwyg.css: jquery.wysiwyg-a0144f7bf8e2f9fc0644520c54a87d0f.css
 rss.css: rss-b81fb8963a4d5d0f21d2a65a72553a14.css

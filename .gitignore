@@ -95,3 +95,4 @@ config/initializers/00_keys.rb
 backup/
 config/certs/
 vendor/gems/
+unicorn.prod.rb
