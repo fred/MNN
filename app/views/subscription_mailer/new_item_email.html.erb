@@ -87,7 +87,7 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
       border: 1px solid #CCC;
       padding: 0 10px 10px 10px;
       border-radius: 8px;
-      box-shadow: 0px 0px 12px #aaa;
+      box-shadow: 0px 0px 8px #bbb;
       background-color: #F9F9F9;
     }
     a {
@@ -114,7 +114,7 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
     }
     img {
       border: 1px solid white;
-      box-shadow: 0px 0px 8px #aaa;
+      box-shadow: 0px 0px 6px #bbb;
       margin: 1px 2px 4px 1px;
     }
     a.tag {
@@ -126,13 +126,13 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
       background-color: transparent;
       border-radius: 4px;
       border: 1px solid #CCC;
-      box-shadow: 0px 0px 6px #ccc;
+      box-shadow: 0px 0px 4px #ccc;
       padding: 2px 6px;
       margin: 3px;
     }
     a.tag:hover {
       border: 1px solid #bbb;
-      box-shadow: 0px 0px 8px #aaa;
+      box-shadow: 0px 0px 7px #bbb;
     }
 
     /** Outlook 07, 10 Padding issue: These "newer" versions of Outlook add some padding around table cells potentially throwing off your perfectly pixeled table.  The issue can cause added space and also throw off borders completely.  Use this fix in your header or inline to safely fix your table woes.
@@ -193,6 +193,14 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
       </div>
       <div>
         <br />
+        <% if @item.user %>
+          <p class="source_url">
+            Submitted by: 
+            <%= link_to @item.user.title,
+                  url_for(author_path(@item.user, ref: "email", only_path: false, protocol: 'http'))
+            %>
+          </p>
+        <% end %>
         <p class="source_url">
           Category: 
           <%= link_to @item.category_title, 
