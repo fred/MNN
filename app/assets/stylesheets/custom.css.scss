@@ -853,7 +853,7 @@ ul#comments li span.comment_owner img {
 }
 
 .horizontal-divider,
-.widget_content > .nav-list li.horizontal-divider {
+.sidebar_secions > .nav-list li.horizontal-divider {
   display: list-item;
   background-color: #E5E5E5;
   border-bottom: 1px solid #FFFFFF;
@@ -866,20 +866,19 @@ ul#comments li span.comment_owner img {
   background: -o-radial-gradient(#aaa, #fff);
   background: radial-gradient(#aaa, #fff);
 }
-.widget_content > .nav-list {
+.sidebar_secions > .nav-list {
   padding-left: 5px;
   padding-right: 5px;
 }
-.widget_content > .nav-list > li > a {
+.sidebar_secions > .nav-list > li > a {
   padding: 4px 18px
 }
-.widget_content > .nav > li > a:hover {
+.sidebar_secions > .nav > li > a:hover {
   text-decoration: none;
-  background-color: #eeeeee;
   box-shadow: 0px 0px 4px #aaa;
   padding: 4px 18px;
 }
-.widget_content > .nav-list > .active > a,
-.widget_content > .nav-list > .active > a:hover {
+.sidebar_secions > .nav-list > .active > a,
+.sidebar_secions > .nav-list > .active > a:hover {
   box-shadow: 0px 0px 4px #aaa;
 }
