@@ -7,10 +7,16 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_start_time, :set_time_zone, :set_view_items, :current_ability
   before_filter :log_additional_data, :set_per_page
+  before_filter :site_links
   
   
   comment_destroy_conditions do |comment|
     comment.owner == current_user
+  end
+
+  def site_links
+    @all_categories ||= Category.order("title ASC")
+    @all_pages ||= Page.order("priority ASC")
   end
   
   def set_per_page

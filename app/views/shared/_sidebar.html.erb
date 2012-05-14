@@ -25,9 +25,10 @@
     <div class="sidebar_secions">
       <% if @search && @search.total > 0 %>
         <div class='widget'>
-          <h5>Filter by Category</h5>
           <div class='widget_content'>
-            <ul>
+            <ul class="nav nav-list">
+              <li class="horizontal-divider"></li>
+              <li class="nav-header">Filter by Category</li>
               <% @search.facet(:category_id).rows.each do |facet| %>
                 <% category = Category.find(facet.value) %>
                 <li>
@@ -36,9 +37,10 @@
               <% end %>
             </ul>
           </div>
-          <h5>Filter by Language</h5>
           <div class='widget_content'>
-            <ul>
+            <ul class="nav nav-list">
+              <li class="horizontal-divider"></li>
+              <li class="nav-header">Filter by Language</li>
               <% @search.facet(:language_id).rows.each do |facet| %>
                 <% if language = Language.find(facet.value) %>
                   <li>
@@ -49,27 +51,29 @@
             </ul>
           </div>
         </div>
+        <br />
       <% end %>
     </div>
 
-    <% cache_expiring("sidebar") do %>
-      <div class="sidebar_secions">
-        <h4>Sections</h4>
-        <ul>
-          <% Category.order("title ASC").all.each do |category| %>
-            <li><%= link_to category.title, category, title:  category.description %></li>
-          <% end %>
-        </ul>
-        <h4>Useful Pages</h4>
-        <ul>
-          <% Page.order("priority ASC").all.each do |page| %>
-            <li><%= link_to page.title, page, title:  page.title %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <hr />
+    <div class="sidebar_secions">
+      <ul class="nav nav-list">
+        <li class="horizontal-divider"></li>
+        <% @all_categories.each do |category| %>
+          <li class=<%= li_class(category.to_param, :id, "active") %>>
+            <%= link_to category.title, category, title:  category.description %>
+          </li>
+        <% end %>
+        <li class="horizontal-divider"></li>
+      </ul>
+      <ul class="nav nav-list">
+        <% @all_pages.each do |page| %>
+          <li class=<%= li_class(page.to_param, :id, "active") %>>
+            <%= link_to page.title, page, title:  page.title %>
+          </li>
+        <% end %>
+        <li class="horizontal-divider"></li>
+      </ul>
+    </div>
 
     <% cache_expiring("sidebar_popular", 600) do %>
       <div class="sidebar_secions">
@@ -77,7 +81,7 @@
         <% Item.popular(5).each do |item| %>
           <div class="sidebar-item">
             <%= item_mini(item).html_safe %>
-            <hr />
+            <span class="horizontal-divider"></span>
           </div>
         <% end %>
       </div>
@@ -88,8 +92,6 @@
         <h3>Recent Comments</h3>
         <% Comment.recent(7).each do |comment| %>
           <div class="sidebar-comment">
-            <span class="comment-author">
-            </span>
             <span class="comment-body">
               <%= link_to comment.body.truncate(60), item_path(comment.commentable), title: comment.body, id: 'tooltip' %>
             </span>
@@ -97,7 +99,7 @@
               <%= time_ago_in_words(comment.created_at) %> ago 
               by <%= link_to comment.name, author_path(comment.owner.id) %>
             </span>
-            <hr />
+            <span class="horizontal-divider"></span>
           </div>
         <% end %>
       </div>

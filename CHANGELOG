@@ -5,6 +5,8 @@ CHANGELOG
 * Changed Favicon
 * GPLv3 License
 * Version 1.0.1
+* Better sidebar with horizontal divider
+* Remember Selected Category on the Sidebar
 
 == May 13, 2012
 * Fixed font size and color for Blockquote

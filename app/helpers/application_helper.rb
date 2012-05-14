@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def li_class(str, sym="id", css_class="active")
+    if params[sym.to_sym].present? && (params[sym.to_sym].to_s == str.to_s)
+      css_class
+    else
+      ""
+    end
+  end
+
   def http_protocol
     if Rails.env.production?
       'https'
