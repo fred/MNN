@@ -222,7 +222,6 @@ nav.pagination {
 }
 
 
-
 /* css for timepicker */
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
 .ui-timepicker-div dl { text-align: left; }
@@ -271,5 +270,9 @@ a.suspicious_true {
   color: #FF6600;
 }
 a.spam_true {
+  color: #ff0000;
+}
+
+.red {
   color: #ff0000;
 }

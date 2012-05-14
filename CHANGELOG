@@ -1,6 +1,7 @@
 CHANGELOG
 
 == May 14, 2012
+* Added time left in words for future items (in red color)
 * Changed Favicon
 * GPLv3 License
 * Version 1.0.1
