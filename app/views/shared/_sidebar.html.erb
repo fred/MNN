@@ -69,12 +69,15 @@
       </div>
     <% end %>
 
+    <hr />
+
     <% cache_expiring("sidebar_popular", 600) do %>
       <div class="sidebar_secions">
-        <h4>Most Popular</h4>
+        <h3>Most Popular</h3>
         <% Item.popular(5).each do |item| %>
           <div class="sidebar-item">
             <%= item_mini(item).html_safe %>
+            <hr />
           </div>
         <% end %>
       </div>
@@ -82,11 +85,10 @@
 
     <% cache_expiring("sidebar_comments", 300) do %>
       <div class="sidebar_secions">
-        <h4>Recent Comments</h4>
+        <h3>Recent Comments</h3>
         <% Comment.recent(7).each do |comment| %>
           <div class="sidebar-comment">
             <span class="comment-author">
-              
             </span>
             <span class="comment-body">
               <%= link_to comment.body.truncate(60), item_path(comment.commentable), title: comment.body, id: 'tooltip' %>
@@ -95,6 +97,7 @@
               <%= time_ago_in_words(comment.created_at) %> ago 
               by <%= link_to comment.name, author_path(comment.owner.id) %>
             </span>
+            <hr />
           </div>
         <% end %>
       </div>

@@ -93,8 +93,11 @@
         </span>
         
         <div class="page_views">
-          <% if @item.item_stat %>
-            Views: <%= @item_stat.views_counter if @item_stat %>
+          Views: 
+          <% if @item_stat %>
+            <%= @item_stat.views_counter %>
+          <% else %>
+            1
           <% end %>
         </div>
         

@@ -763,17 +763,21 @@ ul#comments li span.comment_owner img {
   margin: 0;
 }
 
+.sidebar_secions h3,
 .sidebar_secions h4 {
+  margin-bottom: 10px;
+  margin-top: 12px;
   color: #555;
 }
 .sidebar-comment {
-  padding: 4px 2px 4px 6px;
-  margin-top: 4px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: inset 0px 0px 3px #ccc;
+  padding: 2px 3px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   font-size: 12px;
+  h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
   .comment-author {
     display:block;
     font-weight: bold;
@@ -793,23 +797,23 @@ ul#comments li span.comment_owner img {
 }
 
 .sidebar-item {
-  padding: 4px;
-  margin-top: 2px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: inset 0px 0px 3px #ccc;
+  padding: 3px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   min-height: 66px;
   font-size: 12px;
-
+  h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
   .item-title {
     display:block;
     font-size: 12px;
   }
   .item-image {
-    box-shadow: inset 0px 0px 3px #ccc;
+    box-shadow: 0px 0px 4px #aaa;
     float: left;
-    margin-right: 3px;
+    margin-right: 5px;
     padding: 1px;
   }
   .item-views {
@@ -828,5 +832,23 @@ ul#comments li span.comment_owner img {
   }
 }
 
+.well {
+  .sidebar-comment hr,
+  .sidebar-item hr {
+    background: -webkit-radial-gradient(#999, #fff);
+    background: -moz-radial-gradient(#bbb, #fff);
+    background: -ms-radial-gradient(#aaa, #fff);
+    background: -o-radial-gradient(#aaa, #fff);
+    background: radial-gradient(#aaa, #fff);
+    height: 1px;
+    margin: 15px 0px;
+  }
+}
 
+@-moz-document url-prefix() {
+  .well .sidebar-comment hr,
+  .well .sidebar-item hr {
+    height: 3px;
+  }
+}
 
