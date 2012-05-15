@@ -51,6 +51,7 @@ class Item < ActiveRecord::Base
   before_update :set_status_code
   before_create :build_stat
   before_save   :send_email_deliveries
+  after_save    :sitemap_refresh
   
   ################
   ####  SOLR  ####
@@ -185,6 +186,14 @@ class Item < ActiveRecord::Base
     return url
   end
 
+  # Queue up sitemap generation after 3 minutes
+  def sitemap_refresh
+    unless self.draft && Rails.env.test?
+      Resque.enqueue_in(180, SitemapQueue) 
+    end
+  end
+
+
   # WORKING
   def record_freshness
     unless self.new_record?
@@ -283,7 +292,7 @@ class Item < ActiveRecord::Base
     if self.language
       self.language.description
     else
-      ""
+      "en"
     end
   end
 
@@ -357,6 +366,15 @@ class Item < ActiveRecord::Base
   end
   def self.draft
     where(draft: true)
+  end
+
+  # Only show items in the past 2 days in sitemaps
+  def self.for_sitemap(lim=100)
+    published.
+    where("published_at > ?", DateTime.now-(48.hours)).
+    not_draft.
+    order("published_at DESC").
+    limit(lim)
   end
 
   # Returns the top sticky item

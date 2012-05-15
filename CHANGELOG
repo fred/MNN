@@ -1,5 +1,9 @@
 CHANGELOG
 
+== May 16, 2012
+* Added sitemaps
+* Automatic generation of sitemaps in Resque
+
 == May 14, 2012
 * Added time left in words for future items (in red color)
 * Changed Favicon

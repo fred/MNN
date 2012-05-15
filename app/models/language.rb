@@ -29,4 +29,12 @@ class Language < ActiveRecord::Base
     #   order: 'languages.locale DESC'
     # )
   end
+
+  def item_last_update
+    if !self.items.empty? && self.items.last_item
+      self.items.last_item.updated_at
+    else
+      Time.now
+    end
+  end
 end

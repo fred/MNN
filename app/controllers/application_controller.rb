@@ -7,11 +7,20 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_start_time, :set_time_zone, :set_view_items, :current_ability
   before_filter :log_additional_data, :set_per_page
-  before_filter :site_links
+  before_filter :site_links, :last_modified
   
   
   comment_destroy_conditions do |comment|
     comment.owner == current_user
+  end
+
+  def last_modified
+    @last_item = Item.last_item
+    if @last_item
+      @last_modified = @last_item.updated_at.httpdate
+    else
+      @last_modified = Time.now.httpdate
+    end
   end
 
   def site_links

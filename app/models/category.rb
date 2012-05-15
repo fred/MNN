@@ -41,9 +41,17 @@ class Category < ActiveRecord::Base
       items.
       where(draft: false).
       where("published_at is not NULL").
-      where("published_at < '#{Time.now.to_s(:db)}'").
+      where("published_at < ?", DateTime.now).
       order("updated_at DESC").
       first
+  end
+
+  def item_last_update
+    if self.items.last_item
+      self.items.last_item.updated_at
+    else
+      Time.now
+    end
   end
   
 end
