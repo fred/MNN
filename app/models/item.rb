@@ -188,7 +188,7 @@ class Item < ActiveRecord::Base
 
   # Queue up sitemap generation after 3 minutes
   def sitemap_refresh
-    unless self.draft && Rails.env.test?
+    if !self.draft && Rails.env.production?
       Resque.enqueue_in(180, SitemapQueue) 
     end
   end
