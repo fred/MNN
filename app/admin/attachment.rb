@@ -3,7 +3,7 @@ ActiveAdmin.register Attachment do
   controller.authorize_resource
   config.sort_order = "id_desc"
   menu parent: "Items", priority: 2, if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:manage, Attachment)
+    controller.current_ability.can?(:read, Attachment)
   }
   index as: :block do |attachment|
     div for: attachment, class: "grid_images" do
