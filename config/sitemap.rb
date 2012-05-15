@@ -21,7 +21,7 @@ SitemapGenerator::Sitemap.create do
         publication_language: item.language_title_short,
         title: item.title,
         keywords: item.tag_list,
-        publication_date: item.published_at.httpdate,
+        publication_date: item.published_at,
         genres: "PressRelease"
       }
     )
