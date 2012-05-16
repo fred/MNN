@@ -5,7 +5,7 @@ class SolrUpdate
   @queue = :solr_update
 
   def self.perform(classname, id)
-    Rails.logger.info("  Resque: Indexing to SOLR item: #{id}")
+    Rails.logger.info("  Resque: Indexing to SOLR #{classname}: #{id}")
     classname.constantize.find(id).solr_index
   end
 end

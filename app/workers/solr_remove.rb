@@ -5,7 +5,7 @@ class SolrRemove
   @queue = :solr_remove
 
   def self.perform(classname, id)
-    Rails.logger.info("  Resque: Removing from SOLR item: #{id}")
-    classname.constantize.find(id).solr_remove_from_index
+    Rails.logger.info("  Resque: Removing from SOLR #{classname}: #{id}")
+    Sunspot.remove_by_id(classname, id)
   end
 end
