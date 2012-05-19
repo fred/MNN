@@ -7,7 +7,7 @@
     
       <li><%= link_to "Feeds", feed_path, title: "Multiple RSS Feeds" %></li>
     
-    <% if current_user %>
+    <% if current_user or current_admin_user %>
       <li>
         <%= link_to "Edit Profile", 
               edit_user_registration_url(protocol: http_protocol),
@@ -17,19 +17,6 @@
       <li>
         <%= link_to 'Logout', 
               destroy_user_session_url(protocol: http_protocol),
-              method: :delete, title: "Logout"
-        %>
-      </li>
-    <% elsif current_admin_user %>
-      <li>
-        <%= link_to "Edit Profile", 
-              edit_admin_user_registration_url(protocol: http_protocol),
-              title: "Edit your Profile information"
-        %>
-      </li>
-      <li>
-        <%= link_to 'Logout', 
-              destroy_admin_user_session_url(protocol: http_protocol),
               method: :delete, title: "Logout"
         %>
       </li>

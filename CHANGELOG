@@ -1,5 +1,14 @@
 CHANGELOG
 
+== May 19, 2012
+* Fixed Users/Admins Avatar bug
+* Allow Users to upload GPG keys
+* Send Comment notification using postmarkapp
+* Fixed Forms for Twitter-Bootstrap 2.0.7
+* Unified Sidebar
+* ActiveAdmin fetched upstream master (4.0.4)
+* Updated Gems
+
 == May 16, 2012
 * Added sitemaps
 * Automatic generation of sitemaps in Resque

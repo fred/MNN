@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="span7">
+  <div class="span9">
 
     <%= form_for(resource,
           as: resource_name,
@@ -8,25 +8,29 @@
         ) do |f| 
     %>
       <%= custom_devise_error_messages! %>
-    
+      
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: "alert alert-#{name}" %>
+      <% end %>
+
       <fieldset class="withBorder">
         <legend>Sign up</legend>
         <div class="control-group">
           <%= f.label :email, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :email, required: true, autofocus: true, type: "email", class: "span3" %>
+            <%= f.text_field :email, required: true, autofocus: true, type: "email", class: "imput-medium" %>
           </div>
         </div>
         <div class="control-group">
           <%= f.label :password, class: 'control-label' %>
           <div class="controls">
-            <%= f.password_field :password, required: true, class: "span3" %>
+            <%= f.password_field :password, required: true, class: "imput-medium" %>
           </div>
         </div>
         <div class="control-group">
           <%= f.label :password_confirmation, class: 'control-label' %>
           <div class="controls">
-            <%= f.password_field :password_confirmation, required: true, class: "span3" %>
+            <%= f.password_field :password_confirmation, required: true, class: "imput-medium" %>
           </div>
         </div>
         <div class="control-group">
@@ -34,9 +38,9 @@
           <div class="controls">
             <%= f.select :registration_role, 
                   options_for_select([["Just be a member"], ["To Comment"], ["Comment and Submit Articles"], ["I want to be an Editor"]]),
+                  {include_blank: "-- Please Choose"},
                   required: false,
-                  include_blank: "-- Please Choose",
-                  class: "span3"
+                  class: "imput-medium"
             %>
           </div>
         </div>

@@ -47,13 +47,13 @@ gem 'resque-history', git:  'git://github.com/fred/resque-history.git', branch: 
 
 
 ### JSON and Twitter
-gem 'multi_json', '~> 1.3.2'
-gem 'json', '~> 1.6.6'
+gem 'multi_json'
+gem 'json'
 gem 'simple_oauth', '~> 0.1.7'
-gem 'twitter', '~> 2.2.5'
+gem 'twitter', '~> 2.3.0'
 
 gem 'sass'
-gem 'sass-rails',  '~> 3.2.3'
+gem 'sass-rails'#,  '~> 3.2.3'
 gem 'jquery-rails'
 
 # Gems used only for assets and not required

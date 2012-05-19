@@ -17,8 +17,14 @@
     <% unless @author.diaspora.to_s.empty? %>
       <p>Diaspora: <%= @author.diaspora %></p>
     <% end %>
+    <% if @author.gpg? %>
+      <p>GPG Key: <%= link_to "Download", @author.gpg.url %></p>
+    <% end %>
     <br />
     <%= @author.bio %>
+    <% if (current_user && @author.id == current_user.id) or (current_admin_user && @author.id == current_admin_user.id) %>
+      <%= link_to "Edit my Profile", edit_user_registration_url(protocol: 'https'), class: "btn" %>
+    <% end %>
   </section>
 </article>
 

@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="span7">
+  <div class="span9">
 
     <%= form_for(resource,
           as: resource_name,
@@ -12,13 +12,13 @@
         <div class="control-group">
           <%= f.label :email, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :email, required: false, autofocus: true, type: "email", class: "span4" %>
+            <%= f.text_field :email, required: false, autofocus: true, type: "email", class: "input-large" %>
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :password, class: 'control-label' %>
+          <%= f.label :password, class: 'control-label'%>
           <div class="controls">
-            <%= f.password_field :password, required: false, class: "span4"  %>
+            <%= f.password_field :password, required: false, class: "input-large"  %>
           </div>
         </div>
         <div class="control-group">

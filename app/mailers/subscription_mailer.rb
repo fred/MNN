@@ -1,8 +1,5 @@
 class SubscriptionMailer < ActionMailer::Base
-
-  # include Resque::Mailer
-  
-  # default from: "WorldMathaba <inbox@worldmathaba.net>"
+  default from: "WorldMathaba <inbox@worldmathaba.net>"
   
   def new_item_email(item_id)
     @item = Item.find(item_id)
@@ -13,7 +10,6 @@ class SubscriptionMailer < ActionMailer::Base
     unless @subscriptions.empty?
       mail(
         sender:   "inbox@worldmathaba.net",
-        from:     "WorldMathaba.net <inbox@worldmathaba.net>",
         reply_to: "inbox@worldmathaba.net",
         to:       "inbox@worldmathaba.net",
         bcc:      @emails_list,

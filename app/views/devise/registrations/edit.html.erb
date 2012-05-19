@@ -6,13 +6,20 @@
           html: { method: :put, class: 'form-horizontal' }
         ) do |f|
     %>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: "alert alert-#{name}" %>
+      <% end %>
     
       <fieldset class="withBorder">
         <legend>Current Password</legend>
         <div class="control-group">
           <%= f.label :current_password, class: 'control-label' %>
           <div class="controls">
-            <%= f.password_field :current_password, autocomplete: "off", required: true, class: "span4"  %>
+            <%= f.password_field :current_password,
+                  autocomplete: "off",
+                  required: true,
+                  class: "imput-large"
+            %>
             <span class="help-block">
               Your Current Password is Required to make any changes in profile
             </span>
@@ -25,60 +32,60 @@
         <div class="control-group">
           <%= f.label :email, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :email, required: false, type: "email", class: "span4" %>
+            <%= f.text_field :email, required: true, type: "email", class: "imput-large" %>
           </div>
         </div>
         <div class="control-group">
           <%= f.label :name, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :name, required: true, autofocus: true, class: "span4" %>
+            <%= f.text_field :name, required: true, autofocus: true, class: "imput-large" %>
           </div>
         </div>
         <div class="control-group">
           <%= f.label :address, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :address, required: false, class: "span4" %>
+            <%= f.text_field :address, required: false, class: "imput-large" %>
           </div>
         </div>
         <div class="control-group">
           <%= f.label :twitter, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :twitter, required: false, class: "span4", 
+            <%= f.text_field :twitter, required: false, class: "imput-large", 
                   placeholder: "@twitter" %>
           </div>
         </div>
         <div class="control-group">
           <%= f.label :diaspora, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :diaspora, required: false, class: "span4", 
+            <%= f.text_field :diaspora, required: false, class: "imput-large", 
                   placeholder: "handle@host.net", type: "email" %>
           </div>
         </div>
         <div class="control-group">
           <%= f.label :skype, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :skype, required: false, class: "span4", 
+            <%= f.text_field :skype, required: false, class: "imput-large", 
                   placeholder: "skype username" %>
           </div>
         </div>
         <div class="control-group">
           <%= f.label :gtalk, "Google Chat", class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :gtalk, required: false, class: "span4", 
+            <%= f.text_field :gtalk, required: false, class: "imput-large", 
                   placeholder: "xxxxx@gmail.com", type: "email" %>
           </div>
         </div>
         <div class="control-group">
           <%= f.label :jabber, "Jabber", class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :jabber, required: false, class: "span4", 
+            <%= f.text_field :jabber, required: false, class: "imput-large", 
                   placeholder: "xxxxx@jabber.com", type: "email" %>
           </div>
         </div>
         <div class="control-group">
           <%= f.label :phone_number, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :phone_number, required: false, class: "span4", 
+            <%= f.text_field :phone_number, required: false, class: "imput-large", 
                   placeholder: "+11 123123456", type: "tel" %>
           </div>
         </div>
@@ -95,7 +102,7 @@
         <div class="control-group">
           <%= f.label :avatar, "Upload Avatar", class: 'control-label' %>
           <div class="controls">
-            <%= f.file_field :avatar, class: "span4" %>
+            <%= f.file_field :avatar, class: "imput-large" %>
             <p class="help-block">
               Your avatar image will be shown in the comments section.
             </p>
@@ -108,6 +115,26 @@
                     target: "blank"
                   )
               %>
+            </div>
+          <% end %>
+        </div>
+      </fieldset>
+
+      <fieldset class="withBorder">
+        <legend>GPG Key</legend>
+        <div class="control-group">
+          <%= f.label :gpg, "Your Public key", class: 'control-label' %>
+          <div class="controls">
+            <%= f.file_field :gpg, class: "imput-large" %>
+            <p class="help-block">
+              Only upload your Public Key.
+              <br />
+              It will be available for download on your profile page.
+            </p>
+          </div>
+          <% if f.object.gpg? %>
+            <div class="controls">
+              <%= link_to("Download Key", f.object.gpg.url, target: "blank") %>
             </div>
           <% end %>
         </div>
@@ -144,7 +171,7 @@
         <div class="control-group">
           <%= f.label :password, "New Password", class: 'control-label' %>
           <div class="controls">
-            <%= f.password_field :password, autocomplete: "off", required: false, class: "span4"  %>
+            <%= f.password_field :password, autocomplete: "off", required: false, class: "imput-large" %>
             <span class="help-block">
               Leave this field black if you want to change password
             </span>
@@ -154,7 +181,7 @@
         <div class="control-group">
           <%= f.label :password_confirmation, "New Password Again", class: 'control-label' %>
           <div class="controls">
-            <%= f.password_field :password_confirmation, autocomplete: "off", required: false, class: "span4"  %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", required: false, class: "imput-large"  %>
           </div>
         </div>
 

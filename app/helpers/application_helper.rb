@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def account_sidebar?
+    controller_name.match(/(sessions|registrations|passwords|unlocks)/)
+  end
+
   def li_class(str, sym="id", css_class="active")
     if params[sym.to_sym].present? && (params[sym.to_sym].to_s == str.to_s)
       css_class
@@ -9,7 +13,7 @@ module ApplicationHelper
   end
 
   def http_protocol
-    if Rails.env.production?
+    if Rails.env.production? && controller_name.match(/(sessions|registrations|passwords|unlocks)/)
       'https'
     else
       'http'
