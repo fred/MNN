@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   
   mount_uploader :avatar, AvatarUploader
+  mount_uploader :gpg, GpgUploader
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -8,9 +9,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :bio, :name, :address, 
-    :twitter, :diaspora, :skype, :gtalk, :jabber, :phone_number, :time_zone, :avatar, :subscribe,
-    :unsubscribe, :unsubscribe_all, :upgrade, :downgrade, :terms_of_service, :registration_role
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :bio, :name, :address,
+      :twitter, :diaspora, :skype, :gtalk, :jabber, :avatar, :phone_number, :time_zone,
+      :role_ids, :roles, :subscribe, :unsubscribe, :unsubscribe_all, :upgrade, :downgrade,
+      :terms_of_service, :registration_role, :gpg
 
   attr_accessor :subscribe, :unsubscribe, :unsubscribe_all, :upgrade, :downgrade
   
