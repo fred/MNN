@@ -1,4 +1,5 @@
 <div class="sidebar">
+
   <div class="well">
     <%= link_to(image_tag("icons/social/rss_32.png", width: 32, height: 32),
           feed_path,
@@ -10,6 +11,7 @@
     <%= render partial: "/shared/flattr_js" %>
     <%= flattr_medium %>
   </div>
+
   <div class="well">
     <%= form_tag(search_path, method: :get, class: "clearfix") do |f| %>
       <%= text_field_tag :q, 
@@ -54,6 +56,63 @@
         <br />
       <% end %>
     </div>
+
+    <% if account_sidebar? %>
+      <div class='sidebar_secions'>
+        <ul class="nav nav-list">
+          <li class="horizontal-divider"></li>
+          <% if current_user %>
+            <li>
+              <%= link_to "Edit Profile", edit_user_registration_url(protocol: 'https') %>
+            </li>
+            <li>
+              <%= link_to "My Articles", author_path(current_user), title: "My Articles Page" %>
+            </li>
+            <li>
+              <%= link_to 'Sign out', destroy_user_session_url(protocol: 'https'), method: :delete %>
+            </li>
+          <% elsif current_admin_user %>
+            <li>
+              <%= link_to "Edit Profile", edit_user_registration_url(protocol: 'https') %>
+            </li>
+            <li>
+              <%= link_to "My Articles", author_path(current_admin_user), title: "My Articles Page" %>
+            </li>
+            <li>
+              <%= link_to 'Sign out', destroy_user_session_url(protocol: 'https'), method: :delete %>
+            </li>
+          <% else %>
+            <%- if controller_name != 'sessions' %>
+              <li><%= link_to "Sign in", new_session_url(resource_name, protocol: "https") %></li>
+            <% end -%>
+            <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+              <li><%= link_to "Sign up", new_registration_url(resource_name, protocol: "https") %></li>
+            <% end -%>
+            <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+              <li>
+                <%= link_to "Forgot password?", new_password_url(resource_name, protocol: "https") %>
+              </li>
+            <% end -%>
+            <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+              <li>
+                <%= link_to "Didn't receive confirmation instructions?", new_confirmation_url(resource_name, protocol: "https") %>
+              </li>
+            <% end -%>
+            <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+              <li>
+                <%= link_to "Didn't receive unlock?", new_unlock_url(resource_name, protocol: 'https') %>
+              </li>
+            <% end -%>
+            <%- if devise_mapping.omniauthable? %>
+              <%- resource_class.omniauth_providers.each do |provider| %>
+                <li><%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %></li>
+              <% end -%>
+            <% end -%>
+          <% end -%>
+        </ul>
+      </div>
+    <% end %>
+
 
     <div class="sidebar_secions">
       <ul class="nav nav-list">
