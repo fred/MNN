@@ -1,12 +1,18 @@
 class GitMailer < ActionMailer::Base
-  self.delivery_method = :smtp
+  if Rails.env.production?
+    self.delivery_method = :smtp
+  else
+    self.delivery_method = :letter_opener
+  end
 
   def push_received(json_payload)
-    @@smtp_settings = {
-      domain:    "worldmathaba.com",
-      address:   "localhost",
-      port:      25
-    }
+    unless Rails.env.production?
+      @@smtp_settings = {
+        domain:    "worldmathaba.com",
+        address:   "localhost",
+        port:      25
+      }
+    end
     @json_payload = json_payload
     mail(
       from:     "WorldMathaba <inbox@worldmathaba.net>",
