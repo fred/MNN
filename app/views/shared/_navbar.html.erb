@@ -72,21 +72,7 @@
         </a>
 
         <ul class="dropdown-menu">
-          <% if current_user %>
-            <li>
-              <%= link_to "Edit Profile", edit_user_registration_url(protocol: http_protocol), title: "Edit My Profile" %>
-            </li>
-            <li>
-              <%= link_to "My Articles", author_path(current_user), title: "My Articles Page" %>
-            </li>
-            <li>
-              <%= link_to 'Sign out',
-                    destroy_user_session_url(protocol: http_protocol),
-                    method: :delete,
-                    title: 'Logout'
-              %>
-            </li>
-          <% elsif current_admin_user %>
+          <% if current_admin_user %>
             <li>
               <%= link_to "Edit Profile", edit_user_registration_url(protocol: http_protocol), title: "Edit My Profile" %>
             </li>
@@ -94,18 +80,43 @@
               <%= link_to "My Articles", author_path(current_admin_user), title: "My Articles Page" %>
             </li>
             <li class="divider"></li>
-            <li>
-              <%= link_to "Admin Panel", admin_dashboard_url(protocol: http_protocol) %>
-            </li>
-            <li>
-              <%= link_to "Resque Queues", "/resque" %>
-            </li>
+            <li><%= link_to "Admin", admin_dashboard_url(protocol: http_protocol) %></li>
+            <% if current_ability.can?(:manage,Item) %>
+              <li><%= link_to "New Item", new_admin_item_path %></li>
+            <% end %>
+
+            <% if current_admin_user.has_any_role?(:admin,:security) %>
+              <li class="divider"></li>
+              <%= render partial: "/shared/system_menu" %>
+            <% end %>
             <li class="divider"></li>
             <li>
               <%= link_to 'Sign out',
                     destroy_admin_user_session_url(protocol: http_protocol),
                     title: 'Logout',
                     method: :delete
+              %>
+            </li>
+          <% elsif current_user %>
+            <li>
+              <%= link_to "Edit Profile",
+                  edit_user_registration_url(protocol: http_protocol),
+                  title: "Edit My Profile"
+              %>
+            </li>
+            <li>
+              <%= link_to "My Articles", author_path(current_user), title: "My Articles Page" %>
+            </li>
+            <% if current_user.has_any_role?(:admin,:security) %>
+              <li class="divider"></li>
+              <%= render partial: "/shared/system_menu" %>
+            <% end %>
+            <li class="divider"></li>
+            <li>
+              <%= link_to 'Sign out',
+                    destroy_user_session_url(protocol: http_protocol),
+                    method: :delete,
+                    title: 'Logout'
               %>
             </li>
           <% else %>

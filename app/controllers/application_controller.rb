@@ -39,7 +39,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_ability
-    @current_ability ||= Ability.new(current_admin_user) if current_admin_user
+    if current_admin_user
+      @current_ability ||= Ability.new(current_admin_user) 
+    else
+      @current_ability ||= Ability.new(User.new) 
+    end
   end
 
   rescue_from CanCan::AccessDenied do |exception|

@@ -1,5 +1,10 @@
 CHANGELOG
 
+== May 20, 2012
+* Added 'edit' button for item on front end
+* Added 'new item' for user menu on front end
+* Updated Gems
+
 == May 19, 2012
 * Fixed Users/Admins Avatar bug
 * Allow Users to upload GPG keys
@@ -7,8 +12,8 @@ CHANGELOG
 * Fixed Forms for Twitter-Bootstrap 2.0.7
 * Unified Sidebar
 * ActiveAdmin fetched upstream master (4.0.4)
+* Added extra admin Links in User menu
 * Updated Gems
-
 
 == May 16, 2012
 * Added sitemaps

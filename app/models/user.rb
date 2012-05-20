@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   validates :email, :email_format => {:message => 'is not looking good'}, on: :create
 
   # Relationships
-  has_many :items
+  has_many :items #, counter_cache: true
   has_many :scores
   # has_many :comments
   has_and_belongs_to_many :roles
