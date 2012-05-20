@@ -30,6 +30,9 @@ Publication::Application.routes.draw do
   #   end
   # end
   
+  namespace "api" do 
+    resources :git_push
+  end
   
   # opinio_model
   resources :authors do

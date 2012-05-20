@@ -4,6 +4,7 @@ CHANGELOG
 * Added 'edit' button for item on front end
 * Added 'new item' for user menu on front end
 * Updated Gems
+* Git push hook Email API
 
 == May 19, 2012
 * Fixed Users/Admins Avatar bug

@@ -1,0 +1,10 @@
+<%= @json_payload['repository']['owner']['name'] %> pushed on <%= @json_payload['repository']['name'] %> 
+====================================
+
+Commits: 
+
+<% @json_payload['commits'].each do |commit| %>
+  - <%= commit['author']['name'] %> : <%= commit['message'] %> (<%= time_ago_in_words Time.parse(commit['timestamp']) %>)
+     URL: <%= commit['url'] %>
+
+<% end %>
