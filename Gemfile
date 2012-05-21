@@ -41,7 +41,6 @@ gem 'rakismet'
 
 ### Queue
 gem 'resque', '~> 1.20.0'
-gem 'resque_mailer'
 gem 'resque-scheduler', '~> 1.9.9', require: 'resque_scheduler'
 gem 'resque-history', git:  'git://github.com/fred/resque-history.git', branch: 'fred'
 
@@ -71,13 +70,8 @@ end
 gem 'rails-settings-cached', '~> 0.1.2', require: 'rails-settings'
     # git:  'git://github.com/huacnlee/rails-settings-cached.git'
 
-### i18n Translation on DB
-# gem 'i18n-active_record',
-#     require: 'i18n/active_record',
-#     git:  'git://github.com/svenfuchs/i18n-active_record.git'
 
 group :production do
-  gem 'rack-ssl-enforcer', require: 'rack/ssl-enforcer'
   gem 'unicorn', require: false
 end
 
@@ -95,6 +89,8 @@ group :development do
   gem 'foreman'
   gem 'thin', require: false
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
+  gem 'capistrano', '~> 2.9.0', require: false
+  gem 'rvm-capistrano', require: false
 end
 
 group :test do
@@ -121,7 +117,7 @@ gem 'activeadmin', git: 'git://github.com/fred/active_admin.git', branch: '594'
 gem 'tinymce-rails' #, '3.4.7.0.1'
 
 # Twitter Bootstrap for Rails 3 Asset Pipeline
-gem 'twitter-bootstrap-rails', #'~> 1.4.3'
+gem 'twitter-bootstrap-rails', 
   git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 # Error Emails
@@ -148,11 +144,7 @@ gem 'dalli', '~> 2.0.5'
 # gem 'omniauth-google_oauth2'
 
 gem 'galetahub-simple_captcha', require: 'simple_captcha', git: 'git://github.com/galetahub/simple-captcha.git'
-gem 'capistrano', '~> 2.9.0', require: false
-gem 'rvm-capistrano', require: false
 gem 'country-select'
 gem 'postmark-rails'
-
 gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_email_format_of.git'
-
 gem 'sitemap_generator'
