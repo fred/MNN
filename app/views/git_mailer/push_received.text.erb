@@ -1,4 +1,4 @@
-<%= @json_payload['repository']['owner']['name'] %> pushed on <%= @json_payload['repository']['name'] %> 
+<%= @json_payload['head_commit']['author']['name'] %> pushed to <%= @json_payload['repository']['name'] %> [<%= @json_payload['ref'] %>]
 ====================================
 
 Commits: 
@@ -6,5 +6,31 @@ Commits:
 <% @json_payload['commits'].each do |commit| %>
   - <%= commit['author']['name'] %> : <%= commit['message'] %> (<%= time_ago_in_words Time.parse(commit['timestamp']) %>)
      URL: <%= commit['url'] %>
+<% end %>
+
+<% unless @json_payload['head_commit']['added'].empty? %>
+
+  Added:
+  <% @json_payload['head_commit']['added'].each do |file| %>
+    - <%= file %>
+  <% end %>
+
+<% end %>
+
+<% unless @json_payload['head_commit']['modified'].empty? %>
+
+  Modified:
+  <% @json_payload['head_commit']['modified'].each do |file| %>
+    - <%= file %>
+  <% end %>
+
+<% end %>
+
+<% unless @json_payload['head_commit']['removed'].empty? %>
+
+  Deleted:
+  <% @json_payload['head_commit']['removed'].each do |file| %>
+    - <%= file %>
+  <% end %>
 
 <% end %>

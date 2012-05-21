@@ -85,11 +85,14 @@
 <body>
   <div class="content">
     <h2>
-      <%= @json_payload['repository']['owner']['name'] %>
-      pushed on
+      <%= @json_payload['head_commit']['author']['name'] %>
+      pushed to
       <%= @json_payload['repository']['name'] %> 
+      [<%= @json_payload['ref'] %>]
     </h2>
     <div class="article">
+      <h3>Branch: <%= @json_payload['ref'] %></h3>
+
       <h3>Commit List:</h3>
       <ul>
         <% @json_payload['commits'].each do |commit| %>
@@ -100,8 +103,37 @@
           </li>
         <% end %>
       </ul>
+
+      <% unless @json_payload['head_commit']['added'].empty? %>
+        <h3>Added:</h3>
+        <ul>
+          <% @json_payload['head_commit']['added'].each do |file| %>
+            <li><%= file %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <% unless @json_payload['head_commit']['modified'].empty? %>
+        <h3>Modified:</h3>
+        <ul>
+          <% @json_payload['head_commit']['modified'].each do |file| %>
+            <li><%= file %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <% unless @json_payload['head_commit']['removed'].empty? %>
+        <h3>Deleted:</h3>
+        <ul>
+          <% @json_payload['head_commit']['removed'].each do |file| %>
+            <li><%= file %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
     </div>
   </div>
 </body>
+
 </html>
 

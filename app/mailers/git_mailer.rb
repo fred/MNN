@@ -17,7 +17,7 @@ class GitMailer < ActionMailer::Base
     mail(
       from:     "WorldMathaba <inbox@worldmathaba.net>",
       to:       "inbox@worldmathaba.net",
-      subject:  "[GIT] #{@json_payload['repository']['owner']['name']} pushed on #{@json_payload['repository']['name']}"
+      subject:  "[GIT] #{@json_payload['head_commit']['author']['name']} pushed on #{@json_payload['repository']['name']}"
     )
   end
 end
