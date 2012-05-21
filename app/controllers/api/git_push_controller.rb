@@ -12,7 +12,11 @@ class Api::GitPushController < ApiController
   # POST: send email
   def create
     payload = JSON.parse(params[:payload].to_s)
-    Resque.enqueue(GitQueue,payload)
+    if Rails.env.production?
+      Resque.enqueue(GitQueue,payload)
+    else
+      GitMailer.push_received(payload).deliver
+    end
     respond_to do |format|
       format.html {render :text => "OK", :status => 200}
       format.js   {render :text => "OK", :status => 200}

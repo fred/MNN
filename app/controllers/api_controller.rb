@@ -1,5 +1,4 @@
 class ApiController < ActionController::Metal
-
   include ActionController::Redirecting
   include ActionController::Rendering
   include ActionController::Renderers::All
@@ -13,15 +12,9 @@ class ApiController < ActionController::Metal
   include ActionController::Instrumentation
   # need this for wrap_parameters
   include ActionController::ParamsWrapper
-  include Devise::Controllers::Helpers
   # need make your ApiController aware of your routes
   include Rails.application.routes.url_helpers
   # tell the controller where to look for templates
   append_view_path "#{Rails.root}/app/views"
-  # you need this to wrap the parameters correctly eg
-  # { "person": { "name": "JoeDoe", "email": "joedoe@mail.com", "twitter": "@joedoe" }} wrap_parameters format: [:json]
-
-  # might not need this (depends on your client) rails bypasses automatically if client is not browser
   protect_from_forgery
-  
 end

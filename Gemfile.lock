@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: git://github.com/fred/letter_opener.git
-  revision: bb256b5297c3ca3bb86eaefa377a90d7c88077c9
+  revision: 45c7b1fa4c25176638f387dca3090f793cb5022b
   branch: fred
   specs:
     letter_opener (0.0.2)
