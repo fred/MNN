@@ -13,7 +13,7 @@ class Api::GitPushController < ApiController
   def create
     payload = JSON.parse(params[:payload].to_s)
     if Rails.env.production?
-      Resque.enqueue(GitQueue,payload)
+      GitQueue.perform_async(payload)
     else
       GitMailer.push_received(payload).deliver
     end

@@ -6,15 +6,14 @@ class TwitterShare < Share
   
   def enqueue
     if Rails.env.production?
-      # TwitterQueue.perform(self.id)
       if self.enqueue_at.to_i < Time.now.to_i
         time = Time.now+60
       else
         time = self.enqueue_at
       end
-      Resque.enqueue_at(time,TwitterQueue,self.id)
+      TwitterQueue.perform_at(time,self.id)
     else
-      Rails.logger.info("  Resque: Updating twitter status: #{self.id}")
+      Rails.logger.info("  Queue: Updating twitter status: #{self.id}")
     end
   end
   

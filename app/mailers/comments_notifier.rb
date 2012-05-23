@@ -1,5 +1,5 @@
 class CommentsNotifier < ActionMailer::Base
-  self.delivery_method = :smtp
+  self.delivery_method = :smtp if Rails.env.production?
 
   def new_comment(comment_id)
     @comment = Comment.includes(:owner).find(comment_id)

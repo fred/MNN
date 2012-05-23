@@ -1,11 +1,7 @@
-require 'resque-history'
-
-class SolrRemove
-  extend Resque::Plugins::History
-  @queue = :solr_remove
-
-  def self.perform(classname, id)
-    Rails.logger.info("  Resque: Removing from SOLR #{classname}: #{id}")
+class SolrRemove < BaseWorker
+  sidekiq_options :queue => :solr_remove
+  def perform(classname, id)
+    Rails.logger.info("  Queue: Removing from SOLR #{classname}: #{id}")
     Sunspot.remove_by_id(classname, id)
   end
 end

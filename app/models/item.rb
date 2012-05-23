@@ -56,7 +56,7 @@ class Item < ActiveRecord::Base
   ################
   ####  SOLR  ####
   ################
-  # searchable auto_index: false, auto_remove: false do # if using resque
+  # searchable auto_index: false, auto_remove: false do # if using QUEUE
   searchable do
     text :title, boost: 2.4
     text :abstract, boost:  1.6
@@ -83,9 +83,9 @@ class Item < ActiveRecord::Base
     end
   end
 
-  # if Rails.env.production? # and using solr resque?
-  # after_commit   :resque_solr_update
-  # before_destroy :resque_solr_remove
+  # if Rails.env.production?
+  # after_commit   :queue_solr_update
+  # before_destroy :queue_solr_remove
   # end
 
 
@@ -189,7 +189,7 @@ class Item < ActiveRecord::Base
   # Queue up sitemap generation after 3 minutes
   def sitemap_refresh
     if !self.draft && Rails.env.production?
-      Resque.enqueue_at(self.enqueue_time, SitemapQueue) 
+      SitemapQueue.perform_at(self.enqueue_time)
     end
   end
 
@@ -488,13 +488,15 @@ class Item < ActiveRecord::Base
   
   
   protected
+
     # From https://gist.github.com/1282013
-    # Use Resque for SOLR indexing
-    def resque_solr_update
-      Resque.enqueue(SolrUpdate, self.class.to_s, id)
+    def queue_solr_update
+      SolrUpdate.perform_async(self.class.to_s, id)
     end
-    def resque_solr_remove
-      Resque.enqueue(SolrRemove, self.class.to_s, id)
+    def queue_solr_remove
+      SolrRemove.perform_async(self.class.to_s, id)
     end
 
 end
+
+

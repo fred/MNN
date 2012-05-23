@@ -1,13 +1,8 @@
-require 'resque-history'
-
-class CommentNotification
-  extend Resque::Plugins::History
-  @queue = :comment_notification
-  @max_history = 50
-  
-  def self.perform(comment_id)
-    Rails.logger.info("  Resque: Delivering emails for Comment: #{comment_id}")
-    CommentsNotifier.new_comment(comment_id).deliver
-    Rails.logger.info("  Resque: Done delivering emails for Comment: #{comment_id}")
+class CommentNotification < BaseWorker
+  sidekiq_options :queue => :comments
+  def perform(comment_id)
+    Rails.logger.info("  Queue: Delivering emails for Comment: #{comment_id}")
+    CommentsNotifier.delay.new_comment(comment_id)
+    Rails.logger.info("  Queue: Done delivering emails for Comment: #{comment_id}")
   end
 end

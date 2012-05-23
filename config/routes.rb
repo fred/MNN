@@ -1,8 +1,9 @@
 Publication::Application.routes.draw do
-  
-  resources :contacts
-
-  mount Resque::Server, :at => "/resque"
+  require 'sidekiq/web'
+  constraint = lambda { |request| request.env["warden"].authenticate? && request.env['warden'].user.is_admin? }
+  constraints constraint do
+    mount Sidekiq::Web => '/queue'
+  end
 
   ActiveAdmin.routes(self)
   
@@ -49,6 +50,7 @@ Publication::Application.routes.draw do
     get 'reply', :on => :member
   end
 
+  resources :contacts
   resources :pages
   resources :roles
   resources :tags

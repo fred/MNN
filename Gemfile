@@ -40,10 +40,9 @@ gem 'opinio', git:  'git://github.com/fred/opinio.git', branch: 'fred'
 gem 'rakismet'
 
 ### Queue
-gem 'resque', '~> 1.20.0'
-gem 'resque-scheduler', '~> 1.9.9', require: 'resque_scheduler'
-gem 'resque-history', git:  'git://github.com/fred/resque-history.git', branch: 'fred'
-
+gem 'slim'
+gem 'sinatra'
+gem 'sidekiq-scheduler'
 
 ### JSON and Twitter
 gem 'multi_json'
@@ -80,7 +79,6 @@ group :test, :development do
   gem 'rspec-rails', '~> 2.9.0'
   gem 'factory_girl'
   gem 'factory_girl_rails'
-  gem 'itslog'
 end
 
 group :development do

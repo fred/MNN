@@ -102,8 +102,8 @@ class ApplicationController < ActionController::Base
   end
   
   # This method uses the useragentstring API, 
-  # TODO, only use this on a resque worker
-  def is_human_api?
+  # TODO, use this on a QUEUE worker
+  def api_is_human?
     uas = request.env["HTTP_USER_AGENT"].to_s
     site = "http://www.useragentstring.com/?uas=#{uas}&getJSON=all"
     uri = URI.escape(site)

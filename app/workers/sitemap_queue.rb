@@ -1,13 +1,8 @@
-require 'resque-history'
-
-class SitemapQueue
-  extend Resque::Plugins::History
-  @queue = :sitemaps
-  @max_history = 50
-  
-  def self.perform
-    Rails.logger.info("  Resque: Starting Sitemap Generation")
+class SitemapQueue < BaseWorker
+  sidekiq_options :queue => :sitemap
+  def perform
+    Rails.logger.info("  Queue: Starting Sitemap Generation")
     require File.join(Rails.root,'config','sitemap.rb') if Rails.env.production?
-    Rails.logger.info("  Resque: Finished Sitemap Generation")
+    Rails.logger.info("  Queue: Finished Sitemap Generation")
   end
 end

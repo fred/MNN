@@ -25,7 +25,7 @@ class Comment < ActiveRecord::Base
 
   # Send the email notifications after creation
   def email_notify
-    Resque.enqueue(CommentNotification, self.id)
+    CommentNotification.perform_async(self.id)
   end
 
   def check_for_suspicious
