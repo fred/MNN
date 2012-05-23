@@ -200,6 +200,7 @@ GEM
     inherited_resources (1.3.1)
       has_scope (~> 0.5.0)
       responders (~> 0.6)
+    itslog (0.6.1)
     journey (1.0.3)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
@@ -435,6 +436,7 @@ DEPENDENCIES
   friendly_id (~> 4.0.0)
   galetahub-simple_captcha!
   hirb
+  itslog
   jquery-rails
   json
   kaminari

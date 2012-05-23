@@ -1,5 +1,9 @@
 CHANGELOG
 
+== May 23, 2012
+* Process sitemap job after creation
+* Sitemap process time set for 3 minutes after published
+
 == May 20, 2012
 * Added 'edit' button for item on front end
 * Added 'new item' for user menu on front end

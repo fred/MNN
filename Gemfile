@@ -80,6 +80,7 @@ group :test, :development do
   gem 'rspec-rails', '~> 2.9.0'
   gem 'factory_girl'
   gem 'factory_girl_rails'
+  gem 'itslog'
 end
 
 group :development do

@@ -51,7 +51,7 @@ class Item < ActiveRecord::Base
   before_update :set_status_code
   before_create :build_stat
   before_save   :send_email_deliveries
-  after_save    :sitemap_refresh
+  after_create  :sitemap_refresh
   
   ################
   ####  SOLR  ####
@@ -174,7 +174,7 @@ class Item < ActiveRecord::Base
   def create_twitter_share
     if !self.draft && (self.share_twitter.to_s=="1" or self.share_twitter==true) && self.twitter_shares.empty?
       Rails.logger.info("  Twitter: Creating Twitter Share for item: #{self.id}")
-      self.twitter_shares << TwitterShare.new(enqueue_at: self.published_at+180)
+      self.twitter_shares << TwitterShare.new(enqueue_at: self.enqueue_time)
     end
     true
   end
@@ -189,7 +189,16 @@ class Item < ActiveRecord::Base
   # Queue up sitemap generation after 3 minutes
   def sitemap_refresh
     if !self.draft && Rails.env.production?
-      Resque.enqueue_in(180, SitemapQueue) 
+      Resque.enqueue_at(self.enqueue_time, SitemapQueue) 
+    end
+  end
+
+
+  def enqueue_time
+    if self.published_at
+      self.published_at+180
+    else
+      Time.now+180
     end
   end
 

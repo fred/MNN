@@ -97,9 +97,8 @@
       <ul>
         <% @json_payload['commits'].each do |commit| %>
           <li>
-            <%= commit['author']['name'] %>:
-            <%= link_to commit['message'], commit['url'] %> 
-            (<%= time_ago_in_words Time.parse(commit['timestamp']) %>)
+            <%= commit['author']['name'] %> - <%= time_ago_in_words Time.parse(commit['timestamp']) %> ago:
+            <pre><%= link_to commit['message'], commit['url'] %></pre>
           </li>
         <% end %>
       </ul>
