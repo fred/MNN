@@ -15,4 +15,5 @@ class SubscriptionMailer < ActionMailer::Base
       tag:      "item_subscription"
     )
   end
+
 end

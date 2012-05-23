@@ -29,8 +29,13 @@ class User < ActiveRecord::Base
   has_many :item_subscriptions, dependent: :destroy, conditions: "item_id is not NULL", class_name: "Subscription"
   
   before_save :create_subscriptions, :cancel_subscriptions, :update_subscriptions, :check_upgrade
-  
+  after_create :notify_admin
+
   apply_simple_captcha
+
+  def notify_admin
+    Resque.enqueue(MailerQueue,self.id)
+  end
 
   def check_upgrade
     if (self.upgrade.to_s == "1" or self.upgrade == true) && !self.is_admin?
@@ -110,6 +115,16 @@ class User < ActiveRecord::Base
       self.item_subscriptions.destroy_all
     end
     true
+  end
+
+
+  # Returns users with Admin Role
+  def self.admin_users
+    Role.where(title: 'admin').first.users
+  end
+  # Returns users with Security Role
+  def self.security_users
+    Role.where(title: 'security').first.users
   end
   
   # Returns approved Users

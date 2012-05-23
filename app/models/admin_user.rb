@@ -8,5 +8,5 @@ class AdminUser < User
       :twitter, :diaspora, :skype, :gtalk, :jabber, :avatar, :phone_number, :time_zone, :type,
       :role_ids, :roles, :subscribe,  :unsubscribe, :unsubscribe_all, :upgrade, :downgrade,
       :terms_of_service, :registration_role, :gpg
-  
+
 end

@@ -3,6 +3,7 @@ CHANGELOG
 == May 23, 2012
 * Process sitemap job after creation
 * Sitemap process time set for 3 minutes after published
+* Email Notification to admins on User registration
 
 == May 20, 2012
 * Added 'edit' button for item on front end
