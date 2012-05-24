@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   apply_simple_captcha
 
   def notify_admin
-    Resque.enqueue(MailerQueue,self.id)
+    UserMailer.delay.new_user(self.id)
   end
 
   def check_upgrade
