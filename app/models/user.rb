@@ -1,24 +1,28 @@
 class User < ActiveRecord::Base
+  serialize :oauth_data, Hash
   
   mount_uploader :avatar, AvatarUploader
   mount_uploader :gpg, GpgUploader
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :lockable, #:confirmable, 
+  devise :database_authenticatable, :registerable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :bio, :name, :address,
       :twitter, :diaspora, :skype, :gtalk, :jabber, :avatar, :phone_number, :time_zone,
       :role_ids, :roles, :subscribe, :unsubscribe, :unsubscribe_all, :upgrade, :downgrade,
-      :terms_of_service, :registration_role, :gpg
+      :terms_of_service, :registration_role, :gpg, :facebook
 
   attr_accessor :subscribe, :unsubscribe, :unsubscribe_all, :upgrade, :downgrade
   
   validates_acceptance_of :terms_of_service, accept: '1', on: :create unless Rails.env.test?
   validates_exclusion_of :password, :in => lambda { |p| [p.name] }, :message => "should not be the same as your name"
   validates :email, :email_format => {:message => 'is not looking good'}, on: :create
+
+  # validates_presence_of :password, unless: Proc.new {|user| user.oauth_token.present?}
+  # validates_presence_of :password_confirmation, unless: Proc.new {|user| user.oauth_token.present?}
 
   # Relationships
   has_many :items #, counter_cache: true
@@ -61,6 +65,16 @@ class User < ActiveRecord::Base
   
   def has_image?
     self.avatar?
+  end
+
+  def main_image(version=:thumb)
+    if has_image?
+      avatar.url(version)
+    elsif oauth_data && oauth_data[:info] && oauth_data[:info][:image]
+      oauth_data[:info][:image].to_s
+    else
+      "mini_logo.png"
+    end
   end
   
   def has_role?(role_sym)
@@ -115,6 +129,25 @@ class User < ActiveRecord::Base
       self.item_subscriptions.destroy_all
     end
     true
+  end
+
+
+
+  def self.find_or_create_from_oauth(auth_hash, session=nil)
+    user = where(email: auth_hash.info.email).first
+    unless user
+      user = User.new
+      user.name = auth_hash.info.name
+      user.email = auth_hash.info.email
+      user.facebook = auth_hash.info.urls.Facebook
+      user.fbuid = auth_hash.uid
+      user.password = auth_hash.credentials.token
+      user.password_confirmation = auth_hash.credentials.token
+    end
+    user.oauth_token = auth_hash.credentials.token
+    user.oauth_data = auth_hash
+    user.save
+    user
   end
 
 

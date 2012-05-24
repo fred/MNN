@@ -1,5 +1,19 @@
 class RegistrationsController < Devise::RegistrationsController
 
+
+  def update
+    @user = User.find(current_user.id)
+    if @user.update_attributes(params[:user])
+      # Sign in the user bypassing validation in case his password changed
+      sign_in @user, :bypass => true
+      redirect_to edit_user_registration_path(protocol: 'https')
+      flash[:sucess] = "Account Successfully Updated"
+    else
+      flash[:notice] = "There was an error updating your account"
+      render "edit"
+    end
+  end
+
   protected
   
   # The path used after sign up. You need to overwrite this method

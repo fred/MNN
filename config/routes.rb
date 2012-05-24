@@ -2,13 +2,12 @@ Publication::Application.routes.draw do
   
   resources :contacts
 
-  mount Resque::Server, :at => "/resque"
+  mount Resque::Server, at: "/resque"
 
   ActiveAdmin.routes(self)
-  
+
   devise_for :admin_users, ActiveAdmin::Devise.config
-  
-  devise_for :users, :controllers => { :registrations => :registrations }
+  devise_for :users, controllers: {registrations: :registrations}
 
   match 'search' => 'items#search', :as => :search
   match 'feed' => "items#feed", :as => :feed
@@ -18,17 +17,9 @@ Publication::Application.routes.draw do
   match 'news/:category/:id' => 'items#show', :as => :news_path
   
   # Omniauth
-  # match '/auth/:provider/callback', to: 'services#create'
-  # match '/auth/failure' => 'services#failure'
-  # resources :services, :only => [:index, :create, :destroy] do
-  #   collection do
-  #     get 'signin'
-  #     get 'signout'
-  #     get 'signup'
-  #     post 'newaccount'
-  #     get 'failure'
-  #   end
-  # end
+  match '/auth/:provider/callback', to: 'services#create'
+  match '/auth/failure' => 'services#failure'
+  resources :services, :only => [:create, :destroy]
   
   namespace "api" do 
     resources :git_push

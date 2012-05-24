@@ -6,14 +6,44 @@ ActiveAdmin.register User do
     controller.current_ability.can?(:manage, User)
   }
   form partial: "form"
-  # show do
-  #   render "show"
-  # end
+
+  show title: :title do
+    attributes_table do
+      row :id
+      row :email
+      row :name
+      row :registration_role
+      row :fbuid
+      row :time_zone
+      row 'Facebook Page', &:facebook
+      row :twitter
+      row :diaspora
+      row :jabber
+      row :phone_number
+      row :avatar do |user|
+        image_tag(user.main_image(:thumb))
+      end
+      row :bio
+      bool_row :show_public
+      row :created_at
+      row :updated_at
+    end
+  end
+
+
   index do
     column :id
+    column "Avatar", sortable: false do |user|
+      image_tag user.main_image(:thumb)
+    end
     column :name
     column :email
-    column :ranking
+    column :fbuid
+    column "Facebook", sortable: false do |user|
+      if user.facebook
+        link_to "Facebook", user.facebook
+      end
+    end
     column :role_titles
     column :type
     column "Subscribed", sortable: false do |user|

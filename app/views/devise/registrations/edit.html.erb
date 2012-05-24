@@ -9,23 +9,9 @@
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, class: "alert alert-#{name}" %>
       <% end %>
+
+      <%= custom_devise_error_messages! %>
     
-      <fieldset class="withBorder">
-        <legend>Current Password</legend>
-        <div class="control-group">
-          <%= f.label :current_password, class: 'control-label' %>
-          <div class="controls">
-            <%= f.password_field :current_password,
-                  autocomplete: "off",
-                  required: true,
-                  class: "imput-large"
-            %>
-            <span class="help-block">
-              Your Current Password is Required to make any changes in profile
-            </span>
-          </div>
-        </div>
-      </fieldset>
 
       <fieldset class="withBorder">
         <legend>Personal Information</legend>
@@ -38,13 +24,20 @@
         <div class="control-group">
           <%= f.label :name, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :name, required: true, autofocus: true, class: "imput-large" %>
+            <%= f.text_field :name, required: false, autofocus: true, class: "imput-large" %>
           </div>
         </div>
         <div class="control-group">
           <%= f.label :address, class: 'control-label' %>
           <div class="controls">
             <%= f.text_field :address, required: false, class: "imput-large" %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :facebook, class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :facebook, required: false, class: "imput-large", 
+                  placeholder: "https://facebook.com/your-name" %>
           </div>
         </div>
         <div class="control-group">
@@ -166,8 +159,11 @@
       </fieldset>
       
       <fieldset class="withBorder">
-        <legend>Change Password</legend>
-        
+        <% if f.object.oauth_data.blank? %>
+          <legend>Change Password</legend>
+        <% else %>
+          <legend>Create a Password</legend>
+        <% end %>
         <div class="control-group">
           <%= f.label :password, "New Password", class: 'control-label' %>
           <div class="controls">
@@ -184,16 +180,18 @@
             <%= f.password_field :password_confirmation, autocomplete: "off", required: false, class: "imput-large"  %>
           </div>
         </div>
-
-        <div class="form-actions">
-          <%= f.submit "Update", class: "btn btn-primary", disable_with: 'Processing...' %>
-          &nbsp;
-          <%= link_to "Delete my account".html_safe,
-              registration_path(resource_name),
-              confirm: "Are you sure you want to delete your account from our system?",
-              method: :delete, class: 'btn btn-danger'
-          %>
       </fieldset>
+
+      <div class="form-actions">
+        <%= f.submit "Update", class: "btn btn-primary", disable_with: 'Processing...' %>
+        &nbsp;
+        <%= link_to "Delete my account".html_safe,
+            registration_path(resource_name),
+            confirm: "Are you sure you want to delete your account from our system?",
+            method: :delete, class: 'btn btn-danger'
+        %>
+      </div>
+    
       
     <% end %> <!-- End Form -->
   </div> <!-- End span7-->
