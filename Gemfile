@@ -12,6 +12,15 @@ gem 'bundler', '>= 1.1.0'
 # Using Postgresql for all environments.
 gem 'pg'
 
+
+### Oauth 
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+# gem 'omniauth-openid'
+# gem 'omniauth-github'
+# gem 'omniauth-google_oauth2'
+
 ### Roles and Authentication
 gem 'cancan', '~> 1.6.7'
 gem 'devise', '~> 2.0.4' # Devise must be required before RailsAdmin
@@ -90,6 +99,7 @@ group :development do
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
   gem 'capistrano', '~> 2.9.0', require: false
   gem 'rvm-capistrano', require: false
+  gem 'debugger'
 end
 
 group :test do
@@ -134,13 +144,6 @@ gem 'sunspot_rails', '2.0.0.pre.111215' # git:  'git://github.com/sunspot/sunspo
 ### Memcache
 gem 'dalli', '~> 2.0.5'
 
-### OpenID 
-# gem 'omniauth'
-# gem 'omniauth-twitter'
-# gem 'omniauth-facebook'
-# gem 'omniauth-openid'
-# gem 'omniauth-github'
-# gem 'omniauth-google_oauth2'
 
 gem 'galetahub-simple_captcha', require: 'simple_captcha', git: 'git://github.com/galetahub/simple-captcha.git'
 gem 'country-select'

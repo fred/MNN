@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120520082913) do
+ActiveRecord::Schema.define(:version => 20120524010344) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -295,8 +295,8 @@ ActiveRecord::Schema.define(:version => 20120520082913) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -323,13 +323,18 @@ ActiveRecord::Schema.define(:version => 20120520082913) do
     t.string   "phone_number"
     t.string   "time_zone"
     t.integer  "ranking"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "type"
     t.string   "avatar"
     t.string   "registration_role"
     t.string   "gpg"
     t.integer  "items_count"
+    t.string   "facebook"
+    t.string   "fbuid"
+    t.string   "oauth_token"
+    t.text     "oauth_data"
+    t.boolean  "show_public",            :default => false
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

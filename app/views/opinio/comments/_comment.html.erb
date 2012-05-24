@@ -2,7 +2,7 @@
 <li id="comment_<%= comment.id %>">
   <span class="comment_owner">
     <% if comment.owner %>
-      <%= image_tag(comment.owner.avatar.thumb) if comment.owner.avatar? %>
+      <%= image_tag(comment.owner.main_image) %>
       <i><%= comment.owner.title %></i> said:
     <% end %>
   </span>
