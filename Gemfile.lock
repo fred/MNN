@@ -57,9 +57,9 @@ GIT
 
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: ae711d8161466f3f2758557385f1975dd2f74e4c
+  revision: 6c97494c7bf88ae2b250cfb1bd208844b016136b
   specs:
-    twitter-bootstrap-rails (2.0.7)
+    twitter-bootstrap-rails (2.0.8)
       actionpack (>= 3.1)
       less-rails (~> 2.2.2)
       railties (>= 3.1)
@@ -197,7 +197,7 @@ GEM
     formatador (0.2.3)
     formtastic (2.1.1)
       actionpack (~> 3.0)
-    friendly_id (4.0.5)
+    friendly_id (4.0.6)
     gherkin (2.10.0)
       json (>= 1.4.6)
     has_scope (0.5.1)
@@ -214,7 +214,6 @@ GEM
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
-    jruby-pageant (1.0.2)
     json (1.7.3)
     kaminari (0.13.0)
       actionpack (>= 3.0.0)
@@ -223,7 +222,7 @@ GEM
     kgio (2.7.4)
     launchy (2.1.0)
       addressable (~> 2.2.6)
-    less (2.2.1)
+    less (2.2.0)
       commonjs (~> 0.2.6)
     less-rails (2.2.2)
       actionpack (>= 3.1)
@@ -249,8 +248,7 @@ GEM
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
-    net-ssh (2.4.0)
-      jruby-pageant (>= 1.0.2)
+    net-ssh (2.5.2)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     nifty-generators (0.4.6)
@@ -357,9 +355,9 @@ GEM
     rubyzip (0.9.8)
     rufus-scheduler (2.0.16)
       tzinfo (>= 0.3.23)
-    rvm-capistrano (1.2.0)
+    rvm-capistrano (1.2.2)
       capistrano (>= 2.0.0)
-    sass (3.1.18)
+    sass (3.1.19)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
