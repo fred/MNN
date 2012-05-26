@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" <%= yield(:html_tag) %>>
   <head>
     <%= render partial: "/shared/head" %>
@@ -13,41 +13,39 @@
     <![endif]-->
     <%= yield(:head) %>
     <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="WorldMahaba.net Search" />
+    <%= render partial: "/shared/ga" unless current_admin_user %>
   </head>
-  
+
   <body>
     <%= render partial: "/shared/navbar" %>
-    
+
     <div class="container-fluid">
       <%= render partial: "/shared/sidebar" %>
-      
+
       <div class="content">
 
-        <% if notice %>
-          <div class="alert alert-success">
-            <%= notice %>
-          </div>
+        <% if @show_breadcrumb %>
+          <ul class="breadcrumb">
+            <%= yield :breadcrumb %>
+          </ul>
         <% end %>
 
-        <% if alert %>
-          <div class="alert alert-error">
-            <%= alert %>
-          </div>
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, class: "alert alert-#{name}" %>
         <% end %>
 
-        <% if flash[:error] %>
-          <div class="alert alert-error">
-            <%= flash[:error] %>
-          </div>
-        <% end %>
-        
+
         <%= yield %>
         <%= render partial: "/shared/footer" %>
       </div>
-      
+
     </div>
-    <%= render partial: "/shared/login_modal" %>
+
+    <% unless current_user or current_admin_user %>
+      <%= render partial: "/shared/login_modal" %>
+    <% end %>
     <%= yield(:footer) %>
     <%= yield(:scripts) %>
+    <%= render partial: "/shared/ga_member" unless current_admin_user %>
   </body>
 </html>

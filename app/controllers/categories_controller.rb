@@ -1,6 +1,4 @@
 class CategoriesController < ApplicationController
-  
-  layout :get_layout
     
   def index
     @sticky_item = Item.top_sticky

@@ -1,7 +1,5 @@
 class PagesController < InheritedResources::Base
   
-  layout "items"
-  
   def show
     @page = Page.find(params[:id])
     headers['Cache-Control'] = 'private, max-age=900' # 15 minutes cache

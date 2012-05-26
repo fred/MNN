@@ -9,6 +9,7 @@ CHANGELOG
 * Added default image for users without image
 * Added Facebook Connect for new user registration
 * Use facebook image if user does not upload image
+* Sorting Categories by priority
 
 == May 23, 2012
 * Process sitemap job after creation

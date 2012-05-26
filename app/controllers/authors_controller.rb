@@ -1,7 +1,5 @@
 class AuthorsController < ApplicationController
   
-  layout "items"
-  
   def index
     @authors = User.order("id ASC").page(params[:page], per_page: 20)
     respond_to do |format|

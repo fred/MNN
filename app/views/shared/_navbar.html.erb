@@ -3,26 +3,26 @@
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to(image_tag("world_mathaba11.png",
-                  width: '200px',
-                  height: '33px',
-                  class: 'brand',
-                  title: 'World Mathaba Independent News Agency',
-                  alt: 'World Mathaba'
-                ),
-            root_path,
-            title: 'World Mathaba Independent News Agency'
-          )
-      %>
-      <ul class="nav">
-        <% cache_expiring("topbar") do %>
+      <% cache_expiring("navbar") do %>
+        <%= link_to(image_tag("world_mathaba11.png",
+                    width: '200px',
+                    height: '33px',
+                    class: 'brand',
+                    title: 'World Mathaba Independent News Agency',
+                    alt: 'World Mathaba'
+                  ),
+              root_path,
+              title: 'World Mathaba Independent News Agency'
+            )
+        %>
+        <ul class="nav">
           <li id="home_link">
             <%= link_to "Home", root_path, title: 'World Mathaba Independent News Agency' %>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sections <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <% Category.order("title ASC").all.each do |category|%>
+              <% Category.order("priority ASC").all.each do |category|%>
                 <li><%= link_to category.title, category, title: category.title %></li>
               <% end %>
             </ul>
@@ -35,7 +35,6 @@
               <% end %>
             </ul>
           </li>
-
           <li class="dropdown" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tags <b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -44,8 +43,6 @@
               <% end %>
             </ul>
           </li>
-
-
           <li class="dropdown" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Languages <b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -54,8 +51,8 @@
               <% end %>
             </ul>
           </li>
-        <% end %>
-      </ul>
+        </ul>
+      <% end %>
 
       <div class="btn-group pull-right">
         

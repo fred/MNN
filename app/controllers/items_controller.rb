@@ -1,7 +1,5 @@
 class ItemsController < ApplicationController
   
-  layout "items"
-  
   def feed
     headers['Cache-Control'] = 'public, max-age=3600' # 60 minutes cache
   end
