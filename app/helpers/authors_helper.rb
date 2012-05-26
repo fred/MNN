@@ -4,7 +4,7 @@ module AuthorsHelper
     str = ""
     str += link_to(
         image_tag(user.main_image, class: "item-image", title: user.title, alt: user.title),
-        user,
+        author_path(user),
         title: user.title
     )
     str += "<span class='item-title'>#{link_to user.title, author_path(user), title: user.title}</span>"
