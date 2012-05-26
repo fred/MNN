@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   # validates_presence_of :password_confirmation, unless: Proc.new {|user| user.oauth_token.present?}
 
   # Relationships
-  has_many :items #, counter_cache: true
+  has_many :items
   has_many :scores
   # has_many :comments
   has_and_belongs_to_many :roles
@@ -140,14 +140,21 @@ class User < ActiveRecord::Base
       user.name = auth_hash.info.name
       user.email = auth_hash.info.email
       user.facebook = auth_hash.info.urls.Facebook
-      user.fbuid = auth_hash.uid
-      user.password = auth_hash.credentials.token
-      user.password_confirmation = auth_hash.credentials.token
     end
-    user.oauth_token = auth_hash.credentials.token
+    user.fbuid = auth_hash.uid
     user.oauth_data = auth_hash
+    user.oauth_token = auth_hash.credentials.token
+    user.password_confirmation = auth_hash.credentials.token
+    user.password = auth_hash.credentials.token
     user.save
     user
+  end
+
+  # Returns Popular Authors
+  def self.popular(lim=5)
+    where("items_count > 0").
+    order("items_count DESC").
+    limit(lim)
   end
 
 

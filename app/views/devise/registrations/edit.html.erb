@@ -6,13 +6,7 @@
           html: { method: :put, class: 'form-horizontal' }
         ) do |f|
     %>
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, class: "alert alert-#{name}" %>
-      <% end %>
-
       <%= custom_devise_error_messages! %>
-    
-
       <fieldset class="withBorder">
         <legend>Personal Information</legend>
         <div class="control-group">
@@ -169,7 +163,7 @@
           <div class="controls">
             <%= f.password_field :password, autocomplete: "off", required: false, class: "imput-large" %>
             <span class="help-block">
-              Leave this field black if you want to change password
+              Leave this field blank if you do not want to change your password
             </span>
           </div>
         </div>

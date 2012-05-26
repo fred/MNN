@@ -1,7 +1,5 @@
 class TagsController < ApplicationController
   
-  layout "items"
-  
   def index
     @tags = Tag.order("type DESC, title ASC").all
     

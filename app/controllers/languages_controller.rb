@@ -1,7 +1,5 @@
 class LanguagesController < ApplicationController
   
-  layout "items"
-  
   def index
     @languages = Language.with_articles
   end
