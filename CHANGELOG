@@ -1,5 +1,15 @@
 CHANGELOG
 
+== May 26, 2012
+* Removed Recent comments from sidebar
+* Most Read items descreased from 90 to 15 days
+* Added Most Commented items in last 30 days
+* Added Popular Authors (sorted my most items)
+* Whole Sidebar is cached for 10 minutes
+* Added default image for users without image
+* Added Facebook Connect for new user registration
+* Use facebook image if user does not upload image
+
 == May 23, 2012
 * Process sitemap job after creation
 * Sitemap process time set for 3 minutes after published

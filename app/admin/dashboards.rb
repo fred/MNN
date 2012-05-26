@@ -185,7 +185,7 @@ ActiveAdmin::Dashboards.build do
           link_to(user.email, admin_user_path(user))
         end
         column "Date" do |user|
-          time_ago_in_words(user.created_at)
+          "#{time_ago_in_words(user.created_at)} ago"
         end
       end
     end

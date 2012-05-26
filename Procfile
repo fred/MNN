@@ -1,4 +1,4 @@
 # web: bundle exec thin start -p $PORT -e $RACK_ENV
 web: bundle exec unicorn_rails -c config/unicorn.dev.rb -E development
-worker: bundle exec rake resque:work QUEUE=* VERBOSE=1 PIDFILE=./tmp/pids/resque-worker.pid
-scheduler: bundle exec rake resque:scheduler VERBOSE=1 PIDFILE=./tmp/pids/resque-scheduler.pid
+worker: bundle exec rake resque:work QUEUE=* INTERVAL=20 VERBOSE=1 PIDFILE=./tmp/pids/resque-worker.pid
+scheduler: bundle exec rake resque:scheduler INTERVAL=20 VERBOSE=1 PIDFILE=./tmp/pids/resque-scheduler.pid

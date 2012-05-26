@@ -16,7 +16,7 @@ class Item < ActiveRecord::Base
   friendly_id :title, use: :slugged
 
   # Relationships
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   belongs_to :category
   belongs_to :language
   has_one  :item_stat
@@ -325,6 +325,7 @@ class Item < ActiveRecord::Base
     end
   end
 
+
   # This builds the solr keyword for related articles
   def keyword_for_solr
     # @str = self.keywords.to_s.gsub(","," ")
@@ -353,14 +354,24 @@ class Item < ActiveRecord::Base
   ### CLASS METHODS
   ####################
 
-  # Returns the most popular Items in the last 90 days
-  def self.popular(limit=10, day_num=90)
+  # Returns the most popular Items in the last N days
+  def self.popular(lim=5, n=15)
     published.
     includes(:attachments).
     joins(:item_stat).
-    where("items.published_at > ?", (DateTime.now - day_num.days)).
+    where("items.published_at > ?", (DateTime.now - n.days)).
     order("item_stats.views_counter DESC").
-    limit(limit)
+    limit(lim)
+  end
+
+  # Returns the most Commented Items in the last N days
+  def self.most_commented(lim=5, n=30)
+    published.
+    where("items.published_at > ?", (DateTime.now - n.days)).
+    where("comments_count > 0").
+    order("comments_count DESC").
+    includes(:attachments).
+    limit(lim)
   end
 
   # Some Basic Scopes for finder chaining

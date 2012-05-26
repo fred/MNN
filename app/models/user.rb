@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   # validates_presence_of :password_confirmation, unless: Proc.new {|user| user.oauth_token.present?}
 
   # Relationships
-  has_many :items #, counter_cache: true
+  has_many :items
   has_many :scores
   # has_many :comments
   has_and_belongs_to_many :roles
@@ -148,6 +148,13 @@ class User < ActiveRecord::Base
     user.oauth_data = auth_hash
     user.save
     user
+  end
+
+  # Returns Popular Authors
+  def self.popular(lim=5)
+    where("items_count > 0").
+    order("items_count DESC").
+    limit(lim)
   end
 
 

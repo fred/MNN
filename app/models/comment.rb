@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  opinio
+  opinio counter_cache: true
   include Rakismet::Model
   # AKISMET parameters:
   # author        : name submitted with the comment
