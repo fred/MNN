@@ -21,7 +21,7 @@ class TagsController < ApplicationController
     @items = @tag.
       items.
       where(draft: false).
-      includes(:attachments, :comments, :category, :language, :item_stat, :user, :tags).
+      includes(:attachments, :category, :language, :item_stat, :user, :tags).
       where("published_at is not NULL").
       where("published_at < '#{Time.now.to_s(:db)}'").
       order("published_at DESC").

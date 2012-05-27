@@ -34,25 +34,32 @@
         <%= time_ago_in_words(item.published_at) %> ago
       </span>
       <% if item.user %>
-        <span class="author">Submitted by <%= link_to_if(item.user, item.user.title, author_path(item.user)) %></span>
+        <span class="author">
+          Submitted by
+          <span class="icon-user"></span>
+          <%= link_to_if(item.user, item.user.title, author_path(item.user)) %>
+        </span>
       <% end %>
       
       <ul class="tags">
+        <span class="icon-tags"> <span>
         <% item.tags.each do |tag| %>
           <li><%= link_to tag.title, tag_path(tag), title: "See all Articles tagged as '#{tag.title}'" %></li>
         <% end %>
-        <% if item.language %>
-          <li><%= link_to item.language.description, language_items_path(item.language) %></li>
-        <% end %>
       </ul>
+      
       <div class="page_views">
         <% if item.item_stat %>
-          Views: <%= item.item_stat.views_counter %>
+          <span class="icon-play-circle"><span>
+          <%= item.item_stat.views_counter %> Views
         <% end %>
       </div>
-      <div class="comments_count">
-        Comments: <%= item.comments.size %>
-      </div>
+
+      <% if item.comments_count > 0 %>
+        <div class="icon-comment comments_count">
+          <%= pluralize(item.comments_count, "Comment") %>
+        </div>
+      <% end %>
       <div class="clearfix"></div>
       <% @related = item.solr_similar(4) %>
       <% if @related && @related.total > 0 %>

@@ -4,6 +4,8 @@ CHANGELOG
 * Added Recently Commented Articles to sidebar
 * Removed Language from Article page
 * Updated Twitter Bootstrap
+* Added iconification
+* Reduced sidebar caching from 10 minutes to 5 minutes
 
 == May 26, 2012
 * Removed Recent comments from sidebar

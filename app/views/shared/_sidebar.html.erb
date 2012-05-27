@@ -114,7 +114,7 @@
     <% end %>
 
 
-    <% cache_expiring("sidebar", 600) do %>
+    <% cache_expiring("sidebar", 300) do %>
 
       <div class="sidebar_secions">
         <ul class="nav nav-list">
@@ -151,8 +151,8 @@
         <% Item.recently_commented(4).each do |item| %>
           <div class="sidebar-item">
             <%= item_mini(item).html_safe %>
-            <span class="comment-date">
-              <%= item.comments_count %> comments
+            <span class="icon-comments comment-date">
+              <%= pluralize(item.comments_count, "comment") %>
             </span>
             <span class="horizontal-divider"></span>
           </div>
@@ -164,8 +164,8 @@
         <% Item.most_commented(4).each do |item| %>
           <div class="sidebar-item">
             <%= item_mini(item).html_safe %>
-            <span class="comment-date">
-              <%= item.comments_count %> comments
+            <span class="icon-comments comment-date">
+              <%= pluralize(item.comments_count, "comment") %>
             </span>
             <span class="horizontal-divider"></span>
           </div>

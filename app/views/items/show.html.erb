@@ -74,7 +74,7 @@
           <%= time_tag(@item.published_at.in_time_zone("UTC"), pubdate: false) %> (UTC)
         </span>
         <% if @item.user %>
-          <span class="author">
+          <span class="icon-user author">
             Submitted by
             <%= link_to_if(@item.user, @item.user.title, author_path(@item.user)) %>
           </span>
@@ -83,12 +83,14 @@
         <% end %>
         <span itemprop="keywords">
           <ul class="tags">
+            <span class="icon-tags"> </span>
             <% @item.tags.each do |tag| %>
               <li><%= link_to tag.title, tag_path(tag), title: "See all Articles tagged as '#{tag.title}'" %></li>
             <% end %>
           </ul>
         </span>
         
+        <span class="icon-play-circle"></span>
         <div class="page_views">
           Views: 
           <% if @item_stat %>

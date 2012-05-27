@@ -369,7 +369,8 @@ class Item < ActiveRecord::Base
     published.
     where("items.published_at > ?", (DateTime.now - n.days)).
     where("comments_count > 0").
-    order("updated_at DESC").
+    joins(:comments).
+    order("comments.id DESC").
     includes(:attachments).
     limit(lim)
   end
