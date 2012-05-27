@@ -1,5 +1,10 @@
 CHANGELOG
 
+== May 27, 2012
+* Added Recently Commented Articles to sidebar
+* Removed Language from Article page
+* Updated Twitter Bootstrap
+
 == May 26, 2012
 * Removed Recent comments from sidebar
 * Most Read items descreased from 90 to 15 days

@@ -36,6 +36,14 @@
             </ul>
           </li>
           <li class="dropdown" data-dropdown="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Countries <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <% CountryTag.order("title ASC").all.each do |tag| %>
+                <li><%= link_to tag.title, tag_path(tag) %></li>
+              <% end %>
+            </ul>
+          </li>
+          <li class="dropdown" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tags <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <% GeneralTag.order("title ASC").all.each do |tag| %>

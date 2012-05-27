@@ -58,12 +58,12 @@ div.well {
   border-radius: 5px;
 }
 div.well h5 {
-  line-height: 26px;
-  margin-left: 10px;
+  line-height: 24px;
+  margin-left: 5px;
 }
 div.well h4 {
-  line-height: 32px;
-  margin-left: 10px;
+  line-height: 30px;
+  margin-left: 6px;
 }
 div.well h3 { 
   margin-left: 10px;
@@ -178,7 +178,7 @@ article h3 {
   font-size: 20px;
 }
 article h4 {
-  font-size: 16px;
+  font-size: 14px;
 }
 article p img {
   border: 1px solid #DDD;
@@ -800,7 +800,7 @@ ul#comments li span.comment_owner img {
 }
 
 .sidebar-item {
-  padding: 3px;
+  padding: 2px;
   margin-top: 0px;
   margin-bottom: 0px;
   min-height: 66px;
@@ -816,7 +816,7 @@ ul#comments li span.comment_owner img {
   .item-image {
     box-shadow: 0px 0px 4px #aaa;
     float: left;
-    margin-right: 5px;
+    margin-right: 6px;
     padding: 1px;
   }
   .item-views {
@@ -831,7 +831,6 @@ ul#comments li span.comment_owner img {
     font-size: 11px;
     color: #777;
     font-style: italic;
-    margin-top: 1px;
   }
 }
 

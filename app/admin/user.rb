@@ -2,6 +2,7 @@
 ActiveAdmin.register User do
   controller.authorize_resource
   config.comments = false
+  # config.sort_order = "last_sign_in_at_desc"
   menu parent: "Members", priority: 24, if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, User)
   }
@@ -13,7 +14,7 @@ ActiveAdmin.register User do
       row :email
       row :name
       row :registration_role
-      row :fbuid
+      row "Facebook", &:fbuid?
       row :time_zone
       row 'Facebook Page', &:facebook
       row :twitter
@@ -25,6 +26,10 @@ ActiveAdmin.register User do
       end
       row :bio
       bool_row :show_public
+      row "Logged in at", &:last_sign_in_at
+      row "Last Seen", &:current_sign_in_at
+      row "Last IP", &:last_sign_in_ip
+      row "Current IP", &:current_sign_in_ip
       row :created_at
       row :updated_at
     end
@@ -38,18 +43,24 @@ ActiveAdmin.register User do
     end
     column :name
     column :email
-    column :fbuid
+    column "FB", :fbuid?, sortable: :fbuid do |user|
+      bool_symbol user.fbuid?
+    end
     column "Facebook", sortable: false do |user|
-      if user.facebook
+      if user.facebook.present?
         link_to "Facebook", user.facebook
       end
     end
     column :role_titles
     column :type
     column "Subscribed", sortable: false do |user|
-      user.has_subscription?
+      bool_symbol user.has_subscription?
     end
     column "Logins", :sign_in_count
+    column "Logged in", :last_sign_in_at
+    column "Last Seen", :current_sign_in_at
+    column "Last IP", :last_sign_in_ip
+    column "Current IP", :current_sign_in_ip
     default_actions
   end
   controller do

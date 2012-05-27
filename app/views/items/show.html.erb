@@ -86,9 +86,6 @@
             <% @item.tags.each do |tag| %>
               <li><%= link_to tag.title, tag_path(tag), title: "See all Articles tagged as '#{tag.title}'" %></li>
             <% end %>
-            <% if @item.language %>
-              <li><%= link_to @item.language.description, language_items_path(@item.language) %></li>
-            <% end %>
           </ul>
         </span>
         
