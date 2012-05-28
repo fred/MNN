@@ -1,5 +1,5 @@
 class SubscriptionQueue < BaseWorker
-  sidekiq_options :queue => :subscriptions
+
   def perform(item_id)
     Rails.logger.info("  Queue: Delivering emails for: #{item_id}")
     SubscriptionMailer.new_item_email(item_id).deliver

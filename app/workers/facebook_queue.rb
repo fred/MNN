@@ -1,5 +1,5 @@
 class FacebookQueue < BaseWorker
-  sidekiq_options :queue => :facebook
+
   def perform(share_id)
     share = Share.find(share_id)
     item = share.item if share

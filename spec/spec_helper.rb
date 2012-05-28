@@ -3,6 +3,8 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'database_cleaner'
+require 'sidekiq/testing'
+
 # Sunspot.session = Sunspot::Rails::StubSessionProxy.new(Sunspot.session)
 
 include ActionDispatch::TestProcess
