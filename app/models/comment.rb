@@ -19,14 +19,14 @@ class Comment < ActiveRecord::Base
   belongs_to :approving_user, foreign_key: :approved_by, class_name: "User"
   
   before_create :check_for_spam, :check_for_suspicious
-  after_create  :email_notify, :touch_item
+  after_create  :email_notify, :touch_commentable
 
   delegate :name, :to => :owner, :allow_nil => true
 
 
-  def touch_item
-    if item
-      item.update_column(:last_commented_at, DateTime.now)
+  def touch_commentable
+    if !marked_spam? && commentable && commentable.respond_to?(:update_column)
+      commentable.update_column(:last_commented_at, DateTime.now)
     end
   end
 

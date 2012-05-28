@@ -36,13 +36,13 @@
       <% if item.user %>
         <span class="author">
           Submitted by
-          <span class="icon-user"></span>
+          <i class="icon-user"></i>
           <%= link_to_if(item.user, item.user.title, author_path(item.user)) %>
         </span>
       <% end %>
       
       <ul class="tags">
-        <span class="icon-tags"> <span>
+        <i class="icon-tags"></i>
         <% item.tags.each do |tag| %>
           <li><%= link_to tag.title, tag_path(tag), title: "See all Articles tagged as '#{tag.title}'" %></li>
         <% end %>
@@ -50,13 +50,14 @@
       
       <div class="page_views">
         <% if item.item_stat %>
-          <span class="icon-play-circle"><span>
+          <i class="icon-play-circle"></i>
           <%= item.item_stat.views_counter %> Views
         <% end %>
       </div>
 
       <% if item.comments_count > 0 %>
-        <div class="icon-comment comments_count">
+        <div class="icon comments_count">
+          <i class="icon-comment"></i>
           <%= pluralize(item.comments_count, "Comment") %>
         </div>
       <% end %>

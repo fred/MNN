@@ -151,7 +151,8 @@
         <% Item.recently_commented(5).each do |item| %>
           <div class="sidebar-item">
             <%= item_mini(item).html_safe %>
-            <span class="icon-comments comment-date">
+            <span class="comment-date">
+              <i class="icon-comments"></i>
               <%= pluralize(item.comments_count, "comment") %>
             </span>
             <span class="horizontal-divider"></span>
@@ -164,7 +165,8 @@
         <% Item.most_commented(4).each do |item| %>
           <div class="sidebar-item">
             <%= item_mini(item).html_safe %>
-            <span class="icon-comments comment-date">
+            <span class="comment-date">
+              <i class="icon-comments"></i>
               <%= pluralize(item.comments_count, "comment") %>
             </span>
             <span class="horizontal-divider"></span>
