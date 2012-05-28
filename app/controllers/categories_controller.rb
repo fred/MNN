@@ -30,12 +30,16 @@ class CategoriesController < ApplicationController
       page(params[:page]).per(per_page)
 
     # RSS configuration
-    @rss_title = "Latest News for #{@category.title}"
-    @rss_description = "World Mathaba - Latest News for #{@category.title}"
+    @rss_title = "World Mathaba - #{@category.title} News"
+    @meta_title = @rss_title
+    @rss_description = "World Mathaba - #{@category.description} News"
+    @meta_description = @rss_description
     @rss_source = url_for(@category)
     @rss_category = @category.title
     @rss_language = "en"
     @last_published = @items.first.published_at
+    @last_mofified = @last_published
+    @meta_keywords = "#{@category.title} news"
     
     respond_to do |format|
       format.html # index.html.erb

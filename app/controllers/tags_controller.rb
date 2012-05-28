@@ -33,10 +33,14 @@ class TagsController < ApplicationController
     else
       @last_published = @items.first.published_at
     end
-    @rss_title = "World Mathaba - News tagged #{@tag.title}"
-    @rss_description = "World Mathaba - News tagged #{@tag.title}"
+    @rss_title = "World Mathaba - #{@tag.title} News"
+    @meta_title = @rss_title
+    @rss_description = "World Mathaba - Latest News Tagged as #{@tag.title}"
+    @meta_description = @rss_description
+    @meta_keywords = "#{@tag.title} news"
     @rss_category = @tag.title
     @rss_source = tags_path(@tag, only_path: false, protocol: 'https', format: "html")
+    @last_mofified = @last_published
     headers['Last-Modified'] = @last_published.httpdate
     
     respond_to do |format|
