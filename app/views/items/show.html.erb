@@ -13,7 +13,7 @@
 <% end %>
 
 
-<% cache("show/#{@item.cache_key_full}") do %>
+<% cache_expiring("show/#{@item.cache_key_full}", 300) do %>
   <!-- CACHE KEY: <%= "show/#{@item.cache_key_full}" %> -->
   <div itemscope itemtype="http://schema.org/Article">
     <article id="item_<%= @item.id %>">

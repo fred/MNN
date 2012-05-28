@@ -1,5 +1,8 @@
 CHANGELOG
 
+== May 28, 2012
+* Fixed page views bug
+
 == May 27, 2012
 * Added Recently Commented Articles to sidebar
 * Removed Language from Article page
