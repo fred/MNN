@@ -137,7 +137,7 @@
       </div>
 
       <div class="sidebar_secions">
-        <h5>Most Read</h5>
+        <h4>Most Read</h4>
         <% Item.popular(5).each do |item| %>
           <div class="sidebar-item">
             <%= item_mini(item).html_safe %>
@@ -148,7 +148,7 @@
 
       <div class="sidebar_secions">
         <h4>Recently Commented</h4>
-        <% Item.recently_commented(4).each do |item| %>
+        <% Item.recently_commented(5).each do |item| %>
           <div class="sidebar-item">
             <%= item_mini(item).html_safe %>
             <span class="icon-comments comment-date">

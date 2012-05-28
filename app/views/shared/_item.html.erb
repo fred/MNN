@@ -11,7 +11,7 @@
             title: item.title
         %>
       <% elsif item.youtube_id && item.youtube_img %>
-        <%= image_tag("https://img.youtube.com/vi/#{item.youtube_id}/2.jpg", 
+        <%= image_tag(youtube_thumb(item), 
             class: "show_item_image youtube_medium")
         %>
       <% end %>

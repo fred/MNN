@@ -19,9 +19,16 @@ class Comment < ActiveRecord::Base
   belongs_to :approving_user, foreign_key: :approved_by, class_name: "User"
   
   before_create :check_for_spam, :check_for_suspicious
-  after_create  :email_notify
+  after_create  :email_notify, :touch_item
 
   delegate :name, :to => :owner, :allow_nil => true
+
+
+  def touch_item
+    if item
+      item.update_column(:last_commented_at, DateTime.now)
+    end
+  end
 
   # Send the email notifications after creation
   def email_notify

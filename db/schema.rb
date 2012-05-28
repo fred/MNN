@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120526054436) do
+ActiveRecord::Schema.define(:version => 20120528162322) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -148,6 +148,7 @@ ActiveRecord::Schema.define(:version => 20120526054436) do
     t.boolean  "youtube_img"
     t.boolean  "sticky",            :default => false
     t.integer  "comments_count",    :default => 0
+    t.datetime "last_commented_at"
   end
 
   add_index "items", ["allow_comments"], :name => "index_items_on_allow_comments"

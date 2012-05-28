@@ -39,6 +39,13 @@ module ItemsHelper
           title: item.abstract,
           id: 'tooltip'
       )
+    elsif item.youtube_id
+      str += link_to(
+          image_tag(youtube_thumb(item), class: "item-image", title: item.abstract),
+          item,
+          title: item.abstract,
+          id: 'tooltip'
+      )
     end
     str += "<span class='item-title'> #{link_to item.title.truncate(56), item, title: item.abstract, id: 'tooltip'}</span>"
     if item.item_stat
@@ -59,6 +66,10 @@ module ItemsHelper
     str += "<br/>"
     str += "<div class='date_small'>#{time_ago_in_words(item.published_at)} ago - by #{item.author_name}</div>"
     str
+  end
+
+  def youtube_thumb(item,n=2)
+    "https://img.youtube.com/vi/#{item.youtube_id}/#{n}.jpg"
   end
   
   def twitter_link

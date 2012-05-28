@@ -366,13 +366,12 @@ class Item < ActiveRecord::Base
 
   # Returns the most Commented Items in the last N days
   def self.recently_commented(lim=5, n=30)
-    find published.
+    published.
     where("items.published_at > ?", (DateTime.now - n.days)).
     where("items.comments_count > 0").
-    joins(:comments).
-    order("comments.id DESC").
-    includes(:attachments).
-    limit(lim).map{|t| t.id}.uniq
+    includes(:attachments, :comments).
+    order("comments.created_at DESC").
+    limit(lim)
   end
 
   # Returns the most Commented Items in the last N days

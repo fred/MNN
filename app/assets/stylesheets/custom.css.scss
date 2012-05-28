@@ -768,8 +768,8 @@ ul#comments li span.comment_owner img {
 
 .sidebar_secions h3,
 .sidebar_secions h4 {
-  margin-bottom: 10px;
-  margin-top: 12px;
+  margin-bottom: 4px;
+  margin-top: 8px;
   color: #555;
 }
 .sidebar-comment {
@@ -818,6 +818,10 @@ ul#comments li span.comment_owner img {
     float: left;
     margin-right: 6px;
     padding: 1px;
+  }
+  img.item-image {
+    max-width: 64px;
+    max-height: 64px;
   }
   .item-views {
     clear: both;
