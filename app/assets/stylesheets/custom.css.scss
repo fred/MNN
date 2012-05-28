@@ -58,12 +58,12 @@ div.well {
   border-radius: 5px;
 }
 div.well h5 {
-  line-height: 26px;
-  margin-left: 10px;
+  line-height: 24px;
+  margin-left: 5px;
 }
 div.well h4 {
-  line-height: 32px;
-  margin-left: 10px;
+  line-height: 30px;
+  margin-left: 6px;
 }
 div.well h3 { 
   margin-left: 10px;
@@ -178,7 +178,7 @@ article h3 {
   font-size: 20px;
 }
 article h4 {
-  font-size: 16px;
+  font-size: 14px;
 }
 article p img {
   border: 1px solid #DDD;
@@ -768,8 +768,8 @@ ul#comments li span.comment_owner img {
 
 .sidebar_secions h3,
 .sidebar_secions h4 {
-  margin-bottom: 10px;
-  margin-top: 12px;
+  margin-bottom: 4px;
+  margin-top: 8px;
   color: #555;
 }
 .sidebar-comment {
@@ -800,7 +800,7 @@ ul#comments li span.comment_owner img {
 }
 
 .sidebar-item {
-  padding: 3px;
+  padding: 2px;
   margin-top: 0px;
   margin-bottom: 0px;
   min-height: 66px;
@@ -816,8 +816,12 @@ ul#comments li span.comment_owner img {
   .item-image {
     box-shadow: 0px 0px 4px #aaa;
     float: left;
-    margin-right: 5px;
+    margin-right: 6px;
     padding: 1px;
+  }
+  img.item-image {
+    max-width: 64px;
+    max-height: 64px;
   }
   .item-views {
     clear: both;
@@ -831,7 +835,6 @@ ul#comments li span.comment_owner img {
     font-size: 11px;
     color: #777;
     font-style: italic;
-    margin-top: 1px;
   }
 }
 

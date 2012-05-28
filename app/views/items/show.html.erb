@@ -13,7 +13,7 @@
 <% end %>
 
 
-<% cache("show/#{@item.cache_key_full}") do %>
+<% cache_expiring("show/#{@item.cache_key_full}", 300) do %>
   <!-- CACHE KEY: <%= "show/#{@item.cache_key_full}" %> -->
   <div itemscope itemtype="http://schema.org/Article">
     <article id="item_<%= @item.id %>">
@@ -75,6 +75,7 @@
         </span>
         <% if @item.user %>
           <span class="author">
+            <i class="icon-user"></i>
             Submitted by
             <%= link_to_if(@item.user, @item.user.title, author_path(@item.user)) %>
           </span>
@@ -83,15 +84,14 @@
         <% end %>
         <span itemprop="keywords">
           <ul class="tags">
+            <i class="icon-tags"></i>
             <% @item.tags.each do |tag| %>
               <li><%= link_to tag.title, tag_path(tag), title: "See all Articles tagged as '#{tag.title}'" %></li>
-            <% end %>
-            <% if @item.language %>
-              <li><%= link_to @item.language.description, language_items_path(@item.language) %></li>
             <% end %>
           </ul>
         </span>
         
+        <i class="icon-play-circle"></i>
         <div class="page_views">
           Views: 
           <% if @item_stat %>

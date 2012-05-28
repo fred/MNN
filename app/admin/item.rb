@@ -53,6 +53,10 @@ ActiveAdmin.register Item do
         )
       end
     end
+    column "Views", sortable: false do |item|
+      item.item_stat.views_counter
+    end
+    column "Comments", :comments_count
     bool_column :draft
     column "Highlt", :featured, sortable: :featured do |item|
       bool_symbol(item.featured)
@@ -153,7 +157,7 @@ ActiveAdmin.register Item do
       end
     end
     def scoped_collection
-       Item.includes(:language, :attachments, :tags, :user, :category)
+       Item.includes(:language, :attachments, :tags, :user, :category, :item_stat)
     end
   end
 end

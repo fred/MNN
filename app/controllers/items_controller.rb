@@ -93,71 +93,10 @@ class ItemsController < ApplicationController
     end
   end
 
-  # # GET /items/new
-  # # GET /items/new.json
-  # def new
-  #   @item = Item.new
-  # 
-  #   respond_to do |format|
-  #     format.html # new.html.erb
-  #     format.json { render json: @item }
-  #   end
-  # end
-  # 
-  # GET /items/1/edit
   def edit
     redirect_to root_path
-    # @item = Item.find(params[:id])
   end
-  # 
-  # # POST /items
-  # # POST /items.json
-  # def create
-  #   @item = Item.new(params[:item])
-  # 
-  #   respond_to do |format|
-  #     if @item.save
-  #       format.html { redirect_to @item, notice: 'Item was successfully created.' }
-  #       format.json { render json: @item, status: :created, location: @item }
-  #     else
-  #       format.html { render action: "new" }
-  #       format.json { render json: @item.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-  # 
-  # # PUT /items/1
-  # # PUT /items/1.json
-  # def update
-  #   @item = Item.find(params[:id])
-  # 
-  #   respond_to do |format|
-  #     if @item.update_attributes(params[:item])
-  #       format.html { redirect_to @item, notice: 'Item was successfully updated.' }
-  #       format.json { head :ok }
-  #     else
-  #       format.html { render action: "edit" }
-  #       format.json { render json: @item.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-  # 
-  # # DELETE /items/1
-  # # DELETE /items/1.json
-  # def destroy
-  #   @item = Item.find(params[:id])
-  #   @item.destroy
-  # 
-  #   respond_to do |format|
-  #     format.html { redirect_to items_url }
-  #     format.json { head :ok }
-  #   end
-  # end
-  
-  
-  
-  
-  
+
   def search
     @show_breadcrumb = false
     if params[:category_id]
@@ -192,15 +131,13 @@ class ItemsController < ApplicationController
 
       # showing Sponsored Listings
       @items = @search.results
-      @title = "Found #{@search.total} results with '#{params[:q]}' "
-      @rss_title = "WorldMathaba Search"
+      @title = "WorldMathaba - Found #{@search.total} results for '#{params[:q]}' "
+      @meta_title = @title
+      @meta_description = @title
       @rss_description = @title
+      @rss_title = "WorldMathaba Search - #{params[:q]}"
       @last_published = @items.first.published_at unless @items.empty?
     else
-      # If no search term has been given, empty search
-      # @items = Item.published.not_draft.
-      #   order("published_at DESC").
-      #   page(params[:page]).per(per_page)
       @items = []
       @title = "Please type something to search for"
     end

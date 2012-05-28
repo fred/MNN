@@ -1,5 +1,18 @@
 CHANGELOG
 
+== May 28, 2012
+* Fix page views bug
+* Fix bug for Recently Commented Articles
+* Added youtube image on sidebar
+* Gem update
+
+== May 27, 2012
+* Added Recently Commented Articles to sidebar
+* Removed Language from Article page
+* Updated Twitter Bootstrap
+* Added iconification
+* Reduced sidebar caching from 10 minutes to 5 minutes
+
 == May 26, 2012
 * Removed Recent comments from sidebar
 * Most Read items descreased from 90 to 15 days
