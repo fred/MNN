@@ -6,16 +6,6 @@
 // To customize the Active Admin interfaces, add your
 // styles here:
 
-//::-moz-scrollbar {
-//  -webkit-appearance: always;
-//  width: 8px;
-//}
-//::-webkit-scrollbar-thumb {
-//  border-radius: 4px;
-//  background-color: rgba(0,0,0,.5);
-//  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
-//}
-
 body {
   font-size: 84%;
 }
@@ -275,4 +265,25 @@ a.spam_true {
 
 .red {
   color: #ff0000;
+}
+
+form fieldset label.error,
+li label.error,
+label.error {
+  color: red;
+  font-size: 12px;
+  font-style: italic;
+  width: auto;
+  padding-right: 4px;
+}
+form fieldset textarea.error,
+form fieldset select.error,
+form fieldset input.error,
+li textarea.error,
+li select.error,
+li input.error,
+textarea.error
+select.error
+input.error {
+  border-color: red;
 }

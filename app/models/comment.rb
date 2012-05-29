@@ -18,7 +18,7 @@ class Comment < ActiveRecord::Base
   # belongs_to :user
   belongs_to :approving_user, foreign_key: :approved_by, class_name: "User"
   
-  before_create :check_for_spam, :check_for_suspicious
+  before_create :check_for_spam
   after_create  :email_notify, :touch_commentable
 
   delegate :name, :to => :owner, :allow_nil => true
@@ -33,15 +33,6 @@ class Comment < ActiveRecord::Base
   # Send the email notifications after creation
   def email_notify
     Resque.enqueue(CommentNotification, self.id)
-  end
-
-  def check_for_suspicious
-    if self.body.match("(fuck|shit|idiot|asshole|suck|sex|free|blowjob|cock)")
-      self.suspicious = true
-    else
-      self.suspicious = false
-    end
-    true
   end
 
   def check_for_spam

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120528162322) do
+ActiveRecord::Schema.define(:version => 20120529163550) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -121,7 +121,6 @@ ActiveRecord::Schema.define(:version => 20120528162322) do
     t.string   "author_email"
     t.string   "article_source"
     t.string   "source_url"
-    t.string   "formatting_type",   :default => "HTML"
     t.string   "locale"
     t.string   "meta_keywords"
     t.string   "meta_title"
@@ -131,9 +130,7 @@ ActiveRecord::Schema.define(:version => 20120528162322) do
     t.boolean  "meta_enabled",      :default => true
     t.boolean  "allow_comments",    :default => true
     t.boolean  "allow_star_rating", :default => true
-    t.boolean  "protected_record",  :default => false
     t.boolean  "featured",          :default => false
-    t.boolean  "member_only",       :default => false
     t.datetime "published_at"
     t.datetime "expires_on"
     t.datetime "created_at",                             :null => false
@@ -149,6 +146,7 @@ ActiveRecord::Schema.define(:version => 20120528162322) do
     t.boolean  "sticky",            :default => false
     t.integer  "comments_count",    :default => 0
     t.datetime "last_commented_at"
+    t.boolean  "original"
   end
 
   add_index "items", ["allow_comments"], :name => "index_items_on_allow_comments"
@@ -158,9 +156,7 @@ ActiveRecord::Schema.define(:version => 20120528162322) do
   add_index "items", ["featured"], :name => "index_items_on_featured"
   add_index "items", ["language_id"], :name => "index_items_on_language_id"
   add_index "items", ["locale"], :name => "index_items_on_locale"
-  add_index "items", ["member_only"], :name => "index_items_on_member_only"
   add_index "items", ["meta_enabled"], :name => "index_items_on_meta_enabled"
-  add_index "items", ["protected_record"], :name => "index_items_on_protected_record"
   add_index "items", ["published_at"], :name => "index_items_on_published_at", :order => {"published_at"=>:desc}
   add_index "items", ["slug"], :name => "index_items_on_slug", :unique => true
   add_index "items", ["status_code"], :name => "index_items_on_status_code"
