@@ -51,7 +51,7 @@ gem 'rakismet'
 ### Queue
 gem 'slim'
 gem 'sinatra'
-gem 'sidekiq-scheduler'
+gem 'sidekiq', git: 'git://github.com/mperham/sidekiq.git'
 
 ### JSON and Twitter
 gem 'multi_json'
