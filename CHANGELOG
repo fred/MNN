@@ -1,6 +1,13 @@
 CHANGELOG
 
 == May 28, 2012
+* Added more validation to item form
+* Removed check_for_suspicious on comments
+* Cleared unused Item columns
+* Improved new item form
+* Added 'original' checkbox to items (WIP)
+
+== May 28, 2012
 * Fix page views bug
 * Fix bug for Recently Commented Articles
 * Added youtube image on sidebar

@@ -92,7 +92,7 @@ ActiveAdmin.register Item do
       authorize! :create, Item
       @item = Item.new
       @now = Time.zone.now
-      @item.published_at = @now+600
+      @item.published_at = @now+20.minutes
       @item.expires_on = @now+10.years
       @item.draft = true
       @item.author_name = current_admin_user.title
@@ -128,6 +128,8 @@ ActiveAdmin.register Item do
       authorize! :create, @item
       unless (current_admin_user.has_any_role?(:admin,:editor,:security))
         @item.draft = true
+        @item.share_twitter = nil
+        @item.send_emails = nil
       end
       respond_to do |format|
         if @item.save

@@ -40,7 +40,7 @@ class Item < ActiveRecord::Base
   accepts_nested_attributes_for :attachments, allow_destroy: true, reject_if: lambda { |t| t['image'].nil? }
   
   # Validations
-  validates_presence_of :title, :category_id, :published_at
+  validates_presence_of :title, :abstract, :category_id, :published_at
   validates_presence_of :body, if: Proc.new { |item| item.youtube_id.blank? }
   validates_presence_of :published_at
   validate :record_freshness
@@ -192,7 +192,6 @@ class Item < ActiveRecord::Base
       SitemapQueue.perform_at(self.enqueue_time)
     end
   end
-
 
   def enqueue_time
     if self.published_at

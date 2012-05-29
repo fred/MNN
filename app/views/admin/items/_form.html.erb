@@ -25,7 +25,7 @@
     <%= f.input :abstract,
                 hint: "Ideally 80 characters. Max 120.",
                 required: true,
-                input_html: { rows: 2 }
+                input_html: { rows: 2, required: true}
     %>
     
     <%= f.input :body,
@@ -74,18 +74,26 @@
     </div>
   <% end %>
   
-  <%= f.inputs name: "Optional" do %>
+  <%= f.inputs name: "Author and Source" do %>
     <%= f.input :author_name, hint: "If blank, your 'Name' will be used" %>
     <%= f.input :author_email %>
     <%= f.input :source_url, hint: "If you wrote the article, leave empty" %>
+    <%= f.input :original, label: "Original author", hint: "Are you the original Author of this article?" %>
+    <br />
   <% end %>
   
   <% if current_admin_user.has_any_role?(:editor,:admin,:security) %>
     <%= f.inputs name: "Status Codes" do %>
-      <%= f.input :draft,     hint: "Keep as draft if you haven't finished editing." %><br />
-      <%= f.input :featured,  label: "Highlight",hint: "Article will be featured on Highlights box in front page" %><br />
-      <%= f.input :sticky,    label: "Sticky",   hint: "Article will remain first on top of Highlights box" %><br />
-      <%= f.input :allow_comments, hint: "Allow users to comment" %><br />
+      <%= f.input :draft, hint: "Keep as draft if you haven't finished editing." %>
+      <br />
+      <%= f.input :featured, label: "Highlight",
+            hint: "Article will be featured on Highlights box in front page" %>
+      <br />
+      <%= f.input :sticky, label: "Sticky",
+          hint: "Article will remain first on top of Highlights box" %>
+      <br />
+      <%= f.input :allow_comments, hint: "Allow users to comment" %>
+      <br />
       <% if f.object.twitter_shares.empty? %>
         <%= f.input :share_twitter, as: "boolean",
             hint: "Auto post to twitter upon publication? Only set it if item is ready and not Draft. It can only be posted once. Performed 3 minutes after Publication." %>
@@ -133,7 +141,7 @@
         as: "string",
         label: "Expire Date",
         value: f.object.expires_on.localtime,
-        hint: "Expiration Date of article (default: 10 years). It will be converted to UTC after saving."
+        hint: "Expiration date of article (default: 10 years). It will be converted to UTC after saving."
     %>
   <% end %>
 
@@ -142,9 +150,10 @@
     <div class="item_attachments">
       <%= f.semantic_fields_for :attachments do |attachment| %>
         <% if attachment.object.new_record? %>
-          <%= attachment.input :image, as: "file", label: "Choose File to upload", hint: "Max Size: 4MB" %>
+          <%= attachment.input :image, as: "file", label: "Choose file to upload", hint: "Max Size: 4MB" %>
           <br />
-          <%= attachment.input :title, as: "string", label: "Image Caption ", hint: "It is Highly Recommended to Add an Image Caption." %>
+          <%= attachment.input :title, as: "string", label: "Image Caption ",
+              hint: "It is highly recommended to add an image caption." %>
         <% elsif f.object.has_image? %>
           <h3>Current Images: </h3>
           <h4><%= attachment.object.title %></h4>
@@ -152,7 +161,7 @@
           <p>
             <%= link_to "Edit", edit_admin_attachment_path(attachment.object) %> - 
             <%= link_to "Delete", admin_attachment_path(attachment.object), method: 'delete', 
-                  confirm: "Are You sure you want to delete this Image?" 
+                  confirm: "Are you sure you want to delete this image?" 
             %>
           </p>
         <% end %>
@@ -176,6 +185,8 @@
 <% end %>
 
 
+
+<%= javascript_include_tag "jquery.validate.js" %>
 
 <script type="text/javascript">
   $(function() {
@@ -236,14 +247,15 @@
       count: 'up',
       goal: 100
   });
-  
-  // $(document).ready(function(){
-  //   // get current number of characters
-  //   $('#item_abstract_counter').html($('#item_abstract').val().length + ' chars');
-  //   $('#item_abstract').keyup(function() {
-  //     // get new length of characters
-  //     $('#item_abstract_counter').html($(this).val().length + ' chars');
-  //   });
-  // });
+
+  $("form.formtastic").validate({
+    rules: {
+      "item[category_id]": { required: true },
+      "item[language_id]": { required: true },
+      "item[abstract]": { required: true },
+      "item[title]": { required: true },
+      "item[body]": { required: true }
+    }
+  });
   
 </script>
