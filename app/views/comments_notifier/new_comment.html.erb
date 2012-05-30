@@ -193,7 +193,7 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
         <p>
           Item: 
           <%= link_to @comment.commentable_title, 
-                url_for(admin_item_path(@comment.commentable_id, 
+                url_for(item_path(@comment.commentable, 
                         only_path: false,
                         protocol: 'http'
                       )

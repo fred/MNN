@@ -137,16 +137,6 @@
       </div>
 
       <div class="sidebar_secions">
-        <h4>Most Read</h4>
-        <% Item.popular(5).each do |item| %>
-          <div class="sidebar-item">
-            <%= item_mini(item).html_safe %>
-            <span class="horizontal-divider"></span>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="sidebar_secions">
         <h4>Recently Commented</h4>
         <% Item.recently_commented(5).each do |item| %>
           <div class="sidebar-item">
@@ -161,8 +151,18 @@
       </div>
 
       <div class="sidebar_secions">
+        <h4>Most Read</h4>
+        <% Item.popular(5).each do |item| %>
+          <div class="sidebar-item">
+            <%= item_mini(item).html_safe %>
+            <span class="horizontal-divider"></span>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="sidebar_secions">
         <h4>Most Commented</h4>
-        <% Item.most_commented(4).each do |item| %>
+        <% Item.most_commented(5).each do |item| %>
           <div class="sidebar-item">
             <%= item_mini(item).html_safe %>
             <span class="comment-date">
@@ -176,7 +176,7 @@
 
       <div class="sidebar_secions">
         <h4>Top Users</h4>
-        <% User.popular(4).each do |user| %>
+        <% User.popular(5).each do |user| %>
           <div class="sidebar-item">
             <%= mini_user(user).html_safe %>
             <span class="horizontal-divider"></span>
