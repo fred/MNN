@@ -113,29 +113,27 @@
       </div>
     <% end %>
 
-
+    <div class="sidebar_secions">
+      <ul class="nav nav-list">
+        <li class="horizontal-divider"></li>
+        <% Category.order("priority ASC").each do |category| %>
+          <li class=<%= li_class(category.to_param, :id, "active") %>>
+            <%= link_to category.title, category, title:  category.description %>
+          </li>
+        <% end %>
+        <li class="horizontal-divider"></li>
+      </ul>
+      <ul class="nav nav-list">
+        <% Page.order("priority ASC").each do |page| %>
+          <li class=<%= li_class(page.to_param, :id, "active") %>>
+            <%= link_to page.title, page, title:  page.title %>
+          </li>
+        <% end %>
+        <li class="horizontal-divider"></li>
+      </ul>
+    </div>
+    
     <% cache_expiring("sidebar", 300) do %>
-
-      <div class="sidebar_secions">
-        <ul class="nav nav-list">
-          <li class="horizontal-divider"></li>
-          <% Category.order("priority ASC").each do |category| %>
-            <li class=<%= li_class(category.to_param, :id, "active") %>>
-              <%= link_to category.title, category, title:  category.description %>
-            </li>
-          <% end %>
-          <li class="horizontal-divider"></li>
-        </ul>
-        <ul class="nav nav-list">
-          <% Page.order("priority ASC").each do |page| %>
-            <li class=<%= li_class(page.to_param, :id, "active") %>>
-              <%= link_to page.title, page, title:  page.title %>
-            </li>
-          <% end %>
-          <li class="horizontal-divider"></li>
-        </ul>
-      </div>
-
       <div class="sidebar_secions">
         <h4>Recently Commented</h4>
         <% Item.recently_commented(5).each do |item| %>
