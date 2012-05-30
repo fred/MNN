@@ -1,6 +1,10 @@
 CHANGELOG
 
-== May 28, 2012
+== May 30, 2012
+* Added tinyMCE on comments
+* Changed order on sidebar
+
+== May 29, 2012
 * Added more validation to item form
 * Removed check_for_suspicious on comments
 * Cleared unused Item columns

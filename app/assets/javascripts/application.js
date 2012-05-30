@@ -12,3 +12,4 @@
 //= require fancybox
 //= require modernizr
 //= require bootstrap
+//= require tinymce-jquery
