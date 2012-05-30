@@ -12,7 +12,7 @@
     </h3>
     <%= form_for Comment.new, remote: true do |f| %>
       <p>
-        <%= f.text_area :body, rows: 8, id: "Comment", class: "input-xlarge", required: true %>
+        <%= f.text_area :body, rows: 8, id: "Comment", class: "input-xlarge" %>
       </p>
       <%= hidden_field_tag :commentable_id, commentable.id %>
       <%= hidden_field_tag :commentable_type, commentable.class.base_class.name.to_s %>
