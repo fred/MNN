@@ -47,7 +47,7 @@ module ItemsHelper
           id: 'tooltip'
       )
     end
-    str += "<span class='item-title'> #{link_to item.title.truncate(56), item, title: item.abstract, id: 'tooltip'}</span>"
+    str += "<span class='item-title'> #{link_to item.title.truncate(55), item, title: item.abstract, id: 'tooltip'}</span>"
     if item.item_stat
       str += "<span class='item-views'> Viewed #{item.item_stat.views_counter} times</span>"
     end
