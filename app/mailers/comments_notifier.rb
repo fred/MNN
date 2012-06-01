@@ -1,5 +1,9 @@
 class CommentsNotifier < ActionMailer::Base
-  self.delivery_method = :smtp
+  add_template_helper(ApplicationHelper)
+
+  if Rails.env.production?
+    self.delivery_method = :smtp
+  end
 
   def new_comment(comment_id)
     @comment = Comment.includes(:owner).find(comment_id)
@@ -10,7 +14,7 @@ class CommentsNotifier < ActionMailer::Base
       domain:    "worldmathaba.com",
       address:   "localhost",
       port:      25
-    }
+    } if Rails.env.production?
     mail(
       from:     "WorldMathaba <inbox@worldmathaba.net>",
       sender:   "inbox@worldmathaba.net",

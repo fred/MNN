@@ -69,15 +69,10 @@ class ItemsController < ApplicationController
   def show
     @item = Item.includes([:attachments, :comments, :user]).find(params[:id])
     @show_breadcrumb = true
-    if @item && is_human?
-      if @item.item_stat
-        @item_stat = @item.item_stat
-        if session[:view_items] && !session[:view_items].include?(@item.id)
-          @item_stat.update_attributes(views_counter: @item_stat.views_counter+1)
-          session[:view_items] << @item.id
-        end
-      else
-        @item_stat = ItemStat.create(item_id: @item.id, views_counter: 1)
+    if @item && is_human? && (@item_stat = @item.item_stat)
+      if session[:view_items] && !session[:view_items].include?(@item.id)
+        @item_stat.update_attributes(views_counter: @item_stat.views_counter+1)
+        session[:view_items] << @item.id
       end
     end
     @meta_title = @item.title + " - World Mathaba"

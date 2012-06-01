@@ -45,6 +45,10 @@ describe Item do
       @item.title = "A New item..."
       lambda {@item.save}.should_not raise_error
     end
+    it "should have ItemStat" do
+      @item.item_stat.should_not be(nil)
+      @item.item_stat.should be_an_instance_of ItemStat
+    end
   end
 
 

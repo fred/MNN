@@ -12,18 +12,15 @@
   <% end %>
 <% end %>
 
-
 <% cache_expiring("show/#{@item.cache_key_full}", 300) do %>
-  <!-- CACHE KEY: <%= "show/#{@item.cache_key_full}" %> -->
   <div itemscope itemtype="http://schema.org/Article">
     <article id="item_<%= @item.id %>">
-      
+
       <div class="font_control" id="font_control" style="display:none;">
         <a id="decreaseFont" href="#" title="Reduce Size">A-</a>
         <a id="resetFont" href="#" title="Default Font">A</a>
         <a id="increaseFont" href="#" title="Increase Size">A+</a>
       </div>
-
       <h1><span itemprop="headline"><%= @item.title %></span></h1>
 
       <span class="source_url">
@@ -68,7 +65,7 @@
           <%= @item.body.html_safe %>
         </div>
       </section>
-      
+
       <footer>
         <span class="date" itemprop="datePublished" >
           <%= time_tag(@item.published_at.in_time_zone("UTC"), pubdate: false) %> (UTC)
@@ -90,7 +87,7 @@
             <% end %>
           </ul>
         </span>
-        
+
         <i class="icon-play-circle"></i>
         <div class="page_views">
           Views: 
@@ -100,7 +97,7 @@
             1
           <% end %>
         </div>
-        
+
         <span class="share">
           <%= link_to image_tag("icons/social/facebook_16.png", alt: "Facebook"),
                 facebook_share(@item),
