@@ -22,7 +22,7 @@ module ItemsHelper
     content_str = "<span class='date_small'> #{time_ago_in_words(item.published_at)} ago - by #{item.author_name}</span>"
     return {:title => title_str, 'data-content' => content_str, id: 'popover', rel: 'popover'}
   end
-  
+
   def item_title_small(item)
     str = ""
     str += "#{item.title}<br/>#{item.abstract}"
@@ -54,7 +54,7 @@ module ItemsHelper
     str += "<span class='icon-time item-date'> Published #{time_ago_in_words(item.published_at)} ago</span>"
     str
   end
-  
+
   def item_title(item)
     str = ""
     if item.has_image?
@@ -71,11 +71,11 @@ module ItemsHelper
   def youtube_thumb(item,n=2)
     "https://img.youtube.com/vi/#{item.youtube_id}/#{n}.jpg"
   end
-  
+
   def twitter_link
     "https://twitter.com/#/worldmathaba"
   end
-  
+
   def rss_description(item)
     html = ""
     if item.has_image?
@@ -87,7 +87,7 @@ module ItemsHelper
     html += item.abstract
     html += "</div>"
   end
-  
+
   def meta_title(item)
     str = item.title
     return str
@@ -96,22 +96,22 @@ module ItemsHelper
     str = item.abstract
     return str
   end
-  
+
   def linkedin_share(item)
     url = "http://www.linkedin.com/shareArticle?mini=true&url="
-    url += url_for(item_path(item.id, only_path: false, protocol: 'http'))
+    url += url_for(item_path(item, only_path: false, protocol: 'http'))
     url += "&title=#{url_encode(item.title)}"
     url += "&source=MNN"
     return url
   end
-  
+
   def facebook_share(item)
     url = "https://www.facebook.com/sharer.php?u="
-    url += url_for(item_path(item.id, only_path: false, protocol: 'http'))
+    url += url_for(item_path(item, only_path: false, protocol: 'http'))
     url += "&t=#{url_encode(meta_title(item))}"
     return url
   end
-  
+
   def twitter_share(item)
     url = "https://twitter.com/home?status="
     url += url_encode(item.title.truncate(116))
@@ -119,7 +119,7 @@ module ItemsHelper
     url += url_for(item_path(item, only_path: false, protocol: 'http'))
     return url
   end
-  
+
   def digg_share(item)
     url = "http://digg.com/submit?url="
     url += url_for(item_path(item, only_path: false, protocol: 'http'))
@@ -127,13 +127,13 @@ module ItemsHelper
     url += url_encode(item.title)
     return url
   end
-  
+
   def gplus_share(item)
     url = "https://plusone.google.com/_/+1/confirm?hl=en&url="
     url += url_for(item_path(item, only_path: false, protocol: 'http'))
     return url
   end
-    
+
   def reddit_share(item)
     url = "http://www.reddit.com/submit?url="
     url += url_for(item_path(item, only_path: false, protocol: 'http'))
@@ -141,13 +141,13 @@ module ItemsHelper
     url += url_encode(item.title)
     return url
   end
-  
+
   def posterous_share(item)
     url = "http://posterous.com/share?linkto="
     url += url_for(item_path(item, only_path: false, protocol: 'http'))
     return url
   end
-  
+
   def slashdot_share(item)
     url = "http://slashdot.org/slashdot-it.pl?op=basic&url="
     url += url_for(item_path(item, only_path: false, protocol: 'http'))
@@ -155,7 +155,7 @@ module ItemsHelper
     url += url_encode(item.title)
     return url
   end
-  
+
   def delicious_share(item)
     url = "http://www.delicious.com/save?url="
     url += url_for(item_path(item, only_path: false, protocol: 'http'))
@@ -165,7 +165,7 @@ module ItemsHelper
     url += url_encode(item.abstract)
     return url
   end
-  
+
   def email_share(item)
     sbj = item.title
     body = "#{item.abstract} - "
@@ -180,5 +180,5 @@ module ItemsHelper
     url += url_encode(item.title)
     return url
   end
-  
+
 end
