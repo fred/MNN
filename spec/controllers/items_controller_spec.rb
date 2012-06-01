@@ -46,11 +46,27 @@ describe ItemsController do
     end
   end
   
-  describe "GET show" do
+  describe "GET show for same user" do
     it "increases the views_counter of @item" do
       get :show, id: @item.id
       @new_item = Item.find(@item.id)
       assert_equal 1, @new_item.item_stat.views_counter
+    end
+    it "does not increase the views_counter again" do
+      10.times do
+        get :show, id: @item.id
+      end
+      @new_item = Item.find(@item.id)
+      assert_equal 1, @new_item.item_stat.views_counter
+    end
+  end
+  describe "GET show for different users" do
+    it "increases the views_counter of @item" do
+      get :show, id: @item.id
+      session[:view_items] = Set.new
+      get :show, id: @item.id
+      @new_item = Item.find(@item.id)
+      assert_equal 2, @new_item.item_stat.views_counter
     end
   end
 

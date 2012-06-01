@@ -7,7 +7,6 @@
 
   <div class="span6 box" id="main_highlights">
     <% cache_expiring("main/#{@highlights.first.cache_key}",300) do %>
-      <!-- CACHE KEY: <%= "main/#{@highlights.first.cache_key}" %> 300 seconds -->
       <ul>
         <% @highlights.each do |item| %>
           <li class="featured_item" id="highlight_item_<%=item.id%>">
@@ -49,7 +48,6 @@
   
   <div class="span6 box" id="highlights">
     <% cache_expiring("hglt/#{@latest_items.first.cache_key_full}",300) do %>
-      <!-- CACHE KEY: <%= "hglt/#{@latest_items.first.cache_key_full}" %> 300 seconds -->
       <h1><%= link_to "Latest News", items_path %></h1>
       <ul>
       <% @latest_items.each do |item| %>
@@ -93,8 +91,7 @@
 
   <% for category in @categories %>
     <% @top_items = category.top_items(13) %>
-    <% cache_expiring("box/#{category.id}/#{@top_items.first.cache_key_full}",300) do %>
-      <!-- CACHE KEY: <%= "box/#{category.id}/#{@top_items.first.cache_key_full}" %> 300 seconds -->
+    <% cache_expiring("box/#{category.id}/#{@top_items.first.cache_key_full}",600) do %>
       <div class="span6 box" id="<%= category.slug %>">
         <h1><%= link_to category.title, category %></h1>
         <ul>

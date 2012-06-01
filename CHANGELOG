@@ -1,5 +1,9 @@
 CHANGELOG
 
+== June 1, 2012
+* Several minor bug fixes
+* Added a few more rspec tests
+
 == May 30, 2012
 * Added tinyMCE on comments
 * Changed order on sidebar

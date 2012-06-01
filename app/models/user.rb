@@ -56,11 +56,10 @@ class User < ActiveRecord::Base
 
   def title
     if self.name.present?
-      str = self.name
+      self.name
     else
-      str = self.email
+      self.email
     end
-    str
   end
 
   def has_image?

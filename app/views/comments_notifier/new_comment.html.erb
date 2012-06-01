@@ -177,18 +177,22 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
       <div>
         <span style="color:<%=color%>;">
           <%= sanitize(@comment.body,
-                tags: %w(p div a i em b strong pre),
+                tags: %w(p div a i em b strong pre ul ol li strong),
                 attributes: %w(href))
           %>
         </span>
-        <p style="color:<%=color%>;">
-          Suspicious: <%= @comment.suspicious %>
-        </p>
-        <p style="color:<%=color%>;">
-          Spam: <%= @comment.marked_spam %>
-        </p>
+        <% if @comment.suspicious %>
+          <p style="color:<%=color%>;">
+            Suspicious: <%= bool_word @comment.suspicious %>
+          </p>
+        <% end %>
+        <% if @comment.marked_spam %>
+          <p style="color:<%=color%>;">
+            Spam: <%= bool_word @comment.marked_spam %>
+          </p>
+        <% end %>
         <p>
-          Comment Details: <%= link_to @url, @url %>
+          Details: <%= link_to @url, @url %>
         </p>
         <p>
           Item: 

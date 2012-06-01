@@ -55,21 +55,13 @@ class Comment < ActiveRecord::Base
   end
 
   def display_name
-    if self.author.empty?
-      self.author
-    else
-      self.author_email
-    end
+    self.owner.title if self.owner
   end
   
-  ### Askimet helpers ###
   def author
-    if self.owner
-      self.owner.title
-    else
-      ""
-    end
+    self.owner.title if self.owner
   end
+
   def author_email
     if self.owner
       self.owner.email
