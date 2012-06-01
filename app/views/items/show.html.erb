@@ -24,13 +24,14 @@
       <h1><span itemprop="headline"><%= @item.title %></span></h1>
 
       <span class="source_url">
-        <% if @item.youtube_id && @item.youtube_vid %>
+        <% if @item.original? %>
+          By
+        <% elsif @item.youtube_id && @item.youtube_vid %>
           <%= link_to "Youtube Source", "http://www.youtube.com/watch?v=#{@item.youtube_id}" %>
         <% elsif @item.source_url %>
-          <%= link_to "Source", @item.source_url %>
+          <%= link_to "Source", @item.source_url %> by -
         <% end %>
         <% if @item.author_name %>
-          - by 
           <span class="author" itemprop="author">
             <%= link_to @item.author_name, search_path(q: @item.author_name), title: "Author Page: #{@item.author_name}" %>
           </span>
@@ -73,7 +74,11 @@
         <% if @item.user %>
           <span class="author">
             <i class="icon-user"></i>
-            Submitted by
+            <% if @item.original? %>
+              Written by
+            <% else %>
+              Submitted by
+            <% end %>
             <%= link_to_if(@item.user, @item.user.title, author_path(@item.user)) %>
           </span>
         <% else %>
