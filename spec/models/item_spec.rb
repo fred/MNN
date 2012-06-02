@@ -134,7 +134,7 @@ describe Item do
       # lambda {@item.save}.should raise_error
     end
   end
-  
+
   describe "Creating Item with Subscription" do
     before(:each) do
       @item = FactoryGirl.create(:item, draft: false, send_emails: "1")
@@ -157,9 +157,8 @@ describe Item do
     it "should have send_at queue time greater then publication date" do
       @item.email_deliveries.first.send_at.to_i.should greater_than(@item.published_at.to_i)
     end
-    
   end
-  
+
   describe "Creating Draft Item without Subscription" do
     before(:each) do
       @item = FactoryGirl.create(:item, draft: true)
@@ -221,7 +220,7 @@ describe Item do
       @share.processed_at.should eq(nil)
     end
   end
-  
+
   describe "Creating Item without Social Shares" do
     before(:each) do
       @item = FactoryGirl.create(:item, share_twitter: "0")
@@ -231,7 +230,7 @@ describe Item do
       @item.twitter_shares.count.should eq(0)
     end
   end
-  
+
   describe "Updating an Item with Social Shares" do
     before(:each) do
       @item = FactoryGirl.create(:item)
@@ -267,7 +266,7 @@ describe Item do
       @new_item.twitter_shares.should eq([])
     end
   end
-  
+
   describe "Updating an Item with already Social Shares" do
     before(:each) do
       @item = FactoryGirl.create(:item, share_twitter: "1")
@@ -279,7 +278,7 @@ describe Item do
       @item.twitter_shares.count.should eq(1)
     end
   end
-  
+
   describe "Updating an Editing Item with SOLR enabled" do
     include EnableSunspot
     include ItemSpecHelper
@@ -298,5 +297,6 @@ describe Item do
       lambda {@item.destroy}.should_not raise_error
     end
   end
-  
+
+
 end

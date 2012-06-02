@@ -3,7 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'database_cleaner'
-require 'sidekiq/testing'
+require 'sidekiq/testing/inline'
 
 # Sunspot.session = Sunspot::Rails::StubSessionProxy.new(Sunspot.session)
 
@@ -22,7 +22,7 @@ RSpec.configure do |config|
   # config.mock_with :flexmock
   # config.mock_with :rr
   config.mock_with :rspec
-  
+
   # Use color in STDOUT
   config.color_enabled = true
 
@@ -32,7 +32,7 @@ RSpec.configure do |config|
   # Use the specified formatter
   # :documentation, :progress, :html, :textmate
   config.formatter = :documentation
-  
+
   config.include Devise::TestHelpers, type: :controller
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -53,7 +53,7 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-  
+
 end
 
 Webrat.configure do |config|
@@ -76,7 +76,7 @@ end
 
 module UserSpecHelper
   def valid_user_attributes
-    { 
+    {
       email: "welcome@gmail.com",
       name: 'My Name',
       password: 'welcome',
