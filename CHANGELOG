@@ -7,6 +7,7 @@ CHANGELOG
 * Improved twitter links
 * Improved Admin interface
 * Fixed bug about draft items countdown
+* Added RSS feed for comments
 
 == June 1, 2012
 * Several minor bug fixes

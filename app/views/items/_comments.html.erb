@@ -1,4 +1,9 @@
 <div class="comments">
-  <h3>Comments</h3>
+  <h3>Comments
+    <%= link_to image_tag("icons/social/rss_16.png", alt: "RSS for comments on this article"),
+          item_comments_path(@item, format: 'atom')
+    %>
+  </h3>
+
   <%= comments_for @item %>
 </div>

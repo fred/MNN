@@ -1,7 +1,11 @@
-<h1>Comments</h1>
+<% cache_expiring("comments/#{@item.comment_cache_key}", 600) do %>
 
-<%= paginate @comments %>
+  <h3>Comments on: <%= link_to @item.title, @item %></h3>
 
-<%= render partial: "opinio/comments/comments", locals: { comments: @comments } %>
+  <%= paginate @comments %>
 
-<%= paginate @comments %>
+  <%= render partial: "opinio/comments/comments", locals: { comments: @comments } %>
+
+  <%= paginate @comments %>
+
+<% end %>

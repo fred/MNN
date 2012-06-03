@@ -12,7 +12,8 @@
   <% end %>
 <% end %>
 
-<% cache_expiring("show/#{@item.cache_key_full}", 300) do %>
+<% cache_expiring("show/#{@item.cache_key_full}", 600) do %>
+  <!-- CACHE_KEY <%= "show/#{@item.cache_key_full}" %> -->
   <div itemscope itemtype="http://schema.org/Article">
     <article id="item_<%= @item.id %>">
 
@@ -176,12 +177,12 @@
             <% @related.results.each do |item| %>
               <li>
                 <%= link_to item.title, item, title: item_title(item), id: "tooltip" %>
-                <%#= link_to item.title, item, item_popover(item) %>
               </li>
             <% end %>
           </ul>
         </section>
       <% end %>
+
     </article>
   </div>
 <% end %>
@@ -224,12 +225,10 @@
     <script type="text/javascript">
       $(document).ready(function() {
         if (!(Modernizr.touch)) {
-          // Image Gallery
           $("#main_image_popup").fancybox({
             openEffect  : 'none',
             closeEffect  : 'none'
           });
-          // Tooltips
           $("a#tooltip").easyTooltip({
             yOffset: -30,
             xOffset: -60
@@ -237,10 +236,6 @@
           $('a#popover').popover({
             placement: 'bottom'
           });
-          // $("a#tooltip").easyTooltip({
-          //   yOffset: -30,
-          //   xOffset: -60
-          // });
         }
       });
     </script>

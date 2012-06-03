@@ -237,6 +237,14 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def comment_cache_key
+    if self.comments_count > 0 && self.last_commented_at
+      self.last_commented_at.to_s(:number)
+    else
+      ""
+    end
+  end
+
   def has_image?
     if !self.attachments.empty? && self.attachments.last.image
       true
@@ -247,7 +255,10 @@ class Item < ActiveRecord::Base
 
   # Returns an improved cache_key that includes the last image on the item
   def cache_key_full
-    self.cache_key + "/" + self.main_image_cache_key
+    str = self.cache_key 
+    str += "/"
+    str += self.main_image_cache_key
+    str += self.comment_cache_key
   end
 
   def tag_list(join=", ")

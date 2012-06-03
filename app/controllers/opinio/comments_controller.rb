@@ -3,8 +3,23 @@ class Opinio::CommentsController < ApplicationController
   include Opinio::Controllers::Replies if Opinio.accept_replies
 
   def index
-    @comments = resource.comments.page(params[:page])
+    @item = Item.includes([:comments,:item_stat]).find(params[:item_id])
+    @comments = @item.comments.page(params[:page])
+
+    @rss_title = "Comments for: #{@item.title}"
+    @rss_description = "RSS comments for '#{@item.title}'"
+    @rss_source = item_comments_path(@item, only_path: false, protocol: 'https')
+    @rss_language = "en"
+    @last_published = @item.last_commented_at
+
     headers['Cache-Control'] = 'private, no-cache'
+    respond_to do |format|
+      format.js
+      format.html
+      format.xml
+      format.rss
+      format.atom
+    end
   end
 
   def create
