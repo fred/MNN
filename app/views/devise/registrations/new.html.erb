@@ -56,14 +56,13 @@
       
         <div class="control-group">
           <div class="controls">
-            <%= f.submit "Register", class: "btn btn-success", disable_with: 'Processing...' %>
+            <%= f.submit "Register", class: "btn btn-success", 'data-disable-with' => 'Processing...' %>
           </div>
         </div>
 
         <div class="control-group">
           <div class="controls">
-            Or <%= link_to image_tag("icons/social/facebook_32.png"), "/auth/facebook" %>
-            <%= link_to "Login with Facebook", "/auth/facebook", class: "btn btn-primary" %>
+            <%= render partial: '/shared/social_connects' %>
           </div>
         </div>
 

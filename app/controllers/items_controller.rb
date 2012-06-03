@@ -71,7 +71,7 @@ class ItemsController < ApplicationController
     @show_breadcrumb = true
     if @item && is_human? && (@item_stat = @item.item_stat)
       if session[:view_items] && !session[:view_items].include?(@item.id)
-        @item_stat.delay.update_attributes(views_counter: @item_stat.views_counter+1)
+        @item_stat.update_attributes(views_counter: @item_stat.views_counter+1)
         session[:view_items] << @item.id
       end
     end

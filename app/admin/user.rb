@@ -14,8 +14,8 @@ ActiveAdmin.register User do
       row :email
       row :name
       row :registration_role
-      row "Facebook", &:fbuid?
       row :time_zone
+      row :provider
       row 'Facebook Page', &:facebook
       row :twitter
       row :diaspora
@@ -35,7 +35,6 @@ ActiveAdmin.register User do
     end
   end
 
-
   index do
     column :id
     column "Avatar", sortable: false do |user|
@@ -43,12 +42,15 @@ ActiveAdmin.register User do
     end
     column :name
     column :email
-    column "FB", :fbuid?, sortable: :fbuid do |user|
-      bool_symbol user.fbuid?
-    end
+    column :provider
     column "Facebook", sortable: false do |user|
       if user.facebook.present?
         link_to "Facebook", user.facebook
+      end
+    end
+    column "Twitter", sortable: false do |user|
+      if user.twitter.present?
+        link_to "Twitter", user.twitter
       end
     end
     column :role_titles

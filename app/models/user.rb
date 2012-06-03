@@ -132,14 +132,95 @@ class User < ActiveRecord::Base
 
 
   def self.find_or_create_from_oauth(auth_hash, session=nil)
-    user = where(email: auth_hash.info.email).first
+    case auth_hash.provider
+    when 'facebook'
+      User.facebook_oauth(auth_hash,session)
+    when 'twitter'
+      User.twitter_oauth(auth_hash,session)
+    when 'flattr'
+      User.flattr_oauth(auth_hash,session)
+    when 'google_oauth2'
+      User.google_oauth(auth_hash,session)
+    end
+  end
+
+  def self.facebook_oauth(auth_hash, session=nil)
+    user = where(oauth_uid: auth_hash.uid, provider: 'facebook').first
     unless user
       user = User.new
       user.name = auth_hash.info.name
       user.email = auth_hash.info.email
       user.facebook = auth_hash.info.urls.Facebook
     end
-    user.fbuid = auth_hash.uid
+    if auth_hash.extra.raw_info.timezone
+      user.time_zone = ActiveSupport::TimeZone[auth_hash.extra.raw_info.timezone.to_i].name
+    end
+    user.provider = 'facebook'
+    user.oauth_uid = auth_hash.uid
+    user.oauth_data = auth_hash
+    user.oauth_token = auth_hash.credentials.token
+    user.password_confirmation = auth_hash.credentials.token
+    user.password = auth_hash.credentials.token
+    user.save
+    user
+  end
+
+  def self.twitter_oauth(auth_hash, session=nil)
+    user = where(oauth_uid: auth_hash.uid, provider: 'twitter').first
+    unless user
+      user = User.new
+      user.name = auth_hash.info.name
+      user.email = "please_updated_your_email_#{Kernel.rand(99999)}@worldmathaba.net"
+      user.twitter = auth_hash.info.urls.Twitter
+    end
+    if auth_hash.extra.raw_info.timezone
+      user.time_zone = ActiveSupport::TimeZone[auth_hash.extra.raw_info.timezone.to_s].name
+    end
+    user.provider = 'twitter'
+    user.oauth_uid = auth_hash.uid
+    user.oauth_data = auth_hash
+    user.oauth_token = auth_hash.credentials.token
+    user.password_confirmation = auth_hash.credentials.token
+    user.password = auth_hash.credentials.token
+    user.save
+    user
+  end
+
+
+  def self.flattr_oauth(auth_hash, session=nil)
+    user = where(oauth_uid: auth_hash.uid, provider: 'flattr').first
+    unless user
+      user = User.new
+      user.name = auth_hash.info.name
+      user.email = auth_hash.info.email
+      user.facebook = auth_hash.info.urls.Facebook
+    end
+    if auth_hash.extra.raw_info.timezone
+      user.time_zone = ActiveSupport::TimeZone[auth_hash.extra.raw_info.timezone.to_i].name
+    end
+    user.provider = 'flattr'
+    user.oauth_uid = auth_hash.uid
+    user.oauth_data = auth_hash
+    user.oauth_token = auth_hash.credentials.token
+    user.password_confirmation = auth_hash.credentials.token
+    user.password = auth_hash.credentials.token
+    user.save
+    user
+  end
+
+  def self.google_oauth(auth_hash, session=nil)
+    user = where(oauth_uid: auth_hash.uid, provider: 'google').first
+    unless user
+      user = User.new
+      user.name = auth_hash.info.name
+      user.email = auth_hash.info.email
+      user.facebook = auth_hash.info.urls.Facebook
+    end
+    if auth_hash.extra.raw_info.timezone
+      user.time_zone = ActiveSupport::TimeZone[auth_hash.extra.raw_info.timezone.to_i].name
+    end
+    user.provider = 'google'
+    user.oauth_uid = auth_hash.uid
     user.oauth_data = auth_hash
     user.oauth_token = auth_hash.credentials.token
     user.password_confirmation = auth_hash.credentials.token

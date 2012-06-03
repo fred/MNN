@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120529163550) do
+ActiveRecord::Schema.define(:version => 20120602201106) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -329,10 +329,11 @@ ActiveRecord::Schema.define(:version => 20120529163550) do
     t.string   "gpg"
     t.integer  "items_count"
     t.string   "facebook"
-    t.string   "fbuid"
     t.string   "oauth_token"
     t.text     "oauth_data"
     t.boolean  "show_public",            :default => false
+    t.string   "provider"
+    t.string   "oauth_uid"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

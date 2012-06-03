@@ -5,7 +5,7 @@ source 'http://rubygems.org'
 gem 'rack'
 gem 'rack-cache'
 gem 'rake'
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.5'
 gem 'bundler', '>= 1.1.0'
 
 ### Database Adapter
@@ -14,12 +14,13 @@ gem 'pg'
 
 
 ### Oauth 
-gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-flattr'
 # gem 'omniauth-openid'
 # gem 'omniauth-github'
-# gem 'omniauth-google_oauth2'
+
 
 ### Roles and Authentication
 gem 'cancan', '~> 1.6.7'
@@ -51,6 +52,7 @@ gem 'rakismet'
 ### Queue
 gem 'slim'
 gem 'sinatra'
+gem 'redis', '~> 3.0.1'
 gem 'sidekiq', git: 'git://github.com/mperham/sidekiq.git'
 
 ### JSON and Twitter

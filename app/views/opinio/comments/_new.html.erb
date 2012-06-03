@@ -17,7 +17,7 @@
       <%= hidden_field_tag :commentable_id, commentable.id %>
       <%= hidden_field_tag :commentable_type, commentable.class.base_class.name.to_s %>
       <div class="send_button">
-        <%= f.submit "Send Comment", class: "btn btn-primary", disable_with: 'Sending...' %>
+        <%= f.submit "Send Comment", class: "btn btn-primary", 'data-disable-with' => 'Sending...' %>
       </div>
       <p>
     <% end %>
