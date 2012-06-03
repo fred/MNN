@@ -38,7 +38,11 @@ module ApplicationHelper
   end
   
   def twitter_user_link(str)
-    link_to "@#{str.gsub('@','')}", "https://twitter.com/#{str.gsub('@','')}"
+    if str.match(/^https?:\/\//)
+      link_to "@#{str.split("/").last}", str
+    else
+      link_to "@#{str.gsub('@','')}", "https://twitter.com/#{str.gsub('@','')}"
+    end
   end
   
   def flattr_large

@@ -1,5 +1,13 @@
 CHANGELOG
 
+== June 3, 2012
+* Oauth with Twitter
+* Updated Rails to 3.2.5
+* Updated gems
+* Improved twitter links
+* Improved Admin interface
+* Fixed bug about draft items countdown
+
 == June 1, 2012
 * Several minor bug fixes
 * Added a few more rspec tests

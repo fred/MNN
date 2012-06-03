@@ -48,7 +48,7 @@ ActiveAdmin.register AdminUser do
     end
     column "Twitter", sortable: false do |user|
       if user.twitter.present?
-        link_to "Twitter", user.twitter
+        twitter_user_link(user.twitter)
       end
     end
     column :role_titles

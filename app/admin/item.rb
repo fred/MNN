@@ -69,7 +69,7 @@ ActiveAdmin.register Item do
       item.updated_at.localtime.to_s(:short)
     end
     column "Live", sortable: :published_at do |item|
-      if item.published_at && item.published_at > Time.zone.now
+      if !item.draft? && item.published_at && item.published_at > Time.zone.now
         ("<span class='red'>" +
         distance_of_time_in_words(item.published_at, Time.zone.now) +
         " from now" +
