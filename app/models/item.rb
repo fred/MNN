@@ -409,10 +409,14 @@ class Item < ActiveRecord::Base
     where(draft: true)
   end
 
+  def self.news_for_sitemap(lim=100, hrs=96)
+    self.for_sitemap(lim,hrs).where(original: true)
+  end
+
   # Only show items in the past 2 days in sitemaps
-  def self.for_sitemap(lim=100)
+  def self.for_sitemap(lim=100, hrs=48)
     published.
-    where("published_at > ?", DateTime.now-(48.hours)).
+    where("published_at > ?", DateTime.now-(hrs.hours)).
     not_draft.
     order("published_at DESC").
     limit(lim)

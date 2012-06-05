@@ -40,4 +40,5 @@ Publication::Application.configure do
   config.action_mailer.default_url_options = { host: 'mathaba.dev' }
 end
 
+ActionMailer::Base.delivery_method = :test
 ActiveRecord::Base.logger = Logger.new('/dev/null')

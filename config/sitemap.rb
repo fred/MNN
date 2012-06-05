@@ -9,13 +9,13 @@ SitemapGenerator::Sitemap.create do
     add(category_path(category), lastmod: category.item_last_update, priority: 0.8)
   end
   Tag.all.each do |tag|
-    add(tag_path(tag), lastmod: tag.item_last_update, priority: 0.7)
+    add(tag_path(tag), lastmod: tag.item_last_update, priority: 0.2)
   end
   Language.all.each do |lang|
-    add(language_items_path(lang), lastmod: lang.item_last_update,priority: 0.7)
+    add(language_items_path(lang), lastmod: lang.item_last_update,priority: 0.4)
   end
-  Item.for_sitemap.each do |item|
-    add(item_path(item), changefreq: 'daily', priority: 0.6,
+  Item.news_for_sitemap.each do |item|
+    add(item_path(item), changefreq: 'daily', priority: 0.7,
       news: {
         publication_name: "WorldMathaba",
         publication_language: item.language_title_short,
@@ -25,6 +25,9 @@ SitemapGenerator::Sitemap.create do
         genres: "PressRelease"
       }
     )
+  end
+  Item.for_sitemap.each do |item|
+    add(item_path(item), changefreq: 'daily', priority: 0.6)
   end
 end
 SitemapGenerator::Sitemap.ping_search_engines

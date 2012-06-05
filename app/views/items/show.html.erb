@@ -30,7 +30,7 @@
         <% elsif @item.youtube_id && @item.youtube_vid %>
           <%= link_to "Youtube Source", "http://www.youtube.com/watch?v=#{@item.youtube_id}" %>
         <% elsif @item.source_url %>
-          <%= link_to "Source", @item.source_url %> by -
+          <%= link_to "Source", @item.source_url %> - by
         <% end %>
         <% if @item.author_name %>
           <span class="author" itemprop="author">
