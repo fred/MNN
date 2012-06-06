@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   apply_simple_captcha
 
   def notify_admin
-    UserMailer.delay.new_user(self.id)
+    NewUserMail.perform_in(10, self.id)
   end
 
   def check_upgrade

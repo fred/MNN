@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Item do
-  include NumericMatchers
 
   describe "with Job Queues" do
       require 'sidekiq/testing'
