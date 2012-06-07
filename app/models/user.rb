@@ -129,6 +129,9 @@ class User < ActiveRecord::Base
     true
   end
 
+  def my_items
+    items.published.not_draft.order("published_at DESC")
+  end
 
 
   def self.find_or_create_from_oauth(auth_hash, session=nil)

@@ -2,6 +2,7 @@ CHANGELOG
 
 == June 7, 2012
 * Fixed bug for opensearch.xml
+* Fixed bug: showing unpublished items on author page
 * refractored code
 * minor bug fixes
 

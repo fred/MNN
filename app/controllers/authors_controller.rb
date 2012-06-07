@@ -12,7 +12,7 @@ class AuthorsController < ApplicationController
   def show
     @show_breadcrumb = true
     @author = User.find(params[:id])
-    @items = @author.items.page(params[:page], per_page: 20)
+    @items = @author.my_items.page(params[:page], per_page: 20)
     @help_page = Page.where(:slug => "contribute").first
     
     @rss_title = "World Mathaba - Items from #{@author.name} (#{@author.email})"
