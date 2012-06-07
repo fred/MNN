@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_start_time, :set_time_zone, :set_view_items, :current_ability
   before_filter :log_additional_data, :set_per_page
-  # before_filter :site_links # Caching on sidebar
   before_filter :last_modified
   
   
@@ -15,18 +14,22 @@ class ApplicationController < ActionController::Base
     comment.owner == current_user
   end
 
+  def headers_with_timeout(timeout,method='public')
+    headers['Cache-Control'] = "#{method}, max-age=#{timeout}" unless (current_admin_user or current_user)
+    headers['Last-Modified'] = @last_published.httpdate if @last_published
+  end
+
+  def private_headers
+    headers['Cache-Control'] = 'private, no-cache'
+  end
+
   def last_modified
     @last_item = Item.last_item
-    if @last_item
+    if @last_item && @last_modified.nil?
       @last_modified = @last_item.updated_at.httpdate
     else
       @last_modified = Time.now.httpdate
     end
-  end
-
-  def site_links
-    @all_categories ||= Category.order("priority ASC")
-    @all_pages ||= Page.order("priority ASC")
   end
   
   def set_per_page

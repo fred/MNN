@@ -1,5 +1,10 @@
 CHANGELOG
 
+== June 7, 2012
+* Fixed bug for opensearch.xml
+* refractored code
+* minor bug fixes
+
 == June 3, 2012
 * Oauth with Twitter
 * Updated Rails to 3.2.5

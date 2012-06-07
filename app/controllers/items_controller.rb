@@ -1,11 +1,9 @@
 class ItemsController < ApplicationController
   
   def feed
-    headers['Cache-Control'] = 'public, max-age=3600' # 60 minutes cache
+    headers_with_timeout(600)
   end
   
-  # GET /items
-  # GET /items.json
   def index
     @show_breadcrumb = true
     if params[:language_id]
@@ -36,36 +34,17 @@ class ItemsController < ApplicationController
     else
       @last_published = @items.first.published_at
     end
-    
+
+    private_headers
     respond_to do |format|
-      format.html {
-        headers['Cache-Control'] = 'private, max-age=600, must-revalidate' unless (current_admin_user or current_user)
-        headers['Last-Modified'] = @last_published.httpdate
-      }
-      format.json {
-        headers['Cache-Control'] = 'public, max-age=600' unless (current_admin_user or current_user) # 10 min
-        headers['Last-Modified'] = @last_published.httpdate
-        render json: @items 
-      }
-      format.atom {
-        headers['Cache-Control'] = 'public, max-age=3600' unless (current_admin_user or current_user) # 1 hour
-        headers['Last-Modified'] = @last_published.httpdate
-        render partial: "/shared/items", layout: false }
-      format.rss {
-        headers['Cache-Control'] = 'public, max-age=3600' unless (current_admin_user or current_user) # 1 hour
-        headers['Last-Modified'] = @last_published.httpdate
-        render partial: "/shared/items", layout: false 
-      }
-      format.xml {
-        headers['Cache-Control'] = 'public, max-age=600' unless (current_admin_user or current_user) # 10 min
-        headers['Last-Modified'] = @last_published.httpdate
-        render @items
-      }
+      format.html
+      format.json { render json: @items }
+      format.atom { render partial: "/shared/items", layout: false }
+      format.rss { render partial: "/shared/items", layout: false }
+      format.xml { render @items }
     end
   end
 
-  # GET /items/1
-  # GET /items/1.json
   def show
     @item = Item.includes([:attachments, :comments, :user]).find(params[:id])
     @show_breadcrumb = true
@@ -80,8 +59,7 @@ class ItemsController < ApplicationController
     @meta_keywords = "#{@item.category_title} news, #{@item.tag_list}"
     @meta_author = @item.user.title if @item.user
 
-    # @related = @item.solr_similar
-    headers['Cache-Control'] = 'private, no-cache'
+    private_headers
     respond_to do |format|
       format.html
       format.json { render json: @item }
@@ -99,6 +77,9 @@ class ItemsController < ApplicationController
     end
     if params[:language_id]
       language = Language.where(id: params[:language_id]).first
+    end
+    if params[:page] && params[:page].empty?
+      params[:page] = 1
     end
     if params[:q] && !params[:q].to_s.empty?
       term = params[:q].downcase
@@ -124,7 +105,6 @@ class ItemsController < ApplicationController
         paginate page: params[:page], per_page: per_page
       end
 
-      # showing Sponsored Listings
       @items = @search.results
       @title = "WorldMathaba - Found #{@search.total} results for '#{params[:q]}' "
       @meta_title = @title
@@ -136,18 +116,16 @@ class ItemsController < ApplicationController
       @items = []
       @title = "Please type something to search for"
     end
-    # client side cache for 15 minutes
-    headers['Cache-Control'] = 'public, max-age=900' unless (current_admin_user or current_user)
     respond_to do |format|
-      format.html
+      format.html {
+        headers_with_timeout(600)
+      }
       format.js
       format.atom {
-        headers['Cache-Control'] = 'public, max-age=3600' unless (current_admin_user or current_user)
-        headers['Last-Modified'] = @last_published.httpdate
+        headers_with_timeout(3600)
         render partial: "/shared/items", layout: false }
       format.rss {
-        headers['Cache-Control'] = 'public, max-age=3600' unless (current_admin_user or current_user)
-        headers['Last-Modified'] = @last_published.httpdate
+        headers_with_timeout(3600)
         render partial: "/shared/items", layout: false 
       }
     end

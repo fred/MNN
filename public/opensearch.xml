@@ -13,7 +13,7 @@
    <LongName>WorldMathaba.net Web Search for News items</LongName>
    <Image height="16" width="16" type="image/png">http://worldmathaba.net/assets/favicon.png</Image>
    <Query role="example" searchTerms="politics" />
-   <Developer>WorldMathaba Development Team https://github.com/fred/</Developer>
+   <Developer>WorldMathaba Development Team https://github.com/fred/mnn</Developer>
    <Attribution>
      Search data Copyright 2012, Worldmathaba.net, All Rights Reserved
    </Attribution>
