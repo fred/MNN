@@ -1,6 +1,13 @@
 ActiveAdmin.register Item do
   controller.authorize_resource
   config.sort_order = "id_desc"
+
+  scope :published
+  scope :highlight
+  scope :sticky
+  scope :original
+  scope :draft
+  scope :with_comments
   
   menu priority: 1, if: lambda{|tabs_renderer|
     controller.current_ability.can?(:read, Item)
@@ -58,6 +65,7 @@ ActiveAdmin.register Item do
     end
     column "Comments", :comments_count
     bool_column :draft
+    bool_column :original
     column "Highlt", :featured, sortable: :featured do |item|
       bool_symbol(item.featured)
     end

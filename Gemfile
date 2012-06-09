@@ -123,7 +123,7 @@ end
 gem 'meta_search', '~> 1.1.3'
 # gem 'activeadmin', '~> 0.4.0'
 # gem 'activeadmin', path: 'vendor/gems/active_admin'
-gem 'activeadmin', git: 'git://github.com/fred/active_admin.git', branch: '594'
+gem 'activeadmin', git: 'git://github.com/fred/active_admin.git'
 
 gem 'tinymce-rails' #, '3.4.7.0.1'
 

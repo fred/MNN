@@ -166,6 +166,7 @@
       <p>Draft: <%= bool_symbol @item.draft %></p>
       <p>Highlight: <%= bool_symbol @item.featured %></p>
       <p>Comments: <%= bool_symbol @item.allow_comments %></p>
+      <p>Original: <%= bool_symbol @item.original %></p>
       <!-- <p>Star Rating Enabled: <%#= @item.allow_star_rating %></p> -->
       <p>Twitter: <%= bool_symbol(@item.posted_to_twitter?) %></p>
       <% if @item.email_delivery_sent? %>

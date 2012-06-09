@@ -52,7 +52,20 @@ class Item < ActiveRecord::Base
   before_create :build_stat
   before_save   :send_email_deliveries
   after_create  :sitemap_refresh
-  
+
+
+  # Some Basic Scopes for finder chaining
+  scope :published,     where("published_at < ?", DateTime.now)
+  scope :not_draft,     where(draft: false)
+  scope :draft,         where(draft: true)
+  scope :original,      where(original: true)
+  scope :not_original,  where(original: false)
+  scope :highlight,     where(featured: true)
+  scope :not_highlight, where(featured: false)
+  scope :sticky,        where(sticky: true)
+  scope :not_sticky,    where(sticky: false)
+  scope :with_comments, where("comments_count > 0")
+
   ################
   ####  SOLR  ####
   ################
@@ -364,6 +377,10 @@ class Item < ActiveRecord::Base
   ### CLASS METHODS
   ####################
 
+  def self.last_item
+    published.order("updated_at DESC").first
+  end
+
   # Returns the most popular Items in the last N days
   def self.popular(lim=5, n=15)
     published.
@@ -395,19 +412,6 @@ class Item < ActiveRecord::Base
     limit(lim)
   end
 
-  # Some Basic Scopes for finder chaining
-  def self.last_item
-    published.order("updated_at DESC").first
-  end
-  def self.published
-    where("published_at < ?", DateTime.now)
-  end
-  def self.not_draft
-    where(draft: false)
-  end
-  def self.draft
-    where(draft: true)
-  end
 
   def self.news_for_sitemap(lim=100, hrs=96)
     self.for_sitemap(lim,hrs).where(original: true)
@@ -426,7 +430,8 @@ class Item < ActiveRecord::Base
   # Used on the Front End, joining attachments
   def self.top_sticky
     published.
-    where(draft: false, sticky: true).
+    not_draft.
+    sticky.
     order("published_at DESC").
     includes(:attachments).
     first
@@ -436,7 +441,9 @@ class Item < ActiveRecord::Base
   # Used on the Front End, joining attachments
   def self.highlights(limit=6,offset=0)
     published.
-    where(draft: false, featured: true, sticky: false).
+    not_draft.
+    highlight.
+    not_sticky.
     order("published_at DESC").
     limit(limit).
     includes(:attachments).
@@ -477,7 +484,7 @@ class Item < ActiveRecord::Base
   # Used on the Admin Dashboard
   def self.pending(limit=10)
     where(published_at: nil).
-    where(draft: false).
+    not_draft.
     order("updated_at DESC").
     limit(limit).
     all

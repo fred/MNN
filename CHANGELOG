@@ -1,5 +1,11 @@
 CHANGELOG
 
+== June 9, 2012
+* Added some nice filters to admin/items
+* updated gems
+* Added scopes for refractoring
+* added original ticker
+
 == June 7, 2012
 * Fixed bug for opensearch.xml
 * Fixed bug: showing unpublished items on author page
