@@ -65,6 +65,7 @@ class Item < ActiveRecord::Base
   scope :sticky,        where(sticky: true)
   scope :not_sticky,    where(sticky: false)
   scope :with_comments, where("comments_count > 0")
+  scope :queued,        where("published_at > ?", DateTime.now)
 
   ################
   ####  SOLR  ####
@@ -430,8 +431,7 @@ class Item < ActiveRecord::Base
   # Used on the Front End, joining attachments
   def self.top_sticky
     published.
-    not_draft.
-    sticky.
+    where(draft: false, sticky: true).
     order("published_at DESC").
     includes(:attachments).
     first
@@ -441,9 +441,7 @@ class Item < ActiveRecord::Base
   # Used on the Front End, joining attachments
   def self.highlights(limit=6,offset=0)
     published.
-    not_draft.
-    highlight.
-    not_sticky.
+    where(draft: false, featured: true, sticky: false).
     order("published_at DESC").
     limit(limit).
     includes(:attachments).
