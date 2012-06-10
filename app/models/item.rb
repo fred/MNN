@@ -55,9 +55,8 @@ class Item < ActiveRecord::Base
 
 
   # Some Basic Scopes for finder chaining
-  scope :published,     where("published_at < ?", DateTime.now)
-  scope :not_draft,     where(draft: false)
   scope :draft,         where(draft: true)
+  scope :not_draft,     where(draft: false)
   scope :original,      where(original: true)
   scope :not_original,  where(original: false)
   scope :highlight,     where(featured: true)
@@ -65,7 +64,6 @@ class Item < ActiveRecord::Base
   scope :sticky,        where(sticky: true)
   scope :not_sticky,    where(sticky: false)
   scope :with_comments, where("comments_count > 0")
-  scope :queued,        where("published_at > ?", DateTime.now)
 
   ################
   ####  SOLR  ####
@@ -377,6 +375,14 @@ class Item < ActiveRecord::Base
   ####################
   ### CLASS METHODS
   ####################
+
+  def self.published
+    where("published_at < ?", DateTime.now)
+  end
+
+  def self.queued
+    where("published_at > ?", DateTime.now)
+  end
 
   def self.last_item
     published.order("updated_at DESC").first
