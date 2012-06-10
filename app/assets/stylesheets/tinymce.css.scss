@@ -23,7 +23,8 @@ body {
 }
 * html .clearfix {
   height: 1%;
-} /* Hides from IE-mac \*/
+} 
+// Hides from IE-mac
 .clearfix {
   display: block;
 }
@@ -61,7 +62,6 @@ button a:hover,
 button a:visited, 
 button a {
   color: white;
-/*  text-decoration:none;*/
 }
 
 
@@ -126,4 +126,16 @@ span.author {
 span.source_url {
   display:block;
   clear: both;
+}
+
+#tinymce blockquote {
+  clear: both;
+  display: inline-block;
+  font-weight: normal;
+  line-height: 18px;
+  margin-bottom: 5px;
+  color: #666;
+  padding: 0 0 0 15px;
+  margin: 0 0 15px;
+  border-left: 5px solid #eeeeee;
 }
