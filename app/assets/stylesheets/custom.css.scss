@@ -507,7 +507,7 @@ blockquote p {
   font-size: 14px;
 }
 .navbar .btn-group {
-  padding: 6px 0px 0px 0px;
+  padding: 6px 0px 6px 0px;
 }
 
 span.more.breaking-news {
@@ -682,7 +682,7 @@ ul#comments li {
   text-align: left;
   margin-bottom: 11px;
   margin-top: 11px;
-  padding: 10px 15px 9px 15px;;
+  padding: 10px 15px 9px 15px;
   text-rendering: optimizeLegibility;
   background-color: whiteSmoke;
   border: 1px solid #bbb;
@@ -716,15 +716,15 @@ ul#comments li span.comment_owner img {
   border:1px solid #fff;
 }
 .comments h3 {
-  margin: 0 0 12px 28px;
+  margin: 0 0 12px 20px;
 }
 
 .comments textarea#Comment {
-  margin-left: 25px;
+  margin-left: 20px;
 }
 
 .comments .form-actions {
-  margin-left: 25px;
+  margin-left: 20px;
 }
 
 .comments .comment_date {

@@ -1,6 +1,6 @@
 <div class="sidebar">
 
-  <div class="well">
+  <div class="well hidden-phone">
     <%= link_to(image_tag("icons/social/rss_32.png", width: 32, height: 32),
           feed_path,
           title:  "Multiple RSS Feeds")
@@ -184,10 +184,12 @@
   
     <% end %>
 
-    <%= image_tag "adfreesite.png",
-          alt: "AdFree Site",
-          title:  "This is an Advertisement Free Site",
-          width: 100, height: 60
-    %>
+    <div class="hidden-phone">
+      <%= image_tag "adfreesite.png",
+            alt: "AdFree Site",
+            title:  "This is an Advertisement Free Site",
+            width: 100, height: 60
+      %>
+    </div>
   </div>
 </div>
