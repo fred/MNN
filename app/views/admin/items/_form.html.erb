@@ -39,6 +39,19 @@
                 required: false,
                 hint: "Keywords related to the article, such as names, events, special keywords, or any keyword that might have ralation to other articles. Examples: Jamahiriya, USA, Illuminati, Rockefeller, New World Order, Free Energy, Monsanto, GMO, IMF, Pepsi, Gold, banking, cocaine, etc... It will greatly improve discovery of related items. You may also use special keywords to relate other items. It's invisble to the users. Less keywords will give more related items but less accurate, more keywords will give less related items but more accurate. You need to find a good balance."
     %>
+    <%= f.input :published_at,
+          # value: f.object.published_at.localtime,
+          as: "string",
+          label: "Publication Date",
+          require: true,
+          hint: "When to go live. Timezone used for picking date: '#{Time.zone}' (from your Profile). It will be converted to UTC after saving. (Required)"
+    %>
+    <%= f.input :expires_on,
+        as: "string",
+        label: "Expire Date",
+        value: f.object.expires_on.localtime,
+        hint: "Expiration date of article (default: 10 years). It will be converted to UTC after saving."
+    %>
   <% end %>
   
   <%= f.inputs name: "Youtube Video" do %>
@@ -129,22 +142,6 @@
   <% end %>
 
   
-  <%= f.inputs name: "Dates and Status" do %>
-    <%= f.input :published_at,
-          # value: f.object.published_at.localtime,
-          as: "string",
-          label: "Publication Date",
-          require: true,
-          hint: "When to go live. Timezone used for picking date: '#{Time.zone}' (from your Profile). It will be converted to UTC after saving. (Required)"
-    %>
-    <%= f.input :expires_on,
-        as: "string",
-        label: "Expire Date",
-        value: f.object.expires_on.localtime,
-        hint: "Expiration date of article (default: 10 years). It will be converted to UTC after saving."
-    %>
-  <% end %>
-
   <% f.object.attachments.build %>
   <%= f.inputs name: "Main Image", multipart: true do %>
     <div class="item_attachments">
