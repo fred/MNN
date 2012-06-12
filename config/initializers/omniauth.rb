@@ -12,7 +12,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 
   if ENV['FACEBOOK_APP_ID'] && ENV['FACEBOOK_APP_SECRET']
     provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'],
-            :scope => 'email', :display => 'popup'
+              scope: 'email', display: 'popup', secure_image_url: true
   end
 
   if ENV['GOOGLE_KEY'] && ENV['GOOGLE_SECRET']

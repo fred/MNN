@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_start_time, :set_time_zone, :set_view_items, :current_ability
   before_filter :log_additional_data, :set_per_page
   before_filter :last_modified
+  after_filter  :store_location
+  after_filter  :log_session
   
   
   comment_destroy_conditions do |comment|
@@ -167,21 +169,34 @@ class ApplicationController < ActionController::Base
   end
 
   # Customize the Devise after_sign_in_path_for() for redirecct to previous page after login
-  def after_sign_in_path_for(resource)
-    case resource
+  def after_sign_in_path_for(resource_or_scope)
+    case resource_or_scope
+    when :admin_user, AdminUser
+      admin_dashboard_path
     when :user, User
-      store_location = session[:user_return_to]
-      if store_location.nil?
-        root_path
-      else
-        store_location.to_s
-      end
+      store_location = session[:return_to]
+      clear_stored_location
+      (store_location.nil?) ? "/" : store_location.to_s
     else
       super
     end
   end
 
+
+
   protected
+
+    def store_location
+      session[:return_to] = request.fullpath
+    end
+
+    def clear_stored_location
+      session[:return_to] = nil
+    end
+
+    def log_session
+      Rails.logger.debug("  Session: #{session.inspect}") if Rails.env.development?
+    end
 
     def log_additional_data
       request.env["exception_notifier.exception_data"] = {

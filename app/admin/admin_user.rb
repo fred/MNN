@@ -30,13 +30,12 @@ ActiveAdmin.register AdminUser do
       row "Current IP", &:current_sign_in_ip
       row :created_at
       row :updated_at
-
     end
   end
   index do
     column :id
     column "Avatar", sortable: false do |user|
-      image_tag user.main_image(:thumb)
+      image_tag(user.main_image(:thumb))
     end
     column :name
     column :email
@@ -76,6 +75,9 @@ ActiveAdmin.register AdminUser do
           format.json { render json: @admin_user.errors, status: :unprocessable_entity }
         end
       end
+    end
+    def scoped_collection
+      AdminUser.includes(:subscriptions, :roles)
     end
   end
 end
