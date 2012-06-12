@@ -78,5 +78,8 @@ ActiveAdmin.register User do
         end
       end
     end
+    def scoped_collection
+      User.includes(:subscriptions, :roles)
+    end
   end
 end

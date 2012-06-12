@@ -69,6 +69,9 @@ ActiveAdmin.register Comment do
         format.xml
       end
     end
+    def scoped_collection
+      Comment.includes(:owner)
+    end
   end
   
 end
