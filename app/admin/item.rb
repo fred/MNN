@@ -101,7 +101,7 @@ ActiveAdmin.register Item do
       authorize! :create, Item
       @item = Item.new
       @now = Time.zone.now
-      @item.published_at = @now+20.minutes
+      @item.published_at = nil
       @item.expires_on = @now+10.years
       @item.draft = true
       @item.author_name = current_admin_user.title

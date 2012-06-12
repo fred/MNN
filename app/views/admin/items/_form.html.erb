@@ -131,7 +131,7 @@
   
   <%= f.inputs name: "Dates and Status" do %>
     <%= f.input :published_at,
-          value: f.object.published_at.localtime,
+          # value: f.object.published_at.localtime,
           as: "string",
           label: "Publication Date",
           require: true,
@@ -252,6 +252,7 @@
     rules: {
       "item[category_id]": { required: true },
       "item[language_id]": { required: true },
+      "item[published_at]": { required: true },
       "item[abstract]": { required: true },
       "item[title]": { required: true },
       "item[body]": { required: true }
