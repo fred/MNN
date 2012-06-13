@@ -3,7 +3,7 @@ class Item < ActiveRecord::Base
 
   attr_protected :user_id, :slug, :updated_by, :deleted_at
 
-  attr_accessor :updated_reason, :share_twitter, :send_emails
+  attr_accessor :updated_reason, :share_twitter, :send_emails, :existing_attachment_id
 
   # Versioning System
   has_paper_trail meta: { tag: :updated_reason }
@@ -48,9 +48,10 @@ class Item < ActiveRecord::Base
   # Filter hooks
   before_save   :clear_bad_characters
   before_save   :create_twitter_share
+  before_save   :dup_existing_attachment
+  before_save   :send_email_deliveries
   before_update :set_status_code
   before_create :build_stat
-  before_save   :send_email_deliveries
   after_create  :sitemap_refresh
 
 
@@ -237,7 +238,12 @@ class Item < ActiveRecord::Base
   end
 
   def main_image
-    self.attachments.last
+    att = self.attachments.last
+    if att.existing_attachment
+      return att.existing_attachment
+    else
+      return att
+    end
   end
 
   def main_image_cache_key
@@ -542,6 +548,14 @@ class Item < ActiveRecord::Base
     end
     def queue_solr_remove
       SolrRemove.perform_async(self.class.to_s, id)
+    end
+
+    def dup_existing_attachment
+      if self.existing_attachment_id && \
+      self.existing_attachment_id.to_s.match("[0-9]{1,}") && \
+      att = Attachment.find(self.existing_attachment_id) 
+        self.attachments << Attachment.new(parent_id: att.id)
+      end
     end
 
 end

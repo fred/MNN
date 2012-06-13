@@ -5,6 +5,7 @@ CHANGELOG
 * Improved admin performance
 * Updated Gemfiles
 * Admin User must set the published date
+* Allow to reuse images on new items
 
 == June 9, 2012
 * Added some nice filters to admin/items

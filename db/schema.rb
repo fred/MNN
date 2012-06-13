@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120602201106) do
+ActiveRecord::Schema.define(:version => 20120613140211) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20120602201106) do
     t.string   "attachable_type"
     t.string   "title"
     t.string   "alt_text"
+    t.integer  "parent_id"
   end
 
   add_index "attachments", ["attachable_id", "attachable_type"], :name => "index_attachments_on_attachable_id_and_attachable_type"

@@ -143,27 +143,52 @@
 
   
   <% f.object.attachments.build %>
-  <%= f.inputs name: "Main Image", multipart: true do %>
+  <%= f.inputs name: "Images", multipart: true do %>
     <div class="item_attachments">
       <%= f.semantic_fields_for :attachments do |attachment| %>
         <% if attachment.object.new_record? %>
+          <br />
           <%= attachment.input :image, as: "file", label: "Choose file to upload", hint: "Max Size: 4MB" %>
           <br />
           <%= attachment.input :title, as: "string", label: "Image Caption ",
               hint: "It is highly recommended to add an image caption." %>
+        
         <% elsif f.object.has_image? %>
-          <h3>Current Images: </h3>
-          <h4><%= attachment.object.title %></h4>
-          <%= link_to(image_tag(attachment.object.image.medium, class: "show_item_img"), admin_attachment_path(attachment.object)) %>
-          <p>
-            <%= link_to "Edit", edit_admin_attachment_path(attachment.object) %> - 
-            <%= link_to "Delete", admin_attachment_path(attachment.object), method: 'delete', 
-                  confirm: "Are you sure you want to delete this image?" 
-            %>
-          </p>
+
+          <% if attachment.object.existing_attachment %>
+
+            <h4><%= attachment.object.existing_attachment.title %></h4>
+            <%= link_to(image_tag(attachment.object.existing_attachment.image.medium, class: "show_item_img"), admin_attachment_path(attachment.object.existing_attachment)) %>
+            <p>
+              <%= link_to "Edit", edit_admin_attachment_path(attachment.object.existing_attachment) %> - 
+              <%= link_to "Delete", admin_attachment_path(attachment.object), method: 'delete', 
+                    confirm: "Are you sure you want to delete the linked image?" 
+              %>
+            </p>
+
+          <% else %>
+
+            <h4><%= attachment.object.title %></h4>
+            <%= link_to(image_tag(attachment.object.image.medium, class: "show_item_img"), admin_attachment_path(attachment.object)) %>
+            <p>
+              <%= link_to "Edit", edit_admin_attachment_path(attachment.object) %> - 
+              <%= link_to "Delete", admin_attachment_path(attachment.object), method: 'delete', 
+                    confirm: "Are you sure you want to delete this image?" 
+              %>
+            </p>
+
+          <% end %>
+
         <% end %>
+
       <% end %>
     </div>
+    <br />
+    <%= f.input :existing_attachment_id,
+                as: "number",
+                input_html: {class: 'small'},
+                hint: "Or enter ID of an existing image attachment"
+        %>
   <% end %>
   
   <%= f.inputs name: "Editor Notes" do %>
