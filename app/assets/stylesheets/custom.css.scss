@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: auto;
 }
 li {
-  color: #444;
+  color: #333;
 }
 .clearfix:after {
   content: ".";
@@ -29,7 +29,7 @@ p {
   font-weight: normal;
   line-height: 18px;
   margin-bottom: 9px;
-  color: #444;
+  color: #333;
   font-family: Arial, Helmet, Freesans, sans-serif;
   font-smoothing: auto;
   -webkit-font-smoothing: auto;
@@ -234,7 +234,7 @@ section.small_font {
   font-size: 13px;
 }
 article section span#item_body {
-  color:#444;
+  color:#333;
 }
 article section span#item_body img {
   max-width: 99%;
@@ -322,7 +322,7 @@ article footer .share a {
   margin-bottom: 20px;
   height: 432px;
   overflow: hidden;
-  color: #444;
+  color: #333;
   background-color: #FFF;
   border: 1px solid #DDDDDD;
   border-radius: 4px;
@@ -355,7 +355,7 @@ article footer .share a {
 }
 .categories .box ul li.list_item span.abstract {
   display: block;
-  color: #444;
+  color: #333;
 }
 
 .categories .box ul li.list_item img.list_item_image {
@@ -387,7 +387,7 @@ article footer .share a {
   display: block;
   text-align: left;
   margin-bottom: 2px;
-  color: #444;
+  color: #333;
 }
 #main_highlights.box ul li.featured_item span.title {
   float: left;
@@ -654,7 +654,7 @@ img.tooltip_image {
 }
 
 span#item_body li {
-  color: #444;
+  color: #333;
 }
 
 footer {
@@ -728,14 +728,14 @@ ul#comments li span.comment_owner img {
 }
 
 .comments .comment_date {
-  color: #777;
+  color: #666;
   font-style: italic;
   display: block;
   clear:both;
 }
 
 .comments textarea {
-  color: #444;
+  color: #333;
   font-size: 17px;
   padding: 10px;
   min-width: 220px;
@@ -793,7 +793,7 @@ ul#comments li span.comment_owner img {
   .comment-date {
     display: block;
     font-size: 11px;
-    color: #777;
+    color: #666;
     font-style: italic;
     margin-top: 1px;
   }
@@ -827,13 +827,13 @@ ul#comments li span.comment_owner img {
     clear: both;
     display: block;
     font-size: 11px;
-    color: #777;
+    color: #666;
     font-style: italic;
   }
   .item-date {
     display: block;
     font-size: 11px;
-    color: #777;
+    color: #666;
     font-style: italic;
   }
 }

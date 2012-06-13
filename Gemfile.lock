@@ -48,9 +48,9 @@ GIT
 
 GIT
   remote: git://github.com/mperham/sidekiq.git
-  revision: 222442e993d4a7cdc2b37536966ee67ed1dc096f
+  revision: 017ba262ce55476e252d97aad0a3b5a956d45d49
   specs:
-    sidekiq (2.0.1)
+    sidekiq (2.0.2)
       celluloid (~> 0.11.0)
       connection_pool (~> 0.9.0)
       multi_json (~> 1)
@@ -59,9 +59,9 @@ GIT
 
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: eafd20876b5787da3a21adba73e148dc73d381d6
+  revision: 732f2b802e81760f3cb6845d0c630850b727a78b
   specs:
-    twitter-bootstrap-rails (2.0.9)
+    twitter-bootstrap-rails (2.1.0)
       actionpack (>= 3.1)
       less-rails (~> 2.2.2)
       railties (>= 3.1)
@@ -176,10 +176,10 @@ GEM
     excon (0.13.4)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    factory_girl (3.3.0)
+    factory_girl (3.4.0)
       activesupport (>= 3.0.0)
-    factory_girl_rails (3.3.0)
-      factory_girl (~> 3.3.0)
+    factory_girl_rails (3.4.0)
+      factory_girl (~> 3.4.0)
       railties (>= 3.0.0)
     faraday (0.8.1)
       multipart-post (~> 1.1)
@@ -255,9 +255,9 @@ GEM
     net-ssh (2.5.2)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
-    newrelic_rpm (3.3.4.1)
+    newrelic_rpm (3.3.5)
     nifty-generators (0.4.6)
-    nokogiri (1.5.3)
+    nokogiri (1.5.4)
     oauth (0.4.6)
     oauth2 (0.6.1)
       faraday (~> 0.7)

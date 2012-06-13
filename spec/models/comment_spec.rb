@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Comment do
-  describe "A Score" do 
+
+  describe "Validity" do 
     before(:each) do
       @comment = FactoryGirl.create(:comment)
     end
@@ -16,4 +17,11 @@ describe Comment do
       assert_equal true, @comment.respond_to?(:marked_spam)
     end
   end
+  
+  describe "with an email alert" do
+    it 'should send an email to admin' do
+      ->{FactoryGirl.create(:comment) }.should change(ActionMailer::Base.deliveries, :count).by(1)
+    end
+  end
+
 end

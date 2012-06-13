@@ -67,9 +67,9 @@ describe Devise::RegistrationsController do
         assigns(:admin_user).should be_persisted
       end
         
-      it "redirects to the created admin_user" do
+      it "redirects to the admin_dashboard after creating admin_user" do
         post :create, admin_user: valid_user_attributes
-        response.should redirect_to(root_path)
+        response.should redirect_to(admin_dashboard_path)
       end
       
       it "assigns current_user to the newly created admin_user" do

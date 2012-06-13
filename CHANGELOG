@@ -1,5 +1,11 @@
 CHANGELOG
 
+== June 12-13, 2012
+* made font slightly darker
+* Improved admin performance
+* Updated Gemfiles
+* Admin User must set the published date
+
 == June 9, 2012
 * Added some nice filters to admin/items
 * updated gems

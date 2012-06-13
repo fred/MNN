@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  describe "A User" do 
+  describe "Validity" do 
     before(:each) do
       @user = FactoryGirl.create(:user)
     end
@@ -42,7 +42,7 @@ describe User do
   
 
   
-  describe "Users with subscription" do
+  describe "with subscription" do
     before(:each) do
       @user = FactoryGirl.create(:user, subscribe: "1")
     end
@@ -74,7 +74,7 @@ describe User do
     end
   end
   
-  describe "Users with unsubscribe or unsubscribe_all" do
+  describe "with unsubscribe or unsubscribe_all" do
     before(:each) do
       @user = FactoryGirl.create(:user, unsubscribe: "1")
     end
@@ -99,6 +99,14 @@ describe User do
       @user.email = "123456@new_email.com"
       @user.save
       @user.subscriptions.should eq([])
+    end
+
+  end
+
+  describe "with an email" do
+    it 'should send an Welcome email to the user' do
+      # ->{ FactoryGirl.create(:user) }.should change(ActionMailer::Base.deliveries, :count).by(1)
+      pending "implement welcome email"
     end
   end
   
