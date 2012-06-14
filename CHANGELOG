@@ -1,9 +1,15 @@
 CHANGELOG
 
+== June 14, 2012
+* Fixed blockquote font color, was too light
+* Added time ago for published items
+* Updated gems
+* Updated Twitter Bootstrap
+
 == June 12-13, 2012
 * made font slightly darker
 * Improved admin performance
-* Updated Gemfiles
+* Updated gems
 * Admin User must set the published date
 * Allow to reuse images on new items
 

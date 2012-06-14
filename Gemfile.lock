@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: git://github.com/mperham/sidekiq.git
-  revision: 017ba262ce55476e252d97aad0a3b5a956d45d49
+  revision: d7ae92047505dc113ac5cc48cc5e0a195cc98498
   specs:
     sidekiq (2.0.2)
       celluloid (~> 0.11.0)
@@ -59,7 +59,7 @@ GIT
 
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: 732f2b802e81760f3cb6845d0c630850b727a78b
+  revision: 047cfa271660b1ce9c2a08a64b41012174892228
   specs:
     twitter-bootstrap-rails (2.1.0)
       actionpack (>= 3.1)
