@@ -19,9 +19,9 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {access_type: 'online', approval_prompt: ''}
   end
 
-  if ENV['FLATTR_KEY'] && ENV['FLATTR_SECRET']
-    provider :flattr, ENV['FLATTR_KEY'], ENV['FLATTR_SECRET'], scope: "email"
-  end
+  # if ENV['FLATTR_KEY'] && ENV['FLATTR_SECRET']
+  #   provider :flattr, ENV['FLATTR_KEY'], ENV['FLATTR_SECRET'], scope: "email"
+  # end
 
   # openid
   # provider :openid, OpenID::Store::Filesystem.new('./tmp'), :name => 'openid'

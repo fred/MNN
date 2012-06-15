@@ -197,7 +197,7 @@
           label: "Author Status",
           collection: ["Ready to go", "Needs Editing", "Needs Translation", "Needs Image"]
     %>
-    <%= f.input :editor_notes, as: "string" %>
+    <%= f.input :editor_notes, as: "text", input_html: {rows: 4} %>
     <%= f.input :updated_reason, as: "string", hint: "Provide a reason for editing, as short as possible, 2-4 words." %>
   <% end %>
   

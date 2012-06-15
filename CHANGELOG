@@ -1,5 +1,12 @@
 CHANGELOG
 
+== June 15, 2012
+* Updated Rails and Sunspot SOLR
+* Security Update
+* Updated gems
+* font size fixed for highlights on CCS3 browsers
+* Added Item title to posterous share button
+
 == June 14, 2012
 * Fixed blockquote font color, was too light
 * Added time ago for published items

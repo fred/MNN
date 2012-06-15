@@ -40,7 +40,7 @@ figure {
   padding: 0;
 }
 .pull-right {
-  color: #777;
+  color: #666;
 }
 
 header.master {
@@ -114,7 +114,7 @@ form .input {
   margin-left: 160px;
 }
 .help-block {
-  color: #777;
+  color: #666;
   margin-top: 2px;
 }
 button a:hover,
@@ -169,16 +169,20 @@ article h1 {
   letter-spacing: 1px;
   font-size: 28px;
   margin-bottom: 0px;
+  color: #444;
 }
 article h2 {
   letter-spacing: 1px;
   font-size: 24px;
+  color: #444;
 }
 article h3 {
   font-size: 20px;
+  color: #333;
 }
 article h4 {
   font-size: 14px;
+  color: #222;
 }
 article p img {
   border: 1px solid #DDD;
@@ -195,7 +199,7 @@ article span.date {
   padding: 2px 2px 2px 0;
 }
 .date_small {
-  color: #666;
+  color: #555;
   font-style: italic;
   font-size: 12px;
   padding: 2px 2px 2px 0;
@@ -322,7 +326,7 @@ article footer .share a {
   margin-bottom: 20px;
   height: 432px;
   overflow: hidden;
-  color: #333;
+  color: #222;
   background-color: #FFF;
   border: 1px solid #DDDDDD;
   border-radius: 4px;
@@ -355,7 +359,7 @@ article footer .share a {
 }
 .categories .box ul li.list_item span.abstract {
   display: block;
-  color: #333;
+  color: #222;
 }
 
 .categories .box ul li.list_item img.list_item_image {
@@ -366,15 +370,16 @@ article footer .share a {
   float:left;
 }
 
+div#highlights ul li.list_item span.title, 
 .categories .box ul li:first-child a {
   font-weight: bold;
   font-size: 14px;
 }
 
-.categories .box ul li.list_item span.title{
+.categories .box ul li.list_item span.title {
   font-weight: bold;
 }
-#main_highlights.box ul li.featured_item a{
+#main_highlights.box ul li.featured_item a {
   font-size: 16px;
 }
 #main_highlights.box ul li.featured_item {
@@ -387,7 +392,7 @@ article footer .share a {
   display: block;
   text-align: left;
   margin-bottom: 2px;
-  color: #333;
+  color: #222;
 }
 #main_highlights.box ul li.featured_item span.title {
   float: left;
@@ -488,7 +493,7 @@ blockquote {
   line-height: 20px;
   margin-bottom: 15px;
   margin-top: 10px;
-  color: #444;
+  color: #333;
 }
 blockquote p {
   margin-bottom: 0;
@@ -517,7 +522,7 @@ span.more.breaking-news {
 span.more a {
   float: left;
   margin-left: 10px;
-  color: #777;
+  color: #666;
   font-style: italic;
   font-size: 0.9em;
 }
@@ -572,11 +577,11 @@ ul.feed_list li {
 
 
 .alert-message.error ul li{
-  color: #333;
+  color: #222;
   font-size: 14px;
 }
 .alert-message.error h2 {
-  color: #333;
+  color: #222;
   font-size: 16px;
 }
 
@@ -597,7 +602,7 @@ figure figcaption {
   display: block;
   clear: both;
   margin: 0px 2px 10px 0px;
-  color: #777;
+  color: #666;
   min-width: 160px;
   max-width: 220px;
   border-bottom: 1px solid #DDD;
@@ -729,7 +734,7 @@ ul#comments li span.comment_owner img {
 }
 
 .comments .comment_date {
-  color: #666;
+  color: #555;
   font-style: italic;
   display: block;
   clear:both;

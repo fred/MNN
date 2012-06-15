@@ -5,7 +5,7 @@ source 'http://rubygems.org'
 gem 'rack'
 gem 'rack-cache'
 gem 'rake'
-gem 'rails', '3.2.5'
+gem 'rails', '3.2.6'
 gem 'bundler', '>= 1.1.0'
 
 ### Database Adapter
@@ -17,7 +17,7 @@ gem 'pg'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
-gem 'omniauth-flattr'
+# gem 'omniauth-flattr'
 # gem 'omniauth-openid'
 # gem 'omniauth-github'
 
@@ -143,8 +143,8 @@ gem 'exception_notification', '~> 2.6.0', require: 'exception_notifier'
 ## Searching ##
 ###############
 
-gem 'sunspot', '2.0.0.pre.111215' # git:  'git://github.com/sunspot/sunspot.git'
-gem 'sunspot_rails', '2.0.0.pre.111215' # git:  'git://github.com/sunspot/sunspot.git'
+gem 'sunspot', '2.0.0.pre.120417' # git:  'git://github.com/sunspot/sunspot.git'
+gem 'sunspot_rails', '2.0.0.pre.120417' # git:  'git://github.com/sunspot/sunspot.git'
 
 ### Memcache
 gem 'dalli', '~> 2.0.5'

@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20120613140211) do
     t.string   "attachable_type"
     t.string   "title"
     t.string   "alt_text"
+    t.string   "content_type"
     t.integer  "parent_id"
   end
 
