@@ -2,7 +2,7 @@ require 'spec_helper'
 # require 'carrierwave/test/matchers'
 
 describe Attachment do
-  describe "An Attachment" do 
+  describe "Existence" do 
     before(:each) do
       @attachment = FactoryGirl.create(:attachment)
     end

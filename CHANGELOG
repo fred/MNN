@@ -1,5 +1,10 @@
 CHANGELOG
 
+== June 16, 2012
+* Add ability to upload documents
+* Fixed bug on attachments page
+* Updated robots.txt to ignore some bots and paths
+
 == June 15, 2012
 * Updated Rails and Sunspot SOLR
 * Security Update

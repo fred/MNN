@@ -9,11 +9,19 @@ ActiveAdmin.register Attachment do
     div for: attachment, class: "grid_images" do
       h4 auto_link(attachment.attachable)
       div do
-        link_to(
-          image_tag(attachment.image.medium.url),
-          admin_attachment_path(attachment),
-          title: "Click on image to see details"
-        )
+        if attachment.existing_attachment
+          link_to(
+            image_tag(attachment.existing_attachment.image.medium.url),
+            admin_attachment_path(attachment),
+            title: "Click on image to see details"
+          )
+        else
+          link_to(
+            image_tag(attachment.image.medium.url),
+            admin_attachment_path(attachment),
+            title: "Click on image to see details"
+          )
+        end
       end
       h4 auto_link(attachment.title)
       link_to(

@@ -48,7 +48,7 @@ class Ability
     # Editor can manager all Items, Tags and Categories, 
     if user.has_role? :editor
       can :manage, [ItemStat,Version,Item,Tag,Category,Page,Language,
-        Attachment,CommentSubscription,Subscription,EmailDelivery
+        Attachment,CommentSubscription,Subscription,EmailDelivery,Document
       ]
       can :read, [ItemStat,Version]
     end
@@ -61,14 +61,14 @@ class Ability
       can :destroy, Item, user_id: user.id
       can :create,  Item
       can [:read, :create, :update], Attachment
-      can :read,    [ItemStat,Category,Tag,Language,Version,Page]
+      can :read,    [ItemStat,Category,Tag,Language,Version,Page,Document]
     end
     
     # Security Role
     if user.has_role? :security
       can :manage, [Role,User,AdminUser,ItemStat,Language,Version,
           Contact,CommentSubscription,Subscription,EmailDelivery,
-          TwitterShare,Attachment
+          TwitterShare,Attachment,Document
       ]
     end
     
@@ -76,12 +76,12 @@ class Ability
     # A Reader can read all other records
     if user.has_role? :reader
       can :read, Item, draft: false
-      can :read, [Attachment,ItemStat,Category,Tag,Language,Version]
+      can :read, [Attachment,ItemStat,Category,Tag,Language,Version,Document]
     end
     
     # Readers can manage own items
     if user.has_role? :basic
-      can :read, [Tag,Category,Attachment,Score,Item,Language,Page,ItemStat,Version]
+      can :read, [Tag,Category,Attachment,Score,Item,Language,Page,ItemStat,Version,Document]
     end
 
     # Role.create!(title: "Admin", description: "Only For Administration Purposes")

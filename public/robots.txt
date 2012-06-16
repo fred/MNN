@@ -1,5 +1,58 @@
 # See http://www.robotstxt.org/wc/norobots.html for documentation on how to use the robots.txt file
-#
-# To ban all spiders from the entire site uncomment the next two lines:
 User-Agent: *
 Disallow: /assets/
+Disallow: /auth/
+Disallow: /user/
+Disallow: /admin/
+Disallow: /drafts/
+
+# Unwanted bots
+
+User-Agent: Slurp
+Crawl-Delay: 300
+
+User-Agent: msnbot
+Crawl-delay: 300
+
+User-Agent: bingbot
+Crawl-delay: 300
+
+User-agent: Mediapartners-Google*
+Disallow: /
+
+User-agent: AdsBot-Google
+Disallow: /
+
+#  Ahrefs.com (http://ahrefs.com/robot/)
+user-agent: AhrefsBot
+disallow: / 
+
+#  alexa.com (http://www.alexa.com/site/help/webmasters)
+User-agent: ia_archiver
+Disallow: / 
+
+#  BacklinkCrawler (http://www.backlinktest.com/crawler.html)
+User-agent: BacklinkCrawler
+Disallow: / 
+
+#  Baiduspider (http://www.baidu.com/search/spider.htm)
+User-agent: baidu
+Disallow: / 
+
+#  Gnip [Bot] (http://www.gnip.com)
+User-agent: UnwindFetchor
+Disallow: /
+
+# others
+User-agent: CLEWWA-BOT
+Disallow: /
+User-agent: omgilibot
+Disallow: /
+User-agent: EZOOMS
+Disallow: /
+User-agent: TURNITINBOT
+Disallow: /
+User-agent: Domnutch-Bot
+Disallow: /
+User-agent: Yeti
+Disallow: /

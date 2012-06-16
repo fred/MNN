@@ -1,3 +1,7 @@
+<% if @attachment.existing_attachment %>
+  <% @attachment = @attachment.existing_attachment %>
+<% end %>
+
 <div class="panel">
   <h3>Image Details</h3>
   <div class="panel_contents">
@@ -10,7 +14,6 @@
     </div>
   </div>
 </div>
-
 
 <div class="panel">
   <h3>Images</h3>
