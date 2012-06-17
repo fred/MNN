@@ -1,5 +1,9 @@
 CHANGELOG
 
+== June 17, 2012
+* Updated URL to have item ID i.e. "123-headline-big-news"
+* Improved ipad portrait mode
+
 == June 16, 2012
 * Add ability to upload documents
 * Fixed bug on attachments page

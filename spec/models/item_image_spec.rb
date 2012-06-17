@@ -23,7 +23,7 @@ describe Item do
       Attachment.count.should eq(2)
     end
 
-    # Only for test end
+    # Only for test environment
     it 'should have the same attachment image' do
       (File.exists?(@item.main_image.image.path)).should eq(true)
     end

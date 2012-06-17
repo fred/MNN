@@ -44,7 +44,7 @@ module LayoutHelper
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
     valid="(iphone|ipod|nokia|series60|symbian|blackberry|opera mini|mobile|phone|android|smartphone)"
     invalid="(tablet|ipad|playbook|xoom)"
-    if s.match(valid)
+    if s.match(valid) && !s.match(invalid)
       Rails.logger.debug("  UA: Mobile found: #{s}")
       return true
     else
@@ -56,7 +56,7 @@ module LayoutHelper
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
     valid="(tablet|ipad|galaxytab|opera mini|honeycomb|p1000|playbook|xoom|android|sch-i800|kindle)"
     invalid="(mobile|iphone|ipod)"
-    if s.match(valid)
+    if s.match(valid) && !s.match(invalid)
       Rails.logger.debug("  UA: Tablet found: #{s}")
       return true
     else

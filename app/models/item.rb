@@ -52,6 +52,7 @@ class Item < ActiveRecord::Base
   before_save   :send_email_deliveries
   before_update :set_status_code
   before_create :build_stat
+  after_create  :set_custom_slug
   after_create  :sitemap_refresh
 
 
@@ -110,6 +111,19 @@ class Item < ActiveRecord::Base
     self.draft ||= true
     self.published_at ||= Time.zone.now  # will set the default value only if it's nil
     self.expires_on   ||= Time.zone.now+10.years
+  end
+
+  # generate slugs once and then treat them as read-only
+  def should_generate_new_friendly_id?
+    new_record?
+  end
+
+  def set_custom_slug
+    update_column(:slug, custom_slug)
+  end
+
+  def custom_slug
+    "#{self.id}-#{self.title.parameterize}"
   end
 
   def clear_bad_characters

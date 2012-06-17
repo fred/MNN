@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Item do
 
   describe "with Job Queues" do
-      require 'sidekiq/testing'
+    require 'sidekiq/testing'
     it "should enqueue the email subscription job" do
       expect {
         FactoryGirl.create(:item, draft: false, published_at: Time.now, send_emails: "1")

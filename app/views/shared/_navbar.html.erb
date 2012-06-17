@@ -51,7 +51,7 @@
               <% end %>
             </ul>
           </li>
-          <li class="dropdown hidden-phone" data-dropdown="dropdown">
+          <li class="dropdown hidden-phone hidden-tablet" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Languages <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <% Language.order("locale ASC").all.each do |language|%>
