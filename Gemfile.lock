@@ -205,7 +205,7 @@ GEM
       json (>= 1.4.6)
     has_scope (0.5.1)
     hashie (1.2.0)
-    highline (1.6.12)
+    highline (1.6.13)
     hike (1.2.1)
     hirb (0.6.2)
     httpauth (0.1)

@@ -4,6 +4,9 @@ CHANGELOG
 * Add ability to upload documents
 * Fixed bug on attachments page
 * Updated robots.txt to ignore some bots and paths
+* Lots of improvements for small mobile screens
+* Improved iphone 3g/3gs, android, blackberry support
+* Updated Gems
 
 == June 15, 2012
 * Updated Rails and Sunspot SOLR

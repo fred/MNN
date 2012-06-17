@@ -9,13 +9,13 @@ Disallow: /drafts/
 # Unwanted bots
 
 User-Agent: Slurp
-Crawl-Delay: 300
+Crawl-Delay: 100
 
 User-Agent: msnbot
-Crawl-delay: 300
+Crawl-delay: 100
 
 User-Agent: bingbot
-Crawl-delay: 300
+Crawl-delay: 100
 
 User-agent: Mediapartners-Google*
 Disallow: /
@@ -25,19 +25,19 @@ Disallow: /
 
 #  Ahrefs.com (http://ahrefs.com/robot/)
 user-agent: AhrefsBot
-disallow: / 
+disallow: /
 
 #  alexa.com (http://www.alexa.com/site/help/webmasters)
 User-agent: ia_archiver
-Disallow: / 
+Disallow: /
 
 #  BacklinkCrawler (http://www.backlinktest.com/crawler.html)
 User-agent: BacklinkCrawler
-Disallow: / 
+Disallow: /
 
 #  Baiduspider (http://www.baidu.com/search/spider.htm)
-User-agent: baidu
-Disallow: / 
+User-agent: Baiduspider
+Disallow: /
 
 #  Gnip [Bot] (http://www.gnip.com)
 User-agent: UnwindFetchor

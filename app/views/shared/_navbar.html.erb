@@ -15,7 +15,7 @@
               title: 'World Mathaba Independent News Agency'
             )
         %>
-        <ul class="nav">
+        <ul class="nav hidden-old-phone">
           <li id="home_link">
             <%= link_to "Home", root_path, title: 'World Mathaba Independent News Agency' %>
           </li>
@@ -27,7 +27,7 @@
               <% end %>
             </ul>
           </li>
-          <li class="dropdown" data-dropdown="dropdown">
+          <li class="dropdown hidden-phone" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Regions <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <% RegionTag.order("title ASC").all.each do |tag|%>

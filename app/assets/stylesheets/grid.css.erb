@@ -49,12 +49,25 @@
   display: none !important;
 }
 
+.visible-old-phone {
+  display: none !important;
+}
+
 .visible-tablet {
   display: none !important;
 }
 
 .hidden-desktop {
   display: none !important;
+}
+
+@media (max-width: 320px) {
+  .hidden-old-phone {
+    display: none !important;
+  }
+  .visible-old-phone {
+    display: inherit !important;
+  }
 }
 
 @media (max-width: 767px) {
@@ -258,9 +271,6 @@
   .container-fluid > .content {
     margin-left: 180px;
   }
-  .navbar .brand{
-    /*padding: 10px 0px 0px 30px;*/
-  }
   ul.nav li#home_link {
     display:none;
   }
@@ -360,8 +370,8 @@
      padding-left: 8px;
   }
   .container-fluid > .sidebar {
-    float:left;
-    display:block;
+    float: left;
+    display: block;
     position: relative;
     width: 320px;
     left: 12px;
@@ -394,9 +404,12 @@
     position: inherit;
   }
   .navbar .brand{
-    padding: 10px 0px 0px 30px;
     text-align:center;
   }
+  .navbar-inner {
+    padding-right: 10px;
+  }
+
   .breadcrumb {
     margin: 0 0 10px;
     padding: 7px 10px;
@@ -472,5 +485,14 @@
   .comments textarea#Comment,
   .comments .form-actions {
     margin: 0px;
+  }
+  .hidden-old-phone {
+    display: none !important;
+  }
+  .form-horizontal .control-label {
+    width: 120px;
+  }
+  .form-horizontal .controls {
+    margin-left: 132px;
   }
 }
