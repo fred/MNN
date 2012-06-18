@@ -8,6 +8,9 @@ body {
 li {
   color: #333;
 }
+.navbar .nav > li > a {
+  color: #bbb;
+}
 .clearfix:after {
   content: ".";
   display: block;
