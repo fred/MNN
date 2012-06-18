@@ -5,6 +5,5 @@ FactoryGirl.define do
     body 'This is a test message'
     approved true
     user_ip "127.0.0.1"
-    # humanizer_bypass true
   end
 end

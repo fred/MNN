@@ -24,11 +24,13 @@ atom_feed({
       xml.content "type" => "html" do
         xml.text! render(:partial => "/shared/atom_item", :locals => {:item => item})
       end
-      xml.author {
-        xml.name item.user_title
-        xml.email item.user_email
-        xml.uri(url_for(author_path(item.user, only_path: false, protocol: 'http')))
-      }
+      if item.user
+        xml.author {
+          xml.name item.user_title
+          xml.email item.user_email
+          xml.uri(url_for(author_path(item.user, only_path: false, protocol: 'http')))
+        }
+      end
     end
   end
 end

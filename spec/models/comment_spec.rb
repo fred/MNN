@@ -1,10 +1,11 @@
 require 'spec_helper'
 
 describe Comment do
+  require 'sidekiq/testing/inline'
 
   describe "Validity" do 
     before(:each) do
-      @comment = FactoryGirl.create(:comment)
+      @comment = FactoryGirl.build(:comment)
     end
     it "should be valid" do
       assert_equal true, @comment.valid?
@@ -18,9 +19,9 @@ describe Comment do
     end
   end
   
-  describe "with an email alert" do
+  describe "with an email alert to admin" do
     it 'should send an email to admin' do
-      ->{FactoryGirl.create(:comment) }.should change(ActionMailer::Base.deliveries, :count).by(1)
+      ->{ FactoryGirl.create(:comment) }.should change(ActionMailer::Base.deliveries, :count).by(3)
     end
   end
 

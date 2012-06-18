@@ -30,9 +30,13 @@ class Comment < ActiveRecord::Base
     end
   end
 
-  # Send the email notifications after creation
+  # Send the email notifications 15 seconds after creation
   def email_notify
-    CommentNotification.perform_async(self.id)
+    if Rails.env.production?
+      CommentsNotifier.delay_for(15).new_comment(self.id)
+    else
+      CommentsNotifier.new_comment(self.id).deliver
+    end
   end
 
   def check_for_spam

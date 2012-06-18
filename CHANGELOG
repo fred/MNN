@@ -4,6 +4,8 @@ CHANGELOG
 * Updated robots.txt
 * Updated Gems
 * fixed missing font errors
+* Welcome Email (testing)
+* updated Rspec Tests
 
 == June 17, 2012
 * Updated URL to have item ID i.e. "123-headline-big-news"

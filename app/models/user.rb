@@ -33,12 +33,24 @@ class User < ActiveRecord::Base
   has_many :item_subscriptions, dependent: :destroy, conditions: "item_id is not NULL", class_name: "Subscription"
 
   before_save :create_subscriptions, :cancel_subscriptions, :update_subscriptions, :check_upgrade
-  after_create :notify_admin
+  after_create :notify_admin, :send_welcome_email
 
   apply_simple_captcha
 
   def notify_admin
-    NewUserMail.perform_in(10, self.id)
+    if Rails.env.production?
+      UserMailer.delay_for(15).new_user(self.id) 
+    else
+      UserMailer.new_user(self.id).deliver
+    end
+  end
+
+  def send_welcome_email
+    if Rails.env.production?
+      UserMailer.delay_for(15).welcome_email(self.id)
+    else
+      UserMailer.welcome_email(self.id).deliver
+    end
   end
 
   def check_upgrade
