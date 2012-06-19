@@ -1,33 +1,79 @@
-h2
-  ' Welcome to World Mathaba 
+doctype html
+html
+  head
+    title Welcome to World Mathaba
+  sass:
+    body
+      -webkit-text-size-adjust: 100%
+      -ms-text-size-adjust: 100%
+      color: #333
+      font-size: 14px
+      text-rendering: optimizeLegibility
+      background-color: white
+      margin: 16px 8px
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
+      font-weight: normal
+      line-height: 18px
+    img 
+      outline: none
+      text-decoration: none
+      -ms-interpolation-mode: bicubic
+    a img
+      border: none
+    .image_fix
+      display: block
+    p
+      margin: 0.5em 0
+    #message
+      margin: 10px
+      border: 1px solid #CCC
+      padding: 0 10px 10px 10px
+      border-radius: 8px
+      box-shadow: 0px 0px 8px #bbb
+      background-color: #F9F9F9
+    a
+      color: #0069D6
+      text-decoration: none
+    a:hover
+      color: #00438A
+      text-decoration: underline
+    h2
+      margin: 2px 4px 10px 4px
+      text-align: center
+      font-size: 20px
+    h3
+      font-size: 18px
+      line-height: 18px
+      margin: 10px 2px
 
-p
-  ' Hi,
-  = @user.name
+  body
+    #message
+      h2
+        ' Dear
+        = @user.name
 
-p
-  ' Thanks for joining us! 
+      h3
+        ' Thank you very much for joining us.
 
-p
-  ' If you would like to publish your articles, or help with translations of news articles, just reply to this email and let us know. You can also comment on articles now. 
+      p
+        ' You are now able to comment on articles at World Mathaba. If you would like to publish self-written articles, republish articles from other sources or help with the translation of articles, please reply to this email to let us know. If you already have ticked you want to submit articles in your profile, you will be able to do so in approximately 24 hours after registering.
 
-p 
-  ' To receive emails when an Article is published, you can enable on your profile by clicking "Enable Subscriptions".
-  
-p
-  ' If you have signed in with Twitter, we will not have your email. You will have to give is your email in order for us to send you Email Alerts for new articles.
+      p 
+        ' To receive email alerts when a new article is published, you should enable this in your profile by ticking "Enable Subscriptions". When you have signed in with Twitter, we will not have your email address yet. If you choose to receive email alerts, you should provide us your email address by replying to this message.
+        
+      p
+        ' To edit your Profile please visit this link.
+        = link_to 'Edit Profile', @url
 
-p
-  ' To edit your Profile visit this link:
-  = link_to 'Edit Profile', @url
+      p
+        ' Don't hesitate to contact us, just reply to this email with any doubts, questions, suggestions or ideas that you have. Your contribution will be highly appreciated.
 
-p
-  ' Don't hesitate to contact us, just reply to this email with any doubts, questions, suggestions or ideas that you have. Your contribution will be highly appreciated.
+      p
+        ' All Services provided by World Mathaba are free. We do not disclose your personal information to any third party. You can read our 
+        =' link_to "Privacy and Policy", "http://worldmathaba.net/pages/privacy-and-policy" 
+        ' page to learn more about it. 
 
-p
-  ' All Services provided by WorldMathaba are free. We do not disclose your personal information to any third party. You can read our 
-  =' link_to "Privacy and Policy", "http://worldmathaba.net/pages/privacy-and-policy" 
-  ' to learn more about it.
+      p
+        ' Best Regards from the World Mathaba Team
 
-p
-  ' Best Regards from World Mathaba Team
+

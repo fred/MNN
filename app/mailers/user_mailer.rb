@@ -26,4 +26,5 @@ class UserMailer < ActionMailer::Base
       subject:  "Welcome to World Mathaba"
     )
   end
+
 end

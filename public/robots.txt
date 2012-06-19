@@ -2,7 +2,7 @@
 User-Agent: *
 Disallow: /assets/
 Disallow: /auth/
-Disallow: /user/
+Disallow: /users/
 Disallow: /admin/
 Disallow: /drafts/
 Disallow: /comments/
