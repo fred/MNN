@@ -149,7 +149,7 @@
       </div>
 
       <div class="sidebar_secions">
-        <h4>Most Read</h4>
+        <h4>Most Read in 2 weeks</h4>
         <% Item.popular(3).each do |item| %>
           <div class="sidebar-item">
             <%= item_mini(item).html_safe %>
@@ -171,17 +171,6 @@
           </div>
         <% end %>
       </div>
-
-      <div class="sidebar_secions">
-        <h4>Top Users</h4>
-        <% User.popular(5).each do |user| %>
-          <div class="sidebar-item">
-            <%= mini_user(user).html_safe %>
-            <span class="horizontal-divider"></span>
-          </div>
-        <% end %>
-      </div>
-  
     <% end %>
 
     <div class="hidden-phone">

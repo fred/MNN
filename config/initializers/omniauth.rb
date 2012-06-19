@@ -19,6 +19,11 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {access_type: 'online', approval_prompt: ''}
   end
 
+  if ENV['WINDOWSLIVE_CLIENT_ID'] && ENV['WINDOWSLIVE_SECRET']
+    provider :windowslive, ENV['WINDOWSLIVE_CLIENT_ID'], ENV['WINDOWSLIVE_SECRET'],
+              scope: 'wl.basic,wl.emails,wl.signin'
+  end
+
   # if ENV['FLATTR_KEY'] && ENV['FLATTR_SECRET']
   #   provider :flattr, ENV['FLATTR_KEY'], ENV['FLATTR_SECRET'], scope: "email"
   # end

@@ -156,6 +156,8 @@ class User < ActiveRecord::Base
       User.flattr_oauth(auth_hash,session)
     when 'google_oauth2'
       User.google_oauth(auth_hash,session)
+    when 'windowslive'
+      User.windowslive_oauth(auth_hash)
     end
   end
 
@@ -185,7 +187,7 @@ class User < ActiveRecord::Base
     unless user
       user = User.new
       user.name = auth_hash.info.name
-      user.email = "please_updated_your_email_#{Kernel.rand(99999)}@worldmathaba.net"
+      user.email = "please_update_your_email_#{Kernel.rand(99999)}@worldmathaba.net"
       user.twitter = auth_hash.info.urls.Twitter
     end
     if auth_hash.extra.raw_info.timezone
@@ -243,6 +245,49 @@ class User < ActiveRecord::Base
     user.save
     user
   end
+
+  def self.linkedin_oauth(auth_hash)
+    user = where(oauth_uid: auth_hash.uid, provider: 'linkedin').first
+    unless user
+      user = User.new
+      user.name = auth_hash.info.name
+      user.email = "please_update_your_email_#{Kernel.rand(99999)}@worldmathaba.net"
+      user.oauth_page = auth_hash.info.urls.public_profile
+    end
+    if auth_hash.extra.raw_info.timezone
+      user.time_zone = ActiveSupport::TimeZone[auth_hash.extra.raw_info.timezone.to_i].name
+    end
+    user.provider = 'linkedin'
+    user.oauth_uid = auth_hash.uid
+    user.oauth_data = auth_hash
+    user.oauth_token = auth_hash.credentials.token
+    user.password_confirmation = auth_hash.credentials.token
+    user.password = auth_hash.credentials.token
+    user.save
+    user
+  end
+
+  def self.windowslive_oauth(auth_hash)
+    user = where(oauth_uid: auth_hash.uid, provider: 'windowslive').first
+    unless user
+      user = User.new
+      user.name = auth_hash.info.name
+      user.email = auth_hash.info.email
+      user.oauth_page = auth_hash.info.link
+    end
+    if auth_hash.extra.raw_info.timezone
+      user.time_zone = ActiveSupport::TimeZone[auth_hash.extra.raw_info.timezone.to_i].name
+    end
+    user.provider = 'windowslive'
+    user.oauth_uid = auth_hash.uid
+    user.oauth_data = auth_hash
+    # user.oauth_token = auth_hash.credentials.token
+    user.password_confirmation = auth_hash.credentials.token[0..16]
+    user.password = auth_hash.credentials.token[0..16]
+    user.save
+    user
+  end
+
 
   # Returns Popular Authors
   def self.popular(lim=5)
