@@ -210,7 +210,6 @@ class User < ActiveRecord::Base
       user = User.new
       user.name = auth_hash.info.name
       user.email = auth_hash.info.email
-      user.facebook = auth_hash.info.urls.Facebook
     end
     if auth_hash.extra.raw_info.timezone
       user.time_zone = ActiveSupport::TimeZone[auth_hash.extra.raw_info.timezone.to_i].name

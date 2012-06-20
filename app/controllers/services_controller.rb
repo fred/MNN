@@ -4,10 +4,10 @@ class ServicesController < ApplicationController
     begin
       @user = User.find_or_create_from_oauth(auth_hash, current_user)
       if @user.persisted?
-        flash[:notice] =  "Welcome! You are signed in."
+        flash[:notice] =  "Welcome! You are now signed in."
         sign_in_and_redirect @user, 
           event: :authentication,
-          notice: "Welcome! You are signed in."
+          notice: "Welcome! You are now signed in."
       else
         session["devise.facebook_data"] = request.env["omniauth.auth"]
         redirect_to new_user_registration_url

@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Comment do
-  require 'sidekiq/testing/inline'
 
   describe "Validity" do 
     before(:each) do

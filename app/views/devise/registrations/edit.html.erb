@@ -6,27 +6,37 @@
           html: { method: :put, class: form_class }
         ) do |f|
     %>
+
       <%= custom_devise_error_messages! %>
+
+      <% if f.object.email.to_s.match("please_update_your_email") %>
+        <div class="alert alert-notice">Please update your email address</div>
+      <% end %>
+
       <fieldset class="withBorder">
         <legend>Personal Information</legend>
+
         <div class="control-group">
           <%= f.label :email, class: 'control-label' %>
           <div class="controls">
             <%= f.text_field :email, required: true, type: "email", class: "imput-large" %>
           </div>
         </div>
+
         <div class="control-group">
           <%= f.label :name, class: 'control-label' %>
           <div class="controls">
             <%= f.text_field :name, required: false, autofocus: true, class: "imput-large" %>
           </div>
         </div>
+
         <div class="control-group">
           <%= f.label :address, class: 'control-label' %>
           <div class="controls">
             <%= f.text_field :address, required: false, class: "imput-large" %>
           </div>
         </div>
+
         <div class="control-group">
           <%= f.label :facebook, class: 'control-label' %>
           <div class="controls">
@@ -34,6 +44,7 @@
                   placeholder: "https://facebook.com/your-name" %>
           </div>
         </div>
+
         <div class="control-group">
           <%= f.label :twitter, class: 'control-label' %>
           <div class="controls">
@@ -41,6 +52,7 @@
                   placeholder: "@twitter" %>
           </div>
         </div>
+
         <div class="control-group">
           <%= f.label :diaspora, class: 'control-label' %>
           <div class="controls">
@@ -48,6 +60,7 @@
                   placeholder: "handle@host.net", type: "email" %>
           </div>
         </div>
+
         <div class="control-group">
           <%= f.label :skype, class: 'control-label' %>
           <div class="controls">
@@ -55,13 +68,15 @@
                   placeholder: "skype username" %>
           </div>
         </div>
+
         <div class="control-group">
           <%= f.label :gtalk, "Google Chat", class: 'control-label' %>
           <div class="controls">
             <%= f.text_field :gtalk, required: false, class: "imput-large", 
-                  placeholder: "xxxxx@gmail.com", type: "email" %>
+                  placeholder: "xxxxx@gmail.com (optional)", type: "email" %>
           </div>
         </div>
+
         <div class="control-group">
           <%= f.label :jabber, "Jabber", class: 'control-label' %>
           <div class="controls">
@@ -69,6 +84,7 @@
                   placeholder: "xxxxx@jabber.com", type: "email" %>
           </div>
         </div>
+
         <div class="control-group">
           <%= f.label :phone_number, class: 'control-label' %>
           <div class="controls">
@@ -76,14 +92,17 @@
                   placeholder: "+11 123123456", type: "tel" %>
           </div>
         </div>
+
         <div class="control-group">
           <%= f.label :time_zone, class: 'control-label' %>
           <div class="controls">
             <%= f.time_zone_select :time_zone %>
           </div>
         </div>
+
       </fieldset>
       
+
       <fieldset class="withBorder">
         <legend>Avatar Image</legend>
         <div class="control-group">
@@ -147,6 +166,11 @@
               <p class="help-block">
                 Select this if you wish to receive email notifications when a new Article is published.
               </p>
+              <% if f.object.email.to_s.match("please_update_your_email") %>
+                <p class="alert alert-notice">
+                  Please update your email address to enable subscriptions
+                </p>
+              <% end %>
             </div>
           </div>
         <% end %>
@@ -179,10 +203,11 @@
       <div class="form-actions">
         <%= f.submit "Update", class: "btn btn-primary", data: {disable_with: 'Processing...'} %>
         &nbsp;
-        <%= link_to "Delete my account".html_safe,
-            registration_path(resource_name),
-            confirm: "Are you sure you want to delete your account from our system?",
-            method: :delete, class: 'btn btn-danger'
+        <%= link_to "Delete my account",
+              registration_path(resource_name),
+              data: {confirm: "Are you sure you want to delete your account from our system?"},
+              method: :delete,
+              class: 'btn btn-danger'
         %>
       </div>
     

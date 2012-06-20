@@ -40,38 +40,6 @@ ActiveAdmin::Dashboards.build do
   ##################
 
 
-  
-  ### COMMENTS
-
-  section "Approved Comments", priority: 1 do
-    if controller.current_ability.can?(:read, Comment)
-      table_for Comment.recent(12) do
-        column "User" do |t|
-          if t.owner
-            link_to t.name, admin_user_path(t.owner), class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
-          else
-            t.owner_id
-          end
-        end
-        column "Message" do |t|
-          link_to t.body.truncate(80), admin_comment_path(t), title: t.body, class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
-        end
-        column "Item" do |t|
-          if t.commentable && t.commentable_type == "Item"
-            link_to t.commentable.title.truncate(44), admin_item_path(t.commentable), title: t.commentable.title
-          elsif t.commentable && t.commentable_type == "Comment"
-            link_to t.commentable.commentable.title.truncate(44), admin_item_path(t.commentable.commentable)
-          end
-        end
-        column "Time" do |t|
-          "#{time_ago_in_words(t.created_at)} ago"
-        end
-        column "IP" do |t|
-          link_to(t.user_ip, "http://www.geoiptool.com/en/?IP=#{t.user_ip}", target: "_blank")
-        end
-      end
-    end
-  end
 
   section "Suspicious Comments", priority: 1 do
     if controller.current_ability.can?(:read, Comment)
@@ -243,6 +211,39 @@ ActiveAdmin::Dashboards.build do
         end
         column "View" do |v|
           link_to('Details',admin_version_path(v))
+        end
+      end
+    end
+  end
+
+
+  ### COMMENTS
+
+  section "Approved Comments", priority: 32 do
+    if controller.current_ability.can?(:read, Comment)
+      table_for Comment.recent(12) do
+        column "User" do |t|
+          if t.owner
+            link_to t.name, admin_user_path(t.owner), class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
+          else
+            t.owner_id
+          end
+        end
+        column "Message" do |t|
+          link_to t.body.truncate(80), admin_comment_path(t), title: t.body, class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
+        end
+        column "Item" do |t|
+          if t.commentable && t.commentable_type == "Item"
+            link_to t.commentable.title.truncate(44), admin_item_path(t.commentable), title: t.commentable.title
+          elsif t.commentable && t.commentable_type == "Comment"
+            link_to t.commentable.commentable.title.truncate(44), admin_item_path(t.commentable.commentable)
+          end
+        end
+        column "Time" do |t|
+          "#{time_ago_in_words(t.created_at)} ago"
+        end
+        column "IP" do |t|
+          link_to(t.user_ip, "http://www.geoiptool.com/en/?IP=#{t.user_ip}", target: "_blank")
         end
       end
     end

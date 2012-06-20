@@ -224,8 +224,9 @@
               <p><%= attachment.description %></p>
               <p>
                 <%= link_to "Edit", edit_admin_attachment_path(attachment.existing_attachment) %> - 
-                <%= link_to "Delete", admin_attachment_path(attachment), method: 'delete', 
-                      confirm: "Are You sure you want to delete this Image?" 
+                <%= link_to "Delete", admin_attachment_path(attachment),
+                      method: 'delete',
+                      data: {confirm: "Are You sure you want to delete this Image?"}
                 %>
               </p>
             <% else %>
@@ -238,8 +239,9 @@
               <p><%= attachment.description %></p>
               <p>
                 <%= link_to "Edit", edit_admin_attachment_path(attachment) %> - 
-                <%= link_to "Delete", admin_attachment_path(attachment), method: 'delete', 
-                      confirm: "Are You sure you want to delete this Image?" 
+                <%= link_to "Delete", admin_attachment_path(attachment),
+                      method: 'delete', 
+                      data: {confirm: "Are You sure you want to delete this Image?"}
                 %>
               </p>
             <% end %>

@@ -28,8 +28,14 @@ ActiveAdmin.register User do
       bool_row :show_public
       row "Logged in at", &:last_sign_in_at
       row "Last Seen", &:current_sign_in_at
-      row "Last IP", &:last_sign_in_ip
-      row "Current IP", &:current_sign_in_ip
+      row "Last IP" do |user|
+        link_to user.last_sign_in_ip,
+          "http://www.geoiptool.com/en/?IP=#{user.last_sign_in_ip}"
+      end
+      row "Current IP" do |user|
+        link_to user.current_sign_in_ip,
+          "http://www.geoiptool.com/en/?IP=#{user.current_sign_in_ip}"
+      end
       row :created_at
       row :updated_at
     end
@@ -42,6 +48,7 @@ ActiveAdmin.register User do
     end
     column :name
     column :email
+    column :time_zone
     column :provider
     column "Facebook", sortable: false do |user|
       if user.facebook.present?
@@ -61,8 +68,14 @@ ActiveAdmin.register User do
     column "Logins", :sign_in_count
     column "Logged in", :last_sign_in_at
     column "Last Seen", :current_sign_in_at
-    column "Last IP", :last_sign_in_ip
-    column "Current IP", :current_sign_in_ip
+    column "Last IP" do |user|
+      link_to user.last_sign_in_ip,
+        "http://www.geoiptool.com/en/?IP=#{user.last_sign_in_ip}"
+    end
+    column "Current IP" do |user|
+      link_to user.current_sign_in_ip,
+        "http://www.geoiptool.com/en/?IP=#{user.current_sign_in_ip}"
+    end
     default_actions
   end
   controller do

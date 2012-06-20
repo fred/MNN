@@ -8,18 +8,21 @@
     %>
       <fieldset class="withBorder">
         <legend>Sign in</legend>
+
         <div class="control-group">
           <%= f.label :email, class: 'control-label' %>
           <div class="controls">
             <%= f.text_field :email, required: false, autofocus: true, type: "email", class: "input-large" %>
           </div>
         </div>
+
         <div class="control-group">
           <%= f.label :password, class: 'control-label'%>
           <div class="controls">
             <%= f.password_field :password, required: false, class: "input-large"  %>
           </div>
         </div>
+
         <div class="control-group">
           <div class="controls">
             <label class="checkbox" for="user_remember_me">
@@ -27,16 +30,26 @@
             Remember me for 2 weeks
           </label>
         </div>
+
         <div class="control-group">
           <div class="controls">
             <%= f.submit "Login", class: "btn", 'data-disable-with' => 'Processing...' %>
           </div>
         </div>
+
+        <div class='control-group'>
+          <div class="horizontal-divider"></div>
+          <div class="controls">
+            <b>Or login with your existing services:</b>
+          </div>
+        </div>
+
         <div class="control-group">
           <div class="controls">
             <%= render partial: '/shared/social_connects' %>
           </div>
         </div>
+
       </fieldset>
     <% end %>
   </div>

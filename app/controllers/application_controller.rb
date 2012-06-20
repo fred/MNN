@@ -174,14 +174,21 @@ class ApplicationController < ActionController::Base
     when :admin_user, AdminUser
       admin_dashboard_path
     when :user, User
-      store_location = session[:return_to]
-      clear_stored_location
-      (store_location.nil?) ? "/" : store_location.to_s
+      redirect_location
     else
       super
     end
   end
 
+  def redirect_location
+    if current_user && current_user.email.match("please_update_your_email")
+      edit_user_registration_path(protocol: 'https')
+    else
+      store_location = session[:return_to]
+      clear_stored_location
+      (store_location.nil?) ? "/" : store_location.to_s
+    end
+  end
 
 
   protected

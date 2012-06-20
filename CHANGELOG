@@ -1,5 +1,12 @@
 CHANGELOG
 
+== June 20, 2012
+* Added WindowsLive connect
+* Improved Admin interface for users/admin_users
+* re-aranged Admin Dashboard
+* Added links to admin (WIP)
+* Updated Gems
+
 == June 19, 2012
 * Improved Welcome Email
 

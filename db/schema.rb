@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120616065135) do
+ActiveRecord::Schema.define(:version => 20120620092844) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -186,6 +186,15 @@ ActiveRecord::Schema.define(:version => 20120616065135) do
   add_index "languages", ["locale"], :name => "index_languages_on_locale"
   add_index "languages", ["slug"], :name => "index_languages_on_slug", :unique => true
 
+  create_table "links", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.integer  "priority",    :default => 100
+    t.text     "description"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.string   "link_title"
@@ -345,6 +354,7 @@ ActiveRecord::Schema.define(:version => 20120616065135) do
     t.boolean  "show_public",            :default => false
     t.string   "provider"
     t.string   "oauth_uid"
+    t.string   "oauth_page"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

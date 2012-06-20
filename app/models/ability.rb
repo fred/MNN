@@ -48,7 +48,8 @@ class Ability
     # Editor can manager all Items, Tags and Categories, 
     if user.has_role? :editor
       can :manage, [ItemStat,Version,Item,Tag,Category,Page,Language,
-        Attachment,CommentSubscription,Subscription,EmailDelivery,Document
+        Attachment,CommentSubscription,Subscription,EmailDelivery,
+        Document,Link
       ]
       can :read, [ItemStat,Version]
     end
@@ -68,7 +69,7 @@ class Ability
     if user.has_role? :security
       can :manage, [Role,User,AdminUser,ItemStat,Language,Version,
           Contact,CommentSubscription,Subscription,EmailDelivery,
-          TwitterShare,Attachment,Document
+          TwitterShare,Attachment,Document,Link
       ]
     end
     
