@@ -29,6 +29,14 @@ module ApplicationHelper
       link_to "@#{str.gsub('@','')}", "https://twitter.com/#{str.gsub('@','')}"
     end
   end
+
+  def twitter_username(str)
+    if str.match(/^https?:\/\//)
+      str.split("/").last
+    else
+      str.gsub('@','')
+    end
+  end
   
   def flattr_large
     link_to(

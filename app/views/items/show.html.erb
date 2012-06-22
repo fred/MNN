@@ -118,10 +118,13 @@
                 target: "_blank"
           %>
           <%= link_to image_tag("icons/social/twitter_16.png", alt: "Twitter"),
-                twitter_share(@item),
+                twitter_share_intent(@item),
                 title: "Share on Twitter",
                 target: "_blank",
-                'data-via'=>"WorldMathaba"
+                data: {
+                  via: "WorldMathaba",
+                  related: twitter_data_related(@item)
+                }
           %>
           <%= link_to image_tag("icons/social/reddit_16.png", alt: "Reddit"),
                 reddit_share(@item),
@@ -138,17 +141,17 @@
                 title: "Slashdot Share",
                 target: "_blank"
           %>
-          <%= link_to image_tag("icons/social/posterous_16.png", alt: "Posterous"),
+          <%#= link_to image_tag("icons/social/posterous_16.png", alt: "Posterous"),
                 posterous_share(@item),
                 title: "Posterous Share",
                 target: "_blank"
           %>
-          <%= link_to image_tag("icons/social/delicious_16.png", alt: "Delicious"),
+          <%#= link_to image_tag("icons/social/delicious_16.png", alt: "Delicious"),
                 delicious_share(@item),
                 title: "Delicious Share",
                 target: "_blank"
           %>
-          <%= link_to image_tag("icons/social/diaspora-16.jpg", alt: "Diaspora"),
+          <%#= link_to image_tag("icons/social/diaspora-16.jpg", alt: "Diaspora"),
                 diaspora_share(@item),
                 title: "Share on Diaspora",
                 target: "_blank"
@@ -227,6 +230,7 @@
 
 
 <%= content_for :scripts do %>
+  <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
   <%= javascript_include_tag "font_resizer" %>
   <% unless is_handheld? %>
     <script type="text/javascript">

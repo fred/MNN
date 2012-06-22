@@ -112,6 +112,30 @@ module ItemsHelper
     return url
   end
 
+  def twitter_share_intent(item)
+    url = "https://twitter.com/intent/tweet?"
+    url += "text=#{url_encode(item.title.truncate(98))}"
+    url += "%20"
+    url += url_for(item_path(item, only_path: false, protocol: 'http'))
+    url += "&via="
+    url += "worldmathaba"
+    url += "&related="
+    url += "worldmathaba"
+    if item.user.twitter.present?
+      url += ",#{item.user.twitter_username}"
+    end
+    return url
+  end
+
+  def twitter_data_text(item)
+    item.title.truncate(98)
+  end
+  def twitter_data_related(item)
+    str = ['worldmathaba']
+    str << item.user.twitter_username if item.user.twitter.present?
+    str.join(',')
+  end
+
   def twitter_share(item)
     url = "https://twitter.com/home?status="
     url += url_encode(item.title.truncate(116))

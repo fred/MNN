@@ -103,6 +103,7 @@ group :development do
   gem 'capistrano', '~> 2.9.0', require: false
   gem 'rvm-capistrano', require: false
   gem 'debugger'
+  gem 'pry-rails'
 end
 
 group :test do
