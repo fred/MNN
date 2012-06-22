@@ -1,5 +1,10 @@
 CHANGELOG
 
+== June 22, 2012
+* Added registration reason to edit profil
+* Updated Gems
+* Tuned postgresql.conf
+
 == June 20, 2012
 * Added WindowsLive connect
 * Improved Admin interface for users/admin_users

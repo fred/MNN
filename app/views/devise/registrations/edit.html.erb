@@ -100,6 +100,18 @@
           </div>
         </div>
 
+        <div class="control-group">
+          <%= f.label :registration_role, "Reason for joining us?", class: 'control-label' %>
+          <div class="controls">
+            <%= f.select :registration_role, 
+                  options_for_select([["Just be a member"], ["To Comment"], ["Comment and Submit Articles"], ["I want to be an Editor"]]),
+                  {include_blank: "-- Please Choose"},
+                  required: false,
+                  class: "imput-medium"
+            %>
+          </div>
+        </div>
+
       </fieldset>
       
 

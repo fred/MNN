@@ -62,7 +62,7 @@ ActiveAdmin.register Item do
       end
     end
     column "Views", sortable: false do |item|
-      item.item_stat.views_counter
+      item.item_stat.views_counter if item.item_stat
     end
     column "Comments", :comments_count
     bool_column :draft

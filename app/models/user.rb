@@ -32,8 +32,12 @@ class User < ActiveRecord::Base
   has_many :subscriptions, dependent: :destroy, conditions: {item_id: nil}
   has_many :item_subscriptions, dependent: :destroy, conditions: "item_id is not NULL", class_name: "Subscription"
 
-  before_save :create_subscriptions, :cancel_subscriptions, :update_subscriptions, :check_upgrade
-  after_create :notify_admin, :send_welcome_email
+  before_save   :create_subscriptions
+  before_save   :cancel_subscriptions
+  before_save   :update_subscriptions
+  before_save   :check_upgrade
+  after_create  :notify_admin
+  after_create  :send_welcome_email
 
   apply_simple_captcha
 
