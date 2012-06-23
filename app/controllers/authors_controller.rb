@@ -20,6 +20,11 @@ class AuthorsController < ApplicationController
     @rss_category = "author_#{@author.name}"
     @rss_source = author_path(@author, only_path: false, protocol: 'https')
     @rss_language = "en"
+
+    @meta_description = @rss_description
+    @meta_title = @rss_title
+    @meta_author = @author.title
+    @meta_keywords = "WorldMathaba, news, #{@author.title}"
     
     respond_to do |format|
       format.html

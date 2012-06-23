@@ -35,7 +35,7 @@ class TagsController < ApplicationController
     end
     @rss_title = "World Mathaba - #{@tag.title} News"
     @meta_title = @rss_title
-    @rss_description = "World Mathaba - Latest News Tagged as #{@tag.title}"
+    @rss_description = "World Mathaba - Latest News about #{@tag.title}"
     @meta_description = @rss_description
     @meta_keywords = "#{@tag.title} news"
     @rss_category = @tag.title

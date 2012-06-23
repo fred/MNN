@@ -367,6 +367,13 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def keywords_list
+    self.keywords.split.join(',')
+  end
+
+  def meta_keywords
+    "#{self.keywords_list}, #{self.category_title}, #{self.tag_list}"
+  end
 
   # This builds the solr keyword for related articles
   def keyword_for_solr

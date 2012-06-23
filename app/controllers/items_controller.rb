@@ -8,10 +8,11 @@ class ItemsController < ApplicationController
     @show_breadcrumb = true
     if params[:language_id]
       @language = Language.find(params[:language_id])
-      @rss_title = "World Mathaba - Latest in #{@language.description}"
-      @rss_description = "World Mathaba - Latest News in #{@language.description}"
+      @rss_title = "World Mathaba - News in #{@language.description} Language"
+      @rss_description = "World Mathaba - News in #{@language.description} Language"
       @rss_language = @language.locale
-      @rss_source = items_path(language_id: params[:language_id], only_path: false, protocol: 'https')
+      @rss_source = items_path(language_id: params[:language_id], only_path: false)
+      @meta_keywords = "#{@language.description}, WorldMathaba"
       @items = Item.published.
         not_draft.
         includes(:language, :attachments, :tags, :item_stat, :user).
@@ -29,6 +30,8 @@ class ItemsController < ApplicationController
         order("published_at DESC").
         page(params[:page]).per(per_page)
     end
+    @meta_description = @rss_description
+    @meta_title = @rss_title
     if @items.empty?
       @last_published = Time.now
     else
@@ -55,8 +58,8 @@ class ItemsController < ApplicationController
       end
     end
     @meta_title = @item.title + " - World Mathaba"
-    @meta_description = @item.abstract
-    @meta_keywords = "#{@item.category_title} news, #{@item.tag_list}"
+    @meta_description = "News #{@item.category_title} - #{@item.abstract}"
+    @meta_keywords = @item.meta_keywords
     @meta_author = @item.user.title if @item.user
 
     private_headers
@@ -83,7 +86,9 @@ class ItemsController < ApplicationController
     end
     if params[:q] && !params[:q].to_s.empty?
       term = params[:q].downcase
-      @search = Item.solr_search(include: [:attachments, :comments, :category, :language, :item_stat, :user, :tags]) do
+      @search = Item.solr_search(
+        include: [:attachments, :comments, :category, :language, :item_stat, :user, :tags]
+      ) do
         fulltext term do
           phrase_fields title: 1.8
           phrase_fields abstract: 1.6
