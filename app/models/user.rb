@@ -66,6 +66,10 @@ class User < ActiveRecord::Base
     true
   end
 
+  def original_items_count
+    self.items.original.count
+  end
+
   def is_admin?
     self.type == "AdminUser"
   end

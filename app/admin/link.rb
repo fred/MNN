@@ -6,7 +6,7 @@ ActiveAdmin.register Link do
   }
 
   index do
-    column :id
+    id_column
     column :title
     column :priority
     column :url do |link|

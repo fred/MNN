@@ -6,6 +6,9 @@ CHANGELOG
 * Improved CSS for comments
 * Updated Gems
 * Fix modernizr on ipad
+* set default items_count to 0
+* Rearanged Asset files into vendor
+* Serving twitter widgets.js from own domain
 
 == June 22, 2012
 * Added registration reason to edit profil

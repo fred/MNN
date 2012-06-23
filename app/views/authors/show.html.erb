@@ -20,6 +20,8 @@
     <% if @author.gpg? %>
       <p>GPG Key: <%= link_to "Download", @author.gpg.url %></p>
     <% end %>
+    <p>Submitted Articles: <%= @author.items_count %></p>
+    <p>Original Articles: <%= @author.original_items_count %></p>
     <br />
     <%= @author.bio %>
     <% if (current_user && @author.id == current_user.id) or (current_admin_user && @author.id == current_admin_user.id) %>
@@ -31,7 +33,7 @@
 <% if @items.empty? %>
   <div class='alert alert-info'>
     <a class="close" data-dismiss="alert" href="#">×</a>
-    <% if (current_user && @author.id == current_user.id) or (current_admin_user && @author.id == current_admin_user.id) %>
+    <% if (current_user && (current_user.id == @author.id)) or (current_admin_user && @author.id == current_admin_user.id) %>
       <h4 class="alert-heading">You have not submitted any articles yet</h4>
       Please read this page if you would like to contribute with articles: 
       <u><b><%= link_to("How To Contribute", @help_page) if @help_page %></b></u>
@@ -41,7 +43,7 @@
   </div>
 <% else %>
   <h3 class="alert alert-success">
-    <%= @author.name %> Articles (<%= @author.items.count %>)
+    <%= @author.name %> Articles
   </h3>
   <% @items.each do |item| %>
     <%= render partial: "/shared/item", locals: {item: item } %>

@@ -1,7 +1,7 @@
 class AuthorsController < ApplicationController
   
   def index
-    @authors = User.order("id ASC").page(params[:page], per_page: 20)
+    @authors = AdminUser.order("items_count DESC").page(params[:page], per_page: 20)
     respond_to do |format|
       format.html
       format.json { render json: @authors }

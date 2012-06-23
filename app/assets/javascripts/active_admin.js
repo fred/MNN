@@ -2,7 +2,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require tinymce-jquery
-//= require anytimec
-//= require anytimetz
-//= require jquery-counter-min
+//= require anytime/anytimec
+//= require anytime/anytimetz
+//= require jquery/counter
 //= require modernizr

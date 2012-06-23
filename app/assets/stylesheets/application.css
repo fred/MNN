@@ -8,8 +8,7 @@
  *= require grid
  *= require docs
  *= require pagination
- *= require idc
- *= require fancybox
+ *= require fancybox/fancybox
  *= require error
  *= require zocial
 */

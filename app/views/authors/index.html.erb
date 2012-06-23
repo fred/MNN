@@ -14,7 +14,8 @@
       <% unless author.diaspora.to_s.empty? %>
         <p>Diaspora: <%= author.diaspora %></p>
       <% end %>
-      <p>Articles Submitted: <%= author.items.count %></p>
+      <p>Articles Submitted: <%= author.items_count %></p>
+      <p>Original Articles: <%= author.original_items_count %></p>
       <br />
       <%= author.bio %>
     </section>

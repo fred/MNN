@@ -7,7 +7,7 @@ ActiveAdmin.register EmailDelivery do
   }
   actions  :index, :destroy
   index do
-    column :id
+    id_column
     column :item do |t|
       if t.item
         link_to t.item.title, admin_item_path(t.item)

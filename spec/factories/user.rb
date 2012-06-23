@@ -20,5 +20,19 @@ FactoryGirl.define do
     password 'welcome'
     password_confirmation 'welcome'
   end
+
+  factory :user_with_gpg, class: 'User' do
+    name 'my name'
+    email  'gpg@email.com'
+    password 'welcome'
+    password_confirmation 'welcome'
+
+    gpg { 
+      fixture_file_upload "#{Rails.root}/public/robots.txt", 'text'
+    }
+    to_create do |instance|
+      instance.save!(validate: false)
+    end
+  end
   
 end

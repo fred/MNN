@@ -7,7 +7,7 @@ ActiveAdmin.register ItemStat do
   actions :index
   config.comments = false
   index do
-    column :id
+    id_column
     column "Item", sortable: :item_id do |t|
       link_to t.item.title, admin_item_path(t.item) if t.item
     end

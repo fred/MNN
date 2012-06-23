@@ -9,7 +9,10 @@
 //= require twitter/bootstrap
 //= require css3-mediaqueries
 //= require easyTooltip
-//= require fancybox
+//= require fancybox/fancybox
 //= require modernizr
 //= require bootstrap
 //= require tinymce-jquery
+//= require twitter/widgets
+//= require jquery/jquery.validate.js
+//= require font_resizer

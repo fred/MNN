@@ -7,7 +7,7 @@ ActiveAdmin.register Category do
     controller.current_ability.can?(:manage, Category)
   }
   index do
-    column :id
+    id_column
     column :title
     column :description
     column :priority

@@ -60,7 +60,7 @@ gem 'sidekiq', git: 'git://github.com/mperham/sidekiq.git'
 gem 'multi_json'
 gem 'json'
 gem 'simple_oauth', '~> 0.1.7'
-gem 'twitter', '~> 2.3.0'
+gem 'twitter', '~> 2.5.0'
 
 gem 'sass'
 gem 'sass-rails'#,  '~> 3.2.3'
@@ -72,8 +72,8 @@ group :assets do
   gem 'libv8'
   gem 'execjs'
   gem 'therubyracer', require: 'v8'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'coffee-rails', '~> 3.2.2'
+  gem 'uglifier', '>= 1.2.5'
 end
 
 

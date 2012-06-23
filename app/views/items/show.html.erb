@@ -230,8 +230,6 @@
 
 
 <%= content_for :scripts do %>
-  <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-  <%= javascript_include_tag "font_resizer" %>
   <% unless is_handheld? %>
     <script type="text/javascript">
       $(document).ready(function() {
@@ -253,5 +251,4 @@
   <% end %>
 <% end %>
 
-<%= render partial: "/shared/wysiwyg" %>
 <%= render partial: "/shared/tinymce" %>

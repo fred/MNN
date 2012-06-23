@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120620092844) do
+ActiveRecord::Schema.define(:version => 20120623091847) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -347,7 +347,7 @@ ActiveRecord::Schema.define(:version => 20120620092844) do
     t.string   "avatar"
     t.string   "registration_role"
     t.string   "gpg"
-    t.integer  "items_count"
+    t.integer  "items_count",            :default => 0
     t.string   "facebook"
     t.string   "oauth_token"
     t.text     "oauth_data"

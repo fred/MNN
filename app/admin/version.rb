@@ -6,7 +6,7 @@ ActiveAdmin.register Version do
   }
   config.comments = false
   index do
-    column :id
+    id_column
     column "Record" do |v| 
       if v.item
         link_to(
