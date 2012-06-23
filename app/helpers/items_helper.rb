@@ -121,7 +121,7 @@ module ItemsHelper
     url += "worldmathaba"
     url += "&related="
     url += "worldmathaba"
-    if item.user.twitter.present?
+    if item.user && item.user.twitter.present?
       url += ",#{item.user.twitter_username}"
     end
     return url
@@ -130,9 +130,10 @@ module ItemsHelper
   def twitter_data_text(item)
     item.title.truncate(98)
   end
+  
   def twitter_data_related(item)
     str = ['worldmathaba']
-    str << item.user.twitter_username if item.user.twitter.present?
+    str << item.user.twitter_username if item.user && item.user.twitter.present?
     str.join(',')
   end
 

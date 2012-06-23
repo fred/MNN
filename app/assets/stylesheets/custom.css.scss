@@ -686,10 +686,12 @@ footer {
   }
 }
 
-
+ul#comments {
+  margin: 0 0 12px 12px;
+}
 ul#comments li {
   text-align: left;
-  margin-bottom: 11px;
+  margin-bottom: 15px;
   margin-top: 11px;
   padding: 10px 15px 9px 15px;
   text-rendering: optimizeLegibility;

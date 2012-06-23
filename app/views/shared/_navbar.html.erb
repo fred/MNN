@@ -43,7 +43,7 @@
               <% end %>
             </ul>
           </li>
-          <li class="dropdown hidden-phone" data-dropdown="dropdown">
+          <li class="dropdown hidden-phone hidden-tablet" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tags <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <% GeneralTag.order("title ASC").all.each do |tag| %>
@@ -56,6 +56,14 @@
             <ul class="dropdown-menu">
               <% Language.order("locale ASC").all.each do |language|%>
                 <li><%= link_to language.description, language, title: language.description %></li>
+              <% end %>
+            </ul>
+          </li>
+          <li class="dropdown hidden-phone" data-dropdown="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Authors <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <% AdminUser.popular(16).each do |user| %>
+                <li><%= link_to(user.title, author_path(user)) %></li>
               <% end %>
             </ul>
           </li>

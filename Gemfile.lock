@@ -56,7 +56,7 @@ GIT
 
 GIT
   remote: git://github.com/mperham/sidekiq.git
-  revision: 70dc40661af5c377aeea68de9be304e27c72a160
+  revision: b8ed0cce36415f1caf45cade06f36bf63af1cb29
   specs:
     sidekiq (2.0.3)
       celluloid (~> 0.11.0)
@@ -184,10 +184,10 @@ GEM
     excon (0.13.4)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    factory_girl (3.4.2)
+    factory_girl (3.5.0)
       activesupport (>= 3.0.0)
-    factory_girl_rails (3.4.0)
-      factory_girl (~> 3.4.0)
+    factory_girl_rails (3.5.0)
+      factory_girl (~> 3.5.0)
       railties (>= 3.0.0)
     faraday (0.8.1)
       multipart-post (~> 1.1)

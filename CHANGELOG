@@ -1,6 +1,13 @@
 CHANGELOG
 
 == June 22, 2012
+* Added Authors to top menu
+* Added poll_interval to sidekiq
+* Improved CSS for comments
+* Updated Gems
+* Fix modernizr on ipad
+
+== June 22, 2012
 * Added registration reason to edit profil
 * Updated Gems
 * Tuned postgresql.conf

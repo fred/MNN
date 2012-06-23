@@ -6,7 +6,11 @@ class Version < ActiveRecord::Base
   # Cleanup database versions table (vestal_versions)
   def cleanup_versions
     if Version.count > VERSIONS_TO_KEEP
-      Version.delay.delete_old
+      if Rails.env.production?
+        Version.delay.delete_old
+      else
+        Version.delete_old
+      end
     end
   end
 
