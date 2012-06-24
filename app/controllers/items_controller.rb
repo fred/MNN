@@ -127,10 +127,10 @@ class ItemsController < ApplicationController
       }
       format.js
       format.atom {
-        headers_with_timeout(3600)
+        headers_with_timeout(900)
         render partial: "/shared/items", layout: false }
       format.rss {
-        headers_with_timeout(3600)
+        headers_with_timeout(900)
         render partial: "/shared/items", layout: false 
       }
     end

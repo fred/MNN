@@ -44,16 +44,14 @@ class TagsController < ApplicationController
     headers['Last-Modified'] = @last_published.httpdate
     
     respond_to do |format|
-      format.html {
-        headers['Cache-Control'] = 'public, max-age=600' unless (current_admin_user or current_user) # 10 min cache
-      }
+      format.html { private_headers }
       format.json { render json: @items }
       format.atom {
-        headers['Cache-Control'] = 'public, max-age=3600' # 1 hour cache
+        headers_with_timeout(900)
         render partial: "/shared/items", layout: false
       }
       format.rss {
-        headers['Cache-Control'] = 'public, max-age=3600' # 1 hour cache
+        headers_with_timeout(900)
         render partial: "/shared/items", layout: false
       }
       format.xml { render @items }

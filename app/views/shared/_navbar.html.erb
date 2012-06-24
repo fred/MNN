@@ -59,24 +59,14 @@
               <% end %>
             </ul>
           </li>
-
-          <!-- <li class="dropdown hidden-phone" data-dropdown="dropdown">
+          <li class="dropdown hidden-phone" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Links <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <%# Link.order("priority ASC").all.each do |link| %>
-                <li><%#= link_to(link.title, link.url, target: 'blank') %></li>
-              <%# end %>
+              <% Link.order("priority ASC").all.each do |link| %>
+                <li><%= link_to(link.title, link.url, target: 'blank') %></li>
+              <% end %>
             </ul>
-          </li> -->
-
-          <!-- <li class="dropdown hidden-phone" data-dropdown="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Authors <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <%# AdminUser.popular(16).each do |user| %>
-                <li><%#= link_to(user.title, author_path(user)) %></li>
-              <%# end %>
-            </ul>
-          </li> -->
+          </li>
         </ul>
       <% end %>
 

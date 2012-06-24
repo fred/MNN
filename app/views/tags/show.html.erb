@@ -20,13 +20,15 @@
   </li>
   
   <li class="active">
-    <%= @tag.title %>
-    <%= link_to(
-          image_tag("icons/social/rss_16.png", alt: "RSS for #{@tag.title} tag"), 
-          tag_path(@tag, format: "rss"),
-          title: "RSS feed for items tagged #{@tag.title}"
-        )
-    %>
+    <h1>
+      <%= @tag.title %>
+      <%= link_to(
+            image_tag("icons/social/rss_16.png", alt: "RSS for #{@tag.title} tag"), 
+            tag_path(@tag, format: "rss"),
+            title: "RSS feed for items tagged #{@tag.title}"
+          )
+      %>
+    </h1>
   </li>
   
   <% if params[:page] && params[:page].to_i > 0 %>

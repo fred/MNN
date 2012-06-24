@@ -18,17 +18,19 @@
       <span class="divider">/</span>
     </li>
     <li class="active">
-      <%= @language.description %>
-      <%= link_to(
-            image_tag("icons/social/rss_16.png", alt: "RSS for #{@language.description}"), 
-            language_items_path(@language, format: "rss"),
-            title: "RSS feed for #{@language.description} items"
-          )
-      %>
+      <h1>
+        <%= @language.description %> Language News
+        <%= link_to(
+              image_tag("icons/social/rss_16.png", alt: "RSS for #{@language.description}"), 
+              language_items_path(@language, format: "rss"),
+              title: "RSS feed for #{@language.description} items"
+            )
+        %>
+      </h1>
     </li>
   <% else %>
     <li class="active">
-      Latest News
+      <h1>Latest News</h1>
     </li>
   <% end %>
 <% end %>

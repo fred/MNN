@@ -344,7 +344,9 @@ article footer .share a {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f5f5f5', GradientType=0);
 }
 
+.categories .box h2,
 .categories .box h1 {
+  text-align: left;
   font-size: 22px;
   padding: 1px 1px 1px 12px;
   margin-bottom: 3px;
@@ -426,13 +428,6 @@ div#highlights ul li.list_item span.title,
   border: 1px solid #ddd;
   padding: 1px;
   margin-bottom: 20px;
-}
-
-.categories .box h2 {
-  font-size: 22px;
-  padding: 0px;
-  margin-bottom: 6px;
-  text-align: center;
 }
 
 #main_highlights.box {
@@ -552,12 +547,21 @@ span.googleplus {
 }
 
 .breadcrumb {
-  box-shadow: 0px 0px 3px #CCC;
+  box-shadow: 0px 0px 3px #bbb;
+  font-size: 14px;
+  padding: 14px;
+  margin: 0 0 20px;
 }
 ul.breadcrumb li img {
   vertical-align: bottom;
   margin-bottom: 2px;
   margin-left: 3px;
+}
+ul.breadcrumb li h1,
+ul.breadcrumb li h2 {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
 }
 
 div.all_tags div.tag {

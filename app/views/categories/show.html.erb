@@ -16,13 +16,15 @@
   </li>
   
   <li class="active">
-    <%= @category.title %>
-    <%= link_to(
-          image_tag("icons/social/rss_16.png", alt: "RSS for #{@category.title}"), 
-          category_path(@category, format: "rss"),
-          title: "RSS feed for #{@category.title} items"
-        )
-    %>
+    <h1>
+      <%= @category.title %>
+      <%= link_to(
+            image_tag("icons/social/rss_16.png", alt: "RSS for #{@category.title}"), 
+            category_path(@category, format: "rss"),
+            title: "RSS feed for #{@category.title} items"
+          )
+      %>
+    </h1>
   </li>
   
 <% end %>

@@ -48,7 +48,7 @@
   
   <div class="span6 box" id="highlights">
     <% cache_expiring("hglt/#{@latest_items.first.cache_key_full}",300) do %>
-      <h1><%= link_to "Latest News", items_path %></h1>
+      <h2><%= link_to "Latest News", items_path %></h2>
       <ul>
       <% @latest_items.each do |item| %>
         <li class="list_item" id="highlight_item_<%=item.id%>">
@@ -93,7 +93,7 @@
     <% @top_items = category.top_items(13) %>
     <% cache_expiring("box/#{category.id}/#{@top_items.first.cache_key_full}",600) do %>
       <div class="span6 box" id="<%= category.slug %>">
-        <h1><%= link_to category.title, category %></h1>
+        <h2><%= link_to category.title, category %></h2>
         <ul>
           <% @top_items.each_with_index do |item,index|%>
             <li class="list_item" id="item_<%=item.id%>">
