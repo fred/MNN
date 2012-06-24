@@ -62,7 +62,7 @@
           <li class="dropdown hidden-phone" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Links <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <% Link.order("priority ASC").all.each do |link| %>
+              <% Link.order("title ASC").all.each do |link| %>
                 <li><%= link_to(link.title, link.url, target: 'blank') %></li>
               <% end %>
             </ul>
