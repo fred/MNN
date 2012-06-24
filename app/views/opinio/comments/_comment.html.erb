@@ -38,6 +38,16 @@
           }
       %>
     <% end %>
+
+    <%# if can_edit_comment(comment) %>
+      <%#= link_to 'Edit Comment',
+          edit_comment_path(comment),
+          class: "btn btn-mini btn-warning",
+          data: {
+            disable_with: 'Loading...'
+          }
+      %>
+    <%# end %>
   </div>
   
   <% if Opinio.accept_replies && !reply %>

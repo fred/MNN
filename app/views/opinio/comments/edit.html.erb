@@ -1,0 +1,16 @@
+<% if @comment %>
+  <%= form_for @comment, html: { method: :put, class: form_class } do |f|%>
+    <h3> Editing Comment </h3>
+    <p>
+      <%= f.text_area :body, rows: 8, id: "Comment", class: "input-xlarge" %>
+    </p>
+    <div class="send_button">
+      <%= f.submit "Update Comment",
+            class: "btn btn-primary",
+              data: {disable_with: 'Saving...'}
+      %>
+    </div>
+    <p>
+  <% end %>
+  <%= render partial: "/shared/tinymce" %>
+<% end %>

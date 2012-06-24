@@ -68,5 +68,47 @@ class Opinio::CommentsController < ApplicationController
     end
   end
 
+  def show
+    @comment = Opinio.model_name.constantize.find(params[:id])
+    respond_to do |format|
+      format.js
+      format.html
+    end
+  end
+
+  def edit
+    if current_user
+      owner_id = current_user.id
+    elsif current_admin_user
+      owner_id = current_admin_user.id
+    end
+    begin
+      @comment = Opinio.model_name.constantize.where(id: params[:id], owner_id: owner_id).first
+    rescue
+      redirect_to root_path
+    end
+    respond_to do |format|
+      format.js
+      format.html
+    end
+  end
+
+  def update
+    if current_user
+      owner_id = current_user.id
+    elsif current_admin_user
+      owner_id = current_admin_user.id
+    end
+    @comment = Opinio.model_name.constantize.where(id: params[:id], owner_id: owner_id).first
+    if params[:comment] && @comment.update_attribute(:body, params[:comment][:body])
+      flash[:success] = "Comment Updated"
+    end
+    respond_to do |format|
+      format.js
+      format.html {
+        redirect_to @comment.commentable
+      }
+    end
+  end
   
 end
