@@ -40,7 +40,113 @@ describe User do
     end
   end
   
+  describe "Instance Methods" do
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+    end
+    it "should respond to notify_admin" do
+      @user.should respond_to(:notify_admin)
+    end
+    it "should respond to send_welcome_email" do
+      @user.should respond_to(:send_welcome_email)
+    end
+    it "should respond to check_upgrade" do
+      @user.should respond_to(:check_upgrade)
+    end
+    it "should respond to original_items_count" do
+      @user.should respond_to(:original_items_count)
+    end
+    it "should respond to is_admin?" do
+      @user.should respond_to(:is_admin?)
+    end
+    it "should respond to title" do
+      @user.should respond_to(:title)
+    end
+    it "should respond to has_image?" do
+      @user.should respond_to(:has_image?)
+    end
+    it "should respond to main_image" do
+      @user.should respond_to(:main_image)
+    end
+    it "should respond to has_role?(role_sym)" do
+      @user.should respond_to(:has_role?)
+    end
+    it "should respond to has_any_role?" do
+      @user.should respond_to(:has_any_role?)
+    end
+    it "should respond to role_titles" do
+      @user.should respond_to(:role_titles)
+    end
+    it "should respond to role_models" do
+      @user.should respond_to(:role_models)
+    end
+    it "should respond to has_subscription?" do
+      @user.should respond_to(:has_subscription?)
+    end
+    it "should respond to create_subscriptions" do
+      @user.should respond_to(:create_subscriptions)
+    end
+    it "should respond to update_subscriptions" do
+      @user.should respond_to(:update_subscriptions)
+    end
+    it "should respond to cancel_subscriptions" do
+      @user.should respond_to(:cancel_subscriptions)
+    end
+    it "should respond to my_items" do
+      @user.should respond_to(:my_items)
+    end
+    it "should respond to twitter_username" do
+      @user.should respond_to(:twitter_username)
+    end
+  end
 
+  describe "Class Methods" do
+    it "should respond to find_or_create_from_oauth" do
+      User.should respond_to(:find_or_create_from_oauth)
+    end
+    it "should respond to facebook_oauth" do
+      User.should respond_to(:facebook_oauth)
+    end
+    it "should respond to twitter_oauth" do
+      User.should respond_to(:twitter_oauth)
+    end
+    it "should respond to flattr_oauth" do
+      User.should respond_to(:flattr_oauth)
+    end
+    it "should respond to google_oauth" do
+      User.should respond_to(:google_oauth)
+    end
+    it "should respond to linkedin_oauth" do
+      User.should respond_to(:linkedin_oauth)
+    end
+    it "should respond to windowslive_oauth" do
+      User.should respond_to(:windowslive_oauth)
+    end
+    it "should respond to popular" do
+      User.should respond_to(:popular)
+    end
+    it "should respond to admin_users" do
+      User.should respond_to(:admin_users)
+    end
+    it "should respond to security_users" do
+      User.should respond_to(:security_users)
+    end
+    it "should respond to approved" do
+      User.should respond_to(:approved)
+    end
+    it "should respond to pending" do
+      User.should respond_to(:pending)
+    end
+    it "should respond to recent" do
+      User.should respond_to(:recent)
+    end
+    it "should respond to recent_pending" do
+      User.should respond_to(:recent_pending)
+    end
+    it "should respond to logged_in" do
+      User.should respond_to(:logged_in)
+    end
+  end
   
   describe "with subscription" do
     before(:each) do
@@ -100,13 +206,11 @@ describe User do
       @user.save
       @user.subscriptions.should eq([])
     end
-
   end
 
-  describe "with an email" do
-    it 'should send an Welcome email to the user' do
-      # ->{ FactoryGirl.create(:user) }.should change(ActionMailer::Base.deliveries, :count).by(1)
-      pending "implement welcome email"
+  describe "with email notifications" do
+    it 'should send an Welcome email to the User and to Admin' do
+      ->{ FactoryGirl.create(:user) }.should change(ActionMailer::Base.deliveries, :count).by(2)
     end
   end
   

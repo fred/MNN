@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Item do
   include NumericMatchers
-  describe "A Simple Item" do 
+
+  describe "Valitidy" do
     before(:each) do
       @item = FactoryGirl.create(:item)
     end
@@ -48,6 +49,110 @@ describe Item do
     it "should have ItemStat" do
       @item.item_stat.should_not be(nil)
       @item.item_stat.should be_an_instance_of ItemStat
+    end
+  end
+  describe "Instance Methods" do
+    before(:each) do
+      @item = FactoryGirl.create(:item)
+    end
+    it "should respond to should_generate_new_friendly_id?" do
+      @item.should respond_to(:should_generate_new_friendly_id?)
+    end
+    it "should respond to set_custom_slug" do
+      @item.should respond_to(:set_custom_slug)
+    end
+    it "should respond to custom_slug" do
+      @item.should respond_to(:custom_slug)
+    end
+    it "should respond to clear_bad_characters" do
+      @item.should respond_to(:clear_bad_characters)
+    end
+    it "should respond to email_delivery_sent?" do
+      @item.should respond_to(:email_delivery_sent?)
+    end
+    it "should respond to email_delivery_queued?" do
+      @item.should respond_to(:email_delivery_queued?)
+    end
+    it "should respond to email_delivery_queued_at" do
+      @item.should respond_to(:email_delivery_queued_at)
+    end
+    it "should respond to send_email_deliveries" do
+      @item.should respond_to(:send_email_deliveries)
+    end
+    it "should respond to posted_to_twitter?" do
+      @item.should respond_to(:posted_to_twitter?)
+    end
+    it "should respond to create_twitter_share" do
+      @item.should respond_to(:create_twitter_share)
+    end
+    it "should respond to twitter_status" do
+      @item.should respond_to(:twitter_status)
+    end
+    it "should respond to sitemap_refresh" do
+      @item.should respond_to(:sitemap_refresh)
+    end
+    it "should respond to enqueue_time" do
+      @item.should respond_to(:enqueue_time)
+    end
+    it "should respond to record_freshness" do
+      @item.should respond_to(:record_freshness)
+    end
+    it "should respond to record_freshness_by_version" do
+      @item.should respond_to(:record_freshness_by_version)
+    end
+    it "should respond to main_image" do
+      @item.should respond_to(:main_image)
+    end
+    it "should respond to main_image_cache_key" do
+      @item.should respond_to(:main_image_cache_key)
+    end
+    it "should respond to comment_cache_key" do
+      @item.should respond_to(:comment_cache_key)
+    end
+    it "should respond to has_image?" do
+      @item.should respond_to(:has_image?)
+    end
+    it "should respond to cache_key_full" do
+      @item.should respond_to(:cache_key_full)
+    end
+    it "should respond to tag_list" do
+      @item.should respond_to(:tag_list)
+    end
+    it "should respond to build_stat" do
+      @item.should respond_to(:build_stat)
+    end
+    it "should respond to set_status_code" do
+      @item.should respond_to(:set_status_code)
+    end
+    it "should respond to admin_permalink" do
+      @item.should respond_to(:admin_permalink)
+    end
+    it "should respond to published?" do
+      @item.should respond_to(:published?)
+    end
+    it "should respond to language_title_short" do
+      @item.should respond_to(:language_title_short)
+    end
+    it "should respond to category_title" do
+      @item.should respond_to(:category_title)
+    end
+    it "should respond to language_title" do
+      @item.should respond_to(:language_title)
+    end
+    it "should respond to user_title" do
+      @item.should respond_to(:user_title)
+    end
+    it "should respond to user_email" do
+      @item.should respond_to(:user_email)
+    end
+    it "should respond to keywords_list" do
+      @item.should respond_to(:keywords_list)
+    end
+    it "should respond to meta_keywords" do
+      @item.should respond_to(:meta_keywords)
+    end
+    it "should respond to keyword_for_solr" do
+      @item.should respond_to(:keyword_for_solr)
     end
   end
 
@@ -157,6 +262,9 @@ describe Item do
     it "should have send_at queue time greater then publication date" do
       @item.email_deliveries.first.send_at.to_i.should greater_than(@item.published_at.to_i)
     end
+    it "should not yet have sent the email" do
+      @item.email_delivery_sent?.should eq(false)
+    end
   end
 
   describe "Creating Draft Item without Subscription" do
@@ -172,6 +280,9 @@ describe Item do
       @item.send_emails = "1"
       @item.save
       @item.email_deliveries.count.should eq(1)
+    end
+    it "should says it already sent the email" do
+      @item.email_delivery_sent?.should eq(false)
     end
   end
 
@@ -189,13 +300,29 @@ describe Item do
       @item.save
       @item.email_deliveries.count.should eq(1)
     end
+    it "should have already sent the email" do
+      @item.email_delivery_sent?.should eq(false)
+    end
+    it "should enqueue the email delivery" do
+      @item.email_delivery_queued?.should eq(false)
+    end
   end
 
-
+  describe "Creating Item with future publication should enqueue the emails" do
+    before(:each) do
+      @item = FactoryGirl.create(:item, published_at: Time.now+600, send_emails: "1")
+    end
+    it "should enqueue the email delivery" do
+      @item.email_delivery_queued?.should eq(true)
+    end
+    it "should not send the email yet" do
+      @item.email_delivery_sent?.should eq(false)
+    end
+  end
 
   describe "Creating Item with future publication with Social Shares" do
     before(:each) do
-      @item = FactoryGirl.create(:item, published_at: Time.now+600, share_twitter: "1")
+      @item = FactoryGirl.create(:item, published_at: Time.now+600, share_twitter: "1", send_emails: "1")
     end
     it "should create a share twitter model with future enqueue_at date" do
       @item.twitter_shares.last.enqueue_at.to_i.should greater_than(@item.published_at.to_i)
@@ -203,6 +330,9 @@ describe Item do
     it "should create the share twitter model with processed_at nil" do
       @share = @item.twitter_shares.last
       @share.processed_at.should eq(nil)
+    end
+    it "should enqueue the email delivery" do
+      @item.email_delivery_queued?.should eq(true)
     end
   end
 

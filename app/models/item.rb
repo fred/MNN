@@ -368,7 +368,7 @@ class Item < ActiveRecord::Base
   end
 
   def keywords_list
-    self.keywords.split.join(',')
+    self.keywords.to_s.split.join(',')
   end
 
   def meta_keywords

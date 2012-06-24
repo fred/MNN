@@ -154,10 +154,10 @@ class User < ActiveRecord::Base
   end
 
   def twitter_username
-    if twitter.match(/^https?:\/\//)
-      twitter.split("/").last
+    if twitter.to_s.match(/^https?:\/\//)
+      twitter.to_s.split("/").last
     else
-      twitter.gsub('@','')
+      twitter.to_s.gsub('@','')
     end
   end
 
