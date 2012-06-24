@@ -63,13 +63,13 @@ gem 'simple_oauth', '~> 0.1.7'
 gem 'twitter', '~> 2.5.0'
 
 gem 'sass'
-gem 'sass-rails'#,  '~> 3.2.3'
+gem 'sass-rails'
 gem 'jquery-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'libv8'
+  gem 'libv8', "3.3.10.4"
   gem 'execjs'
   gem 'therubyracer', require: 'v8'
   gem 'coffee-rails', '~> 3.2.2'

@@ -148,6 +148,14 @@ class ApplicationController < ActionController::Base
       Time.zone = current_admin_user.time_zone
     end
   end
+
+  def http_protocol
+    if Rails.env.production?
+      'https'
+    else
+      'http'
+    end
+  end
   
   # temporarily use mobile by setting by URL
   def get_layout
@@ -182,16 +190,25 @@ class ApplicationController < ActionController::Base
 
   def redirect_location
     if current_user && current_user.email.match("please_update_your_email")
-      edit_user_registration_path(protocol: 'https')
+      edit_user_registration_path(protocol: http_protocol)
     else
-      store_location = session[:return_to]
-      clear_stored_location
-      (store_location.nil?) ? "/" : store_location.to_s
+      redirect_url
     end
   end
 
 
+  ### PRIVATE METHODS ###
   protected
+
+    def redirect_url
+      if request.env['omniauth.origin']
+        request.env['omniauth.origin']
+      elsif session[:return_to].present?
+        session[:return_to]
+      else
+        root_path
+      end
+    end
 
     def store_location
       session[:return_to] = request.fullpath

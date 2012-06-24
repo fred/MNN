@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: git://github.com/fred/letter_opener.git
-  revision: d5f2149e26c788a18d242c0cca5e93acdbd98728
+  revision: 36c51c0de1b982b8b2bedb018cd4f2b014330d44
   branch: fred
   specs:
     letter_opener (0.0.2)
@@ -266,7 +266,7 @@ GEM
       net-ssh (>= 1.99.1)
     newrelic_rpm (3.4.0)
     nifty-generators (0.4.6)
-    nokogiri (1.5.4)
+    nokogiri (1.5.5)
     oauth (0.4.6)
     oauth2 (0.6.1)
       faraday (~> 0.7)
@@ -275,7 +275,7 @@ GEM
     omniauth (1.1.0)
       hashie (~> 1.2)
       rack
-    omniauth-facebook (1.3.0)
+    omniauth-facebook (1.4.0)
       omniauth-oauth2 (~> 1.0.2)
     omniauth-google-oauth2 (0.1.10)
       omniauth (~> 1.0)
@@ -286,7 +286,7 @@ GEM
     omniauth-oauth2 (1.0.2)
       oauth2 (~> 0.6.0)
       omniauth (~> 1.0)
-    omniauth-twitter (0.0.11)
+    omniauth-twitter (0.0.12)
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
     options (2.3.0)
@@ -295,7 +295,7 @@ GEM
     paper_trail (2.6.3)
       activerecord (~> 3.0)
       railties (~> 3.0)
-    pg (0.13.2)
+    pg (0.14.0)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -480,7 +480,7 @@ DEPENDENCIES
   kaminari
   launchy (>= 2.0.5)
   letter_opener!
-  libv8
+  libv8 (= 3.3.10.4)
   meta_search (~> 1.1.3)
   mini_magick (~> 3.4)
   multi_json
