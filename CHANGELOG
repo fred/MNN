@@ -1,5 +1,8 @@
 CHANGELOG
 
+== June 23, 2012
+* Improved meta tags based on google webmaster info
+
 == June 22, 2012
 * Added Authors to top menu
 * Added poll_interval to sidekiq
