@@ -191,16 +191,33 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
         </p>
         Link: <%= link_to @url, @url %>
       </div>
+
       <div>
         <br />
-        <% if @item.user %>
-          <p class="source_url">
-            Submitted by: 
-            <%= link_to @item.user.title,
-                  url_for(author_path(@item.user, ref: "email", only_path: false, protocol: 'http'))
-            %>
-          </p>
-        <% end %>
+
+        <span class="source_url">
+          <% if @item.original? %>
+            By 
+            <span class='author' itemprop='author'>
+              <%= link_to_if(@item.user,
+                      @item.user.title,
+                      author_path(@item.user),
+                      title: "Author Page: #{@item.author_name}")
+              %>
+            </span>
+          <% elsif @item.youtube_id && @item.youtube_vid %>
+            <%= link_to 'Youtube Source', "http://www.youtube.com/watch?v=#{@item.youtube_id}" %>
+          <% elsif @item.source_url %>
+            <%= link_to 'Source', @item.source_url %>
+          <% end %>
+          <% if !@item.original? && @item.author_name %>
+            - by
+            <span class='author' itemprop='author'>
+              <%= link_to @item.author_name, search_path(q: @item.author_name), title: 'Author Articles' %>
+            </span>
+          <% end %>
+        </span>
+
         <p class="source_url">
           Category: 
           <%= link_to @item.category_title, 

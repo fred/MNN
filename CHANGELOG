@@ -1,6 +1,9 @@
 CHANGELOG
 
 == June 24, 2012
+* Improved Original Author links
+* Fixed original author link on emails
+* Allow Admins to delete Twitter queue jobs
 * Updated Gems
 * Bundled AnyTime into a Gem
 

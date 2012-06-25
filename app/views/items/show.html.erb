@@ -27,21 +27,22 @@
       <span class="source_url">
         <% if @item.original? %>
           By 
-          <%= link_to_if(@item.user,
-                  @item.user.title,
-                  author_path(@item.user),
-                  title: "Author Page: #{@item.author_name}")
-          %>
+          <span class='author' itemprop='author'>
+            <%= link_to_if(@item.user,
+                    @item.user.title,
+                    author_path(@item.user),
+                    title: "Author Page: #{@item.author_name}")
+            %>
+          </span>
         <% elsif @item.youtube_id && @item.youtube_vid %>
           <%= link_to 'Youtube Source', "http://www.youtube.com/watch?v=#{@item.youtube_id}" %>
         <% elsif @item.source_url %>
-          <%= link_to 'Source', @item.source_url %> - by
+          <%= link_to 'Source', @item.source_url %>
         <% end %>
         <% if !@item.original? && @item.author_name %>
+          - by
           <span class='author' itemprop='author'>
-            <%= link_to @item.author_name,
-                  search_path(q: @item.author_name), title: 'Author Articles'
-            %>
+            <%= link_to @item.author_name, search_path(q: @item.author_name), title: 'Author Articles' %>
           </span>
         <% end %>
       </span>

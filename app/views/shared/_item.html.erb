@@ -17,23 +17,43 @@
       <% end %>
       <h3><%= link_to item.title, item, title: item.title %></h3>
     </header>
+
     <section>
       <%= item.abstract.to_s.html_safe %>
     </section>
+
     <section class="small_font">
+
       <span class="source_url">
-        <% if item.source_url %>
-          <%= link_to "Source", item.source_url %>
+        <% if item.youtube_id && item.youtube_vid %>
+          <%= link_to 'Youtube Source', "http://www.youtube.com/watch?v=#{item.youtube_id}" %>
+        <% elsif item.source_url.present? %>
+          <%= link_to 'Source', item.source_url %>
         <% end %>
-        <% if item.author_name %>
-          by <span class="author"><%= link_to item.author_name, search_path(q: item.author_name) %></span>
+
+        <% if !item.original? && item.author_name %>
+          - by
+          <span class='author' itemprop='author'>
+            <%= link_to item.author_name, search_path(q: item.author_name), title: 'Author Articles' %>
+          </span>
         <% end %>
       </span>
+
       <span class="date">
-        <%#= time_tag(item.published_at.in_time_zone("UTC"), pubdate: false) %>
         <%= time_ago_in_words(item.published_at) %> ago
       </span>
-      <% if item.user %>
+
+      <% if item.original? && item.user %>
+        <span class='author'>
+          Written by 
+          <i class="icon-user"></i>
+          <%= link_to_if(item.user,
+                  item.user.title,
+                  author_path(item.user),
+                  title: "Author Page: #{item.author_name}")
+          %>
+        </span>
+      <% elsif item.user %>
         <span class="author">
           Submitted by
           <i class="icon-user"></i>

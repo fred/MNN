@@ -13,8 +13,17 @@ New Post at http://WorldMathaba.net
     )
 %>
 
+<% if @item.original? && @item.user %>
+By <%= @item.user.title %>
+<% elsif @item.youtube_id && @item.youtube_vid %>
+Youtube Source: <%= "http://www.youtube.com/watch?v=#{@item.youtube_id}" %>
+<% end %>
+<% if !@item.original? && @item.author_name %>
 - Posted by <%= @item.user_title %>
+<% end %>
+
 - Category: <%= @item.category_title %>
+
 - Tags: <%= @item.tag_list %>
 
 To see the full article, just follow this link: <%= @url %>
