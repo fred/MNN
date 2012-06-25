@@ -1,5 +1,9 @@
 CHANGELOG
 
+== June 24, 2012
+* Updated Gems
+* Bundled AnyTime into a Gem
+
 == June 23, 2012
 * Improved meta tags based on google webmaster info
 * Added Site Links to top menu

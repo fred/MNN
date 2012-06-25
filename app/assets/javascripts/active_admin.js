@@ -2,7 +2,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require tinymce-jquery
-//= require anytime/anytimec
-//= require anytime/anytimetz
+//= require anytime/main
+//= require anytime/timezone
 //= require jquery/counter
 //= require modernizr
