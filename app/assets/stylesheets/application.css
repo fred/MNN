@@ -5,6 +5,13 @@
  *= require_self
  *= require bootstrap_and_overrides
  *= require custom
+ *= require comments
+ *= require sidebar
+ *= require footer
+ *= require modal
+ *= require easytooltip
+ *= require font_control
+ *= require breadcrumb
  *= require grid
  *= require docs
  *= require pagination

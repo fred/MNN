@@ -13,13 +13,12 @@ New Post at http://WorldMathaba.net
     )
 %>
 
-<% if @item.original? && @item.user %>
-By <%= @item.user.title %>
-<% elsif @item.youtube_id && @item.youtube_vid %>
-Youtube Source: <%= "http://www.youtube.com/watch?v=#{@item.youtube_id}" %>
-<% end %>
-<% if !@item.original? && @item.author_name %>
-- Posted by <%= @item.user_title %>
+<% if @item.user %>
+  <% if @item.original? %>
+  Written by <%= @item.user.title %>
+  <% else %>
+  Submitted by <%= @item.user.title %>
+  <% end %>
 <% end %>
 
 - Category: <%= @item.category_title %>

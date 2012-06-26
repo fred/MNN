@@ -1,0 +1,122 @@
+.sidebar_secions h3,
+.sidebar_secions h4 {
+  margin-bottom: 4px;
+  margin-top: 8px;
+  color: #555;
+}
+.sidebar-comment {
+  padding: 2px 3px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 12px;
+  h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .comment-author {
+    display:block;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 12px;
+  }
+  .comment-body {
+    display:block;
+  }
+  .comment-date {
+    display: block;
+    font-size: 11px;
+    color: #666;
+    font-style: italic;
+    margin-top: 1px;
+  }
+}
+
+.sidebar-item {
+  padding: 2px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  min-height: 66px;
+  font-size: 12px;
+  h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .item-title {
+    display:block;
+    font-size: 12px;
+  }
+  .item-image {
+    box-shadow: 0px 0px 4px #aaa;
+    float: left;
+    margin-right: 6px;
+    padding: 1px;
+  }
+  img.item-image {
+    max-width: 64px;
+    max-height: 64px;
+  }
+  .item-views {
+    clear: both;
+    display: block;
+    font-size: 11px;
+    color: #666;
+    font-style: italic;
+  }
+  .item-date {
+    display: block;
+    font-size: 11px;
+    color: #666;
+    font-style: italic;
+  }
+}
+
+.well {
+  .sidebar-comment hr,
+  .sidebar-item hr {
+    background: -webkit-radial-gradient(#999, #fff);
+    background: -moz-radial-gradient(#bbb, #fff);
+    background: -ms-radial-gradient(#aaa, #fff);
+    background: -o-radial-gradient(#aaa, #fff);
+    background: radial-gradient(#aaa, #fff);
+    height: 1px;
+    margin: 15px 0px;
+  }
+}
+
+@-moz-document url-prefix() {
+  .well .sidebar-comment hr,
+  .well .sidebar-item hr {
+    height: 3px;
+  }
+}
+
+.horizontal-divider,
+.sidebar_secions > .nav-list li.horizontal-divider {
+  display: list-item;
+  background-color: #E5E5E5;
+  border-bottom: 1px solid #FFFFFF;
+  height: 1px;
+  margin: 8px 1px;
+  overflow: hidden;
+  background: -webkit-radial-gradient(#999, #fff);
+  background: -moz-radial-gradient(#bbb, #fff);
+  background: -ms-radial-gradient(#aaa, #fff);
+  background: -o-radial-gradient(#aaa, #fff);
+  background: radial-gradient(#aaa, #fff);
+}
+.sidebar_secions > .nav-list {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.sidebar_secions > .nav-list > li > a {
+  padding: 4px 18px
+}
+.sidebar_secions > .nav > li > a:hover {
+  text-decoration: none;
+  box-shadow: 0px 0px 4px #aaa;
+  padding: 4px 18px;
+}
+.sidebar_secions > .nav-list > .active > a,
+.sidebar_secions > .nav-list > .active > a:hover {
+  box-shadow: 0px 0px 4px #aaa;
+}

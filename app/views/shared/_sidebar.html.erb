@@ -12,15 +12,15 @@
   </div>
 
   <div class="well">
-    <%= form_tag(search_path, method: :get, class: "clearfix") do |f| %>
+    <%= form_tag(search_path, method: :get, class: 'search') do |f| %>
       <%= text_field_tag :q, 
             params[:q], 
             type: "search", 
             class: "span3",
             placeholder: "Search Articles",
-            autofocus: true
+            autofocus: false
       %>
-      <button class="btn primary" type="submit">Search</button>
+      <button class="btn" type="submit">Search</button>
     <% end %>
     
     <div class="sidebar_secions">
