@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: git://github.com/mperham/sidekiq.git
-  revision: ca50730b369e88ec126ae3a4f1076f607266c360
+  revision: 83bdf72acce82eea1d35397ac15c2d092ad6543d
   specs:
     sidekiq (2.0.3)
       celluloid (~> 0.11.0)

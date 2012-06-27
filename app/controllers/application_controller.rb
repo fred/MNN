@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
 
   def https_for_admins
-    if current_admin_user && (request.protocol == "http://")
+    if Rails.env.production? && current_admin_user && (request.protocol == "http://")
       Rails.logger.info("  *** Redirecting user to HTTPS")
       redirect_to request.url.gsub("http://", "https://")
       # Need to have this in Nginx config
