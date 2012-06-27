@@ -156,3 +156,5 @@ gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_emai
 gem 'sitemap_generator'
 
 gem 'newrelic_rpm'
+
+gem 'puma', :git => "git://github.com/puma/puma.git"
