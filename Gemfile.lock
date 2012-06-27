@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: git://github.com/mperham/sidekiq.git
-  revision: ca50730b369e88ec126ae3a4f1076f607266c360
+  revision: 83bdf72acce82eea1d35397ac15c2d092ad6543d
   specs:
     sidekiq (2.0.3)
       celluloid (~> 0.11.0)
@@ -81,7 +81,7 @@ GIT
       actionpack (>= 3.1)
       less-rails (~> 2.2.2)
       railties (>= 3.1)
-      therubyracer (= 0.10.1)
+      therubyrhino (~> 1.73.4)
 
 GEM
   remote: http://rubygems.org/
@@ -124,7 +124,7 @@ GEM
       ZenTest (>= 4.4.1)
     autotest-rails (4.1.2)
       ZenTest (~> 4.5)
-    bcrypt-ruby (3.0.1)
+    bcrypt-ruby (3.0.1-java)
     bourbon (2.1.0)
       sass (>= 3.1)
     builder (3.0.0)
@@ -156,7 +156,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.3.3)
-    columnize (0.3.6)
     commonjs (0.2.6)
     connection_pool (0.9.1)
     country-select (1.1.1)
@@ -172,13 +171,6 @@ GEM
     daemons (1.1.8)
     dalli (2.0.5)
     database_cleaner (0.8.0)
-    debugger (1.1.4)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.1.1)
-      debugger-ruby_core_source (~> 1.1.3)
-    debugger-linecache (1.1.1)
-      debugger-ruby_core_source (>= 1.1.1)
-    debugger-ruby_core_source (1.1.3)
     devise (2.0.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -186,7 +178,7 @@ GEM
       warden (~> 1.1.1)
     diff-lcs (1.1.3)
     erubis (2.7.0)
-    eventmachine (0.12.10)
+    eventmachine (0.12.10-java)
     exception_notification (2.6.1)
       actionmailer (>= 3.0.4)
     excon (0.14.2)
@@ -201,7 +193,7 @@ GEM
       multipart-post (~> 1.1)
     fastercsv (1.5.5)
     fattr (2.2.1)
-    ffi (1.0.11)
+    ffi (1.0.11-java)
     fog (1.4.0)
       builder
       excon (~> 0.14.0)
@@ -218,7 +210,7 @@ GEM
     formtastic (2.1.1)
       actionpack (~> 3.0)
     friendly_id (4.0.7)
-    gherkin (2.11.1)
+    gherkin (2.11.1-java)
       json (>= 1.4.6)
     has_scope (0.5.1)
     hashie (1.2.0)
@@ -234,20 +226,20 @@ GEM
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
-    json (1.7.3)
+    json (1.7.3-java)
     kaminari (0.13.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
-    kgio (2.7.4)
-    launchy (2.1.0)
+    launchy (2.1.0-java)
       addressable (~> 2.2.6)
+      ffi (~> 1.0.9)
+      spoon (~> 0.0.1)
     less (2.2.1)
       commonjs (~> 0.2.6)
     less-rails (2.2.3)
       actionpack (>= 3.1)
       less (~> 2.2.0)
-    libv8 (3.3.10.4)
     libwebsocket (0.1.3)
       addressable
     mail (2.4.4)
@@ -274,7 +266,7 @@ GEM
       net-ssh (>= 1.99.1)
     newrelic_rpm (3.4.0)
     nifty-generators (0.4.6)
-    nokogiri (1.5.5)
+    nokogiri (1.5.5-java)
     oauth (0.4.6)
     oauth2 (0.6.1)
       faraday (~> 0.7)
@@ -316,10 +308,11 @@ GEM
     progress_bar (0.4.0)
       highline (~> 1.6.1)
       options (~> 2.3.0)
-    pry (0.9.9.6)
+    pry (0.9.9.6-java)
       coderay (~> 1.0.5)
       method_source (~> 0.7.1)
       slop (>= 2.4.4, < 3)
+      spoon (~> 0.0)
     pry-rails (0.1.6)
       pry
     rack (1.4.1)
@@ -348,7 +341,6 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    raindrops (0.10.0)
     rake (0.9.2.2)
     rakismet (1.2.1)
     rdoc (3.12)
@@ -398,6 +390,7 @@ GEM
       temple (~> 0.4.0)
       tilt (~> 1.3.3)
     slop (2.4.4)
+    spoon (0.0.1)
     sprockets (2.1.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -418,8 +411,7 @@ GEM
     sunspot_test (0.4.0)
       sunspot_rails (>= 1.2.1)
     temple (0.4.0)
-    therubyracer (0.10.1)
-      libv8 (~> 3.3.10)
+    therubyrhino (1.73.4)
     thin (1.3.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -441,10 +433,6 @@ GEM
     uglifier (1.2.5)
       execjs (>= 0.3.0)
       multi_json (~> 1.3)
-    unicorn (4.3.1)
-      kgio (~> 2.6)
-      rack
-      raindrops (~> 0.7)
     warden (1.1.1)
       rack (>= 1.0)
     webrat (0.7.3)
@@ -455,7 +443,7 @@ GEM
       nokogiri (~> 1.3)
 
 PLATFORMS
-  ruby
+  java
 
 DEPENDENCIES
   activeadmin!
@@ -473,7 +461,6 @@ DEPENDENCIES
   cucumber-rails (>= 1.0.2)
   dalli (~> 2.0.5)
   database_cleaner
-  debugger
   devise (~> 2.0.4)
   exception_notification (~> 2.6.0)
   execjs
@@ -489,7 +476,6 @@ DEPENDENCIES
   kaminari
   launchy (>= 2.0.5)
   letter_opener!
-  libv8 (= 3.3.10.4)
   meta_search (~> 1.1.3)
   mini_magick (~> 3.4)
   multi_json
@@ -528,13 +514,11 @@ DEPENDENCIES
   sunspot (= 2.0.0.pre.120417)
   sunspot_rails (= 2.0.0.pre.120417)
   sunspot_test
-  therubyracer
   thin
   tinymce-rails (= 3.5.2)
   turn (~> 0.8.3)
   twitter (~> 2.5.0)
   twitter-bootstrap-rails!
   uglifier (>= 1.2.5)
-  unicorn
   validates_email_format_of!
   webrat (~> 0.7.3)

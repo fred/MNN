@@ -71,9 +71,9 @@ gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'libv8', "3.3.10.4"
+  # gem 'libv8', "3.3.10.4"
   gem 'execjs'
-  gem 'therubyracer', require: 'v8'
+  # gem 'therubyracer', require: 'v8'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.5'
 end
@@ -83,10 +83,6 @@ end
 gem 'rails-settings-cached', '~> 0.1.2', require: 'rails-settings'
     # git:  'git://github.com/huacnlee/rails-settings-cached.git'
 
-
-group :production do
-  gem 'unicorn', require: false
-end
 
 group :test, :development do
   gem 'rspec', '~> 2.9.0'
@@ -104,7 +100,6 @@ group :development do
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
   gem 'capistrano', '~> 2.9.0', require: false
   gem 'rvm-capistrano', require: false
-  gem 'debugger'
   gem 'pry-rails'
 end
 
