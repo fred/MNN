@@ -157,4 +157,4 @@ gem 'sitemap_generator'
 
 gem 'newrelic_rpm'
 
-gem 'puma', :git => "git://github.com/puma/puma.git"
+gem 'puma' #, :git => "git://github.com/puma/puma.git"
