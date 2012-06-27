@@ -63,7 +63,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to admin_dashboard_path(protocol: http_protocol),, alert: exception.message
+    redirect_to admin_dashboard_path(protocol: http_protocol), alert: exception.message
   end
   
   
@@ -190,7 +190,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource_or_scope)
     case resource_or_scope
     when :admin_user, AdminUser
-      admin_dashboard_path(protocol: http_protocol),
+      admin_dashboard_path(protocol: http_protocol)
     when :user, User
       redirect_location
     else
