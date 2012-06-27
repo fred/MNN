@@ -10,7 +10,17 @@ class ApplicationController < ActionController::Base
   before_filter :last_modified
   after_filter  :store_location
   after_filter  :log_session
-  
+  before_filter :https_for_admins
+
+
+  def https_for_admins
+    if current_admin_user && (request.protocol == "http://")
+      Rails.logger.info("  *** Redirecting user to HTTPS")
+      redirect_to request.url.gsub("http://", "https://")
+      # Need to have this in Nginx config
+      # proxy_set_header X_FORWARDED_PROTO https;
+    end
+  end
   
   comment_destroy_conditions do |comment|
     comment.owner == current_user
@@ -53,7 +63,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to admin_dashboard_path, alert: exception.message
+    redirect_to admin_dashboard_path(protocol: http_protocol),, alert: exception.message
   end
   
   
@@ -180,7 +190,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource_or_scope)
     case resource_or_scope
     when :admin_user, AdminUser
-      admin_dashboard_path
+      admin_dashboard_path(protocol: http_protocol),
     when :user, User
       redirect_location
     else
@@ -203,7 +213,7 @@ class ApplicationController < ActionController::Base
     def redirect_url
       if request.env['omniauth.origin']
         request.env['omniauth.origin']
-      elsif session[:return_to].present?
+      elsif session[:return_to].present? && session[:return_to].match("items")
         session[:return_to]
       else
         root_path

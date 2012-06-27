@@ -113,7 +113,7 @@
 
             <% if current_ability.can?(:manage,Item) %>
               <li>
-                <%= link_to new_admin_item_path do %>
+                <%= link_to new_admin_item_path(protocol: http_protocol) do %>
                   <i class="icon-pencil"></i>
                   New Item
                 <% end %>

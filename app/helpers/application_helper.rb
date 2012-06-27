@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def http_protocol
-    if Rails.env.production? && controller_name.match(/(sessions|registrations|passwords|unlocks)/)
+    if Rails.env.production?
       'https'
     else
       'http'
