@@ -71,7 +71,7 @@ gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'libv8', "3.3.10.4"
+  gem 'libv8' #, "3.3.10.4"
   gem 'execjs'
   gem 'therubyracer', require: 'v8'
   gem 'coffee-rails', '~> 3.2.2'
@@ -81,7 +81,6 @@ end
 
 # Settings
 gem 'rails-settings-cached', '~> 0.1.2', require: 'rails-settings'
-    # git:  'git://github.com/huacnlee/rails-settings-cached.git'
 
 
 group :production do
@@ -159,5 +158,3 @@ gem 'country-select'
 gem 'postmark-rails'
 gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_email_format_of.git'
 gem 'sitemap_generator'
-
-gem 'newrelic_rpm'
