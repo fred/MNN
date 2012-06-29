@@ -313,15 +313,22 @@ class Item < ActiveRecord::Base
       self.status_code = "Live"
     end
   end
-  
+
   def admin_permalink
     admin_item_path(self)
   end
-  
+
   def published?
     self.published_at.to_i < Time.now.to_i
   end
 
+  def user_public_display_name
+    if self.user
+      self.user.public_display_name
+    else
+      "anonymous"
+    end
+  end
 
   def language_title_short
     if self.language
@@ -349,12 +356,12 @@ class Item < ActiveRecord::Base
 
   # Returns the article's author formated name
   def user_title
-    if self.user && !self.user.name.empty?
-      self.user.name
+    if self.user
+      self.user.public_display_name
     elsif self.author_name && !self.author_name.empty?
       self.author_name
     else
-      "mnn"
+      "WorldMathaba"
     end
   end
 

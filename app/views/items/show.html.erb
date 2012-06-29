@@ -29,7 +29,7 @@
           By 
           <span class='author' itemprop='author'>
             <%= link_to_if(@item.user,
-                    @item.user.title,
+                    @item.user_title,
                     author_path(@item.user),
                     title: "Author Page: #{@item.author_name}")
             %>

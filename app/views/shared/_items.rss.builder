@@ -44,7 +44,7 @@ xml.rss(
         xml.guid(url_for(item_path(item.id, only_path: false, protocol: 'http')))
         xml.category(item.category_title)
         xml.description(rss_description(item))
-        xml.author("#{item.user_email} (#{item.user_title})")
+        xml.author(item.user_public_display_name)
         xml.pubDate(item.published_at.rfc2822)
         xml.link(url_for(item_path(item, only_path: false, protocol: 'http')))
       end

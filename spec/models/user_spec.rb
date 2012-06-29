@@ -38,6 +38,14 @@ describe User do
       @user.save
       @user.is_admin?.should eq(true)
     end
+    it "should have the user title" do
+      @user.name = "joe"
+      @user.title.should eq(@user.name)
+    end
+    it "should have the user public display_name" do
+      @user.name = nil
+      @user.public_display_name.should match(/Anonymous/)
+    end
   end
   
   describe "Instance Methods" do
@@ -61,6 +69,9 @@ describe User do
     end
     it "should respond to title" do
       @user.should respond_to(:title)
+    end
+    it "should respond to public_display_name" do
+      @user.should respond_to(:public_display_name)
     end
     it "should respond to has_image?" do
       @user.should respond_to(:has_image?)

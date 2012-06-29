@@ -8,7 +8,7 @@
     <% if @author.avatar? %>
       <%= link_to(image_tag(@author.avatar.small, class: "show_item_image"), author_path(@author)) %>
     <% end %>
-    <h3><%= link_to @author.title, author_path(@author) %></h3>
+    <h3><%= link_to @author.public_display_name, author_path(@author) %></h3>
   </header>
   <section>
     <% unless @author.twitter.to_s.empty? %>
@@ -43,7 +43,7 @@
   </div>
 <% else %>
   <h3 class="alert alert-success">
-    <%= @author.name %> Articles
+    <%= @author.public_display_name %> Articles
   </h3>
   <% @items.each do |item| %>
     <%= render partial: "/shared/item", locals: {item: item } %>
@@ -61,11 +61,11 @@
     <span class="divider">/</span>
   </li>
   <li class="active">
-    <%= link_to @author.name, author_path(@author) %>
+    <%= link_to @author.public_display_name, author_path(@author) %>
     <%= link_to(
-          image_tag("icons/social/rss_16.png", alt: "RSS for #{@author.name}"), 
+          image_tag("icons/social/rss_16.png", alt: "RSS for #{@author.public_display_name}"), 
           author_path(@author, format: "rss"),
-          title: "RSS feed for #{@author.name}"
+          title: "RSS feed for #{@author.public_display_name}"
         )
     %>
   </li>

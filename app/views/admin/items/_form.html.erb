@@ -202,7 +202,7 @@
   <% end %>
   
   <%= f.actions do %>
-    <%= f.action :submit, button_html: { class: "primary", 'data-disable-with' => 'Wait...' } %>
+    <%= f.action :submit, button_html: {class: "primary", data: {disable_with: 'Sending...'}} %>
   <% end %>
 <% end %>
 
@@ -228,12 +228,7 @@
       theme_advanced_toolbar_align : "left",
       theme_advanced_statusbar_location : "bottom",
       theme_advanced_resizing : true,
-      content_css : "<%= asset_path 'tinymce.css' %>",
-      // Replace values for the template plugin
-      template_replace_values : {
-        username : "<%= current_admin_user.email %>",
-        staffid : "<%= current_admin_user.id %>"
-      }
+      content_css : "<%= asset_path 'tinymce.css' %>"
     });
   });
   

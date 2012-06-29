@@ -20,20 +20,17 @@
           <%= f.label :email, class: 'control-label' %>
           <div class="controls">
             <%= f.text_field :email, required: true, type: "email", class: "imput-large" %>
+            <p class="help-block">Your email will not be shown to the public.</p>
           </div>
         </div>
 
         <div class="control-group">
           <%= f.label :name, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :name, required: false, autofocus: true, class: "imput-large" %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= f.label :address, class: 'control-label' %>
-          <div class="controls">
-            <%= f.text_field :address, required: false, class: "imput-large" %>
+            <%= f.text_field :name, required: false, placeholder: "Your public name, ex: Anonymous",
+                  autofocus: true, class: "imput-large"
+            %>
+            <p class="help-block">Information below will be shown to the public.</p>
           </div>
         </div>
 
@@ -49,7 +46,7 @@
           <%= f.label :twitter, class: 'control-label' %>
           <div class="controls">
             <%= f.text_field :twitter, required: false, class: "imput-large", 
-                  placeholder: "@twitter" %>
+                  placeholder: "@twitter (optional)" %>
           </div>
         </div>
 
@@ -57,7 +54,7 @@
           <%= f.label :diaspora, class: 'control-label' %>
           <div class="controls">
             <%= f.text_field :diaspora, required: false, class: "imput-large", 
-                  placeholder: "handle@host.net", type: "email" %>
+                  placeholder: "handle@host.net (optional)", type: "email" %>
           </div>
         </div>
 
@@ -65,7 +62,7 @@
           <%= f.label :skype, class: 'control-label' %>
           <div class="controls">
             <%= f.text_field :skype, required: false, class: "imput-large", 
-                  placeholder: "skype username" %>
+                  placeholder: "skype name (optional)" %>
           </div>
         </div>
 
@@ -73,7 +70,7 @@
           <%= f.label :gtalk, "Google Chat", class: 'control-label' %>
           <div class="controls">
             <%= f.text_field :gtalk, required: false, class: "imput-large", 
-                  placeholder: "xxxxx@gmail.com (optional)", type: "email" %>
+                  placeholder: "xxx@gmail.com (optional)", type: "email" %>
           </div>
         </div>
 
@@ -81,15 +78,7 @@
           <%= f.label :jabber, "Jabber", class: 'control-label' %>
           <div class="controls">
             <%= f.text_field :jabber, required: false, class: "imput-large", 
-                  placeholder: "xxxxx@jabber.com", type: "email" %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= f.label :phone_number, class: 'control-label' %>
-          <div class="controls">
-            <%= f.text_field :phone_number, required: false, class: "imput-large", 
-                  placeholder: "+11 123123456", type: "tel" %>
+                  placeholder: "xxxxx@jabber.com (optional)", type: "email" %>
           </div>
         </div>
 
@@ -109,11 +98,21 @@
                   required: false,
                   class: "imput-medium"
             %>
+            <p class="help-block">Not shown to the public.</p>
           </div>
         </div>
-
       </fieldset>
-      
+
+      <fieldset class="withBorder">
+        <legend>Describe yourself</legend>
+        <div class="control-group">
+          <%= f.label :bio, "You Bio", class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_area :bio, required: false, class: "imput-medium", rows: 7, cols: 24  %>
+            <p class="help-block">Shown on your public profile.</p>
+          </div>
+        </div>
+      </fieldset>
 
       <fieldset class="withBorder">
         <legend>Avatar Image</legend>
@@ -234,4 +233,27 @@
     <span class="divider">/</span>
   </li>
   <li class="active">Edit Profile</li>
+<% end %>
+
+<% content_for :footer do %>
+  <script>
+    if ($("form#edit_user")){
+      $("form#edit_user").validate({
+        rules: {
+          "user[email]": {required: true, minlength: 4}
+        },
+        showErrors: function(errors){
+          $.each(this.errorList, function(index, value){
+            $(value.element).parent().parent().addClass('error');
+            $(value.element).attr('rel', 'tooltip');
+            $(value.element).attr('title', value.message);
+          });
+          $("[rel='tooltip']").tooltip({
+            placement: 'right',
+            trigger: 'hover'
+          });
+        }
+      });
+    }
+  </script>
 <% end %>

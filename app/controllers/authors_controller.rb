@@ -15,16 +15,16 @@ class AuthorsController < ApplicationController
     @items = @author.my_items.page(params[:page], per_page: 20)
     @help_page = Page.where(:slug => "contribute").first
     
-    @rss_title = "World Mathaba - Items from #{@author.name} (#{@author.email})"
-    @rss_description = "World Mathaba - Items from #{@author.name} (#{@author.email})"
-    @rss_category = "author_#{@author.name}"
+    @rss_title = "World Mathaba - Items from #{@author.public_display_name}"
+    @rss_description = "World Mathaba - Items from #{@author.public_display_name}"
+    @rss_category = "author_#{@author.id}"
     @rss_source = author_path(@author, only_path: false, protocol: 'https')
     @rss_language = "en"
 
     @meta_description = @rss_description
     @meta_title = @rss_title
-    @meta_author = @author.title
-    @meta_keywords = "WorldMathaba, news, #{@author.title}"
+    @meta_author = @author.public_display_name
+    @meta_keywords = "WorldMathaba, news, #{@author.public_display_name}"
     
     respond_to do |format|
       format.html

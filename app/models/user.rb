@@ -67,23 +67,31 @@ class User < ActiveRecord::Base
   end
 
   def original_items_count
-    self.items.original.count
+    items.original.count
   end
 
   def is_admin?
-    self.type == "AdminUser"
+    type == "AdminUser"
   end
 
   def title
-    if self.name.present?
-      self.name
+    if name.present?
+      name
     else
-      self.email
+      email
+    end
+  end
+
+  def public_display_name
+    if name.present?
+      name
+    else
+      "Anonymous ##{id.to_s}"
     end
   end
 
   def has_image?
-    self.avatar?
+    avatar?
   end
 
   def main_image(version=:thumb)

@@ -17,7 +17,14 @@
         <div class="control-group">
           <%= f.label :email, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :email, required: true, autofocus: true, type: "email", class: "imput-medium" %>
+            <%= f.text_field :email,
+                  placeholder: "Your email is required",
+                  required: true,
+                  autofocus: true,
+                  type: "email",
+                  class: "imput-medium"
+            %>
+            <p class="help-block">Your email will not be shown to the public.</p>
           </div>
         </div>
         <div class="control-group">
@@ -41,6 +48,12 @@
                   required: false,
                   class: "imput-medium"
             %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :name, class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :name, placeholder: "Example: Anonymous", class: "imput-medium" %>
           </div>
         </div>
 
@@ -98,6 +111,17 @@
           "user[email]": {required: true, minlength: 4},
           "user[password]": {required: true, minlength: 6},
           "user[password_confirmation]": {required: true, minlength: 6}
+        },
+        showErrors: function(errors){
+          $.each(this.errorList, function(index, value){
+            $(value.element).parent().parent().addClass('error');
+            $(value.element).attr('rel', 'tooltip');
+            $(value.element).attr('title', value.message);
+          });
+          $("[rel='tooltip']").tooltip({
+            placement: 'right',
+            trigger: 'hover'
+          });
         }
       });
     }
