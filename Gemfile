@@ -80,7 +80,7 @@ end
 
 
 # Settings
-gem 'rails-settings-cached', '~> 0.1.2', require: 'rails-settings'
+gem 'rails_config'
 
 
 group :production do

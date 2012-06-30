@@ -9,7 +9,7 @@ ActiveAdmin.register Item do
   scope :draft
   scope :with_comments
   scope :queued
-  
+
   menu priority: 1, if: lambda{|tabs_renderer|
     controller.current_ability.can?(:read, Item)
   }
@@ -98,9 +98,8 @@ ActiveAdmin.register Item do
     default_actions
   end
   form partial: "form"
-  
+
   controller do
-    cache_sweeper :item_sweeper
 
     def new
       authorize! :create, Item
@@ -113,7 +112,7 @@ ActiveAdmin.register Item do
       @item.author_email = current_admin_user.email
       @item.user_id = current_admin_user.id
     end
-    
+
     def show
       @item = Item.find(params[:id])
       @related = @item.solr_similar(10)

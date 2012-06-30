@@ -99,3 +99,5 @@ unicorn.prod.rb
 public/sitemap1.xml.gz
 public/sitemap_index.xml.gz
 config/newrelic.yml
+reload_forem.sh
+reload_db.sh
