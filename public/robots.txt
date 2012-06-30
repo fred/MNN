@@ -1,38 +1,13 @@
-# See http://www.robotstxt.org/wc/norobots.html for documentation on how to use the robots.txt file
 User-Agent: *
 Disallow: /assets/
 Disallow: /auth/
 Disallow: /users/
 Disallow: /admin/
 Disallow: /drafts/
-Disallow: /comments/
-Crawl-Delay: 10
-
-
-User-Agent: Googlebot
-Crawl-Delay: 10
-
-User-Agent: Yandex
-Crawl-Delay: 10
-
-User-Agent: Slurp
 Crawl-Delay: 30
-
-User-Agent: msnbot
-Crawl-delay: 30
-
-User-Agent: bingbot
-Crawl-delay: 30
-
 
 
 ### BLOCKED BOTS ###
-
-User-agent: Mediapartners-Google*
-Disallow: /
-
-User-agent: AdsBot-Google
-Disallow: /
 
 #  Ahrefs.com (http://ahrefs.com/robot/)
 user-agent: AhrefsBot
