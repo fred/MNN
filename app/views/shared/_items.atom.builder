@@ -18,11 +18,11 @@ atom_feed({
     xml.opensearch(:itemsPerPage,@items.per_page)
   end
   for item in @items
-    xml.entry(item) do
+    xml.entry(item, published: item.published_at) do
       xml.title(item.title)
       xml.summary(item.abstract) unless item.abstract.to_s.empty?
       xml.content "type" => "html" do
-        xml.text! render(:partial => "/shared/atom_item", :locals => {:item => item})
+        xml.text! render(partial: "/shared/atom_item", locals: {item: item})
       end
       if item.user
         xml.author {

@@ -30,7 +30,7 @@ xml.rss(
     xml.lastBuildDate(@last_published.rfc2822) if @last_published
     xml.pubDate(@last_published.rfc2822) if @last_published
     xml.category(@rss_category) if @rss_category
-    xml.ttl(62) # minutes
+    xml.ttl(62) # in minutes, 1 hour
 
     if params[:q] && @search && (@search.total > 0)
       xml.opensearch(:totalResults,@search.total)
