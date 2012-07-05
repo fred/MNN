@@ -3,16 +3,21 @@ class Opinio::CommentsController < ApplicationController
   include Opinio::Controllers::Replies if Opinio.accept_replies
 
   def index
-    @item = Item.includes([:comments,:item_stat]).find(params[:item_id])
-    @comments = @item.comments.page(params[:page])
+    if params[:item_id]
+      @item = Item.includes([:comments,:item_stat]).find(params[:item_id])
+      @comments = @item.comments.page(params[:page]).per(10)
+      @rss_title = "Comments for: #{@item.title}"
+      @rss_description = "RSS comments for '#{@item.title}'"
+      @rss_source = item_comments_path(@item, only_path: false, protocol: 'https')
+      @rss_language = "en"
+      @last_published = @item.last_commented_at
+    elsif params[:mine]
+      @comments = current_user.comments.order('id DESC').page(params[:page]).per(10)
+    else
+      @comments = Comment.order('id DESC').page(params[:page]).per(10)
+    end
 
-    @rss_title = "Comments for: #{@item.title}"
-    @rss_description = "RSS comments for '#{@item.title}'"
-    @rss_source = item_comments_path(@item, only_path: false, protocol: 'https')
-    @rss_language = "en"
-    @last_published = @item.last_commented_at
-
-    headers['Cache-Control'] = 'private, no-cache'
+    private_headers
     respond_to do |format|
       format.js
       format.html
@@ -43,7 +48,7 @@ class Opinio::CommentsController < ApplicationController
     else
       messages = { error: t('opinio.messages.comment_sending_error') }
     end
-    headers['Cache-Control'] = 'private, no-cache'
+    private_headers
     respond_to do |format|
       format.js
       format.html { redirect_to( resource, flash: messages ) }

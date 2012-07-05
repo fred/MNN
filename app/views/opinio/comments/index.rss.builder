@@ -37,7 +37,6 @@ xml.rss(
         xml.description(sanitize comment.body,
           tags: %w(p b i u a br strong div ul ol li),
           attributes: %w(href))
-        xml.author(comment.owner)
         xml.pubDate(@item.last_commented_at.rfc2822)
         xml.link(url_for(item_comments_path(@item, only_path: false, protocol: 'http')))
       end

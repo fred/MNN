@@ -1,5 +1,21 @@
 CHANGELOG
 
+== July 1-5, 2012
+* Fixed Wrong ATOM feed time on article, bug #6
+* Added global Comments page: /comments
+* Global comments RSS: /comments.rss
+* Improved admin interface
+* Added number of days since items on categories
+* fixed google indexing
+* removed user email
+* better registration form
+* removed all references of the user's email address
+* Forcing HTTPS always for admin users
+* original author links improved
+* twitter queue delete links
+* minor bug fixes
+* updated many gemfiles
+
 == June 24, 2012
 * Improved Original Author links
 * Fixed original author link on emails

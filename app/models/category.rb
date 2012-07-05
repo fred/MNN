@@ -42,7 +42,7 @@ class Category < ActiveRecord::Base
       where(draft: false).
       where("published_at is not NULL").
       where("published_at < ?", DateTime.now).
-      order("updated_at DESC").
+      order("published_at DESC").
       first
   end
 

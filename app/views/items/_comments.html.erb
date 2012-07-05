@@ -1,7 +1,8 @@
 <div class="comments">
-  <h3>Comments
+  <h3>
+    <span class="label label-info">Comments</span>
     <%= link_to image_tag("icons/social/rss_16.png", alt: "RSS for comments on this article"),
-          item_comments_path(@item, format: 'atom')
+          item_comments_path(@item, format: 'rss')
     %>
   </h3>
 
