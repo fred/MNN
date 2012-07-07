@@ -9,8 +9,8 @@ ActiveAdmin.register TwitterShare do
   index do
     column :item
     column :status
-    column "Job Time", :enqueue_at
-    column "Completed At", :processed_at
+    column "Processed At", :processed_at
+    column "Scheduled At", :enqueue_at
     column :created_at
     default_actions
   end

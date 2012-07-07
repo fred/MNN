@@ -201,7 +201,7 @@ class Item < ActiveRecord::Base
   def create_twitter_share
     if !self.draft && (self.share_twitter.to_s=="1" or self.share_twitter==true) && self.twitter_shares.empty?
       Rails.logger.info("  Twitter: Creating Twitter Share for item: #{self.id}")
-      self.twitter_shares << TwitterShare.new(enqueue_at: self.enqueue_time)
+      self.twitter_shares << TwitterShare.new(enqueue_at: self.enqueue_time, status: 'queued')
     end
     true
   end

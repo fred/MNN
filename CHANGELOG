@@ -1,5 +1,9 @@
 CHANGELOG
 
+== July 7, 2012
+* Allows to delete Emails Deliveries properly
+* Updated Gems
+
 == July 1-5, 2012
 * Fixed Wrong ATOM feed time on article, bug #6
 * Added global Comments page: /comments
