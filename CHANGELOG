@@ -4,6 +4,7 @@ CHANGELOG
 * Allows to delete Emails Deliveries properly
 * Added record locking to avoid duplicated updates
 * Added Custom Youtube resolution
+* Removed most commented from Sidebar
 * Updated Gems
 
 == July 1-5, 2012
