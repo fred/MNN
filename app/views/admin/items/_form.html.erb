@@ -200,6 +200,8 @@
     <%= f.input :editor_notes, as: "text", input_html: {rows: 4} %>
     <%= f.input :updated_reason, as: "string", hint: "Provide a reason for editing, as short as possible, 2-4 words." %>
   <% end %>
+
+  <%= f.input :lock_version, as: :hidden %>
   
   <%= f.actions do %>
     <%= f.action :submit, button_html: {class: "primary", data: {disable_with: 'Sending...'}} %>

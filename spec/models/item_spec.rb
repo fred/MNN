@@ -94,12 +94,6 @@ describe Item do
     it "should respond to enqueue_time" do
       @item.should respond_to(:enqueue_time)
     end
-    it "should respond to record_freshness" do
-      @item.should respond_to(:record_freshness)
-    end
-    it "should respond to record_freshness_by_version" do
-      @item.should respond_to(:record_freshness_by_version)
-    end
     it "should respond to main_image" do
       @item.should respond_to(:main_image)
     end
@@ -224,19 +218,6 @@ describe Item do
       @item.body = "The&hellip;Item"
       @item.save
       @item.body.should eq("The...Item")
-    end
-  end
-
-  describe "Editing an a Dirty Item" do
-    before(:each) do
-      @item = FactoryGirl.create(:item, title: "Old Title")
-    end
-    it "should not allow to update a dirty item" do
-      @outdated_item = Item.find(@item.id)
-      @outdated_item.title = "Added a new title"
-      @outdated_item.save
-      @item.should_not be_valid
-      # lambda {@item.save}.should raise_error
     end
   end
 

@@ -234,7 +234,7 @@ describe Admin::ItemsController do
         end
         it "redirects to the item" do
           put :update, {id: @item.to_param, item: valid_item_attributes}
-          response.should redirect_to(admin_item_path(assigns(:item)))
+          response.should redirect_to(assigns(:item))
         end
       end
       describe "with invalid params" do

@@ -43,7 +43,6 @@ class Item < ActiveRecord::Base
   validates_presence_of :title, :abstract, :category_id, :published_at
   validates_presence_of :body, if: Proc.new { |item| item.youtube_id.blank? }
   validates_presence_of :published_at
-  validate :record_freshness
   
   # Filter hooks
   before_save   :clear_bad_characters
@@ -228,28 +227,6 @@ class Item < ActiveRecord::Base
     end
   end
 
-
-  # WORKING
-  def record_freshness
-    unless self.new_record?
-      last_date = Item.find(self.id).updated_at.to_f
-      self_date = self.updated_at.to_f
-      if last_date > self_date
-        errors.add(:title, "Item is not fresh. Someone else have updated this while you were editing it")
-      end
-    end
-  end
-
-  # NOT WORKING
-  def record_freshness_by_version
-    unless self.new_record?
-      last_version = self.versions.last.created_at.to_f
-      current_date = self.updated_at.to_f
-      if last_version >= current_date
-        errors.add(:title, "Item is not fresh. Someone else have updated this while you were editing it")
-      end
-    end
-  end
 
   def main_image
     att = self.attachments.last

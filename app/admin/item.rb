@@ -135,6 +135,21 @@ ActiveAdmin.register Item do
       end
     end
 
+    def update
+      @item = Item.find(params[:id])
+      authorize! :edit, @item
+      if @item.update_attributes(params[:item])
+        flash[:notice] = "Successfully updated Item."
+        redirect_to @item
+      else
+        render action: 'edit'
+      end
+
+    rescue ActiveRecord::StaleObjectError
+      correct_stale_record_version
+      stale_record_recovery_action
+    end
+
     def create
       @item = Item.new(params[:item])
       @item.user_id = current_admin_user.id
@@ -171,6 +186,17 @@ ActiveAdmin.register Item do
         format.xml
       end
     end
+
+    def correct_stale_record_version
+      @item.reload
+    end
+
+    def stale_record_recovery_action
+      flash[:error] = "Error: Another user has updated this record "+
+         "since you accessed the edit form."
+      render :edit, status: :conflict
+   end
+
     def scoped_collection
        Item.includes(:language, :attachments, :tags, :user, :category, :item_stat)
     end
