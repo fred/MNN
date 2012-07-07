@@ -6,8 +6,8 @@
       <div id="html5_player"></div>
       <script>
         <% if @item.youtube_res.present? %>
-          var custom_width = "360";
-          var custom_height = "240";
+          var custom_width = <%= @item.youtube_width %>;
+          var custom_height = <%= @item.youtube_height %>;
         <% elsif is_mobile? %>
           // if we are mobile, show smaller resolution video
           var custom_width = "360";
