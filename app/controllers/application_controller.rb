@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_start_time, :set_time_zone, :set_view_items, :current_ability
   before_filter :log_additional_data, :set_per_page
   before_filter :last_modified
+  after_filter  :auto_login_admin_user
   after_filter  :store_location
   after_filter  :log_session
   before_filter :https_for_admins
@@ -19,6 +20,13 @@ class ApplicationController < ActionController::Base
       redirect_to request.url.gsub("http://", "https://")
       # Need to have this in Nginx config
       # proxy_set_header X_FORWARDED_PROTO https;
+    end
+  end
+
+  def auto_login_admin_user
+    if current_admin_user && !current_user
+      Rails.logger.debug("  Auto sign-in for AdminUser ID##{current_admin_user.id}")
+      sign_in(:user, current_admin_user, bypass: true)
     end
   end
   
