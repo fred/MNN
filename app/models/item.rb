@@ -227,6 +227,20 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def youtube_height
+    if youtube_res
+      youtube_res.split("x").first
+    else
+      nil
+    end
+  end
+  def youtube_width
+    if youtube_res
+      youtube_res.split("x").last
+    else
+      nil
+    end
+  end
 
   def main_image
     att = self.attachments.last

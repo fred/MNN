@@ -3,6 +3,7 @@ CHANGELOG
 == July 7, 2012
 * Allows to delete Emails Deliveries properly
 * Added record locking to avoid duplicated updates
+* Added Custom Youtube resolution
 * Updated Gems
 
 == July 1-5, 2012

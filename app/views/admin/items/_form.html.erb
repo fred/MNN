@@ -66,6 +66,13 @@
           hint: "Automatically set main image from a youtube screenshot"
     %>
     <br />
+    <%= f.input :youtube_res, label: "Video Resolution",
+          hint: "Set this if you have multiple youtube videos on the same page",
+          as: :select,
+          collection: ["240x360", "360x480", "400x540", "480x720", "600x800"],
+          include_blank: "Automatically"
+    %>
+    <br />
   <% end %>
   
   
