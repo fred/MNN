@@ -46,8 +46,7 @@ Publication::Application.configure do
     { namespace: "mnn", expires_in: 8.hours, compress: true }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  # config.action_controller.asset_host = "https://d4b3aux6dw2bz.cloudfront.net"
-  # Using Cloudfront url for assets
+  # config.action_controller.asset_host = "https://dgjzw2byz04ny.cloudfront.net"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )

@@ -40,7 +40,7 @@ gem 'fog', '~> 1.4.0'
 gem 'carrierwave', '~> 0.6.2'
 
 ### S3 Asset hosting
-gem 'asset_sync'
+# gem 'asset_sync'
 
 ### Permalink
 gem 'stringex'
@@ -146,8 +146,8 @@ gem 'exception_notification', '~> 2.6.0', require: 'exception_notifier'
 ## Searching ##
 ###############
 
-gem 'sunspot', '2.0.0.pre.120417' # git:  'git://github.com/sunspot/sunspot.git'
-gem 'sunspot_rails', '2.0.0.pre.120417' # git:  'git://github.com/sunspot/sunspot.git'
+gem 'sunspot', git: 'git://github.com/sunspot/sunspot.git'
+gem 'sunspot_rails', git: 'git://github.com/sunspot/sunspot.git'
 
 ### Memcache
 gem 'dalli', '~> 2.0.5'

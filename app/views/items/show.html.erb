@@ -14,6 +14,7 @@
 
 <% cache_expiring("show/#{@item.cache_key_full}", 600) do %>
   <!-- CACHE_KEY <%= "show/#{@item.cache_key_full}" %> -->
+
   <div itemscope itemtype="http://schema.org/Article">
     <article id="item_<%= @item.id %>">
 
@@ -22,6 +23,7 @@
         <a id="resetFont" href="#" title="Default Font">A</a>
         <a id="increaseFont" href="#" title="Increase Size">A+</a>
       </div>
+
       <h1><span itemprop="headline"><%= @item.title %></span></h1>
 
       <span class="source_url">
