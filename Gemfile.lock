@@ -75,7 +75,7 @@ GIT
 
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: cd3bd99217c06d7bb1b4179611efbf46edcc12e0
+  revision: 0d660425065ce8fe829e0bc8db9a88a9d7115256
   specs:
     twitter-bootstrap-rails (2.1.0)
       actionpack (>= 3.1)
@@ -296,7 +296,7 @@ GEM
       rack
     omniauth-facebook (1.4.1)
       omniauth-oauth2 (~> 1.1.0)
-    omniauth-google-oauth2 (0.1.10)
+    omniauth-google-oauth2 (0.1.11)
       omniauth (~> 1.0)
       omniauth-oauth2
     omniauth-oauth (1.0.1)
