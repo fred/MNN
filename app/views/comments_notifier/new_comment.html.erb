@@ -177,7 +177,7 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
       <div>
         <span style="color:<%=color%>;">
           <%= sanitize(@comment.body,
-                tags: %w(p div a i em b strong pre ul ol li strong),
+                tags: %w(p div a i em b blockquote pre ul ol li strong),
                 attributes: %w(href))
           %>
         </span>
