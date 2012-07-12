@@ -3,5 +3,5 @@
 #   sidekiq -C config.yml
 ---
 :verbose: false
-:concurrency: 4
-:poll_interval: 5
+:concurrency: 2
+:poll_interval: 2

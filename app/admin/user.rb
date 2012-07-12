@@ -29,12 +29,16 @@ ActiveAdmin.register User do
       row "Logged in at", &:last_sign_in_at
       row "Last Seen", &:current_sign_in_at
       row "Last IP" do |user|
-        link_to user.last_sign_in_ip,
-          "http://www.geoiptool.com/en/?IP=#{user.last_sign_in_ip}"
+        if user.last_sign_in_ip
+          link_to user.last_sign_in_ip.to_s, 
+            "http://www.geoiptool.com/en/?IP=#{user.last_sign_in_ip.to_s}"
+        end
       end
       row "Current IP" do |user|
-        link_to user.current_sign_in_ip,
-          "http://www.geoiptool.com/en/?IP=#{user.current_sign_in_ip}"
+        if user.current_sign_in_ip
+          link_to user.current_sign_in_ip.to_s,
+            "http://www.geoiptool.com/en/?IP=#{user.current_sign_in_ip.to_s}"
+        end
       end
       row :created_at
       row :updated_at
@@ -69,12 +73,16 @@ ActiveAdmin.register User do
     column "Logged in", :last_sign_in_at
     column "Last Seen", :current_sign_in_at
     column "Last IP" do |user|
-      link_to user.last_sign_in_ip,
-        "http://www.geoiptool.com/en/?IP=#{user.last_sign_in_ip}"
+      if user.last_sign_in_ip
+        link_to user.last_sign_in_ip.to_s,
+          "http://www.geoiptool.com/en/?IP=#{user.last_sign_in_ip.to_s}"
+      end
     end
     column "Current IP" do |user|
-      link_to user.current_sign_in_ip,
-        "http://www.geoiptool.com/en/?IP=#{user.current_sign_in_ip}"
+      if user.current_sign_in_ip
+        link_to user.current_sign_in_ip.to_s,
+          "http://www.geoiptool.com/en/?IP=#{user.current_sign_in_ip.to_s}"
+      end
     end
     default_actions
   end
