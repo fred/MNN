@@ -1,5 +1,8 @@
 CHANGELOG
 
+== July 16, 2012
+* Updated Dalli fixing "key too long" error
+
 == July 12, 2012
 * Changed sidebar from 3 to 5 Top items
 * Fixed RSS error on comments RSS

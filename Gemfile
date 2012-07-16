@@ -150,7 +150,7 @@ gem 'sunspot', git: 'git://github.com/sunspot/sunspot.git'
 gem 'sunspot_rails', git: 'git://github.com/sunspot/sunspot.git'
 
 ### Memcache
-gem 'dalli', '~> 2.0.5'
+gem 'dalli', '~> 2.1.0'
 
 
 gem 'galetahub-simple_captcha', require: 'simple_captcha', git: 'git://github.com/galetahub/simple-captcha.git'
