@@ -108,8 +108,6 @@ ActiveAdmin.register Item do
       @item.published_at = nil
       @item.expires_on = @now+10.years
       @item.draft = true
-      @item.author_name = current_admin_user.title
-      @item.author_email = current_admin_user.email
       @item.user_id = current_admin_user.id
     end
 
@@ -175,9 +173,9 @@ ActiveAdmin.register Item do
       authorize! :destroy, @item
       if (current_admin_user.has_any_role?(:admin,:editor,:security)) or (current_admin_user.id == @item.user_id)
         @item.destroy
-        flash[:notice]= "Item successfully deleted"
+        flash[:notice] = "Item successfully deleted"
       else
-        flash[:notice]= "You are not allowed to delete this Item"
+        flash[:notice] = "You are not allowed to delete this Item"
       end
       respond_to do |format|
         format.html {redirect_to admin_items_path}
@@ -192,8 +190,7 @@ ActiveAdmin.register Item do
     end
 
     def stale_record_recovery_action
-      flash[:error] = "Error: Another user has updated this record "+
-         "since you accessed the edit form."
+      flash[:error] = "Error: Another user has updated this record since you accessed the edit form."
       render :edit, status: :conflict
    end
 

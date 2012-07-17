@@ -1,5 +1,11 @@
 CHANGELOG
 
+== July 18, 2012
+* Improved hints on new item form
+* Minor CSS improvements for item
+* Updated Sidekiq/Celluloid gems
+* Updated Assets
+
 == July 17, 2012
 * Updated Twitter Gem
 * Moved SOLR to new instance

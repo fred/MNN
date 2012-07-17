@@ -11,7 +11,7 @@
     %>
     <%= f.input :language,
                 as: :select,
-                member_label:  'description',
+                member_label: 'description',
                 member_value: :id,
                 label: "Language",
                 required: true,
@@ -32,25 +32,25 @@
                 label: "Main Content",
                 required: true,
                 input_html: { rows: 60, cols: 120},
-                hint: "Do Not use H1 headings. Use only H2, H3 and H4. If you want a new paragraph, simply hit 'RETURN'. If you don’t want a new paragraph and just want a line break, hit 'SHIFT RETURN'. - If you are copying and pasting from a website, it is recommended to paste first to Notepad.exe/TextEdit.app then copy again to paste here."
+                hint: "Do Not use H1 headings. Use only H2, H3 and H4. If you want a new paragraph, simply hit 'RETURN' key. If you don’t want a new paragraph and just want a line break, hit 'SHIFT+RETURN' keys. - If you are copying and pasting from a website, it is recommended to paste first to Notepad.exe/TextEdit.app then copy again and paste here."
     %>
     <%= f.input :keywords,
                 label: "Keywords",
                 required: false,
-                hint: "Keywords related to the article, such as names, events, special keywords, or any keyword that might have ralation to other articles. Examples: Jamahiriya, USA, Illuminati, Rockefeller, New World Order, Free Energy, Monsanto, GMO, IMF, Pepsi, Gold, banking, cocaine, etc... It will greatly improve discovery of related items. You may also use special keywords to relate other items. It's invisble to the users. Less keywords will give more related items but less accurate, more keywords will give less related items but more accurate. You need to find a good balance."
+                hint: "Keywords related to the article, such as names, events, special keywords, or any keyword with a ralationship to other articles. Examples: Jamahiriya, USA, Illuminati, Rockefeller, New World Order, Free Energy, Monsanto, GMO, IMF, Pepsi, Gold, banking, Wikileaks, Anonymous. It will improve discovery of related items. You may also use special keywords to relate other items. It's invisble to the users. Less keywords will give more related items but less accurate, more keywords will give less related items but more accurate. You need to find a good balance."
     %>
     <%= f.input :published_at,
-          # value: f.object.published_at.localtime,
           as: "string",
           label: "Publication Date",
           require: true,
-          hint: "When to go live. Timezone used for picking date: '#{Time.zone}' (from your Profile). It will be converted to UTC after saving. (Required)"
+          hint: "Time to go live. Timezone used for picking date: '#{Time.zone}' from your Profile. 
+            (Required)"
     %>
     <%= f.input :expires_on,
         as: "string",
         label: "Expire Date",
         value: f.object.expires_on.localtime,
-        hint: "Expiration date of article (default: 10 years). It will be converted to UTC after saving."
+        hint: "Expiration date of article (default: 10 years)."
     %>
   <% end %>
   
@@ -63,11 +63,11 @@
     %>
     <br />
     <%= f.input :youtube_img, label: "Automatically Set Youtube Image",
-          hint: "Automatically set main image from a youtube screenshot"
+          hint: "Automatically set main image from a youtube screenshot."
     %>
     <br />
     <%= f.input :youtube_res, label: "Video Resolution",
-          hint: "Set this if you have multiple youtube videos on the same page",
+          hint: "Set this if you have multiple youtube videos on the same page.",
           as: :select,
           collection: ["240x360", "360x480", "400x540", "480x720", "600x800"],
           include_blank: "Automatically"
@@ -79,25 +79,26 @@
   <%= f.inputs name: "Tags" do %>
     <div class="medium_box">
       <%= f.input :general_tags, as: :check_boxes, label: "General",
-          collection: GeneralTag.find(:all, order: "title ASC")
+          collection: GeneralTag.find(:all, order: "title ASC"),
+          hint: "Select 2-4 tags, but no more than 6"
       %>
     </div>
     <div class="medium_box">
       <%= f.input :region_tags, as: :check_boxes, label: "Regional",
-          collection: RegionTag.find(:all, order: "title ASC") 
+          collection: RegionTag.find(:all, order: "title ASC")
       %>
     </div>
     <div class="medium_box">
       <%= f.input :country_tags, as: :check_boxes, label: "Countries",
-          collection: CountryTag.find(:all, order: "title ASC") 
+          collection: CountryTag.find(:all, order: "title ASC")
       %>
     </div>
   <% end %>
   
   <%= f.inputs name: "Author and Source" do %>
-    <%= f.input :author_name, hint: "If blank, your 'Name' will be used" %>
+    <%= f.input :author_name, hint: "If blank, your 'Name' will be used", placeholder: "Original Author name" %>
     <%= f.input :author_email %>
-    <%= f.input :source_url, hint: "If you wrote the article, leave empty" %>
+    <%= f.input :source_url, hint: "If you wrote the article, leave empty", placeholder: "http://" %>
     <%= f.input :original, label: "Original author", hint: "Are you the original Author of this article?" %>
     <br />
   <% end %>
@@ -117,6 +118,7 @@
       <% if f.object.twitter_shares.empty? %>
         <%= f.input :share_twitter, as: "boolean",
             hint: "Auto post to twitter upon publication? Only set it if item is ready and not Draft. It can only be posted once. Performed 3 minutes after Publication." %>
+      <br />
       <% else %>
         <li class="boolean input optional">
           <label><b>Already posted to twitter</b></label>
@@ -126,6 +128,7 @@
       <% if !f.object.email_delivery_sent? %>
         <%= f.input :send_emails, as: "boolean",
             hint: "Send emails upon publication? Only set it if item is ready and not Draft. It can only be posted once. Email will be sent 3 minutes after Publication." %>
+        <br />
       <% elsif f.object.email_delivery_sent? %>
         <li class="boolean input optional">
           <label><b>Already Sent Emails</b></label>
@@ -193,19 +196,26 @@
     <br />
     <%= f.input :existing_attachment_id,
                 as: "number",
+                placeholder: '12345',
                 input_html: {class: 'small'},
-                hint: "Or enter ID of an existing image attachment"
+                hint: "Enter image ID for and existing image in the system"
         %>
   <% end %>
   
   <%= f.inputs name: "Editor Notes" do %>
     <%= f.input :author_status,
           as: :select,
+          include_blank: "-- Article Status",
           label: "Author Status",
           collection: ["Ready to go", "Needs Editing", "Needs Translation", "Needs Image"]
     %>
-    <%= f.input :editor_notes, as: "text", input_html: {rows: 4} %>
-    <%= f.input :updated_reason, as: "string", hint: "Provide a reason for editing, as short as possible, 2-4 words." %>
+    <%= f.input :editor_notes,
+          as: "text",
+          input_html: {rows: 4},
+          hint: "Your personal notes, or to other editors",
+          placeholder: "Your personal notes, or to other editors"
+    %>
+    <%= f.input :updated_reason, as: "string", hint: "Provide a reason for editing, 4-6 words." %>
   <% end %>
 
   <%= f.input :lock_version, as: :hidden %>

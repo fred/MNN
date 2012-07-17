@@ -302,3 +302,8 @@ input.error {
   margin-left: 10px;
   width: 100px;
 }
+
+p.inline-hints,
+form fieldset > ol > li p.inline-hints {
+  font-size: 12px;
+}
