@@ -53,14 +53,14 @@ gem 'rakismet'
 ### Queue
 gem 'slim'
 gem 'sinatra'
-gem 'redis', '~> 3.0.1'
+gem 'redis'
 gem 'sidekiq', git: 'git://github.com/mperham/sidekiq.git'
 
 ### JSON and Twitter
 gem 'multi_json'
 gem 'json'
-gem 'simple_oauth', '~> 0.1.7'
-gem 'twitter', '~> 2.5.0'
+gem 'simple_oauth'
+gem 'twitter'
 
 gem 'sass'
 gem 'sass-rails'

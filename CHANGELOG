@@ -1,5 +1,9 @@
 CHANGELOG
 
+== July 17, 2012
+* Updated Twitter Gem
+* Moved SOLR to new instance
+
 == July 16, 2012
 * Updated Dalli fixing "key too long" error
 
