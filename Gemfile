@@ -18,10 +18,6 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-windowslive', git: 'git://github.com/dangerp/omniauth-windowslive.git'
-# gem 'omniauth-flattr'
-# gem 'omniauth-openid'
-# gem 'omniauth-github'
-
 
 ### Roles and Authentication
 gem 'cancan', '~> 1.6.7'
@@ -39,9 +35,6 @@ gem 'mini_magick', '~> 3.4'
 gem 'fog', '~> 1.4.0'
 gem 'carrierwave', '~> 0.6.2'
 
-### S3 Asset hosting
-# gem 'asset_sync'
-
 ### Permalink
 gem 'stringex'
 gem 'friendly_id', '~> 4.0.0'
@@ -54,7 +47,8 @@ gem 'rakismet'
 gem 'slim'
 gem 'sinatra'
 gem 'redis'
-gem 'sidekiq', git: 'git://github.com/mperham/sidekiq.git'
+gem 'sidekiq', '2.0.3'
+gem 'celluloid', '0.11.0'
 
 ### JSON and Twitter
 gem 'multi_json'
