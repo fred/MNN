@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120707082713) do
+ActiveRecord::Schema.define(:version => 20120717180510) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -164,6 +164,7 @@ ActiveRecord::Schema.define(:version => 20120707082713) do
 
   add_index "items", ["allow_comments"], :name => "index_items_on_allow_comments"
   add_index "items", ["allow_star_rating"], :name => "index_items_on_allow_star_rating"
+  add_index "items", ["category_id", "draft", "published_at"], :name => "index_items_on_category_id_and_draft_and_published_at"
   add_index "items", ["category_id"], :name => "index_items_on_category_id"
   add_index "items", ["draft"], :name => "index_items_on_draft"
   add_index "items", ["featured"], :name => "index_items_on_featured"
