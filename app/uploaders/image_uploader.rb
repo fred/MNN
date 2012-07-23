@@ -21,10 +21,10 @@ class ImageUploader < BaseImageUploader
     process resize_to_fill: [300, 300]
   end
   version :large do
-    process resize_to_fit: [400, 400]
+    process resize_to_limit: [400, 400]
   end
   version :full do
-    process resize_to_fit: [600, 600]
+    process resize_to_limit: [600, 600]
   end
   
 end
