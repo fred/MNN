@@ -18,7 +18,8 @@ CarrierWave.configure do |config|
       provider:               'AWS',               # required
       aws_access_key_id:      ENV["S3_KEY"],       # required
       aws_secret_access_key:  ENV["S3_SECRET"],    # required
-      region:                 ENV['S3_REGION']     # optional, defaults to 'us-east-1'
+      region:                 ENV['S3_REGION'],    # optional, defaults to 'us-east-1'
+      persistent:             false
     }
     config.fog_directory    = ENV['S3_BUCKET']         # required
     config.fog_attributes   = {'Cache-Control'=>'max-age=604800'}  # 1 week, optional, defaults to {}
