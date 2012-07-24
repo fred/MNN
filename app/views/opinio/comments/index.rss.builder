@@ -33,11 +33,14 @@ xml.rss(
     for comment in @comments
       xml.item do
         xml.title("#{comment.display_name} said:")
-        xml.guid(url_for(item_comments_path(@item.id, only_path: false, protocol: 'http')))
-        xml.description(sanitize comment.body,
-          tags: %w(p b i u a br em blockquote strong div ul ol li),
-          attributes: %w(href))
+        xml.description(
+          sanitize(comment.body,
+            tags: %w(p b i u a br em blockquote strong div ul ol li),
+            attributes: %w(href)
+          )
+        )
         if @item
+          xml.guid(url_for(item_comments_path(@item.id, only_path: false, protocol: 'http')))
           xml.pubDate(@item.last_commented_at.rfc2822) if @item.last_commented_at
           xml.link(url_for(item_comments_path(@item, only_path: false, protocol: 'http')))
         end

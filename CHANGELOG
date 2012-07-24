@@ -1,5 +1,8 @@
 CHANGELOG
 
+== July 24, 2012
+* Fixed bug on comments RSS
+
 == July 18, 2012
 * Improved hints on new item form
 * Minor CSS improvements for item
