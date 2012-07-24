@@ -1,8 +1,8 @@
 ---
-zocial-regular-webfont.eot: zocial-regular-webfont-ad403aea66f10918c47afed807860257.eot
-zocial-regular-webfont.svg: zocial-regular-webfont-b95780d6deee1fee3060fe9eb1d666e6.svg
-zocial-regular-webfont.ttf: zocial-regular-webfont-fd9a0e86f541dfb364ff4302be4f8064.ttf
-zocial-regular-webfont.woff: zocial-regular-webfont-843fcdc4710ba476dc4734904791c4dc.woff
+zocial-regular-webfont.eot: zocial-regular-webfont-8fcedc5fe55db803f529986c8ae17931.eot
+zocial-regular-webfont.svg: zocial-regular-webfont-41aae725b44e47d4cbf2994da423a1dc.svg
+zocial-regular-webfont.ttf: zocial-regular-webfont-8491717a0b17928584c999fd3e7b8ebc.ttf
+zocial-regular-webfont.woff: zocial-regular-webfont-8b2f2eba0b2107a85a113d7b5bb30c3a.woff
 adfreesite.png: adfreesite-e30820c896b4a051d6925316c53eeba5.png
 ajax-loader.gif: ajax-loader-872a271a42b859897dc9cc39c8c7484f.gif
 anon.png: anon-9726c146d4127c9f0e8086c783e7197f.png
@@ -68,6 +68,8 @@ icons/social/google_16.png: icons/social/google_16-68971f5dba1ee531910111308aa41
 icons/social/google_32.png: icons/social/google_32-498e75ee6164eaef176e16f870100727.png
 icons/social/google_plus_16.png: icons/social/google_plus_16-f45dafd3bc97edb98b73983b0a81f0e2.png
 icons/social/google_plus_32.png: icons/social/google_plus_32-06141f2353a3ed5f6ba75dc2939a5324.png
+icons/social/google_plus_red_32.png: icons/social/google_plus_red_32-fb1eeb48cc6d174052668e6ddf91d0e2.png
+icons/social/google_plus_red_64.png: icons/social/google_plus_red_64-9a50daaabac7864f3b6cb7a03c80460c.png
 icons/social/google_voice_16.png: icons/social/google_voice_16-36b28462ef4141ef690b90a24d774844.png
 icons/social/google_voice_32.png: icons/social/google_voice_32-7eb7172b5da2dc0ffa031b18f71b3185.png
 icons/social/google_wave_16.png: icons/social/google_wave_16-b1040e6570af60a6ffb93089867c8de4.png
@@ -196,7 +198,7 @@ world_mathaba11.png: world_mathaba11-05570f0309b7b69f11ada4c845795333.png
 active_admin.js: active_admin-cf45bae06391cb28801723bdf3660383.js
 application.js: application-27ff4f085b297cab09f0d8c5999e6aae.js
 active_admin.css: active_admin-319369986dc0798faf64f5ef193ab324.css
-application.css: application-664ee8df1d0aa99551dd286b34d63ce2.css
+application.css: application-766de938b51395d1c886732999de646c.css
 rss.css: rss-5d88525bfa6012a6fe5cdf6dd949a96f.css
 jquery-ui/ui-bg_flat_0_bdbdbd_40x100.png: jquery-ui/ui-bg_flat_0_bdbdbd_40x100-3be6aa7b1d61a969928ed6aa55e3c7cc.png
 jquery-ui/ui-bg_flat_0_eeeeee_40x100.png: jquery-ui/ui-bg_flat_0_eeeeee_40x100-054315d6c4bede256f2706ca7da722bd.png
