@@ -8,7 +8,8 @@
                       title: alt_for_image(item.main_image)
                     ),
             item,
-            title: item.title
+            title: item.title,
+            rel: 'image'
         %>
       <% elsif item.youtube_id && item.youtube_img %>
         <%= image_tag(youtube_thumb(item), 

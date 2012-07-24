@@ -1,14 +1,29 @@
 <div class="sidebar">
 
   <div class="well hidden-phone">
-    <%= link_to(image_tag("icons/social/rss_32.png", width: 32, height: 32),
+    <%= link_to(
+          image_tag("icons/social/rss_32.png", width: 32, height: 32, alt: 'rss'),
           feed_path,
-          title:  "Multiple RSS Feeds")
+          title: "Multiple RSS Feeds",
+          rel: "rss"
+        )
     %>
-    <%= link_to(image_tag("icons/social/twitter_32.png", width: 32, height: 32),
-          twitter_link, title:  "Visit our Twitter")
+    <%= link_to(
+          image_tag("icons/social/twitter_32.png", width: 32, height: 32, alt: 'Twitter'),
+          twitter_link,
+          title: "Twitter",
+          rel: "twitter"
+        )
     %>
     <%= flattr_medium %>
+    <%= link_to(
+          image_tag("icons/social/twitter_32.png", width: 32, height: 32, alt: 'google+'),
+          google_plus_link,
+          title: "Google+",
+          rel: "me"
+        )
+    %>
+    
   </div>
 
   <div class="well">

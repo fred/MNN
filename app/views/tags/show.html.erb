@@ -10,12 +10,12 @@
 
 <% content_for :breadcrumb do %>
   <li>
-    <a href="/">Home</a>
+    <%= link_to "Home", root_path, title: "Home", rel: 'home' %>
     <span class="divider">/</span>
   </li>
   
   <li>
-    <%= link_to "Tags", tags_path %>
+    <%= link_to "Tags", tags_path, title: 'All Tags' %>
     <span class="divider">/</span>
   </li>
   

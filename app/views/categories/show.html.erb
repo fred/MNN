@@ -11,7 +11,7 @@
 <% content_for :breadcrumb do %>
 
   <li>
-    <a href="/">Home</a>
+    <%= link_to "Home", root_path, title: "Home", rel: 'home' %>
     <span class="divider">/</span>
   </li>
   
@@ -21,7 +21,8 @@
       <%= link_to(
             image_tag("icons/social/rss_16.png", alt: "RSS for #{@category.title}"), 
             category_path(@category, format: "rss"),
-            title: "RSS feed for #{@category.title} items"
+            title: "RSS feed for #{@category.title} items",
+            rev: 'category'
           )
       %>
     </h1>

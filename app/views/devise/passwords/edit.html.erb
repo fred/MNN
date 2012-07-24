@@ -28,7 +28,7 @@
 
 <% content_for :breadcrumb do %>
   <li>
-    <a href="/">Home</a>
+    <%= link_to "Home", root_path, title: "Home", rel: 'home' %>
     <span class="divider">/</span>
   </li>
   <li class="active">Change Password</li>

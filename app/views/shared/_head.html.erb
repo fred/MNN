@@ -23,8 +23,10 @@
 
 <% if @meta_title %>
 <title> <%= @meta_title %> </title>
+<link rel='index' title="<%= @meta_title %>" href="<%= url_for root_path %>" />
 <% else %>
 <title>World Mathaba Independent News</title>
+<link rel='index' title="World Mathaba Independent News" href="<%= url_for(root_path(only_path: false, protocol: 'http'))%>" />
 <% end %>
 
 <meta http-equiv="last-modified" content="<%= @last_modified %>" />

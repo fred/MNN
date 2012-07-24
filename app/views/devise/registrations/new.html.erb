@@ -86,17 +86,13 @@
 
       </fieldset>
 
-
-
-      
-      
     <% end %> <!-- End Form -->
   </div> <!-- End span8-->
 </div> <!-- End row -->
 
 <% content_for :breadcrumb do %>
   <li>
-    <a href="/">Home</a>
+    <%= link_to "Home", root_path, title: "Home", rel: 'home' %>
     <span class="divider">/</span>
   </li>
   <li class="active">Sign Up</li>
