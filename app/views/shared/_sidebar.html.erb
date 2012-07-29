@@ -1,29 +1,10 @@
 <div class="sidebar">
 
-  <div class="well hidden-phone">
-    <%= link_to(
-          image_tag("icons/social/rss_32.png", width: 32, height: 32, alt: 'rss'),
-          feed_path,
-          title: "Multiple RSS Feeds",
-          rel: "rss"
-        )
-    %>
-    <%= link_to(
-          image_tag("icons/social/twitter_32.png", width: 32, height: 32, alt: 'Twitter'),
-          twitter_link,
-          title: "Twitter",
-          rel: "twitter"
-        )
-    %>
+  <div class="well">
     <%= flattr_medium %>
-    <%= link_to(
-          image_tag("icons/social/twitter_32.png", width: 32, height: 32, alt: 'google+'),
-          google_plus_link,
-          title: "Google+",
-          rel: "me"
-        )
-    %>
-    
+    <%= rss_medium %>
+    <%= twitter_medium %>
+    <%= google_plus_medium %>
   </div>
 
   <div class="well">
@@ -145,6 +126,19 @@
         <% end %>
         <li class="horizontal-divider"></li>
       </ul>
+
+      <ul class="nav nav-list">
+        <% Language.order("locale ASC").all.each do |language|%>
+          <li class=<%= li_class_subdomain(language.locale, "active") %>>
+            <%= link_to url_for(localized_subdomain(language.locale)), title: language.description do %>
+              <%= image_tag "blank.gif", class: "flag flag-#{language.flag_code}", alt: language.description %>
+              <%= language.description %>
+            <% end %>
+          </li>
+        <% end %>
+        <li class="horizontal-divider"></li>
+      </ul>
+
     </div>
 
     <% cache_expiring("sidebar_recently", 300) do %>

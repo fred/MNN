@@ -20,6 +20,7 @@ class TagsController < ApplicationController
     # @items = @category.published_items.paginate(per_page: 20, page: params[:page])
     @items = @tag.
       items.
+      localized.
       where(draft: false).
       includes(:attachments, :category, :language, :item_stat, :user, :tags).
       where("published_at is not NULL").

@@ -97,50 +97,52 @@
 
   <% for category in @categories %>
     <% @top_items = category.top_items(13) %>
-    <% cache_expiring("box/#{category.id}/#{@top_items.first.cache_key_full}",600) do %>
-      <div class="span6 box" id="<%= category.slug %>">
-        <h2><%= link_to category.title, category %></h2>
-        <ul>
-          <% @top_items.each_with_index do |item,index|%>
-            <li class="list_item" id="item_<%=item.id%>">
-              <% if index==0 %>
-                <% if item.has_image? %>
-                  <%= link_to(
-                        image_tag(item.main_image.image.small,
-                          class: "list_item_image", 
-                          alt: item.main_image.title,
-                          width: 100, height: 100
-                        ),
-                        item, 
-                        title: item_title_small(item),
-                        id: 'tooltip'
-                      )
+    <% unless @top_items.empty? %>
+      <% cache_expiring("box/#{category.id}/#{@top_items.first.cache_key_full}",600) do %>
+        <div class="span6 box" id="<%= category.slug %>">
+          <h2><%= link_to category.title, category %></h2>
+          <ul>
+            <% @top_items.each_with_index do |item,index|%>
+              <li class="list_item" id="item_<%=item.id%>">
+                <% if index==0 %>
+                  <% if item.has_image? %>
+                    <%= link_to(
+                          image_tag(item.main_image.image.small,
+                            class: "list_item_image", 
+                            alt: item.main_image.title,
+                            width: 100, height: 100
+                          ),
+                          item, 
+                          title: item_title_small(item),
+                          id: 'tooltip'
+                        )
+                    %>
+                  <% elsif item.youtube_id && item.youtube_img %>
+                    <%= image_tag("https://img.youtube.com/vi/#{item.youtube_id}/0.jpg", 
+                          class: "list_item_image youtube_small",
+                          alt: item.youtube_id
+                        )
+                    %>
+                  <% end %>
+                  <%= link_to item.title.to_s.truncate(100), item, 
+                          title: item_title_small(item), id: 'tooltip'
                   %>
-                <% elsif item.youtube_id && item.youtube_img %>
-                  <%= image_tag("https://img.youtube.com/vi/#{item.youtube_id}/0.jpg", 
-                        class: "list_item_image youtube_small",
-                        alt: item.youtube_id
-                      )
-                  %>
+                  <span class="abstract"><%= item.abstract.to_s.truncate(120) %></span>
+                <% else %>
+                  <span class="noroll">
+                    <%= link_to item.title.to_s.truncate(100), item,
+                          title: item_title(item), id: 'tooltip'
+                    %>
+                  </span>
                 <% end %>
-                <%= link_to item.title.to_s.truncate(100), item, 
-                        title: item_title_small(item), id: 'tooltip'
-                %>
-                <span class="abstract"><%= item.abstract.to_s.truncate(120) %></span>
-              <% else %>
-                <span class="noroll">
-                  <%= link_to item.title.to_s.truncate(100), item,
-                        title: item_title(item), id: 'tooltip'
-                  %>
-                </span>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-        <span class="more">
-          <%= link_to "more...", category, title: "Read more articles in this category" %>
-        </span>
-      </div>
+              </li>
+            <% end %>
+          </ul>
+          <span class="more">
+            <%= link_to "more...", category, title: "Read more articles in this category" %>
+          </span>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>

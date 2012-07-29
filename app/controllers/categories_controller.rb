@@ -22,6 +22,7 @@ class CategoriesController < ApplicationController
     headers['Last-Modified'] = @category.items.last_item.updated_at.httpdate
     @items = @category.
       items.
+      localized.
       where(draft: false).
       includes(:attachments, :category, :language, :item_stat, :user, :tags).
       where("published_at is not NULL").

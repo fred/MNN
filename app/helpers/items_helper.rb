@@ -72,13 +72,6 @@ module ItemsHelper
     "https://img.youtube.com/vi/#{item.youtube_id}/#{n}.jpg"
   end
 
-  def twitter_link
-    "https://twitter.com/worldmathaba"
-  end
-
-  def google_plus_link
-    "https://plus.google.com/112484572380788212726/posts"
-  end
 
   def rss_description(item)
     html = ""

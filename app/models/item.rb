@@ -1,6 +1,8 @@
 class Item < ActiveRecord::Base
   include Rails.application.routes.url_helpers # neeeded for _path helpers to work in models
 
+  DEFAULT_LOCALE = 'en'
+
   attr_protected :user_id, :slug, :updated_by, :deleted_at
 
   attr_accessor :updated_reason, :share_twitter, :send_emails, :existing_attachment_id
@@ -325,7 +327,7 @@ class Item < ActiveRecord::Base
     if self.language
       self.language.locale
     else
-      "en"
+      DEFAULT_LOCALE
     end
   end
 
@@ -397,9 +399,15 @@ class Item < ActiveRecord::Base
     end
   end
 
+
+
   ####################
   ### CLASS METHODS
   ####################
+
+  def self.default_locale
+    I18n.locale.to_s || DEFAULT_LOCALE
+  end
 
   def self.published
     where("published_at < ?", DateTime.now)
@@ -458,10 +466,20 @@ class Item < ActiveRecord::Base
     limit(lim)
   end
 
+  def self.localized
+    language = Language.where(locale: default_locale).first
+    if language
+      where(language_id: language.id)
+    else
+      where('')
+    end
+  end
+
   # Returns the top sticky item
   # Used on the Front End, joining attachments
   def self.top_sticky
     published.
+    localized.
     where(draft: false, sticky: true).
     order("published_at DESC").
     includes(:attachments).
@@ -472,6 +490,7 @@ class Item < ActiveRecord::Base
   # Used on the Front End, joining attachments
   def self.highlights(limit=6,offset=0)
     published.
+    localized.
     where(draft: false, featured: true, sticky: false).
     order("published_at DESC").
     limit(limit).

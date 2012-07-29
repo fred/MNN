@@ -29,6 +29,7 @@ class Category < ActiveRecord::Base
     self.
       items.
       includes(:attachments).
+      localized.
       where(draft: false).
       where("published_at is not NULL").
       where("published_at < '#{Time.now.to_s(:db)}'").
