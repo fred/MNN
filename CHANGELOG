@@ -4,8 +4,10 @@ CHANGELOG
 * Added Multi-language site with subdomains
 * Added Flags to language menu
 * Improved Admin interface
+* Improved Error Alerts with Twitter-bootstrap
 * Better Error Pages
 * Updated google plus link
+* Updated Gems
 
 == July 24, 2012
 * Fixed bug on comments RSS

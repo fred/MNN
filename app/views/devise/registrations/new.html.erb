@@ -7,10 +7,7 @@
         ) do |f| 
     %>
       <%= custom_devise_error_messages! %>
-      
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, class: "alert alert-#{name}" %>
-      <% end %>
+      <%= bootstap_flash %>
 
       <fieldset class="withBorder">
         <legend>Sign up</legend>
