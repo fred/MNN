@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
       @rss_source = items_path(only_path: false, protocol: 'https')
       @rss_language = "en"
       @items = Item.published.
+        localized.
         not_draft.
         includes(:language, :attachments, :tags, :item_stat, :user).
         order("published_at DESC").
