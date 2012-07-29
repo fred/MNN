@@ -1,4 +1,4 @@
-<% cache("_item/#{item.cache_key_full}") do %>
+<% cache("_item/#{I18n.locale.to_s}/#{item.cache_key_full}") do %>
   <article class="category" id="item_<%=item.id%>">
     <header>
       <% if item.has_image? %>

@@ -9,7 +9,7 @@ module LayoutHelper
   end
 
   def google_plus_link
-    "https://plus.google.com/112484572380788212726/posts"
+    "https://plus.google.com/b/114360341024930120596/114360341024930120596/posts"
   end
 
   def twitter_user_link(str)

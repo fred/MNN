@@ -12,7 +12,7 @@
   <% end %>
 <% end %>
 
-<% cache_expiring("show/#{@item.cache_key_full}", 600) do %>
+<% cache_expiring("show/#{I18n.locale.to_s}/#{@item.cache_key_full}", 600) do %>
   <!-- CACHE_KEY <%= "show/#{@item.cache_key_full}" %> -->
 
   <div itemscope itemtype="http://schema.org/Article">

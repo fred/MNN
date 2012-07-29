@@ -1,5 +1,12 @@
 CHANGELOG
 
+== July 29, 2012
+* Added Multi-language site with subdomains
+* Added Flags to language menu
+* Improved Admin interface
+* Better Error Pages
+* Updated google plus link
+
 == July 24, 2012
 * Fixed bug on comments RSS
 * Added rel, rev, and title tags to links
