@@ -141,7 +141,7 @@
 
     </div>
 
-    <% cache_expiring("sidebar_recently", 300) do %>
+    <% cache_expiring("sidebar_recently", 600) do %>
       <div class="sidebar_secions">
         <h4>Recently Discussed</h4>
         <% Item.recently_commented(5).each do |item| %>
@@ -157,7 +157,7 @@
       </div>
     <% end %>
 
-    <% cache_expiring("sidebar_most_read", 600) do %>
+    <% cache_expiring("sidebar_most_read", 720) do %>
       <div class="sidebar_secions">
         <h4>Most Read in 2 weeks</h4>
         <% Item.popular(5).each do |item| %>

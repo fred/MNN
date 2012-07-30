@@ -1,20 +1,20 @@
 <footer>
   <ul class="footer_menu">
 
-    <span class="footer_categories">
-      <% Category.order("priority ASC").each do |category| %>
-        <li>
-          <%= link_to category.title, category, title:  category.description %>
-        </li>
+    <% cache_expiring("footer/top", 900) do %>
+      <span class="footer_categories">
+        <% Category.order("priority ASC").each do |category| %>
+          <li>
+            <%= link_to category.title, category, title:  category.description %>
+          </li>
+        <% end %>
+      </span>
+      <% Page.all(order: "priority ASC").each do |page| %>
+        <li><%= link_to page.title, page, title: page.title %></li>
       <% end %>
-    </span>
-    
-    <% Page.all(order: "priority ASC").each do |page| %>
-      <li><%= link_to page.title, page, title: page.title %></li>
-    <% end %>
-    
       <li><%= link_to "Feeds", feed_path, title: "Multiple RSS Feeds" %></li>
-    
+    <% end %>
+
     <% if current_user or current_admin_user %>
       <li>
         <%= link_to "Edit Profile", 

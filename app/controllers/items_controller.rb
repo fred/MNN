@@ -122,17 +122,15 @@ class ItemsController < ApplicationController
       @items = []
       @title = "Please type something to search for"
     end
+    headers_with_timeout(900)
     respond_to do |format|
-      format.html {
-        headers_with_timeout(600)
-      }
+      format.html
       format.js
       format.atom {
-        headers_with_timeout(900)
-        render partial: "/shared/items", layout: false }
+        render partial: "/shared/items", layout: false
+      }
       format.rss {
-        headers_with_timeout(900)
-        render partial: "/shared/items", layout: false 
+        render partial: "/shared/items", layout: false
       }
     end
   end
