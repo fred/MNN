@@ -1,5 +1,10 @@
 CHANGELOG
 
+== July 31, 2012
+* Updated to rails 3.2.7
+* Using larger image for opengraph (G+,Twitter)
+* Added more tests
+
 == July 29, 2012
 * Added Multi-language site with subdomains
 * Added Flags to language menu

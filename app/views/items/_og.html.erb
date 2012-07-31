@@ -7,7 +7,7 @@
 
 <!-- Image -->
 <% if @item.has_image? %>
-  <meta property="og:image" content="<%= @item.main_image.image.small %>"/>
+  <meta property="og:image" content="<%= @item.main_image.image.large %>"/>
 <% elsif @item.youtube_id %>
   <meta property="og:image" content="<%= youtube_thumb(@item) %>"/>
 <% end %>

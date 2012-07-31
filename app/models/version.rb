@@ -1,11 +1,15 @@
 class Version < ActiveRecord::Base
-  VERSIONS_TO_KEEP = 200
 
   after_create  :cleanup_versions
 
+  def self.versions_to_keep
+    # Setting.versions_to_keep || 200
+    200
+  end
+
   # Cleanup database versions table (vestal_versions)
   def cleanup_versions
-    if Version.count > VERSIONS_TO_KEEP
+    if Version.count > Version.versions_to_keep
       if Rails.env.production?
         Version.delay.delete_old
       else
@@ -17,9 +21,8 @@ class Version < ActiveRecord::Base
   def self.delete_old
     self.select("id,created_at").
     order("id ASC").
-    limit(self.count-VERSIONS_TO_KEEP).
+    limit(self.count-Version.versions_to_keep).
     destroy_all
   end
-
 
 end
