@@ -1,4 +1,4 @@
-<% cache("atom/#{item.cache_key_full}") do %>
+<% cache_expiring("atom/#{item.cache_key_full}") do %>
   <article class="category" id="item_<%=item.id%>">
     <div>
       <h3>

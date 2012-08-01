@@ -3,7 +3,7 @@
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <% cache_expiring("navbar/#{I18n.locale.to_s}") do %>
+      <% cache_expiring("navbar") do %>
         <%= link_to(image_tag("world_mathaba11.png",
                     width: '200px',
                     height: '33px',
