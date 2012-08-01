@@ -2,27 +2,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="application-name" content="World Mathaba Independent News Agency">
 <meta name="generator" content="Ruby on Rails">
-
 <meta http-equiv="Content-Language" Content="<%= I18n.locale.to_s %>">
-
 <% if @meta_description %>
 <meta name="description" content="<%= @meta_description %>">
 <% else %>
 <meta name="description" content="World Mathaba Independent News Agency">
 <% end %>
-
 <% if @meta_keywords %>
 <meta name="keywords" content="news, <%= @meta_keywords %>">
 <% else %>
 <meta name="keywords" content="worldmathaba, news, independent, alternative">
 <% end %>
-
 <% if @meta_author %>
 <meta name="author" content="<%= @meta_author %>">
 <% else %>
 <meta name="author" content="World Mathaba Independent News Agency">
 <% end %>
-
 <% if @meta_title %>
 <title> <%= @meta_title %> </title>
 <link rel='index' title="<%= @meta_title %>" href="<%= url_for root_path %>" />

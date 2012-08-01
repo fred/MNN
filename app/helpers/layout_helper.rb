@@ -90,6 +90,7 @@ module LayoutHelper
     else
       "form-horizontal"
     end
+    
   end
 
   def li_class_subdomain(str, css_class="active")

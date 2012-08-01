@@ -22,25 +22,34 @@
       </div>
       <div class="control-group">
         <div class="controls">
-          <label class="checkbox" for="user_remember_me">
-            <%= f.check_box :remember_me, as: :boolean %>
-            Remember me for 2 weeks
+          <%= f.check_box :remember_me %>
+          <label class="inline" for="user_remember_me">
+            Stay Signed in
           </label>
         </div>
+      </div>
+      <div class="control-group">
         <div class="controls">
-          Don't have an account? 
+          <div class="btn-group">
+            <%= f.submit "Sign in", class: "btn", data: {disable_with: 'Sending...'} %>
+            <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class='control-group'>
+        <div class="controls">
+          New here? 
           <%= link_to "Register now",
                   new_registration_url(:user, protocol: 'https'),
                   title: "Click here to register a new Account"
           %>
         </div>
       </div>
-      <div class="control-group">
+
+      <div class='control-group'>
         <div class="controls">
-          <div class="btn-group">
-            <%= f.submit "Login", class: "btn", 'data-disable-with' => 'Sending...' %>
-            <a href="#" class="btn" data-dismiss="modal">Cancel</a>
-          </div>
+          <%= link_to "Forgot Password?", new_password_url(:user, protocol: "https") %>
         </div>
       </div>
 

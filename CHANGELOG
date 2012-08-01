@@ -1,5 +1,9 @@
 CHANGELOG
 
+== August 1, 2012
+* Improved registration and login forms
+* 
+
 == July 31, 2012
 * Updated to rails 3.2.7
 * Using larger image for opengraph (G+,Twitter)

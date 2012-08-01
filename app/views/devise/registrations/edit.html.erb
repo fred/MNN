@@ -1,5 +1,5 @@
-<div class="row-fluid">
-  <div class="span9">
+<div class="row">
+  <div class="span8">
     <%= form_for(resource,
           as: resource_name,
           url: registration_path(resource_name),
@@ -14,7 +14,7 @@
       <% end %>
 
       <fieldset class="withBorder">
-        <legend>Personal Information</legend>
+        <legend>Private Information</legend>
 
         <div class="control-group">
           <%= f.label :email, class: 'control-label' %>
@@ -30,9 +30,31 @@
             <%= f.text_field :name, required: false, placeholder: "Your public name, ex: Anonymous",
                   autofocus: true, class: "imput-large"
             %>
-            <p class="help-block">Information below will be shown to the public.</p>
           </div>
         </div>
+        <div class="control-group">
+          <%= f.label :time_zone, class: 'control-label' %>
+          <div class="controls">
+            <%= f.time_zone_select :time_zone %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :registration_role, "Reason for joining us?", class: 'control-label' %>
+          <div class="controls">
+            <%= f.select :registration_role, 
+                  options_for_select([["Just be a member"], ["To Comment"], ["Comment and Submit Articles"], ["I want to be an Editor"]]),
+                  {include_blank: "-- Please Choose"},
+                  required: false,
+                  class: "imput-medium"
+            %>
+            <p class="help-block">Not shown to the public</p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="withBorder">
+        <legend>Public Information</legend>
 
         <div class="control-group">
           <%= f.label :facebook, class: 'control-label' %>
@@ -83,39 +105,20 @@
         </div>
 
         <div class="control-group">
-          <%= f.label :time_zone, class: 'control-label' %>
-          <div class="controls">
-            <%= f.time_zone_select :time_zone %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= f.label :registration_role, "Reason for joining us?", class: 'control-label' %>
-          <div class="controls">
-            <%= f.select :registration_role, 
-                  options_for_select([["Just be a member"], ["To Comment"], ["Comment and Submit Articles"], ["I want to be an Editor"]]),
-                  {include_blank: "-- Please Choose"},
-                  required: false,
-                  class: "imput-medium"
-            %>
-            <p class="help-block">Not shown to the public.</p>
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset class="withBorder">
-        <legend>Describe yourself</legend>
-        <div class="control-group">
           <%= f.label :bio, "You Bio", class: 'control-label' %>
           <div class="controls">
-            <%= f.text_area :bio, required: false, class: "imput-medium", rows: 7, cols: 24  %>
-            <p class="help-block">Shown on your public profile.</p>
+            <%= f.text_area :bio, required: false, class: "imput-medium",
+                  placeholder: "Say something about yourself.",
+                  rows: 7, cols: 24
+            %>
+            <p class="help-block">Shown on your public profile</p>
           </div>
         </div>
+
       </fieldset>
 
       <fieldset class="withBorder">
-        <legend>Avatar Image</legend>
+        <legend>Profile Image</legend>
         <div class="control-group">
           <%= f.label :avatar, "Upload Avatar", class: 'control-label' %>
           <div class="controls">
@@ -132,6 +135,9 @@
                     target: "blank"
                   )
               %>
+            </div>
+            <div class="controls">
+              <%= f.check_box :remove_avatar %> Delete this image
             </div>
           <% end %>
         </div>
@@ -151,7 +157,7 @@
           </div>
           <% if f.object.gpg? %>
             <div class="controls">
-              <%= link_to("Download Key", f.object.gpg.url, target: "blank") %>
+              <%= link_to("Download Current Key", f.object.gpg.url, target: "blank") %>
             </div>
           <% end %>
         </div>
@@ -198,7 +204,7 @@
           <div class="controls">
             <%= f.password_field :password, autocomplete: "off", required: false, class: "imput-large" %>
             <span class="help-block">
-              Leave this field blank if you do not want to change your password
+              Leave blank if you do not want to change password
             </span>
           </div>
         </div>

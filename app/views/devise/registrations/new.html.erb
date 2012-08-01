@@ -1,5 +1,5 @@
-<div class="row-fluid">
-  <div class="span9">
+<div class="row">
+  <div class="span7">
     <%= form_for(resource,
           as: resource_name,
           url: registration_path(resource_name),
@@ -56,15 +56,15 @@
 
         <div id="termsofservice-form-element" class="control-group">
           <%= f.check_box :terms_of_service %>
-          <strong>
-            I agree to the
-            <a href="/pages/privacy-and-policy" target="popup">Terms of Service and Privacy Policy</a>
-          </strong>
+          <label class="inline" for="user_terms_of_service">
+              I agree to the
+              <a href="/pages/privacy-and-policy" target="popup">Terms of Service and Privacy Policy</a>
+          </label>
         </div>
 
         <div class="control-group">
           <div class="controls">
-            <%= f.submit "Register", class: "btn btn-success", 'data-disable-with' => 'Processing...' %>
+            <%= f.submit "Register", class: "btn btn-success", data: {disable_with: 'Loading...'} %>
           </div>
         </div>
 

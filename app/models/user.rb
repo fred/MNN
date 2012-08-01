@@ -144,7 +144,7 @@ class User < ActiveRecord::Base
 
   def update_subscriptions
     if self.email_changed? && !self.subscriptions.empty? 
-      self.subscriptions.last.update_attribute(:email, self.email)
+      self.subscriptions.last.update_attributes(email: self.email)
     end
     true
   end
