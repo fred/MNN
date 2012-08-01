@@ -114,6 +114,14 @@ class Item < ActiveRecord::Base
     self.expires_on   ||= Time.zone.now+10.years
   end
 
+  def corrected_updated_at
+    if self.published_at && (self.published_at > self.updated_at)
+      self.published_at
+    else
+      self.updated_at
+    end
+  end
+
   # generate slugs once and then treat them as read-only
   def should_generate_new_friendly_id?
     new_record?
