@@ -152,3 +152,5 @@ gem 'country-select'
 gem 'postmark-rails'
 gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_email_format_of.git'
 gem 'sitemap_generator'
+
+gem 'rack-mini-profiler'
