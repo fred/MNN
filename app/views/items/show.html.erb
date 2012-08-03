@@ -235,7 +235,17 @@
     <span class="divider">/</span>
   </li>
   <li class="active">
-    <span><%= @item.title %></span>
+    <span>
+      <%= link_to @item.title,
+            item_path(@item,
+              only_path: false,
+              protocol: 'http',
+              host: localized_host(@item.language_title_short)
+            ),
+          rel: 'canonical',
+          title: @item.title
+      %>
+    </span>
   </li>
 
   <% if current_ability.can?(:manage,Item) %>
@@ -247,6 +257,9 @@
 
 <% end %>
 
+<%= content_for :head do %>
+  <%= canonical_item_link_tag(@item) %>
+<% end %>
 
 <%= content_for :scripts do %>
   <% unless is_handheld? %>

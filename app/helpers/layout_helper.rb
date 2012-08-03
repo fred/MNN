@@ -1,5 +1,62 @@
 module LayoutHelper
 
+  def link_to_google_auth
+    link_to("Login with Gmail",
+      "/auth/google",
+      class: "zocial google",
+      rel: 'nofollow',
+      title: "Login with Gmail"
+    )
+  end
+
+  def link_to_twitter_auth
+    link_to("Login with Twitter",
+      "/auth/twitter",
+      class: "zocial twitter",
+      rel: 'nofollow',
+      title: "Login with Twitter"
+    )
+  end
+
+  def link_to_windowslive_auth
+    link_to("Login Windows Live",
+      "/auth/windowslive",
+      class: "zocial windows",
+      rel: 'nofollow',
+      title: "Login Windows Live"
+    )
+  end
+
+  def link_to_facebook_auth
+    link_to("Login with Facebook",
+      "/auth/facebook",
+      class: "zocial facebook",
+      rel: 'nofollow',
+      title: "Login with Facebook"
+    )
+  end
+
+  def canonical_item_link_tag(item)
+    tag(:link,
+      rel: 'canonical',
+      href: url_for(
+        item_path(item,
+          only_path: false,
+          protocol: 'http',
+          host: localized_host(item.language_title_short)
+        )
+      )
+    ).html_safe
+  end
+
+  def localized_host(lang)
+    if lang.match(Item::DEFAULT_LOCALE)
+      "#{request.domain}"
+    else
+      "#{lang}.#{request.domain}"
+    end
+  end
+
   def localized_subdomain(lang)
     "#{request.protocol}#{lang}.#{request.domain}"
   end
