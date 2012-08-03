@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120728161742) do
+ActiveRecord::Schema.define(:version => 20120803121306) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -75,7 +75,9 @@ ActiveRecord::Schema.define(:version => 20120728161742) do
 
   add_index "comments", ["approved"], :name => "index_comments_on_approved"
   add_index "comments", ["approved_by"], :name => "index_comments_on_approved_by"
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["marked_spam"], :name => "index_comments_on_marked_spam"
+  add_index "comments", ["owner_id"], :name => "index_comments_on_owner_id"
   add_index "comments", ["suspicious"], :name => "index_comments_on_suspicious"
 
   create_table "contacts", :force => true do |t|
@@ -117,6 +119,8 @@ ActiveRecord::Schema.define(:version => 20120728161742) do
     t.datetime "updated_at"
     t.datetime "created_at"
   end
+
+  add_index "item_stats", ["item_id"], :name => "index_item_stats_on_item_id"
 
   create_table "items", :force => true do |t|
     t.string   "title"
@@ -165,13 +169,14 @@ ActiveRecord::Schema.define(:version => 20120728161742) do
   add_index "items", ["allow_comments"], :name => "index_items_on_allow_comments"
   add_index "items", ["allow_star_rating"], :name => "index_items_on_allow_star_rating"
   add_index "items", ["category_id", "draft", "published_at"], :name => "index_items_on_category_id_and_draft_and_published_at"
+  add_index "items", ["category_id", "language_id", "draft", "published_at"], :name => "home_page_items"
   add_index "items", ["category_id"], :name => "index_items_on_category_id"
   add_index "items", ["draft"], :name => "index_items_on_draft"
   add_index "items", ["featured"], :name => "index_items_on_featured"
   add_index "items", ["language_id"], :name => "index_items_on_language_id"
   add_index "items", ["locale"], :name => "index_items_on_locale"
   add_index "items", ["meta_enabled"], :name => "index_items_on_meta_enabled"
-  add_index "items", ["published_at"], :name => "index_items_on_published_at", :order => {"published_at"=>:desc}
+  add_index "items", ["published_at"], :name => "index_items_on_published_at"
   add_index "items", ["slug"], :name => "index_items_on_slug", :unique => true
   add_index "items", ["status_code"], :name => "index_items_on_status_code"
   add_index "items", ["sticky"], :name => "index_items_on_sticky"
@@ -197,6 +202,8 @@ ActiveRecord::Schema.define(:version => 20120728161742) do
     t.text     "description"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
+    t.string   "rel"
+    t.string   "rev"
   end
 
   create_table "pages", :force => true do |t|
@@ -210,6 +217,8 @@ ActiveRecord::Schema.define(:version => 20120728161742) do
     t.text     "body"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "rel"
+    t.string   "rev"
   end
 
   add_index "pages", ["active"], :name => "index_pages_on_active"
