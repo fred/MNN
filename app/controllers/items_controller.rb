@@ -35,7 +35,9 @@ class ItemsController < ApplicationController
     @meta_title = @rss_title
     if @items.empty?
       @last_published = Time.now
+      @etag = Digest::MD5.hexdigest((Time.now.to_i / 600).to_s)
     else
+      @etag = Digest::MD5.hexdigest(@items.map{|t| t.id}.to_s)
       @last_published = @items.first.published_at
     end
 
@@ -43,14 +45,19 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @items }
-      format.atom { render partial: "/shared/items", layout: false }
-      format.rss { render partial: "/shared/items", layout: false }
-      format.xml { render @items }
+      format.atom {
+        headers['Etag'] = @etag
+        render partial: "/shared/items", layout: false
+      }
+      format.rss {
+        headers['Etag'] = @etag
+        render partial: "/shared/items", layout: false
+      }
     end
   end
 
   def show
-    @item = Item.includes([:attachments, :comments, :user]).find(params[:id])
+    @item = Item.includes([:attachments, :comments, :user, :category, :language]).find(params[:id])
     @show_breadcrumb = true
     if @item && is_human? && (@item_stat = @item.item_stat)
       if session[:view_items] && !session[:view_items].include?(@item.id)
@@ -70,7 +77,13 @@ class ItemsController < ApplicationController
     end
   end
 
+  def new
+    redirect_to root_path
+  end
   def edit
+    redirect_to root_path
+  end
+  def destroy
     redirect_to root_path
   end
 
