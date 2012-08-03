@@ -1,5 +1,13 @@
 CHANGELOG
 
+== August 3, 2012
+* Big performance improvements
+* Added indexex to some tables
+* Added caching to RSS and ATOM feed
+* Added Cannonical links to articles for google
+* Added rel/rev to links
+* Increased caching time
+
 == August 1, 2012
 * Improved registration and login forms
 * Fixed caching with languages Locale
