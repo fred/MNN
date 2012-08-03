@@ -55,3 +55,19 @@ en:
         subject: 'Reset password instructions'
       unlock_instructions:
         subject: 'Unlock Instructions'
+
+  ago: ago
+  read: Read
+  more: More
+  search: Search
+  page_rendered_in: Page Rendered in
+  comments: Comments
+  published: Published
+  viewed_times: 'Viewed %{count} times'
+  sign_in: Sign in
+  sign_out: Sign out
+  sign_up: Sign up
+  register: Register
+  registration: Registration
+  welcome: Welcome
+  forgot_password: Forgot Password

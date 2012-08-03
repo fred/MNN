@@ -7,7 +7,7 @@
 
   <div class="span6 box" id="main_highlights">
     <% if @highlights && @highlights.first %>
-      <% cache_expiring("main/#{@highlights.first.cache_key}",300) do %>
+      <% cache_expiring("main/#{@highlights.first.cache_key}",360) do %>
         <ul>
           <% @highlights.each do |item| %>
             <li class="featured_item" id="highlight_item_<%=item.id%>">
@@ -52,7 +52,7 @@
   
   <div class="span6 box" id="highlights">
     <% if @latest_items && @latest_items.first %>
-      <% cache_expiring("hglt/#{@latest_items.first.cache_key_full}",300) do %>
+      <% cache_expiring("hglt/#{@latest_items.first.cache_key_full}",360) do %>
         <h2><%= link_to "Latest News", items_path, title: "Latest News" %></h2>
         <ul>
         <% @latest_items.each do |item| %>

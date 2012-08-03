@@ -72,7 +72,7 @@
             <ul class="dropdown-menu">
               <% Link.order("title ASC").all.each do |link| %>
                 <li>
-                  <%= link_to(link.title, link.url, target: 'blank', title: link.title, rel: 'friend') %>
+                  <%= link_to(link.title, link.url, target: 'blank', title: link.link_title, rel: link.rel) %>
                 </li>
               <% end %>
             </ul>
