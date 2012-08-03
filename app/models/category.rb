@@ -10,6 +10,11 @@ class Category < ActiveRecord::Base
   
   # Relationships
   has_many :items
+
+  has_one :last_item,
+    class_name: "Item",
+    order: "items.published_at DESC",
+    conditions: proc { ["(items.draft = ?) AND (published_at is not NULL) AND (published_at < ?)", false, Time.now.to_s(:db)] }
   
   # Permalink URLS
   extend FriendlyId
@@ -48,8 +53,9 @@ class Category < ActiveRecord::Base
   end
 
   def item_last_update
-    if self.items.last_item
-      self.items.last_item.updated_at
+    t = self.last_item
+    if t
+      t.updated_at
     else
       Time.now
     end

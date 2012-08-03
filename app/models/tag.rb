@@ -8,14 +8,21 @@ class Tag < ActiveRecord::Base
   friendly_id :title, use: :slugged
   
   has_and_belongs_to_many :items, join_table: "taggings",
-    foreign_key: "tag_id", association_foreign_key: "taggable_id"
+    foreign_key: "tag_id", association_foreign_key: "taggable_id",
+    order: "published_at DESC"
+
+  has_and_belongs_to_many :last_updated_items, join_table: "taggings",
+    foreign_key: "tag_id", association_foreign_key: "taggable_id",
+    order: "published_at DESC", limit: 1, class_name: "Item",
+    conditions: "published_at is not NULL"
   
 	def item_last_update
-		if !self.items.empty? && self.items.last_item
-			self.items.last_item.updated_at
-		else
-			Time.now
-		end
+    t = self.last_updated_items.first
+    if t
+      t.updated_at
+    else
+      Time.now
+    end
 	end
 
 end

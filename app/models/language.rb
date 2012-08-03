@@ -31,8 +31,9 @@ class Language < ActiveRecord::Base
   end
 
   def item_last_update
-    if !self.items.empty? && self.items.last_item
-      self.items.last_item.updated_at
+    t = self.items.last_item
+    if t
+      t.updated_at
     else
       Time.now
     end
