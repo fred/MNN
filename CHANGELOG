@@ -1,5 +1,10 @@
 CHANGELOG
 
+== August 4, 2012
+* Fixed Sitemap
+* Added languages to Sitemap
+* Improved HTTP caching headers
+
 == August 3, 2012
 * Big performance improvements
 * Added indexex to some tables

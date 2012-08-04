@@ -407,6 +407,17 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def localized_domain
+    if Rails.env.production?
+      if self.language_title_short.match(DEFAULT_LOCALE)
+        "worldmathaba.net"
+      else
+        "#{self.language_title_short}.worldmathaba.net"
+      end
+    else
+      "mathaba.dev"
+    end
+  end
 
 
   ####################

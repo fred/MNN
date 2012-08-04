@@ -43,13 +43,17 @@ class ItemsController < ApplicationController
 
     private_headers
     respond_to do |format|
-      format.html
+      format.html {
+        headers_with_timeout(120) unless current_user
+      }
       format.json { render json: @items }
       format.atom {
+        headers_with_timeout(600)
         headers['Etag'] = @etag
         render partial: "/shared/items", layout: false
       }
       format.rss {
+        headers_with_timeout(600)
         headers['Etag'] = @etag
         render partial: "/shared/items", layout: false
       }
@@ -72,7 +76,9 @@ class ItemsController < ApplicationController
 
     private_headers
     respond_to do |format|
-      format.html
+      format.html {
+        headers_with_timeout(120) unless current_user
+      }
       format.json { render json: @item }
     end
   end

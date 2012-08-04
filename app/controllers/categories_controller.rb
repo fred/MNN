@@ -11,15 +11,17 @@ class CategoriesController < ApplicationController
       @latest_items = @top_items[1..3]
     end
     @categories = Category.order("priority ASC, title DESC").all
-    # headers['Cache-Control'] = 'public, max-age=300' unless (current_admin_user or current_user) # 10 min cache
-    # headers['Last-Modified'] = Item.last_item.updated_at.httpdate
+    private_headers
+    respond_to do |format|
+      format.html {
+        headers_with_timeout(180) unless current_user
+      }
+    end
   end
 
   def show
     @show_breadcrumb = true
     @category = Category.find(params[:id])
-    headers['Cache-Control'] = 'public, max-age=300' unless (current_admin_user or current_user) # 5 min cache
-    headers['Last-Modified'] = @category.items.last_item.updated_at.httpdate
     @items = @category.
       items.
       localized.
@@ -49,7 +51,9 @@ class CategoriesController < ApplicationController
     end
     
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {
+        headers_with_timeout(180) unless current_user
+      }
       format.atom {
         headers['Etag'] = @etag
         headers['Cache-Control'] = 'public, max-age=900'

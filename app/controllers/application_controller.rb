@@ -11,11 +11,17 @@ class ApplicationController < ActionController::Base
   before_filter :set_start_time, :set_time_zone, :set_view_items, :current_ability
   before_filter :log_additional_data, :set_per_page
   before_filter :last_modified
+  before_filter :no_cache_for_admin
   after_filter  :auto_login_admin_user
   after_filter  :store_location
   after_filter  :log_session
 
 
+  def no_cache_for_admin
+    if current_user or request[:controller].to_s.match("admin|users|comments|devise")
+      private_headers
+    end
+  end
 
   def get_locale
     subdomain = extract_locale_from_subdomain

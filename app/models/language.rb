@@ -1,4 +1,6 @@
 class Language < ActiveRecord::Base
+  DEFAULT_LOCALE = 'en'
+
   has_many :items
   # Permalink URLS
   extend FriendlyId
@@ -11,14 +13,30 @@ class Language < ActiveRecord::Base
     Item.published.not_draft.
       where(language_id: self.id).
       order("published_at DESC").
-      includes(:attachments).
+      includes(:attachments, :language).
       limit(lmt)
   end
-  
+
+  def base_domain
+    if Rails.env.production?
+      "worldmathaba.net"
+    else
+      "mathaba.dev"
+    end
+  end
+
+  def localized_domain
+    if locale.match(DEFAULT_LOCALE)
+      base_domain
+    else
+      "#{locale}.#{base_domain}"
+    end
+  end
+
   def title
     self.description
   end
-  
+
   # only give languages with more than 1 item
   def self.with_articles
     find(:all, order: 'languages.locale DESC')

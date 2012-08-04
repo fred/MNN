@@ -169,14 +169,13 @@ ActiveRecord::Schema.define(:version => 20120803121306) do
   add_index "items", ["allow_comments"], :name => "index_items_on_allow_comments"
   add_index "items", ["allow_star_rating"], :name => "index_items_on_allow_star_rating"
   add_index "items", ["category_id", "draft", "published_at"], :name => "index_items_on_category_id_and_draft_and_published_at"
-  add_index "items", ["category_id", "language_id", "draft", "published_at"], :name => "home_page_items"
   add_index "items", ["category_id"], :name => "index_items_on_category_id"
   add_index "items", ["draft"], :name => "index_items_on_draft"
   add_index "items", ["featured"], :name => "index_items_on_featured"
   add_index "items", ["language_id"], :name => "index_items_on_language_id"
   add_index "items", ["locale"], :name => "index_items_on_locale"
   add_index "items", ["meta_enabled"], :name => "index_items_on_meta_enabled"
-  add_index "items", ["published_at"], :name => "index_items_on_published_at"
+  add_index "items", ["published_at"], :name => "index_items_on_published_at", :order => {"published_at"=>:desc}
   add_index "items", ["slug"], :name => "index_items_on_slug", :unique => true
   add_index "items", ["status_code"], :name => "index_items_on_status_code"
   add_index "items", ["sticky"], :name => "index_items_on_sticky"
