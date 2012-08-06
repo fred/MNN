@@ -66,8 +66,9 @@ gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
 # in production environments by default.
 group :assets do
   # gem 'libv8', "3.3.10.4"
+  
+  gem 'therubyrhino', require: 'rhino'
   gem 'execjs'
-  # gem 'therubyracer', require: 'v8'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.5'
 end
@@ -90,7 +91,6 @@ group :development do
   gem 'hirb'
   gem 'progress_bar' # Nice progress when rake indexing with solr
   gem 'foreman'
-  gem 'thin', require: false
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
   gem 'capistrano', '~> 2.9.0', require: false
   gem 'rvm-capistrano', require: false
