@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe User do
+  include UserSpecHelper
   describe "Validity" do 
     before(:each) do
       @user = FactoryGirl.create(:user)
@@ -49,65 +50,70 @@ describe User do
   end
   
   describe "Instance Methods" do
-    before(:each) do
-      @user = FactoryGirl.create(:user)
-    end
+    let(:user){
+      stub_model(User,
+        email: "welcome@gmail.com",
+        name: 'My Name',
+        password: 'welcome',
+        password_confirmation: 'welcome'
+      )
+    }
     it "should respond to notify_admin" do
-      @user.should respond_to(:notify_admin)
+      user.should respond_to(:notify_admin)
     end
     it "should respond to send_welcome_email" do
-      @user.should respond_to(:send_welcome_email)
+      user.should respond_to(:send_welcome_email)
     end
     it "should respond to check_upgrade" do
-      @user.should respond_to(:check_upgrade)
+      user.should respond_to(:check_upgrade)
     end
     it "should respond to original_items_count" do
-      @user.should respond_to(:original_items_count)
+      user.should respond_to(:original_items_count)
     end
     it "should respond to is_admin?" do
-      @user.should respond_to(:is_admin?)
+      user.should respond_to(:is_admin?)
     end
     it "should respond to title" do
-      @user.should respond_to(:title)
+      user.should respond_to(:title)
     end
     it "should respond to public_display_name" do
-      @user.should respond_to(:public_display_name)
+      user.should respond_to(:public_display_name)
     end
     it "should respond to has_image?" do
-      @user.should respond_to(:has_image?)
+      user.should respond_to(:has_image?)
     end
     it "should respond to main_image" do
-      @user.should respond_to(:main_image)
+      user.should respond_to(:main_image)
     end
     it "should respond to has_role?(role_sym)" do
-      @user.should respond_to(:has_role?)
+      user.should respond_to(:has_role?)
     end
     it "should respond to has_any_role?" do
-      @user.should respond_to(:has_any_role?)
+      user.should respond_to(:has_any_role?)
     end
     it "should respond to role_titles" do
-      @user.should respond_to(:role_titles)
+      user.should respond_to(:role_titles)
     end
     it "should respond to role_models" do
-      @user.should respond_to(:role_models)
+      user.should respond_to(:role_models)
     end
     it "should respond to has_subscription?" do
-      @user.should respond_to(:has_subscription?)
+      user.should respond_to(:has_subscription?)
     end
     it "should respond to create_subscriptions" do
-      @user.should respond_to(:create_subscriptions)
+      user.should respond_to(:create_subscriptions)
     end
     it "should respond to update_subscriptions" do
-      @user.should respond_to(:update_subscriptions)
+      user.should respond_to(:update_subscriptions)
     end
     it "should respond to cancel_subscriptions" do
-      @user.should respond_to(:cancel_subscriptions)
+      user.should respond_to(:cancel_subscriptions)
     end
     it "should respond to my_items" do
-      @user.should respond_to(:my_items)
+      user.should respond_to(:my_items)
     end
     it "should respond to twitter_username" do
-      @user.should respond_to(:twitter_username)
+      user.should respond_to(:twitter_username)
     end
   end
 
