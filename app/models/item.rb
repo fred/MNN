@@ -18,13 +18,15 @@ class Item < ActiveRecord::Base
   friendly_id :title, use: :slugged
 
   # Relationships
-  belongs_to :user, counter_cache: true
-  belongs_to :category
-  belongs_to :language
-  has_one  :item_stat
-  has_many :attachments, as: :attachable
-  has_many :twitter_shares,   dependent: :destroy
-  has_many :email_deliveries, dependent: :destroy
+  belongs_to :user,       inverse_of: :items,  counter_cache: true
+  belongs_to :category,   inverse_of: :items
+  belongs_to :language,   inverse_of: :items
+  has_one    :item_stat,  inverse_of: :item
+
+  has_many  :attachments, as: :attachable
+  has_many  :job_stats,   as: :processable
+  has_many  :twitter_shares,   dependent: :destroy
+  has_many  :email_deliveries, dependent: :destroy
 
   has_and_belongs_to_many :tags, join_table: "taggings", 
     foreign_key: "taggable_id", association_foreign_key: "tag_id"
@@ -51,10 +53,10 @@ class Item < ActiveRecord::Base
   before_save   :create_twitter_share
   before_save   :dup_existing_attachment
   before_save   :send_email_deliveries
+  before_save   :process_sitemap_job
   before_update :set_status_code
   before_create :build_stat
   after_create  :set_custom_slug
-  after_create  :sitemap_refresh
 
 
   # Some Basic Scopes for finder chaining
@@ -157,6 +159,20 @@ class Item < ActiveRecord::Base
     true
   end
 
+
+
+  ##############
+  #### JOBS ####
+  ##############
+  
+  def enqueue_time
+    if published?
+      Time.now+3.minutes
+    else
+      self.published_at + 3.minutes
+    end
+  end
+
   def email_delivery_sent?
     if !self.email_deliveries.empty? && self.email_deliveries.first.send_at &&
        (self.email_deliveries.first.send_at < Time.now)
@@ -186,12 +202,7 @@ class Item < ActiveRecord::Base
   def send_email_deliveries
     if !self.draft && self.email_deliveries.empty? && (self.send_emails == "1" or self.send_emails == true)
       Rails.logger.info("  Email-Delivery: Creating Email Delivery for item: #{self.id}")
-      if self.published_at.to_i < Time.now.to_i
-        send_time = Time.now+180
-      else
-        send_time = self.published_at+180
-      end
-      self.email_deliveries << EmailDelivery.new(send_at: send_time)
+      self.email_deliveries << EmailDelivery.new(send_at: self.enqueue_time)
     end
     true
   end
@@ -222,18 +233,15 @@ class Item < ActiveRecord::Base
     return url
   end
 
-  # Queue up sitemap generation after 3 minutes
-  def sitemap_refresh
-    if !self.draft && Rails.env.production?
-      SitemapQueue.perform_at(self.enqueue_time)
-    end
+  def sitemap_jobs
+    job_stats.where(job_name: 'sitemap')
   end
 
-  def enqueue_time
-    if self.published_at
-      self.published_at+180
-    else
-      Time.now+180
+  # Queue up sitemap generation after 3 minutes
+  def process_sitemap_job
+    if !self.draft && self.sitemap_jobs.empty?
+      Rails.logger.info("  Sitemap: Scheduling sitemap generation for item: #{self.id}")
+      self.job_stats << JobStat.new(job_name: 'sitemap', enqueue_at: enqueue_time)
     end
   end
 
@@ -251,6 +259,7 @@ class Item < ActiveRecord::Base
       nil
     end
   end
+
 
   def main_image
     att = self.attachments.last
@@ -320,7 +329,7 @@ class Item < ActiveRecord::Base
   end
 
   def published?
-    self.published_at.to_i < Time.now.to_i
+    !self.draft && (self.published_at.to_i < Time.now.to_i)
   end
 
   def user_public_display_name

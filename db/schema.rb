@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120803121306) do
+ActiveRecord::Schema.define(:version => 20120805011251) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -181,6 +181,21 @@ ActiveRecord::Schema.define(:version => 20120803121306) do
   add_index "items", ["sticky"], :name => "index_items_on_sticky"
   add_index "items", ["updated_by"], :name => "index_items_on_updated_by"
   add_index "items", ["user_id"], :name => "index_items_on_user_id"
+
+  create_table "job_stats", :force => true do |t|
+    t.string   "processable_type"
+    t.integer  "processable_id"
+    t.integer  "job_name"
+    t.integer  "job_id"
+    t.boolean  "processed",        :default => false
+    t.datetime "enqueue_at"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  add_index "job_stats", ["job_id"], :name => "index_job_stats_on_job_id"
+  add_index "job_stats", ["job_name"], :name => "index_job_stats_on_job_name"
+  add_index "job_stats", ["processable_id", "processable_type"], :name => "index_job_stats_on_processable_id_and_processable_type"
 
   create_table "languages", :force => true do |t|
     t.string   "locale"

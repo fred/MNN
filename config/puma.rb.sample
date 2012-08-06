@@ -1,0 +1,10 @@
+rails_env = ENV['RAILS_ENV'] || 'development'
+
+threads 4,16
+
+case rails_env
+when 'production'
+  bind "unix:///tmp/#{rails_env}.puma.sock"
+else
+  bind "unix:///#{`pwd`.strip}/tmp/sockets/#{rails_env}.puma.sock"
+end

@@ -76,10 +76,8 @@ end
 # Settings
 gem 'rails_config'
 
-
-group :production do
-  gem 'unicorn', require: false
-end
+gem 'puma'
+gem 'unicorn', require: false
 
 group :test, :development do
   gem 'rspec', '~> 2.9.0'
@@ -97,7 +95,7 @@ group :development do
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
   gem 'capistrano', '~> 2.9.0', require: false
   gem 'rvm-capistrano', require: false
-  gem 'debugger'
+  gem 'debugger', platform: :mri_19
   gem 'pry-rails'
 end
 

@@ -87,6 +87,7 @@ capybara-*html
 .rvmrc
 .rvmrc.*
 
+.rbx
 unicorn.rb
 unicorn.dev.rb
 config/heroku.conf

@@ -88,8 +88,8 @@ describe Item do
     it "should respond to twitter_status" do
       @item.should respond_to(:twitter_status)
     end
-    it "should respond to sitemap_refresh" do
-      @item.should respond_to(:sitemap_refresh)
+    it "should respond to sitemap_jobs" do
+      @item.should respond_to(:sitemap_jobs)
     end
     it "should respond to enqueue_time" do
       @item.should respond_to(:enqueue_time)

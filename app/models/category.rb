@@ -9,7 +9,7 @@ class Category < ActiveRecord::Base
   validates_uniqueness_of :title
   
   # Relationships
-  has_many :items
+  has_many :items, inverse_of: :category
 
   has_one :last_item,
     class_name: "Item",

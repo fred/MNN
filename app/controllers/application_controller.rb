@@ -200,6 +200,18 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
+
+  def if_bot?
+    return true if Rails.env.test?
+    s = request.env["HTTP_USER_AGENT"].to_s.downcase
+    valid="(YandexBot|bot|spider|wget|curl|)"
+    if s.match(valid)
+      Rails.logger.debug("  UA: Bot found: #{s}")
+      return true
+    else
+      return false
+    end
+  end
   
   # This method uses the useragentstring API, 
   # TODO, use this on a QUEUE worker

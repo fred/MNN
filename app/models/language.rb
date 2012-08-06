@@ -1,7 +1,8 @@
 class Language < ActiveRecord::Base
   DEFAULT_LOCALE = 'en'
 
-  has_many :items
+  has_many :items, inverse_of: :language
+
   # Permalink URLS
   extend FriendlyId
   friendly_id :description, use: :slugged

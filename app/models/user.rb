@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   # validates_presence_of :password_confirmation, unless: Proc.new {|user| user.oauth_token.present?}
 
   # Relationships
-  has_many :items
+  has_many :items,  inverse_of: :user
   has_many :scores
   # has_many :comments
   has_and_belongs_to_many :roles
