@@ -7,6 +7,7 @@ truncate table documents ;
 truncate table email_deliveries ;
 truncate table item_stats ;
 truncate table items ;
+truncate table job_stats ;
 truncate table languages ;
 truncate table links ;
 truncate table pages ;
