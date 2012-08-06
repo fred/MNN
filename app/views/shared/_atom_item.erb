@@ -1,9 +1,9 @@
-<% cache("atom/#{item.cache_key_full}") do %>
+<% cache_expiring("atom/#{item.cache_key_full}") do %>
   <article class="category" id="item_<%=item.id%>">
     <div>
       <h3>
       <%= sanitize item.abstract,
-            tags: %w(table tr td p b i u strong ol ul li dl dd div span h1 h2 h3 h4 h5),
+            tags: %w(table tr td p b i u em blockquote strong ol ul li dl dd div span h1 h2 h3 h4 h5),
             attributes: %w(id class style) %>
       </h3>
     </div>

@@ -12,8 +12,8 @@
   <% end %>
 <% end %>
 
-<% cache_expiring("show/#{@item.cache_key_full}", 600) do %>
-  <!-- CACHE_KEY <%= "show/#{@item.cache_key_full}" %> -->
+<% cache_expiring("show/#{@item.cache_key_full}", 900) do %>
+
   <div itemscope itemtype="http://schema.org/Article">
     <article id="item_<%= @item.id %>">
 
@@ -22,6 +22,7 @@
         <a id="resetFont" href="#" title="Default Font">A</a>
         <a id="increaseFont" href="#" title="Increase Size">A+</a>
       </div>
+
       <h1><span itemprop="headline"><%= @item.title %></span></h1>
 
       <span class="source_url">
@@ -29,13 +30,15 @@
           By 
           <span class='author' itemprop='author'>
             <%= link_to_if(@item.user,
-                    @item.user.title,
+                    @item.user_title,
                     author_path(@item.user),
-                    title: "Author Page: #{@item.author_name}")
+                    title: "Author Page: #{@item.author_name}",
+                    rel: 'author'
+                )
             %>
           </span>
         <% elsif @item.youtube_id && @item.youtube_vid %>
-          <%= link_to 'Youtube Source', "http://www.youtube.com/watch?v=#{@item.youtube_id}" %>
+          <%= link_to 'Youtube Source', "https://www.youtube.com/watch?v=#{@item.youtube_id}" %>
         <% elsif @item.source_url %>
           <%= link_to 'Source', @item.source_url %>
         <% end %>
@@ -54,13 +57,13 @@
               <%= link_to image_tag(@item.main_image.image.medium,
                               class: "show_item_image",
                               id: "main_image",
-                              alt: alt_for_image(@item.main_image),
                               alt: alt_for_image(@item.main_image)
                     ),
                     @item.main_image.image.large.url,
                     target: "blank",
                     id: "main_image_popup",
-                    title: alt_for_image(@item.main_image)
+                    title: alt_for_image(@item.main_image),
+                    rel: 'image'
               %>
             </span>
             <% if @item.main_image.title %>
@@ -88,7 +91,7 @@
             <% else %>
               Submitted by
             <% end %>
-            <%= link_to_if(@item.user, @item.user.title, author_path(@item.user)) %>
+            <%= link_to_if(@item.user, @item.user.title, author_path(@item.user), rel: 'author') %>
           </span>
         <% else %>
           by User
@@ -97,7 +100,15 @@
           <ul class="tags">
             <i class="icon-tags"></i>
             <% @item.tags.each do |tag| %>
-              <li><%= link_to tag.title, tag_path(tag), title: "See all Articles tagged as '#{tag.title}'" %></li>
+              <li>
+                <%= link_to(
+                      tag.title,
+                      tag_path(tag),
+                      title: "See all Articles tagged as '#{tag.title}'",
+                      rel: 'tag'
+                    )
+                %>
+              </li>
             <% end %>
           </ul>
         </span>
@@ -187,7 +198,7 @@
           <ul class="related">
             <% @related.results.each do |item| %>
               <li>
-                <%= link_to item.title, item, title: item_title(item), id: "tooltip" %>
+                <%= link_to item.title, item, title: item_title(item), id: "tooltip", rel: 'related' %>
               </li>
             <% end %>
           </ul>
@@ -205,11 +216,18 @@
 
 <% content_for :breadcrumb do %>
   <li>
-    <a href="/">Home</a>
+    <%= link_to "Home", root_path, title: "Home", rel: 'home' %>
     <span class="divider">/</span>
   </li>
   <li>
-    <%= link_to_if(@item.category, @item.category_title, @item.category) %>
+    <%= link_to_if(
+          @item.category,
+          @item.category_title,
+          @item.category,
+          title: @item.category_title,
+          rel: 'category'
+        )
+    %>
     <span class="divider">/</span>
   </li>
   <li>
@@ -217,7 +235,17 @@
     <span class="divider">/</span>
   </li>
   <li class="active">
-    <span><%= @item.title %></span>
+    <span>
+      <%= link_to @item.title,
+            item_path(@item,
+              only_path: false,
+              protocol: 'http',
+              host: localized_host(@item.language_title_short)
+            ),
+          rel: 'canonical',
+          title: @item.title
+      %>
+    </span>
   </li>
 
   <% if current_ability.can?(:manage,Item) %>
@@ -229,6 +257,9 @@
 
 <% end %>
 
+<%= content_for :head do %>
+  <%= canonical_item_link_tag(@item) %>
+<% end %>
 
 <%= content_for :scripts do %>
   <% unless is_handheld? %>

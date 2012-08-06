@@ -1,12 +1,15 @@
-truncate table active_admin_comments ;
+truncate table active_admin_comments;
 truncate table attachments ;
 truncate table categories ;
 truncate table comments ;
 truncate table contacts ;
+truncate table documents ;
 truncate table email_deliveries ;
 truncate table item_stats ;
 truncate table items ;
+truncate table job_stats ;
 truncate table languages ;
+truncate table links ;
 truncate table pages ;
 truncate table roles ;
 truncate table roles_users ;

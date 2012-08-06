@@ -2,24 +2,22 @@ class TagsController < ApplicationController
   
   def index
     @tags = Tag.order("type DESC, title ASC").all
-    
-    # Set the Last-Modified header so the client can cache the timestamp (used for later conditional requests)
-    headers['Cache-Control'] = 'public, max-age=3600' # 1 hours cache
     headers['Last-Modified'] = Item.last_item.updated_at.httpdate
     
+    private_headers
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @tags }
-      format.xml { render @tags }
+      format.html {
+        headers_with_timeout(180) unless current_user
+      }
     end
   end
 
   def show
     @show_breadcrumb = true
     @tag = Tag.find(params[:id])
-    # @items = @category.published_items.paginate(per_page: 20, page: params[:page])
     @items = @tag.
       items.
+      localized.
       where(draft: false).
       includes(:attachments, :category, :language, :item_stat, :user, :tags).
       where("published_at is not NULL").
@@ -43,9 +41,11 @@ class TagsController < ApplicationController
     @last_mofified = @last_published
     headers['Last-Modified'] = @last_published.httpdate
     
+    private_headers
     respond_to do |format|
-      format.html { private_headers }
-      format.json { render json: @items }
+      format.html {
+        headers_with_timeout(180) unless current_user
+      }
       format.atom {
         headers_with_timeout(900)
         render partial: "/shared/items", layout: false
@@ -54,7 +54,6 @@ class TagsController < ApplicationController
         headers_with_timeout(900)
         render partial: "/shared/items", layout: false
       }
-      format.xml { render @items }
     end
   end
 

@@ -10,7 +10,6 @@
   
   <%= f.inputs name: "User Information" do %>
     <%= f.input :name, hint: "Recommended: Full Name"%>
-    <%= f.input :address, hint: "Optional: Address"%>
     <%= f.input :skype, hint: "Optional: Skype ID"%>
     <%= f.input :twitter, hint: "Optional: Twitter username"%>
     <%= f.input :diaspora, hint: "Optional: Diaspora Handle"%>
@@ -35,6 +34,6 @@
   <% end %>
   
   <%= f.actions do %>
-    <%= f.action :submit, button_html: { class: "primary", 'data-disable-with' => 'Wait...' } %>
+    <%= f.action :submit, button_html: { class: "primary", data: {disable_with: 'Sending...'} } %>
   <% end %>
 <% end %>

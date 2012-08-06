@@ -11,17 +11,20 @@ class CategoriesController < ApplicationController
       @latest_items = @top_items[1..3]
     end
     @categories = Category.order("priority ASC, title DESC").all
-    # headers['Cache-Control'] = 'public, max-age=300' unless (current_admin_user or current_user) # 10 min cache
-    # headers['Last-Modified'] = Item.last_item.updated_at.httpdate
+    private_headers
+    respond_to do |format|
+      format.html {
+        headers_with_timeout(180) unless current_user
+      }
+    end
   end
 
   def show
     @show_breadcrumb = true
     @category = Category.find(params[:id])
-    headers['Cache-Control'] = 'public, max-age=300' unless (current_admin_user or current_user) # 5 min cache
-    headers['Last-Modified'] = @category.items.last_item.updated_at.httpdate
     @items = @category.
       items.
+      localized.
       where(draft: false).
       includes(:attachments, :category, :language, :item_stat, :user, :tags).
       where("published_at is not NULL").
@@ -37,19 +40,29 @@ class CategoriesController < ApplicationController
     @rss_source = url_for(@category)
     @rss_category = @category.title
     @rss_language = "en"
-    @last_published = @items.first.published_at
-    @last_mofified = @last_published
     @meta_keywords = "#{@category.title} news"
+
+    if @items.empty?
+      @etag = Digest::MD5.hexdigest((Time.now.to_i / 600).to_s)
+    else
+      @last_published = @items.first.published_at
+      @last_mofified = @last_published
+      @etag = Digest::MD5.hexdigest(@items.map{|t| t.id}.to_s)
+    end
     
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {
+        headers_with_timeout(180) unless current_user
+      }
       format.atom {
-        headers['Cache-Control'] = 'public, max-age=3600' # 1 hour cache
+        headers['Etag'] = @etag
+        headers['Cache-Control'] = 'public, max-age=900'
         headers['Last-Modified'] = @last_published.httpdate
         render partial: "/shared/items", layout: false 
       }
-      format.rss  {
-        headers['Cache-Control'] = 'public, max-age=3600' # 1 hour cache
+      format.rss {
+        headers['Etag'] = @etag
+        headers['Cache-Control'] = 'public, max-age=900'
         headers['Last-Modified'] = @last_published.httpdate
         render partial: "/shared/items", layout: false
       }

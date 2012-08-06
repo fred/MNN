@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
       @rss_source = items_path(only_path: false, protocol: 'https')
       @rss_language = "en"
       @items = Item.published.
+        localized.
         not_draft.
         includes(:language, :attachments, :tags, :item_stat, :user).
         order("published_at DESC").
@@ -34,26 +35,37 @@ class ItemsController < ApplicationController
     @meta_title = @rss_title
     if @items.empty?
       @last_published = Time.now
+      @etag = Digest::MD5.hexdigest((Time.now.to_i / 600).to_s)
     else
+      @etag = Digest::MD5.hexdigest(@items.map{|t| t.id}.to_s)
       @last_published = @items.first.published_at
     end
 
     private_headers
     respond_to do |format|
-      format.html
+      format.html {
+        headers_with_timeout(120) unless current_user
+      }
       format.json { render json: @items }
-      format.atom { render partial: "/shared/items", layout: false }
-      format.rss { render partial: "/shared/items", layout: false }
-      format.xml { render @items }
+      format.atom {
+        headers_with_timeout(600)
+        headers['Etag'] = @etag
+        render partial: "/shared/items", layout: false
+      }
+      format.rss {
+        headers_with_timeout(600)
+        headers['Etag'] = @etag
+        render partial: "/shared/items", layout: false
+      }
     end
   end
 
   def show
-    @item = Item.includes([:attachments, :comments, :user]).find(params[:id])
+    @item = Item.includes([:attachments, :comments, :user, :category, :language]).find(params[:id])
     @show_breadcrumb = true
     if @item && is_human? && (@item_stat = @item.item_stat)
       if session[:view_items] && !session[:view_items].include?(@item.id)
-        @item_stat.update_attributes(views_counter: @item_stat.views_counter+1)
+        ItemStat.increment_counter(:views_counter, @item_stat.id)
         session[:view_items] << @item.id
       end
     end
@@ -64,12 +76,20 @@ class ItemsController < ApplicationController
 
     private_headers
     respond_to do |format|
-      format.html
+      format.html {
+        headers_with_timeout(120) unless current_user
+      }
       format.json { render json: @item }
     end
   end
 
+  def new
+    redirect_to root_path
+  end
   def edit
+    redirect_to root_path
+  end
+  def destroy
     redirect_to root_path
   end
 
@@ -121,17 +141,15 @@ class ItemsController < ApplicationController
       @items = []
       @title = "Please type something to search for"
     end
+    headers_with_timeout(900)
     respond_to do |format|
-      format.html {
-        headers_with_timeout(600)
-      }
+      format.html
       format.js
       format.atom {
-        headers_with_timeout(900)
-        render partial: "/shared/items", layout: false }
+        render partial: "/shared/items", layout: false
+      }
       format.rss {
-        headers_with_timeout(900)
-        render partial: "/shared/items", layout: false 
+        render partial: "/shared/items", layout: false
       }
     end
   end

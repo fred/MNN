@@ -5,7 +5,7 @@ source 'http://rubygems.org'
 gem 'rack'
 gem 'rack-cache'
 gem 'rake'
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.7'
 gem 'bundler', '>= 1.1.0'
 
 ### Database Adapter
@@ -18,10 +18,6 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-windowslive', git: 'git://github.com/dangerp/omniauth-windowslive.git'
-# gem 'omniauth-flattr'
-# gem 'omniauth-openid'
-# gem 'omniauth-github'
-
 
 ### Roles and Authentication
 gem 'cancan', '~> 1.6.7'
@@ -39,9 +35,6 @@ gem 'mini_magick', '~> 3.4'
 gem 'fog', '~> 1.4.0'
 gem 'carrierwave', '~> 0.6.2'
 
-### S3 Asset hosting
-gem 'asset_sync'
-
 ### Permalink
 gem 'stringex'
 gem 'friendly_id', '~> 4.0.0'
@@ -53,14 +46,15 @@ gem 'rakismet'
 ### Queue
 gem 'slim'
 gem 'sinatra'
-gem 'redis', '~> 3.0.1'
-gem 'sidekiq', git: 'git://github.com/mperham/sidekiq.git'
+gem 'redis'
+gem 'sidekiq', '2.0.3'
+gem 'celluloid', '0.11.0'
 
 ### JSON and Twitter
 gem 'multi_json'
 gem 'json'
-gem 'simple_oauth', '~> 0.1.7'
-gem 'twitter', '~> 2.5.0'
+gem 'simple_oauth'
+gem 'twitter'
 
 gem 'sass'
 gem 'sass-rails'
@@ -80,9 +74,9 @@ end
 
 
 # Settings
-gem 'rails-settings-cached', '~> 0.1.2', require: 'rails-settings'
-    # git:  'git://github.com/huacnlee/rails-settings-cached.git'
+gem 'rails_config'
 
+gem 'puma'
 
 group :test, :development do
   gem 'rspec', '~> 2.9.0'
@@ -100,6 +94,7 @@ group :development do
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
   gem 'capistrano', '~> 2.9.0', require: false
   gem 'rvm-capistrano', require: false
+  gem 'debugger', platform: :mri_19
   gem 'pry-rails'
 end
 
@@ -142,11 +137,11 @@ gem 'exception_notification', '~> 2.6.0', require: 'exception_notifier'
 ## Searching ##
 ###############
 
-gem 'sunspot', '2.0.0.pre.120417' # git:  'git://github.com/sunspot/sunspot.git'
-gem 'sunspot_rails', '2.0.0.pre.120417' # git:  'git://github.com/sunspot/sunspot.git'
+gem 'sunspot', git: 'git://github.com/sunspot/sunspot.git'
+gem 'sunspot_rails', git: 'git://github.com/sunspot/sunspot.git'
 
 ### Memcache
-gem 'dalli', '~> 2.0.5'
+gem 'dalli', '~> 2.1.0'
 
 
 gem 'galetahub-simple_captcha', require: 'simple_captcha', git: 'git://github.com/galetahub/simple-captcha.git'
@@ -155,6 +150,4 @@ gem 'postmark-rails'
 gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_email_format_of.git'
 gem 'sitemap_generator'
 
-gem 'newrelic_rpm'
-
-gem 'puma' #, :git => "git://github.com/puma/puma.git"
+gem 'rack-mini-profiler'

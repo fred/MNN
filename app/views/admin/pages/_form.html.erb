@@ -31,7 +31,7 @@
     
   <%#= f.buttons :commit %>
   <%= f.actions do %>
-    <%= f.action :submit, button_html: { class: "primary", 'data-disable-with' => 'Wait...' } %>
+    <%= f.action :submit, button_html: { class: "primary", data: {disable_with: 'Sending...'} } %>
   <% end %>
 <% end %>
 

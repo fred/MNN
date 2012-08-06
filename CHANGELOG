@@ -1,5 +1,86 @@
 CHANGELOG
 
+== August 4, 2012
+* Fixed Sitemap
+* Added languages to Sitemap
+* Improved HTTP caching headers
+
+== August 3, 2012
+* Big performance improvements
+* Added indexex to some tables
+* Added caching to RSS and ATOM feed
+* Added Cannonical links to articles for google
+* Added rel/rev to links
+* Increased caching time
+
+== August 1, 2012
+* Improved registration and login forms
+* Fixed caching with languages Locale
+
+== July 31, 2012
+* Updated to rails 3.2.7
+* Using larger image for opengraph (G+,Twitter)
+* Added more tests
+
+== July 29, 2012
+* Added Multi-language site with subdomains
+* Added Flags to language menu
+* Improved Admin interface
+* Improved Error Alerts with Twitter-bootstrap
+* Better Error Pages
+* Updated google plus link
+* Updated Gems
+
+== July 24, 2012
+* Fixed bug on comments RSS
+* Added rel, rev, and title tags to links
+* Improved SEO
+* Updated Zocial css and fonts
+
+== July 18, 2012
+* Improved hints on new item form
+* Minor CSS improvements for item
+* Updated Sidekiq/Celluloid gems
+* Updated Assets
+
+== July 17, 2012
+* Updated Twitter Gem
+* Moved SOLR to new instance
+
+== July 16, 2012
+* Updated Dalli fixing "key too long" error
+
+== July 12, 2012
+* Changed sidebar from 3 to 5 Top items
+* Fixed RSS error on comments RSS
+
+== July 9, 2012
+* Allow Quote and italic tags on comments
+* Updated Gems
+
+== July 7, 2012
+* Allows to delete Emails Deliveries properly
+* Added record locking to avoid duplicated updates
+* Added Custom Youtube resolution
+* Removed most commented from Sidebar
+* Updated Gems
+
+== July 1-5, 2012
+* Fixed Wrong ATOM feed time on article, bug #6
+* Added global Comments page: /comments
+* Global comments RSS: /comments.rss
+* Improved admin interface
+* Added number of days since items on categories
+* fixed google indexing
+* removed user email
+* better registration form
+* removed all references of the user's email address
+* Forcing HTTPS always for admin users
+* original author links improved
+* twitter queue delete links
+* minor bug fixes
+* updated many gemfiles
+
 == June 24, 2012
 * Improved Original Author links
 * Fixed original author link on emails

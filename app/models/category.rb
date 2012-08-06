@@ -9,7 +9,12 @@ class Category < ActiveRecord::Base
   validates_uniqueness_of :title
   
   # Relationships
-  has_many :items
+  has_many :items, inverse_of: :category
+
+  has_one :last_item,
+    class_name: "Item",
+    order: "items.published_at DESC",
+    conditions: proc { ["(items.draft = ?) AND (published_at is not NULL) AND (published_at < ?)", false, Time.now.to_s(:db)] }
   
   # Permalink URLS
   extend FriendlyId
@@ -29,6 +34,7 @@ class Category < ActiveRecord::Base
     self.
       items.
       includes(:attachments).
+      localized.
       where(draft: false).
       where("published_at is not NULL").
       where("published_at < '#{Time.now.to_s(:db)}'").
@@ -42,13 +48,14 @@ class Category < ActiveRecord::Base
       where(draft: false).
       where("published_at is not NULL").
       where("published_at < ?", DateTime.now).
-      order("updated_at DESC").
+      order("published_at DESC").
       first
   end
 
   def item_last_update
-    if self.items.last_item
-      self.items.last_item.updated_at
+    t = self.last_item
+    if t
+      t.updated_at
     else
       Time.now
     end

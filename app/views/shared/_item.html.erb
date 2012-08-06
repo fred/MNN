@@ -1,4 +1,4 @@
-<% cache("_item/#{item.cache_key_full}") do %>
+<% cache_expiring("_item/#{item.cache_key_full}", 3600) do %>
   <article class="category" id="item_<%=item.id%>">
     <header>
       <% if item.has_image? %>
@@ -8,7 +8,8 @@
                       title: alt_for_image(item.main_image)
                     ),
             item,
-            title: item.title
+            title: item.title,
+            rel: 'image'
         %>
       <% elsif item.youtube_id && item.youtube_img %>
         <%= image_tag(youtube_thumb(item), 
@@ -48,7 +49,7 @@
           Written by 
           <i class="icon-user"></i>
           <%= link_to_if(item.user,
-                  item.user.title,
+                  item.user.public_display_name,
                   author_path(item.user),
                   title: "Author Page: #{item.author_name}")
           %>
@@ -57,17 +58,17 @@
         <span class="author">
           Submitted by
           <i class="icon-user"></i>
-          <%= link_to_if(item.user, item.user.title, author_path(item.user)) %>
+          <%= link_to_if(item.user, item.user.public_display_name, author_path(item.user)) %>
         </span>
       <% end %>
-      
+
       <ul class="tags">
         <i class="icon-tags"></i>
         <% item.tags.each do |tag| %>
           <li><%= link_to tag.title, tag_path(tag), title: "See all Articles tagged as '#{tag.title}'" %></li>
         <% end %>
       </ul>
-      
+
       <div class="page_views">
         <% if item.item_stat %>
           <i class="icon-play-circle"></i>

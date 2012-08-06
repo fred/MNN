@@ -17,7 +17,7 @@
         <div class="form-actions">
           <%= f.submit "Resend unlock instructions",
                 class: "btn btn-primary",
-                'data-disable-with' => 'Sending...'
+                data: {disable_with: 'Sending...'}
           %>
         </div>
       </fieldset>
@@ -27,7 +27,7 @@
 
 <% content_for :breadcrumb do %>
   <li>
-    <a href="/">Home</a>
+    <%= link_to "Home", root_path, title: "Home", rel: 'home' %>
     <span class="divider">/</span>
   </li>
   <li class="active">Unlock Account</li>

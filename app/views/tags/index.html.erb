@@ -1,7 +1,7 @@
 <div class="row all_tags">
   <% @tags.each do |tag| %>
     <div class="tag" id="tag_<%= tag.id %>">
-      <%= link_to tag.title, tag_path(tag) %> (<%= tag.items.count %>)
+      <%= link_to tag.title, tag_path(tag), title: tag.title, rel: 'tag' %> (<%= tag.items.count %>)
       <%= link_to(
             image_tag("icons/social/rss_16.png", alt: "RSS for #{tag.title}"), 
             tag_path(tag, format: "rss"),

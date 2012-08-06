@@ -47,6 +47,8 @@ Publication::Application.configure do
     Debugger.settings[:reload_source_on_change] = 1;
   end
   
+  # Enable threaded mode
+  # config.threadsafe!
 end
 
 ActionMailer::Base.delivery_method = :letter_opener

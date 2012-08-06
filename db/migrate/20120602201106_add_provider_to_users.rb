@@ -3,8 +3,8 @@ class AddProviderToUsers < ActiveRecord::Migration
     add_column :users, :provider, :string
     add_column :users, :oauth_uid, :string
     User.reset_column_information
-    User.where("fbuid is not NULL").map {|t| t.update_attribute(:provider, 'facebook')}
-    User.where("fbuid is not NULL").map {|t| t.update_attribute(:oauth_uid, t.fbuid)}
+    User.where("fbuid is not NULL").map {|t| t.update_attributes(provider: 'facebook')}
+    User.where("fbuid is not NULL").map {|t| t.update_attributes(oauth_uid: t.fbuid)}
     remove_column :users, :fbuid
   end
 end

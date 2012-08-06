@@ -21,7 +21,7 @@ class Comment < ActiveRecord::Base
   before_create :check_for_spam
   after_create  :email_notify, :touch_commentable
 
-  delegate :name, :to => :owner, :allow_nil => true
+  delegate :name, to: :owner, allow_nil: true
 
 
   def touch_commentable

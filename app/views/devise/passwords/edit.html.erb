@@ -19,7 +19,7 @@
           </div>
         </div>
         <div class="form-actions">
-          <%= f.submit "Change my password", class: "btn btn-primary", 'data-disable-with' => 'Sending...' %>
+          <%= f.submit "Change my password", class: "btn btn-primary", data: {disable_with: 'Sending...'} %>
         </div>
       </fieldset>
     <% end %> <!-- End Form -->
@@ -28,7 +28,7 @@
 
 <% content_for :breadcrumb do %>
   <li>
-    <a href="/">Home</a>
+    <%= link_to "Home", root_path, title: "Home", rel: 'home' %>
     <span class="divider">/</span>
   </li>
   <li class="active">Change Password</li>

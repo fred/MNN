@@ -8,7 +8,7 @@
   </span>
   <p>
     <%= sanitize comment.body,
-          tags: %w(p b i u a br strong div ul ol li),
+          tags: %w(p em b i u a br blockquote strong div ul ol li),
           attributes: %w(href) %>
   </p>
   <span class="comment_date">

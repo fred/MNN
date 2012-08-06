@@ -12,12 +12,13 @@
                     alt: 'World Mathaba'
                   ),
               root_path,
-              title: 'World Mathaba Independent News Agency'
+              title: 'World Mathaba Independent News Agency',
+              rel: 'home'
             )
         %>
         <ul class="nav hidden-old-phone">
           <li id="home_link">
-            <%= link_to "Home", root_path, title: 'World Mathaba Independent News Agency' %>
+            <%= link_to "Home", root_path, title: 'World Mathaba Independent News Agency', rel: 'home' %>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sections <b class="caret"></b></a>
@@ -29,17 +30,17 @@
           </li>
           <li class="dropdown hidden-phone" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Regions <b class="caret"></b></a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu hidden-phone">
               <% RegionTag.order("title ASC").all.each do |tag|%>
                 <li><%= link_to tag.title, tag_path(tag), title: tag.title %></li>
               <% end %>
             </ul>
           </li>
-          <li class="dropdown hidden-phone" data-dropdown="dropdown">
+          <li class="dropdown hidden-phone hidden-tablet" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Countries <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <% CountryTag.order("title ASC").all.each do |tag| %>
-                <li><%= link_to tag.title, tag_path(tag) %></li>
+                <li><%= link_to tag.title, tag_path(tag), title: tag.title %></li>
               <% end %>
             </ul>
           </li>
@@ -47,15 +48,22 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tags <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <% GeneralTag.order("title ASC").all.each do |tag| %>
-                <li><%= link_to tag.title, tag_path(tag) %></li>
+                <li>
+                  <%= link_to tag.title, tag_path(tag), title: tag.title %>
+                </li>
               <% end %>
             </ul>
           </li>
-          <li class="dropdown hidden-phone hidden-tablet" data-dropdown="dropdown">
+          <li class="dropdown" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Languages <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <% Language.order("locale ASC").all.each do |language|%>
-                <li><%= link_to language.description, language, title: language.description %></li>
+                <li>
+                  <%= link_to url_for(localized_subdomain(language.locale)), title: language.description do %>
+                    <%= image_tag "blank.gif", class: "flag flag-#{language.flag_code}", alt: language.description %>
+                    <%= language.description %>
+                  <% end %>
+                </li>
               <% end %>
             </ul>
           </li>
@@ -63,7 +71,9 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Links <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <% Link.order("title ASC").all.each do |link| %>
-                <li><%= link_to(link.title, link.url, target: 'blank') %></li>
+                <li>
+                  <%= link_to(link.title, link.url, target: 'blank', title: link.link_title, rel: link.rel) %>
+                </li>
               <% end %>
             </ul>
           </li>

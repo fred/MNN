@@ -1,5 +1,6 @@
 # encoding: utf-8
 class DocumentUploader < BaseUploader
+  process :set_content_type
 
   def store_dir
     "uploads/documents/#{mounted_as}/#{model.id}"

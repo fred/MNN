@@ -87,6 +87,7 @@ capybara-*html
 .rvmrc
 .rvmrc.*
 
+.rbx
 unicorn.rb
 unicorn.dev.rb
 config/heroku.conf
@@ -99,3 +100,5 @@ unicorn.prod.rb
 public/sitemap1.xml.gz
 public/sitemap_index.xml.gz
 config/newrelic.yml
+reload_forem.sh
+reload_db.sh

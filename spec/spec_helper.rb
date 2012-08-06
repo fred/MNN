@@ -31,7 +31,7 @@ RSpec.configure do |config|
 
   # Use the specified formatter
   # :documentation, :progress, :html, :textmate
-  config.formatter = :documentation
+  config.formatter = :progress
 
   config.include Devise::TestHelpers, type: :controller
 
@@ -53,7 +53,6 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-
 end
 
 Webrat.configure do |config|

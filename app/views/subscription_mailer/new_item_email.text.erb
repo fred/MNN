@@ -15,9 +15,9 @@ New Post at http://WorldMathaba.net
 
 <% if @item.user %>
   <% if @item.original? %>
-  Written by <%= @item.user.title %>
+  Written by <%= @item.user.public_display_name %>
   <% else %>
-  Submitted by <%= @item.user.title %>
+  Submitted by <%= @item.user.public_display_name %>
   <% end %>
 <% end %>
 

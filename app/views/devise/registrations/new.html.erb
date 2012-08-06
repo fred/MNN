@@ -1,5 +1,5 @@
-<div class="row-fluid">
-  <div class="span9">
+<div class="row">
+  <div class="span7">
     <%= form_for(resource,
           as: resource_name,
           url: registration_path(resource_name),
@@ -7,17 +7,21 @@
         ) do |f| 
     %>
       <%= custom_devise_error_messages! %>
-      
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, class: "alert alert-#{name}" %>
-      <% end %>
+      <%= bootstap_flash %>
 
       <fieldset class="withBorder">
         <legend>Sign up</legend>
         <div class="control-group">
           <%= f.label :email, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :email, required: true, autofocus: true, type: "email", class: "imput-medium" %>
+            <%= f.text_field :email,
+                  placeholder: "Your email is required",
+                  required: true,
+                  autofocus: true,
+                  type: "email",
+                  class: "imput-medium"
+            %>
+            <p class="help-block">Your email will not be shown to the public.</p>
           </div>
         </div>
         <div class="control-group">
@@ -43,18 +47,24 @@
             %>
           </div>
         </div>
+        <div class="control-group">
+          <%= f.label :name, class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :name, placeholder: "Example: Anonymous", class: "imput-medium" %>
+          </div>
+        </div>
 
         <div id="termsofservice-form-element" class="control-group">
           <%= f.check_box :terms_of_service %>
-          <strong>
-            I agree to the
-            <a href="/pages/privacy-and-policy" target="popup">Terms of Service and Privacy Policy</a>
-          </strong>
+          <label class="inline" for="user_terms_of_service">
+              I agree to the
+              <a href="/pages/privacy-and-policy" target="popup">Terms of Service and Privacy Policy</a>
+          </label>
         </div>
 
         <div class="control-group">
           <div class="controls">
-            <%= f.submit "Register", class: "btn btn-success", 'data-disable-with' => 'Processing...' %>
+            <%= f.submit "Register", class: "btn btn-success", data: {disable_with: 'Loading...'} %>
           </div>
         </div>
 
@@ -73,17 +83,13 @@
 
       </fieldset>
 
-
-
-      
-      
     <% end %> <!-- End Form -->
   </div> <!-- End span8-->
 </div> <!-- End row -->
 
 <% content_for :breadcrumb do %>
   <li>
-    <a href="/">Home</a>
+    <%= link_to "Home", root_path, title: "Home", rel: 'home' %>
     <span class="divider">/</span>
   </li>
   <li class="active">Sign Up</li>
@@ -98,6 +104,17 @@
           "user[email]": {required: true, minlength: 4},
           "user[password]": {required: true, minlength: 6},
           "user[password_confirmation]": {required: true, minlength: 6}
+        },
+        showErrors: function(errors){
+          $.each(this.errorList, function(index, value){
+            $(value.element).parent().parent().addClass('error');
+            $(value.element).attr('rel', 'tooltip');
+            $(value.element).attr('title', value.message);
+          });
+          $("[rel='tooltip']").tooltip({
+            placement: 'right',
+            trigger: 'hover'
+          });
         }
       });
     }

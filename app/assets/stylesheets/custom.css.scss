@@ -27,6 +27,9 @@ li {
 .clearfix {
   display: block;
 }
+.inline {
+  display: inline;
+}
 p {
   font-size: 14px;
   font-weight: normal;
@@ -77,49 +80,7 @@ article .content {
   margin: 10px 0;
 }
 
-#article-comments {
-  padding: 10px;
-  border: 1px solid #ccc;
-  background: #f5f5f5;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-}
 
-#comments {
-  margin-bottom: 20px;
-  border-bottom: 1px solid #ccc;
-}
-
-fieldset.withBorder {
-  border: 1px solid #ddd;
-  background-color: #f5f5f5;
-}
-
-fieldset.withBorder legend {
-  width: auto;
-  padding-left: 1px;
-  margin-left: 160px;
-  border: none;
-}
-#termsofservice-form-element input[type="checkbox"] {
-  margin: 0 4px 0 10px;
-}
-.actions {
-  margin-bottom: 0;
-  padding-left: 160px;
-}
-
-.form-horizontal .control-label {
-  width: 146px;
-}
-form .input {
-  margin-left: 160px;
-}
-.help-block {
-  color: #666;
-  margin-top: 2px;
-}
 button a:hover,
 button a:visited, 
 button a {
@@ -168,6 +129,8 @@ article.category {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f5f5f5', GradientType=0);
   box-shadow: 0px 0px 3px #ccc;
 }
+
+
 article h1 {
   letter-spacing: 1px;
   font-size: 28px;
@@ -178,14 +141,20 @@ article h2 {
   letter-spacing: 1px;
   font-size: 24px;
   color: #444;
+  margin-bottom: 12px;
+  margin-top: 12px;
 }
 article h3 {
   font-size: 20px;
   color: #333;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 article h4 {
   font-size: 14px;
   color: #222;
+  margin-bottom: 7px;
+  margin-top: 7px;
 }
 article p img {
   border: 1px solid #DDD;
@@ -318,6 +287,11 @@ article footer .share a {
   margin-left: 4px;
 }
 
+article ol li,
+article ul li {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 
 .categories .box {
   text-align:left;
@@ -580,3 +554,6 @@ span#item_body li {
   color: #333;
 }
 
+iframe#html5_player {
+  margin-bottom: 15px;
+}

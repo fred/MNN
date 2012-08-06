@@ -4,21 +4,105 @@ class ApplicationController < ActionController::Base
   require 'set'
   
   protect_from_forgery
-  
+
+  before_filter :mini_profiler  
+  before_filter :get_locale
+  before_filter :https_for_admins
   before_filter :set_start_time, :set_time_zone, :set_view_items, :current_ability
   before_filter :log_additional_data, :set_per_page
   before_filter :last_modified
+  before_filter :no_cache_for_admin
+  after_filter  :auto_login_admin_user
   after_filter  :store_location
   after_filter  :log_session
-  before_filter :https_for_admins
 
+
+  def no_cache_for_admin
+    if current_user or request[:controller].to_s.match("admin|users|comments|devise")
+      private_headers
+    end
+  end
+
+  def get_locale
+    subdomain = extract_locale_from_subdomain
+    if subdomain
+      I18n.locale = extract_locale_from_subdomain
+    else
+      set_default_locale
+    end
+  end
+
+  def redirect_to_default_domain(str)
+    if str.match(default_locale)
+      new_host = str.gsub("#{default_locale}\.",'')
+      redirect_to "#{request.host}#{new_host}"
+    end
+  end
+
+  # Get locale code from request subdomain (like http://it.application.local:3000)
+  # You have to put something like:
+  #   127.0.0.1 gr.application.local
+  # in your /etc/hosts file to try this out locally
+  def extract_locale_from_subdomain
+    parsed_locale = request.subdomains.first
+    Rails.logger.debug("  Locale: Setting locale from subdomain to '#{parsed_locale}'")
+    if parsed_locale && locale_available?(parsed_locale.to_s)
+      Rails.logger.debug("  Locale: Setting locale from subdomain to '#{parsed_locale}'")
+      parsed_locale
+    else
+      nil
+    end
+  end
+
+  # Get locale from top-level domain or return nil if such locale is not available
+  # You have to put something like:
+  #   127.0.0.1 application.com
+  #   127.0.0.1 application.it
+  #   127.0.0.1 application.pl
+  # in your /etc/hosts file to try this out locally
+  def extract_locale_from_tld
+    parsed_locale = request.host.split('.').last
+    I18n.available_locales.include?(parsed_locale.to_sym) ? parsed_locale  : nil
+  end
+
+  def default_locale
+    'en'
+  end
+
+  def set_default_locale
+    I18n.locale = default_locale.to_sym
+  end
+
+  def locale_provided?
+    params[:locale] && locale_available?(params[:locale].to_s)
+  end
+
+  def locale_available?(str)
+    str.match('(ar|de|en|es|fr|it|nl|pt|ru)')
+  end
+
+  def set_locale_from_session
+    I18n.locale = session[:locale].to_sym
+  end
+
+  def set_locale_from_params
+    I18n.locale = params[:locale].to_sym
+    session[:locale] = params[:locale].to_sym
+  end
 
   def https_for_admins
-    if current_admin_user && (request.protocol == "http://")
+    if Rails.env.production? && current_admin_user && (request.protocol == "http://")
       Rails.logger.info("  *** Redirecting user to HTTPS")
       redirect_to request.url.gsub("http://", "https://")
       # Need to have this in Nginx config
       # proxy_set_header X_FORWARDED_PROTO https;
+    end
+  end
+
+  def auto_login_admin_user
+    if current_admin_user && !current_user
+      Rails.logger.debug("  Auto sign-in for AdminUser ID##{current_admin_user.id}")
+      sign_in(:user, current_admin_user, bypass: true)
     end
   end
   
@@ -116,6 +200,18 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
+
+  def if_bot?
+    return true if Rails.env.test?
+    s = request.env["HTTP_USER_AGENT"].to_s.downcase
+    valid="(YandexBot|bot|spider|wget|curl|)"
+    if s.match(valid)
+      Rails.logger.debug("  UA: Bot found: #{s}")
+      return true
+    else
+      return false
+    end
+  end
   
   # This method uses the useragentstring API, 
   # TODO, use this on a QUEUE worker
@@ -209,6 +305,20 @@ class ApplicationController < ActionController::Base
 
   ### PRIVATE METHODS ###
   protected
+
+  def can_debug?
+    # Rails.env.development? && !request[:controller].to_s.match("admin")
+    false
+  end
+
+  def mini_profiler
+    # required only in production
+    if can_debug?
+      Rack::MiniProfiler.authorize_request
+    else
+      Rack::MiniProfiler.deauthorize_request
+    end
+  end
 
     def redirect_url
       if request.env['omniauth.origin']

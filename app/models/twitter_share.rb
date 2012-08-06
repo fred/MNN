@@ -13,7 +13,7 @@ class TwitterShare < Share
       end
       TwitterQueue.perform_at(time,self.id)
     else
-      Rails.logger.info("  Queue: Updating twitter status: #{self.id}")
+      Rails.logger.info("  Queue: [DEV] Updating twitter status: #{self.id}")
     end
   end
   

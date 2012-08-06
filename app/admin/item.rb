@@ -9,7 +9,7 @@ ActiveAdmin.register Item do
   scope :draft
   scope :with_comments
   scope :queued
-  
+
   menu priority: 1, if: lambda{|tabs_renderer|
     controller.current_ability.can?(:read, Item)
   }
@@ -80,12 +80,12 @@ ActiveAdmin.register Item do
     column "Live", sortable: :published_at do |item|
       if !item.draft? && item.published_at && item.published_at > Time.zone.now
         ("<span class='red bold'>" +
-        distance_of_time_in_words(item.published_at, Time.zone.now) +
+        time_ago_in_words(item.published_at) +
         " from now" +
         '</span>').html_safe
       elsif !item.draft? && item.published_at
         ("<span class='green bold'>" +
-        distance_of_time_in_words(item.published_at, Time.zone.now) +
+        time_ago_in_words(item.published_at) +
         " ago" +
         '</span>').html_safe
       else
@@ -98,9 +98,8 @@ ActiveAdmin.register Item do
     default_actions
   end
   form partial: "form"
-  
+
   controller do
-    cache_sweeper :item_sweeper
 
     def new
       authorize! :create, Item
@@ -109,11 +108,9 @@ ActiveAdmin.register Item do
       @item.published_at = nil
       @item.expires_on = @now+10.years
       @item.draft = true
-      @item.author_name = current_admin_user.title
-      @item.author_email = current_admin_user.email
       @item.user_id = current_admin_user.id
     end
-    
+
     def show
       @item = Item.find(params[:id])
       @related = @item.solr_similar(10)
@@ -134,6 +131,21 @@ ActiveAdmin.register Item do
       else
         @item.expires_on = Time.zone.now+10.years
       end
+    end
+
+    def update
+      @item = Item.find(params[:id])
+      authorize! :edit, @item
+      if @item.update_attributes(params[:item])
+        flash[:notice] = "Successfully updated Item."
+        redirect_to @item
+      else
+        render action: 'edit'
+      end
+
+    rescue ActiveRecord::StaleObjectError
+      correct_stale_record_version
+      stale_record_recovery_action
     end
 
     def create
@@ -161,9 +173,9 @@ ActiveAdmin.register Item do
       authorize! :destroy, @item
       if (current_admin_user.has_any_role?(:admin,:editor,:security)) or (current_admin_user.id == @item.user_id)
         @item.destroy
-        flash[:notice]= "Item successfully deleted"
+        flash[:notice] = "Item successfully deleted"
       else
-        flash[:notice]= "You are not allowed to delete this Item"
+        flash[:notice] = "You are not allowed to delete this Item"
       end
       respond_to do |format|
         format.html {redirect_to admin_items_path}
@@ -172,6 +184,16 @@ ActiveAdmin.register Item do
         format.xml
       end
     end
+
+    def correct_stale_record_version
+      @item.reload
+    end
+
+    def stale_record_recovery_action
+      flash[:error] = "Error: Another user has updated this record since you accessed the edit form."
+      render :edit, status: :conflict
+   end
+
     def scoped_collection
        Item.includes(:language, :attachments, :tags, :user, :category, :item_stat)
     end

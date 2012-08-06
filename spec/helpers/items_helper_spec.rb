@@ -19,7 +19,7 @@ describe ItemsHelper do
 
   describe "Twitter Link" do
     it "Gives twitter page Link" do
-      helper.twitter_link.should == "https://twitter.com/#/worldmathaba"
+      helper.twitter_link.should == "https://twitter.com/worldmathaba"
     end
   end
 end

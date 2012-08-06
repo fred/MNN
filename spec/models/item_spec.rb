@@ -2,157 +2,166 @@ require 'spec_helper'
 
 describe Item do
   include NumericMatchers
+  include ItemSpecHelper
 
   describe "Valitidy" do
-    before(:each) do
-      @item = FactoryGirl.create(:item)
-    end
+    let(:item) {
+      Item.create valid_item_attributes
+    }
     it "should be valid" do
-      @item.should be_valid
+      item.should be_valid
     end
     it "should require a category" do
-      @item.category_id = nil
-      @item.should_not be_valid
+      item.category_id = nil
+      item.should_not be_valid
     end
     it "should require a title" do
-      @item.title = nil
-      @item.should_not be_valid
+      item.title = nil
+      item.should_not be_valid
     end
     it "should require abstract" do
-      @item.abstract = nil
-      @item.should_not be_valid
+      item.abstract = nil
+      item.should_not be_valid
     end
     it "should require a body" do
-      @item.body = nil
-      @item.should_not be_valid
+      item.body = nil
+      item.should_not be_valid
     end
     it "should require a published_at" do
-      @item.published_at = nil
-      @item.should_not be_valid
+      item.published_at = nil
+      item.should_not be_valid
     end
     it "should not require a body if it is a youtube video" do
-      @item.youtube_id = "a1b2c3d4e5"
-      @item.body = nil
-      @item.should be_valid
+      item.youtube_id = "a1b2c3d4e5"
+      item.body = nil
+      item.should be_valid
     end
     it "should not require user_id" do
-      @item.user_id = nil
-      @item.should be_valid
+      item.user_id = nil
+      item.should be_valid
     end
     it "should delete an Item" do
-      lambda {@item.destroy}.should_not raise_error
+      lambda {item.destroy}.should_not raise_error
     end
     it "should allow to edit item" do
-      @item.title = "A New item..."
-      lambda {@item.save}.should_not raise_error
+      item.title = "A New item..."
+      lambda {item.save}.should_not raise_error
     end
     it "should have ItemStat" do
-      @item.item_stat.should_not be(nil)
-      @item.item_stat.should be_an_instance_of ItemStat
+      item.item_stat.should_not be(nil)
+      item.item_stat.should be_an_instance_of ItemStat
+    end
+    it 'should have proper enqueue_time time' do
+      item.enqueue_time.should_not be(nil)
+      item.enqueue_time.should be_an_instance_of(Time)
+      item.enqueue_time.to_i.should greater_than(item.published_at.to_i)
     end
   end
   describe "Instance Methods" do
-    before(:each) do
-      @item = FactoryGirl.create(:item)
-    end
+    let(:item){
+      stub_model(Item,
+        title: "MyString",
+        body: "MyString",
+        category_id: 1,
+        language_id: 1,
+        user_id: 1
+      )
+    }
     it "should respond to should_generate_new_friendly_id?" do
-      @item.should respond_to(:should_generate_new_friendly_id?)
+      item.should respond_to(:should_generate_new_friendly_id?)
     end
     it "should respond to set_custom_slug" do
-      @item.should respond_to(:set_custom_slug)
+      item.should respond_to(:set_custom_slug)
     end
     it "should respond to custom_slug" do
-      @item.should respond_to(:custom_slug)
+      item.should respond_to(:custom_slug)
     end
     it "should respond to clear_bad_characters" do
-      @item.should respond_to(:clear_bad_characters)
+      item.should respond_to(:clear_bad_characters)
     end
     it "should respond to email_delivery_sent?" do
-      @item.should respond_to(:email_delivery_sent?)
+      item.should respond_to(:email_delivery_sent?)
     end
     it "should respond to email_delivery_queued?" do
-      @item.should respond_to(:email_delivery_queued?)
+      item.should respond_to(:email_delivery_queued?)
     end
     it "should respond to email_delivery_queued_at" do
-      @item.should respond_to(:email_delivery_queued_at)
+      item.should respond_to(:email_delivery_queued_at)
     end
     it "should respond to send_email_deliveries" do
-      @item.should respond_to(:send_email_deliveries)
+      item.should respond_to(:send_email_deliveries)
     end
     it "should respond to posted_to_twitter?" do
-      @item.should respond_to(:posted_to_twitter?)
+      item.should respond_to(:posted_to_twitter?)
     end
     it "should respond to create_twitter_share" do
-      @item.should respond_to(:create_twitter_share)
+      item.should respond_to(:create_twitter_share)
     end
     it "should respond to twitter_status" do
-      @item.should respond_to(:twitter_status)
+      item.should respond_to(:twitter_status)
     end
-    it "should respond to sitemap_refresh" do
-      @item.should respond_to(:sitemap_refresh)
+    it "should respond to sitemap_jobs" do
+      item.should respond_to(:sitemap_jobs)
     end
     it "should respond to enqueue_time" do
-      @item.should respond_to(:enqueue_time)
-    end
-    it "should respond to record_freshness" do
-      @item.should respond_to(:record_freshness)
-    end
-    it "should respond to record_freshness_by_version" do
-      @item.should respond_to(:record_freshness_by_version)
+      item.should respond_to(:enqueue_time)
     end
     it "should respond to main_image" do
-      @item.should respond_to(:main_image)
+      item.should respond_to(:main_image)
     end
     it "should respond to main_image_cache_key" do
-      @item.should respond_to(:main_image_cache_key)
+      item.should respond_to(:main_image_cache_key)
     end
     it "should respond to comment_cache_key" do
-      @item.should respond_to(:comment_cache_key)
+      item.should respond_to(:comment_cache_key)
     end
     it "should respond to has_image?" do
-      @item.should respond_to(:has_image?)
+      item.should respond_to(:has_image?)
     end
     it "should respond to cache_key_full" do
-      @item.should respond_to(:cache_key_full)
+      item.should respond_to(:cache_key_full)
     end
     it "should respond to tag_list" do
-      @item.should respond_to(:tag_list)
+      item.should respond_to(:tag_list)
     end
     it "should respond to build_stat" do
-      @item.should respond_to(:build_stat)
+      item.should respond_to(:build_stat)
     end
     it "should respond to set_status_code" do
-      @item.should respond_to(:set_status_code)
+      item.should respond_to(:set_status_code)
     end
     it "should respond to admin_permalink" do
-      @item.should respond_to(:admin_permalink)
+      item.should respond_to(:admin_permalink)
     end
     it "should respond to published?" do
-      @item.should respond_to(:published?)
+      item.should respond_to(:published?)
     end
     it "should respond to language_title_short" do
-      @item.should respond_to(:language_title_short)
+      item.should respond_to(:language_title_short)
     end
     it "should respond to category_title" do
-      @item.should respond_to(:category_title)
+      item.should respond_to(:category_title)
     end
     it "should respond to language_title" do
-      @item.should respond_to(:language_title)
+      item.should respond_to(:language_title)
     end
     it "should respond to user_title" do
-      @item.should respond_to(:user_title)
+      item.should respond_to(:user_title)
     end
     it "should respond to user_email" do
-      @item.should respond_to(:user_email)
+      item.should respond_to(:user_email)
     end
     it "should respond to keywords_list" do
-      @item.should respond_to(:keywords_list)
+      item.should respond_to(:keywords_list)
     end
     it "should respond to meta_keywords" do
-      @item.should respond_to(:meta_keywords)
+      item.should respond_to(:meta_keywords)
     end
     it "should respond to keyword_for_solr" do
-      @item.should respond_to(:keyword_for_solr)
+      item.should respond_to(:keyword_for_solr)
+    end
+    it "should respond to enqueue_time" do
+      item.should respond_to(:enqueue_time)
     end
   end
 
@@ -224,19 +233,6 @@ describe Item do
       @item.body = "The&hellip;Item"
       @item.save
       @item.body.should eq("The...Item")
-    end
-  end
-
-  describe "Editing an a Dirty Item" do
-    before(:each) do
-      @item = FactoryGirl.create(:item, title: "Old Title")
-    end
-    it "should not allow to update a dirty item" do
-      @outdated_item = Item.find(@item.id)
-      @outdated_item.title = "Added a new title"
-      @outdated_item.save
-      @item.should_not be_valid
-      # lambda {@item.save}.should raise_error
     end
   end
 

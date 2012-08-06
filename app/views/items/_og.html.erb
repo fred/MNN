@@ -1,14 +1,21 @@
 <meta property="og:title" content="<%= @item.title %>"/>
-<meta property="og:type" content="news, <%= @item.category_title %>, <%= @item.tag_list %>"/>
+<meta property="og:type" content="article"/>
 <meta property="og:url" content="<%= url_for(item_path(@item, only_path: false, protocol: 'http')) %>"/>
-<meta property="og:site_name" content="worldmathaba.net"/>
+<meta property="og:site_name" content="World Mathaba Independent News Agency"/>
 <meta property="og:description" content="<%= @item.abstract %>"/>
+<% @item.tags.each do |t| %>
+<meta property="article:tag" content="<%= t.title %>"/>
+<% end %>
+<meta property="article:section" content="<%= @item.category_title %>"/>
+<meta property="article:author" content="<%= @item.user_public_display_name %>">
+<meta property="article:published_time"  content="<%= @item.published_at.iso8601 %>">
+<meta property="article:modified_time"   content="<%= @item.corrected_updated_at.iso8601 %>">
+
 <meta name="medium" content="news"/>
 
 <!-- Image -->
 <% if @item.has_image? %>
-  <meta property="og:image" content="<%= @item.main_image.image.small %>"/>
+  <meta property="og:image" content="<%= @item.main_image.image.large %>"/>
 <% elsif @item.youtube_id %>
   <meta property="og:image" content="<%= youtube_thumb(@item) %>"/>
 <% end %>
-

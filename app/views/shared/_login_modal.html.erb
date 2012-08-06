@@ -3,56 +3,93 @@
     <button class="close" data-dismiss="modal">X</button>
     <h3>Sign in</h3>
   </div>
-  <%= form_for(:user, as: :user, url: new_session_url(:user, protocol: 'https'), html: {class: form_class}) do |f| %>
-  <div class="modal-body">
-    <div class="control-group">
-      <%= f.label :email, class: 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :email, required: false, autofocus: true, type: "email", class: "span4" %>
+  <%= form_for(:user, as: :user, 
+        url: new_session_url(:user, protocol: 'https'),
+        html: {class: form_class, id: 'login_form'}) do |f|
+  %>
+    <div class="modal-body">
+      <div class="control-group">
+        <%= f.label :email, class: 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :email, autofocus: true, type: "email", class: "span4" %>
+        </div>
       </div>
-    </div>
-    <div class="control-group">
-      <%= f.label :password, class: 'control-label' %>
-      <div class="controls">
-        <%= f.password_field :password, required: false, class: "span4"  %>
+      <div class="control-group">
+        <%= f.label :password, class: 'control-label' %>
+        <div class="controls">
+          <%= f.password_field :password, class: "span4"  %>
+        </div>
       </div>
-    </div>
-    <div class="control-group">
-      <div class="controls">
-        <label class="checkbox" for="user_remember_me">
-          <%= f.check_box :remember_me, as: :boolean %>
-          Remember me for 2 weeks
-        </label>
+      <div class="control-group">
+        <div class="controls">
+          <%= f.check_box :remember_me %>
+          <label class="inline" for="user_remember_me">
+            Stay Signed in
+          </label>
+        </div>
       </div>
-      <div class="controls">
-        Don't have an account? 
-        <%= link_to "Register now",
-                new_registration_url(:user, protocol: 'https'),
-                title: "Click here to register a new Account"
-        %>
+      <div class="control-group">
+        <div class="controls">
+          <div class="btn-group">
+            <%= f.submit "Sign in", class: "btn", data: {disable_with: 'Sending...'} %>
+            <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="control-group">
-      <div class="controls">
-        <div class="btn-group">
-          <%= f.submit "Login", class: "btn", 'data-disable-with' => 'Sending...' %>
-          <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+
+      <div class='control-group'>
+        <div class="controls">
+          New here? 
+          <%= link_to "Register now",
+                  new_registration_url(:user, protocol: 'https'),
+                  title: "Click here to register a new Account"
+          %>
+        </div>
+      </div>
+
+      <div class='control-group'>
+        <div class="controls">
+          <%= link_to "Forgot Password?", new_password_url(:user, protocol: "https") %>
+        </div>
+      </div>
+
+      <div class='control-group'>
+        <div class="horizontal-divider"></div>
+        <div class="controls">
+          <b>Or login with your existing services:</b>
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <div class="controls">
+          <%= render partial: '/shared/social_connects' %>
         </div>
       </div>
     </div>
-
-    <div class='control-group'>
-      <div class="horizontal-divider"></div>
-      <div class="controls">
-        <b>Or login with your existing services:</b>
-      </div>
-    </div>
-    
-    <div class="control-group">
-      <div class="controls">
-        <%= render partial: '/shared/social_connects' %>
-      </div>
-    </div>
-  </div>
   <% end %>
 </div>
+
+<% content_for :footer do %>
+  <script>
+    if ($("form#login_form")){
+      $("form#login_form").validate({
+        rules: {
+          "user[email]": {required: true, minlength: 4},
+          "user[password]": {required: true, minlength: 6},
+          "user[password_confirmation]": {required: true, minlength: 6}
+        },
+        showErrors: function(errors){
+          $.each(this.errorList, function(index, value){
+            $(value.element).parent().parent().addClass('error');
+            $(value.element).attr('rel', 'tooltip');
+            $(value.element).attr('title', value.message);
+          });
+          $("[rel='tooltip']").tooltip({
+            placement: 'right',
+            trigger: 'hover'
+          });
+        }
+      });
+    }
+  </script>
+<% end %>

@@ -1,11 +1,11 @@
-<% cache_expiring("comments/#{@item.comment_cache_key}", 600) do %>
-
+<% if @item %>
   <h3>Comments on: <%= link_to @item.title, @item %></h3>
-
-  <%= paginate @comments %>
-
-  <%= render partial: "opinio/comments/comments", locals: { comments: @comments } %>
-
-  <%= paginate @comments %>
-
 <% end %>
+
+<div class="comments">
+  <h4>
+    <%= link_to image_tag('icons/social/rss_32.png'), format: "rss" %>
+    <%= link_to "RSS feed for all comments", format: "rss" %>
+  </h4>
+  <%= render partial: "opinio/comments/comments", locals: { comments: @comments } %>
+</div>

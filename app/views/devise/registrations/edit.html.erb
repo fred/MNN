@@ -1,5 +1,5 @@
-<div class="row-fluid">
-  <div class="span9">
+<div class="row">
+  <div class="span8">
     <%= form_for(resource,
           as: resource_name,
           url: registration_path(resource_name),
@@ -14,85 +14,24 @@
       <% end %>
 
       <fieldset class="withBorder">
-        <legend>Personal Information</legend>
+        <legend>Private Information</legend>
 
         <div class="control-group">
           <%= f.label :email, class: 'control-label' %>
           <div class="controls">
             <%= f.text_field :email, required: true, type: "email", class: "imput-large" %>
+            <p class="help-block">Your email will not be shown to the public.</p>
           </div>
         </div>
 
         <div class="control-group">
           <%= f.label :name, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :name, required: false, autofocus: true, class: "imput-large" %>
+            <%= f.text_field :name, required: false, placeholder: "Your public name, ex: Anonymous",
+                  autofocus: true, class: "imput-large"
+            %>
           </div>
         </div>
-
-        <div class="control-group">
-          <%= f.label :address, class: 'control-label' %>
-          <div class="controls">
-            <%= f.text_field :address, required: false, class: "imput-large" %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= f.label :facebook, class: 'control-label' %>
-          <div class="controls">
-            <%= f.text_field :facebook, required: false, class: "imput-large", 
-                  placeholder: "https://facebook.com/your-name" %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= f.label :twitter, class: 'control-label' %>
-          <div class="controls">
-            <%= f.text_field :twitter, required: false, class: "imput-large", 
-                  placeholder: "@twitter" %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= f.label :diaspora, class: 'control-label' %>
-          <div class="controls">
-            <%= f.text_field :diaspora, required: false, class: "imput-large", 
-                  placeholder: "handle@host.net", type: "email" %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= f.label :skype, class: 'control-label' %>
-          <div class="controls">
-            <%= f.text_field :skype, required: false, class: "imput-large", 
-                  placeholder: "skype username" %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= f.label :gtalk, "Google Chat", class: 'control-label' %>
-          <div class="controls">
-            <%= f.text_field :gtalk, required: false, class: "imput-large", 
-                  placeholder: "xxxxx@gmail.com (optional)", type: "email" %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= f.label :jabber, "Jabber", class: 'control-label' %>
-          <div class="controls">
-            <%= f.text_field :jabber, required: false, class: "imput-large", 
-                  placeholder: "xxxxx@jabber.com", type: "email" %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= f.label :phone_number, class: 'control-label' %>
-          <div class="controls">
-            <%= f.text_field :phone_number, required: false, class: "imput-large", 
-                  placeholder: "+11 123123456", type: "tel" %>
-          </div>
-        </div>
-
         <div class="control-group">
           <%= f.label :time_zone, class: 'control-label' %>
           <div class="controls">
@@ -109,14 +48,77 @@
                   required: false,
                   class: "imput-medium"
             %>
+            <p class="help-block">Not shown to the public</p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="withBorder">
+        <legend>Public Information</legend>
+
+        <div class="control-group">
+          <%= f.label :facebook, class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :facebook, required: false, class: "imput-large", 
+                  placeholder: "https://facebook.com/your-name" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :twitter, class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :twitter, required: false, class: "imput-large", 
+                  placeholder: "@twitter (optional)" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :diaspora, class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :diaspora, required: false, class: "imput-large", 
+                  placeholder: "handle@host.net (optional)", type: "email" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :skype, class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :skype, required: false, class: "imput-large", 
+                  placeholder: "skype name (optional)" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :gtalk, "Google Chat", class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :gtalk, required: false, class: "imput-large", 
+                  placeholder: "xxx@gmail.com (optional)", type: "email" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :jabber, "Jabber", class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :jabber, required: false, class: "imput-large", 
+                  placeholder: "xxxxx@jabber.com (optional)", type: "email" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :bio, "You Bio", class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_area :bio, required: false, class: "imput-medium",
+                  placeholder: "Say something about yourself.",
+                  rows: 7, cols: 24
+            %>
+            <p class="help-block">Shown on your public profile</p>
           </div>
         </div>
 
       </fieldset>
-      
 
       <fieldset class="withBorder">
-        <legend>Avatar Image</legend>
+        <legend>Profile Image</legend>
         <div class="control-group">
           <%= f.label :avatar, "Upload Avatar", class: 'control-label' %>
           <div class="controls">
@@ -133,6 +135,9 @@
                     target: "blank"
                   )
               %>
+            </div>
+            <div class="controls">
+              <%= f.check_box :remove_avatar %> Delete this image
             </div>
           <% end %>
         </div>
@@ -152,7 +157,7 @@
           </div>
           <% if f.object.gpg? %>
             <div class="controls">
-              <%= link_to("Download Key", f.object.gpg.url, target: "blank") %>
+              <%= link_to("Download Current Key", f.object.gpg.url, target: "blank") %>
             </div>
           <% end %>
         </div>
@@ -199,7 +204,7 @@
           <div class="controls">
             <%= f.password_field :password, autocomplete: "off", required: false, class: "imput-large" %>
             <span class="help-block">
-              Leave this field blank if you do not want to change your password
+              Leave blank if you do not want to change password
             </span>
           </div>
         </div>
@@ -230,8 +235,31 @@
 
 <% content_for :breadcrumb do %>
   <li>
-    <a href="/">Home</a>
+    <%= link_to "Home", root_path, title: "Home", rel: 'home' %>
     <span class="divider">/</span>
   </li>
   <li class="active">Edit Profile</li>
+<% end %>
+
+<% content_for :footer do %>
+  <script>
+    if ($("form#edit_user")){
+      $("form#edit_user").validate({
+        rules: {
+          "user[email]": {required: true, minlength: 4}
+        },
+        showErrors: function(errors){
+          $.each(this.errorList, function(index, value){
+            $(value.element).parent().parent().addClass('error');
+            $(value.element).attr('rel', 'tooltip');
+            $(value.element).attr('title', value.message);
+          });
+          $("[rel='tooltip']").tooltip({
+            placement: 'right',
+            trigger: 'hover'
+          });
+        }
+      });
+    }
+  </script>
 <% end %>

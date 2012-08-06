@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120623091847) do
+ActiveRecord::Schema.define(:version => 20120805011251) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -75,7 +75,9 @@ ActiveRecord::Schema.define(:version => 20120623091847) do
 
   add_index "comments", ["approved"], :name => "index_comments_on_approved"
   add_index "comments", ["approved_by"], :name => "index_comments_on_approved_by"
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["marked_spam"], :name => "index_comments_on_marked_spam"
+  add_index "comments", ["owner_id"], :name => "index_comments_on_owner_id"
   add_index "comments", ["suspicious"], :name => "index_comments_on_suspicious"
 
   create_table "contacts", :force => true do |t|
@@ -118,6 +120,8 @@ ActiveRecord::Schema.define(:version => 20120623091847) do
     t.datetime "created_at"
   end
 
+  add_index "item_stats", ["item_id"], :name => "index_item_stats_on_item_id"
+
   create_table "items", :force => true do |t|
     t.string   "title"
     t.string   "highlight"
@@ -158,10 +162,13 @@ ActiveRecord::Schema.define(:version => 20120623091847) do
     t.integer  "comments_count",    :default => 0
     t.datetime "last_commented_at"
     t.boolean  "original"
+    t.integer  "lock_version",      :default => 0,       :null => false
+    t.string   "youtube_res"
   end
 
   add_index "items", ["allow_comments"], :name => "index_items_on_allow_comments"
   add_index "items", ["allow_star_rating"], :name => "index_items_on_allow_star_rating"
+  add_index "items", ["category_id", "draft", "published_at"], :name => "index_items_on_category_id_and_draft_and_published_at"
   add_index "items", ["category_id"], :name => "index_items_on_category_id"
   add_index "items", ["draft"], :name => "index_items_on_draft"
   add_index "items", ["featured"], :name => "index_items_on_featured"
@@ -175,12 +182,28 @@ ActiveRecord::Schema.define(:version => 20120623091847) do
   add_index "items", ["updated_by"], :name => "index_items_on_updated_by"
   add_index "items", ["user_id"], :name => "index_items_on_user_id"
 
+  create_table "job_stats", :force => true do |t|
+    t.string   "processable_type"
+    t.integer  "processable_id"
+    t.integer  "job_name"
+    t.integer  "job_id"
+    t.boolean  "processed",        :default => false
+    t.datetime "enqueue_at"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  add_index "job_stats", ["job_id"], :name => "index_job_stats_on_job_id"
+  add_index "job_stats", ["job_name"], :name => "index_job_stats_on_job_name"
+  add_index "job_stats", ["processable_id", "processable_type"], :name => "index_job_stats_on_processable_id_and_processable_type"
+
   create_table "languages", :force => true do |t|
     t.string   "locale"
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "slug"
+    t.string   "flag_code"
   end
 
   add_index "languages", ["locale"], :name => "index_languages_on_locale"
@@ -193,6 +216,8 @@ ActiveRecord::Schema.define(:version => 20120623091847) do
     t.text     "description"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
+    t.string   "rel"
+    t.string   "rev"
   end
 
   create_table "pages", :force => true do |t|
@@ -206,6 +231,8 @@ ActiveRecord::Schema.define(:version => 20120623091847) do
     t.text     "body"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "rel"
+    t.string   "rev"
   end
 
   add_index "pages", ["active"], :name => "index_pages_on_active"

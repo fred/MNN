@@ -124,9 +124,9 @@
         <span class="source_url">
           <span class='author' itemprop='author'>
             <% if @item.original? %>
-              Written by <b><%= link_to @item.user.title, author_path(@item.user) %></b>
+              Written by <b><%= link_to @item.user.public_display_name, author_path(@item.user) %></b>
             <% else %>
-              Submitted by <b><%= link_to @item.user.title, author_path(@item.user) %></b>
+              Submitted by <b><%= link_to @item.user.public_display_name, author_path(@item.user) %></b>
             <% end %>
           </span>
         </span>

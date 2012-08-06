@@ -1,11 +1,15 @@
 <% @authors.each do |author| %>
-  
+
   <article class="author" id="author_<%=author.id%>">
     <header>
       <% if author.avatar? %>
-        <%= link_to(image_tag(author.avatar.small, class: "show_item_image"), author_path(author)) %>
+        <%= link_to(
+              image_tag(author.avatar.small, class: "show_item_image", alt: author.public_display_name),
+              author_path(author)
+            )
+        %>
       <% end %>
-      <h3><%= link_to author.title, author_path(author) %></h3>
+      <h3><%= link_to author.public_display_name, author_path(author), title: author.public_display_name %></h3>
     </header>
     <section>
       <% unless author.twitter.to_s.empty? %>
@@ -20,5 +24,5 @@
       <%= author.bio %>
     </section>
   </article>
-  
+
 <% end %>

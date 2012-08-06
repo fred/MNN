@@ -1,6 +1,8 @@
 class Item < ActiveRecord::Base
   include Rails.application.routes.url_helpers # neeeded for _path helpers to work in models
 
+  DEFAULT_LOCALE = 'en'
+
   attr_protected :user_id, :slug, :updated_by, :deleted_at
 
   attr_accessor :updated_reason, :share_twitter, :send_emails, :existing_attachment_id
@@ -16,13 +18,15 @@ class Item < ActiveRecord::Base
   friendly_id :title, use: :slugged
 
   # Relationships
-  belongs_to :user, counter_cache: true
-  belongs_to :category
-  belongs_to :language
-  has_one  :item_stat
-  has_many :attachments, as: :attachable
-  has_many :twitter_shares,   dependent: :destroy
-  has_many :email_deliveries, dependent: :destroy
+  belongs_to :user,       inverse_of: :items,  counter_cache: true
+  belongs_to :category,   inverse_of: :items
+  belongs_to :language,   inverse_of: :items
+  has_one    :item_stat,  inverse_of: :item
+
+  has_many  :attachments, as: :attachable
+  has_many  :job_stats,   as: :processable
+  has_many  :twitter_shares,   dependent: :destroy
+  has_many  :email_deliveries, dependent: :destroy
 
   has_and_belongs_to_many :tags, join_table: "taggings", 
     foreign_key: "taggable_id", association_foreign_key: "tag_id"
@@ -43,17 +47,16 @@ class Item < ActiveRecord::Base
   validates_presence_of :title, :abstract, :category_id, :published_at
   validates_presence_of :body, if: Proc.new { |item| item.youtube_id.blank? }
   validates_presence_of :published_at
-  validate :record_freshness
   
   # Filter hooks
   before_save   :clear_bad_characters
   before_save   :create_twitter_share
   before_save   :dup_existing_attachment
   before_save   :send_email_deliveries
+  before_save   :process_sitemap_job
   before_update :set_status_code
   before_create :build_stat
   after_create  :set_custom_slug
-  after_create  :sitemap_refresh
 
 
   # Some Basic Scopes for finder chaining
@@ -113,6 +116,14 @@ class Item < ActiveRecord::Base
     self.expires_on   ||= Time.zone.now+10.years
   end
 
+  def corrected_updated_at
+    if self.published_at && (self.published_at > self.updated_at)
+      self.published_at
+    else
+      self.updated_at
+    end
+  end
+
   # generate slugs once and then treat them as read-only
   def should_generate_new_friendly_id?
     new_record?
@@ -148,6 +159,20 @@ class Item < ActiveRecord::Base
     true
   end
 
+
+
+  ##############
+  #### JOBS ####
+  ##############
+  
+  def enqueue_time
+    if published?
+      Time.now+3.minutes
+    else
+      self.published_at + 3.minutes
+    end
+  end
+
   def email_delivery_sent?
     if !self.email_deliveries.empty? && self.email_deliveries.first.send_at &&
        (self.email_deliveries.first.send_at < Time.now)
@@ -177,12 +202,7 @@ class Item < ActiveRecord::Base
   def send_email_deliveries
     if !self.draft && self.email_deliveries.empty? && (self.send_emails == "1" or self.send_emails == true)
       Rails.logger.info("  Email-Delivery: Creating Email Delivery for item: #{self.id}")
-      if self.published_at.to_i < Time.now.to_i
-        send_time = Time.now+180
-      else
-        send_time = self.published_at+180
-      end
-      self.email_deliveries << EmailDelivery.new(send_at: send_time)
+      self.email_deliveries << EmailDelivery.new(send_at: self.enqueue_time)
     end
     true
   end
@@ -201,7 +221,7 @@ class Item < ActiveRecord::Base
   def create_twitter_share
     if !self.draft && (self.share_twitter.to_s=="1" or self.share_twitter==true) && self.twitter_shares.empty?
       Rails.logger.info("  Twitter: Creating Twitter Share for item: #{self.id}")
-      self.twitter_shares << TwitterShare.new(enqueue_at: self.enqueue_time)
+      self.twitter_shares << TwitterShare.new(enqueue_at: self.enqueue_time, status: 'queued')
     end
     true
   end
@@ -213,43 +233,33 @@ class Item < ActiveRecord::Base
     return url
   end
 
+  def sitemap_jobs
+    job_stats.where(job_name: 'sitemap')
+  end
+
   # Queue up sitemap generation after 3 minutes
-  def sitemap_refresh
-    if !self.draft && Rails.env.production?
-      SitemapQueue.perform_at(self.enqueue_time)
+  def process_sitemap_job
+    if !self.draft && self.sitemap_jobs.empty?
+      Rails.logger.info("  Sitemap: Scheduling sitemap generation for item: #{self.id}")
+      self.job_stats << JobStat.new(job_name: 'sitemap', enqueue_at: enqueue_time)
     end
   end
 
-  def enqueue_time
-    if self.published_at
-      self.published_at+180
+  def youtube_height
+    if youtube_res
+      youtube_res.split("x").first
     else
-      Time.now+180
+      nil
+    end
+  end
+  def youtube_width
+    if youtube_res
+      youtube_res.split("x").last
+    else
+      nil
     end
   end
 
-
-  # WORKING
-  def record_freshness
-    unless self.new_record?
-      last_date = Item.find(self.id).updated_at.to_f
-      self_date = self.updated_at.to_f
-      if last_date > self_date
-        errors.add(:title, "Item is not fresh. Someone else have updated this while you were editing it")
-      end
-    end
-  end
-
-  # NOT WORKING
-  def record_freshness_by_version
-    unless self.new_record?
-      last_version = self.versions.last.created_at.to_f
-      current_date = self.updated_at.to_f
-      if last_version >= current_date
-        errors.add(:title, "Item is not fresh. Someone else have updated this while you were editing it")
-      end
-    end
-  end
 
   def main_image
     att = self.attachments.last
@@ -313,21 +323,28 @@ class Item < ActiveRecord::Base
       self.status_code = "Live"
     end
   end
-  
+
   def admin_permalink
     admin_item_path(self)
   end
-  
+
   def published?
-    self.published_at.to_i < Time.now.to_i
+    !self.draft && (self.published_at.to_i < Time.now.to_i)
   end
 
+  def user_public_display_name
+    if self.user
+      self.user.public_display_name
+    else
+      "anonymous"
+    end
+  end
 
   def language_title_short
     if self.language
       self.language.locale
     else
-      "en"
+      DEFAULT_LOCALE
     end
   end
 
@@ -349,12 +366,12 @@ class Item < ActiveRecord::Base
 
   # Returns the article's author formated name
   def user_title
-    if self.user && !self.user.name.empty?
-      self.user.name
+    if self.user
+      self.user.public_display_name
     elsif self.author_name && !self.author_name.empty?
       self.author_name
     else
-      "mnn"
+      "WorldMathaba"
     end
   end
 
@@ -399,9 +416,26 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def localized_domain
+    if Rails.env.production?
+      if self.language_title_short.match(DEFAULT_LOCALE)
+        "worldmathaba.net"
+      else
+        "#{self.language_title_short}.worldmathaba.net"
+      end
+    else
+      "mathaba.dev"
+    end
+  end
+
+
   ####################
   ### CLASS METHODS
   ####################
+
+  def self.default_locale
+    I18n.locale.to_s || DEFAULT_LOCALE
+  end
 
   def self.published
     where("published_at < ?", DateTime.now)
@@ -418,8 +452,7 @@ class Item < ActiveRecord::Base
   # Returns the most popular Items in the last N days
   def self.popular(lim=5, n=15)
     published.
-    includes(:attachments).
-    joins(:item_stat).
+    includes(:attachments, :item_stat).
     where("items.published_at > ?", (DateTime.now - n.days)).
     order("item_stats.views_counter DESC").
     limit(lim)
@@ -431,7 +464,7 @@ class Item < ActiveRecord::Base
     where("items.published_at > ?", (DateTime.now - n.days)).
     where("items.comments_count > 0").
     where("items.last_commented_at is NOT NULL").
-    includes(:attachments, :comments).
+    includes(:attachments, :comments, :item_stat).
     order("items.last_commented_at DESC").
     limit(lim)
   end
@@ -442,7 +475,7 @@ class Item < ActiveRecord::Base
     where("items.published_at > ?", (DateTime.now - n.days)).
     where("comments_count > 0").
     order("comments_count DESC").
-    includes(:attachments).
+    includes(:attachments, :comments, :item_stat).
     limit(lim)
   end
 
@@ -460,10 +493,20 @@ class Item < ActiveRecord::Base
     limit(lim)
   end
 
+  def self.localized
+    language = Language.where(locale: default_locale).first
+    if language
+      where(language_id: language.id)
+    else
+      where('')
+    end
+  end
+
   # Returns the top sticky item
   # Used on the Front End, joining attachments
   def self.top_sticky
     published.
+    localized.
     where(draft: false, sticky: true).
     order("published_at DESC").
     includes(:attachments).
@@ -474,6 +517,7 @@ class Item < ActiveRecord::Base
   # Used on the Front End, joining attachments
   def self.highlights(limit=6,offset=0)
     published.
+    localized.
     where(draft: false, featured: true, sticky: false).
     order("published_at DESC").
     limit(limit).

@@ -18,14 +18,14 @@ class User < ActiveRecord::Base
   attr_accessor :subscribe, :unsubscribe, :unsubscribe_all, :upgrade, :downgrade
 
   validates_acceptance_of :terms_of_service, accept: '1', on: :create unless Rails.env.test?
-  validates_exclusion_of :password, :in => lambda { |p| [p.name] }, :message => "should not be the same as your name"
-  validates :email, :email_format => {:message => 'is not looking good'}, on: :create
+  validates_exclusion_of :password, in: lambda { |p| [p.name] }, message: "should not be the same as your name"
+  validates :email, email_format: {message: 'is not looking good'}, on: :create
 
   # validates_presence_of :password, unless: Proc.new {|user| user.oauth_token.present?}
   # validates_presence_of :password_confirmation, unless: Proc.new {|user| user.oauth_token.present?}
 
   # Relationships
-  has_many :items
+  has_many :items,  inverse_of: :user
   has_many :scores
   # has_many :comments
   has_and_belongs_to_many :roles
@@ -67,23 +67,31 @@ class User < ActiveRecord::Base
   end
 
   def original_items_count
-    self.items.original.count
+    items.original.count
   end
 
   def is_admin?
-    self.type == "AdminUser"
+    type == "AdminUser"
   end
 
   def title
-    if self.name.present?
-      self.name
+    if name.present?
+      name
     else
-      self.email
+      email
+    end
+  end
+
+  def public_display_name
+    if name.present?
+      name
+    else
+      "Anonymous ##{id.to_s}"
     end
   end
 
   def has_image?
-    self.avatar?
+    avatar?
   end
 
   def main_image(version=:thumb)
@@ -136,7 +144,7 @@ class User < ActiveRecord::Base
 
   def update_subscriptions
     if self.email_changed? && !self.subscriptions.empty? 
-      self.subscriptions.last.update_attribute(:email, self.email)
+      self.subscriptions.last.update_attributes(email: self.email)
     end
     true
   end
