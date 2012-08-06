@@ -9,8 +9,14 @@ gem 'rails', '3.2.7'
 gem 'bundler', '>= 1.1.0'
 
 ### Database Adapter
-# Using Postgresql for all environments.
-gem 'pg'
+platforms :ruby do
+  gem 'pg'
+end
+
+platforms :jruby do
+  gem 'jruby-openssl'
+  gem 'activerecord-jdbcpostgresql-adapter'
+end
 
 
 ### Oauth 
@@ -65,9 +71,8 @@ gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  # gem 'libv8', "3.3.10.4"
-  
-  gem 'therubyrhino', require: 'rhino'
+  gem 'libv8', platform: :mri_19
+  gem 'therubyrhino', require: 'rhino', platform: :jruby
   gem 'execjs'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.5'
