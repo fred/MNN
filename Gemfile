@@ -5,7 +5,7 @@ source 'http://rubygems.org'
 gem 'rack'
 gem 'rack-cache'
 gem 'rake'
-gem 'rails', '3.2.8.rc2'
+gem 'rails', '3.2.7'
 gem 'bundler'
 
 ### Database Adapter
@@ -31,7 +31,7 @@ gem 'kaminari'
 gem 'squeel'
 
 ### File Uploading and Image Processing
-gem 'mini_magick', '~> 3.4'
+gem 'rmagick'
 gem 'fog', '~> 1.4.0'
 gem 'carrierwave', '~> 0.6.2'
 
@@ -93,7 +93,7 @@ group :development do
   gem 'foreman'
   gem 'thin', require: false
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
-  gem 'capistrano', require: false
+  gem 'capistrano', "2.9.0", require: false
   gem 'rvm-capistrano', require: false
   gem 'debugger', platform: :mri_19
   gem 'pry-rails'
@@ -152,3 +152,4 @@ gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_emai
 gem 'sitemap_generator'
 
 gem 'rack-mini-profiler'
+
