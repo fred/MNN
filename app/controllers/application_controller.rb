@@ -110,13 +110,20 @@ class ApplicationController < ActionController::Base
     comment.owner == current_user
   end
 
-  def headers_with_timeout(timeout,method='public')
-    headers['Cache-Control'] = "#{method}, max-age=#{timeout}" unless (current_admin_user or current_user)
-    headers['Last-Modified'] = @last_published.httpdate if @last_published
+  def headers_with_timeout(timeout, method='private')
+    unless current_user
+      headers['Cache-Control'] = "#{method}, max-age=#{timeout}, must-revalidate"
+      headers['Last-Modified'] = @last_published.httpdate if @last_published
+      headers['X-Accel-Expires'] = timeout
+    end
   end
 
   def private_headers
     headers['Cache-Control'] = 'private, no-cache'
+  end
+
+  def headers_for_etag(etag=nil)
+    headers['Etag'] = etag if etag
   end
 
   def last_modified

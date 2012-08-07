@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: 908e150800610138e2b48738f842afb85b3a832e
+  revision: ca703a2349e9a0c26dc5a8a5bb8f5d6dee3b0cff
   specs:
     twitter-bootstrap-rails (2.1.1)
       actionpack (>= 3.1)
@@ -87,12 +87,12 @@ GEM
   remote: http://rubygems.org/
   specs:
     ZenTest (4.8.2)
-    actionmailer (3.2.7)
-      actionpack (= 3.2.7)
+    actionmailer (3.2.8.rc2)
+      actionpack (= 3.2.8.rc2)
       mail (~> 2.4.4)
-    actionpack (3.2.7)
-      activemodel (= 3.2.7)
-      activesupport (= 3.2.7)
+    actionpack (3.2.8.rc2)
+      activemodel (= 3.2.8.rc2)
+      activesupport (= 3.2.8.rc2)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       journey (~> 1.0.4)
@@ -100,18 +100,18 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.1.3)
-    activemodel (3.2.7)
-      activesupport (= 3.2.7)
+    activemodel (3.2.8.rc2)
+      activesupport (= 3.2.8.rc2)
       builder (~> 3.0.0)
-    activerecord (3.2.7)
-      activemodel (= 3.2.7)
-      activesupport (= 3.2.7)
+    activerecord (3.2.8.rc2)
+      activemodel (= 3.2.8.rc2)
+      activesupport (= 3.2.8.rc2)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
-    activeresource (3.2.7)
-      activemodel (= 3.2.7)
-      activesupport (= 3.2.7)
-    activesupport (3.2.7)
+    activeresource (3.2.8.rc2)
+      activemodel (= 3.2.8.rc2)
+      activesupport (= 3.2.8.rc2)
+    activesupport (3.2.8.rc2)
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.2)
@@ -126,7 +126,7 @@ GEM
       sass (>= 3.1)
     builder (3.0.0)
     cancan (1.6.8)
-    capistrano (2.9.0)
+    capistrano (2.12.0)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
@@ -143,7 +143,7 @@ GEM
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
     celluloid (0.11.0)
-    childprocess (0.3.4)
+    childprocess (0.3.5)
       ffi (~> 1.0, >= 1.0.6)
     coderay (1.0.7)
     coffee-rails (3.2.2)
@@ -176,11 +176,11 @@ GEM
     debugger-linecache (1.1.2)
       debugger-ruby_core_source (>= 1.1.1)
     debugger-ruby_core_source (1.1.3)
-    devise (2.0.4)
+    devise (2.1.2)
       bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.0.3)
+      orm_adapter (~> 0.1)
       railties (~> 3.1)
-      warden (~> 1.1.1)
+      warden (~> 1.2.1)
     diff-lcs (1.1.3)
     erubis (2.7.0)
     eventmachine (0.12.10)
@@ -239,7 +239,7 @@ GEM
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
     kgio (2.7.4)
-    launchy (2.1.1)
+    launchy (2.1.2)
       addressable (~> 2.3)
     less (2.2.1)
       commonjs (~> 0.2.6)
@@ -299,7 +299,7 @@ GEM
       omniauth-oauth (~> 1.0)
     options (2.3.0)
       fattr
-    orm_adapter (0.0.7)
+    orm_adapter (0.4.0)
     paper_trail (2.6.3)
       activerecord (~> 3.0)
       railties (~> 3.0)
@@ -337,19 +337,19 @@ GEM
       rack
     rack-test (0.6.1)
       rack (>= 1.0)
-    rails (3.2.7)
-      actionmailer (= 3.2.7)
-      actionpack (= 3.2.7)
-      activerecord (= 3.2.7)
-      activeresource (= 3.2.7)
-      activesupport (= 3.2.7)
+    rails (3.2.8.rc2)
+      actionmailer (= 3.2.8.rc2)
+      actionpack (= 3.2.8.rc2)
+      activerecord (= 3.2.8.rc2)
+      activeresource (= 3.2.8.rc2)
+      activesupport (= 3.2.8.rc2)
       bundler (~> 1.0)
-      railties (= 3.2.7)
+      railties (= 3.2.8.rc2)
     rails_config (0.3.1)
       activesupport (>= 3.0)
-    railties (3.2.7)
-      actionpack (= 3.2.7)
-      activesupport (= 3.2.7)
+    railties (3.2.8.rc2)
+      actionpack (= 3.2.8.rc2)
+      activesupport (= 3.2.8.rc2)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
@@ -415,7 +415,7 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.6)
-    squeel (1.0.8)
+    squeel (1.0.9)
       activerecord (~> 3.0)
       activesupport (~> 3.0)
       polyamorous (~> 0.5.0)
@@ -451,7 +451,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    warden (1.1.1)
+    warden (1.2.1)
       rack (>= 1.0)
     webrat (0.7.3)
       nokogiri (>= 1.2.0)
@@ -468,9 +468,9 @@ DEPENDENCIES
   anytime!
   autotest
   autotest-rails
-  bundler (>= 1.1.0)
+  bundler
   cancan (~> 1.6.7)
-  capistrano (~> 2.9.0)
+  capistrano
   capybara (>= 1.0.1)
   carrierwave (~> 0.6.2)
   celluloid (= 0.11.0)
@@ -480,7 +480,7 @@ DEPENDENCIES
   dalli (~> 2.1.0)
   database_cleaner
   debugger
-  devise (~> 2.0.4)
+  devise (~> 2.0)
   exception_notification (~> 2.6.0)
   execjs
   factory_girl
@@ -514,7 +514,7 @@ DEPENDENCIES
   rack
   rack-cache
   rack-mini-profiler
-  rails (= 3.2.7)
+  rails (= 3.2.8.rc2)
   rails_config
   rake
   rakismet

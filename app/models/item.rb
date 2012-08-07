@@ -295,6 +295,10 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def etag
+    Digest::MD5.hexdigest(cache_key_full)
+  end
+
   # Returns an improved cache_key that includes the last image on the item
   def cache_key_full
     str = self.cache_key 

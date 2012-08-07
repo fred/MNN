@@ -5,8 +5,8 @@ source 'http://rubygems.org'
 gem 'rack'
 gem 'rack-cache'
 gem 'rake'
-gem 'rails', '3.2.7'
-gem 'bundler', '>= 1.1.0'
+gem 'rails', '3.2.8.rc2'
+gem 'bundler'
 
 ### Database Adapter
 # Using Postgresql for all environments.
@@ -21,7 +21,7 @@ gem 'omniauth-windowslive', git: 'git://github.com/dangerp/omniauth-windowslive.
 
 ### Roles and Authentication
 gem 'cancan', '~> 1.6.7'
-gem 'devise', '~> 2.0.4' # Devise must be required before RailsAdmin
+gem 'devise', '~> 2.0'
 
 ### Versioning
 gem 'paper_trail', '~> 2.6.3'
@@ -93,7 +93,7 @@ group :development do
   gem 'foreman'
   gem 'thin', require: false
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
-  gem 'capistrano', '~> 2.9.0', require: false
+  gem 'capistrano', require: false
   gem 'rvm-capistrano', require: false
   gem 'debugger', platform: :mri_19
   gem 'pry-rails'

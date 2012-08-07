@@ -13,9 +13,7 @@ class CategoriesController < ApplicationController
     @categories = Category.order("priority ASC, title DESC").all
     private_headers
     respond_to do |format|
-      format.html {
-        headers_with_timeout(180) unless current_user
-      }
+      format.html
     end
   end
 
@@ -52,7 +50,7 @@ class CategoriesController < ApplicationController
     
     respond_to do |format|
       format.html {
-        headers_with_timeout(180) unless current_user
+        headers_with_timeout(300)
       }
       format.atom {
         headers['Etag'] = @etag
