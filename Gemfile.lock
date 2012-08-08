@@ -322,8 +322,6 @@ GEM
       slop (~> 3.3.1)
     pry-rails (0.1.6)
       pry
-    puma (1.5.0)
-      rack (~> 1.2)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -507,7 +505,6 @@ DEPENDENCIES
   postmark-rails
   progress_bar
   pry-rails
-  puma
   rack
   rack-cache
   rack-mini-profiler

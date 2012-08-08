@@ -76,7 +76,6 @@ end
 # Settings
 gem 'rails_config'
 
-gem 'puma'
 gem 'unicorn', require: false
 
 group :test, :development do
@@ -100,8 +99,8 @@ group :development do
 end
 
 group :test do
-  gem 'webrat', '~> 0.7.3'
   gem 'cucumber-rails', '>= 1.0.2'
+  gem 'webrat', '~> 0.7.3'
   gem 'capybara', '>= 1.0.1'
   gem 'database_cleaner'
   gem 'launchy', '>= 2.0.5'
