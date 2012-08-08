@@ -96,7 +96,7 @@
   </div>
 
   <% for category in @categories %>
-    <% @top_items = category.top_items(13).all %>
+    <% @top_items = category.top_items(13) %>
     <% unless @top_items.empty? %>
       <% cache_expiring("box/#{category.id}/#{@top_items.first.cache_key_full}",600) do %>
         <div class="span6 box" id="<%= category.slug %>">
