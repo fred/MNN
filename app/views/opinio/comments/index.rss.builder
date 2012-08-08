@@ -36,7 +36,7 @@ xml.rss(
         xml.description(
           sanitize(comment.body,
             tags: %w(p b i u a br em blockquote strong div ul ol li),
-            attributes: %w(href)
+            attributes: %w(href target rel rev)
           )
         )
         if @item

@@ -27,7 +27,8 @@ class ItemsController < ApplicationController
       @items = Item.published.
         localized.
         not_draft.
-        includes(:language, :attachments, :tags, :item_stat, :user).
+        # includes(:language, :attachments, :tags, :item_stat, :user). # relying on fragment caching
+        includes(:attachments).
         order("published_at DESC").
         page(params[:page]).per(per_page)
     end

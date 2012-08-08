@@ -23,7 +23,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sections <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <% Category.order("priority ASC").all.each do |category|%>
+              <% @site_categories.each do |category|%>
                 <li><%= link_to category.title, category, title: category.title %></li>
               <% end %>
             </ul>
@@ -31,7 +31,7 @@
           <li class="dropdown hidden-phone" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Regions <b class="caret"></b></a>
             <ul class="dropdown-menu hidden-phone">
-              <% RegionTag.order("title ASC").all.each do |tag|%>
+              <% @site_region_tags.each do |tag|%>
                 <li><%= link_to tag.title, tag_path(tag), title: tag.title %></li>
               <% end %>
             </ul>
@@ -39,7 +39,7 @@
           <li class="dropdown hidden-phone hidden-tablet" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Countries <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <% CountryTag.order("title ASC").all.each do |tag| %>
+              <% @site_country_tags.each do |tag| %>
                 <li><%= link_to tag.title, tag_path(tag), title: tag.title %></li>
               <% end %>
             </ul>
@@ -47,7 +47,7 @@
           <li class="dropdown hidden-phone hidden-tablet" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tags <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <% GeneralTag.order("title ASC").all.each do |tag| %>
+              <% @site_general_tags.each do |tag| %>
                 <li>
                   <%= link_to tag.title, tag_path(tag), title: tag.title %>
                 </li>
@@ -57,7 +57,7 @@
           <li class="dropdown" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Languages <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <% Language.order("locale ASC").all.each do |language|%>
+              <% @site_languages.each do |language|%>
                 <li>
                   <%= link_to url_for(localized_subdomain(language.locale)), title: language.description do %>
                     <%= image_tag "blank.gif", class: "flag flag-#{language.flag_code}", alt: language.description %>
@@ -70,7 +70,7 @@
           <li class="dropdown hidden-phone" data-dropdown="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Links <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <% Link.order("title ASC").all.each do |link| %>
+              <% @site_links.each do |link| %>
                 <li>
                   <%= link_to(link.title, link.url, target: 'blank', title: link.link_title, rel: link.rel) %>
                 </li>

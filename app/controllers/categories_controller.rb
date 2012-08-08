@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
       @highlights = [@top_items.first]
       @latest_items = @top_items[1..3]
     end
-    @categories = Category.order("priority ASC, title DESC").all
+    @categories = @site_categories
     private_headers
     respond_to do |format|
       format.html

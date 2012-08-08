@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery
 
+  before_filter :sidebar_variables
   before_filter :mini_profiler  
   before_filter :get_locale
   before_filter :https_for_admins
@@ -16,6 +17,17 @@ class ApplicationController < ActionController::Base
   after_filter  :store_location
   after_filter  :log_session
 
+
+  def sidebar_variables
+    Rails.logger.debug("*** getting sidebar_variables")
+    @site_categories   = Rails.cache.fetch("site_categories")   { Category.order("priority ASC, title DESC").all }
+    @site_pages        = Rails.cache.fetch("site_pages")        { Page.order("priority ASC").all }
+    @site_languages    = Rails.cache.fetch("site_languages")    { Language.order("locale ASC").all }
+    @site_country_tags = Rails.cache.fetch("site_country_tags") { CountryTag.order("title ASC").all }
+    @site_general_tags = Rails.cache.fetch("site_general_tags") { GeneralTag.order("title ASC").all }
+    @site_region_tags  = Rails.cache.fetch("site_region_tags")  { RegionTag.order("title ASC").all }
+    @site_links        = Rails.cache.fetch("site_links")        { Link.order("title ASC").all }
+  end
 
   def no_cache_for_admin
     if current_user or request[:controller].to_s.match("admin|users|comments|devise")

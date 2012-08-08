@@ -498,9 +498,10 @@ class Item < ActiveRecord::Base
   end
 
   def self.localized
-    language = Language.where(locale: default_locale).first
-    if language
-      where(language_id: language.id)
+    # language = Language.where(locale: default_locale).first
+    if default_locale
+      joins(:language).
+      where("languages.locale = ?", default_locale)
     else
       where('')
     end

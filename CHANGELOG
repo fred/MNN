@@ -1,5 +1,12 @@
 CHANGELOG
 
+== August 8, 2012
+* Change to rmagick from mini_magick
+* Several SQL performance improvements
+* Improved SQL Joins
+* Better caching on sidebar and navbar
+* Allow target, rel and rev tags in comment links
+
 == August 4, 2012
 * Fixed Sitemap
 * Added languages to Sitemap
