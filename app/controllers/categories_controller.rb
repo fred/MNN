@@ -24,7 +24,7 @@ class CategoriesController < ApplicationController
       items.
       localized.
       where(draft: false).
-      includes(:attachments, :category, :language, :item_stat, :user, :tags).
+      includes(:attachments).
       where("published_at is not NULL").
       where("published_at < '#{Time.now.to_s(:db)}'").
       order("published_at DESC").
@@ -55,13 +55,13 @@ class CategoriesController < ApplicationController
       format.atom {
         headers['Etag'] = @etag
         headers['Cache-Control'] = 'public, max-age=900'
-        headers['Last-Modified'] = @last_published.httpdate
+        headers['Last-Modified'] = @last_published.httpdate if @last_published
         render partial: "/shared/items", layout: false 
       }
       format.rss {
         headers['Etag'] = @etag
         headers['Cache-Control'] = 'public, max-age=900'
-        headers['Last-Modified'] = @last_published.httpdate
+        headers['Last-Modified'] = @last_published.httpdate if @last_published
         render partial: "/shared/items", layout: false
       }
       format.json { render json: @items }

@@ -58,7 +58,7 @@ module LayoutHelper
   end
 
   def localized_subdomain(lang)
-    "#{request.protocol}#{lang}.#{request.domain}"
+    "http://#{lang}.#{request.domain}"
   end
 
   def twitter_link

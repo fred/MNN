@@ -59,6 +59,11 @@ Publication::Application.routes.draw do
   # Main Items feed
   match '/atom' => 'items#index', :as => :items_atom, :defaults => { :format => 'atom' }
   match '/rss'  => 'items#index', :as => :items_rss,  :defaults => { :format => 'rss' }
+
+
+  namespace :tasks do
+    get 'sitemap'
+  end
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
