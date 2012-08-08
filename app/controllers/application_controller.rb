@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
 
   def sidebar_variables
-    Rails.logger.debug("*** getting sidebar_variables")
+    # Rails.logger.debug("*** getting sidebar_variables")
     @site_categories   = Rails.cache.fetch("site_categories")   { Category.order("priority ASC, title DESC").all }
     @site_pages        = Rails.cache.fetch("site_pages")        { Page.order("priority ASC").all }
     @site_languages    = Rails.cache.fetch("site_languages")    { Language.order("locale ASC").all }

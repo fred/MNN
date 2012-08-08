@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-    
+
   def index
     @sticky_item = Item.top_sticky
     if @sticky_item
