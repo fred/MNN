@@ -2,7 +2,7 @@
 class BaseImageUploader < BaseUploader
   include CarrierWave::RMagick
   
-  process quality: 92
+  process quality: 90
 
   process :set_content_type
 
