@@ -19,14 +19,13 @@ class ApplicationController < ActionController::Base
 
 
   def sidebar_variables
-    # Rails.logger.debug("*** getting sidebar_variables")
-    @site_categories   = Rails.cache.fetch("site_categories")   { Category.order("priority ASC, title DESC").all }
-    @site_pages        = Rails.cache.fetch("site_pages")        { Page.order("priority ASC").all }
-    @site_languages    = Rails.cache.fetch("site_languages")    { Language.order("locale ASC").all }
-    @site_country_tags = Rails.cache.fetch("site_country_tags") { CountryTag.order("title ASC").all }
-    @site_general_tags = Rails.cache.fetch("site_general_tags") { GeneralTag.order("title ASC").all }
-    @site_region_tags  = Rails.cache.fetch("site_region_tags")  { RegionTag.order("title ASC").all }
-    @site_links        = Rails.cache.fetch("site_links")        { Link.order("title ASC").all }
+    @site_categories   ||= Category.order("priority ASC, title DESC")
+    @site_pages        ||= Page.order("priority ASC")
+    @site_languages    ||= Language.order("locale ASC")
+    @site_country_tags ||= CountryTag.order("title ASC")
+    @site_general_tags ||= GeneralTag.order("title ASC")
+    @site_region_tags  ||= RegionTag.order("title ASC")
+    @site_links        ||= Link.order("title ASC")
   end
 
   def no_cache_for_admin

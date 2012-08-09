@@ -1,6 +1,6 @@
 rails_env = ENV['RAILS_ENV'] || 'development'
 
-threads 8,8
+threads 4,4
 
 bind "unix:///#{`pwd`.strip}/tmp/sockets/puma.sock"
 
