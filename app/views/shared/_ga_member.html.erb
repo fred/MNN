@@ -1,9 +1,0 @@
-<% if current_user %>
-  <script>
-    _gaq.push(['_setCustomVar', 1, 'Member?', 'Yes', 1]);
-  </script>
-<% elsif current_admin_user %>
-  <script>
-    _gaq.push(['_setCustomVar', 1, 'Admin?', 'Yes', 1]);
-  </script>
-<% end %>

@@ -4,6 +4,7 @@
     <body>
       <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
       <div id="html5_player"></div>
+      <% content_for :scripts do %>
       <script>
         <% if @item.youtube_res.present? %>
           var custom_width = <%= @item.youtube_width %>;
@@ -31,7 +32,7 @@
             var custom_height = "240";
           }
         <% end %>
-        
+
         // 2. This code loads the IFrame Player API code asynchronously.
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/player_api";
@@ -72,6 +73,7 @@
           player.stopVideo();
         }
       </script>
+      <% end %>
     </body>
   </html>
   <div class="clearfix"></div>
