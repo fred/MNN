@@ -12,8 +12,9 @@ gem 'bundler'
 # Using Postgresql for all environments.
 gem 'pg'
 
+gem 'i18n'
 
-### Oauth 
+### Oauth
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'

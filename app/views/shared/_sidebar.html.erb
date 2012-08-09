@@ -147,7 +147,7 @@
             <%= item_mini(item).html_safe %>
             <span class="comment-date">
               <i class="icon-comments"></i>
-              <%= pluralize(item.comments_count, "comment") %>
+              <%= t("comments", count: item.comments_count) %>
             </span>
             <span class="horizontal-divider"></span>
           </div>

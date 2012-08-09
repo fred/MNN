@@ -486,6 +486,7 @@ DEPENDENCIES
   friendly_id (~> 4.0.0)
   galetahub-simple_captcha!
   hirb
+  i18n
   jquery-rails
   json
   kaminari

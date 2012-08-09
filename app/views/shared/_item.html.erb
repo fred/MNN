@@ -41,7 +41,7 @@
       </span>
 
       <span class="date">
-        <%= time_ago_in_words(item.published_at) %> ago
+        <%= time_ago_in_words(item.published_at) %> <%= t('ago') %>
       </span>
 
       <% if item.original? && item.user %>
@@ -79,7 +79,7 @@
       <% if item.comments_count > 0 %>
         <div class="icon comments_count">
           <i class="icon-comment"></i>
-          <%= pluralize(item.comments_count, "Comment") %>
+          <%= t("comments", count: item.comments_count) %>
         </div>
       <% end %>
       <div class="clearfix"></div>
