@@ -14,6 +14,9 @@ Publication::Application.configure do
   # Log error messages when you accidentally call methods on nil
   config.whiny_nils = true
 
+  # no logging for rspec
+  config.log_level = :info
+
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
@@ -39,6 +42,3 @@ Publication::Application.configure do
   
   config.action_mailer.default_url_options = { host: 'mathaba.dev' }
 end
-
-ActionMailer::Base.delivery_method = :test
-ActiveRecord::Base.logger = Logger.new('/dev/null')
