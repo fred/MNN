@@ -111,7 +111,7 @@
     <div class="sidebar_secions">
       <ul class="nav nav-list">
         <li class="horizontal-divider"></li>
-        <% Category.order("priority ASC").each do |category| %>
+        <% @site_categories.each do |category| %>
           <li class=<%= li_class(category.to_param, :id, "active") %>>
             <%= link_to category.title, category, title:  category.description %>
           </li>
@@ -119,16 +119,15 @@
         <li class="horizontal-divider"></li>
       </ul>
       <ul class="nav nav-list">
-        <% Page.order("priority ASC").each do |page| %>
+        <% @site_pages.each do |page| %>
           <li class=<%= li_class(page.to_param, :id, "active") %>>
             <%= link_to page.title, page, title:  page.title %>
           </li>
         <% end %>
         <li class="horizontal-divider"></li>
       </ul>
-
       <ul class="nav nav-list">
-        <% Language.order("locale ASC").all.each do |language|%>
+        <% @site_languages.each do |language|%>
           <li class=<%= li_class_subdomain(language.locale, "active") %>>
             <%= link_to url_for(localized_subdomain(language.locale)), title: language.description do %>
               <%= image_tag "blank.gif", class: "flag flag-#{language.flag_code}", alt: language.description %>
@@ -138,7 +137,6 @@
         <% end %>
         <li class="horizontal-divider"></li>
       </ul>
-
     </div>
 
     <% cache_expiring("sidebar_recently", 600) do %>
@@ -149,7 +147,7 @@
             <%= item_mini(item).html_safe %>
             <span class="comment-date">
               <i class="icon-comments"></i>
-              <%= pluralize(item.comments_count, "comment") %>
+              <%= t("comments", count: item.comments_count) %>
             </span>
             <span class="horizontal-divider"></span>
           </div>
@@ -157,7 +155,7 @@
       </div>
     <% end %>
 
-    <% cache_expiring("sidebar_most_read", 720) do %>
+    <% cache_expiring("sidebar_most_read", 900) do %>
       <div class="sidebar_secions">
         <h4>Most Read in 2 weeks</h4>
         <% Item.popular(5).each do |item| %>

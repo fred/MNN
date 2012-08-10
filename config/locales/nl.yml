@@ -202,7 +202,10 @@ nl:
   more: Meer
   search: Zoeken
   page_rendered_in: Pagina gegenereerd in
-  comments: Reacties
+  comments: 
+    zero: Geen Commentaar
+    one: 1 Reactie
+    other: '%{count} Reacties'
   published: Pepubliceerd
   viewed_times: '%{count} keer bekeken'
   sign_in: Inloggen

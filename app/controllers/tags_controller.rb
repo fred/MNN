@@ -7,7 +7,7 @@ class TagsController < ApplicationController
     private_headers
     respond_to do |format|
       format.html {
-        headers_with_timeout(180) unless current_user
+        headers_with_timeout(180)
       }
     end
   end
@@ -44,7 +44,7 @@ class TagsController < ApplicationController
     private_headers
     respond_to do |format|
       format.html {
-        headers_with_timeout(180) unless current_user
+        headers_with_timeout(180)
       }
       format.atom {
         headers_with_timeout(900)

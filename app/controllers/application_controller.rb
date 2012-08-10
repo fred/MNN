@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery
 
+  before_filter :sidebar_variables
   before_filter :mini_profiler  
   before_filter :get_locale
   before_filter :https_for_admins
@@ -16,6 +17,16 @@ class ApplicationController < ActionController::Base
   after_filter  :store_location
   after_filter  :log_session
 
+
+  def sidebar_variables
+    @site_categories   ||= Category.order("priority ASC, title DESC")
+    @site_pages        ||= Page.order("priority ASC")
+    @site_languages    ||= Language.order("locale ASC")
+    @site_country_tags ||= CountryTag.order("title ASC")
+    @site_general_tags ||= GeneralTag.order("title ASC")
+    @site_region_tags  ||= RegionTag.order("title ASC")
+    @site_links        ||= Link.order("title ASC")
+  end
 
   def no_cache_for_admin
     if current_user or request[:controller].to_s.match("admin|users|comments|devise")
@@ -61,7 +72,7 @@ class ApplicationController < ActionController::Base
   #   127.0.0.1 application.pl
   # in your /etc/hosts file to try this out locally
   def extract_locale_from_tld
-    parsed_locale = request.host.split('.').last
+    parsed_locale = request.host.to_s.split('.').last
     I18n.available_locales.include?(parsed_locale.to_sym) ? parsed_locale  : nil
   end
 
@@ -110,13 +121,20 @@ class ApplicationController < ActionController::Base
     comment.owner == current_user
   end
 
-  def headers_with_timeout(timeout,method='public')
-    headers['Cache-Control'] = "#{method}, max-age=#{timeout}" unless (current_admin_user or current_user)
-    headers['Last-Modified'] = @last_published.httpdate if @last_published
+  def headers_with_timeout(timeout, method='private')
+    unless current_user
+      headers['Cache-Control'] = "#{method}, max-age=#{timeout}, must-revalidate"
+      headers['Last-Modified'] = @last_published.httpdate if @last_published
+      headers['X-Accel-Expires'] = timeout
+    end
   end
 
   def private_headers
     headers['Cache-Control'] = 'private, no-cache'
+  end
+
+  def headers_for_etag(etag=nil)
+    headers['Etag'] = etag if etag
   end
 
   def last_modified

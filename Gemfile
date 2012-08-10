@@ -6,20 +6,24 @@ gem 'rack'
 gem 'rack-cache'
 gem 'rake'
 gem 'rails', '3.2.7'
-gem 'bundler', '>= 1.1.0'
+gem 'bundler'
 
 ### Database Adapter
 platforms :ruby do
   gem 'pg'
+  gem 'unicorn'
+  gem 'unicorn', require: false
 end
 
 platforms :jruby do
   gem 'jruby-openssl'
   gem 'activerecord-jdbcpostgresql-adapter'
+  gem 'puma'
 end
 
+gem 'i18n'
 
-### Oauth 
+### Oauth
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
@@ -27,7 +31,7 @@ gem 'omniauth-windowslive', git: 'git://github.com/dangerp/omniauth-windowslive.
 
 ### Roles and Authentication
 gem 'cancan', '~> 1.6.7'
-gem 'devise', '~> 2.0.4' # Devise must be required before RailsAdmin
+gem 'devise', '~> 2.0'
 
 ### Versioning
 gem 'paper_trail', '~> 2.6.3'
@@ -37,7 +41,7 @@ gem 'kaminari'
 gem 'squeel'
 
 ### File Uploading and Image Processing
-gem 'mini_magick', '~> 3.4'
+gem 'rmagick'
 gem 'fog', '~> 1.4.0'
 gem 'carrierwave', '~> 0.6.2'
 
@@ -71,8 +75,8 @@ gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'libv8', platform: :mri_19
   gem 'therubyrhino', require: 'rhino', platform: :jruby
+  gem 'libv8', platform: :ruby
   gem 'execjs'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.5'
@@ -81,8 +85,6 @@ end
 
 # Settings
 gem 'rails_config'
-
-gem 'puma'
 
 group :test, :development do
   gem 'rspec', '~> 2.9.0'
@@ -97,15 +99,15 @@ group :development do
   gem 'progress_bar' # Nice progress when rake indexing with solr
   gem 'foreman'
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
-  gem 'capistrano', '~> 2.9.0', require: false
+  gem 'capistrano', "2.9.0", require: false
   gem 'rvm-capistrano', require: false
   gem 'debugger', platform: :mri_19
   gem 'pry-rails'
 end
 
 group :test do
-  gem 'webrat', '~> 0.7.3'
   gem 'cucumber-rails', '>= 1.0.2'
+  gem 'webrat', '~> 0.7.3'
   gem 'capybara', '>= 1.0.1'
   gem 'database_cleaner'
   gem 'launchy', '>= 2.0.5'
@@ -156,3 +158,4 @@ gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_emai
 gem 'sitemap_generator'
 
 gem 'rack-mini-profiler'
+

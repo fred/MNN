@@ -61,7 +61,10 @@ en:
   more: More
   search: Search
   page_rendered_in: Page Rendered in
-  comments: Comments
+  comments: 
+    zero: No Comments
+    one: 1 Comment
+    other: '%{count} Comments'
   published: Published
   viewed_times: 'Viewed %{count} times'
   sign_in: Sign in

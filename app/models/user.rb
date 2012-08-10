@@ -158,7 +158,11 @@ class User < ActiveRecord::Base
   end
 
   def my_items
-    items.published.not_draft.order("published_at DESC")
+    items.
+    published.
+    not_draft.
+    includes(:attachments, :user, :tags, :item_stat).
+    order("published_at DESC")
   end
 
   def twitter_username

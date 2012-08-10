@@ -295,6 +295,10 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def etag
+    Digest::MD5.hexdigest(cache_key_full)
+  end
+
   # Returns an improved cache_key that includes the last image on the item
   def cache_key_full
     str = self.cache_key 
@@ -494,9 +498,10 @@ class Item < ActiveRecord::Base
   end
 
   def self.localized
-    language = Language.where(locale: default_locale).first
-    if language
-      where(language_id: language.id)
+    # language = Language.where(locale: default_locale).first
+    if default_locale
+      joins(:language).
+      where("languages.locale = ?", default_locale)
     else
       where('')
     end

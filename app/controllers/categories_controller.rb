@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-    
+
   def index
     @sticky_item = Item.top_sticky
     if @sticky_item
@@ -10,12 +10,10 @@ class CategoriesController < ApplicationController
       @highlights = [@top_items.first]
       @latest_items = @top_items[1..3]
     end
-    @categories = Category.order("priority ASC, title DESC").all
+    @categories = @site_categories
     private_headers
     respond_to do |format|
-      format.html {
-        headers_with_timeout(180) unless current_user
-      }
+      format.html
     end
   end
 
@@ -26,7 +24,7 @@ class CategoriesController < ApplicationController
       items.
       localized.
       where(draft: false).
-      includes(:attachments, :category, :language, :item_stat, :user, :tags).
+      includes(:attachments).
       where("published_at is not NULL").
       where("published_at < '#{Time.now.to_s(:db)}'").
       order("published_at DESC").
@@ -52,18 +50,18 @@ class CategoriesController < ApplicationController
     
     respond_to do |format|
       format.html {
-        headers_with_timeout(180) unless current_user
+        headers_with_timeout(300)
       }
       format.atom {
         headers['Etag'] = @etag
         headers['Cache-Control'] = 'public, max-age=900'
-        headers['Last-Modified'] = @last_published.httpdate
+        headers['Last-Modified'] = @last_published.httpdate if @last_published
         render partial: "/shared/items", layout: false 
       }
       format.rss {
         headers['Etag'] = @etag
         headers['Cache-Control'] = 'public, max-age=900'
-        headers['Last-Modified'] = @last_published.httpdate
+        headers['Last-Modified'] = @last_published.httpdate if @last_published
         render partial: "/shared/items", layout: false
       }
       format.json { render json: @items }
