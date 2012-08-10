@@ -12,12 +12,14 @@ gem 'bundler'
 platforms :ruby do
   gem 'pg'
   gem 'unicorn', require: false
+  gem 'rmagick'
 end
 
 platforms :jruby do
   gem 'jruby-openssl'
   gem 'activerecord-jdbcpostgresql-adapter'
   gem 'puma'
+  gem 'rmagick4j'
 end
 
 gem 'i18n'
@@ -40,7 +42,6 @@ gem 'kaminari'
 gem 'squeel'
 
 ### File Uploading and Image Processing
-gem 'rmagick'
 gem 'fog', '~> 1.4.0'
 gem 'carrierwave', '~> 0.6.2'
 

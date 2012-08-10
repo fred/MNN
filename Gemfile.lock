@@ -513,6 +513,7 @@ DEPENDENCIES
   rakismet
   redis
   rmagick
+  rmagick4j
   rspec (~> 2.9.0)
   rspec-rails (~> 2.9.0)
   rvm-capistrano
