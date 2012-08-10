@@ -85,15 +85,15 @@ class Item < ActiveRecord::Base
     text :source_url
     text :body
     text :youtube_id
-    integer :id
-    integer :category_id, references: Category
-    integer :language_id, references: Language
-    integer :user_id,     references: User
+    integer :id, trie: true
+    integer :category_id, references: Category, trie: true
+    integer :language_id, references: Language, trie: true
+    integer :user_id,     references: User, trie: true
     boolean :draft
     boolean :featured
     boolean :sticky
-    time :updated_at
-    time :published_at
+    time :updated_at, trie: true
+    time :published_at, trie: true
     # boost { 3.0 if featured }
     text :tags do
       tags.map { |tag| tag.title }
@@ -407,15 +407,14 @@ class Item < ActiveRecord::Base
 
   # Return Similar listings based on keywords only.
   def solr_similar(limit=6)
-    # IF no bedrooms or bathrooms
-    # Item.solr_search do
-    Item.solr_search(include: [:attachments]) do
+    Item.solr_search(include: [:attachments, :user]) do
       fulltext self.keyword_for_solr
       if self.language_id
         with(:language_id, self.language_id)
       end
       without(:id, self.id)
       with(:draft, false)
+      with(:published_at).less_than Time.now
       paginate page: 1, per_page: limit
     end
   end
