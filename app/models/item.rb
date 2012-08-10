@@ -15,7 +15,7 @@ class Item < ActiveRecord::Base
 
   # Permalink URLS
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :title,   use: :slugged
 
   # Relationships
   belongs_to :user,       inverse_of: :items,  counter_cache: true

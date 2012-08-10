@@ -1,5 +1,8 @@
 # USER
 ActiveAdmin.register AdminUser do
+  before_filter only: :index do
+    @per_page = 12
+  end
   controller.authorize_resource
   config.comments = false
   menu parent: "Members", priority: 24, if: lambda{|tabs_renderer|
@@ -37,6 +40,7 @@ ActiveAdmin.register AdminUser do
       row :created_at
       row :updated_at
     end
+    render "user_comments"
   end
   index do
     id_column

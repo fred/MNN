@@ -10,7 +10,7 @@ ActiveAdmin.register Item do
   scope :with_comments
   scope :queued
 
-  menu priority: 1, if: lambda{|tabs_renderer|
+  menu priority: 1, parent: 'Items', label: 'All Items', if: lambda{|tabs_renderer|
     controller.current_ability.can?(:read, Item)
   }
   sidebar :per_page, partial: "per_page", only: :index

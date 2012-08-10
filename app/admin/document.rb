@@ -1,5 +1,6 @@
 # Images and File
 ActiveAdmin.register Document do
+  config.clear_sidebar_sections!
   controller.authorize_resource
   config.sort_order = "id_desc"
   menu parent: "Items", priority: 20, if: lambda{|tabs_renderer|

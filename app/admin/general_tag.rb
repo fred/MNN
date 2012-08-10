@@ -1,4 +1,7 @@
 ActiveAdmin.register GeneralTag do
+  before_filter only: :index do
+    @per_page = 12
+  end
   controller.authorize_resource
   config.comments = false
   menu parent: "Tags", priority: 15, if: lambda{|tabs_renderer|

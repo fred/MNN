@@ -1,7 +1,8 @@
 ActiveAdmin.register ItemStat do
+  config.clear_sidebar_sections!
   controller.authorize_resource  
   config.sort_order = "updated_at_desc"
-  menu parent: "Items", priority: 3, if: lambda{|tabs_renderer|
+  menu parent: "Items", label: 'Item Page Views', priority: 3, if: lambda{|tabs_renderer|
     controller.current_ability.can?(:read, ItemStat)
   }
   actions :index

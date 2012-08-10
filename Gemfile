@@ -103,6 +103,7 @@ group :development do
   gem 'rvm-capistrano', require: false
   gem 'debugger', platform: :mri_19
   gem 'pry-rails'
+  gem 'brakeman'
 end
 
 group :test do

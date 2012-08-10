@@ -30,4 +30,9 @@ ActiveAdmin.register Category do
     end
     default_actions
   end
+  # controller do
+  #   def scoped_collection
+  #      Category.includes(:last_item)
+  #   end
+  # end
 end

@@ -330,11 +330,8 @@ class ApplicationController < ActionController::Base
   end
 
   def mini_profiler
-    # required only in production
     if can_debug?
       Rack::MiniProfiler.authorize_request
-    else
-      Rack::MiniProfiler.deauthorize_request
     end
   end
 

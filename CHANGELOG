@@ -5,6 +5,10 @@ CHANGELOG
 * Full JRuby support
 * fixed youtube video Javascript loading
 * Added some translations, ie. Dutch
+* Improved performance of /admin pages
+* Cleaned up ActiveAdmin filters/sidebar
+* Visual improvements in admin Images
+* Fixed bug that Authors did not see 'New Item' link
 
 == August 8, 2012
 * Change to rmagick from mini_magick

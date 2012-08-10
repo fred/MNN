@@ -41,16 +41,6 @@ class Category < ActiveRecord::Base
       order("published_at DESC").
       limit(lmt)
   end
-  
-  def last_item
-    self.
-      items.
-      where(draft: false).
-      where("published_at is not NULL").
-      where("published_at < ?", DateTime.now).
-      order("published_at DESC").
-      first
-  end
 
   def item_last_update
     t = self.last_item

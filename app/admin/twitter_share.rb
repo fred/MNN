@@ -1,5 +1,6 @@
 # Comments
 ActiveAdmin.register TwitterShare do
+  config.clear_sidebar_sections!
   controller.authorize_resource
   config.comments = false
   menu parent: "Items", priority: 12, label: "Twitter Shares", if: lambda{|tabs_renderer|
@@ -14,5 +15,9 @@ ActiveAdmin.register TwitterShare do
     column :created_at
     default_actions
   end
-  
+  controller do
+    def scoped_collection
+       TwitterShare.includes(:item)
+    end
+  end
 end

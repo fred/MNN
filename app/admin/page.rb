@@ -1,4 +1,5 @@
 ActiveAdmin.register Page do
+  config.clear_sidebar_sections!
   controller.authorize_resource
 
   menu parent: "Settings", priority: 100, if: lambda{|tabs_renderer|
