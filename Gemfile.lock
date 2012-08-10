@@ -64,13 +64,13 @@ GIT
 
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: ca703a2349e9a0c26dc5a8a5bb8f5d6dee3b0cff
+  revision: 86cffd50084953ce59938a1f2f097a0be8b973b0
   specs:
     twitter-bootstrap-rails (2.1.1)
       actionpack (>= 3.1)
       less-rails (~> 2.2.3)
       railties (>= 3.1)
-      therubyracer (= 0.10.1)
+      therubyracer (>= 0.11.0beta5)
 
 GIT
   remote: git://github.com/sunspot/sunspot.git
@@ -87,12 +87,12 @@ GEM
   remote: http://rubygems.org/
   specs:
     ZenTest (4.8.2)
-    actionmailer (3.2.7)
-      actionpack (= 3.2.7)
+    actionmailer (3.2.8)
+      actionpack (= 3.2.8)
       mail (~> 2.4.4)
-    actionpack (3.2.7)
-      activemodel (= 3.2.7)
-      activesupport (= 3.2.7)
+    actionpack (3.2.8)
+      activemodel (= 3.2.8)
+      activesupport (= 3.2.8)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       journey (~> 1.0.4)
@@ -100,18 +100,18 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.1.3)
-    activemodel (3.2.7)
-      activesupport (= 3.2.7)
+    activemodel (3.2.8)
+      activesupport (= 3.2.8)
       builder (~> 3.0.0)
-    activerecord (3.2.7)
-      activemodel (= 3.2.7)
-      activesupport (= 3.2.7)
+    activerecord (3.2.8)
+      activemodel (= 3.2.8)
+      activesupport (= 3.2.8)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
-    activeresource (3.2.7)
-      activemodel (= 3.2.7)
-      activesupport (= 3.2.7)
-    activesupport (3.2.7)
+    activeresource (3.2.8)
+      activemodel (= 3.2.8)
+      activesupport (= 3.2.8)
+    activesupport (3.2.8)
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.2)
@@ -166,7 +166,6 @@ GEM
       capybara (>= 1.1.2)
       cucumber (>= 1.1.8)
       nokogiri (>= 1.5.0)
-    daemons (1.1.8)
     dalli (2.1.0)
     database_cleaner (0.8.0)
     debugger (1.2.0)
@@ -183,7 +182,6 @@ GEM
       warden (~> 1.2.1)
     diff-lcs (1.1.3)
     erubis (2.7.0)
-    eventmachine (0.12.10)
     exception_notification (2.6.1)
       actionmailer (>= 3.0.4)
     excon (0.14.3)
@@ -198,7 +196,7 @@ GEM
       multipart-post (~> 1.1)
     fastercsv (1.5.5)
     fattr (2.2.1)
-    ffi (1.1.4)
+    ffi (1.1.5)
     fog (1.4.0)
       builder
       excon (~> 0.14.0)
@@ -246,7 +244,7 @@ GEM
     less-rails (2.2.3)
       actionpack (>= 3.1)
       less (~> 2.2.0)
-    libv8 (3.3.10.4)
+    libv8 (3.11.8.3)
     libwebsocket (0.1.5)
       addressable
     mail (2.4.4)
@@ -320,12 +318,12 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.3.1)
-    pry-rails (0.1.6)
+    pry-rails (0.2.0)
       pry
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
-    rack-mini-profiler (0.1.9)
+    rack-mini-profiler (0.1.10)
       rack (>= 1.1.3)
     rack-protection (1.2.0)
       rack
@@ -333,19 +331,19 @@ GEM
       rack
     rack-test (0.6.1)
       rack (>= 1.0)
-    rails (3.2.7)
-      actionmailer (= 3.2.7)
-      actionpack (= 3.2.7)
-      activerecord (= 3.2.7)
-      activeresource (= 3.2.7)
-      activesupport (= 3.2.7)
+    rails (3.2.8)
+      actionmailer (= 3.2.8)
+      actionpack (= 3.2.8)
+      activerecord (= 3.2.8)
+      activeresource (= 3.2.8)
+      activesupport (= 3.2.8)
       bundler (~> 1.0)
-      railties (= 3.2.7)
+      railties (= 3.2.8)
     rails_config (0.3.1)
       activesupport (>= 3.0)
-    railties (3.2.7)
-      actionpack (= 3.2.7)
-      activesupport (= 3.2.7)
+    railties (3.2.8)
+      actionpack (= 3.2.8)
+      activesupport (= 3.2.8)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
@@ -356,8 +354,9 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     redis (3.0.1)
-    redis-namespace (1.2.0)
+    redis-namespace (1.2.1)
       redis (~> 3.0.0)
+    ref (1.0.0)
     responders (0.9.2)
       railties (~> 3.1)
     rmagick (2.13.1)
@@ -401,7 +400,7 @@ GEM
       rack (~> 1.3, >= 1.3.6)
       rack-protection (~> 1.2)
       tilt (~> 1.3, >= 1.3.3)
-    sitemap_generator (3.1.1)
+    sitemap_generator (3.2)
       builder
     slim (1.2.2)
       temple (~> 0.4.0)
@@ -420,12 +419,8 @@ GEM
     sunspot_test (0.4.0)
       sunspot_rails (>= 1.2.1)
     temple (0.4.0)
-    therubyracer (0.10.1)
-      libv8 (~> 3.3.10)
-    thin (1.4.1)
-      daemons (>= 1.0.9)
-      eventmachine (>= 0.12.6)
-      rack (>= 1.0.0)
+    therubyracer (0.11.0beta7)
+      ref
     thor (0.15.4)
     tilt (1.3.3)
     tinymce-rails (3.5.2)
@@ -435,7 +430,7 @@ GEM
       polyglot (>= 0.3.1)
     turn (0.8.3)
       ansi
-    twitter (3.4.1)
+    twitter (3.5.0)
       faraday (~> 0.8)
       multi_json (~> 1.3)
       simple_oauth (~> 0.1.6)
@@ -461,6 +456,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  activerecord-jdbcpostgresql-adapter
   anytime!
   autotest
   autotest-rails
@@ -488,6 +484,7 @@ DEPENDENCIES
   hirb
   i18n
   jquery-rails
+  jruby-openssl
   json
   kaminari
   launchy (>= 2.0.5)
@@ -506,10 +503,11 @@ DEPENDENCIES
   postmark-rails
   progress_bar
   pry-rails
+  puma
   rack
   rack-cache
   rack-mini-profiler
-  rails (= 3.2.7)
+  rails (= 3.2.8)
   rails_config
   rake
   rakismet
@@ -531,8 +529,7 @@ DEPENDENCIES
   sunspot!
   sunspot_rails!
   sunspot_test
-  therubyracer
-  thin
+  therubyrhino
   tinymce-rails (= 3.5.2)
   turn (~> 0.8.3)
   twitter

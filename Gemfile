@@ -5,12 +5,20 @@ source 'http://rubygems.org'
 gem 'rack'
 gem 'rack-cache'
 gem 'rake'
-gem 'rails', '3.2.7'
+gem 'rails', '3.2.8'
 gem 'bundler'
 
 ### Database Adapter
-# Using Postgresql for all environments.
-gem 'pg'
+platforms :ruby do
+  gem 'pg'
+  gem 'unicorn', require: false
+end
+
+platforms :jruby do
+  gem 'jruby-openssl'
+  gem 'activerecord-jdbcpostgresql-adapter'
+  gem 'puma'
+end
 
 gem 'i18n'
 
@@ -66,9 +74,9 @@ gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'libv8' #, "3.3.10.4"
+  gem 'therubyrhino', require: 'rhino', platform: :jruby
+  gem 'libv8', platform: :mri_19
   gem 'execjs'
-  gem 'therubyracer', require: 'v8'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.5'
 end
@@ -76,8 +84,6 @@ end
 
 # Settings
 gem 'rails_config'
-
-gem 'unicorn', require: false
 
 group :test, :development do
   gem 'rspec', '~> 2.9.0'
@@ -91,7 +97,6 @@ group :development do
   gem 'hirb'
   gem 'progress_bar' # Nice progress when rake indexing with solr
   gem 'foreman'
-  gem 'thin', require: false
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
   gem 'capistrano', "2.9.0", require: false
   gem 'rvm-capistrano', require: false
