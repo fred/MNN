@@ -41,7 +41,7 @@ Publication::Application.configure do
   
   config.action_mailer.default_url_options = { :host => 'localhost:3013' }
   
-  if Debugger
+  if defined?(Debugger)
     Debugger.settings[:autolist] = 1;
     Debugger.settings[:autoeval] = 1;
     Debugger.settings[:reload_source_on_change] = 1;

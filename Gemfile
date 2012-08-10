@@ -5,13 +5,12 @@ source 'http://rubygems.org'
 gem 'rack'
 gem 'rack-cache'
 gem 'rake'
-gem 'rails', '3.2.7'
+gem 'rails', '3.2.8'
 gem 'bundler'
 
 ### Database Adapter
 platforms :ruby do
   gem 'pg'
-  gem 'unicorn'
   gem 'unicorn', require: false
 end
 
@@ -76,7 +75,7 @@ gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
 # in production environments by default.
 group :assets do
   gem 'therubyrhino', require: 'rhino', platform: :jruby
-  gem 'libv8', platform: :ruby
+  gem 'libv8', platform: :mri_19
   gem 'execjs'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.5'
