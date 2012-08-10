@@ -1,5 +1,11 @@
 CHANGELOG
 
+== August 10, 2012
+* Fix Bug that un-published items shows on similar items
+* Full JRuby support
+* fixed youtube video Javascript loading
+* Added some translations, ie. Dutch
+
 == August 8, 2012
 * Change to rmagick from mini_magick
 * Several SQL performance improvements
