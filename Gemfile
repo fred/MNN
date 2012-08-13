@@ -10,7 +10,7 @@ gem 'bundler'
 
 ### Database Adapter
 platforms :ruby do
-  gem 'pg'
+  gem 'pg', "~> 0.14.1.pre"
   gem 'unicorn', require: false
   gem 'rmagick'
 end
@@ -18,8 +18,9 @@ end
 platforms :jruby do
   gem 'jruby-openssl'
   gem 'activerecord-jdbcpostgresql-adapter'
-  gem 'puma'
   gem 'rmagick4j'
+  gem 'jruby-ehcache'
+  gem 'jruby-ehcache-rails3', require: 'ehcache'
 end
 
 gem 'i18n'
@@ -60,8 +61,8 @@ gem 'jquery-rails'
 gem 'slim'
 gem 'sinatra'
 gem 'redis'
-gem 'sidekiq', '2.0.3'
-gem 'celluloid', '0.11.0'
+gem 'sidekiq', '~> 2.1.1'
+gem 'celluloid', '~> 0.11.1'
 
 ### JSON and Twitter
 gem 'multi_json'

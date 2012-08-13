@@ -42,8 +42,12 @@ Publication::Application.configure do
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
   # Keep Cache for 2 hours only
-  config.cache_store = :dalli_store, "127.0.0.1",
-    { namespace: "mnn", expires_in: 8.hours, compress: true }
+  if RUBY_ENGINE == "ruby"
+    config.cache_store = :dalli_store, "127.0.0.1",
+      { namespace: "mnn", expires_in: 8.hours, compress: true }
+  elsif RUBY_ENGINE == "jruby"
+    config.cache_store = :ehcache_store
+  end
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "https://dgjzw2byz04ny.cloudfront.net"

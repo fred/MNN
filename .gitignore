@@ -16,6 +16,7 @@ reload_db.sh
 config/initializers/postmark_mailer.rb
 *.pill
 brakeman.html
+mathaba.war
 
 # Documentation
 doc/
