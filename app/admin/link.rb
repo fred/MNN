@@ -1,4 +1,5 @@
 ActiveAdmin.register Link do
+  config.clear_sidebar_sections!
   controller.authorize_resource
   config.comments = false
   menu parent: "Settings", priority: 120, if: lambda{|tabs_renderer|

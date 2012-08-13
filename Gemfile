@@ -53,7 +53,10 @@ gem 'friendly_id', '~> 4.0.0'
 gem 'opinio', git:  'git://github.com/fred/opinio.git', branch: 'fred'
 gem 'rakismet'
 
-### Queue
+gem 'sass', "~> 3.1.21"
+gem 'sass-rails'
+gem 'jquery-rails'
+
 gem 'slim'
 gem 'sinatra'
 gem 'redis'
@@ -65,10 +68,6 @@ gem 'multi_json'
 gem 'json'
 gem 'simple_oauth'
 gem 'twitter'
-
-gem 'sass'
-gem 'sass-rails'
-gem 'jquery-rails'
 
 gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
 

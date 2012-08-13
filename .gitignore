@@ -15,6 +15,7 @@ start.sh
 reload_db.sh
 config/initializers/postmark_mailer.rb
 *.pill
+brakeman.html
 
 # Documentation
 doc/

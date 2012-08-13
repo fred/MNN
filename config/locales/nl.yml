@@ -206,7 +206,7 @@ nl:
     zero: Geen Commentaar
     one: 1 Reactie
     other: '%{count} Reacties'
-  published: Pepubliceerd
+  published: Gepubliceerd
   viewed_times: '%{count} keer bekeken'
   sign_in: Inloggen
   sign_out: Uitloggen

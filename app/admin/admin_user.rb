@@ -1,5 +1,6 @@
 # USER
 ActiveAdmin.register AdminUser do
+  config.clear_sidebar_sections!
   before_filter only: :index do
     @per_page = 12
   end

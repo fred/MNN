@@ -1,5 +1,10 @@
 CHANGELOG
 
+== August 12, 2012
+* Improved Admin interface
+* Improved Serch results
+* Searching scoped on site language
+
 == August 10, 2012
 * Fix Bug that un-published items shows on similar items
 * Full JRuby support

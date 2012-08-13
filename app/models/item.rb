@@ -436,6 +436,10 @@ class Item < ActiveRecord::Base
   ### CLASS METHODS
   ####################
 
+  def self.default_language
+    Language.where(locale: self.default_locale).first
+  end
+
   def self.default_locale
     I18n.locale.to_s || DEFAULT_LOCALE
   end

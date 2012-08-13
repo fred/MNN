@@ -21,7 +21,7 @@ class TagsController < ApplicationController
       where(draft: false).
       includes(:attachments, :category, :language, :item_stat, :user, :tags).
       where("published_at is not NULL").
-      where("published_at < '#{Time.now.to_s(:db)}'").
+      where("published_at < ?", Time.now).
       order("published_at DESC").
       page(params[:page]).per(per_page)
     

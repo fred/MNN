@@ -98,6 +98,7 @@ class ItemsController < ApplicationController
   end
 
   def search
+    faceted_results = ""
     @show_breadcrumb = false
     if params[:category_id]
       category = Category.where(id: params[:category_id]).first
@@ -105,9 +106,7 @@ class ItemsController < ApplicationController
     if params[:language_id]
       language = Language.where(id: params[:language_id]).first
     end
-    if params[:page] && params[:page].empty?
-      params[:page] = 1
-    end
+    
     if params[:q] && !params[:q].to_s.empty?
       term = params[:q].downcase
       @search = Item.solr_search(
@@ -122,25 +121,32 @@ class ItemsController < ApplicationController
         end
         if category
           with(:category_id, category.id)
+          faceted_results << " under #{category.title} "
         end
         if language
           with(:language_id, language.id)
+          faceted_results << " in #{language.description} "
+        else
+          with(:language_id, Item.default_language.id) if Item.default_language
         end
         with(:draft, false)
         facet(:category_id)
         facet(:language_id)
         facet(:user_id)
         order_by(:published_at,:desc)
-        paginate page: params[:page], per_page: per_page
+        paginate page: page, per_page: per_page
       end
-
+      if page && page > 1
+        faceted_results << " - page #{page}"
+      end
       @items = @search.results
-      @title = "WorldMathaba - Found #{@search.total} results for '#{params[:q]}' "
+      @title = "WorldMathaba - Found #{@search.total} results for '#{params[:q]}' #{faceted_results}"
       @meta_title = @title
       @meta_description = @title
       @rss_description = @title
       @rss_title = "WorldMathaba Search - #{params[:q]}"
       @last_published = @items.first.published_at unless @items.empty?
+      @faceted_results = faceted_results
     else
       @items = []
       @title = "Please type something to search for"
