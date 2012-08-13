@@ -1,5 +1,6 @@
 # Comments
 ActiveAdmin.register Comment do
+  config.clear_sidebar_sections!
   controller.authorize_resource
   config.comments = false
   menu priority: 8, label: "Comments", if: lambda{|tabs_renderer|

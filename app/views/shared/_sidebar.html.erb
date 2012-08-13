@@ -25,11 +25,12 @@
           <div class='widget_content'>
             <ul class="nav nav-list">
               <li class="horizontal-divider"></li>
-              <li class="nav-header">Filter by Category</li>
+              <li class="nav-header">Search by Category</li>
               <% @search.facet(:category_id).rows.each do |facet| %>
                 <% category = Category.find(facet.value) %>
                 <li>
-                  <%= link_to("#{category.title} (#{facet.count})", params.merge(category_id: category.id)) if category %>
+                  <%= link_to("#{category.title} (#{facet.count})", params.merge(category_id: category.id, page: nil)) if category %>
+                  <%= link_to("Remove", params.merge(category_id: nil), class: 'link-remove') if params[:category_id] %>
                 </li>
               <% end %>
             </ul>
@@ -37,13 +38,11 @@
           <div class='widget_content'>
             <ul class="nav nav-list">
               <li class="horizontal-divider"></li>
-              <li class="nav-header">Filter by Language</li>
-              <% @search.facet(:language_id).rows.each do |facet| %>
-                <% if language = Language.find(facet.value) %>
-                  <li>
-                    <%= link_to("#{language.description} (#{facet.count})", params.merge(language_id: language.id)) %>
-                  </li>
-                <% end %>
+              <li class="nav-header">Search by Language</li>
+              <% @site_languages.each do |language| %>
+                <li>
+                  <%= link_to(language.description, params.merge(language_id: language.id, page: nil)) %>
+                </li>
               <% end %>
             </ul>
           </div>

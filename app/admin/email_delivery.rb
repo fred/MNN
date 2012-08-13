@@ -1,5 +1,6 @@
 # Comments
 ActiveAdmin.register EmailDelivery do
+  config.clear_sidebar_sections!
   controller.authorize_resource
   config.comments = false
   menu parent: "Items", priority: 14, label: "Email Delivery", if: lambda{|tabs_renderer|
@@ -17,5 +18,9 @@ ActiveAdmin.register EmailDelivery do
     column "Send Time", :send_at
     default_actions
   end
-  
+  controller do
+    def scoped_collection
+       EmailDelivery.includes(:item)
+    end
+  end
 end

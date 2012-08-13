@@ -1,10 +1,19 @@
 CHANGELOG
 
+== August 12, 2012
+* Improved Admin interface
+* Improved Serch results
+* Searching scoped on site language
+
 == August 10, 2012
 * Fix Bug that un-published items shows on similar items
 * Full JRuby support
 * fixed youtube video Javascript loading
 * Added some translations, ie. Dutch
+* Improved performance of /admin pages
+* Cleaned up ActiveAdmin filters/sidebar
+* Visual improvements in admin Images
+* Fixed bug that Authors did not see 'New Item' link
 
 == August 8, 2012
 * Change to rmagick from mini_magick

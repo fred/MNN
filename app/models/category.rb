@@ -26,7 +26,7 @@ class Category < ActiveRecord::Base
       includes(:attachments).
       where(draft: false).
       where("published_at is not NULL").
-      where("published_at < '#{Time.now.to_s(:db)}'").
+      where("published_at < ?", Time.now).
       order("published_at DESC")
   end
   
@@ -37,19 +37,9 @@ class Category < ActiveRecord::Base
       localized.
       where(draft: false).
       where("published_at is not NULL").
-      where("published_at < '#{Time.now.to_s(:db)}'").
+      where("published_at < ?", Time.now).
       order("published_at DESC").
       limit(lmt)
-  end
-  
-  def last_item
-    self.
-      items.
-      where(draft: false).
-      where("published_at is not NULL").
-      where("published_at < ?", DateTime.now).
-      order("published_at DESC").
-      first
   end
 
   def item_last_update

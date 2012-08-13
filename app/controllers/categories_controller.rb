@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
       where(draft: false).
       includes(:attachments).
       where("published_at is not NULL").
-      where("published_at < '#{Time.now.to_s(:db)}'").
+      where("published_at < ?", Time.now).
       order("published_at DESC").
       page(params[:page]).per(per_page)
 

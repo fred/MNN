@@ -188,18 +188,24 @@ span.image p {
 }
 .index_as_block .grid_images {
   float: left;
-  margin-right: 6px;
-  width: 280px;
-  height: 320px;
+  margin-right: 16px;
+  margin-bottom: 8px;
+
+  width: 254px;
+  height: 340px;
   text-align: left;
-  margin-bottom: 5px;
   border-bottom: 1px solid #ccc;
 }
 .index_as_block .grid_images img {
-  margin: 8px;
+  margin: 6px;
   box-shadow: 0px 0px 7px #888;
   padding: none;
   border: 1px solid #eee;
+}
+.index_as_block .grid_images p {
+  line-height: 15px;
+  font-size: 12px;
+  margin: 2px 2px 6px 6px;
 }
 
 

@@ -1,5 +1,9 @@
 # USER
 ActiveAdmin.register User do
+  config.clear_sidebar_sections!
+  before_filter only: :index do
+    @per_page = 12
+  end
   controller.authorize_resource
   config.comments = false
   # config.sort_order = "last_sign_in_at_desc"

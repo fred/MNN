@@ -15,7 +15,7 @@ class Item < ActiveRecord::Base
 
   # Permalink URLS
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :title,   use: :slugged
 
   # Relationships
   belongs_to :user,       inverse_of: :items,  counter_cache: true
@@ -435,6 +435,10 @@ class Item < ActiveRecord::Base
   ####################
   ### CLASS METHODS
   ####################
+
+  def self.default_language
+    Language.where(locale: self.default_locale).first
+  end
 
   def self.default_locale
     I18n.locale.to_s || DEFAULT_LOCALE

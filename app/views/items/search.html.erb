@@ -4,7 +4,7 @@
   </div>
 <% else %>
   <div class="alert alert-error">
-    Sorry, but we've found nothing about "<%= params[:q] %>"
+    Sorry, but we've found nothing about "<%= params[:q] %> <% @faceted_results %>"
   </div>
 <% end %>
 

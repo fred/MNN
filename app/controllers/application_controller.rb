@@ -168,16 +168,30 @@ class ApplicationController < ActionController::Base
     redirect_to admin_dashboard_path(protocol: http_protocol), alert: exception.message
   end
   
-  
-  def per_page
-    if params[:per_page]
-      @per_page = params[:per_page]
+  def default_per_page
+    if Rails.env.production?
+      24
     else
-      @per_page = 24
+      6
+    end
+  end
+
+  def per_page
+    if params[:per_page] && params[:per_page].to_s.match("[0-9]{1,}")
+      @per_page = params[:per_page].to_s.to_i
+    else
+      @per_page = default_per_page
     end
     @per_page
   end
   
+  def page
+    if params[:page] && params[:page].to_s.match("[0-9]{1,}")
+      page = params[:page].to_i
+    else
+      page = 1
+    end
+  end
   
   def is_mobile?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
@@ -330,11 +344,8 @@ class ApplicationController < ActionController::Base
   end
 
   def mini_profiler
-    # required only in production
     if can_debug?
       Rack::MiniProfiler.authorize_request
-    else
-      Rack::MiniProfiler.deauthorize_request
     end
   end
 

@@ -1,13 +1,15 @@
 # Images and File
 ActiveAdmin.register Attachment do
+
+  filter :title
   controller.authorize_resource
   config.sort_order = "id_desc"
-  menu parent: "Items", priority: 2, if: lambda{|tabs_renderer|
+
+  menu parent: "Items", label: 'Images', priority: 2, if: lambda{|tabs_renderer|
     controller.current_ability.can?(:read, Attachment)
   }
   index as: :block do |attachment|
     div for: attachment, class: "grid_images" do
-      h4 auto_link(attachment.attachable)
       div do
         if attachment.existing_attachment
           link_to(
@@ -23,7 +25,8 @@ ActiveAdmin.register Attachment do
           )
         end
       end
-      h4 auto_link(attachment.title)
+      para(auto_link(attachment.attachable))
+      para(attachment.title)
       link_to(
         "Delete",
         admin_attachment_path(attachment),
@@ -37,7 +40,7 @@ ActiveAdmin.register Attachment do
     render "show"
   end
   form partial: "form"
-  controller do 
+  controller do
     def manage
       @attachments = Attachment.order('created_at DESC').page(params[:page])
       render :update do |page|

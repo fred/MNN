@@ -22,7 +22,7 @@ CarrierWave.configure do |config|
       persistent:             false
     }
     config.fog_directory    = ENV['S3_BUCKET']         # required
-    config.fog_attributes   = {'Cache-Control'=>'max-age=604800'}  # 1 week, optional, defaults to {}
+    config.fog_attributes   = {'Cache-Control' => 'public, max-age=31536000'}
   end
 end
 
