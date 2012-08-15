@@ -1,9 +1,11 @@
-gem install bundler --pre
+gem install bundler
 
 if ([ "$TRAVIS_RUBY_VERSION" == "jruby" ]); then
   rm -rf Gemfile.lock
   bundle update 
 fi
+
+bundle install
 
 echo "Setting up database.yml"
 cp config/database.yml.travis config/database.yml
