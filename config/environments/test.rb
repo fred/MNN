@@ -26,7 +26,7 @@ Publication::Application.configure do
       { namespace: "mnn_test", expires_in: 2.hour, compress: true }
   elsif RUBY_ENGINE == "jruby"
     config.cache_store = :ehcache_store, 
-      { cache_name: 'rails_cache', ehcache_config: 'config/ehcache.xml' }
+      { cache_name: 'rails_cache' }
   end
 
   # Raise exceptions instead of rendering exception templates

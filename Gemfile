@@ -115,7 +115,6 @@ group :test do
   gem 'capybara', '>= 1.0.1'
   gem 'database_cleaner'
   gem 'launchy', '>= 2.0.5'
-  gem 'sqlite3'
   gem 'autotest'
   gem 'autotest-rails'
   gem 'sunspot_test'
