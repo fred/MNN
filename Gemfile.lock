@@ -479,7 +479,6 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   activerecord-jdbcpostgresql-adapter
-  activerecord-jdbcsqlite3-adapter
   anytime!
   autotest
   autotest-rails
@@ -493,7 +492,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.2)
   country-select
   cucumber-rails (>= 1.0.2)
-  dalli (~> 2.1.0)
+  dalli
   database_cleaner
   debugger
   devise (~> 2.0)

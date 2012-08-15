@@ -1,0 +1,29 @@
+development:
+  adapter: postgresql
+  database: mnn_development
+  encoding: utf8
+  allow_concurrency: true
+  pool: 10
+  username: fred
+  password:
+  host: 127.0.0.1
+
+production:
+  adapter: postgresql
+  database: mnn_development
+  encoding: utf8
+  allow_concurrency: true
+  pool: 25
+  username: fred
+  password:
+  host: 127.0.0.1
+
+test:
+  adapter: postgresql
+  database: mnn_test
+  encoding: utf8
+  allow_concurrency: false
+  pool: 10
+  username: postgres
+  password:
+  host: 127.0.0.1
