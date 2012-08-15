@@ -14,6 +14,7 @@ platforms :ruby do
   gem 'pg', '~> 0.14.1.pre'
   gem 'unicorn', require: false
   gem 'rmagick'
+  gem 'dalli', '~> 2.1.0'
 end
 
 platforms :jruby do
@@ -149,9 +150,6 @@ gem 'exception_notification', '~> 2.6.0', require: 'exception_notifier'
 
 gem 'sunspot', git: 'git://github.com/sunspot/sunspot.git'
 gem 'sunspot_rails', git: 'git://github.com/sunspot/sunspot.git'
-
-### Memcache
-gem 'dalli', '~> 2.1.0'
 
 
 gem 'galetahub-simple_captcha', require: 'simple_captcha', git: 'git://github.com/galetahub/simple-captcha.git'
