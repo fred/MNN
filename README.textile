@@ -1,3 +1,5 @@
+!https://secure.travis-ci.org/fred/MNN.png?branch=master(Build Status)!:http://travis-ci.org/fred/MNN
+
 h2. Welcome to MNN
 
 This is a news publication system aimed to be flexible, highly customizable and extremely fast and scalable. 
