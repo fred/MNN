@@ -1,4 +1,4 @@
-{<img src="https://secure.travis-ci.org/fred/MNN.png?branch=master" />}[https://secure.travis-ci.org/fred/MNN]
+!https://secure.travis-ci.org/fred/MNN.png?branch=master(Build Status)!:http://travis-ci.org/fred/MNN
 
 h2. Welcome to MNN
 
