@@ -7,10 +7,11 @@ gem 'rack-cache'
 gem 'rake'
 gem 'rails', '3.2.8'
 gem 'bundler'
+gem 'i18n', '~> 0.6.0'
 
 ### Database Adapter
 platforms :ruby do
-  gem 'pg', "~> 0.14.1.pre"
+  gem 'pg', '~> 0.14.1.pre'
   gem 'unicorn', require: false
   gem 'rmagick'
 end
@@ -23,13 +24,16 @@ platforms :jruby do
   gem 'jruby-ehcache-rails3', require: 'ehcache'
 end
 
-gem 'i18n'
-
 ### Oauth
-gem 'omniauth-twitter'
-gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'
+gem 'simple_oauth'
+gem 'omniauth', '~> 1.1.0'
+gem 'omniauth-oauth2', '~> 1.1.0'
+gem 'omniauth-facebook', '~> 1.4.1'
+gem 'omniauth-google-oauth2', '~> 0.1.13'
+gem 'omniauth-oauth', '~> 1.0.1'
+gem 'omniauth-twitter', '~> 0.0.12'
 gem 'omniauth-windowslive', git: 'git://github.com/dangerp/omniauth-windowslive.git'
+
 
 ### Roles and Authentication
 gem 'cancan', '~> 1.6.7'
@@ -40,21 +44,21 @@ gem 'paper_trail', '~> 2.6.3'
 
 ### Views
 gem 'kaminari'
-gem 'squeel'
+gem 'squeel', '~> 1.0'
 
 ### File Uploading and Image Processing
 gem 'fog', '~> 1.4.0'
 gem 'carrierwave', '~> 0.6.2'
 
 ### Permalink
-gem 'stringex'
+gem 'stringex', '~> 1.4'
 gem 'friendly_id', '~> 4.0.0'
 
 ### Comment System
 gem 'opinio', git:  'git://github.com/fred/opinio.git', branch: 'fred'
 gem 'rakismet'
 
-gem 'sass', "~> 3.1.21"
+gem 'sass', '~> 3.1.21'
 gem 'sass-rails'
 gem 'jquery-rails'
 
@@ -67,7 +71,6 @@ gem 'celluloid', '~> 0.11.1'
 ### JSON and Twitter
 gem 'multi_json'
 gem 'json'
-gem 'simple_oauth'
 gem 'twitter'
 
 gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
@@ -89,8 +92,8 @@ gem 'rails_config'
 group :test, :development do
   gem 'rspec', '~> 2.9.0'
   gem 'rspec-rails', '~> 2.9.0'
-  gem 'factory_girl'
-  gem 'factory_girl_rails'
+  gem 'factory_girl', '~> 4.0'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 group :development do
@@ -99,7 +102,7 @@ group :development do
   gem 'progress_bar' # Nice progress when rake indexing with solr
   gem 'foreman'
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
-  gem 'capistrano', "2.9.0", require: false
+  gem 'capistrano', '2.9.0', require: false
   gem 'rvm-capistrano', require: false
   gem 'debugger', platform: :mri_19
   gem 'pry-rails'
