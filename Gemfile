@@ -12,7 +12,6 @@ gem 'i18n', '~> 0.6.0'
 ### Database Adapter
 platforms :ruby do
   gem 'pg', '~> 0.14.1.pre'
-  gem 'unicorn', require: false
   gem 'rmagick'
   gem 'dalli'
 end
@@ -89,6 +88,10 @@ end
 
 # Settings
 gem 'rails_config'
+
+group :production, :development do
+  gem 'unicorn', require: false, platform: :mri_19
+end
 
 group :test, :development do
   gem 'rspec', '~> 2.9.0'

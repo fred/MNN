@@ -5,7 +5,7 @@ if ([ "$TRAVIS_RUBY_VERSION" == "jruby" ]); then
   bundle update 
 fi
 
-bundle install
+bundle install --without development production assets
 
 echo "Setting up database.yml"
 cp config/database.yml.travis config/database.yml

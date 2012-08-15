@@ -11,4 +11,4 @@ branches:
   only:
     - master
 
-bundler_args: "--without development production"
+bundler_args: "--without development production assets"
