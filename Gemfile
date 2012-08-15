@@ -115,11 +115,11 @@ group :test do
   gem 'capybara', '>= 1.0.1'
   gem 'database_cleaner'
   gem 'launchy', '>= 2.0.5'
-  gem 'sqlite3'
   gem 'autotest'
   gem 'autotest-rails'
   gem 'sunspot_test'
   gem 'turn', '~> 0.8.3', require: false
+  gem 'activerecord-jdbcsqlite3-adapter', platform: :jruby
 end
 
 
