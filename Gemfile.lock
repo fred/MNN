@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: 86cffd50084953ce59938a1f2f097a0be8b973b0
+  revision: 278af04b0dab144f5108b0e59d037c5b87998e4b
   specs:
     twitter-bootstrap-rails (2.1.1)
       actionpack (>= 3.1)
@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: git://github.com/sunspot/sunspot.git
-  revision: f865b1d8a9784358ae6de4d2132010ef4d59bc5d
+  revision: e7ec0c08e985a37cf13437ea7704de91f5da542e
   specs:
     sunspot (2.0.0.pre.120720)
       pr_geohash (~> 1.0)
@@ -205,7 +205,7 @@ GEM
     factory_girl_rails (4.0.0)
       factory_girl (~> 4.0.0)
       railties (>= 3.0.0)
-    faraday (0.8.2)
+    faraday (0.8.4)
       multipart-post (~> 1.1)
     fastercsv (1.5.5)
     fattr (2.2.1)
@@ -240,8 +240,8 @@ GEM
       has_scope (~> 0.5.0)
       responders (~> 0.6)
     journey (1.0.4)
-    jquery-rails (2.0.2)
-      railties (>= 3.2.0, < 5.0)
+    jquery-rails (2.0.3)
+      railties (>= 3.1.0, < 5.0)
       thor (~> 0.14)
     json (1.7.4)
     json_pure (1.7.4)
@@ -506,7 +506,7 @@ DEPENDENCIES
   galetahub-simple_captcha!
   hirb
   i18n (~> 0.6.0)
-  jquery-rails
+  jquery-rails (~> 2.0.2)
   jruby-ehcache
   jruby-ehcache-rails3
   jruby-openssl

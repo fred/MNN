@@ -18,6 +18,8 @@ config/initializers/postmark_mailer.rb
 brakeman.html
 mathaba.war
 
+public/assets
+
 # Documentation
 doc/
 doc/api

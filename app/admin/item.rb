@@ -114,11 +114,21 @@ ActiveAdmin.register Item do
     def show
       @item = Item.find(params[:id])
       @related = @item.solr_similar(10)
+      if params[:version].present? && params[:version].match("[0-9]{1,}")
+        Rails.logger.info("*** Reifying to version: #{params[:version]}")
+        @item = @item.versions[params[:version].to_i].reify
+      end
       authorize! :read, @item
     end
 
     def edit
       @item = Item.find(params[:id])
+
+      if params[:version].present? && params[:version].match("[0-9]{1,}")
+        Rails.logger.info("*** Reifying to version: #{params[:version]}")
+        @item = @item.versions[params[:version].to_i].reify
+      end
+      
       authorize! :edit, @item
 
       if @item.published_at

@@ -28,6 +28,8 @@
           <%= f.label :password, class: 'control-label' %>
           <div class="controls">
             <%= f.password_field :password, required: true, class: "imput-medium" %>
+            <div id="progress"></div>
+            <div id="complexity"></div>
           </div>
         </div>
         <div class="control-group">
@@ -96,28 +98,9 @@
 <% end %>
 
 
-<% content_for :footer do %>
-  <script>
-    if ($("form#new_user")){
-      $("form#new_user").validate({
-        rules: {
-          "user[email]": {required: true, minlength: 4},
-          "user[password]": {required: true, minlength: 6},
-          "user[password_confirmation]": {required: true, minlength: 6}
-        },
-        showErrors: function(errors){
-          $.each(this.errorList, function(index, value){
-            $(value.element).parent().parent().addClass('error');
-            $(value.element).attr('rel', 'tooltip');
-            $(value.element).attr('title', value.message);
-          });
-          $("[rel='tooltip']").tooltip({
-            placement: 'right',
-            trigger: 'hover'
-          });
-        }
-      });
-    }
-  </script>
-<% end %>
 
+<% content_for :footer do %>
+  <%= stylesheet_link_tag "jquery.complexify" %>
+  <%= javascript_include_tag "jquery.complexify" %>
+  <%= javascript_include_tag "registration" %>
+<% end %>

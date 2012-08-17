@@ -39,7 +39,9 @@ ActiveAdmin::Dashboards.build do
   ### DASHBOARD ####
   ##################
 
-
+  # action_item do
+  #   link_to "Back to Site", root_path
+  # end
 
   section "Suspicious Comments", priority: 1 do
     if controller.current_ability.can?(:read, Comment)

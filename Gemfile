@@ -12,6 +12,7 @@ gem 'i18n', '~> 0.6.0'
 ### Database Adapter
 platforms :ruby do
   gem 'pg', '~> 0.14.1.pre'
+  gem 'unicorn', require: false
   gem 'rmagick'
   gem 'dalli'
 end
@@ -60,7 +61,7 @@ gem 'rakismet'
 
 gem 'sass', '~> 3.1.21'
 gem 'sass-rails'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.0.2'
 
 gem 'slim'
 gem 'sinatra'
@@ -124,7 +125,6 @@ group :test do
   gem 'sunspot_test'
   gem 'turn', '~> 0.8.3', require: false
 end
-
 
 
 ### Active Admin, loaded at end.
