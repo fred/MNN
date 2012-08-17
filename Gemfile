@@ -10,7 +10,7 @@ gem 'bundler'
 
 ### Database Adapter
 platforms :ruby do
-  gem 'pg', "~> 0.14.1.pre"
+  gem 'pg', '~> 0.14.1.pre'
   gem 'unicorn', require: false
   gem 'rmagick'
 end
@@ -54,9 +54,9 @@ gem 'friendly_id', '~> 4.0.0'
 gem 'opinio', git:  'git://github.com/fred/opinio.git', branch: 'fred'
 gem 'rakismet'
 
-gem 'sass', "~> 3.1.21"
+gem 'sass', '~> 3.1.21'
 gem 'sass-rails'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.0.2'
 
 gem 'slim'
 gem 'sinatra'
@@ -99,7 +99,7 @@ group :development do
   gem 'progress_bar' # Nice progress when rake indexing with solr
   gem 'foreman'
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
-  gem 'capistrano', "2.9.0", require: false
+  gem 'capistrano', '2.9.0', require: false
   gem 'rvm-capistrano', require: false
   gem 'debugger', platform: :mri_19
   gem 'pry-rails'

@@ -53,6 +53,14 @@
         hint: "Expiration date of article (default: 10 years)."
     %>
   <% end %>
+
+  <%= f.inputs name: "Author and Source" do %>
+    <%= f.input :author_name, hint: "If blank, your 'Name' will be used", placeholder: "Original Author name" %>
+    <%= f.input :author_email %>
+    <%= f.input :source_url, hint: "If you wrote the article, leave empty", placeholder: "http://" %>
+    <%= f.input :original, label: "Original author", hint: "Are you the original Author of this article?" %>
+    <br />
+  <% end %>
   
   <%= f.inputs name: "Youtube Video" do %>
     <%= f.input :youtube_id, label: "Youtube Video ID",
@@ -93,14 +101,6 @@
           collection: CountryTag.find(:all, order: "title ASC")
       %>
     </div>
-  <% end %>
-  
-  <%= f.inputs name: "Author and Source" do %>
-    <%= f.input :author_name, hint: "If blank, your 'Name' will be used", placeholder: "Original Author name" %>
-    <%= f.input :author_email %>
-    <%= f.input :source_url, hint: "If you wrote the article, leave empty", placeholder: "http://" %>
-    <%= f.input :original, label: "Original author", hint: "Are you the original Author of this article?" %>
-    <br />
   <% end %>
   
   <% if current_admin_user.has_any_role?(:editor,:admin,:security) %>
@@ -219,6 +219,29 @@
   <% end %>
 
   <%= f.input :lock_version, as: :hidden %>
+
+  <% unless @item.new_record? %>
+  <fieldset class="inputs">
+    <legend><span>History Preview</span></legend>
+    <ol>
+      <% f.object.versions.each_with_index do |v,i| %>
+        <% unless i==0 %>
+          <li>
+            <%= link_to "Version ##{i}", version: i %>: 
+            <%= time_ago_in_words(v.created_at) %> ago - 
+            <%= v.tag %> 
+            <% if user = User.find(v.whodunnit) %>
+              (<%= user.title %>)
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+      <% if params[:version].present? %>
+        <li> <%= link_to "Go to Latest Version", edit_admin_item_path(@item.id) %> </li>
+      <% end %>
+    </ol>
+  </fieldset>
+  <% end %>
   
   <%= f.actions do %>
     <%= f.action :submit, button_html: {class: "primary", data: {disable_with: 'Sending...'}} %>

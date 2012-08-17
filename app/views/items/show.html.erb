@@ -193,16 +193,18 @@
 
       <% @related = @item.solr_similar %>
       <% if @related && @related.total > 0 %>
-        <section id="related">
-          <h4>Related items</h4>
-          <ul class="related">
-            <% @related.results.each do |item| %>
-              <li>
-                <%= link_to item.title, item, title: item_title(item), id: "tooltip", rel: 'related' %>
-              </li>
-            <% end %>
-          </ul>
-        </section>
+        <div class="related">
+          <section id="related">
+            <h4>Related items</h4>
+            <ul class="related">
+              <% @related.results.each do |item| %>
+                <li>
+                  <%= link_to item.title, item, title: item_title(item), id: "tooltip", rel: 'related' %>
+                </li>
+              <% end %>
+            </ul>
+          </section>
+        </div>
       <% end %>
 
     </article>
