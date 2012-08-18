@@ -49,12 +49,12 @@ class ItemsController < ApplicationController
       }
       format.json { render json: @items }
       format.atom {
-        headers_with_timeout(900)
+        headers_with_timeout(900, 'public')
         headers['Etag'] = @etag
         render partial: "/shared/items", layout: false
       }
       format.rss {
-        headers_with_timeout(900)
+        headers_with_timeout(900, 'public')
         headers['Etag'] = @etag
         render partial: "/shared/items", layout: false
       }

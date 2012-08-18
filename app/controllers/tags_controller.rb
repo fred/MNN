@@ -24,8 +24,6 @@ class TagsController < ApplicationController
       where("published_at < ?", Time.now).
       order("published_at DESC").
       page(params[:page]).per(per_page)
-    
-    # RSS
     if @items.empty?
       @last_published = Time.now
     else
@@ -47,11 +45,11 @@ class TagsController < ApplicationController
         headers_with_timeout(180)
       }
       format.atom {
-        headers_with_timeout(900)
+        headers_with_timeout(900, 'public')
         render partial: "/shared/items", layout: false
       }
       format.rss {
-        headers_with_timeout(900)
+        headers_with_timeout(900, 'public')
         render partial: "/shared/items", layout: false
       }
     end

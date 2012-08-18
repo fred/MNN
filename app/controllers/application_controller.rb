@@ -105,7 +105,7 @@ class ApplicationController < ActionController::Base
     if Rails.env.production? && current_admin_user && (request.protocol == "http://")
       Rails.logger.info("  *** Redirecting user to HTTPS")
       redirect_to request.url.gsub("http://", "https://")
-      # Need to have this in Nginx config
+      # Warning! Need to have this in Nginx https config block
       # proxy_set_header X_FORWARDED_PROTO https;
     end
   end
