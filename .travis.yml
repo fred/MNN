@@ -10,4 +10,4 @@ branches:
   only:
     - master
 
-bundler_args: "--without development production assets"
+#bundler_args: "--without development production assets"
