@@ -50,17 +50,17 @@ class CategoriesController < ApplicationController
     
     respond_to do |format|
       format.html {
-        headers_with_timeout(300, 'public')
+        headers_with_timeout(600, 'public')
       }
       format.atom {
         headers['Etag'] = @etag
-        headers['Cache-Control'] = 'public, max-age=900'
+        headers['Cache-Control'] = 'public, max-age=1200'
         headers['Last-Modified'] = @last_published.httpdate if @last_published
         render partial: "/shared/items", layout: false 
       }
       format.rss {
         headers['Etag'] = @etag
-        headers['Cache-Control'] = 'public, max-age=900'
+        headers['Cache-Control'] = 'public, max-age=1200'
         headers['Last-Modified'] = @last_published.httpdate if @last_published
         render partial: "/shared/items", layout: false
       }

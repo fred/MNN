@@ -113,20 +113,35 @@ class ApplicationController < ActionController::Base
 
   def auto_login_admin_user
     if current_admin_user && !current_user
-      Rails.logger.debug("  Auto sign-in for AdminUser ID##{current_admin_user.id}")
+      Rails.logger.info("  Auto sign-in for AdminUser ID##{current_admin_user.id}")
       sign_in(:user, current_admin_user, bypass: true)
     end
   end
-  
+
   comment_destroy_conditions do |comment|
     comment.owner == current_user
   end
 
+  def caching_for_bot
+    if should_cache?
+      headers_with_timeout(900, 'public')
+    end
+  end
+
   def headers_with_timeout(timeout, method='private')
-    unless current_user or !is_bot?
-      headers['Cache-Control'] = "#{method}, max-age=#{timeout}, must-revalidate"
+    if should_cache?
+      Rails.logger.info("  Caching On: #{method}, max-age=#{timeout}")
+      headers['Cache-Control'] = "#{method}, max-age=#{timeout}"
       headers['Last-Modified'] = @last_published.httpdate if @last_published
       headers['X-Accel-Expires'] = timeout
+    end
+  end
+
+  def should_cache?
+    if (is_bot? or request.format.to_s.match("(rss|atom|xml)")) and !current_user
+      true
+    else
+      false
     end
   end
 
@@ -199,7 +214,7 @@ class ApplicationController < ActionController::Base
     valid="(iphone|ipod|nokia|series60|symbian|blackberry|opera mini|mobile|iemobile|android|smartphone)"
     invalid="(tablet|ipad|playbook|xoom)"
     if !s.match(invalid) && s.match(valid)
-      Rails.logger.debug("  UA: Mobile found: #{s}")
+      Rails.logger.info("  UA: Mobile found: #{s}")
       return true
     else
       return false
@@ -211,7 +226,7 @@ class ApplicationController < ActionController::Base
     valid="(tablet|ipad|galaxytab|opera mini|honeycomb|p1000|playbook|xoom|android|sch-i800|kindle)"
     invalid="(mobile|iphone|ipod)"
     if !s.match(invalid) && s.match(valid)
-      Rails.logger.debug("  UA: Tablet found: #{s}")
+      Rails.logger.info("  UA: Tablet found: #{s}")
       return true
     else
       return false
@@ -239,7 +254,7 @@ class ApplicationController < ActionController::Base
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
     valid="(YandexBot|bot|spider|wget|curl|googlebot|wget|curl|msnbot)"
     if s.match(valid)
-      Rails.logger.debug("  UA: Bot found: #{s}")
+      Rails.logger.info("  Bot: #{s}")
       return true
     else
       return false

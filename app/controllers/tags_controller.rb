@@ -42,14 +42,14 @@ class TagsController < ApplicationController
     private_headers
     respond_to do |format|
       format.html {
-        headers_with_timeout(300, 'public')
+        headers_with_timeout(600, 'public')
       }
       format.atom {
-        headers_with_timeout(900, 'public')
+        headers_with_timeout(1200, 'public')
         render partial: "/shared/items", layout: false
       }
       format.rss {
-        headers_with_timeout(900, 'public')
+        headers_with_timeout(1200, 'public')
         render partial: "/shared/items", layout: false
       }
     end
