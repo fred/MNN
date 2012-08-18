@@ -2,11 +2,10 @@ language: ruby
 rvm:
   - 1.9.3
   - jruby-19mode
-  - rbx-19mode
 before_install:
-  - gem install bundler --pre
-  - rm -rf Gemfile.lock
-  - bundle update
+  - "./script/travis.sh"
 
-before_script:
-  - psql -c 'create database mnn_test;' -U postgres
+
+branches:
+  only:
+    - master

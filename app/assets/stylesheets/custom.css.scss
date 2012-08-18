@@ -66,13 +66,16 @@ div.well {
 div.well h5 {
   line-height: 24px;
   margin-left: 5px;
+  text-shadow: 1px 1px 1px #fff;
 }
 div.well h4 {
   line-height: 30px;
   margin-left: 6px;
+  text-shadow: 1px 1px 1px #fff;
 }
 div.well h3 { 
   margin-left: 10px;
+  text-shadow: 1px 1px 1px #fff;
 }
 pre { display: none; }
 
@@ -142,19 +145,19 @@ article h2 {
   font-size: 24px;
   color: #444;
   margin-bottom: 12px;
-  margin-top: 12px;
+  margin-top: 13px;
 }
 article h3 {
   font-size: 20px;
   color: #333;
   margin-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 11px;
 }
 article h4 {
   font-size: 14px;
   color: #222;
   margin-bottom: 7px;
-  margin-top: 7px;
+  margin-top: 9px;
 }
 article p img {
   border: 1px solid #DDD;
@@ -261,11 +264,23 @@ article footer ul.tags li:last-child {
   border-right: none;
 }
 
+div.related {
+  margin-top: 20px;
+}
+div.related h4 {
+  text-shadow: 1px 1px 1px #fff;
+  color: #555;
+  margin-left: 15px;
+}
 ul.related {
   margin: 0 0 8px 16px;
 }
 ul.related li {
   margin: 4px 0px;
+  list-style: none;
+  border-left: 4px solid #CCC;
+  padding-left: 5px;
+  margin-bottom: 5px;
 }
 
 article div.page_views,

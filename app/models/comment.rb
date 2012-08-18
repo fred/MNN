@@ -40,7 +40,7 @@ class Comment < ActiveRecord::Base
   end
 
   def check_for_spam
-    if self.spam?
+    if !Rails.env.test? && self.spam?
       self.marked_spam = true
       self.approved = false
     else

@@ -206,6 +206,8 @@
             <span class="help-block">
               Leave blank if you do not want to change password
             </span>
+            <div id="progress"></div>
+            <div id="complexity"></div>
           </div>
         </div>
 
@@ -242,24 +244,7 @@
 <% end %>
 
 <% content_for :footer do %>
-  <script>
-    if ($("form#edit_user")){
-      $("form#edit_user").validate({
-        rules: {
-          "user[email]": {required: true, minlength: 4}
-        },
-        showErrors: function(errors){
-          $.each(this.errorList, function(index, value){
-            $(value.element).parent().parent().addClass('error');
-            $(value.element).attr('rel', 'tooltip');
-            $(value.element).attr('title', value.message);
-          });
-          $("[rel='tooltip']").tooltip({
-            placement: 'right',
-            trigger: 'hover'
-          });
-        }
-      });
-    }
-  </script>
+  <%= stylesheet_link_tag "jquery.complexify" %>
+  <%= javascript_include_tag "jquery.complexify" %>
+  <%= javascript_include_tag "registration" %>
 <% end %>

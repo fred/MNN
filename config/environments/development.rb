@@ -38,17 +38,18 @@ Publication::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = false
-  
+
   config.action_mailer.default_url_options = { :host => 'localhost:3013' }
-  
+
   if defined?(Debugger)
     Debugger.settings[:autolist] = 1;
     Debugger.settings[:autoeval] = 1;
     Debugger.settings[:reload_source_on_change] = 1;
   end
-  
+
   # Enable threaded mode
   # config.threadsafe!
 end
 
 ActionMailer::Base.delivery_method = :letter_opener
+

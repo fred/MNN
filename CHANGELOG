@@ -1,5 +1,12 @@
 CHANGELOG
 
+== August 17, 2012
+* Add Ability to preview/rollback previous versions
+* Nicer CSS for related items list
+* Added Password strength meter on registration form
+* Upgraded jquery to 1.8.0
+* Updated Gems
+
 == August 12, 2012
 * Improved Admin interface
 * Improved Serch results

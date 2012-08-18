@@ -12,7 +12,6 @@ gem 'i18n', '~> 0.6.0'
 ### Database Adapter
 platforms :ruby do
   gem 'pg', '~> 0.14.1.pre'
-  gem 'unicorn', require: false
   gem 'rmagick'
   gem 'dalli', '~> 2.1.0'
 end
@@ -61,7 +60,7 @@ gem 'rakismet'
 
 gem 'sass', '~> 3.1.21'
 gem 'sass-rails'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.0.2'
 
 gem 'slim'
 gem 'sinatra'
@@ -79,16 +78,20 @@ gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'libv8', '3.3.10.4', platform: :mri_19
   gem 'therubyrhino', require: 'rhino', platform: :jruby
-  gem 'libv8', platform: :mri_19
+  gem 'therubyracer', '~> 0.10.2', require: 'v8', platform: :mri_19
   gem 'execjs'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.5'
 end
 
-
 # Settings
 gem 'rails_config'
+
+group :production, :development do
+  gem 'unicorn', require: false, platform: :mri_19
+end
 
 group :test, :development do
   gem 'rspec', '~> 2.9.0'
@@ -118,10 +121,10 @@ group :test do
   gem 'launchy', '>= 2.0.5'
   gem 'autotest'
   gem 'autotest-rails'
+  gem 'sunspot_solr'
   gem 'sunspot_test'
   gem 'turn', '~> 0.8.3', require: false
 end
-
 
 
 ### Active Admin, loaded at end.
