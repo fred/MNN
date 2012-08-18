@@ -81,6 +81,7 @@ GIT
     sunspot_rails (2.0.0.pre.120720)
       nokogiri
       sunspot (= 2.0.0.pre.120720)
+    sunspot_solr (2.0.0.pre.120720)
 
 GEM
   remote: http://rubygems.org/
@@ -553,6 +554,7 @@ DEPENDENCIES
   stringex (~> 1.4)
   sunspot!
   sunspot_rails!
+  sunspot_solr
   sunspot_test
   therubyracer (~> 0.10.2)
   therubyrhino
