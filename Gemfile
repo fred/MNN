@@ -121,7 +121,7 @@ group :test do
   gem 'launchy', '>= 2.0.5'
   gem 'autotest'
   gem 'autotest-rails'
-  gem 'sunspot_solr'
+  gem 'sunspot_solr', git: 'git://github.com/sunspot/sunspot.git'
   gem 'sunspot_test'
   gem 'turn', '~> 0.8.3', require: false
 end
