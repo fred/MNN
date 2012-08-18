@@ -7,7 +7,7 @@ class TagsController < ApplicationController
     private_headers
     respond_to do |format|
       format.html {
-        headers_with_timeout(300, 'public')
+        headers_with_timeout(600, 'public')
       }
     end
   end
