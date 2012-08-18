@@ -50,7 +50,7 @@ class CategoriesController < ApplicationController
     
     respond_to do |format|
       format.html {
-        headers_with_timeout(300)
+        headers_with_timeout(300, 'public')
       }
       format.atom {
         headers['Etag'] = @etag

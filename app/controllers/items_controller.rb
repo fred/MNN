@@ -80,7 +80,7 @@ class ItemsController < ApplicationController
     private_headers
     respond_to do |format|
       format.html {
-        headers_with_timeout(300)
+        headers_with_timeout(300, 'public')
         headers_for_etag(@item.etag)
       }
       format.json { render json: @item }

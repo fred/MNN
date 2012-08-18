@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   before_filter :log_additional_data, :set_per_page
   before_filter :last_modified
   before_filter :no_cache_for_admin
+  before_filter :private_headers
   after_filter  :auto_login_admin_user
   after_filter  :store_location
   after_filter  :log_session
@@ -122,7 +123,7 @@ class ApplicationController < ActionController::Base
   end
 
   def headers_with_timeout(timeout, method='private')
-    unless current_user
+    unless current_user or !is_bot?
       headers['Cache-Control'] = "#{method}, max-age=#{timeout}, must-revalidate"
       headers['Last-Modified'] = @last_published.httpdate if @last_published
       headers['X-Accel-Expires'] = timeout
@@ -233,10 +234,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def if_bot?
+  def is_bot?
     return true if Rails.env.test?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
-    valid="(YandexBot|bot|spider|wget|curl|)"
+    valid="(YandexBot|bot|spider|Spider|wget|curl|googlebot)"
     if s.match(valid)
       Rails.logger.debug("  UA: Bot found: #{s}")
       return true
