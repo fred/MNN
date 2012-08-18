@@ -3,33 +3,35 @@
   <iframe id='youtube-iframe' src="https://www.youtube-nocookie.com/embed/<%=@item.youtube_vid %>?rel=0" height="360" width="640"></iframe>
   <% content_for :scripts do %>
     <script>
-      <% if @item.youtube_res.present? %>
-        var custom_width = <%= @item.youtube_width %>;
-        var custom_height = <%= @item.youtube_height %>;
-      <% elsif is_mobile? %>
-        // if we are mobile, show smaller resolution video
-        var custom_width = "360";
-        var custom_height = "240";
-      <% else %>
-        // if Tablet or Desktop the show larger resolution video
-        if (Modernizr.mq('only screen and (min-width:1600px)')) {
-          var custom_width = "800";
-          var custom_height = "600";
-        } else if (Modernizr.mq('only screen and (min-width:1200px)')) {
-          var custom_width = "720";
-          var custom_height = "480";
-        } else if (Modernizr.mq('only screen and (min-width:960px)')) {
-          var custom_width = "600";
-          var custom_height = "400";
-        } else if (Modernizr.mq('only screen and (min-width:760px)')) {
-          var custom_width = "480";
-          var custom_height = "320";
-        } else {
+      $(document).ready(function() {
+        <% if @item.youtube_res.present? %>
+          var custom_width = <%= @item.youtube_width %>;
+          var custom_height = <%= @item.youtube_height %>;
+        <% elsif is_mobile? %>
+          // if we are mobile, show smaller resolution video
           var custom_width = "360";
           var custom_height = "240";
-        }
-      <% end %>
-      $("iframe#youtube-iframe").width(custom_width).height(custom_height);
+        <% else %>
+          // if Tablet or Desktop the show larger resolution video
+          if (Modernizr.mq('only screen and (min-width:1600px)')) {
+            var custom_width = "800";
+            var custom_height = "600";
+          } else if (Modernizr.mq('only screen and (min-width:1200px)')) {
+            var custom_width = "720";
+            var custom_height = "480";
+          } else if (Modernizr.mq('only screen and (min-width:960px)')) {
+            var custom_width = "600";
+            var custom_height = "400";
+          } else if (Modernizr.mq('only screen and (min-width:760px)')) {
+            var custom_width = "480";
+            var custom_height = "320";
+          } else {
+            var custom_width = "360";
+            var custom_height = "240";
+          };
+        <% end %>
+        $("iframe#youtube-iframe").width(custom_width).height(custom_height);
+      });
     </script>
   <% end %>
   <div class="clearfix"></div>
