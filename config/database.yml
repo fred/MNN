@@ -24,6 +24,6 @@ test:
   encoding: utf8
   allow_concurrency: false
   pool: 10
-  username: postgres
+  username: fred
   password:
   host: 127.0.0.1
