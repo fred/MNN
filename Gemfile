@@ -12,7 +12,6 @@ gem 'i18n', '~> 0.6.0'
 ### Database Adapter
 platforms :ruby do
   gem 'pg', '~> 0.14.1.pre'
-  gem 'unicorn', require: false
   gem 'rmagick'
   gem 'dalli'
 end
@@ -79,13 +78,12 @@ gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'therubyrhino', require: 'rhino', platform: :jruby
   gem 'libv8', platform: :mri_19
-  gem 'execjs'
+  gem 'therubyrhino', require: 'rhino', platform: :jruby
+  gem 'therubyracer', require: 'v8',    platform: :mri_19
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.5'
 end
-
 
 # Settings
 gem 'rails_config'

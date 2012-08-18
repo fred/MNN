@@ -497,7 +497,6 @@ DEPENDENCIES
   debugger
   devise (~> 2.0)
   exception_notification (~> 2.6.0)
-  execjs
   factory_girl (~> 4.0)
   factory_girl_rails (~> 4.0)
   fog (~> 1.4.0)
@@ -556,6 +555,7 @@ DEPENDENCIES
   sunspot!
   sunspot_rails!
   sunspot_test
+  therubyracer
   therubyrhino
   tinymce-rails (= 3.5.2)
   turn (~> 0.8.3)
