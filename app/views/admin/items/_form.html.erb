@@ -227,7 +227,7 @@
       <% f.object.versions.each_with_index do |v,i| %>
         <% unless i==0 %>
           <li>
-            <%= link_to "Version ##{i}", version: i %>: 
+            <%= link_to "Roll Back Version #{i}", version: i %>: 
             <%= time_ago_in_words(v.created_at) %> ago - 
             <%= v.tag %> 
             <% if user = User.find(v.whodunnit) %>
