@@ -10,6 +10,7 @@ bundle install --without development production assets
 
 echo "Setting up database.yml"
 cp config/database.yml.travis config/database.yml
+cp config/sunspot.yml.sample config/sunspot.yml
 
 echo "Creating databases and migrating it"
 psql -c 'create database mnn_test;' -U postgres
