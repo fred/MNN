@@ -237,7 +237,7 @@ class ApplicationController < ActionController::Base
   def is_bot?
     return true if Rails.env.test?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
-    valid="(YandexBot|bot|spider|Spider|wget|curl|googlebot)"
+    valid="(YandexBot|bot|spider|wget|curl|googlebot|wget|curl|msnbot)"
     if s.match(valid)
       Rails.logger.debug("  UA: Bot found: #{s}")
       return true
