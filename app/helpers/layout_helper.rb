@@ -213,5 +213,20 @@ module LayoutHelper
     end
   end
 
+  def youtube_height(item)
+    if is_mobile?
+      item.youtube_mobile_height
+    else
+      item.youtube_height
+    end
+  end
+
+  def youtube_width(item)
+    if is_mobile?
+      item.youtube_mobile_width
+    else
+      item.youtube_width
+    end
+  end
 
 end

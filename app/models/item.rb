@@ -245,18 +245,25 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def youtube_mobile_height
+    '320'
+  end
+  def youtube_mobile_width
+    '480'
+  end
+
   def youtube_height
-    if youtube_res
+    if youtube_res.present?
       youtube_res.split("x").first
     else
-      nil
+      '390'
     end
   end
   def youtube_width
-    if youtube_res
+    if youtube_res.present?
       youtube_res.split("x").last
     else
-      nil
+      '640'
     end
   end
 

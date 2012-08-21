@@ -1,6 +1,8 @@
 <% if @item.youtube_id && @item.youtube_vid %>
   <div class="clearfix"></div>
-  <iframe id='youtube-iframe' src="https://www.youtube-nocookie.com/embed/<%=@item.youtube_vid %>?rel=0" height="360" width="640"></iframe>
+
+  <iframe id='youtube-iframe' src="https://www.youtube-nocookie.com/embed/<%=@item.youtube_id %>?rel=0" height="<%= youtube_height(@item) %>" width="<%= youtube_width(@item) %>" frameborder="0" allowfullscreen></iframe>
+
   <% content_for :scripts do %>
     <script>
       $(document).ready(function() {
@@ -13,16 +15,16 @@
           var custom_height = "240";
         <% else %>
           // if Tablet or Desktop the show larger resolution video
-          if (Modernizr.mq('only screen and (min-width:1600px)')) {
-            var custom_width = "800";
+          if (Modernizr.mq('only screen and (min-width:1400px)')) {
+            var custom_width = "860";
             var custom_height = "600";
-          } else if (Modernizr.mq('only screen and (min-width:1200px)')) {
+          } else if (Modernizr.mq('only screen and (min-width:1140px)')) {
             var custom_width = "720";
             var custom_height = "480";
-          } else if (Modernizr.mq('only screen and (min-width:960px)')) {
-            var custom_width = "600";
-            var custom_height = "400";
-          } else if (Modernizr.mq('only screen and (min-width:760px)')) {
+          } else if (Modernizr.mq('only screen and (min-width:920px)')) {
+            var custom_width = "560";
+            var custom_height = "390";
+          } else if (Modernizr.mq('only screen and (min-width:740px)')) {
             var custom_width = "480";
             var custom_height = "320";
           } else {
