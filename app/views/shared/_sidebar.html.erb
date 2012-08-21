@@ -138,7 +138,7 @@
       </ul>
     </div>
 
-    <% cache_expiring("sidebar_recently", 600) do %>
+    <% cache_expiring("sidebar_recently", 900) do %>
       <div class="sidebar_secions">
         <h4>Recently Discussed</h4>
         <% Item.localized.recently_commented(5).each do |item| %>

@@ -45,16 +45,16 @@ class ItemsController < ApplicationController
     private_headers
     respond_to do |format|
       format.html {
-        headers_with_timeout(900)
+        headers_with_timeout(300, 'private, must-revalidate')
       }
       format.json { render json: @items }
       format.atom {
-        headers_with_timeout(1200, 'public')
+        headers_with_timeout(900, 'public')
         headers['Etag'] = @etag
         render partial: "/shared/items", layout: false
       }
       format.rss {
-        headers_with_timeout(1200, 'public')
+        headers_with_timeout(900, 'public')
         headers['Etag'] = @etag
         render partial: "/shared/items", layout: false
       }
@@ -80,7 +80,7 @@ class ItemsController < ApplicationController
     private_headers
     respond_to do |format|
       format.html {
-        headers_with_timeout(900, 'public')
+        headers_with_timeout(300, 'private, must-revalidate')
         headers_for_etag(@item.etag)
       }
       format.json { render json: @item }
@@ -151,7 +151,7 @@ class ItemsController < ApplicationController
       @items = []
       @title = "Please type something to search for"
     end
-    headers_with_timeout(1200)
+    headers_with_timeout(900)
     respond_to do |format|
       format.html
       format.js

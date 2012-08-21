@@ -24,8 +24,8 @@ module ApplicationHelper
   end
 
 
-  # Cache for a period of time, default 1 hours
-  def cache_expiring(cache_key, cache_period=3600)
+  # Cache for a period of time, default 2 hours
+  def cache_expiring(cache_key, cache_period=7200)
     cache(["#{I18n.locale.to_s}/#{cache_key}", Time.now.to_i / cache_period].join('/')){ yield }
   end
 
