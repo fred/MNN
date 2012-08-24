@@ -193,6 +193,7 @@ jquery-ui/ui-icons_eeeeee_256x240.png: jquery-ui/ui-icons_eeeeee_256x240-6dadc79
 jquery-ui/ui-icons_ffffff_256x240.png: jquery-ui/ui-icons_ffffff_256x240-91a9fa59d70199beb6a707309c691a43.png
 logo48.png: logo48-2bc8c0ad7bb94ce6c1a72956aef000a4.png
 mini_logo.png: mini_logo-401ba5774f939c7ad95acf0818749ccd.png
+pg3.gif: pg3-e212554b34e2f28bedc08f179b4ad795.gif
 rails.png: rails-aa8aea913cd3b23f0cdf2a950a48069a.png
 rss_blue_16.png: rss_blue_16-d283f7cdf5b40250af00a443e626bc5e.png
 rss_blue_32.png: rss_blue_32-6c6e400b6d21ef3c0040a913ce78a22c.png
@@ -200,6 +201,7 @@ rss_icon_glass_blue64.png: rss_icon_glass_blue64-deed2260585ed3bb754b60d14154154
 world_mathaba11.png: world_mathaba11-05570f0309b7b69f11ada4c845795333.png
 active_admin.js: active_admin-449c2a1dad04a207c473e2237f34277b.js
 application.js: application-357608fd670919e688f37fa59d23f17e.js
+registration.js: registration-979f78de5200791efea852a31c991ae2.js
 active_admin.css: active_admin-b43d561bc3b0839f810cb0b28d71844c.css
 application.css: application-1b4744643db919d41f8c53ea3ff4e2c6.css
 rss.css: rss-5d88525bfa6012a6fe5cdf6dd949a96f.css
@@ -218,6 +220,8 @@ jquery-ui/ui-icons_454545_256x240.png: jquery-ui/ui-icons_454545_256x240-18bef6f
 jquery-ui/ui-icons_70b2e1_256x240.png: jquery-ui/ui-icons_70b2e1_256x240-8e03fea10d13d32191f9218bac7bd8fb.png
 jquery-ui/ui-icons_999999_256x240.png: jquery-ui/ui-icons_999999_256x240-38f9fd130f71cbd46431075c623c0de4.png
 jquery-ui/ui-icons_f53239_256x240.png: jquery-ui/ui-icons_f53239_256x240-6079da69e7456f3a0f5419de158dc9dd.png
+jquery.complexify.js: jquery.complexify-878402157d05e62da2e2b5095f2dd535.js
+jquery.complexify.css: jquery.complexify-ff7a6eb4d738b5c44b0c4130c7991af4.css
 tinymce.css: tinymce-20e436c8c0fb53de9b9df5475fd04fe6.css
 fontawesome-webfont.eot: fontawesome-webfont-b08009024ce210575998aade700e3b8b.eot
 fontawesome-webfont.svg: fontawesome-webfont-32f9b245dafe29d9e90b77fb790e86f8.svg

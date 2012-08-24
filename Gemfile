@@ -139,8 +139,9 @@ gem 'activeadmin',
 gem 'tinymce-rails' , '3.5.2'
 
 # Twitter Bootstrap for Rails 3 Asset Pipeline
-gem 'twitter-bootstrap-rails', 
-  git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails',
+  git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git',
+  ref: '44cfe7f25a0fd305c763f1a299a418a92d027e64'
 
 # Error Emails
 gem 'exception_notification', '~> 2.6.0', require: 'exception_notifier'

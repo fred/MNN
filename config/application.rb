@@ -80,7 +80,8 @@ module Publication
     config.assets.initialize_on_precompile = false
     
     # RailsAdmin Assets
-    config.assets.precompile += %w( rss.css tinymce.css 
+    config.assets.precompile += %w( rss.css tinymce.css
+      jquery.complexify.css jquery.complexify.js registration.js
       active_admin.js active_admin.css active_admin/print.css )
   end
 end
