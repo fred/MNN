@@ -124,11 +124,11 @@ class ApplicationController < ActionController::Base
 
   def caching_for_bot
     if should_cache?
-      headers_with_timeout(900, 'public')
+      headers_with_timeout(1800, 'public')
     end
   end
 
-  def headers_with_timeout(timeout, method='private')
+  def headers_with_timeout(timeout, method='public')
     if should_cache?
       Rails.logger.info("  Caching On: #{method}, max-age=#{timeout}")
       headers['Cache-Control'] = "#{method}, max-age=#{timeout}"
@@ -138,7 +138,7 @@ class ApplicationController < ActionController::Base
   end
 
   def should_cache?
-    if (is_bot? or request.format.to_s.match("(rss|atom|xml)")) and !current_user
+    if (is_bot? or request.format.to_s.match("(rss|atom|xml)")) && !current_user
       true
     else
       false
@@ -239,7 +239,7 @@ class ApplicationController < ActionController::Base
     
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
     valid="(firefox|chrome|opera|safari|webkit|gecko|msie|windows|blackberry|iphone|ipad|nokia|android|fedora|ubuntu|centos)"
-    bot="(bot|spider)"
+    bot="(bot|spider|wget|curl|YandexBot|googlebot|msnbot)"
     if !s.match(bot) && s.match(valid)
       Rails.logger.debug("  UA: user found: #{s}")
       return true
@@ -252,7 +252,7 @@ class ApplicationController < ActionController::Base
   def is_bot?
     return true if Rails.env.test?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
-    valid="(YandexBot|bot|spider|wget|curl|googlebot|wget|curl|msnbot)"
+    valid="(bot|spider|wget|curl|YandexBot|googlebot|msnbot)"
     if s.match(valid)
       Rails.logger.info("  Bot: #{s}")
       return true

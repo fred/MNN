@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120805011251) do
+ActiveRecord::Schema.define(:version => 20120825004046) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -238,6 +238,20 @@ ActiveRecord::Schema.define(:version => 20120805011251) do
   add_index "pages", ["active"], :name => "index_pages_on_active"
   add_index "pages", ["language_id"], :name => "index_pages_on_language_id"
   add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true
+
+  create_table "queries", :force => true do |t|
+    t.string   "keyword"
+    t.string   "referrer"
+    t.string   "locale"
+    t.integer  "item_id"
+    t.integer  "user_id"
+    t.text     "raw_data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "queries", ["item_id"], :name => "index_queries_on_item_id"
+  add_index "queries", ["locale"], :name => "index_queries_on_locale"
 
   create_table "roles", :force => true do |t|
     t.string   "title"

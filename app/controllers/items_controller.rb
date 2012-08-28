@@ -108,6 +108,13 @@ class ItemsController < ApplicationController
     end
     
     if params[:q] && !params[:q].to_s.empty?
+      if is_human?
+        q = {}
+        q[:query]   = params[:q]
+        q[:user_id] = current_user.id if current_user
+        q[:locale]  = I18n.locale
+        Query.delay.store(q)
+      end
       term = params[:q].downcase
       @search = Item.solr_search(
         include: [:attachments, :comments, :category, :language, :item_stat, :user, :tags]
