@@ -7,12 +7,12 @@ describe Item do
     it "should enqueue the email subscription job" do
       expect {
         FactoryGirl.create(:item, draft: false, published_at: Time.now, send_emails: "1")
-      }.to change(SubscriptionQueue.jobs, :size).by(1)
+      }.to change(EmailDeliveryQueue.jobs, :size).by(1)
     end
     it "should enqueue the email subscription job in 600 seconds" do
       expect {
         FactoryGirl.create(:item, draft: false, published_at: Time.now+600, send_emails: "1")
-      }.to change(SubscriptionQueue.jobs, :size).by(1)
+      }.to change(EmailDeliveryQueue.jobs, :size).by(1)
     end
   end
 

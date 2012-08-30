@@ -2,13 +2,11 @@ require "spec_helper"
 
 describe CommentsNotifier do
 
-  describe "From a logged in user" do
-
+  describe "Notifying Admin" do
     let(:comment) { 
       FactoryGirl.create(:comment)
     }
-    let(:mail) { CommentsNotifier.new_comment(comment) }
-
+    let(:mail) { CommentsNotifier.to_admin(comment) }
     describe "the actual email" do
       it "should have correct subject" do
         mail.subject.should eq("[New Comment] by #{comment.display_name}")
@@ -23,7 +21,6 @@ describe CommentsNotifier do
         mail.reply_to.should eq(["inbox@worldmathaba.net"])
       end
     end
-
   end
 
 end

@@ -1,4 +1,4 @@
-class SubscriptionQueue < BaseWorker
+class EmailDeliveryQueue < BaseWorker
 
   def perform(item_id)
     if EmailDelivery.where(item_id: item_id).first
@@ -8,4 +8,5 @@ class SubscriptionQueue < BaseWorker
       Rails.logger.info("  Queue: Not delivering item: #{item_id}, it has been cancelled.")
     end
   end
+
 end

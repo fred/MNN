@@ -1,0 +1,18 @@
+New Comment at http://WorldMathaba.net
+====================================
+
+<%=h @comment.display_name %> Wrote: 
+
+<%=h @comment.body %>
+
+- Item: <%= @comment.commentable_title %>
+
+- Date: <%= @comment.created_at.to_s(:long) %>
+
+To see the full article, just follow this link: <%= @url %>
+
+You are receiving this email because you have opted for comments notifications for an article you commented
+
+You can Disable Email notifications using this link: https://worldmathaba.net/subscriptions
+
+Have a great day!

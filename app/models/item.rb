@@ -23,10 +23,11 @@ class Item < ActiveRecord::Base
   belongs_to :language,   inverse_of: :items
   has_one    :item_stat,  inverse_of: :item
 
-  has_many  :attachments, as: :attachable
-  has_many  :job_stats,   as: :processable
-  has_many  :twitter_shares,   dependent: :destroy
-  has_many  :email_deliveries, dependent: :destroy
+  has_many  :attachments,           as: :attachable
+  has_many  :job_stats,             as: :processable
+  has_many  :twitter_shares,        dependent: :destroy
+  has_many  :email_deliveries,      dependent: :destroy
+  has_many  :comment_subscriptions, dependent: :destroy
 
   has_and_belongs_to_many :tags, join_table: "taggings", 
     foreign_key: "taggable_id", association_foreign_key: "tag_id"

@@ -41,6 +41,7 @@ Publication::Application.routes.draw do
     get 'reply', :on => :member
   end
 
+  resources :subscriptions
   resources :contacts
   resources :pages
   resources :roles

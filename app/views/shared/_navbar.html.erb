@@ -104,6 +104,13 @@
                 Edit Profile
               <% end %>
             </li>
+
+            <li>
+              <%= link_to subscriptions_path, title: "My Subscriptions" do %>
+                <i class="icon-envelope"></i>
+                My Subscriptions
+              <% end %>
+            </li>
             
             <li>
               <%= link_to author_path(current_admin_user), title: "My Articles Page" do %>
@@ -155,6 +162,13 @@
               %>
                 <i class="icon-user"></i>
                 Edit Profile
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to subscriptions_path, title: "My Subscriptions" do %>
+                <i class="icon-envelope"></i>
+                My Subscriptions
               <% end %>
             </li>
 

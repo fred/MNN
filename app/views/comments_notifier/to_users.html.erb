@@ -178,19 +178,9 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
         <span style="color:<%=color%>;">
           <%= sanitize(@comment.body,
                 tags: %w(p div a i em b blockquote pre ul ol li strong),
-                attributes: %w(href target rel rev))
+                attributes: %w(href target rel rev)).html_safe
           %>
         </span>
-        <% if @comment.suspicious %>
-          <p style="color:<%=color%>;">
-            Suspicious: <%= bool_word @comment.suspicious %>
-          </p>
-        <% end %>
-        <% if @comment.marked_spam %>
-          <p style="color:<%=color%>;">
-            Spam: <%= bool_word @comment.marked_spam %>
-          </p>
-        <% end %>
         <p>
           Details: <%= link_to @url, @url %>
         </p>
@@ -208,9 +198,10 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
           Date: <%= @comment.created_at.to_s(:long) %>
         </p>
       </div>
+      <p>You are receiving this email because you have opted for comments notifications for an article you commented</p>
       <p>
-        To disable email notifications follow 
-        <%= link_to "this link", "https://worldmathaba.net/admin/comment_subscriptions" %>.
+        You can Disable Email notifications using 
+        <%= link_to "this link", "https://worldmathaba.net/subscriptions" %>.
       </p>
     </div>
   </div>

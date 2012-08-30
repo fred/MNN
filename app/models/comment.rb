@@ -1,5 +1,8 @@
 class Comment < ActiveRecord::Base
+  attr_accessor :subscribe
+
   opinio counter_cache: true
+
   include Rakismet::Model
   # AKISMET parameters:
   # author        : name submitted with the comment
@@ -13,16 +16,24 @@ class Comment < ActiveRecord::Base
   # referrer      : referring URL (note the spelling)
   
   validates_presence_of :body
-  attr_accessible :body, :commentable_id, :commentable_type, :approved, :marked_spam, :suspicious, :approved_by
+  attr_accessible :body, :commentable_id, :commentable_type, :approved, :marked_spam, :suspicious, :approved_by, :subscribe
   
   # belongs_to :user
   belongs_to :approving_user, foreign_key: :approved_by, class_name: "User"
   
   before_create :check_for_spam
-  after_create  :email_notify, :touch_commentable
+  after_create  :notify_admin, :notify_users, :touch_commentable, :subscribe_users
 
   delegate :name, to: :owner, allow_nil: true
 
+
+  def subscribe_users
+    if (subscribe.to_s == "1" or subscribe == true)
+      unless CommentSubscription.where(item_id: self.commentable_id, user_id: self.owner_id).first
+        CommentSubscription.create(item_id: self.commentable_id, user_id: self.owner_id)
+      end
+    end
+  end
 
   def touch_commentable
     if !marked_spam? && commentable && commentable.respond_to?(:update_column)
@@ -30,12 +41,23 @@ class Comment < ActiveRecord::Base
     end
   end
 
-  # Send the email notifications 15 seconds after creation
-  def email_notify
+  # Send email to users 60 seconds after creation
+  def notify_users
+    unless marked_spam
+      if Rails.env.production?
+        CommentsNotifier.delay_for(60).to_users(self.id)
+      else
+        CommentsNotifier.to_users(self.id).deliver
+      end
+    end
+  end
+
+  # Send email to admins 15 seconds after creation
+  def notify_admin
     if Rails.env.production?
-      CommentsNotifier.delay_for(15).new_comment(self.id)
+      CommentsNotifier.delay_for(15).to_admin(self.id)
     else
-      CommentsNotifier.new_comment(self.id).deliver
+      CommentsNotifier.to_admin(self.id).deliver
     end
   end
 

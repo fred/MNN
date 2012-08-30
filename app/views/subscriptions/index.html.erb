@@ -1,0 +1,33 @@
+<div class="well">
+  <% unless @subscriptions.empty? %>
+    <h3>My Subscriptions</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Article</th>
+          <th>Comments</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @subscriptions.each do |subscription| %>
+          <tr>
+            <td><%= link_to subscription.item.title, subscription.item %></td>
+            <td><%= subscription.item.comments_count %></td>
+            <td><%= subscription.created_at.to_s(:short) %></td>
+            <td>
+              <%= button_to("Unsubscribe",
+                    subscription_path(subscription),
+                    method: :delete,
+                    class: "btn btn-danger",
+                    data: {confirm: "Are you sure you want to unsubscribe?"}
+                  )
+              %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

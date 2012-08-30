@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120825004046) do
+ActiveRecord::Schema.define(:version => 20120830074404) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -315,9 +315,10 @@ ActiveRecord::Schema.define(:version => 20120825004046) do
     t.integer  "user_id"
     t.integer  "item_id"
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "type"
+    t.boolean  "admin",      :default => false
   end
 
   add_index "subscriptions", ["item_id"], :name => "index_subscriptions_on_item_id"
@@ -342,16 +343,6 @@ ActiveRecord::Schema.define(:version => 20120825004046) do
 
   add_index "tags", ["slug"], :name => "index_tags_on_slug", :unique => true
   add_index "tags", ["type"], :name => "index_tags_on_type"
-
-  create_table "translations", :force => true do |t|
-    t.string   "locale"
-    t.string   "key"
-    t.text     "value"
-    t.text     "interpolations"
-    t.boolean  "is_proc",        :default => false
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
-  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false

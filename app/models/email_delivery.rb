@@ -8,7 +8,7 @@ class EmailDelivery < ActiveRecord::Base
   
   def enqueue
     Rails.logger.info("  Queue: Delivering email for: #{self.item_id}")
-    SubscriptionQueue.perform_at(self.send_at, self.item_id)
+    EmailDeliveryQueue.perform_at(self.send_at, self.item_id)
     Rails.logger.info("  Queue: Completed email delivery for: #{self.item_id}")
   end
 end

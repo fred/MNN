@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   # has_many :comments
   has_and_belongs_to_many :roles
   has_many :subscriptions, dependent: :destroy, conditions: {item_id: nil}
-  has_many :item_subscriptions, dependent: :destroy, conditions: "item_id is not NULL", class_name: "Subscription"
+  has_many :comment_subscriptions, dependent: :destroy
 
   before_save   :create_subscriptions
   before_save   :cancel_subscriptions
@@ -152,7 +152,6 @@ class User < ActiveRecord::Base
   def cancel_subscriptions
     if (self.unsubscribe_all.to_s == "1" or self.unsubscribe_all == true) && !self.subscriptions.empty?
       self.subscriptions.destroy_all
-      self.item_subscriptions.destroy_all
     end
     true
   end

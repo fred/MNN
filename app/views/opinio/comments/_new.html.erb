@@ -16,13 +16,22 @@
       </p>
       <%= hidden_field_tag :commentable_id, commentable.id %>
       <%= hidden_field_tag :commentable_type, commentable.class.base_class.name.to_s %>
+
       <div class="send_button">
+        <% if is_subscribed?(@item.id) %>
+          <p>You are subscribed to comments on this article, you can cancel <%= link_to "here", subscriptions_path %> </p>
+        <% else %>
+          <p>
+            <%= f.check_box :subscribe %> 
+            <%= f.label :subscribe, "Receive email for new comments?", class: "inline" %>
+          </p>
+        <% end %>
+
         <%= f.submit "Send Comment",
                 class: "btn btn-primary",
                 data: {disable_with: 'Sending...'}
         %>
       </div>
-      <p>
     <% end %>
   <% else %>
     <p>
