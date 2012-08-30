@@ -21,7 +21,7 @@
             <%= link_to "Home", root_path, title: 'World Mathaba Independent News Agency', rel: 'home' %>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sections <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= _("Sections") %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <% @site_categories.each do |category|%>
                 <li><%= link_to category.title, category, title: category.title %></li>
@@ -29,7 +29,7 @@
             </ul>
           </li>
           <li class="dropdown hidden-phone" data-dropdown="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Regions <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= _("Regions") %> <b class="caret"></b></a>
             <ul class="dropdown-menu hidden-phone">
               <% @site_region_tags.each do |tag|%>
                 <li><%= link_to tag.title, tag_path(tag), title: tag.title %></li>
@@ -37,7 +37,7 @@
             </ul>
           </li>
           <li class="dropdown hidden-phone hidden-tablet" data-dropdown="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Countries <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= _("Countries") %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <% @site_country_tags.each do |tag| %>
                 <li><%= link_to tag.title, tag_path(tag), title: tag.title %></li>
@@ -45,7 +45,7 @@
             </ul>
           </li>
           <li class="dropdown hidden-phone hidden-tablet" data-dropdown="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tags <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= _("Tags") %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <% @site_general_tags.each do |tag| %>
                 <li>
@@ -55,7 +55,7 @@
             </ul>
           </li>
           <li class="dropdown" data-dropdown="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Languages <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= _("Languages") %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <% @site_languages.each do |language|%>
                 <li>
@@ -89,7 +89,7 @@
           <% elsif current_admin_user %>
             <%= current_admin_user.title %>
           <% else %>
-            Account
+            <%= _("Account") %>
           <% end %>
           <span class="caret"></span>
         </a>
@@ -99,23 +99,23 @@
           <% if current_admin_user %>
 
             <li>
-              <%= link_to edit_user_registration_url(protocol: http_protocol), title: "Edit My Profile" do %>
+              <%= link_to edit_user_registration_url(protocol: http_protocol), title: _("Edit My Profile") do %>
                 <i class="icon-user"></i>
-                Edit Profile
+                <%= _("Edit Profile") %>
               <% end %>
             </li>
 
             <li>
-              <%= link_to subscriptions_path, title: "My Subscriptions" do %>
+              <%= link_to subscriptions_path, title: _("My Subscriptions") do %>
                 <i class="icon-envelope"></i>
-                My Subscriptions
+                <%= _("My Subscriptions") %>
               <% end %>
             </li>
             
             <li>
-              <%= link_to author_path(current_admin_user), title: "My Articles Page" do %>
+              <%= link_to author_path(current_admin_user), title: _("My Articles Page") do %>
                 <i class="icon-list"></i>
-                My Articles
+                <%= _("My Articles") %>
               <% end %>
             </li>
             
@@ -124,7 +124,7 @@
             <li>
               <%= link_to admin_dashboard_url(protocol: http_protocol) do %>
                 <i class="icon-briefcase"></i>
-                Admin
+                <%= _("Admin") %>
               <% end %>
             </li>
 
@@ -132,7 +132,7 @@
               <li>
                 <%= link_to new_admin_item_path(protocol: http_protocol) do %>
                   <i class="icon-pencil"></i>
-                  New Item
+                  <%= _("New Item") %>
                 <% end %>
               </li>
             <% end %>
@@ -146,11 +146,11 @@
 
             <li>
               <%= link_to destroy_admin_user_session_url(protocol: http_protocol),
-                    title: 'Logout',
+                    title: _('Logout'),
                     method: :delete do
               %>
                 <i class="icon-off"></i>
-                Sign out
+                <%= _("Sign out") %>
               <% end %>
             </li>
 
@@ -158,22 +158,22 @@
 
             <li>
               <%= link_to edit_user_registration_url(protocol: http_protocol),
-                  title: "Edit My Profile" do 
+                  title: _("Edit My Profile") do 
               %>
                 <i class="icon-user"></i>
-                Edit Profile
+                <%= _("Edit Profile") %>
               <% end %>
             </li>
 
             <li>
-              <%= link_to subscriptions_path, title: "My Subscriptions" do %>
+              <%= link_to subscriptions_path, title: _("My Subscriptions") do %>
                 <i class="icon-envelope"></i>
-                My Subscriptions
+                <%= _("My Subscriptions") %>
               <% end %>
             </li>
 
             <li>
-              <%= link_to "My Articles", author_path(current_user), title: "My Articles Page" %>
+              <%= link_to _("My Articles"), author_path(current_user), title: _("My Articles Page") %>
             </li>
             
             <% if current_user.has_any_role?(:admin,:security) %>
@@ -186,25 +186,25 @@
             <li>
               <%= link_to destroy_user_session_url(protocol: http_protocol),
                     method: :delete,
-                    title: 'Logout' do
+                    title: _('Logout') do
               %>
                 <i class="icon-off"></i>
-                Sign out
+                <%= _("Sign out") %>
               <% end %>
             </li>
           <% else %>
-            <li><%= login_link 'Sign in' %></li>
+            <li><%= login_link _('Sign in') %></li>
             <%- if Devise.mappings[:user].registerable?  %>
               <li>
-                <%= link_to "Sign up",new_registration_url(:user, protocol: http_protocol), title: "Sign up" %>
+                <%= link_to _("Sign up"), new_registration_url(:user, protocol: http_protocol), title: _("Register a new Account") %>
               </li>
             <% end -%>
             <%- if Devise.mappings[:user].recoverable? && controller_name != 'passwords' %>
-              <li><%= link_to "Forgot your password?", new_password_url(:user, protocol: http_protocol) %></li>
+              <li><%= link_to _("Forgot your password?"), new_password_url(:user, protocol: http_protocol) %></li>
             <% end -%>
             <%- if Devise.mappings[:user].confirmable? && controller_name != 'confirmations' %>
               <li>
-                <%= link_to "Didn't receive confirmation instructions?", new_confirmation_url(:user, protocol: http_protocol) %>
+                <%= link_to _("Didn't receive confirmation instructions?"), new_confirmation_url(:user, protocol: http_protocol) %>
               </li>
             <% end -%>
           <% end %>

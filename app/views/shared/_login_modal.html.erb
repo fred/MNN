@@ -1,7 +1,7 @@
 <div class="modal hide fade" id="modal-login" style="display: none;">
   <div class="modal-header hidden-phone">
     <button class="close" data-dismiss="modal">X</button>
-    <h3>Sign in</h3>
+    <h3><%= _("Sign in") %></h3>
   </div>
   <%= form_for(:user, as: :user, 
         url: new_session_url(:user, protocol: 'https'),
@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="control-group">
-        <%= f.label :password, class: 'control-label' %>
+        <%= f.label :password, _("Password"), class: 'control-label' %>
         <div class="controls">
           <%= f.password_field :password, class: "span4"  %>
         </div>
@@ -24,15 +24,15 @@
         <div class="controls">
           <%= f.check_box :remember_me %>
           <label class="inline" for="user_remember_me">
-            Stay Signed in
+            <%= _("Stay Signed in") %>
           </label>
         </div>
       </div>
       <div class="control-group">
         <div class="controls">
           <div class="btn-group">
-            <%= f.submit "Sign in", class: "btn", data: {disable_with: 'Sending...'} %>
-            <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+            <%= f.submit _("Sign in"), class: "btn", data: {disable_with: _('Sending...')} %>
+            <a href="#" class="btn" data-dismiss="modal"><%= _("Cancel") %></a>
           </div>
         </div>
       </div>
@@ -40,23 +40,23 @@
       <div class='control-group'>
         <div class="controls">
           New here? 
-          <%= link_to "Register now",
+          <%= link_to _("Register now"),
                   new_registration_url(:user, protocol: 'https'),
-                  title: "Click here to register a new Account"
+                  title: _("Click here to register a new Account")
           %>
         </div>
       </div>
 
       <div class='control-group'>
         <div class="controls">
-          <%= link_to "Forgot Password?", new_password_url(:user, protocol: "https") %>
+          <%= link_to _("Forgot Password?"), new_password_url(:user, protocol: "https") %>
         </div>
       </div>
 
       <div class='control-group'>
         <div class="horizontal-divider"></div>
         <div class="controls">
-          <b>Or login with your existing services:</b>
+          <b><%= _("Or login with your existing services") %></b>
         </div>
       </div>
       

@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::Base
+  include FastGettext::Translation
   include SimpleCaptcha::ControllerHelpers
   require 'uri'
   require 'set'
   
   protect_from_forgery
 
+  before_filter :set_gettext_locale
   before_filter :sidebar_variables
   before_filter :mini_profiler  
   before_filter :get_locale
@@ -38,10 +40,14 @@ class ApplicationController < ActionController::Base
   def get_locale
     subdomain = extract_locale_from_subdomain
     if subdomain
-      I18n.locale = extract_locale_from_subdomain
+      extracted_locale = extract_locale_from_subdomain
+      I18n.locale = extracted_locale
+      FastGettext.locale = extracted_locale
+      session[:locale] = extracted_locale
     else
       set_default_locale
     end
+    Rails.logger.debug("  Locale: FastGettext=#{FastGettext.locale} I18n=#{I18n.locale.to_s}")
   end
 
   def redirect_to_default_domain(str)
@@ -82,6 +88,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_default_locale
+    FastGettext.locale = default_locale
     I18n.locale = default_locale.to_sym
   end
 
@@ -94,10 +101,12 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale_from_session
+    FastGettext.locale = session[:locale]
     I18n.locale = session[:locale].to_sym
   end
 
   def set_locale_from_params
+    FastGettext.locale = params[:locale]
     I18n.locale = params[:locale].to_sym
     session[:locale] = params[:locale].to_sym
   end

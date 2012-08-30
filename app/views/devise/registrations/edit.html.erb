@@ -10,51 +10,51 @@
       <%= custom_devise_error_messages! %>
 
       <% if f.object.email.to_s.match("please_update_your_email") %>
-        <div class="alert alert-notice">Please update your email address</div>
+        <div class="alert alert-notice"><%= _("Please update your email address") %></div>
       <% end %>
 
       <fieldset class="withBorder">
-        <legend>Private Information</legend>
+        <legend><%= _("Private Information") %></legend>
 
         <div class="control-group">
           <%= f.label :email, class: 'control-label' %>
           <div class="controls">
             <%= f.text_field :email, required: true, type: "email", class: "imput-large" %>
-            <p class="help-block">Your email will not be shown to the public.</p>
+            <p class="help-block"><%= _("Your email will not be shown to the public.") %></p>
           </div>
         </div>
 
         <div class="control-group">
-          <%= f.label :name, class: 'control-label' %>
+          <%= f.label :name, _("Name"), class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :name, required: false, placeholder: "Your public name, ex: Anonymous",
+            <%= f.text_field :name, required: false, placeholder: _("Your public name, ex: Anonymous"),
                   autofocus: true, class: "imput-large"
             %>
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :time_zone, class: 'control-label' %>
+          <%= f.label :time_zone, _("Time Zone"), class: 'control-label' %>
           <div class="controls">
             <%= f.time_zone_select :time_zone %>
           </div>
         </div>
 
         <div class="control-group">
-          <%= f.label :registration_role, "Reason for joining us?", class: 'control-label' %>
+          <%= f.label :registration_role, _("Reason for joining us?"), class: 'control-label' %>
           <div class="controls">
             <%= f.select :registration_role, 
-                  options_for_select([["Just be a member"], ["To Comment"], ["Comment and Submit Articles"], ["I want to be an Editor"]]),
-                  {include_blank: "-- Please Choose"},
+                  options_for_select([[_("Just be a member")], [_("To Comment")], [_("Comment and Submit Articles")], [_("I want to be an Editor")]]),
+                  {include_blank: _("-- Please Choose")},
                   required: false,
                   class: "imput-medium"
             %>
-            <p class="help-block">Not shown to the public</p>
+            <p class="help-block"><%= _("Not shown to the public") %></p>
           </div>
         </div>
       </fieldset>
 
       <fieldset class="withBorder">
-        <legend>Public Information</legend>
+        <legend><%= _("Public Information") %></legend>
 
         <div class="control-group">
           <%= f.label :facebook, class: 'control-label' %>
@@ -105,26 +105,26 @@
         </div>
 
         <div class="control-group">
-          <%= f.label :bio, "You Bio", class: 'control-label' %>
+          <%= f.label :bio, _("Your Bio"), class: 'control-label' %>
           <div class="controls">
             <%= f.text_area :bio, required: false, class: "imput-medium",
-                  placeholder: "Say something about yourself.",
+                  placeholder: _("Say something about yourself."),
                   rows: 7, cols: 24
             %>
-            <p class="help-block">Shown on your public profile</p>
+            <p class="help-block"><%= _("Shown on your public profile") %></p>
           </div>
         </div>
 
       </fieldset>
 
       <fieldset class="withBorder">
-        <legend>Profile Image</legend>
+        <legend><%= _("Profile Image") %></legend>
         <div class="control-group">
-          <%= f.label :avatar, "Upload Avatar", class: 'control-label' %>
+          <%= f.label :avatar, _("Upload Avatar"), class: 'control-label' %>
           <div class="controls">
             <%= f.file_field :avatar, class: "imput-large" %>
             <p class="help-block">
-              Your avatar image will be shown in the comments section.
+              <%= _("Your avatar image will be shown in the comments section.") %>
             </p>
           </div>
           <% if f.object.has_image? %>
@@ -137,41 +137,41 @@
               %>
             </div>
             <div class="controls">
-              <%= f.check_box :remove_avatar %> Delete this image
+              <%= f.check_box :remove_avatar %> <%= _("Delete this image") %>
             </div>
           <% end %>
         </div>
       </fieldset>
 
       <fieldset class="withBorder">
-        <legend>GPG Key</legend>
+        <legend><%= _("GPG Key") %></legend>
         <div class="control-group">
-          <%= f.label :gpg, "Your Public key", class: 'control-label' %>
+          <%= f.label :gpg, _("Your Public key"), class: 'control-label' %>
           <div class="controls">
             <%= f.file_field :gpg, class: "imput-large" %>
             <p class="help-block">
-              Only upload your Public Key.
+              <%= _("Only upload your Public Key.") %>
               <br />
-              It will be available for download on your profile page.
+              <%= _("It will be available for download on your profile page.") %>
             </p>
           </div>
           <% if f.object.gpg? %>
             <div class="controls">
-              <%= link_to("Download Current Key", f.object.gpg.url, target: "blank") %>
+              <%= link_to(_("Download Current Key"), f.object.gpg.url, target: "blank") %>
             </div>
           <% end %>
         </div>
       </fieldset>
       
       <fieldset class="withBorder">
-        <legend>Email Subscriptions</legend>
+        <legend><%= _("Email Subscriptions") %></legend>
         <% if f.object.has_subscription? %>
           <div class="control-group">
             <div class="controls">
               <%= f.check_box :unsubscribe %>
-              <%= label_tag "Cancel Alert Subscription", nil, class: 'inline', for: 'user_unsubscribe' %>
+              <%= label_tag _("Cancel Subscription"), nil, class: 'inline', for: 'user_unsubscribe' %>
               <p class="help-block">
-                Select this if you wish to <b>Stop</b> receiving email notifications when a new Article is published.
+                <%= _("Select this if you wish to <b>Stop</b> receiving email notifications when a new Article is published.") %>
               </p>
             </div>
           </div>
@@ -179,13 +179,13 @@
           <div class="control-group">
             <div class="controls">
               <%= f.check_box :subscribe %>
-              <%= label_tag "New Articles Alert", nil , class: 'inline', for: 'user_subscribe' %>
+              <%= label_tag _("New Articles Alert"), nil , class: 'inline', for: 'user_subscribe' %>
               <p class="help-block">
-                Select this if you wish to receive email notifications when a new Article is published.
+                <%= _("Select this if you wish to receive email notifications when a new Article is published.") %>
               </p>
               <% if f.object.email.to_s.match("please_update_your_email") %>
                 <p class="alert alert-notice">
-                  Please update your email address to enable subscriptions
+                  <%= _("Please update your email address to enable subscriptions") %>
                 </p>
               <% end %>
             </div>
@@ -195,16 +195,16 @@
       
       <fieldset class="withBorder">
         <% if f.object.oauth_data.blank? %>
-          <legend>Change Password</legend>
+          <legend><%= _("Change Password") %></legend>
         <% else %>
-          <legend>Create a Password</legend>
+          <legend><%= _("Create a Password") %></legend>
         <% end %>
         <div class="control-group">
-          <%= f.label :password, "New Password", class: 'control-label' %>
+          <%= f.label :password, _("New Password"), class: 'control-label' %>
           <div class="controls">
             <%= f.password_field :password, autocomplete: "off", required: false, class: "imput-large" %>
             <span class="help-block">
-              Leave blank if you do not want to change password
+              <%= _("Leave blank if you do not want to change password") %>
             </span>
             <div id="progress"></div>
             <div id="complexity"></div>
@@ -212,7 +212,7 @@
         </div>
 
         <div class="control-group">
-          <%= f.label :password_confirmation, "New Password Again", class: 'control-label' %>
+          <%= f.label :password_confirmation, _("New Password Again"), class: 'control-label' %>
           <div class="controls">
             <%= f.password_field :password_confirmation, autocomplete: "off", required: false, class: "imput-large"  %>
           </div>
@@ -220,11 +220,11 @@
       </fieldset>
 
       <div class="form-actions">
-        <%= f.submit "Update", class: "btn btn-primary", data: {disable_with: 'Processing...'} %>
+        <%= f.submit _("Update"), class: "btn btn-primary", data: {disable_with: _('Processing...')} %>
         &nbsp;
-        <%= link_to "Delete my account",
+        <%= link_to _("Delete my account"),
               registration_path(resource_name),
-              data: {confirm: "Are you sure you want to delete your account from our system?"},
+              data: {confirm: _("Are you sure you want to delete your account from our system?")},
               method: :delete,
               class: 'btn btn-danger'
         %>
@@ -240,7 +240,7 @@
     <%= link_to "Home", root_path, title: "Home", rel: 'home' %>
     <span class="divider">/</span>
   </li>
-  <li class="active">Edit Profile</li>
+  <li class="active"><%= _("Edit Profile") %></li>
 <% end %>
 
 <% content_for :footer do %>

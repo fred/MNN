@@ -20,12 +20,12 @@
     <% if @author.gpg? %>
       <p>GPG Key: <%= link_to "Download", @author.gpg.url %></p>
     <% end %>
-    <p>Submitted Articles: <%= @author.items_count %></p>
-    <p>Original Articles: <%= @author.original_items_count %></p>
+    <p><%= _("Submitted Articles:") %> <%= @author.items_count %></p>
+    <p><%= _("Original Articles:")%> <%= @author.original_items_count %></p>
     <br />
     <%= @author.bio %>
     <% if (current_user && @author.id == current_user.id) or (current_admin_user && @author.id == current_admin_user.id) %>
-      <%= link_to "Edit my Profile", edit_user_registration_url(protocol: 'https'), class: "btn" %>
+      <%= link_to _("Edit my Profile"), edit_user_registration_url(protocol: 'https'), class: "btn" %>
     <% end %>
   </section>
 </article>
@@ -34,11 +34,11 @@
   <div class='alert alert-info'>
     <a class="close" data-dismiss="alert" href="#">×</a>
     <% if (current_user && (current_user.id == @author.id)) or (current_admin_user && @author.id == current_admin_user.id) %>
-      <h4 class="alert-heading">You have not submitted any articles yet</h4>
-      Please read this page if you would like to contribute with articles: 
-      <u><b><%= link_to("How To Contribute", @help_page) if @help_page %></b></u>
+      <h4 class="alert-heading"><%= _("You have not submitted any articles yet") %></h4>
+      <%= _("Please read this page if you would like to contribute with articles: ") %>
+      <u><b><%= link_to(_("How To Contribute"), @help_page) if @help_page %></b></u>
     <% else %>
-      <h4 class="alert-heading">This user has no Articles yet.</h4>
+      <h4 class="alert-heading"><%= _("This user has no Articles yet.") %></h4>
     <% end %>
   </div>
 <% else %>
@@ -57,7 +57,7 @@
     <span class="divider">/</span>
   </li>
   <li>
-    <%= link_to "Authors", authors_path, title: "All Authors Page" %>
+    <%= link_to _("Authors"), authors_path, title: _("All Authors Page") %>
     <span class="divider">/</span>
   </li>
   <li class="active">
@@ -65,7 +65,7 @@
     <%= link_to(
           image_tag("icons/social/rss_16.png", alt: "RSS for #{@author.public_display_name}"), 
           author_path(@author, format: "rss"),
-          title: "RSS feed for #{@author.public_display_name}"
+          title: (_("RSS feed for %{str}") % { str: @author.public_display_name })
         )
     %>
   </li>

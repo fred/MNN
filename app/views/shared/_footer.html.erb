@@ -12,39 +12,39 @@
       <% @site_pages.each do |page| %>
         <li><%= link_to page.title, page, title: page.title %></li>
       <% end %>
-      <li><%= link_to "Feeds", feed_path, title: "Multiple RSS Feeds" %></li>
+      <li><%= link_to _("Feeds"), feed_path, title: _("Multiple RSS Feeds") %></li>
     <% end %>
 
     <% if current_user or current_admin_user %>
       <li>
-        <%= link_to "Edit Profile", 
+        <%= link_to _("Edit Profile"),
               edit_user_registration_url(protocol: http_protocol),
-              title: "Edit your Profile information"
+              title: _("Edit your Profile information")
         %>
       </li>
       <li>
-        <%= link_to 'Logout', 
+        <%= link_to _('Logout'),
               destroy_user_session_url(protocol: http_protocol),
-              method: :delete, title: "Logout"
+              method: :delete, title: _("Logout")
         %>
       </li>
     <% else %>
       <li>
-        <%= login_link 'Login' %>
+        <%= login_link _('Login') %>
       </li>
       <%- if Devise.mappings[:user].registerable?  %>
         <li>
-          <%= link_to "Registration", 
+          <%= link_to _("Registration"),
                 new_registration_url(:user, protocol: http_protocol),
-                title: "Please Join us" 
+                title: _("Please Join us")
           %>
         </li>
       <% end %>
       <%- if Devise.mappings[:user].recoverable? && controller_name != 'passwords' %>
         <li>
-          <%= link_to "Forgot your password?",
+          <%= link_to _("Forgot your password?"),
                 new_password_url(:user, protocol: http_protocol), 
-                title: "Click here to recover your password." 
+                title: _("Click here to recover your password.")
           %>
         </li>
       <% end %>

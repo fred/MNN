@@ -5,7 +5,7 @@
       <%= link_to(
             image_tag("icons/social/rss_16.png", alt: "RSS for #{tag.title}"), 
             tag_path(tag, format: "rss"),
-            title: "RSS feed for #{tag.title} tagged items"
+            title: (_("RSS feed for %{str}") % { str: tag.title })
           )
       %>
     </div>

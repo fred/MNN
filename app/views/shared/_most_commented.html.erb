@@ -1,11 +1,11 @@
 <div class="sidebar_secions">
-  <h4>Most Commented</h4>
+  <h4><%= _("Most Commented") %></h4>
   <% Item.most_commented(3).each do |item| %>
     <div class="sidebar-item">
       <%= item_mini(item).html_safe %>
       <span class="comment-date">
         <i class="icon-comments"></i>
-        <%= pluralize(item.comments_count, "comment") %>
+        <%= n_("Comment", "Comments", item.comments_count) %>
       </span>
       <span class="horizontal-divider"></span>
     </div>

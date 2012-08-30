@@ -114,6 +114,7 @@ class ItemsController < ApplicationController
         include: [:attachments, :comments, :category, :language, :item_stat, :user, :tags]
       ) do
         fulltext term do
+          phrase_fields author_name: 3.0
           phrase_fields title: 1.8
           phrase_fields abstract: 1.6
           phrase_fields tags: 1.5

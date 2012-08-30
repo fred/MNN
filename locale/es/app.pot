@@ -1,0 +1,564 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: version 0.0.1\n"
+"POT-Creation-Date: 2012-08-29 01:51+0700\n"
+"PO-Revision-Date: 2012-08-29 01:51+0700\n"
+"Last-Translator: Frederico Araujo <fred@worldmathaba.net>\n"
+"Language-Team: Spanish <fred@worldmathaba.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: app/views/authors/index.html.erb:21
+msgid "Articles Submitted:"
+msgstr ""
+
+#: app/views/authors/index.html.erb:22 app/views/authors/show.html.erb:24
+msgid "Original Articles:"
+msgstr ""
+
+#: app/views/authors/show.html.erb:23
+msgid "Submitted Articles:"
+msgstr ""
+
+#: app/views/authors/show.html.erb:28
+msgid "Edit my Profile"
+msgstr "Editar My Cuenta"
+
+#: app/views/authors/show.html.erb:37
+msgid "You have not submitted any articles yet"
+msgstr ""
+
+#: app/views/authors/show.html.erb:38
+msgid "Please read this page if you would like to contribute with articles: "
+msgstr ""
+
+#: app/views/authors/show.html.erb:39
+msgid "How To Contribute"
+msgstr "Como Contribuir"
+
+#: app/views/authors/show.html.erb:41
+msgid "This user has no Articles yet."
+msgstr ""
+
+#: app/views/authors/show.html.erb:60
+msgid "Authors"
+msgstr "Autores"
+
+#: app/views/authors/show.html.erb:60
+msgid "All Authors Page"
+msgstr "Todos los Autores"
+
+#: app/views/authors/show.html.erb:68 app/views/tags/index.html.erb:8
+msgid "RSS feed for %{str}"
+msgstr ""
+
+#: app/views/categories/index.html.erb:56
+msgid "Latest News"
+msgstr "Últimas Notícias"
+
+#: app/views/categories/index.html.erb:92 app/views/categories/index.html.erb:142
+msgid "more..."
+msgstr "más..."
+
+#: app/views/categories/index.html.erb:92
+msgid "Read more breaking news"
+msgstr "Leer mas noticias"
+
+#: app/views/categories/index.html.erb:142
+msgid "Read more articles in this category"
+msgstr ""
+
+#: app/views/categories/show.html.erb:24
+msgid "RSS feed for items in category %{str}"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:13
+msgid "Please update your email address"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:17
+msgid "Private Information"
+msgstr "Información Privada"
+
+#: app/views/devise/registrations/edit.html.erb:23 app/views/devise/registrations/new.html.erb:24
+msgid "Your email will not be shown to the public."
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:28 app/views/devise/registrations/new.html.erb:53
+msgid "Name"
+msgstr "Nombre"
+
+#: app/views/devise/registrations/edit.html.erb:30
+msgid "Your public name, ex: Anonymous"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:36
+msgid "Time Zone"
+msgstr "Zone de Horario"
+
+#: app/views/devise/registrations/edit.html.erb:43 app/views/devise/registrations/new.html.erb:42
+msgid "Reason for joining us?"
+msgstr "Razón para Registrarse"
+
+#: app/views/devise/registrations/edit.html.erb:46 app/views/devise/registrations/new.html.erb:45
+msgid "Just be a member"
+msgstr "Solo ser un miembro"
+
+#: app/views/devise/registrations/edit.html.erb:46 app/views/devise/registrations/new.html.erb:45
+msgid "To Comment"
+msgstr "Para Comentar"
+
+#: app/views/devise/registrations/edit.html.erb:46 app/views/devise/registrations/new.html.erb:45
+msgid "Comment and Submit Articles"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:46 app/views/devise/registrations/new.html.erb:45
+msgid "I want to be an Editor"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:47 app/views/devise/registrations/new.html.erb:46
+msgid "-- Please Choose"
+msgstr "-- Por favor elija"
+
+#: app/views/devise/registrations/edit.html.erb:51
+msgid "Not shown to the public"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:57
+msgid "Public Information"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:108
+msgid "Your Bio"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:111
+msgid "Say something about yourself."
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:114
+msgid "Shown on your public profile"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:121
+msgid "Profile Image"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:123
+msgid "Upload Avatar"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:127
+msgid "Your avatar image will be shown in the comments section."
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:140
+msgid "Delete this image"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:147
+msgid "GPG Key"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:149
+msgid "Your Public key"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:153
+msgid "Only upload your Public Key."
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:155
+msgid "It will be available for download on your profile page."
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:160
+msgid "Download Current Key"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:167
+msgid "Email Subscriptions"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:170
+msgid "Cancel Subscription"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:174
+msgid "Select this if you wish to <b>Stop</b> receiving email notifications when a new Article is published."
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:180
+msgid "Subscribe"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:184
+msgid "Select this if you wish to receive email notifications when a new Article is published."
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:188
+msgid "Please update your email address to enable subscriptions"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:198
+msgid "Change Password"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:200
+msgid "Create a Password"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:203
+msgid "New Password"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:207
+msgid "Leave blank if you do not want to change password"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:215
+msgid "New Password Again"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:223
+msgid "Update"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:223
+msgid "Processing..."
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:225
+msgid "Delete my account"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:227
+msgid "Are you sure you want to delete your account from our system?"
+msgstr ""
+
+#: app/views/devise/registrations/edit.html.erb:243 app/views/shared/_footer.html.erb:20
+#: app/views/shared/_navbar.html.erb:104 app/views/shared/_navbar.html.erb:157
+#: app/views/shared/_sidebar.html.erb:60 app/views/shared/_sidebar.html.erb:70
+msgid "Edit Profile"
+msgstr ""
+
+#: app/views/devise/registrations/new.html.erb:13 app/views/shared/_navbar.html.erb:185
+#: app/views/shared/_sidebar.html.erb:83
+msgid "Sign up"
+msgstr "Registrar"
+
+#: app/views/devise/registrations/new.html.erb:15
+msgid "Email"
+msgstr ""
+
+#: app/views/devise/registrations/new.html.erb:18
+msgid "Your email is required"
+msgstr ""
+
+#: app/views/devise/registrations/new.html.erb:28 app/views/shared/_login_modal.html.erb:18
+msgid "Password"
+msgstr "Contraseña"
+
+#: app/views/devise/registrations/new.html.erb:36
+msgid "Password Confirmation"
+msgstr "Confirmación de Contraseña"
+
+#: app/views/devise/registrations/new.html.erb:55
+msgid "Example: Anonymous"
+msgstr ""
+
+#: app/views/devise/registrations/new.html.erb:62
+msgid "I agree to the"
+msgstr "Estoy de Acuerdo con el"
+
+#: app/views/devise/registrations/new.html.erb:63
+msgid "Terms of Service and Privacy Policy"
+msgstr ""
+
+#: app/views/devise/registrations/new.html.erb:69
+msgid "Register"
+msgstr "Registrar"
+
+#: app/views/devise/registrations/new.html.erb:69 app/views/devise/sessions/new.html.erb:28
+msgid "Loading..."
+msgstr "Cargando..."
+
+#: app/views/devise/registrations/new.html.erb:76
+msgid "Or login with your existing services:"
+msgstr ""
+
+#: app/views/devise/registrations/new.html.erb:97
+msgid "Sign Up"
+msgstr "Registrar"
+
+#: app/views/devise/sessions/new.html.erb:10 app/views/devise/sessions/new.html.erb:28
+#: app/views/shared/_login_modal.html.erb:4 app/views/shared/_login_modal.html.erb:34
+#: app/views/shared/_navbar.html.erb:182 app/views/shared/_sidebar.html.erb:80
+msgid "Sign in"
+msgstr "Login"
+
+#: app/views/devise/sessions/new.html.erb:20
+msgid "password"
+msgstr "Contraseña"
+
+#: app/views/devise/sessions/new.html.erb:32 app/views/shared/_login_modal.html.erb:27
+msgid "Stay Signed in"
+msgstr "Mantener sessión"
+
+#: app/views/devise/sessions/new.html.erb:39
+msgid "Can't access your account?"
+msgstr ""
+
+#: app/views/devise/sessions/new.html.erb:46 app/views/shared/_login_modal.html.erb:59
+msgid "Or login with your existing services"
+msgstr ""
+
+#: app/views/items/show.html.erb:30
+msgid "By"
+msgstr "Por"
+
+#: app/views/items/show.html.erb:41 app/views/shared/_item.html.erb:30
+msgid "Youtube Source"
+msgstr ""
+
+#: app/views/items/show.html.erb:43 app/views/shared/_item.html.erb:32
+msgid "Source"
+msgstr "Origen"
+
+#: app/views/items/show.html.erb:46 app/views/shared/_item.html.erb:36
+msgid "by"
+msgstr "por"
+
+#: app/views/items/show.html.erb:48 app/views/shared/_item.html.erb:38
+msgid "Author Articles"
+msgstr ""
+
+#: app/views/items/show.html.erb:90 app/views/shared/_item.html.erb:49
+msgid "Written by"
+msgstr "Escrito por"
+
+#: app/views/items/show.html.erb:92 app/views/shared/_item.html.erb:59
+msgid "Submitted by"
+msgstr "Enviado por"
+
+#: app/views/items/show.html.erb:97
+msgid "by User"
+msgstr "por Usuario"
+
+#: app/views/items/show.html.erb:118 app/views/shared/_item.html.erb:76
+msgid "Views"
+msgstr "Leído"
+
+#: app/views/items/show.html.erb:182 app/views/shared/_item.html.erb:91
+msgid "Related items"
+msgstr "Articulos Relactionados"
+
+#: app/views/items/show.html.erb:240
+msgid "Edit"
+msgstr "Editar"
+
+#: app/views/opinio/comments/_comment.html.erb:15 app/views/shared/_item.html.erb:44
+msgid "Ago"
+msgstr "Atras"
+
+#: app/views/opinio/comments/_comment.html.erb:23
+msgid "Reply"
+msgstr "Responder"
+
+#: app/views/opinio/comments/_comment.html.erb:30
+msgid "Delete Comment"
+msgstr "Apagar Comentario"
+
+#: app/views/opinio/comments/_comment.html.erb:36
+msgid "Deleting..."
+msgstr "Apagando..."
+
+#: app/views/opinio/comments/_comment.html.erb:37
+msgid "Are you sure you want to delete this comment?"
+msgstr ""
+
+#: app/views/shared/_footer.html.erb:15
+msgid "Feeds"
+msgstr ""
+
+#: app/views/shared/_footer.html.erb:15
+msgid "Multiple RSS Feeds"
+msgstr ""
+
+#: app/views/shared/_footer.html.erb:22
+msgid "Edit your Profile information"
+msgstr ""
+
+#: app/views/shared/_footer.html.erb:26 app/views/shared/_footer.html.erb:28
+#: app/views/shared/_navbar.html.erb:142 app/views/shared/_navbar.html.erb:175
+msgid "Logout"
+msgstr "Salir"
+
+#: app/views/shared/_footer.html.erb:33
+msgid "Login"
+msgstr ""
+
+#: app/views/shared/_footer.html.erb:37
+msgid "Registration"
+msgstr "Registración"
+
+#: app/views/shared/_footer.html.erb:39
+msgid "Please Join us"
+msgstr ""
+
+#: app/views/shared/_footer.html.erb:45 app/views/shared/_navbar.html.erb:189
+msgid "Forgot your password?"
+msgstr "¿Olvidó su contraseña?"
+
+#: app/views/shared/_footer.html.erb:47
+msgid "Click here to recover your password."
+msgstr ""
+
+#: app/views/shared/_item.html.erb:68
+msgid "See all Articles tagged as %{str}"
+msgstr ""
+
+#: app/views/shared/_item.html.erb:83 app/views/shared/_most_commented.html.erb:8
+#: app/views/shared/_sidebar.html.erb:149
+msgid "Comment"
+msgid_plural "Comments"
+msgstr[0] "Comentario"
+msgstr[1] "Comentarios"
+
+#: app/views/shared/_login_modal.html.erb:34
+msgid "Sending..."
+msgstr "Enviando..."
+
+#: app/views/shared/_login_modal.html.erb:35
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: app/views/shared/_login_modal.html.erb:43
+msgid "Register now"
+msgstr "Registrese Ahora"
+
+#: app/views/shared/_login_modal.html.erb:45
+msgid "Click here to register a new Account"
+msgstr ""
+
+#: app/views/shared/_login_modal.html.erb:52
+msgid "Forgot Password?"
+msgstr "¿Olvidó Contraseña?"
+
+#: app/views/shared/_most_commented.html.erb:2
+msgid "Most Commented"
+msgstr "Más Comentados"
+
+#: app/views/shared/_navbar.html.erb:24
+msgid "Sections"
+msgstr "Seciones"
+
+#: app/views/shared/_navbar.html.erb:32
+msgid "Regions"
+msgstr "Regiones"
+
+#: app/views/shared/_navbar.html.erb:40
+msgid "Countries"
+msgstr "Países"
+
+#: app/views/shared/_navbar.html.erb:48 app/views/tags/show.html.erb:18
+msgid "Tags"
+msgstr "Topicos"
+
+#: app/views/shared/_navbar.html.erb:58
+msgid "Languages"
+msgstr "Lenguages"
+
+#: app/views/shared/_navbar.html.erb:111 app/views/shared/_navbar.html.erb:162
+#: app/views/shared/_sidebar.html.erb:63 app/views/shared/_sidebar.html.erb:73
+msgid "My Articles"
+msgstr "Mis Articulos"
+
+#: app/views/shared/_navbar.html.erb:120
+msgid "Admin"
+msgstr ""
+
+#: app/views/shared/_navbar.html.erb:128
+msgid "New Item"
+msgstr "Enviar Articulo"
+
+#: app/views/shared/_navbar.html.erb:146 app/views/shared/_navbar.html.erb:178
+#: app/views/shared/_sidebar.html.erb:66 app/views/shared/_sidebar.html.erb:76
+msgid "Sign out"
+msgstr "Salir"
+
+#: app/views/shared/_navbar.html.erb:154
+msgid "Edit My Profile"
+msgstr ""
+
+#: app/views/shared/_navbar.html.erb:162 app/views/shared/_sidebar.html.erb:73
+msgid "My Articles Page"
+msgstr ""
+
+#: app/views/shared/_navbar.html.erb:185
+msgid "Register a new Account"
+msgstr ""
+
+#: app/views/shared/_navbar.html.erb:193 app/views/shared/_sidebar.html.erb:92
+msgid "Didn't receive confirmation instructions?"
+msgstr ""
+
+#: app/views/shared/_sidebar.html.erb:16
+msgid "Search Articles"
+msgstr ""
+
+#: app/views/shared/_sidebar.html.erb:19
+msgid "Search"
+msgstr "Buscar"
+
+#: app/views/shared/_sidebar.html.erb:28
+msgid "Search by Category"
+msgstr ""
+
+#: app/views/shared/_sidebar.html.erb:33
+msgid "Remove"
+msgstr "Apagar"
+
+#: app/views/shared/_sidebar.html.erb:41
+msgid "Search by Language"
+msgstr ""
+
+
+#: app/views/shared/_sidebar.html.erb:97
+msgid "Didn't receive unlock?"
+msgstr ""
+
+#: app/views/shared/_sidebar.html.erb:143
+msgid "Recently Discussed"
+msgstr ""
+
+#: app/views/shared/_sidebar.html.erb:159
+msgid "Most Read in 2 weeks"
+msgstr ""
+
+#: app/views/shared/_sidebar.html.erb:171
+msgid "AdFree Site"
+msgstr ""
+
+#: app/views/shared/_sidebar.html.erb:172
+msgid "This is an Advertisement Free Site"
+msgstr ""
+
+#: app/views/tags/show.html.erb:28
+msgid "RSS feed for items tagged %{str}"
+msgstr ""
+
+#: app/views/tags/show.html.erb:37
+msgid "Page"
+msgstr ""
+
+msgid "Testing"
+msgstr "Testando"

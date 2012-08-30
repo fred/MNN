@@ -53,7 +53,7 @@
   <div class="span6 box" id="highlights">
     <% if @latest_items && @latest_items.first %>
       <% cache_expiring("hglt/#{@latest_items.first.cache_key_full}",300) do %>
-        <h2><%= link_to "Latest News", items_path, title: "Latest News" %></h2>
+        <h2><%= link_to _("Latest News"), items_path, title: _("Latest News") %></h2>
         <ul>
         <% @latest_items.each do |item| %>
           <li class="list_item" id="highlight_item_<%=item.id%>">
@@ -89,7 +89,7 @@
         <% end %>
         </ul>
         <span class="more breaking-news">
-          <%= link_to "more...", items_path, title: "Read more breaking news", id: 'tooltip' %>
+          <%= link_to _("more..."), items_path, title: _("Read more breaking news"), id: 'tooltip' %>
         </span>
       <% end %>
     <% end %>
@@ -139,7 +139,7 @@
             <% end %>
           </ul>
           <span class="more">
-            <%= link_to "more...", category, title: "Read more articles in this category" %>
+            <%= link_to _("more..."), category, title: _("Read more articles in this category") %>
           </span>
         </div>
       <% end %>

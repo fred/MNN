@@ -27,26 +27,26 @@
 
       <span class="source_url">
         <% if item.youtube_id && item.youtube_vid %>
-          <%= link_to 'Youtube Source', "http://www.youtube.com/watch?v=#{item.youtube_id}" %>
+          <%= link_to _('Youtube Source'), "http://www.youtube.com/watch?v=#{item.youtube_id}" %>
         <% elsif item.source_url.present? %>
-          <%= link_to 'Source', item.source_url %>
+          <%= link_to _('Source'), item.source_url %>
         <% end %>
 
         <% if !item.original? && item.author_name %>
-          - by
+          - <%= _("by") %>
           <span class='author' itemprop='author'>
-            <%= link_to item.author_name, search_path(q: item.author_name), title: 'Author Articles' %>
+            <%= link_to item.author_name, search_path(q: item.author_name), title: _('Author Articles') %>
           </span>
         <% end %>
       </span>
 
       <span class="date">
-        <%= time_ago_in_words(item.published_at) %> <%= t('ago') %>
+        <%= time_ago_in_words(item.published_at) %> <%= _('Ago') %>
       </span>
 
       <% if item.original? && item.user %>
         <span class='author'>
-          Written by 
+          <%= _("Written by") %>
           <i class="icon-user"></i>
           <%= link_to_if(item.user,
                   item.user.public_display_name,
@@ -56,7 +56,7 @@
         </span>
       <% elsif item.user %>
         <span class="author">
-          Submitted by
+          <%= _("Submitted by") %>
           <i class="icon-user"></i>
           <%= link_to_if(item.user, item.user.public_display_name, author_path(item.user)) %>
         </span>
@@ -65,21 +65,22 @@
       <ul class="tags">
         <i class="icon-tags"></i>
         <% item.tags.each do |tag| %>
-          <li><%= link_to tag.title, tag_path(tag), title: "See all Articles tagged as '#{tag.title}'" %></li>
+          <li><%= link_to tag.title, tag_path(tag), title: (_("See all Articles tagged as %{str}") % { str: tag.title }) %></li>
         <% end %>
       </ul>
 
       <div class="page_views">
         <% if item.item_stat %>
           <i class="icon-play-circle"></i>
-          <%= item.item_stat.views_counter %> Views
+          <%= item.item_stat.views_counter %>
+          <%= _("Views") %>
         <% end %>
       </div>
 
       <% if item.comments_count > 0 %>
         <div class="icon comments_count">
           <i class="icon-comment"></i>
-          <%= t("comments", count: item.comments_count) %>
+          <%= n_("Comment", "Comments", item.comments_count) %>
         </div>
       <% end %>
       <div class="clearfix"></div>
@@ -87,7 +88,7 @@
       <% if @related && @related.total > 0 %>
         <div class="related">
           <section id="related">
-            <h4>Related items</h4>
+            <h4><%= _("Related items") %></h4>
             <ul class="related">
               <% @related.results.each do |item| %>
                 <li><%= link_to item.title, item, title: item_title(item) %></li>

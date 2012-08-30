@@ -12,7 +12,7 @@
           attributes: %w(href target rel rev) %>
   </p>
   <span class="comment_date">
-    <%= time_ago_in_words(comment.created_at) %> <%= t('ago') %>
+    <%= time_ago_in_words(comment.created_at) %> <%= _('Ago') %>
   </span>
 
 
@@ -20,21 +20,21 @@
   
   <div class="comment-actions">
     <% if Opinio.accept_replies && !reply %>
-      <%= link_to t("opinio.reply", default: "Reply"),
+      <%= link_to _("Reply"),
           reply_comment_path(comment),
           remote: true,
           class: "btn small primary"
       %>
     <% end %>
     <% if current_admin_user && can?(:destroy, comment) %>
-      <%= link_to 'Delete Comment',
+      <%= link_to _('Delete Comment'),
           comment_path(comment),
           method: :delete,
           remote: true,
           class: "btn btn-mini btn-danger",
           data: {
-            disable_with: 'Deleting...',
-            confirm: "Are you sure you want to delete this comment?"
+            disable_with: _('Deleting...'),
+            confirm: _("Are you sure you want to delete this comment?")
           }
       %>
     <% end %>

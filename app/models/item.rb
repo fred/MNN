@@ -78,9 +78,9 @@ class Item < ActiveRecord::Base
   searchable do
     text :title, boost: 2.4
     text :abstract, boost:  1.6
-    text :keywords, boost:  5.0
+    text :keywords, boost:  4.0
     text :category_title, boost:  1.8
-    text :author_name, boost:  2.2
+    text :author_name, boost:  3.0
     text :author_email
     text :article_source
     text :source_url

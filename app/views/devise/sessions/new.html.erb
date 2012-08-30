@@ -7,7 +7,7 @@
         ) do |f| 
     %>
       <fieldset class="withBorder">
-        <legend>Sign in</legend>
+        <legend><%= _("Sign in") %></legend>
 
         <div class="control-group">
           <%= f.label :email, class: 'control-label' %>
@@ -17,7 +17,7 @@
         </div>
 
         <div class="control-group">
-          <%= f.label :password, class: 'control-label'%>
+          <%= f.label :password, _("password"), class: 'control-label'%>
           <div class="controls">
             <%= f.password_field :password, required: false, class: "input-large"  %>
           </div>
@@ -25,25 +25,25 @@
 
         <div class="control-group">
           <div class="controls">
-            <%= f.submit "Sign in", class: "btn", data: {disable_with: 'Loading...'} %> 
+            <%= f.submit _("Sign in"), class: "btn", data: {disable_with: _('Loading...')} %> 
             &nbsp;
             <%= f.check_box :remember_me if devise_mapping.rememberable? %>
             <label class="inline" for="user_remember_me">
-              Stay Signed in
+              <%= _("Stay Signed in") %>
             </label>
           </div>
         </div>
 
         <div class='control-group'>
           <div class="controls">
-            <%= link_to "Can't access your account?", new_password_url(resource_name, protocol: "https") %>
+            <%= link_to _("Can't access your account?"), new_password_url(resource_name, protocol: "https") %>
           </div>
         </div>
 
         <div class='control-group'>
           <div class="horizontal-divider"></div>
           <div class="controls">
-            <b>Or login with your existing services</b>
+            <b><%= _("Or login with your existing services") %></b>
           </div>
         </div>
 

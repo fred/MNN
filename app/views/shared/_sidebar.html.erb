@@ -13,10 +13,10 @@
             params[:q], 
             type: "search", 
             class: "span3",
-            placeholder: "Search Articles",
+            placeholder: _("Search Articles"),
             autofocus: false
       %>
-      <button class="btn" type="submit">Search</button>
+      <button class="btn" type="submit"><%= _("Search") %></button>
     <% end %>
 
     <div class="sidebar_secions">
@@ -25,12 +25,12 @@
           <div class='widget_content'>
             <ul class="nav nav-list">
               <li class="horizontal-divider"></li>
-              <li class="nav-header">Search by Category</li>
+              <li class="nav-header"><%= _("Search by Category") %></li>
               <% @search.facet(:category_id).rows.each do |facet| %>
                 <% category = Category.find(facet.value) %>
                 <li>
                   <%= link_to("#{category.title} (#{facet.count})", params.merge(category_id: category.id, page: nil)) if category %>
-                  <%= link_to("Remove", params.merge(category_id: nil), class: 'link-remove') if params[:category_id] %>
+                  <%= link_to(_("Remove"), params.merge(category_id: nil), class: 'link-remove') if params[:category_id] %>
                 </li>
               <% end %>
             </ul>
@@ -38,7 +38,7 @@
           <div class='widget_content'>
             <ul class="nav nav-list">
               <li class="horizontal-divider"></li>
-              <li class="nav-header">Search by Language</li>
+              <li class="nav-header"><%= _("Search by Language") %></li>
               <% @site_languages.each do |language| %>
                 <li>
                   <%= link_to(language.description, params.merge(language_id: language.id, page: nil)) %>
@@ -57,44 +57,44 @@
           <li class="horizontal-divider"></li>
           <% if current_user %>
             <li>
-              <%= link_to "Edit Profile", edit_user_registration_url(protocol: 'https') %>
+              <%= link_to _("Edit Profile"), edit_user_registration_url(protocol: 'https') %>
             </li>
             <li>
-              <%= link_to "My Articles", author_path(current_user), title: "My Articles Page" %>
+              <%= link_to _("My Articles"), author_path(current_user), title: "My Articles Page" %>
             </li>
             <li>
-              <%= link_to 'Sign out', destroy_user_session_url(protocol: 'https'), method: :delete %>
+              <%= link_to _('Sign out'), destroy_user_session_url(protocol: 'https'), method: :delete %>
             </li>
           <% elsif current_admin_user %>
             <li>
-              <%= link_to "Edit Profile", edit_user_registration_url(protocol: 'https') %>
+              <%= link_to _("Edit Profile"), edit_user_registration_url(protocol: 'https') %>
             </li>
             <li>
-              <%= link_to "My Articles", author_path(current_admin_user), title: "My Articles Page" %>
+              <%= link_to _("My Articles"), author_path(current_admin_user), title: _("My Articles Page") %>
             </li>
             <li>
-              <%= link_to 'Sign out', destroy_user_session_url(protocol: 'https'), method: :delete %>
+              <%= link_to _('Sign out'), destroy_user_session_url(protocol: 'https'), method: :delete %>
             </li>
           <% else %>
             <%- if controller_name != 'sessions' %>
-              <li><%= link_to "Sign in", new_session_url(resource_name, protocol: "https") %></li>
+              <li><%= link_to _("Sign in"), new_session_url(resource_name, protocol: "https") %></li>
             <% end -%>
             <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-              <li><%= link_to "Sign up", new_registration_url(resource_name, protocol: "https") %></li>
+              <li><%= link_to _("Sign up"), new_registration_url(resource_name, protocol: "https") %></li>
             <% end -%>
             <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
               <li>
-                <%= link_to "Forgot password?", new_password_url(resource_name, protocol: "https") %>
+                <%= link_to _("Forgot Password?"), new_password_url(resource_name, protocol: "https") %>
               </li>
             <% end -%>
             <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
               <li>
-                <%= link_to "Didn't receive confirmation instructions?", new_confirmation_url(resource_name, protocol: "https") %>
+                <%= link_to _("Didn't receive confirmation instructions?"), new_confirmation_url(resource_name, protocol: "https") %>
               </li>
             <% end -%>
             <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
               <li>
-                <%= link_to "Didn't receive unlock?", new_unlock_url(resource_name, protocol: 'https') %>
+                <%= link_to _("Didn't receive unlock?"), new_unlock_url(resource_name, protocol: 'https') %>
               </li>
             <% end -%>
             <%- if devise_mapping.omniauthable? %>
@@ -141,13 +141,13 @@
 
     <% cache_expiring("sidebar_recently", 900) do %>
       <div class="sidebar_secions">
-        <h4>Recently Discussed</h4>
+        <h4><%= _("Recently Discussed") %></h4>
         <% Item.localized.recently_commented(5).each do |item| %>
           <div class="sidebar-item">
             <%= item_mini(item).html_safe %>
             <span class="comment-date">
               <i class="icon-comments"></i>
-              <%= t("comments", count: item.comments_count) %>
+              <%= n_("Comment", "Comments", item.comments_count) %>
             </span>
             <span class="horizontal-divider"></span>
           </div>
@@ -157,7 +157,7 @@
 
     <% cache_expiring("sidebar_most_read", 900) do %>
       <div class="sidebar_secions">
-        <h4>Most Read in 2 weeks</h4>
+        <h4><%= _("Most Read in 2 weeks") %></h4>
         <% Item.localized.popular(5).each do |item| %>
           <div class="sidebar-item">
             <%= item_mini(item).html_safe %>
@@ -169,8 +169,8 @@
 
     <div class="hidden-phone">
       <%= image_tag "adfreesite.png",
-            alt: "AdFree Site",
-            title:  "This is an Advertisement Free Site",
+            alt: _("AdFree Site"),
+            title:  _("This is an Advertisement Free Site"),
             width: 100, height: 60
       %>
     </div>

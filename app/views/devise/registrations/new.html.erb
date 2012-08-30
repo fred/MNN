@@ -10,22 +10,22 @@
       <%= bootstap_flash %>
 
       <fieldset class="withBorder">
-        <legend>Sign up</legend>
+        <legend><%= _("Sign up") %></legend>
         <div class="control-group">
-          <%= f.label :email, class: 'control-label' %>
+          <%= f.label :email, _("Email"), class: 'control-label' %>
           <div class="controls">
             <%= f.text_field :email,
-                  placeholder: "Your email is required",
+                  placeholder: _("Your email is required"),
                   required: true,
                   autofocus: true,
                   type: "email",
                   class: "imput-medium"
             %>
-            <p class="help-block">Your email will not be shown to the public.</p>
+            <p class="help-block"><%= _("Your email will not be shown to the public.") %></p>
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :password, class: 'control-label' %>
+          <%= f.label :password, _("Password"), class: 'control-label' %>
           <div class="controls">
             <%= f.password_field :password, required: true, class: "imput-medium" %>
             <div id="progress"></div>
@@ -33,47 +33,47 @@
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :password_confirmation, class: 'control-label' %>
+          <%= f.label :password_confirmation, _("Password Confirmation"), class: 'control-label' %>
           <div class="controls">
             <%= f.password_field :password_confirmation, required: true, class: "imput-medium" %>
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :registration_role, "Reason for joining us?", class: 'control-label' %>
+          <%= f.label :registration_role, _("Reason for joining us?"), class: 'control-label' %>
           <div class="controls">
             <%= f.select :registration_role, 
-                  options_for_select([["Just be a member"], ["To Comment"], ["Comment and Submit Articles"], ["I want to be an Editor"]]),
-                  {include_blank: "-- Please Choose"},
+                  options_for_select([[_("Just be a member")], [_("To Comment")], [_("Comment and Submit Articles")], [_("I want to be an Editor")]]),
+                  {include_blank: _("-- Please Choose")},
                   required: false,
                   class: "imput-medium"
             %>
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :name, class: 'control-label' %>
+          <%= f.label :name, _("Name"), class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :name, placeholder: "Example: Anonymous", class: "imput-medium" %>
+            <%= f.text_field :name, placeholder: _("Example: Anonymous"), class: "imput-medium" %>
           </div>
         </div>
 
         <div id="termsofservice-form-element" class="control-group">
           <%= f.check_box :terms_of_service %>
           <label class="inline" for="user_terms_of_service">
-              I agree to the
-              <a href="/pages/privacy-and-policy" target="popup">Terms of Service and Privacy Policy</a>
+              <%= _("I agree to the") %>
+              <a href="/pages/privacy-and-policy" target="popup"><%= _("Terms of Service and Privacy Policy") %></a>
           </label>
         </div>
 
         <div class="control-group">
           <div class="controls">
-            <%= f.submit "Register", class: "btn btn-success", data: {disable_with: 'Loading...'} %>
+            <%= f.submit _("Register"), class: "btn btn-success", data: {disable_with: _('Loading...')} %>
           </div>
         </div>
 
         <div class='control-group'>
           <div class="horizontal-divider"></div>
           <div class="controls">
-            <b>Or login with your existing services:</b>
+            <b><%= _("Or login with your existing services:") %></b>
           </div>
         </div>
 
@@ -94,7 +94,7 @@
     <%= link_to "Home", root_path, title: "Home", rel: 'home' %>
     <span class="divider">/</span>
   </li>
-  <li class="active">Sign Up</li>
+  <li class="active"><%= _("Sign Up") %></li>
 <% end %>
 
 
