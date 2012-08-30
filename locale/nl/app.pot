@@ -558,3 +558,16 @@ msgstr "RSS feed voor artikelen die %{str} zijn getagd"
 #: app/views/tags/show.html.erb:37
 msgid "Page"
 msgstr "Pagina"
+
+msgid "Testing"
+msgstr "Testando"
+
+msgid "Account"
+msgstr ""
+
+msgid "My Subscriptions"
+msgstr ""
+
+msgid "You have not submitted any articles yet"
+msgstr ""
+

@@ -562,3 +562,12 @@ msgstr "Pagina"
 
 msgid "Testing"
 msgstr "Testando"
+
+msgid "Account"
+msgstr ""
+
+msgid "My Subscriptions"
+msgstr ""
+
+msgid "You have not submitted any articles yet"
+msgstr ""
