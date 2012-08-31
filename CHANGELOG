@@ -1,5 +1,25 @@
 CHANGELOG
 
+== August 31, 2012
+* Added Links page
+* Increased history versions to keep to 300
+
+== August 30, 2012
+* Added Comment Notifications for articles
+* Added page for users to manage subscriptions
+
+== August 28, 2012
+* Saving of site Searches by non-bots
+* Updated Gems
+
+== August 21, 2012
+* Fixed Youtube videos
+
+== August 19, 2012
+* Longer Caching
+* Full page caching for bots
+* Full cache for RSS/ATOM formats
+
 == August 17, 2012
 * Add Ability to preview/rollback previous versions
 * Nicer CSS for related items list

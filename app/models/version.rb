@@ -3,8 +3,7 @@ class Version < ActiveRecord::Base
   after_create  :cleanup_versions
 
   def self.versions_to_keep
-    # Setting.versions_to_keep || 200
-    200
+    Settings.versions_to_keep || 300
   end
 
   # Cleanup database versions table (vestal_versions)

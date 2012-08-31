@@ -138,12 +138,12 @@ article h1 {
   letter-spacing: 1px;
   font-size: 28px;
   margin-bottom: 0px;
-  color: #444;
+  color: #333;
 }
 article h2 {
   letter-spacing: 1px;
   font-size: 24px;
-  color: #444;
+  color: #333;
   margin-bottom: 12px;
   margin-top: 13px;
 }
@@ -179,7 +179,6 @@ article span.date {
   font-size: 12px;
   padding: 2px 2px 2px 0;
 }
-
 article span.author {
   color: #555;
   font-weight: bold;
@@ -195,13 +194,13 @@ article span.source_url {
 article header h1 a:hover,
 article header h2 a:hover,
 article header h3 a:hover {
-  color: #444;
+  color: #333;
   text-decoration: none;
 }
 article header h1 a,
 article header h2 a,
 article header h3 a {
-  color: #555;
+  color: #333;
   text-decoration: none;
 }
 article section {
@@ -269,7 +268,7 @@ div.related {
 }
 div.related h4 {
   text-shadow: 1px 1px 1px #fff;
-  color: #555;
+  color: #444;
   margin-left: 15px;
 }
 ul.related {

@@ -18,7 +18,7 @@
       %>
       <button class="btn" type="submit">Search</button>
     <% end %>
-    
+
     <div class="sidebar_secions">
       <% if @search && @search.total > 0 %>
         <div class='widget'>
@@ -123,6 +123,7 @@
             <%= link_to page.title, page, title:  page.title %>
           </li>
         <% end %>
+        <li><%= link_to "Other Sites", links_path %></li>
         <li class="horizontal-divider"></li>
       </ul>
       <ul class="nav nav-list">

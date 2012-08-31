@@ -1,0 +1,24 @@
+<div class="well">
+  <% unless @links.empty? %>
+    <h2>Interesting Sites and Links</h2>
+    <br />
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Site</th>
+          <th>Description</th>
+          <th>Url</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @links.each do |link| %>
+          <tr>
+            <td><%= link_to link.title, link.url, title: link.description, target: "_blank", rel: link.rel %></td>
+            <td><%= link.description %></td>
+            <td><%= link_to link.url, link.url, title: link.description, target: "_blank", rel: link.rel %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

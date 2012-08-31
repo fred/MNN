@@ -167,9 +167,9 @@
         <legend>Email Subscriptions</legend>
         <% if f.object.has_subscription? %>
           <div class="control-group">
-            <%= label_tag "Cancel Subscription", nil, class: 'control-label' %>
             <div class="controls">
               <%= f.check_box :unsubscribe %>
+              <%= label_tag "Cancel Alert Subscription", nil, class: 'inline', for: 'user_unsubscribe' %>
               <p class="help-block">
                 Select this if you wish to <b>Stop</b> receiving email notifications when a new Article is published.
               </p>
@@ -177,9 +177,9 @@
           </div>
         <% else %>
           <div class="control-group">
-            <%= label_tag "Subscribe", nil , class: 'control-label' %>
             <div class="controls">
               <%= f.check_box :subscribe %>
+              <%= label_tag "New Articles Alert", nil , class: 'inline', for: 'user_subscribe' %>
               <p class="help-block">
                 Select this if you wish to receive email notifications when a new Article is published.
               </p>

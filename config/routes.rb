@@ -16,21 +16,21 @@ Publication::Application.routes.draw do
   match 'categories/:category_id/:page' => 'items#index'
 
   match 'news/:category/:id' => 'items#show', :as => :news_path
-  
+
   # Omniauth
   match '/auth/:provider/callback', to: 'services#create'
   match '/auth/failure' => 'services#failure'
   resources :services, :only => [:create, :destroy]
-  
-  namespace "api" do 
+
+  namespace "api" do
     resources :git_push
   end
-  
+
   # opinio_model
   resources :authors do
     resources :items
   end
-  
+
   resources :items do
     resources :language
     resources :category
@@ -41,7 +41,8 @@ Publication::Application.routes.draw do
     get 'reply', :on => :member
   end
 
-  resources :subscriptions
+  resources :links, only: [:index]
+  resources :subscriptions, only: [:index, :destroy]
   resources :contacts
   resources :pages
   resources :roles
@@ -65,7 +66,7 @@ Publication::Application.routes.draw do
   namespace :tasks do
     get 'sitemap'
   end
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
