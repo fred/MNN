@@ -321,6 +321,7 @@ ActiveRecord::Schema.define(:version => 20120830074404) do
     t.boolean  "admin",      :default => false
   end
 
+  add_index "subscriptions", ["admin"], :name => "index_subscriptions_on_admin"
   add_index "subscriptions", ["item_id"], :name => "index_subscriptions_on_item_id"
   add_index "subscriptions", ["type"], :name => "index_subscriptions_on_type"
   add_index "subscriptions", ["user_id"], :name => "index_subscriptions_on_user_id"
@@ -343,6 +344,16 @@ ActiveRecord::Schema.define(:version => 20120830074404) do
 
   add_index "tags", ["slug"], :name => "index_tags_on_slug", :unique => true
   add_index "tags", ["type"], :name => "index_tags_on_type"
+
+  create_table "translations", :force => true do |t|
+    t.string   "locale"
+    t.string   "key"
+    t.text     "value"
+    t.text     "interpolations"
+    t.boolean  "is_proc",        :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
