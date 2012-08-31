@@ -1,5 +1,6 @@
 # encoding: utf-8
 require 'spec_helper'
+include FastGettext::Translation
 
 describe "Locale" do
 

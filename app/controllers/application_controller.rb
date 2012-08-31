@@ -3,12 +3,12 @@ class ApplicationController < ActionController::Base
   include SimpleCaptcha::ControllerHelpers
   require 'uri'
   require 'set'
-  
+  helper :all
+
   protect_from_forgery
 
-  before_filter :set_gettext_locale
   before_filter :sidebar_variables
-  before_filter :mini_profiler  
+  before_filter :mini_profiler
   before_filter :get_locale
   before_filter :https_for_admins
   before_filter :set_start_time, :set_time_zone, :set_view_items, :current_ability
@@ -170,13 +170,13 @@ class ApplicationController < ActionController::Base
       @last_modified = Time.now.httpdate
     end
   end
-  
+
   def set_per_page
     if params[:per_page]
       @per_page = params[:per_page].to_i
     end
   end
-  
+
   def set_start_time
     @start_time = Time.now.usec
   end
@@ -192,7 +192,7 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to admin_dashboard_path(protocol: http_protocol), alert: exception.message
   end
-  
+
   def default_per_page
     if Rails.env.production?
       24
@@ -209,7 +209,7 @@ class ApplicationController < ActionController::Base
     end
     @per_page
   end
-  
+
   def page
     if params[:page] && params[:page].to_s.match("[0-9]{1,}")
       page = params[:page].to_i
@@ -217,7 +217,7 @@ class ApplicationController < ActionController::Base
       page = 1
     end
   end
-  
+
   def is_mobile?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
     valid="(iphone|ipod|nokia|series60|symbian|blackberry|opera mini|mobile|iemobile|android|smartphone)"
@@ -229,7 +229,7 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
-  
+
   def is_tablet?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
     valid="(tablet|ipad|galaxytab|opera mini|honeycomb|p1000|playbook|xoom|android|sch-i800|kindle)"
@@ -241,11 +241,11 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
-  
+
   # this should give 99% of users
   def is_human?
     return true if Rails.env.test?
-    
+
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
     valid="(firefox|chrome|opera|safari|webkit|gecko|msie|windows|blackberry|iphone|ipad|nokia|android|fedora|ubuntu|centos)"
     bot="(bot|spider|wget|curl|YandexBot|googlebot|msnbot)"
@@ -285,7 +285,7 @@ class ApplicationController < ActionController::Base
       Rails.logger.debug("  UA: useragentstring.com Timed out")
       return false
     end
-    
+
     res = json["agent_type"].to_s.match("(Browser|Feed)")
     if res
       Rails.logger.debug("  UA: user found: #{uas}")
@@ -295,13 +295,13 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
-  
+
   def set_view_items
     unless session[:view_items]
       session[:view_items] = Set.new
     end
   end
-  
+
   def set_time_zone
     if current_user && current_user.time_zone
       Rails.logger.debug("  Timezone: #{current_user.time_zone}")
@@ -319,7 +319,7 @@ class ApplicationController < ActionController::Base
       'http'
     end
   end
-  
+
   # temporarily use mobile by setting by URL
   def get_layout
     if params[:mobile_mode] or session[:mobile_mode] == "1"

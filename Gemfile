@@ -112,7 +112,6 @@ group :development do
   gem 'debugger', platform: :mri_19
   gem 'pry-rails'
   gem 'brakeman'
-  gem 'ruby_parser'
   gem 'locale'
   gem 'gettext', require: false
 end

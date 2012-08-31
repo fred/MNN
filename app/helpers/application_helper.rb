@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include FastGettext::Translation
 
   def bootstap_flash
      flash_messages = []

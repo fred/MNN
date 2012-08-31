@@ -1,4 +1,4 @@
-# FastGettext.available_locales = [ 'en', 'de', 'pt', 'pt_BR', 'nl', 'es', 'it', 'ru', 'ar', 'fr']
+FastGettext.available_locales = [ 'en', 'de', 'pt', 'pt_BR', 'nl', 'es', 'it', 'ru', 'ar', 'fr']
 FastGettext.add_text_domain 'app', path: 'locale', type: :po, report_warning: true
 FastGettext.default_text_domain = 'app'
 FastGettext.default_locale = 'en'

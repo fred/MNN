@@ -29,7 +29,7 @@ Publication::Application.configure do
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
-  config.active_record.auto_explain_threshold_in_seconds = 0.5
+  config.active_record.auto_explain_threshold_in_seconds = 1
 
   # Do not compress assets
   config.assets.compress = false
@@ -39,7 +39,11 @@ Publication::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = false
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3013' }
+  # Silence Assets logging
+  config.assets.logger = false
+
+  config.action_mailer.default_url_options = { host: 'localhost:3013' }
+  config.reload_classes_only_on_change = true
 
   if defined?(Debugger)
     Debugger.settings[:autolist] = 1;
@@ -47,9 +51,6 @@ Publication::Application.configure do
     Debugger.settings[:reload_source_on_change] = 1;
   end
 
-  # Enable threaded mode
-  # config.threadsafe!
 end
 
 ActionMailer::Base.delivery_method = :letter_opener
-
