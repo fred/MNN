@@ -1,15 +1,13 @@
 <%= semantic_form_for [:admin, @attachment], html: { enctype: "multipart/form-data" }  do |f| %>
-
   <%= f.inputs name: "Required Information" do %>
     <%= f.input :title, label: "Image caption" %>
-    <%= f.input :image, as: "file", 
-                        label: "Choose image to upload", 
-                        hint: "New image will overwrite current image (old image will be deleted)" %>
+    <%= f.input :image, as: "file",
+                        input_html: {multiple: true},
+                        label: "Choose image to upload",
+                        hint: "When editing, the new image will overwrite the old image. Multiple images are allowed, you can select multiple images holding CTRL or Command keys when choosing images." %>
   <% end %>
-  
   <%= f.buttons :commit %>
 <% end %>
-
 
 
 <script type="text/javascript">

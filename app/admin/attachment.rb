@@ -8,6 +8,7 @@ ActiveAdmin.register Attachment do
   menu parent: "Items", label: 'Images', priority: 2, if: lambda{|tabs_renderer|
     controller.current_ability.can?(:read, Attachment)
   }
+
   index as: :block do |attachment|
     div for: attachment, class: "grid_images" do
       div do
@@ -27,25 +28,52 @@ ActiveAdmin.register Attachment do
       end
       para(auto_link(attachment.attachable))
       para(attachment.title)
-      link_to(
-        "Delete",
-        admin_attachment_path(attachment),
-        method: "delete",
-        confirm: "Really delete this image?",
-        title: "Click on image to see details"
+      para(
+        link_to(
+          "Edit",
+          edit_admin_attachment_path(attachment),
+          title: "Edit Image"
+        ) + " - " +
+        link_to(
+          "Delete",
+          admin_attachment_path(attachment),
+          method: "delete",
+          confirm: "Really delete this image?",
+          title: "Click on image to see details"
+        )
       )
     end
   end
+
   show do
     render "show"
   end
+
   form partial: "form"
+
   controller do
-    def manage
-      @attachments = Attachment.order('created_at DESC').page(params[:page])
-      render :update do |page|
-        page.replace_html :dynamic_images_list, partial: '/admin/attachments/show_attachment_list'
+    def create
+      if params[:attachment][:image].present? && params[:attachment][:image].is_a?(Array)
+        @count = 0
+        params[:attachment][:image].each do |uploaded_image|
+          Rails.logger.debug("Uploading Image...")
+          image = Attachment.new(params[:attachment])
+          image.image = uploaded_image
+          if image.valid? && image.save
+            @count += 1
+          end
+        end
+        flash[:notice] = "Successfully Uploaded #{@count} images"
+      else
+        @image = Attachment.new(params[:attachment])
+        unless @image.save
+          render action: 'new'
+        end
+        @image.save if @image.valid?
+        flash[:notice] = "Successfully Uploaded Image"
       end
+      redirect_to admin_attachments_path
     end
   end
+
 end
