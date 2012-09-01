@@ -7,8 +7,6 @@ gem 'rack-cache'
 gem 'rake'
 gem 'rails', '3.2.8'
 gem 'bundler'
-gem 'fast_gettext'
-gem 'gettext_i18n_rails'
 
 ### Database Adapter
 platforms :ruby do
@@ -112,8 +110,9 @@ group :development do
   gem 'debugger', platform: :mri_19
   gem 'pry-rails'
   gem 'brakeman'
+  gem 'gettext', "~> 2.2.1", require: false
+  gem 'ruby_parser', require: false
   gem 'locale'
-  gem 'gettext', require: false
 end
 
 group :test do
@@ -129,6 +128,8 @@ group :test do
   gem 'turn', '~> 0.8.3', require: false
 end
 
+gem 'fast_gettext'
+gem 'gettext_i18n_rails'
 
 ### Active Admin, loaded at end.
 gem 'meta_search', '~> 1.1.3'

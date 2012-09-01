@@ -228,7 +228,7 @@ GEM
     formtastic (2.1.1)
       actionpack (~> 3.0)
     friendly_id (4.0.8)
-    gettext (2.3.0)
+    gettext (2.2.1)
       locale
     gettext_i18n_rails (0.6.6)
       fast_gettext
@@ -241,7 +241,7 @@ GEM
     hike (1.2.1)
     hirb (0.7.0)
     httpauth (0.1)
-    i18n (0.6.0)
+    i18n (0.6.1)
     inherited_resources (1.3.1)
       has_scope (~> 0.5.0)
       responders (~> 0.6)
@@ -511,7 +511,7 @@ DEPENDENCIES
   foreman
   friendly_id (~> 4.0.0)
   galetahub-simple_captcha!
-  gettext
+  gettext (~> 2.2.1)
   gettext_i18n_rails
   hirb
   jquery-rails (~> 2.0.2)
@@ -552,6 +552,7 @@ DEPENDENCIES
   rmagick4j
   rspec (~> 2.9.0)
   rspec-rails (~> 2.9.0)
+  ruby_parser
   rvm-capistrano
   sass (~> 3.1.21)
   sass-rails

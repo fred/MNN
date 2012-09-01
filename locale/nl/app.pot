@@ -197,7 +197,7 @@ msgid "Select this if you wish to <b>Stop</b> receiving email notifications when
 msgstr "Kies dit indien u <b>geen</b> e-mail-meldingen meer wenst te ontvangen"
 
 #: app/views/devise/registrations/edit.html.erb:180
-msgid "Subscribe"
+msgid "New Articles Alert"
 msgstr "Abonneer"
 
 #: app/views/devise/registrations/edit.html.erb:184

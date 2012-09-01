@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2012-08-30 20:16+0700\n"
+"POT-Creation-Date: 2012-08-31 23:20+0700\n"
 "PO-Revision-Date: 2012-08-29 01:51+0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -196,6 +196,9 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+msgid "New Articles Alert"
+msgstr ""
+
 msgid "New Item"
 msgstr ""
 
@@ -353,9 +356,6 @@ msgid "Submitted Articles:"
 msgstr ""
 
 msgid "Submitted by"
-msgstr ""
-
-msgid "Subscribe"
 msgstr ""
 
 msgid "Tags"
