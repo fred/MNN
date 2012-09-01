@@ -440,9 +440,14 @@ class Item < ActiveRecord::Base
   end
 
 
+
   ####################
   ### CLASS METHODS
   ####################
+
+  def self.from_youtube
+    where("youtube_id is not NULL")
+  end
 
   def self.default_language
     Language.where(locale: self.default_locale).first

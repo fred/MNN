@@ -66,7 +66,7 @@ module LayoutHelper
   end
 
   def google_plus_link
-    "https://plus.google.com/b/114360341024930120596/114360341024930120596/posts"
+    "https://plus.google.com/114360341024930120596?prsrc=3"
   end
 
   def twitter_user_link(str)
@@ -87,7 +87,7 @@ module LayoutHelper
 
   def rss_medium
     link_to(
-      image_tag("icons/social/rss_32.png", width: 32, height: 32, alt: 'rss'),
+      image_tag("icons/social/new/rss_32.png", width: 32, height: 32, alt: 'rss'),
       feed_path,
       title: "Multiple RSS Feeds",
       rel: "rss"
@@ -96,7 +96,7 @@ module LayoutHelper
 
   def twitter_medium
     link_to(
-      image_tag("icons/social/twitter_32.png", width: 32, height: 32, alt: 'Twitter'),
+      image_tag("icons/social/new/twitter_32b.png", width: 32, height: 32, alt: 'Twitter'),
       twitter_link,
       title: "Twitter",
       rel: "twitter"
@@ -105,10 +105,20 @@ module LayoutHelper
 
   def google_plus_medium
     link_to(
-      image_tag("icons/social/google_plus_32.png", width: 32, height: 32, alt: 'google+'),
+      image_tag("icons/social/google_plus_32.png", width: 32, height: 32, alt: 'Google+'),
       google_plus_link,
       title: "Google+",
       rel: "me"
+    )
+  end
+
+  def google_plus_new
+    link_to(
+      image_tag("icons/social/new/gplus-32.png", width: 32, height: 32, alt: 'Google+', class: "google-plus"),
+      google_plus_link,
+      title: "Google+",
+      rel: "me publisher",
+      class: "google-plus"
     )
   end
   

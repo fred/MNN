@@ -1,5 +1,12 @@
 CHANGELOG
 
+== September 1st, 2012
+* Improved css for iframes
+* Added Dynamic G+ badge
+* Improved Social Icons on sidebar
+* Added more Opengraph tags
+* Increased size of image for opengraph
+
 == August 31, 2012
 * Added Links page
 * Increased history versions to keep to 300

@@ -2,20 +2,18 @@
 
 <%= content_for :head do %>
   <%= render partial: "og" %>
-
-  <!-- Add the following three tags inside head -->
-  <meta itemprop="headline" content="<%= @item.title %>">
+  <meta itemprop="name headline" content="<%= @item.title %>">
   <meta itemprop="inLanguage" content="<%= @item.language_title_short %>">
   <meta itemprop="description" content="<%= @item.abstract %>">
   <% if @item.has_image? %>
-    <meta itemprop="image" content="<%= @item.main_image.image.thumb %>">
+    <meta itemprop="image" content="<%= @item.main_image.image.large %>">
   <% end %>
 <% end %>
 
 <% cache_expiring("show/#{@item.cache_key_full}", 900) do %>
 
-  <div itemscope itemtype="http://schema.org/Article">
-    <article id="item_<%= @item.id %>">
+  <div id="item_<%= @item.id %>">
+    <article itemscope itemtype="http://schema.org/Article">
 
       <div class="font_control" id="font_control" style="display:none;">
         <a id="decreaseFont" href="#" title="Reduce Size">A-</a>
@@ -23,17 +21,18 @@
         <a id="increaseFont" href="#" title="Increase Size">A+</a>
       </div>
 
-      <h1><span itemprop="headline"><%= @item.title %></span></h1>
+      <h1><span itemprop="name headline"><%= @item.title %></span></h1>
 
       <span class="source_url">
         <% if @item.original? %>
           By 
-          <span class='author' itemprop='author'>
+          <span class='author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
             <%= link_to_if(@item.user,
                     @item.user_title,
                     author_path(@item.user),
                     title: "Author Page: #{@item.author_name}",
-                    rel: 'author'
+                    rel: 'author',
+                    itemprop: 'url'
                 )
             %>
           </span>
@@ -101,13 +100,15 @@
             <i class="icon-tags"></i>
             <% @item.tags.each do |tag| %>
               <li>
-                <%= link_to(
-                      tag.title,
-                      tag_path(tag),
-                      title: "See all Articles tagged as '#{tag.title}'",
-                      rel: 'tag'
-                    )
-                %>
+                <span itemprop='keywords'>
+                  <%= link_to(
+                        tag.title,
+                        tag_path(tag),
+                        title: "See all Articles tagged as '#{tag.title}'",
+                        rel: 'tag'
+                      )
+                  %>
+                </span>
               </li>
             <% end %>
           </ul>
@@ -207,6 +208,11 @@
         </div>
       <% end %>
 
+      <div class="clearfix">
+        <div class="gplus_badge">
+          <%= render partial: "/shared/gplus_badge" %>
+        </div>
+      </div>
     </article>
   </div>
 <% end %>

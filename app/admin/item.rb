@@ -9,6 +9,7 @@ ActiveAdmin.register Item do
   scope :draft
   scope :with_comments
   scope :queued
+  scope :from_youtube
 
   menu priority: 1, parent: 'Items', label: 'All Items', if: lambda{|tabs_renderer|
     controller.current_ability.can?(:read, Item)

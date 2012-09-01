@@ -104,6 +104,11 @@ icons/social/myspace_16.png: icons/social/myspace_16-b63385c30bc1ddd3cde588c3721
 icons/social/myspace_32.png: icons/social/myspace_32-b37f7f6fd0888b01929ceba0c9380396.png
 icons/social/netvibes_16.png: icons/social/netvibes_16-1255ce05981aa92125649f0fd54193be.png
 icons/social/netvibes_32.png: icons/social/netvibes_32-9c3504fad7476d0a0624c907c20a86cf.png
+icons/social/new/gplus-32.png: icons/social/new/gplus-32-ffa87bb2c5cb6939629500a3e22aafa0.png
+icons/social/new/rss_32.png: icons/social/new/rss_32-28f5866bb695878301517d8b0568c358.png
+icons/social/new/twitter-bird-white-on-blue.png: icons/social/new/twitter-bird-white-on-blue-a32d5cc0d50bde085503b47504418631.png
+icons/social/new/twitter_32.png: icons/social/new/twitter_32-bf865b2cd50c85a4974d7ddf2a4511f2.png
+icons/social/new/twitter_32b.png: icons/social/new/twitter_32b-a1aee123e68d11d681df3e7dc6515a54.png
 icons/social/newsvine_16.png: icons/social/newsvine_16-6ba61cc70e70069754a077b55bf2b932.png
 icons/social/newsvine_32.png: icons/social/newsvine_32-ceac21c9047e894ee263764c1af2a2ca.png
 icons/social/openid_16.png: icons/social/openid_16-c416bd3d594c8c92683304daf9deb317.png
@@ -203,7 +208,7 @@ active_admin.js: active_admin-449c2a1dad04a207c473e2237f34277b.js
 application.js: application-357608fd670919e688f37fa59d23f17e.js
 registration.js: registration-979f78de5200791efea852a31c991ae2.js
 active_admin.css: active_admin-b43d561bc3b0839f810cb0b28d71844c.css
-application.css: application-4ec5d9970bd1a0a3d1b128eba8ff4651.css
+application.css: application-8c6da9d66aa7c69c53196079ba0727f1.css
 rss.css: rss-5d88525bfa6012a6fe5cdf6dd949a96f.css
 jquery-ui/ui-bg_flat_0_bdbdbd_40x100.png: jquery-ui/ui-bg_flat_0_bdbdbd_40x100-3be6aa7b1d61a969928ed6aa55e3c7cc.png
 jquery-ui/ui-bg_flat_0_eeeeee_40x100.png: jquery-ui/ui-bg_flat_0_eeeeee_40x100-054315d6c4bede256f2706ca7da722bd.png
