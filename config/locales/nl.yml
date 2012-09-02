@@ -197,21 +197,3 @@ nl:
   activerecord:
     errors:
       <<: *errors
-  ago: geleden
-  read: lees
-  more: Meer
-  search: Zoeken
-  page_rendered_in: Pagina gegenereerd in
-  comments: 
-    zero: Geen Commentaar
-    one: 1 Reactie
-    other: '%{count} Reacties'
-  published: Gepubliceerd
-  viewed_times: '%{count} keer bekeken'
-  sign_in: Inloggen
-  sign_out: Uitloggen
-  sign_up: Sign up
-  register: Aanmelden
-  registration: Registreren
-  welcome: Welkom
-  forgot_password: Wachtwoord Vergeten

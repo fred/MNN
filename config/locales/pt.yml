@@ -205,22 +205,3 @@ pt-BR:
   activerecord:
     errors:
       <<: *errors
-
-  ago: atras
-  read: ler
-  more: mais
-  search: Procurar
-  page_rendered_in: Página completa em
-  comments: 
-    zero: Sem Comentarios
-    one: 1 Comentario
-    other: '%{count} Comentarios'
-  published: Publicado
-  viewed_times: 'Lido %{count} vezes'
-  sign_in: Login
-  sign_out: Logout
-  sign_up: Registrar
-  register: Registrar
-  registration: Registração
-  welcome: Bem Vindo
-  forgot_password: Esqueceu Password
