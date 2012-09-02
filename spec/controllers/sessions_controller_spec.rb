@@ -10,7 +10,7 @@ describe Devise::SessionsController do
     describe "GET new" do
       it "should be successful" do
         get :new
-        response.should be_success
+        expect(response).to be_success
       end
     end
   end
@@ -23,11 +23,11 @@ describe Devise::SessionsController do
     describe "POST create" do
       it "should login user and redirect to root_path" do
         post :create, {user: {email: @user.email, password: "welcome"}}
-        response.should redirect_to(root_path)
+        expect(response).to redirect_to(root_path)
       end
       it "should login user and assign current_user" do
         post :create, {user: {email: @user.email, password: "welcome"}}
-        subject.current_user.should_not be_nil
+        expect(subject.current_user).not_to be_nil
       end
     end
   end

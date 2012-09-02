@@ -4,19 +4,19 @@ describe AuthorsController do
   describe "routing" do
 
     it "routes to #index" do
-      get("/authors").should route_to("authors#index")
+      expect(get("/authors")).to route_to("authors#index")
     end
 
     it "routes to #show" do
-      get("/authors/1").should route_to("authors#show", id: "1")
+      expect(get("/authors/1")).to route_to("authors#show", id: "1")
     end
 
     it "routes to #show.rss" do
-      get("/authors/1.rss").should route_to("authors#show", id: "1", format: "rss")
+      expect(get("/authors/1.rss")).to route_to("authors#show", id: "1", format: "rss")
     end
 
     it "routes to #show.atom" do
-      get("/authors/1.atom").should route_to("authors#show", id: "1", format: "atom")
+      expect(get("/authors/1.atom")).to route_to("authors#show", id: "1", format: "atom")
     end
 
   end

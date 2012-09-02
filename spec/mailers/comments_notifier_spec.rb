@@ -9,16 +9,16 @@ describe CommentsNotifier do
     let(:mail) { CommentsNotifier.to_admin(comment) }
     describe "the actual email" do
       it "should have correct subject" do
-        mail.subject.should eq("[New Comment] by #{comment.display_name}")
+        expect(mail.subject).to eq("[New Comment] by #{comment.display_name}")
       end
       it "should send email to inbox" do
-        mail.to.should eq(["inbox@worldmathaba.net"])
+        expect(mail.to).to eq(["inbox@worldmathaba.net"])
       end
       it "should have correct from address" do
-        mail.from.should eq(["inbox@worldmathaba.net"])
+        expect(mail.from).to eq(["inbox@worldmathaba.net"])
       end
       it "should have correct reply-to address" do
-        mail.reply_to.should eq(["inbox@worldmathaba.net"])
+        expect(mail.reply_to).to eq(["inbox@worldmathaba.net"])
       end
     end
   end

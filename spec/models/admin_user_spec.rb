@@ -13,12 +13,12 @@ describe AdminUser do
       assert_equal false, @admin_user.valid?
     end
     it "should return true on is_admin?" do
-      @admin_user.is_admin?.should eq(true)
+      expect(@admin_user.is_admin?).to eq(true)
     end
     it "should allow to Dowgrade user" do
       @admin_user.downgrade = "1"
       @admin_user.save
-      @admin_user.is_admin?.should eq(false)
+      expect(@admin_user.is_admin?).to eq(false)
     end
   end
 end

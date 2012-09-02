@@ -9,14 +9,14 @@ describe PagesController do
   describe "GET index" do
     it "assigns all pages as @pages" do
       get :index, {}
-      assigns(:pages).should eq([@page])
+      expect(assigns(:pages)).to eq([@page])
     end
   end
 
   describe "GET show" do
     it "assigns the requested page as @page" do
       get :show, {id: @page.to_param}
-      assigns(:page).should eq(@page)
+      expect(assigns(:page)).to eq(@page)
     end
   end
 

@@ -4,10 +4,10 @@ describe Comment do
 
   describe "with an email alert to admin" do
     it 'should send an email to admin' do
-      ->{ FactoryGirl.create(:comment) }.should change(ActionMailer::Base.deliveries, :count).by(4)
+      expect{FactoryGirl.create(:comment)}.to change(ActionMailer::Base.deliveries, :count).by(4)
     end
     it 'should not send an email to the users' do
-      ->{ FactoryGirl.create(:comment, subscribe: true) }.should change(ActionMailer::Base.deliveries, :count).by(4)
+      expect{FactoryGirl.create(:comment, subscribe: true)}.to change(ActionMailer::Base.deliveries, :count).by(4)
     end
   end
 
@@ -32,13 +32,13 @@ describe Comment do
       @comment = FactoryGirl.create(:comment, subscribe: true)
     end
     it "should create a CommentSubscription record" do
-      @comment.commentable.comment_subscriptions.should_not eq([])
+      expect(@comment.commentable.comment_subscriptions).not_to eq([])
     end
     it "should create a CommentSubscription for the user commenting" do
-      @comment.commentable.comment_subscriptions.first.user.should eq(@comment.owner)
+      expect(@comment.commentable.comment_subscriptions.first.user).to eq(@comment.owner)
     end
     it "should create a CommentSubscription for the item" do
-      @comment.commentable.comment_subscriptions.first.item.should eq(@comment.commentable)
+      expect(@comment.commentable.comment_subscriptions.first.item).to eq(@comment.commentable)
     end
     it "should create only one CommentSubscription for the user" do
       ->{

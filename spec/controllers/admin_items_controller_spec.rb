@@ -7,7 +7,7 @@ describe Admin::ItemsController do
     describe "GET index" do
       it "redirects to the login page" do
         get :index
-        response.should redirect_to(new_admin_user_session_path)
+        expect(response).to redirect_to(new_admin_user_session_path)
       end
     end
   end
@@ -27,19 +27,19 @@ describe Admin::ItemsController do
       describe "GET index" do
         it "Should Show @items array" do
           get :index
-          assigns(:items).should eq([@item])
+          expect(assigns(:items)).to eq([@item])
         end
       end
       describe "GET show" do
         it "Should Show @item" do
           get :show, id: @item.id
-          assigns(:item).should eq(@item)
+          expect(assigns(:item)).to eq(@item)
         end
       end
       describe "GET edit" do
         it "Should have @item" do
           get :edit, id: @item.id
-          response.should redirect_to(admin_dashboard_path)
+          expect(response).to redirect_to(admin_dashboard_path)
         end
       end
     end
@@ -50,23 +50,23 @@ describe Admin::ItemsController do
       describe "GET index" do
         it "Should Show @items array" do
           get :index
-          assigns(:items).should eq([@item])
+          expect(assigns(:items)).to eq([@item])
         end
       end
       describe "GET show" do
         it "Should Show @item" do
           get :show, id: @item.id
-          assigns(:item).should eq(@item)
+          expect(assigns(:item)).to eq(@item)
         end
       end
       describe "GET edit" do
         it "Should have @item" do
           get :edit, id: @item.id
-          assigns(:item).should eq(@item)
+          expect(assigns(:item)).to eq(@item)
         end
         it "Should have @item not as new record" do
           get :edit, id: @item.id
-          assigns(:item).should_not be_new_record
+          expect(assigns(:item)).not_to be_new_record
         end
       end
     end
@@ -79,28 +79,28 @@ describe Admin::ItemsController do
         end
         it "should only create draft items" do
           post :create, item: valid_item_attributes
-          assigns(:item).draft.should eq(true)
+          expect(assigns(:item).draft).to eq(true)
         end
         it "assigns a newly created user as @user" do
           post :create, item: valid_item_attributes
-          assigns(:item).should be_valid
-          assigns(:item).should be_a(Item)
-          assigns(:item).should be_persisted
+          expect(assigns(:item)).to be_valid
+          expect(assigns(:item)).to be_a(Item)
+          expect(assigns(:item)).to be_persisted
         end
         it "redirects to the created item" do
           post :create, item: valid_item_attributes
-          assigns(:item).should be_valid
-          response.should redirect_to(admin_item_path(assigns(:item)))
+          expect(assigns(:item)).to be_valid
+          expect(response).to redirect_to(admin_item_path(assigns(:item)))
         end
       end
       describe "with invalid params" do
         it "assigns a newly created but unsaved user as @item" do
           post :create, item: {}
-          assigns(:item).should be_a_new(Item)
+          expect(assigns(:item)).to be_a_new(Item)
         end
         it "re-renders the 'new' template" do
           post :create, item: {}
-          response.should render_template("new")
+          expect(response).to render_template("new")
         end
       end
     end
@@ -115,7 +115,7 @@ describe Admin::ItemsController do
       end
       it "redirects to the items list" do
         delete :destroy, {id: @item.to_param}
-        response.should redirect_to(admin_items_url)
+        expect(response).to redirect_to(admin_items_url)
       end
     end
     describe "Deleting others Articles" do
@@ -129,7 +129,7 @@ describe Admin::ItemsController do
       end
       it "redirects to the items list" do
         delete :destroy, {id: @item.to_param}
-        response.should redirect_to(admin_dashboard_path)
+        expect(response).to redirect_to(admin_dashboard_path)
       end
     end
   end
@@ -150,23 +150,23 @@ describe Admin::ItemsController do
       describe "GET index" do
         it "Should Show @items array" do
           get :index
-          assigns(:items).should eq([@item])
+          expect(assigns(:items)).to eq([@item])
         end
       end
       describe "GET show" do
         it "Should Show @item" do
           get :show, id: @item.id
-          assigns(:item).should eq(@item)
+          expect(assigns(:item)).to eq(@item)
         end
       end
       describe "GET edit" do
         it "Should have @item" do
           get :edit, id: @item.id
-          assigns(:item).should eq(@item)
+          expect(assigns(:item)).to eq(@item)
         end
         it "Should have @item not as new record" do
           get :edit, id: @item.id
-          assigns(:item).should_not be_new_record
+          expect(assigns(:item)).not_to be_new_record
         end
       end
     end
@@ -175,11 +175,11 @@ describe Admin::ItemsController do
       describe "GET new" do
         it "Should show new item page" do
           get :new
-          assigns(:item).should_not be_nil
+          expect(assigns(:item)).not_to be_nil
         end
         it "Should show new item page" do
           get :new
-          assigns(:item).should be_new_record
+          expect(assigns(:item)).to be_new_record
         end
       end
     end
@@ -194,25 +194,25 @@ describe Admin::ItemsController do
 
         it "assigns a newly created user as @user" do
           post :create, item: valid_item_attributes
-          assigns(:item).should be_valid
-          assigns(:item).should be_a(Item)
-          assigns(:item).should be_persisted
+          expect(assigns(:item)).to be_valid
+          expect(assigns(:item)).to be_a(Item)
+          expect(assigns(:item)).to be_persisted
         end
 
         it "redirects to the created item" do
           post :create, item: valid_item_attributes
-          assigns(:item).should be_valid
-          response.should redirect_to(admin_item_path(assigns(:item)))
+          expect(assigns(:item)).to be_valid
+          expect(response).to redirect_to(admin_item_path(assigns(:item)))
         end
       end
       describe "with invalid params" do
         it "assigns a newly created but unsaved user as @item" do
           post :create, item: {}
-          assigns(:item).should be_a_new(Item)
+          expect(assigns(:item)).to be_a_new(Item)
         end
         it "re-renders the 'new' template" do
           post :create, item: {}
-          response.should render_template("new")
+          expect(response).to render_template("new")
         end
       end
     end
@@ -230,11 +230,11 @@ describe Admin::ItemsController do
         end
         it "assigns the requested item as @item" do
           put :update, {id: @item.to_param, item: valid_item_attributes}
-          assigns(:item).should eq(@item)
+          expect(assigns(:item)).to eq(@item)
         end
         it "redirects to the item" do
           put :update, {id: @item.to_param, item: valid_item_attributes}
-          response.should redirect_to(assigns(:item))
+          expect(response).to redirect_to(assigns(:item))
         end
       end
       describe "with invalid params" do
@@ -242,7 +242,7 @@ describe Admin::ItemsController do
           # Trigger the behavior that occurs when invalid params are submitted
           # Item.any_instance.stub(:save).and_return(false)
           put :update, {id: @item.to_param, item: {}}
-          assigns(:item).should eq(@item)
+          expect(assigns(:item)).to eq(@item)
         end
       end
     end
@@ -260,7 +260,7 @@ describe Admin::ItemsController do
       it "redirects to the items list" do
         # item = Item.create! valid_item_attributes
         delete :destroy, {id: @item.to_param}
-        response.should redirect_to(admin_items_url)
+        expect(response).to redirect_to(admin_items_url)
       end
     end
     

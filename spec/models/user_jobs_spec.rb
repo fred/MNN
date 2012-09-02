@@ -4,7 +4,7 @@ describe User do
 
   describe "with Job Queues" do
     it "should enqueue the new user email and welcome email" do
-      ->{ FactoryGirl.create(:user) }.should change(ActionMailer::Base.deliveries, :count).by(2)
+      expect(->{ FactoryGirl.create(:user) }).to change(ActionMailer::Base.deliveries, :count).by(2)
     end
   end
 

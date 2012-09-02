@@ -10,21 +10,21 @@ describe AuthorsController do
   describe "GET 'index'" do
     it "returns http success" do
       get 'index'
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
   describe "GET 'show'" do
     it "returns http success" do
       get 'show', id: @author.id
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
   describe "GET 'show.rss'" do
     it "returns http success for author rss" do
       get 'show', id: @author.id, format: "rss"
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
@@ -32,7 +32,7 @@ describe AuthorsController do
   describe "GET 'show.atom'" do
     it "returns http success for author atom" do
       get 'show', id: @author.id, format: "atom"
-      response.should be_success
+      expect(response).to be_success
     end
   end
 

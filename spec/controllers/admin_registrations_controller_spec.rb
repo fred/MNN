@@ -11,15 +11,15 @@ describe Devise::RegistrationsController do
     describe "GET new" do
       it "should be successful" do
         get :new
-        response.should be_success
+        expect(response).to be_success
       end
       it "should have admin_user as a new object" do
         get :new
-        assigns(:admin_user).should be_a_new(AdminUser)
+        expect(assigns(:admin_user)).to be_a_new(AdminUser)
       end
       it "should stub a new admin_user object" do
         get :new
-        assigns(:admin_user).should_not be_nil
+        expect(assigns(:admin_user)).not_to be_nil
       end
     end
   end
@@ -34,15 +34,15 @@ describe Devise::RegistrationsController do
     describe "GET edit" do
       it "should be successful" do
         get :edit
-        response.should be_success
+        expect(response).to be_success
       end
       it "should have current_admin_user not nil" do
         get :edit
-        subject.current_admin_user.should_not be_nil
+        expect(subject.current_admin_user).not_to be_nil
       end
       it "should assign current_admin_user as a the admin_user object" do
         get :edit
-        assigns(:admin_user).should eq(subject.current_admin_user)
+        expect(assigns(:admin_user)).to eq(subject.current_admin_user)
       end
     end
   end
@@ -63,30 +63,30 @@ describe Devise::RegistrationsController do
   
       it "assigns a newly created user as @admin_user" do
         post :create, admin_user: valid_user_attributes
-        assigns(:admin_user).should be_a(AdminUser)
-        assigns(:admin_user).should be_persisted
+        expect(assigns(:admin_user)).to be_a(AdminUser)
+        expect(assigns(:admin_user)).to be_persisted
       end
         
       it "redirects to the admin_dashboard after creating admin_user" do
         post :create, admin_user: valid_user_attributes
-        response.should redirect_to(admin_dashboard_path)
+        expect(response).to redirect_to(admin_dashboard_path)
       end
       
       it "assigns current_user to the newly created admin_user" do
         post :create, admin_user: valid_user_attributes
-        subject.current_admin_user.should_not be_nil
+        expect(subject.current_admin_user).not_to be_nil
       end
     end
   
     describe "with invalid params" do
       it "assigns a newly created but unsaved user as @admin_user" do
         post :create, admin_user: {}
-        assigns(:admin_user).should be_a_new(AdminUser)
+        expect(assigns(:admin_user)).to be_a_new(AdminUser)
       end
   
       it "re-renders the 'new' template" do
         post :create, admin_user: {}
-        response.should render_template("new")
+        expect(response).to render_template("new")
       end
     end
   end

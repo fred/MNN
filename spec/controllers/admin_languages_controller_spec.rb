@@ -6,7 +6,7 @@ describe Admin::LanguagesController do
     describe "GET index" do
       it "redirects to the login page" do
         get :index
-        response.should redirect_to(new_admin_user_session_path)
+        expect(response).to redirect_to(new_admin_user_session_path)
       end
     end
   end
@@ -27,23 +27,23 @@ describe Admin::LanguagesController do
       describe "GET index" do
         it "Should Show @languages array" do
           get :index
-          assigns(:languages).should eq([@language])
+          expect(assigns(:languages)).to eq([@language])
         end
       end
       describe "GET show" do
         it "Should Show @language" do
           get :show, id: @language.id
-          assigns(:language).should eq(@language)
+          expect(assigns(:language)).to eq(@language)
         end
       end
       describe "GET edit" do
         it "Should have @language" do
           get :edit, id: @language.id
-          assigns(:language).should eq(@language)
+          expect(assigns(:language)).to eq(@language)
         end
         it "Should have @language not as new record" do
           get :edit, id: @language.id
-          assigns(:language).should_not be_new_record
+          expect(assigns(:language)).not_to be_new_record
         end
       end
     end
@@ -52,11 +52,11 @@ describe Admin::LanguagesController do
       describe "GET new" do
         it "Should show new language page" do
           get :new
-          assigns(:language).should_not be_nil
+          expect(assigns(:language)).not_to be_nil
         end
         it "Should show new language page" do
           get :new
-          assigns(:language).should be_new_record
+          expect(assigns(:language)).to be_new_record
         end
       end
     end

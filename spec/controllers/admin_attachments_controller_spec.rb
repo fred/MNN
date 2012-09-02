@@ -6,7 +6,7 @@ describe Admin::AttachmentsController do
     describe "GET index" do
       it "redirects to the login page" do
         get :index
-        response.should redirect_to(new_admin_user_session_path)
+        expect(response).to redirect_to(new_admin_user_session_path)
       end
     end
   end
@@ -27,23 +27,23 @@ describe Admin::AttachmentsController do
       describe "GET index" do
         it "Should Show @attachments array" do
           get :index
-          assigns(:attachments).should eq([@attachment])
+          expect(assigns(:attachments)).to eq([@attachment])
         end
       end
       describe "GET show" do
         it "Should Show @attachment" do
           get :show, id: @attachment.id
-          assigns(:attachment).should eq(@attachment)
+          expect(assigns(:attachment)).to eq(@attachment)
         end
       end
       describe "GET edit" do
         it "Should have @attachment" do
           get :edit, id: @attachment.id
-          assigns(:attachment).should eq(@attachment)
+          expect(assigns(:attachment)).to eq(@attachment)
         end
         it "Should have @attachment not as new record" do
           get :edit, id: @attachment.id
-          assigns(:attachment).should_not be_new_record
+          expect(assigns(:attachment)).not_to be_new_record
         end
       end
     end
@@ -52,11 +52,11 @@ describe Admin::AttachmentsController do
       describe "GET new" do
         it "Should show new attachment page" do
           get :new
-          assigns(:attachment).should_not be_nil
+          expect(assigns(:attachment)).not_to be_nil
         end
         it "Should show new attachment page" do
           get :new
-          assigns(:attachment).should be_new_record
+          expect(assigns(:attachment)).to be_new_record
         end
       end
     end

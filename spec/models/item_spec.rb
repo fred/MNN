@@ -9,52 +9,52 @@ describe Item do
       Item.create valid_item_attributes
     }
     it "should be valid" do
-      item.should be_valid
+      expect(item).to be_valid
     end
     it "should require a category" do
       item.category_id = nil
-      item.should_not be_valid
+      expect(item).not_to be_valid
     end
     it "should require a title" do
       item.title = nil
-      item.should_not be_valid
+      expect(item).not_to be_valid
     end
     it "should require abstract" do
       item.abstract = nil
-      item.should_not be_valid
+      expect(item).not_to be_valid
     end
     it "should require a body" do
       item.body = nil
-      item.should_not be_valid
+      expect(item).not_to be_valid
     end
     it "should require a published_at" do
       item.published_at = nil
-      item.should_not be_valid
+      expect(item).not_to be_valid
     end
     it "should not require a body if it is a youtube video" do
       item.youtube_id = "a1b2c3d4e5"
       item.body = nil
-      item.should be_valid
+      expect(item).to be_valid
     end
     it "should not require user_id" do
       item.user_id = nil
-      item.should be_valid
+      expect(item).to be_valid
     end
     it "should delete an Item" do
-      lambda {item.destroy}.should_not raise_error
+      expect(lambda {item.destroy}).not_to raise_error
     end
     it "should allow to edit item" do
       item.title = "A New item..."
-      lambda {item.save}.should_not raise_error
+      expect(lambda {item.save}).not_to raise_error
     end
     it "should have ItemStat" do
-      item.item_stat.should_not be(nil)
-      item.item_stat.should be_an_instance_of ItemStat
+      expect(item.item_stat).not_to be(nil)
+      expect(item.item_stat).to be_an_instance_of ItemStat
     end
     it 'should have proper enqueue_time time' do
-      item.enqueue_time.should_not be(nil)
-      item.enqueue_time.should be_an_instance_of(Time)
-      item.enqueue_time.to_i.should greater_than(item.published_at.to_i)
+      expect(item.enqueue_time).not_to be(nil)
+      expect(item.enqueue_time).to be_an_instance_of(Time)
+      expect(item.enqueue_time.to_i).to greater_than(item.published_at.to_i)
     end
   end
   describe "Instance Methods" do
@@ -68,100 +68,100 @@ describe Item do
       )
     }
     it "should respond to should_generate_new_friendly_id?" do
-      item.should respond_to(:should_generate_new_friendly_id?)
+      expect(item).to respond_to(:should_generate_new_friendly_id?)
     end
     it "should respond to set_custom_slug" do
-      item.should respond_to(:set_custom_slug)
+      expect(item).to respond_to(:set_custom_slug)
     end
     it "should respond to custom_slug" do
-      item.should respond_to(:custom_slug)
+      expect(item).to respond_to(:custom_slug)
     end
     it "should respond to clear_bad_characters" do
-      item.should respond_to(:clear_bad_characters)
+      expect(item).to respond_to(:clear_bad_characters)
     end
     it "should respond to email_delivery_sent?" do
-      item.should respond_to(:email_delivery_sent?)
+      expect(item).to respond_to(:email_delivery_sent?)
     end
     it "should respond to email_delivery_queued?" do
-      item.should respond_to(:email_delivery_queued?)
+      expect(item).to respond_to(:email_delivery_queued?)
     end
     it "should respond to email_delivery_queued_at" do
-      item.should respond_to(:email_delivery_queued_at)
+      expect(item).to respond_to(:email_delivery_queued_at)
     end
     it "should respond to send_email_deliveries" do
-      item.should respond_to(:send_email_deliveries)
+      expect(item).to respond_to(:send_email_deliveries)
     end
     it "should respond to posted_to_twitter?" do
-      item.should respond_to(:posted_to_twitter?)
+      expect(item).to respond_to(:posted_to_twitter?)
     end
     it "should respond to create_twitter_share" do
-      item.should respond_to(:create_twitter_share)
+      expect(item).to respond_to(:create_twitter_share)
     end
     it "should respond to twitter_status" do
-      item.should respond_to(:twitter_status)
+      expect(item).to respond_to(:twitter_status)
     end
     it "should respond to sitemap_jobs" do
-      item.should respond_to(:sitemap_jobs)
+      expect(item).to respond_to(:sitemap_jobs)
     end
     it "should respond to enqueue_time" do
-      item.should respond_to(:enqueue_time)
+      expect(item).to respond_to(:enqueue_time)
     end
     it "should respond to main_image" do
-      item.should respond_to(:main_image)
+      expect(item).to respond_to(:main_image)
     end
     it "should respond to main_image_cache_key" do
-      item.should respond_to(:main_image_cache_key)
+      expect(item).to respond_to(:main_image_cache_key)
     end
     it "should respond to comment_cache_key" do
-      item.should respond_to(:comment_cache_key)
+      expect(item).to respond_to(:comment_cache_key)
     end
     it "should respond to has_image?" do
-      item.should respond_to(:has_image?)
+      expect(item).to respond_to(:has_image?)
     end
     it "should respond to cache_key_full" do
-      item.should respond_to(:cache_key_full)
+      expect(item).to respond_to(:cache_key_full)
     end
     it "should respond to tag_list" do
-      item.should respond_to(:tag_list)
+      expect(item).to respond_to(:tag_list)
     end
     it "should respond to build_stat" do
-      item.should respond_to(:build_stat)
+      expect(item).to respond_to(:build_stat)
     end
     it "should respond to set_status_code" do
-      item.should respond_to(:set_status_code)
+      expect(item).to respond_to(:set_status_code)
     end
     it "should respond to admin_permalink" do
-      item.should respond_to(:admin_permalink)
+      expect(item).to respond_to(:admin_permalink)
     end
     it "should respond to published?" do
-      item.should respond_to(:published?)
+      expect(item).to respond_to(:published?)
     end
     it "should respond to language_title_short" do
-      item.should respond_to(:language_title_short)
+      expect(item).to respond_to(:language_title_short)
     end
     it "should respond to category_title" do
-      item.should respond_to(:category_title)
+      expect(item).to respond_to(:category_title)
     end
     it "should respond to language_title" do
-      item.should respond_to(:language_title)
+      expect(item).to respond_to(:language_title)
     end
     it "should respond to user_title" do
-      item.should respond_to(:user_title)
+      expect(item).to respond_to(:user_title)
     end
     it "should respond to user_email" do
-      item.should respond_to(:user_email)
+      expect(item).to respond_to(:user_email)
     end
     it "should respond to keywords_list" do
-      item.should respond_to(:keywords_list)
+      expect(item).to respond_to(:keywords_list)
     end
     it "should respond to meta_keywords" do
-      item.should respond_to(:meta_keywords)
+      expect(item).to respond_to(:meta_keywords)
     end
     it "should respond to keyword_for_solr" do
-      item.should respond_to(:keyword_for_solr)
+      expect(item).to respond_to(:keyword_for_solr)
     end
     it "should respond to enqueue_time" do
-      item.should respond_to(:enqueue_time)
+      expect(item).to respond_to(:enqueue_time)
     end
   end
 
@@ -171,68 +171,59 @@ describe Item do
       @item = FactoryGirl.create(:item, body: "&lsquo; An &rsquo; Item &ldquo; and &rdquo; &nbsp;")
     end
     it "should not allow to Left/Right Single/Double Quotes" do
-      # @item.body.should eq("&#39; An &#39; Item &#34; and &#34;  ")
-      @item.body.should eq("\' An \' Item \" and \"  ")
+      expect(@item.body).to eq("\' An \' Item \" and \"  ")
     end
     it "should replace [Left Single Curly Quotes] with [normal single quote]" do
       @item.body = "Item &lsquo;"
       @item.save
-      # @item.body.should eq("Item &#39;")
-      @item.body.should eq("Item \'")
+      expect(@item.body).to eq("Item \'")
     end
     it "should replace [Left Double Curly Quotes] with [normal double quotes]" do
       @item.body = "Item &ldquo;"
       @item.save
-      # @item.body.should eq("Item &#34;")
-      @item.body.should eq("Item \"")
+      expect(@item.body).to eq("Item \"")
     end
     it "should replace [Right Single Curly Quotes] with [normal single quote]" do
       @item.body = "Item &rsquo;"
       @item.save
-      # @item.body.should eq("Item &#39;")
-      @item.body.should eq("Item \'")
+      expect(@item.body).to eq("Item \'")
     end
     it "should replace [Right Double Curly Quotes] with [normal double quotes]" do
       @item.body = "Item &rdquo;"
       @item.save
-      # @item.body.should eq("Item &#34;")
-      @item.body.should eq("Item \"")
+      expect(@item.body).to eq("Item \"")
     end
     it "should replace &nbsp; with normal spaces" do
       @item.body = "The&nbsp;Item"
       @item.save
-      @item.body.should eq("The Item")
+      expect(@item.body).to eq("The Item")
     end
     it "should replace [en dash &ndash;] with [minus sign]" do
       @item.body = "The&ndash;Item"
       @item.save
-      # @item.body.should eq("The&#45;Item")
-      @item.body.should eq("The-Item")
+      expect(@item.body).to eq("The-Item")
     end
     it "should replace [em dash &mdash;] with [minus sign]" do
       @item.body = "The&mdash;Item"
       @item.save
-      # @item.body.should eq("The&#45;Item")
-      @item.body.should eq("The-Item")
+      expect(@item.body).to eq("The-Item")
     end
     it "should replace [acute accent with no letter] with [single quote]" do
       @item.body = "The&#180;Item"
       @item.save
-      # @item.body.should eq("The&#39;Item")
-      @item.body.should eq("The\'Item")
-      @item.body.should eq("The'Item")
+      expect(@item.body).to eq("The\'Item")
+      expect(@item.body).to eq("The'Item")
     end
     it "should replace [grave accent/reversed apostrophe with no letter] with [single quote]" do
       @item.body = "The&#96;Item"
       @item.save
-      # @item.body.should eq("The&#39;Item")
-      @item.body.should eq("The\'Item")
-      @item.body.should eq("The'Item")
+      expect(@item.body).to eq("The\'Item")
+      expect(@item.body).to eq("The'Item")
     end
     it "should replace [hellip] with [...]" do
       @item.body = "The&hellip;Item"
       @item.save
-      @item.body.should eq("The...Item")
+      expect(@item.body).to eq("The...Item")
     end
   end
 
@@ -241,25 +232,25 @@ describe Item do
       @item = FactoryGirl.create(:item, draft: false, send_emails: "1")
     end
     it "should create an EmailDelivery resource" do
-      @item.email_deliveries.should_not eq([])
-      @item.email_deliveries.last.should eq(EmailDelivery.first)
+      expect(@item.email_deliveries).not_to eq([])
+      expect(@item.email_deliveries.last).to eq(EmailDelivery.first)
     end
     it "should have only one EmailDelivery resource" do
-      @item.email_deliveries.count.should eq(1)
+      expect(@item.email_deliveries.count).to eq(1)
     end
     it "should not re-create an EmailDelivery resource after saving" do
       @item.draft = false
       @item.save
-      @item.email_deliveries.count.should eq(1)
+      expect(@item.email_deliveries.count).to eq(1)
     end
     it "should have send_at date" do
-      @item.email_deliveries.first.send_at.should_not eq(nil)
+      expect(@item.email_deliveries.first.send_at).not_to eq(nil)
     end
     it "should have send_at queue time greater then publication date" do
-      @item.email_deliveries.first.send_at.to_i.should greater_than(@item.published_at.to_i)
+      expect(@item.email_deliveries.first.send_at.to_i).to greater_than(@item.published_at.to_i)
     end
     it "should not yet have sent the email" do
-      @item.email_delivery_sent?.should eq(false)
+      expect(@item.email_delivery_sent?).to eq(false)
     end
   end
 
@@ -268,17 +259,17 @@ describe Item do
       @item = FactoryGirl.create(:item, draft: true)
     end
     it "should not create an EmailDelivery resource" do
-      @item.email_deliveries.should eq([])
-      @item.email_deliveries.count.should eq(0)
+      expect(@item.email_deliveries).to eq([])
+      expect(@item.email_deliveries.count).to eq(0)
     end
     it "should re-create an EmailDelivery resource after saving" do
       @item.draft = false
       @item.send_emails = "1"
       @item.save
-      @item.email_deliveries.count.should eq(1)
+      expect(@item.email_deliveries.count).to eq(1)
     end
     it "should says it already sent the email" do
-      @item.email_delivery_sent?.should eq(false)
+      expect(@item.email_delivery_sent?).to eq(false)
     end
   end
 
@@ -288,19 +279,19 @@ describe Item do
       @item = FactoryGirl.create(:item, draft: true, send_emails: "1")
     end
     it "should not create an EmailDelivery resource" do
-      @item.email_deliveries.should eq([])
-      @item.email_deliveries.count.should eq(0)
+      expect(@item.email_deliveries).to eq([])
+      expect(@item.email_deliveries.count).to eq(0)
     end
     it "should re-create an EmailDelivery resource after saving" do
       @item.draft = false
       @item.save
-      @item.email_deliveries.count.should eq(1)
+      expect(@item.email_deliveries.count).to eq(1)
     end
     it "should have already sent the email" do
-      @item.email_delivery_sent?.should eq(false)
+      expect(@item.email_delivery_sent?).to eq(false)
     end
     it "should enqueue the email delivery" do
-      @item.email_delivery_queued?.should eq(false)
+      expect(@item.email_delivery_queued?).to eq(false)
     end
   end
 
@@ -309,10 +300,10 @@ describe Item do
       @item = FactoryGirl.create(:item, published_at: Time.now+600, send_emails: "1")
     end
     it "should enqueue the email delivery" do
-      @item.email_delivery_queued?.should eq(true)
+      expect(@item.email_delivery_queued?).to eq(true)
     end
     it "should not send the email yet" do
-      @item.email_delivery_sent?.should eq(false)
+      expect(@item.email_delivery_sent?).to eq(false)
     end
   end
 
@@ -321,14 +312,14 @@ describe Item do
       @item = FactoryGirl.create(:item, published_at: Time.now+600, share_twitter: "1", send_emails: "1")
     end
     it "should create a share twitter model with future enqueue_at date" do
-      @item.twitter_shares.last.enqueue_at.to_i.should greater_than(@item.published_at.to_i)
+      expect(@item.twitter_shares.last.enqueue_at.to_i).to greater_than(@item.published_at.to_i)
     end
     it "should create the share twitter model with processed_at nil" do
       @share = @item.twitter_shares.last
-      @share.processed_at.should eq(nil)
+      expect(@share.processed_at).to eq(nil)
     end
     it "should enqueue the email delivery" do
-      @item.email_delivery_queued?.should eq(true)
+      expect(@item.email_delivery_queued?).to eq(true)
     end
   end
 
@@ -338,12 +329,12 @@ describe Item do
       @item = FactoryGirl.create(:item, share_twitter: "1")
     end
     it "should create a share twitter model" do
-      @item.twitter_shares.should_not eq([])
-      @item.twitter_shares.last.should eq(TwitterShare.first)
+      expect(@item.twitter_shares).not_to eq([])
+      expect(@item.twitter_shares.last).to eq(TwitterShare.first)
     end
     it "should create the share twitter model with processed_at nil" do
       @share = @item.twitter_shares.last
-      @share.processed_at.should eq(nil)
+      expect(@share.processed_at).to eq(nil)
     end
   end
 
@@ -352,8 +343,8 @@ describe Item do
       @item = FactoryGirl.create(:item, share_twitter: "0")
     end
     it "should not create a share twitter model" do
-      @item.twitter_shares.should eq([])
-      @item.twitter_shares.count.should eq(0)
+      expect(@item.twitter_shares).to eq([])
+      expect(@item.twitter_shares.count).to eq(0)
     end
   end
 
@@ -362,34 +353,34 @@ describe Item do
       @item = FactoryGirl.create(:item)
     end
     it "should not have a twitter share by default" do
-      @item.twitter_shares.should eq([])
+      expect(@item.twitter_shares).to eq([])
     end
     it "should create a share twitter after update if share_twitter = 1" do
       @item.share_twitter = 1
       @item.save
       @new_item = Item.find(@item.id)
-      @new_item.twitter_shares.should_not eq([])
-      @new_item.twitter_shares.last.should eq(TwitterShare.first)
+      expect(@new_item.twitter_shares).not_to eq([])
+      expect(@new_item.twitter_shares.last).to eq(TwitterShare.first)
     end
     it "should create a share twitter after update if share_twitter = true" do
       @item.share_twitter = true
       @item.save
       @new_item = Item.find(@item.id)
-      @new_item.twitter_shares.should_not eq([])
-      @new_item.twitter_shares.last.should eq(TwitterShare.first)
-      @new_item.twitter_shares.count.should eq(1)
+      expect(@new_item.twitter_shares).not_to eq([])
+      expect(@new_item.twitter_shares.last).to eq(TwitterShare.first)
+      expect(@new_item.twitter_shares.count).to eq(1)
     end
     it "should not create a share twitter after update if share_twitter = false" do
       @item.share_twitter = false
       @item.save
       @new_item = Item.find(@item.id)
-      @new_item.twitter_shares.should eq([])
+      expect(@new_item.twitter_shares).to eq([])
     end
     it "should not create a share twitter after update if share_twitter = 0" do
       @item.share_twitter = 0
       @item.save
       @new_item = Item.find(@item.id)
-      @new_item.twitter_shares.should eq([])
+      expect(@new_item.twitter_shares).to eq([])
     end
   end
 
@@ -401,7 +392,7 @@ describe Item do
       @item = Item.first
       @item.share_twitter = 1
       @item.save
-      @item.twitter_shares.count.should eq(1)
+      expect(@item.twitter_shares.count).to eq(1)
     end
   end
 
@@ -413,14 +404,14 @@ describe Item do
       @item = FactoryGirl.create(:item)
     end
     it "should create an item" do
-      lambda {Item.create(valid_item_attributes)}.should_not raise_error
+      expect(lambda {Item.create(valid_item_attributes)}).not_to raise_error
     end
     it "should allow to edit an Item" do
       @item.title = "A New item..."
-      lambda {@item.save}.should_not raise_error
+      expect(lambda {@item.save}).not_to raise_error
     end
     it "should delete an Item" do
-      lambda {@item.destroy}.should_not raise_error
+      expect(lambda {@item.destroy}).not_to raise_error
     end
   end
 

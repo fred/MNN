@@ -6,7 +6,7 @@ describe Admin::UsersController do
     describe "GET index" do
       it "redirects to the login page" do
         get :index
-        response.should redirect_to(new_admin_user_session_path)
+        expect(response).to redirect_to(new_admin_user_session_path)
       end
     end
   end
@@ -27,23 +27,23 @@ describe Admin::UsersController do
       describe "GET index" do
         it "Should Show @users array" do
           get :index
-          assigns(:users).should eq([@user])
+          expect(assigns(:users)).to eq([@user])
         end
       end
       describe "GET show" do
         it "Should Show @user" do
           get :show, id: @user.id
-          assigns(:user).should eq(@user)
+          expect(assigns(:user)).to eq(@user)
         end
       end
       describe "GET edit" do
         it "Should have @user" do
           get :edit, id: @user.id
-          assigns(:user).should eq(@user)
+          expect(assigns(:user)).to eq(@user)
         end
         it "Should have @user not as new record" do
           get :edit, id: @user.id
-          assigns(:user).should_not be_new_record
+          expect(assigns(:user)).not_to be_new_record
         end
       end
     end
@@ -52,11 +52,11 @@ describe Admin::UsersController do
       describe "GET new" do
         it "Should show new user page" do
           get :new
-          assigns(:user).should_not be_nil
+          expect(assigns(:user)).not_to be_nil
         end
         it "Should show new user page" do
           get :new
-          assigns(:user).should be_new_record
+          expect(assigns(:user)).to be_new_record
         end
       end
     end

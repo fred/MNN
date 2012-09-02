@@ -4,7 +4,7 @@ describe Item do
   include NumericMatchers
 
   it 'should respond to existing_image_id' do
-    Item.new.should respond_to(:existing_attachment_id)
+    expect(Item.new).to respond_to(:existing_attachment_id)
   end
 
   describe "With existing_attachment_id" do
@@ -16,16 +16,16 @@ describe Item do
     end
 
     it 'should have an image attachment' do
-      @item.attachments.count.should eq(1)
+      expect(@item.attachments.count).to eq(1)
     end
 
     it 'should have 2 attachments in the database' do
-      Attachment.count.should eq(2)
+      expect(Attachment.count).to eq(2)
     end
 
     # Only for test environment
     it 'should have the same attachment image' do
-      (File.exists?(@item.main_image.image.path)).should eq(true)
+      expect((File.exists?(@item.main_image.image.path))).to eq(true)
     end
 
   end

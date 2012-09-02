@@ -13,20 +13,20 @@ describe ItemsController do
   describe "GET feed" do
     it "show show feed page" do
       get :feed
-      response.should be_success
+      expect(response).to be_success
     end
   end
   
   describe 'GET index' do
     it 'should render RSS XML' do
       get :index, format: 'rss', lang: 'en'
-      response.should be_success
-      response.headers["Content-Type"].should eql("application/rss+xml; charset=utf-8")
+      expect(response).to be_success
+      expect(response.headers["Content-Type"]).to eql("application/rss+xml; charset=utf-8")
     end
     it 'should render Atom XML' do
       get :index, format: 'atom', lang: 'en'
-      response.should be_success
-      response.headers["Content-Type"].should eql("application/atom+xml; charset=utf-8")
+      expect(response).to be_success
+      expect(response.headers["Content-Type"]).to eql("application/atom+xml; charset=utf-8")
     end
   end
   
@@ -34,7 +34,7 @@ describe ItemsController do
     it "assigns all items as items" do
       # item = Item.create! valid_item_attributes
       get :index
-      assigns(:items).should eq([item])
+      expect(assigns(:items)).to eq([item])
     end
   end
   
@@ -42,7 +42,7 @@ describe ItemsController do
     it "assigns the requested item as item" do
       # item = Item.create! valid_item_attributes
       get :show, id: item.id
-      assigns(:item).should eq(item)
+      expect(assigns(:item)).to eq(item)
     end
   end
   
@@ -74,19 +74,19 @@ describe ItemsController do
     describe "with empty search string" do
       it "should show no items" do
         get :search, q: ''
-        assigns(:items).should eq([])
+        expect(assigns(:items)).to eq([])
       end
     end
     describe "with bad search string" do
       it "should show no items" do
         get :search, q: 'asdasdasdasdadadadas'
-        assigns(:items).should eq([])
+        expect(assigns(:items)).to eq([])
       end
     end
     describe "with good search string" do
       it "should show some items" do
         get :search, q: item.title
-        assigns(:items).should eq([item])
+        expect(assigns(:items)).to eq([item])
       end
     end
   end

@@ -10,21 +10,21 @@ describe "/shared/items" do
   end
   
   it "should have a channel element" do
-    rendered.should =~ /channel/
+    expect(rendered).to match(/channel/)
   end
   
   it "should have a item element" do
-    rendered.should =~ /item/
+    expect(rendered).to match(/item/)
   end
   
   it "should contain item url" do
-    rendered.should contain(url_for(@item))
-    rendered.should contain(url_for(@item2))
+    expect(rendered).to contain(url_for(@item))
+    expect(rendered).to contain(url_for(@item2))
   end
   
   it "should contain item title" do
-    rendered.should contain(@item.title)
-    rendered.should contain(@item2.title)
+    expect(rendered).to contain(@item.title)
+    expect(rendered).to contain(@item2.title)
   end
   
 end

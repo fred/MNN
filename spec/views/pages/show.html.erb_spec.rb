@@ -12,7 +12,7 @@ describe "pages/show" do
 
   it "renders attributes in <p>" do
     render
-    rendered.should match(/Title/)
-    rendered.should match(/MyText/)
+    expect(rendered).to match(/Title/)
+    expect(rendered).to match(/MyText/)
   end
 end

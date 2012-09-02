@@ -9,11 +9,11 @@ describe Item do
     end
 
     it "should have a slug with the item ID" do
-      @item.slug.should match("^#{@item.id}")
+      expect(@item.slug).to match("^#{@item.id}")
     end
 
     it "should have the custom slug" do
-      @item.slug.should eq(@item.custom_slug)
+      expect(@item.slug).to eq(@item.custom_slug)
     end
 
   end

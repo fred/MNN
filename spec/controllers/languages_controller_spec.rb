@@ -10,14 +10,14 @@ describe LanguagesController do
   describe "GET 'index'" do
     it "returns http success" do
       get 'index'
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
   describe "GET 'show'" do
     it "returns http success" do
       get 'show', id: @language.id
-      response.should redirect_to(language_items_path(@language))
+      expect(response).to redirect_to(language_items_path(@language))
     end
   end
 
