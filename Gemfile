@@ -93,8 +93,8 @@ group :production, :development do
 end
 
 group :test, :development do
-  gem 'rspec', '~> 2.9.0'
-  gem 'rspec-rails', '~> 2.9.0'
+  gem 'rspec', '~> 2.11.0'
+  gem 'rspec-rails', '~> 2.11.0'
   gem 'factory_girl', '~> 4.0'
   gem 'factory_girl_rails', '~> 4.0'
 end
