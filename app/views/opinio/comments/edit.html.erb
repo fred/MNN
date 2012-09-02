@@ -5,12 +5,19 @@
       <%= f.text_area :body, rows: 8, id: "Comment", class: "input-xlarge" %>
     </p>
     <div class="send_button">
+      <% if is_subscribed?(@comment.commentable.id) %>
+          <p>You are subscribed to comments on this article, you can cancel <%= link_to "here", subscriptions_path %> </p>
+        <% else %>
+          <p>
+            <%= f.check_box :subscribe %> 
+            <%= f.label :subscribe, "Receive email for new comments?", class: "inline" %>
+          </p>
+        <% end %>
       <%= f.submit "Update Comment",
             class: "btn btn-primary",
               data: {disable_with: 'Saving...'}
       %>
     </div>
-    <p>
   <% end %>
   <%= render partial: "/shared/tinymce" %>
 <% end %>

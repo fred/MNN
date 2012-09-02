@@ -203,8 +203,10 @@ class User < ActiveRecord::Base
     user.oauth_uid = auth_hash.uid
     user.oauth_data = auth_hash
     user.oauth_token = auth_hash.credentials.token
-    user.password_confirmation = auth_hash.credentials.token
-    user.password = auth_hash.credentials.token
+    if user.new_record?
+      user.password_confirmation = auth_hash.credentials.token.to_s[0..16]
+      user.password = auth_hash.credentials.token.to_s[0..16]
+    end
     user.save
     user
   end
@@ -224,8 +226,10 @@ class User < ActiveRecord::Base
     user.oauth_uid = auth_hash.uid
     user.oauth_data = auth_hash
     user.oauth_token = auth_hash.credentials.token
-    user.password_confirmation = auth_hash.credentials.token
-    user.password = auth_hash.credentials.token
+    if user.new_record?
+      user.password_confirmation = auth_hash.credentials.token.to_s[0..16]
+      user.password = auth_hash.credentials.token.to_s[0..16]
+    end
     user.save
     user
   end
@@ -245,8 +249,10 @@ class User < ActiveRecord::Base
     user.oauth_uid = auth_hash.uid
     user.oauth_data = auth_hash
     user.oauth_token = auth_hash.credentials.token
-    user.password_confirmation = auth_hash.credentials.token
-    user.password = auth_hash.credentials.token
+    if user.new_record?
+      user.password_confirmation = auth_hash.credentials.token.to_s[0..16]
+      user.password = auth_hash.credentials.token.to_s[0..16]
+    end
     user.save
     user
   end
@@ -266,8 +272,10 @@ class User < ActiveRecord::Base
     user.oauth_uid = auth_hash.uid
     user.oauth_data = auth_hash
     user.oauth_token = auth_hash.credentials.token
-    user.password_confirmation = auth_hash.credentials.token
-    user.password = auth_hash.credentials.token
+    if user.new_record?
+      user.password_confirmation = auth_hash.credentials.token.to_s[0..16]
+      user.password = auth_hash.credentials.token.to_s[0..16]
+    end
     user.save
     user
   end
@@ -287,8 +295,10 @@ class User < ActiveRecord::Base
     user.oauth_uid = auth_hash.uid
     user.oauth_data = auth_hash
     user.oauth_token = auth_hash.credentials.token
-    user.password_confirmation = auth_hash.credentials.token
-    user.password = auth_hash.credentials.token
+    if user.new_record?
+      user.password_confirmation = auth_hash.credentials.token[0..16]
+      user.password = auth_hash.credentials.token[0..16]
+    end
     user.save
     user
   end
@@ -308,8 +318,10 @@ class User < ActiveRecord::Base
     user.oauth_uid = auth_hash.uid
     user.oauth_data = auth_hash
     # user.oauth_token = auth_hash.credentials.token
-    user.password_confirmation = auth_hash.credentials.token[0..16]
-    user.password = auth_hash.credentials.token[0..16]
+    if user.new_record?
+      user.password_confirmation = auth_hash.credentials.token.to_s[0..16]
+      user.password = auth_hash.credentials.token.to_s[0..16]
+    end
     user.save
     user
   end
