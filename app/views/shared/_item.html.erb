@@ -80,6 +80,7 @@
       <% if item.comments_count > 0 %>
         <div class="icon comments_count">
           <i class="icon-comment"></i>
+          <%= item.comments_count %>
           <%= n_("Comment", "Comments", item.comments_count) %>
         </div>
       <% end %>
