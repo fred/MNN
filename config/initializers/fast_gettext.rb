@@ -1,8 +1,8 @@
 # enable fallback handling
-# I18n::Backend::Simple.include(I18n::Backend::Fallbacks)
-# I18n.fallbacks[:"en_US"] = [:"en-US", :en]
-# I18n.fallbacks[:"en_GB"] = [:"en-GB", :en]
-# I18n.fallbacks[:"pt_BR"] = [:"pt-BR", :pt]
+I18n::Backend::Simple.include(I18n::Backend::Fallbacks)
+I18n.fallbacks[:"en_US"] = [:"en-US", :en]
+I18n.fallbacks[:"en_GB"] = [:"en-GB", :en]
+I18n.fallbacks[:"pt_BR"] = [:"pt-BR", :pt]
 
 Rails.application.config.gettext_i18n_rails.msgmerge = ["--sort-output", "--no-wrap"]
 
