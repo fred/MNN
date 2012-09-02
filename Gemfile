@@ -10,7 +10,7 @@ gem 'bundler'
 
 ### Database Adapter
 platforms :ruby do
-  gem 'pg', '~> 0.14.1.pre'
+  gem 'pg', '~> 0.14.1'
   gem 'rmagick'
   gem 'dalli'
 end
