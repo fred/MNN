@@ -2,7 +2,7 @@
   <%= f.inputs name: "Required Information" do %>
     <%= f.input :title, label: "Image caption" %>
     <%= f.input :image, as: "file",
-                        input_html: {multiple: true},
+                        input_html: {multiple: @attachment.new_record?},
                         label: "Choose image to upload",
                         hint: "When editing, the new image will overwrite the old image. Multiple images are allowed, you can select multiple images holding CTRL or Command keys when choosing images." %>
   <% end %>

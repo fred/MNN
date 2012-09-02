@@ -446,7 +446,8 @@ class Item < ActiveRecord::Base
   ####################
 
   def self.from_youtube
-    where("youtube_id is not NULL")
+    where("youtube_id is not NULL").
+    where(youtube_vid: true)
   end
 
   def self.default_language

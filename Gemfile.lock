@@ -230,8 +230,8 @@ GEM
     friendly_id (4.0.8)
     gettext (2.2.1)
       locale
-    gettext_i18n_rails (0.6.6)
-      fast_gettext
+    gettext_i18n_rails (0.7.0)
+      fast_gettext (>= 0.4.8)
     gherkin (2.11.2)
       json (>= 1.4.6)
     haml (3.1.7)
@@ -518,6 +518,7 @@ DEPENDENCIES
   jruby-ehcache
   jruby-ehcache-rails3
   jruby-openssl
+  jruby-rack
   json
   kaminari
   launchy (>= 2.0.5)
@@ -540,6 +541,7 @@ DEPENDENCIES
   postmark-rails
   progress_bar
   pry-rails
+  puma
   rack
   rack-cache
   rack-mini-profiler
@@ -570,6 +572,8 @@ DEPENDENCIES
   therubyracer (~> 0.10.2)
   therubyrhino
   tinymce-rails (= 3.5.2)
+  trinidad
+  trinidad_scheduler_extension
   turn (~> 0.8.3)
   twitter
   twitter-bootstrap-rails!
