@@ -108,13 +108,7 @@ class ItemsController < ApplicationController
     end
     
     if params[:q] && !params[:q].to_s.empty?
-      if is_human?
-        q = {}
-        q[:query]   = params[:q]
-        q[:user_id] = current_user.id if current_user
-        q[:locale]  = I18n.locale
-        Query.delay.store(q)
-      end
+      store_query
       term = params[:q].downcase
       @search = Item.solr_search(
         include: [:attachments, :comments, :category, :language, :item_stat, :user, :tags]
@@ -173,5 +167,26 @@ class ItemsController < ApplicationController
   
   comment_destroy_conditions do |comment|
     current_admin_user && (can? :destroy, Comment)
+  end
+
+
+  protected
+  def store_query
+    if is_human?
+      raw = {}
+      raw[:ip] = request.remote_ip if request.remote_ip
+      raw[:referrer] = request.referrer if request.referrer
+      raw[:user_agent] = request.user_agent if request.user_agent
+      q = {}
+      q[:query]   = params[:q]
+      q[:user_id] = current_user.id if current_user
+      q[:locale]  = I18n.locale
+      q[:raw_data]= raw
+      if Rails.env.production?
+        Query.delay.store(q)
+      else
+        Query.store(q)
+      end
+    end
   end
 end
