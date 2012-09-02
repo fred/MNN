@@ -316,7 +316,7 @@ msgstr ""
 #: app/views/devise/registrations/new.html.erb:28
 #: app/views/shared/_login_modal.html.erb:18
 msgid "Password"
-msgstr ""
+msgstr "Contraseña"
 
 #: app/views/devise/registrations/new.html.erb:36
 msgid "Password Confirmation"
@@ -474,7 +474,7 @@ msgstr ""
 #: app/views/shared/_navbar.html.erb:153 app/views/shared/_navbar.html.erb:192
 #: app/views/shared/_sidebar.html.erb:66 app/views/shared/_sidebar.html.erb:76
 msgid "Sign out"
-msgstr ""
+msgstr "Salir"
 
 #: app/views/devise/registrations/new.html.erb:13
 #: app/views/shared/_navbar.html.erb:199 app/views/shared/_sidebar.html.erb:83

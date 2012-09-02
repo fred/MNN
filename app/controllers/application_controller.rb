@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
+  # before_filter :set_gettext_locale
   before_filter :sidebar_variables
   before_filter :mini_profiler
   before_filter :get_locale
@@ -90,6 +91,7 @@ class ApplicationController < ActionController::Base
   def set_default_locale
     FastGettext.locale = default_locale
     I18n.locale = default_locale.to_sym
+    session[:locale] = default_locale
   end
 
   def locale_provided?
