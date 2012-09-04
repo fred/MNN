@@ -257,7 +257,7 @@ class ApplicationController < ActionController::Base
     return true if Rails.env.test?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
     valid="(firefox|chrome|opera|safari|webkit|gecko|msie|windows|blackberry|iphone|ipad|nokia|android|webos)"
-    valid="(bot|spider|wget|curl|yandexbot|googlebot|msnbot|bingbot|ahrefsbot|MetaURI|ScribdReader|JS-Kit|RebelMouse|InAGist)"
+    bot="(bot|spider|wget|curl|yandexbot|googlebot|msnbot|bingbot|ahrefsbot|MetaURI|ScribdReader|JS-Kit|RebelMouse|InAGist)"
     if !s.match(bot) && s.match(valid)
       Rails.logger.info("  UA: user #{s}")
       return true
