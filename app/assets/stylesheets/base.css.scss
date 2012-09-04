@@ -1,0 +1,163 @@
+body {
+  /* padding-top: 60px;*/
+  background: #EEE asset-url('bg_texture.jpg', image) repeat-x scroll 0px 0px;
+  text-rendering: optimizeLegibility;
+  font-smoothing: auto;
+  -webkit-font-smoothing: auto;
+}
+iframe {
+  border: 0px;
+}
+div#item_body iframe {
+  box-shadow: 0px 0px 3px #ccc;
+}
+li {
+  color: #333;
+}
+.navbar .nav > li > a {
+  color: #bbb;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  display: inline-block;
+}
+* html .clearfix {
+  height: 1%;
+} /* Hides from IE-mac \*/
+.clearfix {
+  display: block;
+}
+.inline {
+  display: inline;
+}
+p {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 18px;
+  margin-bottom: 9px;
+  color: #333;
+  font-family: Arial, Helmet, Freesans, sans-serif;
+  font-smoothing: auto;
+  -webkit-font-smoothing: auto;
+  text-rendering: optimizelegibility;
+}
+figure {
+  margin: 0;
+  padding: 0;
+}
+.hidden {
+  display: none;
+}
+.no-margin {
+  margin: 0;
+}
+.no-padding {
+  margin: 0;
+}
+.pull-right {
+  color: #666;
+}
+
+header.master {
+  padding-top: 1px;
+}
+
+div.well {
+  background-color: whiteSmoke;
+  margin-bottom: 20px;
+  padding: 8px;
+  min-height: 20px;
+  background-color: whiteSmoke;
+  box-shadow: 0 0 3px #DDDDDD;
+  border: 1px solid #DDDDDD;
+  border-radius: 5px;
+}
+div.well h5 {
+  line-height: 24px;
+  margin-left: 5px;
+  text-shadow: 1px 1px 1px #fff;
+}
+div.well h4 {
+  line-height: 30px;
+  margin-left: 6px;
+  text-shadow: 1px 1px 1px #fff;
+}
+div.well h3 { 
+  margin-left: 10px;
+  text-shadow: 1px 1px 1px #fff;
+}
+div.well.social {
+  img {
+    margin-right: 2px;
+  }
+}
+
+pre { display: none; }
+
+button a:hover,
+button a:visited, 
+button a {
+  color: white;
+/*  text-decoration:none;*/
+}
+
+
+.date_small {
+  color: #555;
+  font-style: italic;
+  font-size: 12px;
+  padding: 2px 2px 2px 0;
+}
+
+.navbar .brand{
+  float: left;
+  display: block;
+  padding: 3px;
+  margin-left: -20px;
+  color: #999;
+}
+.navbar .nav {
+  font-size: 14px;
+}
+.navbar .btn-group {
+  padding: 6px 0px 6px 0px;
+}
+
+span.more.breaking-news {
+  float: right;
+}
+span.more a {
+  float: left;
+  margin-left: 10px;
+  color: #666;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+#title_bar #titlebar_right {
+  text-align: center;
+}
+
+
+div.all_tags div.tag {
+  float: left;
+  width: 150px;
+  border: 2px solid #fff;
+  margin: 10px;
+  padding: 4px 4px 4px 8px;
+  background: #EEE asset-url('bg_texture.jpg', image) repeat-x scroll 0px 0px; 
+  box-shadow: 0px 0px 6px #ccc;
+  border-radius: 4px;
+}
+
+ul.feed_list li {
+  font-size: 14px;
+  margin: 10px;
+}
+

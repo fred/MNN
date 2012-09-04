@@ -100,7 +100,7 @@
     <% unless @top_items.empty? %>
       <% cache_expiring("box/#{category.id}/#{@top_items.first.cache_key_full}",600) do %>
         <div class="span6 box" id="<%= category.slug %>">
-          <h2><%= link_to category.title, category %></h2>
+          <h2><%= link_to category.title, category, title: _("Read more articles in this category") %></h2>
           <ul>
             <% @top_items.each_with_index do |item,index|%>
               <li class="list_item" id="item_<%=item.id%>">

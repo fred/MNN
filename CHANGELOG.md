@@ -3,9 +3,12 @@
 Performance:
 
   - Don't Load TinyMCE for non logged in users, page will load faster
+  - Modularized Stylesheets for better organization
 
-Improvement:
+Improvements:
 
+  - Arranged Tags in order: General, Region, Country
+  - Added Categoy to top of the Article in list box
   - Allow image to become a popup by adding the class: "image-popup"
 
 ## September 2, 2012

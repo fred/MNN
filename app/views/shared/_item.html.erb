@@ -1,5 +1,8 @@
 <% cache_expiring("_item/#{item.cache_key_full}", 3600) do %>
   <article class="category" id="item_<%=item.id%>">
+    <% unless @category %>
+      <h4 class="no-margin"><%= link_to(item.category_title, item.category, title: _("Read more articles in this category")) if item.category %></h4>
+    <% end %>
     <header>
       <% if item.has_image? %>
         <%= link_to image_tag(item.main_image.image.small,
@@ -64,8 +67,20 @@
 
       <ul class="tags">
         <i class="icon-tags"></i>
-        <% item.tags.each do |tag| %>
-          <li><%= link_to tag.title, tag_path(tag), title: (_("See all Articles tagged as %{str}") % { str: tag.title }) %></li>
+        <% item.general_tags.each do |tag| %>
+          <li>
+            <%= link_to tag.title, tag_path(tag), title: (_("See all Articles tagged as %{str}") % { str: tag.title }) %>
+          </li>
+        <% end %>
+        <% item.region_tags.each do |tag| %>
+          <li>
+            <%= link_to tag.title, tag_path(tag), title: (_("See all Articles tagged as %{str}") % { str: tag.title }) %>
+          </li>
+        <% end %>
+        <% item.country_tags.each do |tag| %>
+          <li>
+            <%= link_to tag.title, tag_path(tag), title: (_("See all Articles tagged as %{str}") % { str: tag.title }) %>
+          </li>
         <% end %>
       </ul>
 
