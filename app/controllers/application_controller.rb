@@ -133,6 +133,11 @@ class ApplicationController < ActionController::Base
     comment.owner == current_user
   end
 
+  def private_headers_with_timeout(timeout)
+    Rails.logger.info("  Caching: private, must-revalidate, max-age=#{timeout}")
+    headers['Cache-Control'] = "private, must-revalidate, max-age=#{timeout}"
+  end
+
   def headers_with_timeout(timeout)
     if should_cache?
       public_headers(timeout)
@@ -252,7 +257,7 @@ class ApplicationController < ActionController::Base
     return true if Rails.env.test?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
     valid="(firefox|chrome|opera|safari|webkit|gecko|msie|windows|blackberry|iphone|ipad|nokia|android|webos)"
-    valid="(bot|spider|wget|curl|yandexbot|googlebot|msnbot|bingbot|ahrefsbot)"
+    valid="(bot|spider|wget|curl|yandexbot|googlebot|msnbot|bingbot|ahrefsbot|MetaURI|ScribdReader|JS-Kit|RebelMouse|InAGist)"
     if !s.match(bot) && s.match(valid)
       Rails.logger.info("  UA: user #{s}")
       return true
@@ -265,11 +270,12 @@ class ApplicationController < ActionController::Base
   def is_bot?
     return true if Rails.env.test?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
-    valid="(bot|spider|wget|curl|yandexbot|googlebot|msnbot|bingbot|ahrefsbot)"
+    valid="(bot|spider|wget|curl|yandexbot|googlebot|msnbot|bingbot|ahrefsbot|MetaURI|ScribdReader|JS-Kit|RebelMouse|InAGist)"
     if s.match(valid)
       Rails.logger.info("  Bot: #{s}")
       return true
     else
+      Rails.logger.info("  Human: #{s}")
       return false
     end
   end
