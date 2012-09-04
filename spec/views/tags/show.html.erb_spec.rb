@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "tags/show" do
   before(:each) do
-    @tag = FactoryGirl.create(:tag)
+    @tag = FactoryGirl.create(:general_tag)
     @item = FactoryGirl.create(:item)
     @item.tags << @tag
     @items = @tag.items.page(1)
