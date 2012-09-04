@@ -133,18 +133,11 @@ class ApplicationController < ActionController::Base
     comment.owner == current_user
   end
 
-  def caching_for_bot
+  def headers_with_timeout(timeout)
     if should_cache?
-      headers_with_timeout(1800, 'public')
-    end
-  end
-
-  def headers_with_timeout(timeout, method='public')
-    if should_cache?
-      Rails.logger.info("  Caching On: #{method}, max-age=#{timeout}")
-      headers['Cache-Control'] = "#{method}, max-age=#{timeout}"
-      headers['Last-Modified'] = @last_published.httpdate if @last_published
-      headers['X-Accel-Expires'] = timeout
+      public_headers(timeout)
+    else
+      private_headers
     end
   end
 
@@ -154,6 +147,16 @@ class ApplicationController < ActionController::Base
     else
       false
     end
+  end
+
+  def public_headers(timeout=1800)
+    Rails.logger.info("  Caching: public, max-age=#{timeout}")
+    headers['Cache-Control'] = "public, max-age=#{timeout}"
+    if @last_published && @last_published.respond_to?(:httpdate)
+      headers['Last-Modified'] = @last_published.httpdate
+    end
+    headers['X-Accel-Expires'] = timeout
+    headers['Etag'] = @etag if @etag
   end
 
   def private_headers
@@ -263,7 +266,7 @@ class ApplicationController < ActionController::Base
   def is_bot?
     return true if Rails.env.test?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
-    valid="(bot|spider|wget|curl|YandexBot|googlebot|msnbot)"
+    valid="(bot|spider|wget|curl|yandexbot|googlebot|msnbot)"
     if s.match(valid)
       Rails.logger.info("  Bot: #{s}")
       return true

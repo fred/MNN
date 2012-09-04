@@ -2,12 +2,10 @@ class TagsController < ApplicationController
   
   def index
     @tags = Tag.order("type DESC, title ASC").all
-    headers['Last-Modified'] = Item.last_item.updated_at.httpdate
-    
-    private_headers
+    @last_published = Item.last_item.updated_at
     respond_to do |format|
       format.html {
-        headers_with_timeout(600, 'public')
+        headers_with_timeout(600)
       }
     end
   end
@@ -38,18 +36,17 @@ class TagsController < ApplicationController
     @rss_source = tags_path(@tag, only_path: false, protocol: 'https', format: "html")
     @last_mofified = @last_published
     headers['Last-Modified'] = @last_published.httpdate
-    
-    private_headers
+
     respond_to do |format|
       format.html {
-        headers_with_timeout(600, 'public')
+        headers_with_timeout(600)
       }
       format.atom {
-        headers_with_timeout(1200, 'public')
+        headers_with_timeout(1200)
         render partial: "/shared/items", layout: false
       }
       format.rss {
-        headers_with_timeout(1200, 'public')
+        headers_with_timeout(1200)
         render partial: "/shared/items", layout: false
       }
     end

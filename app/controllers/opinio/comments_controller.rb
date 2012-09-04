@@ -17,7 +17,6 @@ class Opinio::CommentsController < ApplicationController
       @comments = Comment.order('id DESC').page(params[:page]).per(10)
     end
 
-    private_headers
     respond_to do |format|
       format.js
       format.html
@@ -48,7 +47,6 @@ class Opinio::CommentsController < ApplicationController
     else
       messages = { error: t('opinio.messages.comment_sending_error') }
     end
-    private_headers
     respond_to do |format|
       format.js
       format.html { redirect_to( resource, flash: messages ) }

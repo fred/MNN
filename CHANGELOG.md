@@ -4,6 +4,8 @@ Performance:
 
   - Don't Load TinyMCE for non logged in users, page will load faster
   - Modularized Stylesheets for better organization
+  - More Caching for search engines
+  - Refractored Caching/Headers control
 
 Improvements:
 

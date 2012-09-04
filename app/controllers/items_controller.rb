@@ -42,19 +42,18 @@ class ItemsController < ApplicationController
       @last_published = @items.first.published_at
     end
 
-    private_headers
     respond_to do |format|
       format.html {
-        headers_with_timeout(300, 'private, must-revalidate')
+        headers_with_timeout(600)
       }
       format.json { render json: @items }
       format.atom {
-        headers_with_timeout(900, 'public')
+        headers_with_timeout(900)
         headers['Etag'] = @etag
         render partial: "/shared/items", layout: false
       }
       format.rss {
-        headers_with_timeout(900, 'public')
+        headers_with_timeout(900)
         headers['Etag'] = @etag
         render partial: "/shared/items", layout: false
       }
@@ -68,7 +67,6 @@ class ItemsController < ApplicationController
       if session[:view_items] && !session[:view_items].include?(@item.id)
         @item_stat.views_counter += 1
         @item_stat.save
-        # ItemStat.increment_counter(:views_counter, @item_stat.id)
         session[:view_items] << @item.id
       end
     end
@@ -77,13 +75,11 @@ class ItemsController < ApplicationController
     @meta_keywords = @item.meta_keywords
     @meta_author = @item.user.title if @item.user
 
-    private_headers
     respond_to do |format|
       format.html {
-        headers_with_timeout(300, 'private, must-revalidate')
+        headers_with_timeout(1200)
         headers_for_etag(@item.etag)
       }
-      format.json { render json: @item }
     end
   end
 
@@ -153,7 +149,7 @@ class ItemsController < ApplicationController
       @items = []
       @title = "Please type something to search for"
     end
-    headers_with_timeout(900)
+    headers_with_timeout(1200)
     respond_to do |format|
       format.html
       format.js
