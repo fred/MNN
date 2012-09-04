@@ -98,7 +98,33 @@
         <span itemprop="keywords">
           <ul class="tags">
             <i class="icon-tags"></i>
-            <% @item.tags.each do |tag| %>
+            <% @item.general_tags.each do |tag| %>
+              <li>
+                <span itemprop='keywords'>
+                  <%= link_to(
+                        tag.title,
+                        tag_path(tag),
+                        title: "See all Articles tagged as '#{tag.title}'",
+                        rel: 'tag'
+                      )
+                  %>
+                </span>
+              </li>
+            <% end %>
+            <% @item.region_tags.each do |tag| %>
+              <li>
+                <span itemprop='keywords'>
+                  <%= link_to(
+                        tag.title,
+                        tag_path(tag),
+                        title: "See all Articles tagged as '#{tag.title}'",
+                        rel: 'tag'
+                      )
+                  %>
+                </span>
+              </li>
+            <% end %>
+            <% @item.country_tags.each do |tag| %>
               <li>
                 <span itemprop='keywords'>
                   <%= link_to(
