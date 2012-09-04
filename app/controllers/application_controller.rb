@@ -142,14 +142,14 @@ class ApplicationController < ActionController::Base
   end
 
   def should_cache?
-    if (is_bot? or request.format.to_s.match("(rss|atom|xml)")) && !current_user
+    if (!is_human? or request.format.to_s.match("(rss|atom|xml)"))
       true
     else
       false
     end
   end
 
-  def public_headers(timeout=1800)
+  def public_headers(timeout=3600)
     Rails.logger.info("  Caching: public, max-age=#{timeout}")
     headers['Cache-Control'] = "public, max-age=#{timeout}"
     if @last_published && @last_published.respond_to?(:httpdate)
@@ -250,15 +250,14 @@ class ApplicationController < ActionController::Base
   # this should give 99% of users
   def is_human?
     return true if Rails.env.test?
-
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
-    valid="(firefox|chrome|opera|safari|webkit|gecko|msie|windows|blackberry|iphone|ipad|nokia|android|fedora|ubuntu|centos)"
-    bot="(bot|spider|wget|curl|YandexBot|googlebot|msnbot)"
+    valid="(firefox|chrome|opera|safari|webkit|gecko|msie|windows|blackberry|iphone|ipad|nokia|android|webos)"
+    valid="(bot|spider|wget|curl|yandexbot|googlebot|msnbot|bingbot|ahrefsbot)"
     if !s.match(bot) && s.match(valid)
-      Rails.logger.debug("  UA: user found: #{s}")
+      Rails.logger.info("  UA: user #{s}")
       return true
     else
-      Rails.logger.debug("  UA: bot found: #{s}")
+      Rails.logger.info("  UA: bot #{s}")
       return false
     end
   end
@@ -266,7 +265,7 @@ class ApplicationController < ActionController::Base
   def is_bot?
     return true if Rails.env.test?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
-    valid="(bot|spider|wget|curl|yandexbot|googlebot|msnbot)"
+    valid="(bot|spider|wget|curl|yandexbot|googlebot|msnbot|bingbot|ahrefsbot)"
     if s.match(valid)
       Rails.logger.info("  Bot: #{s}")
       return true
