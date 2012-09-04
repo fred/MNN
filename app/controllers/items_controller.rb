@@ -77,7 +77,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        headers_with_timeout(1200)
+        headers_with_timeout(1800)
         headers_for_etag(@item.etag)
       }
     end
@@ -149,7 +149,7 @@ class ItemsController < ApplicationController
       @items = []
       @title = "Please type something to search for"
     end
-    headers_with_timeout(1200)
+    headers_with_timeout(1800)
     respond_to do |format|
       format.html
       format.js
