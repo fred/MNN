@@ -47,7 +47,7 @@ gem 'paper_trail', '~> 2.6.3'
 
 ### Views
 gem 'kaminari'
-gem 'squeel', '~> 1.0'
+gem 'squeel', '~> 1.0.11'
 
 ### File Uploading and Image Processing
 gem 'fog', '~> 1.4.0'
