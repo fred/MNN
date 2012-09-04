@@ -60,7 +60,7 @@
                     ),
                     @item.main_image.image.large.url,
                     target: "blank",
-                    id: "main_image_popup",
+                    class: "image-popup",
                     title: alt_for_image(@item.main_image),
                     rel: 'image'
               %>
@@ -274,7 +274,7 @@
     <script type="text/javascript">
       $(document).ready(function() {
         if (!(Modernizr.touch)) {
-          $("#main_image_popup").fancybox({
+          $("a.image-popup").fancybox({
             openEffect  : 'none',
             closeEffect  : 'none'
           });
@@ -291,4 +291,6 @@
   <% end %>
 <% end %>
 
-<%= render partial: "/shared/tinymce" %>
+<% if current_user %>
+  <%= render partial: "/shared/tinymce" %>
+<% end %>

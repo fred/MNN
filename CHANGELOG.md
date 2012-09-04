@@ -1,3 +1,13 @@
+## September 4, 2012
+
+Performance:
+
+  - Don't Load TinyMCE for non logged in users, page will load faster
+
+Improvement:
+
+  - Allow image to become a popup by adding the class: "image-popup"
+
 ## September 2, 2012
 
   - Allow Users to Edit their own comments
