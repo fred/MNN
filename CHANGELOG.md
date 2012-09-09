@@ -1,3 +1,16 @@
+## September 9, 2012
+
+Security:
+
+  - Authors are not allowed to Edit or Delete Live Articles
+  - Only Editors can manage already live articles
+  - Hide Edit/Delete buttons if user doesn't have the priviledges
+
+Bug Fix:
+
+  - Improved used Menu, always shows "Submit Article" link for authors
+  - Improved Test Suit
+
 ## September 8, 2012
 
 Security:

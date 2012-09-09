@@ -93,10 +93,22 @@ ActiveAdmin.register Item do
         item.published_at.localtime.to_s(:short)
       end
     end
-    column "Site", sortable: false do |item|
-      link_to "Show", item
+    column "Show", sortable: false do |item|
+      link_to "Live Preview", item
     end
-    default_actions
+    column "Show", sortable: false do |item|
+      link_to "Show", admin_item_path(item)
+    end
+    column "" do |item|
+      link_to "Edit", edit_admin_item_path(item) if controller.current_ability.can?(:update, item)
+    end
+    column "" do |item|
+      if controller.current_ability.can?(:destroy, item)
+        link_to "Delete", admin_item_path(item), method: :delete, data: {confirm: "Are you sure you want to delete this article entirely?"}
+      end
+    end
+
+    #default_actions
   end
   form partial: "form"
 

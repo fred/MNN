@@ -106,16 +106,16 @@
             </li>
 
             <li>
-              <%= link_to subscriptions_path, title: _("My Subscriptions") do %>
-                <i class="icon-envelope"></i>
-                <%= _("My Subscriptions") %>
-              <% end %>
-            </li>
-            
-            <li>
               <%= link_to author_path(current_admin_user), title: _("My Articles Page") do %>
                 <i class="icon-list"></i>
                 <%= _("My Articles") %>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to subscriptions_path, title: _("My Subscriptions") do %>
+                <i class="icon-envelope"></i>
+                <%= _("My Subscriptions") %>
               <% end %>
             </li>
             
@@ -132,7 +132,7 @@
               <li>
                 <%= link_to new_admin_item_path(protocol: http_protocol) do %>
                   <i class="icon-pencil"></i>
-                  <%= _("New Item") %>
+                  <%= _("Submit Article") %>
                 <% end %>
               </li>
             <% end %>
@@ -165,15 +165,27 @@
               <% end %>
             </li>
 
+            <% if current_ability.can?(:create, Item) %>
+              <li>
+                <%= link_to new_admin_item_path(protocol: http_protocol) do %>
+                  <i class="icon-pencil"></i>
+                  <%= _("Submit Article") %>
+                <% end %>
+              </li>
+            <% end %>
+
+            <li>
+              <%= link_to author_path(current_user), title: _("My Articles Page") do %>
+                <i class="icon-list"></i>
+                <%= _("My Articles") %>
+              <% end %>
+            </li>
+
             <li>
               <%= link_to subscriptions_path, title: _("My Subscriptions") do %>
                 <i class="icon-envelope"></i>
                 <%= _("My Subscriptions") %>
               <% end %>
-            </li>
-
-            <li>
-              <%= link_to _("My Articles"), author_path(current_user), title: _("My Articles Page") %>
             </li>
             
             <% if current_user.has_any_role?(:admin,:security) %>

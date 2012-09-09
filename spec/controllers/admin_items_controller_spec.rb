@@ -104,9 +104,9 @@ describe Admin::ItemsController do
         end
       end
     end
-    describe "Deleting Own Articles" do
+    describe "Deleting Own draft article" do
       before (:each) do
-        @item = FactoryGirl.create(:item, user_id: @user.id)
+        @item = FactoryGirl.create(:item, user_id: @user.id, draft: true)
       end
       it "destroys the requested item" do
         expect {
@@ -116,6 +116,16 @@ describe Admin::ItemsController do
       it "redirects to the items list" do
         delete :destroy, {id: @item.to_param}
         expect(response).to redirect_to(admin_items_url)
+      end
+    end
+    describe "Deleting Own Live article" do
+      before (:each) do
+        @item = FactoryGirl.create(:item, user_id: @user.id, draft: false)
+      end
+      it "does not destroy the requested item" do
+        expect {
+          delete :destroy, {id: @item.to_param}
+        }.to change(Item, :count).by(0)
       end
     end
     describe "Deleting others Articles" do

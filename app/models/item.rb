@@ -3,9 +3,9 @@ class Item < ActiveRecord::Base
 
   DEFAULT_LOCALE = 'en'
 
-  attr_protected :user_id, :slug, :updated_by, :deleted_at
+  attr_protected :user_id, :slug, :updated_by, :deleted_at, :updating_user_id
 
-  attr_accessor :updated_reason, :share_twitter, :send_emails, :existing_attachment_id
+  attr_accessor :updated_reason, :share_twitter, :send_emails, :existing_attachment_id, :updating_user_id
 
   # Versioning System
   has_paper_trail meta: { tag: :updated_reason }
@@ -48,6 +48,8 @@ class Item < ActiveRecord::Base
   validates_presence_of :title, :abstract, :category_id, :published_at
   validates_presence_of :body, if: Proc.new { |item| item.youtube_id.blank? }
   validates_presence_of :published_at
+
+  validate :check_security, on: :update
   
   # Filter hooks
   before_save   :clear_bad_characters
@@ -110,6 +112,21 @@ class Item < ActiveRecord::Base
   ######################
   ### Instance Methods
   ######################
+
+  def check_security
+    unless can_update?
+      Rails.logger.info("  Security Protection: Author tried to update published item.")
+      errors.add(:item, " - Sorry, you can't update a live article. Please contact an editor.")
+    end
+  end
+
+  def can_update?
+    if updating_user_id && (@updating_user = User.find(updating_user_id))
+      self.draft? or (!self.draft? && @updating_user.has_any_role?(:admin,:editor))
+    else
+      true
+    end
+  end
 
   def after_initialize
     self.draft ||= true

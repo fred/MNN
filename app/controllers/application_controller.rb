@@ -193,7 +193,9 @@ class ApplicationController < ActionController::Base
 
   def current_ability
     if current_admin_user
-      @current_ability ||= Ability.new(current_admin_user) 
+      @current_ability ||= Ability.new(current_admin_user)
+    elsif current_user
+      @current_ability ||= Ability.new(current_user)
     else
       @current_ability ||= Ability.new(User.new) 
     end

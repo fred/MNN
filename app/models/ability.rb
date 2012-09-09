@@ -58,10 +58,10 @@ class Ability
     # also read most of other resources.
     if user.has_role? :author
       can :read,    Item
-      can :update,  Item, user_id: user.id
-      can :destroy, Item, user_id: user.id
+      can :update,  Item, user_id: user.id, draft: true
+      can :destroy, Item, user_id: user.id, draft: true
       can :create,  Item
-      can [:read, :create, :update], Attachment
+      can [:read, :create], Attachment
       can :read,    [ItemStat,Category,Tag,Language,Version,Page,Document,Query]
     end
     
