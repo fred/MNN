@@ -1,3 +1,10 @@
+## September 8, 2012
+
+Security:
+
+  - Detect and prevent user escalation on registration
+  - Protect users from adding roles on registration
+
 ## September 4, 2012
 
 Performance:

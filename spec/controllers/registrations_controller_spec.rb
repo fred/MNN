@@ -89,6 +89,19 @@ describe Devise::RegistrationsController do
         expect(response).to render_template("new")
       end
     end
+
+    describe "with security breaches" do
+      it "should not let user self upgrade" do
+        post :create, user: valid_user_attributes.merge(upgrade: true)
+        expect(assigns(:user)).to be_a_new(User)
+      end
+  
+      it "should not let user self add roles" do
+        role = Role.create(title: 'I-wanna-be-admin')
+        post :create, user: valid_user_attributes.merge(role_ids: [role.id])
+        expect(assigns(:user)).to be_a_new(User)
+      end
+    end
   end
   
   

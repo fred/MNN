@@ -48,6 +48,38 @@ describe User do
       expect(@user.public_display_name).to match(/Anonymous/)
     end
   end
+
+  describe "User Security" do
+    let(:role){
+      Role.create title: 'test-role'
+    }
+    let(:user){
+      User.new(
+        email: "welcome@gmail.com",
+        name: 'My Name',
+        password: 'welcome',
+        password_confirmation: 'welcome'
+      )
+    }
+    it "should not allow new users to self upgrade" do
+      user.upgrade = true
+      expect(user.valid?).to eq(false)
+      expect(user.errors.size).to be(1)
+      user.upgrade = nil
+    end
+    it "should not allow new users to add roles" do
+      user.role_ids = [role.id]
+      expect(user.valid?).to eq(false)
+      expect(user.errors.size).to be(1)
+    end
+    it "should allow new users to register if no escalation is detected" do
+      user.role_ids = []
+      user.upgrade = nil
+      expect(user.valid?).to eq(true)
+      expect(user.errors.size).to be(0)
+    end
+  end
+
   
   describe "Instance Methods" do
     let(:user){

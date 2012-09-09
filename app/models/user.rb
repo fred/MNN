@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   validates_exclusion_of :password, in: lambda { |p| [p.name] }, message: "should not be the same as your name"
   validates :email, email_format: {message: 'is not looking good'}, on: :create
 
+  validate :check_security, on: :create
+
   # validates_presence_of :password, unless: Proc.new {|user| user.oauth_token.present?}
   # validates_presence_of :password_confirmation, unless: Proc.new {|user| user.oauth_token.present?}
 
@@ -40,6 +42,17 @@ class User < ActiveRecord::Base
   after_create  :send_welcome_email
 
   apply_simple_captcha
+
+  def check_security
+    unless secured?
+      Rails.logger.info("  Security breach, user tried priviledge escalation.")
+      errors.add(:user, " Are you trying to do something fancy?")
+    end
+  end
+
+  def secured?
+    roles == [] && role_ids == [] && upgrade == nil
+  end
 
   def notify_admin
     if Rails.env.production?

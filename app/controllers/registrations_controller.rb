@@ -1,5 +1,25 @@
 class RegistrationsController < Devise::RegistrationsController
 
+
+  # def create
+  #   @user = User.new(params[:user])
+
+  #   if params[:user]
+  #     params[:user].delete(:roles)      if params[:user][:roles].present?
+  #     params[:user].delete(:role_ids)   if params[:user][:role_ids].present?
+  #     params[:user].delete(:upgrade)    if params[:user][:upgrade].present?
+  #   end
+
+  #   respond_to do |format|
+  #     if @user.save
+  #       flash[:notice] = _("Your Account Was successfully Created")
+  #       redirect_to stored_location_for(:user) || edit_user_registration_path(protocol: http_protocol)
+  #     else
+  #       format.html { render action: "new" }
+  #     end
+  #   end
+  # end
+
   def update
     @user = User.find(current_user.id)
     
@@ -10,7 +30,7 @@ class RegistrationsController < Devise::RegistrationsController
       # Sign in the user bypassing validation in case his password changed
       sign_in @user, :bypass => true
       redirect_to edit_user_registration_path(protocol: http_protocol)
-      flash[:success] = "Account Successfully Updated"
+      flash[:success] = _("Account Successfully Updated")
     else
       flash[:notice] = "There was an error updating your account"
       render "edit"
