@@ -1,0 +1,27 @@
+<%= semantic_form_for [:admin, @feed_site], :html => { :enctype => "multipart/form-data" }  do |f| %>
+
+  <%= f.inputs :name => "Basic Required" do %>
+    <%= f.input :category, :as => :select, 
+           :member_label => 'title', 
+           :member_value => :id, 
+           :label => "Category",
+           :required => true
+    %>
+    <%= f.input :title, :required => true %>
+    <%= f.input :url, :label => "Feed URL", :required => true %>
+    <%= f.input :site_url, :label => "Site URL", :required => true %>
+    <%= f.input :sort_order, :label => "Priority",
+                :required => true, :as => 'number', :max => 1000, :min => 1, :step => 1
+    %>
+  <% end %>
+  
+  <%= f.inputs :name => "Logo" do %>
+    <%= f.input :avatar, :as => "file" %>
+    <% if f.object.avatar? %>
+      <%= image_tag f.object.avatar.url(:large) %>
+    <% end %>
+  <% end %>
+
+
+  <%= f.action(:submit) %>
+<% end %>
