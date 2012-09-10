@@ -9,13 +9,18 @@ ActiveAdmin.register Comment do
 
   index do
     selectable_column
+    column "Item", sortable: :commentable_id do |t|
+      link_to t.commentable_id, item_path(t.commentable_id) if t.commentable_id
+    end
     column "User", sortable: :owner_id do |t|
       if t.owner
         link_to t.owner.title, admin_user_path(t.owner), class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
       end
     end
     column "Message", sortable: false do |t|
-      link_to t.body.truncate(80), admin_comment_path(t), class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
+      link_to sanitize(t.body, tags: '', attributes: '').truncate(80),
+        admin_comment_path(t),
+        class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
     end
     column "Live", :approved do |t|
       bool_symbol t.approved
@@ -23,9 +28,11 @@ ActiveAdmin.register Comment do
     column "Spam", :marked_spam do |t|
       bool_symbol t.marked_spam
     end
-    bool_column :suspicious
-    column "Date", :created_at do |t|
+    column "Created", :created_at do |t|
       time_ago_in_words(t.created_at)
+    end
+    column "Updated", :created_at do |t|
+      time_ago_in_words(t.updated_at)
     end
     default_actions
   end
@@ -44,6 +51,9 @@ ActiveAdmin.register Comment do
 
   show title: :display_name do
     attributes_table do
+      row "Item" do |t|
+        link_to t.commentable_id, item_path(t.commentable_id) if t.commentable_id
+      end
       row "User", &->(t){link_to_if t.owner, t.display_name, admin_user_path(t.owner_id)}
       row :user_ip, &->(t){link_to(t.user_ip, "http://www.geoiptool.com/en/?IP=#{t.user_ip}", target: "_blank")}
       row :user_agent
@@ -52,7 +62,11 @@ ActiveAdmin.register Comment do
       bool_row :suspicious
       row :created_at
       row :updated_at
-      row 'Comment', &->(t){t.body.html_safe}
+      row 'Comment' do |comment|
+        sanitize comment.body,
+          tags: Comment.allowed_html_tags,
+          attributes: Comment.allowed_html_attributes
+      end
       row 'Comment HTML', &->(t){t.body}
     end
   end

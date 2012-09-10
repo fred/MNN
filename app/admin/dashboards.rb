@@ -54,7 +54,9 @@ ActiveAdmin::Dashboards.build do
           end
         end
         column "Message" do |t|
-          link_to t.body.truncate(80), admin_comment_path(t), title: t.body, class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
+          link_to sanitize(t.body, tags: '', attributes: '').truncate(80),
+            admin_comment_path(t),
+            class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
         end
         column "Item" do |t|
           if t.commentable && t.commentable_type == "Item"
@@ -87,7 +89,9 @@ ActiveAdmin::Dashboards.build do
           end
         end
         column "Message" do |t|
-          link_to t.body.truncate(80), admin_comment_path(t), title: t.body, class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
+          link_to sanitize(t.body, tags: '', attributes: '').truncate(80),
+            admin_comment_path(t),
+            class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
         end
         column "Item" do |t|
           if t.commentable && t.commentable_type == "Item"
@@ -232,7 +236,9 @@ ActiveAdmin::Dashboards.build do
           end
         end
         column "Message" do |t|
-          link_to t.body.truncate(80), admin_comment_path(t), title: t.body, class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
+          link_to sanitize(t.body, tags: '', attributes: '').truncate(80),
+            admin_comment_path(t),
+            class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
         end
         column "Item" do |t|
           if t.commentable && t.commentable_type == "Item"

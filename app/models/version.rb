@@ -6,6 +6,10 @@ class Version < ActiveRecord::Base
     Settings.versions_to_keep || 300
   end
 
+  def self.versions_threshold
+    50
+  end
+
   # Cleanup database versions table (vestal_versions)
   def cleanup_versions
     if Version.count > Version.versions_to_keep
@@ -20,7 +24,7 @@ class Version < ActiveRecord::Base
   def self.delete_old
     self.select("id,created_at").
     order("id ASC").
-    limit(self.count-Version.versions_to_keep).
+    limit(self.count-Version.versions_to_keep+Version.versions_threshold).
     destroy_all
   end
 

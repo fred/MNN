@@ -6,11 +6,12 @@
       <i><%= comment.owner.title %></i> said:
     <% end %>
   </span>
-  <p>
+  <div>
     <%= sanitize comment.body,
-          tags: %w(p em b i u a br blockquote strong div ul ol li),
-          attributes: %w(href target rel rev) %>
-  </p>
+          tags: Comment.allowed_html_tags,
+          attributes: Comment.allowed_html_attributes
+    %>
+  </div>
   <span class="comment_date">
     <%= time_ago_in_words(comment.created_at) %> <%= _('Ago') %>
   </span>

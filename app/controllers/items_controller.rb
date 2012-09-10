@@ -61,7 +61,8 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.includes([:attachments, :comments, :user, :category, :language]).find(params[:id])
+    @item = Item.includes([:attachments, :user, :category, :language]).find(params[:id])
+    @comments = @item.approved_comments
     @show_breadcrumb = true
     if @item && is_human? && (@item_stat = @item.item_stat)
       if session[:view_items] && !session[:view_items].include?(@item.id)

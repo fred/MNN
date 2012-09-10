@@ -381,7 +381,7 @@ class ApplicationController < ActionController::Base
   end
 
   def mini_profiler
-    if can_debug?
+    if can_debug? && defined?(Rack::MiniProfiler)
       Rack::MiniProfiler.authorize_request
     end
   end

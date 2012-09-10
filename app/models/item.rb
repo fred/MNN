@@ -62,17 +62,6 @@ class Item < ActiveRecord::Base
   after_create  :set_custom_slug
 
 
-  # Some Basic Scopes for finder chaining
-  scope :draft,         where(draft: true)
-  scope :not_draft,     where(draft: false)
-  scope :original,      where(original: true)
-  scope :not_original,  where(original: false)
-  scope :highlight,     where(featured: true)
-  scope :not_highlight, where(featured: false)
-  scope :sticky,        where(sticky: true)
-  scope :not_sticky,    where(sticky: false)
-  scope :with_comments, where("comments_count > 0")
-
   ################
   ####  SOLR  ####
   ################
@@ -456,11 +445,42 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def approved_comments
+    comments.where(spam: false, suspicious: false, approved: true)
+  end
 
 
   ####################
   ### CLASS METHODS
   ####################
+
+  def self.draft
+    where(draft: true)
+  end
+  def self.not_draft
+    where(draft: false)
+  end
+  def self.original
+    where(original: true)
+  end
+  def self.not_original
+    where(original: false)
+  end
+  def self.highlight
+    where(featured: true)
+  end
+  def self.not_highlight
+    where(featured: false)
+  end
+  def self.sticky
+    where(sticky: true)
+  end
+  def self.not_sticky
+    where(sticky: false)
+  end
+  def self.with_comments
+    where("comments_count > 0")
+  end
 
   def self.from_youtube
     where("youtube_id is not NULL").

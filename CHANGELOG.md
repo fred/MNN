@@ -1,3 +1,13 @@
+## September 10, 2012
+
+Security:
+
+  - User Account will be locked if failed authentication after 6 atempts
+  - User Account will be auto-unlocked after 1 hour
+  - Increased minimum password requirement to 7 characters
+  - Tightened security for comments preview on admin
+  - Improved suspicious comments detection
+
 ## September 9, 2012
 
 Security:

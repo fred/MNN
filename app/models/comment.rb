@@ -20,9 +20,9 @@ class Comment < ActiveRecord::Base
   
   # belongs_to :user
   belongs_to :approving_user, foreign_key: :approved_by, class_name: "User"
-  
-  before_create :check_for_spam
+
   after_create  :notify_admin, :notify_users, :touch_commentable, :subscribe_users
+  before_save :check_for_spam, :check_suspicious
 
   delegate :name, to: :owner, allow_nil: true
 
@@ -65,8 +65,24 @@ class Comment < ActiveRecord::Base
     if !Rails.env.test? && self.spam?
       self.marked_spam = true
       self.approved = false
+      Rails.logger.info("  Security: Comment marked as SPAM")
     else
       self.marked_spam = false
+      self.approved = true
+    end
+    true
+  end
+
+  def check_suspicious
+    check = %w{ <applet <body <embed <frame <script <frameset <html <iframe <layer <ilayer <meta <object
+      script base64 onclick onmouse onfocus onload createelement
+    }.join("|")
+    if body.downcase.match(check)
+      Rails.logger.info("  Security: Comment marked as SUSPICIOUS")
+      self.suspicious = true
+      self.approved = false
+    else
+      self.suspicious = false
       self.approved = true
     end
     true
@@ -109,6 +125,14 @@ class Comment < ActiveRecord::Base
   end
   
   
+  def self.allowed_html_tags
+    %w(p em b i u a br blockquote strong div pre ul ol li)
+  end
+
+  def self.allowed_html_attributes
+    %w(href target rel rev)
+  end
+
   # Returns the last 10 approved comments
   def self.recent(limit=10)
     where(approved: true).

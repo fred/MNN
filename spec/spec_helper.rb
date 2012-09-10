@@ -91,4 +91,19 @@ module NumericMatchers
       actual > expected
     end
   end
+  RSpec::Matchers.define :less_than do |expected|
+    match do |actual|
+      actual < expected
+    end
+  end
+  RSpec::Matchers.define :less_or_equal do |expected|
+    match do |actual|
+      actual <= expected
+    end
+  end
+  RSpec::Matchers.define :greater_or_equal do |expected|
+    match do |actual|
+      actual >= expected
+    end
+  end
 end

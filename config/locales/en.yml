@@ -10,13 +10,14 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
 
   devise:
     failure:
       already_authenticated: 'You are already signed in.'
       unauthenticated: 'You need to sign in or sign up before continuing.'
       unconfirmed: 'You have to confirm your account before continuing.'
-      locked: 'Your account is locked.'
+      locked: 'Your account has been locked due to an excessive amount of unsuccessful sign in attempts'
       invalid: 'Invalid email or password.'
       invalid_token: 'Invalid authentication token.'
       timeout: 'Your session expired, please sign in again to continue.'
@@ -28,10 +29,11 @@ en:
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
       updated: 'Your password was changed successfully. You are now signed in.'
       updated_not_active: 'Your password was changed successfully.'
-      send_paranoid_instructions: "If your e-mail exists on our database, you will receive a password recovery link on your e-mail"
+      send_paranoid_instructions: "If your email exists on our database, you will receive a password recovery link on your email"
+      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
     confirmations:
       send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
-      send_paranoid_instructions: 'If your e-mail exists on our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
+      send_paranoid_instructions: 'If your email exists on our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
       confirmed: 'Your account was successfully confirmed. You are now signed in.'
     registrations:
       signed_up: 'Welcome! You have signed up successfully.'
@@ -55,22 +57,3 @@ en:
         subject: 'Reset password instructions'
       unlock_instructions:
         subject: 'Unlock Instructions'
-
-  ago: ago
-  read: Read
-  more: More
-  search: Search
-  page_rendered_in: Page Rendered in
-  comments: 
-    zero: No Comments
-    one: 1 Comment
-    other: '%{count} Comments'
-  published: Published
-  viewed_times: 'Viewed %{count} times'
-  sign_in: Sign in
-  sign_out: Sign out
-  sign_up: Sign up
-  register: Register
-  registration: Registration
-  welcome: Welcome
-  forgot_password: Forgot Password

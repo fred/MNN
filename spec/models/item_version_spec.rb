@@ -10,13 +10,13 @@ describe Item do
       expect(->{ Item.create(valid_item_attributes) }).to change(Version, :count).by(1)
     end
     
-    it "should keep a maximum of #{Version.versions_to_keep} revisions in the database" do
+    it "should have less than #{Version.versions_to_keep+Version.versions_threshold} revisions in the database" do
       @item = FactoryGirl.create(:item)
-      (Version.versions_to_keep+10).times do
+      (Version.versions_to_keep+(Version.versions_threshold*2)).times do
         @item.body = Kernel.rand(999).to_s
         @item.save
       end
-      expect(Version.count).to eq(Version.versions_to_keep)
+      expect(Version.count).to less_or_equal(Version.versions_to_keep+Version.versions_threshold)
     end
 
   end
