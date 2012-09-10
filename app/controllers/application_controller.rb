@@ -259,7 +259,7 @@ class ApplicationController < ActionController::Base
     return true if Rails.env.test?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
     valid="(firefox|chrome|opera|safari|webkit|gecko|msie|windows|blackberry|iphone|ipad|nokia|android|webos)"
-    bot="(bot|spider|wget|curl|yandexbot|googlebot|msnbot|bingbot|ahrefsbot|MetaURI|ScribdReader|JS-Kit|RebelMouse|InAGist)"
+    bot="(bot|spider|wget|curl|yandexbot|googlebot|msnbot|bingbot|ahrefsbot|metauri|scribdreader|js-kit|rebelmouse|inagist|butterfly)"
     if !s.match(bot) && s.match(valid)
       Rails.logger.info("  UA: user #{s}")
       return true
@@ -272,7 +272,7 @@ class ApplicationController < ActionController::Base
   def is_bot?
     return true if Rails.env.test?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
-    valid="(bot|spider|wget|curl|yandexbot|googlebot|msnbot|bingbot|ahrefsbot|MetaURI|ScribdReader|JS-Kit|RebelMouse|InAGist)"
+    valid="(bot|spider|wget|curl|yandexbot|googlebot|msnbot|bingbot|ahrefsbot|metauri|scribdreader|js-kit|rebelmouse|inagist|butterfly)"
     if s.match(valid)
       Rails.logger.info("  Bot: #{s}")
       return true

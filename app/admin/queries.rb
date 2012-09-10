@@ -11,8 +11,14 @@ ActiveAdmin.register Query do
     column "Search Term", sortable: :keyword do |t|
       link_to t.keyword.to_s, search_path(q: t.keyword.to_s), target: "_blank"
     end
-    column "Details", sortable: false do |t|
-      pp t.raw_data
+    column "IP", sortable: false do |t|
+      t.raw_data[:ip]
+    end
+    column "Referrer", sortable: false do |t|
+      t.raw_data[:referrer]
+    end
+    column "UserAgent", sortable: false do |t|
+      t.raw_data[:user_agent]
     end
     column "Language", :locale
     column "User", sortable: :user_id do |t|
