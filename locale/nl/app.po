@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2012-09-02 08:36+0700\n"
+"POT-Creation-Date: 2012-09-11 07:31+0700\n"
 "PO-Revision-Date: 2012-08-29 01:51+0700\n"
 "Last-Translator: Quoriana <quoriana@worldmathaba.net>\n"
 "Language-Team: Dutch <quoriana@worldmathaba.net>\n"
@@ -26,7 +26,11 @@ msgstr "Gelieve te kiezen"
 msgid "Account"
 msgstr "Account"
 
-#: app/views/shared/_sidebar.html.erb:172
+#: app/controllers/registrations_controller.rb:33
+msgid "Account Successfully Updated"
+msgstr "Account bijgewerkt"
+
+#: app/views/shared/_sidebar.html.erb:173
 msgid "AdFree Site"
 msgstr "Advertentievrije site"
 
@@ -34,8 +38,9 @@ msgstr "Advertentievrije site"
 msgid "Admin"
 msgstr "Admin"
 
-#: app/views/opinio/comments/_comment.html.erb:15
-#: app/views/shared/_item.html.erb:44
+#: app/helpers/items_helper.rb:59
+#: app/views/opinio/comments/_comment.html.erb:16
+#: app/views/shared/_item.html.erb:47
 msgid "Ago"
 msgstr "geleden"
 
@@ -43,7 +48,7 @@ msgstr "geleden"
 msgid "All Authors Page"
 msgstr "Pagina met alle auteurs"
 
-#: app/views/opinio/comments/_comment.html.erb:37
+#: app/views/opinio/comments/_comment.html.erb:38
 msgid "Are you sure you want to delete this comment?"
 msgstr "Bent u er zeker van dat u uw reactie wilt verwijderen?"
 
@@ -55,7 +60,7 @@ msgstr "Bent u er zeker van dat u uw account wilt verwijderen?"
 msgid "Articles Submitted:"
 msgstr "Geplaatste artikelen"
 
-#: app/views/items/show.html.erb:47 app/views/shared/_item.html.erb:38
+#: app/views/items/show.html.erb:47 app/views/shared/_item.html.erb:41
 msgid "Author Articles"
 msgstr "Artikelen van deze auteur"
 
@@ -91,9 +96,9 @@ msgstr "Klik hier om uw wachtwoord te herstellen"
 msgid "Click here to register a new Account"
 msgstr "Klik hier om een nieuw account te registreren"
 
-#: app/views/shared/_item.html.erb:83
-#: app/views/shared/_most_commented.html.erb:8
-#: app/views/shared/_sidebar.html.erb:150
+#: app/views/shared/_item.html.erb:99
+#: app/views/shared/_most_commented.html.erb:9
+#: app/views/shared/_sidebar.html.erb:151
 msgid "Comment"
 msgid_plural "Comments"
 msgstr[0] "Reactie"
@@ -112,7 +117,7 @@ msgstr "Landen"
 msgid "Create a Password"
 msgstr "Maak een wachtwoord aan"
 
-#: app/views/opinio/comments/_comment.html.erb:30
+#: app/views/opinio/comments/_comment.html.erb:31
 msgid "Delete Comment"
 msgstr "Verwijder uw reactie"
 
@@ -124,11 +129,11 @@ msgstr "Verwijder mijn account"
 msgid "Delete this image"
 msgstr "Verwijder deze afbeelding"
 
-#: app/views/opinio/comments/_comment.html.erb:36
+#: app/views/opinio/comments/_comment.html.erb:37
 msgid "Deleting..."
 msgstr "Verwijdert..."
 
-#: app/views/shared/_navbar.html.erb:207 app/views/shared/_sidebar.html.erb:92
+#: app/views/shared/_navbar.html.erb:219 app/views/shared/_sidebar.html.erb:92
 msgid "Didn't receive confirmation instructions?"
 msgstr "Heeft u geen bevestigingsinstructies ontvangen?"
 
@@ -140,9 +145,14 @@ msgstr "Heeft u geen ontgrendeling ontvangen?"
 msgid "Download Current Key"
 msgstr "Download huidige sleutel"
 
-#: app/views/items/show.html.erb:246
+#: app/views/items/show.html.erb:272
 msgid "Edit"
 msgstr "Bewerk"
+
+#: app/views/opinio/comments/_comment.html.erb:44
+#, fuzzy
+msgid "Edit Comment"
+msgstr "Reactie Bewerken"
 
 #: app/views/shared/_navbar.html.erb:102 app/views/shared/_navbar.html.erb:161
 msgid "Edit My Profile"
@@ -184,7 +194,7 @@ msgstr "Feeds"
 msgid "Forgot Password?"
 msgstr "Bent u uw wachtwoord vergeten?"
 
-#: app/views/shared/_footer.html.erb:45 app/views/shared/_navbar.html.erb:203
+#: app/views/shared/_footer.html.erb:45 app/views/shared/_navbar.html.erb:215
 msgid "Forgot your password?"
 msgstr "Bent u uw wachtwoord vergeten?"
 
@@ -236,7 +246,7 @@ msgid "Login"
 msgstr "Log in"
 
 #: app/views/shared/_footer.html.erb:26 app/views/shared/_footer.html.erb:28
-#: app/views/shared/_navbar.html.erb:149 app/views/shared/_navbar.html.erb:189
+#: app/views/shared/_navbar.html.erb:149 app/views/shared/_navbar.html.erb:201
 msgid "Logout"
 msgstr "Log uit"
 
@@ -244,7 +254,7 @@ msgstr "Log uit"
 msgid "Most Commented"
 msgstr "Meeste reacties"
 
-#: app/views/shared/_sidebar.html.erb:160
+#: app/views/shared/_sidebar.html.erb:161
 msgid "Most Read in 2 weeks"
 msgstr "Meest gelezen in 2 weken"
 
@@ -252,18 +262,18 @@ msgstr "Meest gelezen in 2 weken"
 msgid "Multiple RSS Feeds"
 msgstr "Verscheidene RSS Feeds"
 
-#: app/views/shared/_navbar.html.erb:118 app/views/shared/_navbar.html.erb:176
+#: app/views/shared/_navbar.html.erb:111 app/views/shared/_navbar.html.erb:180
 #: app/views/shared/_sidebar.html.erb:63 app/views/shared/_sidebar.html.erb:73
 msgid "My Articles"
 msgstr "Mijn artikelen"
 
-#: app/views/shared/_navbar.html.erb:116 app/views/shared/_navbar.html.erb:176
+#: app/views/shared/_navbar.html.erb:109 app/views/shared/_navbar.html.erb:178
 #: app/views/shared/_sidebar.html.erb:73
 msgid "My Articles Page"
 msgstr "Pagina met mijn artikelen"
 
-#: app/views/shared/_navbar.html.erb:109 app/views/shared/_navbar.html.erb:111
-#: app/views/shared/_navbar.html.erb:169 app/views/shared/_navbar.html.erb:171
+#: app/views/shared/_navbar.html.erb:116 app/views/shared/_navbar.html.erb:118
+#: app/views/shared/_navbar.html.erb:185 app/views/shared/_navbar.html.erb:187
 #, fuzzy
 msgid "My Subscriptions"
 msgstr "E-mail-abonnementen"
@@ -276,10 +286,6 @@ msgstr "Naam"
 #: app/views/devise/registrations/edit.html.erb:182
 msgid "New Articles Alert"
 msgstr "Abonneer"
-
-#: app/views/shared/_navbar.html.erb:135
-msgid "New Item"
-msgstr "Nieuw artikel"
 
 #: app/views/devise/registrations/edit.html.erb:203
 msgid "New Password"
@@ -355,6 +361,10 @@ msgstr "Profielfoto"
 msgid "Public Information"
 msgstr "Publieke informatie"
 
+#: app/helpers/items_helper.rb:57
+msgid "Published"
+msgstr "Pepubliceerd"
+
 #: app/views/authors/show.html.erb:68 app/views/tags/index.html.erb:8
 msgid "RSS feed for %{str}"
 msgstr "RSS feed voor %{str}"
@@ -367,7 +377,8 @@ msgstr "RSS feed voor artikelen in de categorie %{str}"
 msgid "RSS feed for items tagged %{str}"
 msgstr "RSS feed voor artikelen die %{str} zijn getagd"
 
-#: app/views/categories/index.html.erb:142
+#: app/views/categories/index.html.erb:103
+#: app/views/categories/index.html.erb:142 app/views/shared/_item.html.erb:4
 msgid "Read more articles in this category"
 msgstr "Lees meer artikelen in deze categorie"
 
@@ -392,7 +403,7 @@ msgstr "Regio's"
 msgid "Register"
 msgstr "Aanmelden"
 
-#: app/views/shared/_navbar.html.erb:199
+#: app/views/shared/_navbar.html.erb:211
 msgid "Register a new Account"
 msgstr "Registreer een nieuw account"
 
@@ -404,7 +415,7 @@ msgstr "Registreer u nu"
 msgid "Registration"
 msgstr "Registratie"
 
-#: app/views/items/show.html.erb:183 app/views/shared/_item.html.erb:91
+#: app/views/items/show.html.erb:209 app/views/shared/_item.html.erb:107
 msgid "Related items"
 msgstr "Verwante artikelen"
 
@@ -412,7 +423,7 @@ msgstr "Verwante artikelen"
 msgid "Remove"
 msgstr "Verwijder"
 
-#: app/views/opinio/comments/_comment.html.erb:23
+#: app/views/opinio/comments/_comment.html.erb:24
 msgid "Reply"
 msgstr "Beantwoord"
 
@@ -440,7 +451,8 @@ msgstr "Zoek op taal"
 msgid "Sections"
 msgstr "Secties"
 
-#: app/views/shared/_item.html.erb:68
+#: app/views/shared/_item.html.erb:72 app/views/shared/_item.html.erb:77
+#: app/views/shared/_item.html.erb:82
 msgid "See all Articles tagged as %{str}"
 msgstr "Bekijk alle artikelen die als %{str} zijn getagd"
 
@@ -468,21 +480,21 @@ msgstr "Registreer"
 #: app/views/devise/sessions/new.html.erb:28
 #: app/views/shared/_login_modal.html.erb:4
 #: app/views/shared/_login_modal.html.erb:34
-#: app/views/shared/_navbar.html.erb:196 app/views/shared/_sidebar.html.erb:80
+#: app/views/shared/_navbar.html.erb:208 app/views/shared/_sidebar.html.erb:80
 msgid "Sign in"
 msgstr "Inloggen"
 
-#: app/views/shared/_navbar.html.erb:153 app/views/shared/_navbar.html.erb:192
+#: app/views/shared/_navbar.html.erb:153 app/views/shared/_navbar.html.erb:204
 #: app/views/shared/_sidebar.html.erb:66 app/views/shared/_sidebar.html.erb:76
 msgid "Sign out"
 msgstr "Uitloggen"
 
 #: app/views/devise/registrations/new.html.erb:13
-#: app/views/shared/_navbar.html.erb:199 app/views/shared/_sidebar.html.erb:83
+#: app/views/shared/_navbar.html.erb:211 app/views/shared/_sidebar.html.erb:83
 msgid "Sign up"
 msgstr "Aanmelden"
 
-#: app/views/items/show.html.erb:42 app/views/shared/_item.html.erb:32
+#: app/views/items/show.html.erb:42 app/views/shared/_item.html.erb:35
 msgid "Source"
 msgstr "Bron"
 
@@ -491,11 +503,16 @@ msgstr "Bron"
 msgid "Stay Signed in"
 msgstr "Blijf aangemeld"
 
+#: app/views/shared/_navbar.html.erb:135 app/views/shared/_navbar.html.erb:172
+#, fuzzy
+msgid "Submit Article"
+msgstr "Geplaatste artikelen"
+
 #: app/views/authors/show.html.erb:23
 msgid "Submitted Articles:"
 msgstr "Geplaatste artikelen"
 
-#: app/views/items/show.html.erb:91 app/views/shared/_item.html.erb:59
+#: app/views/items/show.html.erb:91 app/views/shared/_item.html.erb:62
 msgid "Submitted by"
 msgstr "Geplaatst door"
 
@@ -507,7 +524,7 @@ msgstr "Tags"
 msgid "Terms of Service and Privacy Policy"
 msgstr "algemene voorwaarden en het privacy-beleid"
 
-#: app/views/shared/_sidebar.html.erb:173
+#: app/views/shared/_sidebar.html.erb:174
 msgid "This is an Advertisement Free Site"
 msgstr "Dit is een advertentievrije site"
 
@@ -532,11 +549,15 @@ msgstr "Bijwerken"
 msgid "Upload Avatar"
 msgstr "Upload avatar"
 
-#: app/views/items/show.html.erb:119 app/views/shared/_item.html.erb:76
+#: app/helpers/items_helper.rb:53
+msgid "Viewed %{num} Times"
+msgstr "%{num} Keer Bekeken"
+
+#: app/views/items/show.html.erb:145 app/views/shared/_item.html.erb:91
 msgid "Views"
 msgstr "keer bekeken"
 
-#: app/views/items/show.html.erb:89 app/views/shared/_item.html.erb:49
+#: app/views/items/show.html.erb:89 app/views/shared/_item.html.erb:52
 msgid "Written by"
 msgstr "Geschreven door"
 
@@ -569,11 +590,11 @@ msgstr "Uw e-mailadres zal niet worden gepubliceerd"
 msgid "Your public name, ex: Anonymous"
 msgstr "Uw profielnaam, bijv. Anoniem"
 
-#: app/views/items/show.html.erb:40 app/views/shared/_item.html.erb:30
+#: app/views/items/show.html.erb:40 app/views/shared/_item.html.erb:33
 msgid "Youtube Source"
 msgstr "YouTube-bron"
 
-#: app/views/items/show.html.erb:45 app/views/shared/_item.html.erb:36
+#: app/views/items/show.html.erb:45 app/views/shared/_item.html.erb:39
 msgid "by"
 msgstr "door"
 
@@ -589,3 +610,6 @@ msgstr "meer..."
 #: app/views/devise/sessions/new.html.erb:20
 msgid "password"
 msgstr "wachtwoord"
+
+#~ msgid "New Item"
+#~ msgstr "Nieuw artikel"
