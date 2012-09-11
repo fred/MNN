@@ -1,3 +1,11 @@
+## September 11, 2012
+
+  - Added Popular Searches on the sidebar
+  - Updated TinyMCE to 3.5.6
+  - Updated Sidekiq and Celluloid
+  - Removed Postmark gem
+
+
 ## September 10, 2012
 
 Security:

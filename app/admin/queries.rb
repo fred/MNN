@@ -15,7 +15,7 @@ ActiveAdmin.register Query do
       t.raw_data[:ip]
     end
     column "Referrer", sortable: false do |t|
-      t.raw_data[:referrer]
+      link_to("Referrer", t.raw_data[:referrer], title: t.raw_data[:referrer], taget: "_blank") unless t.raw_data[:referrer].to_s.empty?
     end
     column "UserAgent", sortable: false do |t|
       t.raw_data[:user_agent]

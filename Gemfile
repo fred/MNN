@@ -68,8 +68,8 @@ gem 'jquery-rails', '~> 2.0.2'
 gem 'slim'
 gem 'sinatra'
 gem 'redis'
-gem 'sidekiq', '~> 2.1.1'
-gem 'celluloid', '~> 0.11.1'
+gem 'celluloid'
+gem 'sidekiq'
 
 ### JSON and Twitter
 gem 'multi_json'
@@ -136,15 +136,12 @@ gem 'fast_gettext'
 gem 'gettext_i18n_rails'
 
 ### Active Admin, loaded at end.
+
 gem 'meta_search', '~> 1.1.3'
-# gem 'activeadmin', '~> 0.4.0'
-# gem 'activeadmin', path: 'vendor/gems/active_admin'
 gem 'activeadmin', 
   git: 'git://github.com/fred/active_admin.git',
   branch: '594',
   ref: '62c1dd5f1c9c4d3a4167d57fdf9c36e3e0b2ab02'
-
-gem 'tinymce-rails' , '3.5.2'
 
 # Twitter Bootstrap for Rails 3 Asset Pipeline
 gem 'twitter-bootstrap-rails',
@@ -163,11 +160,13 @@ gem 'exception_notification', '~> 2.6.0', require: 'exception_notifier'
 gem 'sunspot', git: 'git://github.com/sunspot/sunspot.git'
 gem 'sunspot_rails', git: 'git://github.com/sunspot/sunspot.git'
 
-
+gem 'tinymce-rails' , '~> 3.5.6'
 gem 'galetahub-simple_captcha', require: 'simple_captcha', git: 'git://github.com/galetahub/simple-captcha.git'
 gem 'country-select'
-gem 'postmark-rails'
 gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_email_format_of.git'
 gem 'sitemap_generator'
 
 
+### Disabled Gems:
+
+# gem 'postmark-rails'

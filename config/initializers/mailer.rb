@@ -10,7 +10,7 @@ if Rails.env.production?
       :domain         => 'worldmathaba.net'
     }
     ActionMailer::Base.delivery_method = :smtp
-  elsif ENV['POSTMARK_KEY'] && ActionMailer::Base.delivery_methods.has_key?(:postmark)
+  elsif ENV['POSTMARK_KEY'] && ActionMailer::Base.delivery_methods.has_key?(:postmark) && defined?(Postmark)
     ActionMailer::Base.delivery_method = :postmark
     ActionMailer::Base.postmark_settings = { api_key: ENV['POSTMARK_KEY'] }
     Postmark.api_key = ENV['POSTMARK_KEY']

@@ -1,4 +1,5 @@
 class Query < ActiveRecord::Base
+
   serialize :raw_data, Hash
   belongs_to :item
   belongs_to :user
@@ -12,6 +13,13 @@ class Query < ActiveRecord::Base
     query.raw_data = options[:raw_data] if options[:raw_data]
     query.save
     true
+  end
+
+  def self.popular(lang='en')
+    select("keyword, locale, count(keyword)").
+    where(locale: lang.to_s).
+    group("keyword,locale").
+    order("count DESC")
   end
 
 end

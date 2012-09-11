@@ -126,6 +126,7 @@
         <li><%= link_to "Other Sites", links_path %></li>
         <li class="horizontal-divider"></li>
       </ul>
+      <h4><%= _("Languages") %></h4>
       <ul class="nav nav-list">
         <% @site_languages.each do |language|%>
           <li class=<%= li_class_subdomain(language.locale, "active") %>>
@@ -165,6 +166,18 @@
             <span class="horizontal-divider"></span>
           </div>
         <% end %>
+      </div>
+    <% end %>
+
+    <% cache_expiring("sidebar_queries", 900) do %>
+      <div class="sidebar_secions">
+        <h4><%= _("Popular Searches") %></h4>
+        <% Query.popular(FastGettext.locale).limit(10).each do |query| %>
+          <ul class="nav nav-list">
+            <li><%= link_to query.keyword, search_path(q: query.keyword) %></li>
+          </ul>
+        <% end %>
+        <span class="horizontal-divider"></span>
       </div>
     <% end %>
 

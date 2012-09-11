@@ -43,6 +43,20 @@ ActiveAdmin::Dashboards.build do
   #   link_to "Back to Site", root_path
   # end
 
+  section "Popular Searches", priority: 1 do
+    table_for Query.popular.limit(20) do
+      column "Query" do |t|
+        link_to t.keyword, search_path(q: t.keyword)
+      end
+      column "Hits" do |t|
+        t.count
+      end
+      column "Lang" do |t|
+        t.locale
+      end
+    end
+  end
+
   section "Suspicious Comments", priority: 1 do
     if controller.current_ability.can?(:read, Comment)
       table_for Comment.suspicious(12) do

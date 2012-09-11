@@ -170,7 +170,7 @@ class ItemsController < ApplicationController
 
   protected
   def store_query
-    if is_human?
+    if is_human? && !current_admin_user
       raw = {}
       raw[:ip] = request.remote_ip if request.remote_ip
       raw[:referrer] = request.referrer if request.referrer
