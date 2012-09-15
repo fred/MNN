@@ -92,8 +92,14 @@ end
 # Settings
 gem 'rails_config'
 
+group :production do
+  gem 'exception_notification', '~> 2.6.0', require: 'exception_notifier'
+  # git:  'git://github.com/smartinez87/exception_notification.git'
+end
+
 group :production, :development do
   gem 'unicorn', require: false, platform: :mri_19
+  gem 'sitemap_generator'
 end
 
 group :test, :development do
@@ -125,8 +131,6 @@ group :test do
   gem 'capybara', '>= 1.0.1'
   gem 'database_cleaner'
   gem 'launchy', '>= 2.0.5'
-  gem 'autotest'
-  gem 'autotest-rails'
   gem 'sunspot_solr', git: 'git://github.com/sunspot/sunspot.git'
   gem 'sunspot_test'
   gem 'turn', '~> 0.8.3', require: false
@@ -148,10 +152,6 @@ gem 'twitter-bootstrap-rails',
   git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git',
   ref: '44cfe7f25a0fd305c763f1a299a418a92d027e64'
 
-# Error Emails
-gem 'exception_notification', '~> 2.6.0', require: 'exception_notifier'
-# git:  'git://github.com/smartinez87/exception_notification.git'
-
 
 ###############
 ## Searching ##
@@ -164,8 +164,6 @@ gem 'tinymce-rails' , '~> 3.5.6'
 gem 'galetahub-simple_captcha', require: 'simple_captcha', git: 'git://github.com/galetahub/simple-captcha.git'
 gem 'country-select'
 gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_email_format_of.git'
-gem 'sitemap_generator'
-
 
 ### Disabled Gems:
 

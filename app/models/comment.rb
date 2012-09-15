@@ -129,10 +129,13 @@ class Comment < ActiveRecord::Base
   def allowed_html_tags
     tags = %w(p em b i u a br blockquote strong div pre ul ol li)
     tags << 'iframe' if approving_user
+    tags
   end
 
   def allowed_html_attributes
-    %w(href target rel rev)
+    tags = %w(href target rel rev)
+    tags << 'src' if approving_user
+    tags
   end
 
   # Returns the last 10 approved comments
