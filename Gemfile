@@ -22,7 +22,6 @@ platforms :jruby do
   gem 'jruby-rack'
   gem 'jruby-ehcache'
   gem 'jruby-ehcache-rails3', require: 'ehcache'
-  gem 'puma', require: false
   gem 'trinidad', require: false
   gem 'trinidad_scheduler_extension'
 end

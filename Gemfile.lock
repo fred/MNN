@@ -523,7 +523,6 @@ DEPENDENCIES
   pg (~> 0.14.1)
   progress_bar
   pry-rails
-  puma
   rack
   rack-cache
   rails (= 3.2.8)
