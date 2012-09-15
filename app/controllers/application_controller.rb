@@ -107,14 +107,21 @@ class ApplicationController < ActionController::Base
     I18n.locale = session[:locale].to_sym
   end
 
+  def using_ssl?
+    request.protocol != "http://"
+  end
+
   def set_locale_from_params
     FastGettext.locale = params[:locale]
     I18n.locale = params[:locale].to_sym
     session[:locale] = params[:locale].to_sym
   end
 
+  def should_use_to_https?
+    (current_admin_user && !request.method.match("POST")) or request.url.match("/admin/login$")
+  end
   def https_for_admins
-    if Rails.env.production? && current_admin_user && (request.protocol == "http://") && !request.method.match("POST")
+    if should_use_to_https? && !using_ssl? #&& Rails.env.production?
       Rails.logger.info("  *** Redirecting user to HTTPS")
       redirect_to request.url.gsub("http://", "https://")
       # Warning! Need to have this in Nginx https config block
