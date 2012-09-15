@@ -121,7 +121,7 @@ class ApplicationController < ActionController::Base
     (current_admin_user && !request.method.match("POST")) or request.url.match("/admin/login$")
   end
   def https_for_admins
-    if should_use_to_https? && !using_ssl? #&& Rails.env.production?
+    if Rails.env.production? && should_use_to_https? && !using_ssl?
       Rails.logger.info("  *** Redirecting user to HTTPS")
       redirect_to request.url.gsub("http://", "https://")
       # Warning! Need to have this in Nginx https config block
