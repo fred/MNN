@@ -169,6 +169,10 @@ class User < ActiveRecord::Base
     true
   end
 
+  def comments_count
+    Comment.where(owner_id: id, approved: true, marked_spam: false).count
+  end
+
   def my_items
     items.
     published.
