@@ -74,6 +74,7 @@ class Comment < ActiveRecord::Base
   end
 
   def check_suspicious
+    return true if (self.owner.has_any_role?(:admin, :security) or self.approving_user)
     check = %w{ <applet <body <embed <frame <script <frameset <html <iframe <layer <ilayer <meta <object
       script base64 onclick onmouse onfocus onload createelement
     }.join("|")
