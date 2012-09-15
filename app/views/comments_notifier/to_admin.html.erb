@@ -177,8 +177,8 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
       <div>
         <span style="color:<%=color%>;">
           <%= sanitize(@comment.body,
-                tags: Comment.allowed_html_tags,
-                attributes: Comment.allowed_html_attributes
+                tags: @comment.allowed_html_tags,
+                attributes: @comment.allowed_html_attributes
               ).html_safe
           %>
         </span>

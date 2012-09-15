@@ -126,11 +126,12 @@ class Comment < ActiveRecord::Base
   end
   
   
-  def self.allowed_html_tags
-    %w(p em b i u a br blockquote strong div pre ul ol li)
+  def allowed_html_tags
+    tags = %w(p em b i u a br blockquote strong div pre ul ol li)
+    tags << 'iframe' if approving_user
   end
 
-  def self.allowed_html_attributes
+  def allowed_html_attributes
     %w(href target rel rev)
   end
 

@@ -6,10 +6,10 @@
       <i><%= comment.owner.title %></i> said:
     <% end %>
   </span>
-  <div>
+  <div class="comment_body">
     <%= sanitize comment.body,
-          tags: Comment.allowed_html_tags,
-          attributes: Comment.allowed_html_attributes
+          tags: comment.allowed_html_tags,
+          attributes: comment.allowed_html_attributes
     %>
   </div>
   <span class="comment_date">

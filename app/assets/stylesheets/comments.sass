@@ -12,71 +12,67 @@
 
 ul#comments
   margin: 0 0 12px 12px
+  > li
+    text-align: left
+    margin-bottom: 15px
+    margin-top: 11px
+    padding: 10px 15px 9px 15px
+    text-rendering: optimizeLegibility
+    background-color: whiteSmoke
+    border: 1px solid #bbb
+    border-radius: 6px
+    background-repeat: repeat-x
+    background-image: -khtml-gradient(linear, left top, left bottom, from(#ffffff), to(#f5f5f5))
+    background-image: -moz-linear-gradient(top, #ffffff, #f5f5f5)
+    background-image: -ms-linear-gradient(top, #ffffff, #f5f5f5)
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #f5f5f5))
+    background-image: -webkit-linear-gradient(top, #ffffff, #f5f5f5)
+    background-image: -o-linear-gradient(top, #ffffff, #f5f5f5)
+    background-image: linear-gradient(top, #ffffff, #f5f5f5)
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f5f5f5', GradientType=0)
+    box-shadow: 0px 0px 5px #ccc
+    list-style: none
+    div.comment_body
+      font-size: 14px
+    ul,ol
+      margin-bottom: 8px
+    span.comment_owner
+      padding: 0 0 10px 0
+      clear: both
+      display: block
+      font-size: 1.0em
+      font-weight: bold
+      img
+        float: left
+        margin-right: 12px
+        margin-bottom: 6px
+        box-shadow: 0px 0px 6px #aaa
+        border: 1px solid #fff
 
-ul#comments li
-  text-align: left
-  margin-bottom: 15px
-  margin-top: 11px
-  padding: 10px 15px 9px 15px
-  text-rendering: optimizeLegibility
-  background-color: whiteSmoke
-  border: 1px solid #bbb
-  border-radius: 6px
-  background-repeat: repeat-x
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffffff), to(#f5f5f5))
-  background-image: -moz-linear-gradient(top, #ffffff, #f5f5f5)
-  background-image: -ms-linear-gradient(top, #ffffff, #f5f5f5)
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #f5f5f5))
-  background-image: -webkit-linear-gradient(top, #ffffff, #f5f5f5)
-  background-image: -o-linear-gradient(top, #ffffff, #f5f5f5)
-  background-image: linear-gradient(top, #ffffff, #f5f5f5)
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f5f5f5', GradientType=0)
-  box-shadow: 0px 0px 5px #ccc
-  list-style: none
-
-ul#comments li span.comment_owner
-  padding: 0 0 10px 0
-  clear: both
-  display: block
-  font-size: 1.0em
-  font-weight: bold
-
-ul#comments li span.comment_owner img
-  float: left
-  margin-right: 12px
-  margin-bottom: 6px
-  box-shadow: 0px 0px 6px #aaa
-  border: 1px solid #fff
-
-.comments h3
-  margin: 0 0 12px 20px
-
-.comments textarea#Comment
-  margin-left: 20px
-
-.comments .form-actions
-  margin-left: 20px
-
-.comments .comment_date
-  color: #555
-  font-style: italic
-  display: block
-  clear: both
-  text-shadow: 1px 1px 2px #ccc
-
-.comments textarea
-  color: #333
-  font-size: 17px
-  padding: 10px
-  min-width: 220px
-  width: 80%
-
-.comments .comment-actions
-  margin: 5px 0 5px 0
-
-.comments .btn.small
-  padding: 6px 9px 6px
-  font-size: 12px
+.comments
+  h3
+    margin: 0 0 12px 20px
+  textarea#Comment
+    margin-left: 20px
+  .form-actions
+    margin-left: 20px
+  .comment_date
+    color: #555
+    font-style: italic
+    display: block
+    clear: both
+    text-shadow: 1px 1px 2px #ccc
+  textarea
+    color: #333
+    font-size: 17px
+    padding: 10px
+    min-width: 220px
+    width: 80%
+  .comment-actions
+    margin: 5px 0 5px 0
+  .btn.small
+    padding: 6px 9px 6px
+    font-size: 12px
 
 .popover-title
   font-size: 14px

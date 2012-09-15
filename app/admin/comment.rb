@@ -64,8 +64,8 @@ ActiveAdmin.register Comment do
       row :updated_at
       row 'Comment' do |comment|
         sanitize comment.body,
-          tags: Comment.allowed_html_tags,
-          attributes: Comment.allowed_html_attributes
+          tags: comment.allowed_html_tags,
+          attributes: comment.allowed_html_attributes
       end
       row 'Comment HTML', &->(t){t.body}
     end
