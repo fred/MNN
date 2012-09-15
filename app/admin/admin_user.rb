@@ -43,7 +43,7 @@ ActiveAdmin.register AdminUser do
     end
     render "user_comments"
   end
-  index do
+  index title: "Admin Users" do
     id_column
     column "Avatar", sortable: false do |user|
       image_tag(user.main_image(:thumb))

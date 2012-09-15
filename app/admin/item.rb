@@ -25,7 +25,7 @@ ActiveAdmin.register Item do
   show do
     render "show"
   end
-  index do
+  index title: "Items" do
     id_column
     column :image do |item|
       if item.has_image?

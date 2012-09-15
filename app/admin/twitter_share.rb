@@ -7,7 +7,7 @@ ActiveAdmin.register TwitterShare do
     controller.current_ability.can?(:manage, TwitterShare)
   }
   actions  :index, :destroy
-  index do
+  index title: "Twitter Shares" do
     column :item
     column :status
     column "Processed At", :processed_at

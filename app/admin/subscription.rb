@@ -5,7 +5,7 @@ ActiveAdmin.register Subscription do
   menu parent: "Members", priority: 55, label: "Email Subscriptions", if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, Subscription)
   }
-  index do
+  index title: "Email Subscriptions" do
     id_column
     column :user do |t|
       if t.user

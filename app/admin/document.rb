@@ -7,7 +7,7 @@ ActiveAdmin.register Document do
     controller.current_ability.can?(:read, Document)
   }
 
-  index do
+  index title: "Documents" do
     id_column
     column :title
     column "Link" do |doc|

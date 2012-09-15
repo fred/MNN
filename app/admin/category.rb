@@ -6,7 +6,7 @@ ActiveAdmin.register Category do
   menu parent: "Settings", priority: 80, if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, Category)
   }
-  index do
+  index title: "Categories" do
     id_column
     column :title
     column :description

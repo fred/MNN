@@ -7,7 +7,7 @@ ActiveAdmin.register Query do
   }
   actions :index
   config.comments = false
-  index do
+  index title: "Searches" do
     column "Search Term", sortable: :keyword do |t|
       link_to t.keyword.to_s, search_path(q: t.keyword.to_s), target: "_blank"
     end

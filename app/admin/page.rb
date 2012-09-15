@@ -8,7 +8,7 @@ ActiveAdmin.register Page do
 
   config.comments = false
   
-  index do
+  index title: "Pages" do
     id_column
     column :title
     column :link_title

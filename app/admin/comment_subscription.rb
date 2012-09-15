@@ -5,7 +5,7 @@ ActiveAdmin.register CommentSubscription do
   menu parent: "Members", priority: 56, label: "Comment Subscriptions", if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, CommentSubscription)
   }
-  index do
+  index title: "Comments" do
     id_column
     column :user do |t|
       if t.user

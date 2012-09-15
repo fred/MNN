@@ -49,7 +49,7 @@ ActiveAdmin.register User do
     end
   end
 
-  index do
+  index title: "Users" do
     id_column
     column "Avatar", sortable: false do |user|
       image_tag user.main_image(:thumb)

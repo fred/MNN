@@ -7,7 +7,7 @@ ActiveAdmin.register Comment do
     controller.current_ability.can?(:manage, Comment)
   }
 
-  index do
+  index title: "Comments" do
     selectable_column
     column "Item", sortable: :commentable_id do |t|
       link_to t.commentable_id, item_path(t.commentable_id) if t.commentable_id

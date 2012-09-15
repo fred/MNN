@@ -9,7 +9,7 @@ ActiveAdmin.register Attachment do
     controller.current_ability.can?(:read, Attachment)
   }
 
-  index as: :block do |attachment|
+  index title: "Images", as: :block do |attachment|
     div for: attachment, class: "grid_images" do
       div do
         if attachment.existing_attachment

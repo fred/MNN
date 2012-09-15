@@ -5,7 +5,7 @@ ActiveAdmin.register Version do
     controller.current_ability.can?(:read, Version)
   }
   config.comments = false
-  index do
+  index title: "Item Versions" do
     id_column
     column "Record" do |v| 
       if v.item

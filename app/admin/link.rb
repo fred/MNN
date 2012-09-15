@@ -6,7 +6,7 @@ ActiveAdmin.register Link do
     controller.current_ability.can?(:manage, Link)
   }
 
-  index do
+  index title: "Links" do
     id_column
     column :title
     column :url do |link|

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2012-09-11 07:31+0700\n"
+"POT-Creation-Date: 2012-09-11 15:57+0700\n"
 "PO-Revision-Date: 2012-08-29 01:51+0700\n"
 "Last-Translator: Quoriana <quoriana@worldmathaba.net>\n"
 "Language-Team: Dutch <quoriana@worldmathaba.net>\n"
@@ -30,7 +30,7 @@ msgstr "Account"
 msgid "Account Successfully Updated"
 msgstr "Account bijgewerkt"
 
-#: app/views/shared/_sidebar.html.erb:173
+#: app/views/shared/_sidebar.html.erb:186
 msgid "AdFree Site"
 msgstr "Advertentievrije site"
 
@@ -38,7 +38,6 @@ msgstr "Advertentievrije site"
 msgid "Admin"
 msgstr "Admin"
 
-#: app/helpers/items_helper.rb:59
 #: app/views/opinio/comments/_comment.html.erb:16
 #: app/views/shared/_item.html.erb:47
 msgid "Ago"
@@ -98,7 +97,7 @@ msgstr "Klik hier om een nieuw account te registreren"
 
 #: app/views/shared/_item.html.erb:99
 #: app/views/shared/_most_commented.html.erb:9
-#: app/views/shared/_sidebar.html.erb:151
+#: app/views/shared/_sidebar.html.erb:152
 msgid "Comment"
 msgid_plural "Comments"
 msgstr[0] "Reactie"
@@ -224,7 +223,7 @@ msgstr "Het zal op uw profielpagina kunnen worden gedownload"
 msgid "Just be a member"
 msgstr "Enkel om lid te zijn"
 
-#: app/views/shared/_navbar.html.erb:58
+#: app/views/shared/_navbar.html.erb:58 app/views/shared/_sidebar.html.erb:129
 msgid "Languages"
 msgstr "Talen"
 
@@ -254,7 +253,7 @@ msgstr "Log uit"
 msgid "Most Commented"
 msgstr "Meeste reacties"
 
-#: app/views/shared/_sidebar.html.erb:161
+#: app/views/shared/_sidebar.html.erb:162
 msgid "Most Read in 2 weeks"
 msgstr "Meest gelezen in 2 weken"
 
@@ -345,6 +344,10 @@ msgstr "Gelieve uw e-mailadres bij te werken"
 msgid "Please update your email address to enable subscriptions"
 msgstr "Gelieve uw e-mailadres bij te werken om de meldingen te activeren"
 
+#: app/views/shared/_sidebar.html.erb:174
+msgid "Popular Searches"
+msgstr ""
+
 #: app/views/devise/registrations/edit.html.erb:17
 msgid "Private Information"
 msgstr "Persoonlijke gegevens"
@@ -391,7 +394,7 @@ msgstr "Lees meer recent news"
 msgid "Reason for joining us?"
 msgstr "Reden waarom u zich aanmeldt?"
 
-#: app/views/shared/_sidebar.html.erb:144
+#: app/views/shared/_sidebar.html.erb:145
 msgid "Recently Discussed"
 msgstr "Onlangs bediscussieerd"
 
@@ -524,7 +527,7 @@ msgstr "Tags"
 msgid "Terms of Service and Privacy Policy"
 msgstr "algemene voorwaarden en het privacy-beleid"
 
-#: app/views/shared/_sidebar.html.erb:174
+#: app/views/shared/_sidebar.html.erb:187
 msgid "This is an Advertisement Free Site"
 msgstr "Dit is een advertentievrije site"
 
@@ -550,7 +553,8 @@ msgid "Upload Avatar"
 msgstr "Upload avatar"
 
 #: app/helpers/items_helper.rb:53
-msgid "Viewed %{num} Times"
+#, fuzzy
+msgid "Viewed %{num} times"
 msgstr "%{num} Keer Bekeken"
 
 #: app/views/items/show.html.erb:145 app/views/shared/_item.html.erb:91
@@ -593,6 +597,11 @@ msgstr "Uw profielnaam, bijv. Anoniem"
 #: app/views/items/show.html.erb:40 app/views/shared/_item.html.erb:33
 msgid "Youtube Source"
 msgstr "YouTube-bron"
+
+#: app/helpers/items_helper.rb:59
+#, fuzzy
+msgid "ago"
+msgstr "geleden"
 
 #: app/views/items/show.html.erb:45 app/views/shared/_item.html.erb:39
 msgid "by"
