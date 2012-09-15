@@ -619,6 +619,3 @@ msgstr "meer..."
 #: app/views/devise/sessions/new.html.erb:20
 msgid "password"
 msgstr "wachtwoord"
-
-#~ msgid "New Item"
-#~ msgstr "Nieuw artikel"
