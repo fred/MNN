@@ -44,7 +44,7 @@ ActiveAdmin::Dashboards.build do
   # end
 
   section "Popular Searches", priority: 1 do
-    table_for Query.popular.limit(20) do
+    table_for Query.popular.limit(10) do
       column "Query" do |t|
         link_to t.keyword, search_path(q: t.keyword)
       end
@@ -59,7 +59,7 @@ ActiveAdmin::Dashboards.build do
 
   section "Suspicious Comments", priority: 1 do
     if controller.current_ability.can?(:read, Comment)
-      table_for Comment.suspicious(12) do
+      table_for Comment.suspicious(10) do
         column "User" do |t|
           if t.owner
             link_to t.name, admin_user_path(t.owner), class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
@@ -74,9 +74,9 @@ ActiveAdmin::Dashboards.build do
         end
         column "Item" do |t|
           if t.commentable && t.commentable_type == "Item"
-            link_to t.commentable.title.truncate(44), admin_item_path(t.commentable), title: t.commentable.title
+            link_to t.commentable.title.truncate(40), admin_item_path(t.commentable), title: t.commentable.title
           elsif t.commentable && t.commentable_type == "Comment"
-            link_to t.commentable.commentable.title.truncate(44), admin_item_path(t.commentable.commentable)
+            link_to t.commentable.commentable.title.truncate(40), admin_item_path(t.commentable.commentable)
           end
         end
         column "Time" do |t|
@@ -94,7 +94,7 @@ ActiveAdmin::Dashboards.build do
 
   section "Spam Comments", priority: 2 do
     if controller.current_ability.can?(:read, Comment)
-      table_for Comment.as_spam(12) do
+      table_for Comment.as_spam(10) do
         column "User" do |t|
           if t.owner
             link_to t.owner.title, admin_user_path(t.owner), class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
@@ -109,9 +109,9 @@ ActiveAdmin::Dashboards.build do
         end
         column "Item" do |t|
           if t.commentable && t.commentable_type == "Item"
-            link_to t.commentable.title.truncate(44), admin_item_path(t.commentable)
+            link_to t.commentable.title.truncate(40), admin_item_path(t.commentable)
           elsif t.commentable && t.commentable_type == "Comment"
-            link_to t.commentable.commentable.title.truncate(44), admin_item_path(t.commentable.commentable)
+            link_to t.commentable.commentable.title.truncate(40), admin_item_path(t.commentable.commentable)
           end
         end
         column "Time" do |t|
@@ -132,7 +132,7 @@ ActiveAdmin::Dashboards.build do
   section "Draft Items", priority: 6 do
     if controller.current_ability.can?(:read, Item)
       ul do
-        Item.recent_drafts(10).collect do |item|
+        Item.recent_drafts(8).collect do |item|
           li link_to("#{item.category_title} - #{item.title} - #{time_ago_in_words(item.updated_at)} ago", admin_item_path(item))
         end
       end
@@ -142,7 +142,7 @@ ActiveAdmin::Dashboards.build do
   section "Recently Updated Items", priority: 10 do
     if controller.current_ability.can?(:read, Item)
       ul do
-        Item.recent_updated(10).collect do |item|
+        Item.recent_updated(8).collect do |item|
           li(
             link_to("#{item.category_title} - #{item.title} - #{time_ago_in_words(item.updated_at)} ago",
             admin_item_path(item))
@@ -165,7 +165,7 @@ ActiveAdmin::Dashboards.build do
   ### USERS
   section "Newly Registered User", priority: 16 do
     if controller.current_ability.can?(:read, User)
-      table_for User.recent(10).collect do
+      table_for User.recent(8).collect do
         column "Name" do |user|
           link_to_if(user.name.present?,user.name.to_s, admin_user_path(user))
         end
@@ -181,7 +181,7 @@ ActiveAdmin::Dashboards.build do
   ### USERS
   section "Recently Logged in Users", priority: 20 do
     if controller.current_ability.can?(:read, User)
-      table_for User.logged_in(10).collect do
+      table_for User.logged_in(8).collect do
         column "Name" do |user|
           link_to_if(user.name.present?,user.name.to_s, admin_user_path(user))
         end
@@ -201,7 +201,7 @@ ActiveAdmin::Dashboards.build do
   ### HISTORY
   section "Database History", priority: 24 do
     if controller.current_ability.can?(:read, Version)
-      table_for Version.order('id desc').limit(20) do
+      table_for Version.order('id desc').limit(16) do
         column "Record" do |v| 
           if v.item
             link_to(
@@ -241,7 +241,7 @@ ActiveAdmin::Dashboards.build do
 
   section "Approved Comments", priority: 32 do
     if controller.current_ability.can?(:read, Comment)
-      table_for Comment.recent(12) do
+      table_for Comment.recent(8) do
         column "User" do |t|
           if t.owner
             link_to t.name, admin_user_path(t.owner), class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
@@ -256,9 +256,9 @@ ActiveAdmin::Dashboards.build do
         end
         column "Item" do |t|
           if t.commentable && t.commentable_type == "Item"
-            link_to t.commentable.title.truncate(44), admin_item_path(t.commentable), title: t.commentable.title
+            link_to t.commentable.title.truncate(40), admin_item_path(t.commentable), title: t.commentable.title
           elsif t.commentable && t.commentable_type == "Comment"
-            link_to t.commentable.commentable.title.truncate(44), admin_item_path(t.commentable.commentable)
+            link_to t.commentable.commentable.title.truncate(40), admin_item_path(t.commentable.commentable)
           end
         end
         column "Time" do |t|

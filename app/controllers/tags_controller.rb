@@ -5,7 +5,7 @@ class TagsController < ApplicationController
     @last_published = Item.last_item.updated_at
     respond_to do |format|
       format.html {
-        headers_with_timeout(600)
+        headers_with_timeout(1200)
       }
     end
   end
@@ -39,7 +39,7 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        headers_with_timeout(600)
+        headers_with_timeout(1200)
       }
       format.atom {
         headers_with_timeout(1200)
