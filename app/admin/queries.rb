@@ -9,18 +9,18 @@ ActiveAdmin.register Query do
   config.comments = false
   index title: "Searches" do
     column "Search Term", sortable: :keyword do |t|
-      link_to t.keyword.to_s, search_path(q: t.keyword.to_s), target: "_blank"
+      link_to t.keyword.to_s.truncate(50), search_path(q: t.keyword.to_s), target: "_blank"
     end
     column "IP", sortable: false do |t|
-      t.raw_data[:ip]
+      link_to(t.raw_data[:ip], "http://www.geoiptool.com/en/?IP=#{t.raw_data[:ip]}", target: "_blank") if t.raw_data[:ip].present?
     end
-    column "Referrer", sortable: false do |t|
-      link_to("Referrer", t.raw_data[:referrer], title: t.raw_data[:referrer], taget: "_blank") unless t.raw_data[:referrer].to_s.empty?
+    column "From", sortable: false do |t|
+      link_to("URL", t.raw_data[:referrer], title: t.raw_data[:referrer], taget: "_blank") if t.raw_data[:referrer].present?
     end
     column "UserAgent", sortable: false do |t|
-      t.raw_data[:user_agent]
+      t.short_user_agent
     end
-    column "Language", :locale
+    column "Lang", :locale
     column "User", sortable: :user_id do |t|
       link_to t.user.public_display_name, admin_user_path(t.user) if t.user
     end
@@ -30,7 +30,7 @@ ActiveAdmin.register Query do
   end
   controller do
     def scoped_collection
-       Query.includes(:item, :user)
+      Query.includes(:item, :user)
     end
   end
 end

@@ -22,4 +22,13 @@ class Query < ActiveRecord::Base
     order("count DESC")
   end
 
+  def short_user_agent
+    if raw_data[:user_agent].present?
+      tmp = raw_data[:user_agent].split
+      tmp.reverse[0..1].join(" ")
+    else
+      raw_data
+    end
+  end
+
 end
