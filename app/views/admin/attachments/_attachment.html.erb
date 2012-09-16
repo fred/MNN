@@ -31,7 +31,7 @@
 <%=
   if attachment.existing_attachment
     link_to(
-      image_tag(attachment.existing_attachment.image.large.url, alt: attachment.title),
+      image_tag(attachment.existing_attachment.image.large.url, title: attachment.title, alt: attachment.title),
       attachment.image.full.url,
       title: attachment.title,
       targe: "_blank",
@@ -39,7 +39,7 @@
     )
   else
     link_to(
-      image_tag(attachment.image.large.url, alt: attachment.title),
+      image_tag(attachment.image.large.url, title: attachment.title, alt: attachment.title),
       attachment.image.full.url,
       title: attachment.title,
       targe: "_blank",
@@ -47,8 +47,8 @@
     )
   end
 %>
-<% if attachment.title %>
-<p><caption><%= attachment.title.to_s.truncate(100) %></caption></p>
+<% if attachment.title.present? %>
+<p class="image-caption"><%= attachment.title.to_s.truncate(100) %></p>
 <% end %>
 </div>
 
