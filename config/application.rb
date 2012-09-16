@@ -78,9 +78,12 @@ module Publication
     
     # Heroku
     config.assets.initialize_on_precompile = false
+
+    config.assets.paths << Rails.root.join("app", "assets", "flash")
+    config.assets.paths << Rails.root.join("vendor", "assets", "flash")
     
     # RailsAdmin Assets
-    config.assets.precompile += %w( rss.css tinymce.css
+    config.assets.precompile += %w( rss.css tinymce.css ZeroClipboard10.swf
       jquery.complexify.css jquery.complexify.js registration.js
       active_admin.js active_admin.css active_admin/print.css )
   end

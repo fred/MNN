@@ -11,37 +11,7 @@ ActiveAdmin.register Attachment do
 
   index title: "Images", as: :block do |attachment|
     div for: attachment, class: "grid_images" do
-      div do
-        if attachment.existing_attachment
-          link_to(
-            image_tag(attachment.existing_attachment.image.medium.url),
-            admin_attachment_path(attachment),
-            title: "Click on image to see details"
-          )
-        else
-          link_to(
-            image_tag(attachment.image.medium.url),
-            admin_attachment_path(attachment),
-            title: "Click on image to see details"
-          )
-        end
-      end
-      para(auto_link(attachment.attachable))
-      para(attachment.title)
-      para(
-        link_to(
-          "Edit",
-          edit_admin_attachment_path(attachment),
-          title: "Edit Image"
-        ) + " - " +
-        link_to(
-          "Delete",
-          admin_attachment_path(attachment),
-          method: "delete",
-          confirm: "Really delete this image?",
-          title: "Click on image to see details"
-        )
-      )
+      render 'attachment', attachment: attachment
     end
   end
 

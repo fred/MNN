@@ -1,0 +1,66 @@
+<%=
+  if attachment.existing_attachment
+    link_to(
+      image_tag(attachment.existing_attachment.image.medium.url, alt: attachment.title),
+      admin_attachment_path(attachment),
+      title: attachment.title,
+    )
+  else
+    link_to(
+      image_tag(attachment.image.medium.url, alt: attachment.title),
+      admin_attachment_path(attachment),
+      title: attachment.title,
+    )
+  end
+%>
+
+<p><%= auto_link(attachment.attachable) %></p>
+<p><%= attachment.title %></p>
+<p>
+  <%= link_to("Copy", "#", id: "button-copy-#{attachment.id}", class: "button") %>
+  <%= link_to("Edit", edit_admin_attachment_path(attachment), title: "Edit Image", class: "button") %>
+  <%= link_to("Delete", admin_attachment_path(attachment), method: "delete",
+          confirm: "Really delete this image?",
+          title: "Click on image to see details",
+          class: "button"
+      )
+  %>
+</p>
+
+<div class="hidden" id="copy-<%=attachment.id%>">
+<%=
+  if attachment.existing_attachment
+    link_to(
+      image_tag(attachment.existing_attachment.image.large.url, alt: attachment.title),
+      attachment.image.full.url,
+      title: attachment.title,
+      targe: "_blank",
+      class: "image-popup"
+    )
+  else
+    link_to(
+      image_tag(attachment.image.large.url, alt: attachment.title),
+      attachment.image.full.url,
+      title: attachment.title,
+      targe: "_blank",
+      class: "image-popup"
+    )
+  end
+%>
+<% if attachment.title %>
+<p><caption><%= attachment.title.to_s.truncate(100) %></caption></p>
+<% end %>
+</div>
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+
+      $("a#button-copy-<%= attachment.id %>").zclip({
+          path:'/assets/ZeroClipboard10.swf',
+          copy:$('div#copy-<%= attachment.id %>').html()
+      });
+
+  });
+
+</script>

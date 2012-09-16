@@ -6,3 +6,4 @@
 //= require anytime/timezone
 //= require jquery/counter
 //= require modernizr
+//= require zclip

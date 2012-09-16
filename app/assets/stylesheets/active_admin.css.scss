@@ -190,9 +190,8 @@ span.image p {
   float: left;
   margin-right: 16px;
   margin-bottom: 8px;
-
   width: 254px;
-  height: 340px;
+  height: 364px;
   text-align: left;
   border-bottom: 1px solid #ccc;
 }
@@ -207,7 +206,11 @@ span.image p {
   font-size: 12px;
   margin: 2px 2px 6px 6px;
 }
-
+.index_as_block a.button {
+  margin-right: 5px;
+  font-size: 12px;
+  padding: 4px 12px;
+}
 
 a.featured_true {
   font-weight: bold;

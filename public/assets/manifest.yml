@@ -204,12 +204,14 @@ rss_blue_16.png: rss_blue_16-d283f7cdf5b40250af00a443e626bc5e.png
 rss_blue_32.png: rss_blue_32-6c6e400b6d21ef3c0040a913ce78a22c.png
 rss_icon_glass_blue64.png: rss_icon_glass_blue64-deed2260585ed3bb754b60d14154154a.png
 world_mathaba11.png: world_mathaba11-05570f0309b7b69f11ada4c845795333.png
-active_admin.js: active_admin-62fd8fcb6be28975dc6cad5f348a1c0a.js
+active_admin.js: active_admin-b68f8d2304d469c569c9ed57afd3b32f.js
 application.js: application-22fca6dc92ff5da30f5d60528c7fa544.js
 registration.js: registration-979f78de5200791efea852a31c991ae2.js
-active_admin.css: active_admin-b43d561bc3b0839f810cb0b28d71844c.css
+active_admin.css: active_admin-f725ae125a85d34a596d1371aac2b689.css
 application.css: application-3dcf5cd0f43052822cd205d1d275fb4c.css
 rss.css: rss-5d88525bfa6012a6fe5cdf6dd949a96f.css
+ZeroClipboard.swf: ZeroClipboard-f76388fc372f5cb0235e8f04f52b374a.swf
+ZeroClipboard10.swf: ZeroClipboard10-fcbd8515daf8c8768b86228e93ae32f5.swf
 jquery-ui/ui-bg_flat_0_bdbdbd_40x100.png: jquery-ui/ui-bg_flat_0_bdbdbd_40x100-3be6aa7b1d61a969928ed6aa55e3c7cc.png
 jquery-ui/ui-bg_flat_0_eeeeee_40x100.png: jquery-ui/ui-bg_flat_0_eeeeee_40x100-054315d6c4bede256f2706ca7da722bd.png
 jquery-ui/ui-bg_flat_55_eeeeee_40x100.png: jquery-ui/ui-bg_flat_55_eeeeee_40x100-054315d6c4bede256f2706ca7da722bd.png

@@ -10,17 +10,17 @@
 production:
   solr:
     hostname: '127.0.0.1'
-    port: 8080
+    port: 8082
     path: '/solr/mnn_development'
 
 development:
   solr:
     hostname: '127.0.0.1'
-    port: 8080
+    port: 8082
     path: '/solr/mnn_development'
 
 test:
   solr:
     hostname: '127.0.0.1'
-    port: 8080
+    port: 8082
     path: '/solr/mnn_test'
