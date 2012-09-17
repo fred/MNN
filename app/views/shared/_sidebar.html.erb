@@ -108,7 +108,7 @@
     <% end %>
 
 
-    <% cache_expiring("sidebar/#{params.to_a.join}", 900) do %>
+    <% cache_expiring(sidebar_cache_key, 9000) do %>
       <div class="sidebar_secions">
         <ul class="nav nav-list">
           <li class="horizontal-divider"></li>
@@ -143,7 +143,7 @@
       </div>
     <% end %>
 
-    <% cache_expiring("sidebar", 900) do %>
+    <% cache_expiring("sidebar", 600) do %>
 
       <div class="sidebar_secions">
         <h4><%= _("Recently Discussed") %></h4>

@@ -24,6 +24,13 @@ module ApplicationHelper
     end
   end
 
+  def sidebar_cache_key
+    p = []
+    p << "category-#{@category.id}" if @category
+    p << "page-#{@page.id}" if @page
+    "sidebar/#{p.join('-')}"
+  end
+
   def cache_key_for_user(str='')
     if current_user
       "#{current_user.id}/#{str}"
