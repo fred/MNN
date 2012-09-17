@@ -32,6 +32,7 @@ class ApplicationController < ActionController::Base
     @site_links        ||= Link.order("title ASC")
   end
 
+
   def no_cache_for_admin
     if current_user or request[:controller].to_s.match("admin|users|comments|devise")
       private_headers

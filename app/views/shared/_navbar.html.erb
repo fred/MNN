@@ -80,6 +80,9 @@
         </ul>
       <% end %>
 
+
+    <% cache_expiring(cache_key_for_user('navbar')) do %>
+
       <div class="btn-group pull-right">
         
         <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -222,6 +225,8 @@
           <% end %>
         </ul>
       </div>
+
+    <% end %>
 
     </div>
   </div>

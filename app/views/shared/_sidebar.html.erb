@@ -107,40 +107,44 @@
       </div>
     <% end %>
 
-    <div class="sidebar_secions">
-      <ul class="nav nav-list">
-        <li class="horizontal-divider"></li>
-        <% @site_categories.each do |category| %>
-          <li class=<%= li_class(category.to_param, :id, "active") %>>
-            <%= link_to category.title, category, title:  category.description %>
-          </li>
-        <% end %>
-        <li class="horizontal-divider"></li>
-      </ul>
-      <ul class="nav nav-list">
-        <% @site_pages.each do |page| %>
-          <li class=<%= li_class(page.to_param, :id, "active") %>>
-            <%= link_to page.title, page, title:  page.title %>
-          </li>
-        <% end %>
-        <li><%= link_to "Other Sites", links_path %></li>
-        <li class="horizontal-divider"></li>
-      </ul>
-      <h4><%= _("Languages") %></h4>
-      <ul class="nav nav-list">
-        <% @site_languages.each do |language|%>
-          <li class=<%= li_class_subdomain(language.locale, "active") %>>
-            <%= link_to url_for(localized_subdomain(language.locale)), title: language.description do %>
-              <%= image_tag "blank.gif", class: "flag flag-#{language.flag_code}", alt: language.description %>
-              <%= language.description %>
-            <% end %>
-          </li>
-        <% end %>
-        <li class="horizontal-divider"></li>
-      </ul>
-    </div>
 
-    <% cache_expiring("sidebar_recently", 900) do %>
+    <% cache_expiring("sidebar/#{params.to_a.join}", 900) do %>
+      <div class="sidebar_secions">
+        <ul class="nav nav-list">
+          <li class="horizontal-divider"></li>
+          <% @site_categories.each do |category| %>
+            <li class=<%= li_class(category.to_param, :id, "active") %>>
+              <%= link_to category.title, category, title:  category.description %>
+            </li>
+          <% end %>
+          <li class="horizontal-divider"></li>
+        </ul>
+        <ul class="nav nav-list">
+          <% @site_pages.each do |page| %>
+            <li class=<%= li_class(page.to_param, :id, "active") %>>
+              <%= link_to page.title, page, title:  page.title %>
+            </li>
+          <% end %>
+          <li><%= link_to "Other Sites", links_path %></li>
+          <li class="horizontal-divider"></li>
+        </ul>
+        <h4><%= _("Languages") %></h4>
+        <ul class="nav nav-list">
+          <% @site_languages.each do |language|%>
+            <li class=<%= li_class_subdomain(language.locale, "active") %>>
+              <%= link_to url_for(localized_subdomain(language.locale)), title: language.description do %>
+                <%= image_tag "blank.gif", class: "flag flag-#{language.flag_code}", alt: language.description %>
+                <%= language.description %>
+              <% end %>
+            </li>
+          <% end %>
+          <li class="horizontal-divider"></li>
+        </ul>
+      </div>
+    <% end %>
+
+    <% cache_expiring("sidebar", 900) do %>
+
       <div class="sidebar_secions">
         <h4><%= _("Recently Discussed") %></h4>
         <% Item.localized.recently_commented(5).each do |item| %>
@@ -155,9 +159,7 @@
           </div>
         <% end %>
       </div>
-    <% end %>
 
-    <% cache_expiring("sidebar_most_read", 900) do %>
       <div class="sidebar_secions">
         <h4><%= _("Most Read in 2 weeks") %></h4>
         <% Item.localized.popular(5).each do |item| %>
@@ -167,9 +169,7 @@
           </div>
         <% end %>
       </div>
-    <% end %>
 
-    <% cache_expiring("sidebar_queries", 900) do %>
       <div class="sidebar_secions">
         <h4><%= _("Popular Searches") %></h4>
         <% Query.popular(FastGettext.locale).limit(10).each do |query| %>
@@ -179,14 +179,16 @@
         <% end %>
         <span class="horizontal-divider"></span>
       </div>
+
+      <div class="hidden-phone">
+        <%= image_tag "adfreesite.png",
+              alt: _("AdFree Site"),
+              title:  _("This is an Advertisement Free Site"),
+              width: 100, height: 60
+        %>
+      </div>
+
     <% end %>
 
-    <div class="hidden-phone">
-      <%= image_tag "adfreesite.png",
-            alt: _("AdFree Site"),
-            title:  _("This is an Advertisement Free Site"),
-            width: 100, height: 60
-      %>
-    </div>
   </div>
 </div>

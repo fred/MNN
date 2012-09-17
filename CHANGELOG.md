@@ -1,3 +1,27 @@
+## September 15-17, 2012
+
+  - Added Copy button to images/attachments
+  - Allow iframe and src for pre-approved comments
+  - Improved style for displaying comments (ul/ol)
+  - Smaller dashboard
+  - Updated Gems
+  - Improved Bot Detection
+  - Improved Security for comments
+  - Added comments count for users
+
+Bug Fix:
+
+  - Fixed login issues for admin
+  - Fix style for comments
+  - Fixed sidebar translations
+
+Performance:
+
+  - Improved performance by 20% from caching more fragments
+  - App can handle now 8-12 req/sec per worker
+  - Reduced Database preasure
+
+
 ## September 11, 2012
 
   - Added Popular Searches on the sidebar
@@ -16,6 +40,7 @@ Security:
   - Tightened security for comments preview on admin
   - Improved suspicious comments detection
 
+
 ## September 9, 2012
 
 Security:
@@ -29,12 +54,14 @@ Bug Fix:
   - Improved used Menu, always shows "Submit Article" link for authors
   - Improved Test Suit
 
+
 ## September 8, 2012
 
 Security:
 
   - Detect and prevent user escalation on registration
   - Protect users from adding roles on registration
+
 
 ## September 4, 2012
 

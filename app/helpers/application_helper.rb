@@ -24,6 +24,15 @@ module ApplicationHelper
     end
   end
 
+  def cache_key_for_user(str='')
+    if current_user
+      "#{current_user.id}/#{str}"
+    elsif current_admin_user
+      "#{current_admin_user.id}/#{str}"
+    else
+      "guest/#{str}"
+    end
+  end
 
   # Cache for a period of time, default 2 hours
   def cache_expiring(cache_key, cache_period=7200)
