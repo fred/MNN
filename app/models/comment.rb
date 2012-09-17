@@ -124,17 +124,16 @@ class Comment < ActiveRecord::Base
       comment_content:      body
     }
   end
-  
-  
+
   def allowed_html_tags
     tags = %w(p em b i u a br blockquote strong div pre ul ol li)
-    tags << 'iframe' if approving_user
+    tags += %w(iframe img) if approving_user
     tags
   end
 
   def allowed_html_attributes
     tags = %w(href target rel rev)
-    tags << 'src width height allowfullscreen' if approving_user
+    tags += %w(src width height allowfullscreen) if approving_user
     tags
   end
 
