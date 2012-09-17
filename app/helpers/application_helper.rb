@@ -24,6 +24,17 @@ module ApplicationHelper
     end
   end
 
+  def comment_cache_key(comment)
+    if current_user
+      "user-#{current_user.id}/#{comment.cache_key}"
+    elsif current_admin_user
+      "user-#{current_admin_user.id}/#{comment.cache_key}"
+    else
+      comment.cache_key
+    end
+  end
+
+
   def sidebar_cache_key
     p = []
     p << "category-#{@category.id}" if @category

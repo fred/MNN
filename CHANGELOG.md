@@ -8,6 +8,8 @@
   - Improved Bot Detection
   - Improved Security for comments
   - Added comments count for users
+  - Allow html/iframe on comments editor
+  - Auto convert links on comments editor
 
 Bug Fix:
 

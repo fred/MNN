@@ -134,7 +134,7 @@ class Comment < ActiveRecord::Base
 
   def allowed_html_attributes
     tags = %w(href target rel rev)
-    tags << 'src' if approving_user
+    tags << 'src width height allowfullscreen' if approving_user
     tags
   end
 
