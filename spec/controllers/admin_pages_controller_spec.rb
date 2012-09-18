@@ -35,7 +35,7 @@ describe Admin::PagesController do
       describe "GET index" do
         it "Should Show @pages array" do
           get :index
-          expect(assigns(:pages)).to eq([@page])
+          expect(assigns(:pages)).to eq(Page.all)
         end
       end
       describe "GET show" do
