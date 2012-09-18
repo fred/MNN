@@ -34,6 +34,7 @@
                 input_html: { rows: 60, cols: 120},
                 hint: "Do Not use H1 headings. Use only H2, H3 and H4. If you want a new paragraph, simply hit 'RETURN' key. If you don’t want a new paragraph and just want a line break, hit 'SHIFT+RETURN' keys. - If you are copying and pasting from a website, it is recommended to paste first to Notepad.exe/TextEdit.app then copy again and paste here."
     %>
+
     <%= f.input :keywords,
                 label: "Keywords",
                 required: false,
@@ -261,6 +262,7 @@
       height : "640px",
       relative_urls : false,
       convert_urls : false,
+      body_class : "tinymce",
       plugins : "autolink,lists,spellchecker,pagebreak,style,layer,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
       // Theme options
       theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",

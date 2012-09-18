@@ -5,7 +5,7 @@ ActiveAdmin.register Page do
   menu parent: "Settings", priority: 100, if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, Page)
   }
-
+  config.sort_order = "updated_at_desc"
   config.comments = false
   
   index title: "Pages" do
@@ -37,7 +37,7 @@ ActiveAdmin.register Page do
     end
 
     def scoped_collection
-       Page.includes(:user, :language)
+      Page.includes(:user, :language)
     end
   end
   

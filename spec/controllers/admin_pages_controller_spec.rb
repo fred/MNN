@@ -31,11 +31,12 @@ describe Admin::PagesController do
     describe "Existing Page" do
       before (:each) do
         @page = FactoryGirl.create(:page)
+        @page_two = FactoryGirl.create(:page_two)
       end
       describe "GET index" do
         it "Should Show @pages array" do
           get :index
-          expect(assigns(:pages)).to eq(Page.all)
+          expect(assigns(:pages)).to eq(Page.order("updated_at DESC").all)
         end
       end
       describe "GET show" do

@@ -288,7 +288,7 @@ a.spam_true {
 form fieldset label.error,
 li label.error,
 label.error {
-  color: red;
+  color: red !important;
   font-size: 12px;
   font-style: italic;
   width: auto;
@@ -303,7 +303,7 @@ li input.error,
 textarea.error
 select.error
 input.error {
-  border-color: red;
+  border-color: red !important;
 }
 
 #item_existing_attachment_id {

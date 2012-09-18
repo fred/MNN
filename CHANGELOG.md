@@ -9,6 +9,7 @@ Architecture:
 Improvements:
 
   - Upgraded ActiveAdmin to 0.5.0
+  - Disabled ActiveAdmin body style to allow 3rd parties CSS to work
   - Cleaned up Gemfile
 
 

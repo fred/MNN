@@ -5,5 +5,6 @@
 //= require anytime/main
 //= require anytime/timezone
 //= require jquery/counter
+//= require jquery/jquery.validate.js
 //= require modernizr
 //= require zclip
