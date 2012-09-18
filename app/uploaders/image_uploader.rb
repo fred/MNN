@@ -3,12 +3,9 @@ class ImageUploader < BaseImageUploader
   process :set_content_type
 
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{partition(model.id)}"
   end
 
-  version :mini do
-    process resize_to_fit: [32, 32]
-  end
   version :thumb do
     process resize_to_fit: [64, 64]
   end
