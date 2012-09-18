@@ -1,3 +1,17 @@
+## September 18, 2012
+
+  - Release version 1.0.3
+
+Architecture:
+
+  - Partitioned Image IDs so that a folder won't have more than 9,999 Images
+
+Improvements:
+
+  - Upgraded ActiveAdmin to 0.5.0
+  - Cleaned up Gemfile
+
+
 ## September 15-17, 2012
 
   - Added Copy button to images/attachments

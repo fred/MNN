@@ -80,9 +80,8 @@ gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'libv8', '3.3.10.4', platform: :mri_19
   gem 'therubyrhino', require: 'rhino', platform: :jruby
-  gem 'therubyracer', '~> 0.10.2', require: 'v8', platform: :mri_19
+  gem 'therubyracer', require: 'v8',    platform: :mri_19
   gem 'execjs'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.5'
@@ -102,10 +101,8 @@ group :production, :development do
 end
 
 group :test, :development do
-  gem 'rspec', '~> 2.11.0'
-  gem 'rspec-rails', '~> 2.11.0'
-  gem 'factory_girl', '~> 4.0'
-  gem 'factory_girl_rails', '~> 4.0'
+  gem 'rspec'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -125,6 +122,8 @@ group :development do
 end
 
 group :test do
+  gem 'factory_girl', '~> 4.0'
+  gem 'factory_girl_rails', '~> 4.0'
   gem 'cucumber-rails', '>= 1.0.2'
   gem 'webrat', '~> 0.7.3'
   gem 'capybara', '>= 1.0.1'
@@ -139,12 +138,14 @@ gem 'fast_gettext'
 gem 'gettext_i18n_rails'
 
 ### Active Admin, loaded at end.
+gem 'meta_search'
+gem 'activeadmin', git: 'git://github.com/gregbell/active_admin.git'
 
-gem 'meta_search', '~> 1.1.3'
-gem 'activeadmin', 
-  git: 'git://github.com/fred/active_admin.git',
-  branch: '594',
-  ref: '62c1dd5f1c9c4d3a4167d57fdf9c36e3e0b2ab02'
+# gem 'meta_search', '~> 1.1.3'
+# gem 'activeadmin',
+  # git: 'git://github.com/fred/active_admin.git',
+  # branch: '594',
+  # ref: '62c1dd5f1c9c4d3a4167d57fdf9c36e3e0b2ab02'
 
 # Twitter Bootstrap for Rails 3 Asset Pipeline
 gem 'twitter-bootstrap-rails',
