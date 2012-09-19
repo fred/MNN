@@ -6,7 +6,9 @@
                         label: "Choose image to upload",
                         hint: "When editing, the new image will overwrite the old image. Multiple images are allowed, you can select multiple images holding CTRL or Command keys when choosing images." %>
   <% end %>
-  <%= f.buttons :commit %>
+  <%= f.actions do %>
+    <%= f.action :submit, button_html: {class: "primary", data: {disable_with: 'Uploading...'}} %>
+  <% end %>
 <% end %>
 
 

@@ -2,5 +2,7 @@
   <%= f.inputs title: "Required Info" do %>
     <%= f.input :title, label: "Tag Name", required: true %>
   <% end %>
-  <%= f.buttons :commit %>
+  <%= f.actions do %>
+    <%= f.action :submit, button_html: {class: "primary", data: {disable_with: 'Sending...'}} %>
+  <% end %>
 <% end %>
