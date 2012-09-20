@@ -21,13 +21,13 @@ Publication::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  if RUBY_ENGINE == "ruby"
-    config.cache_store = :dalli_store, "127.0.0.1",
-      { namespace: "mnn_test", expires_in: 2.hour, compress: true }
-  elsif RUBY_ENGINE == "jruby"
-    config.cache_store = :ehcache_store, 
-      { cache_name: 'rails_cache', ehcache_config: 'config/ehcache.xml' }
-  end
+  # if RUBY_ENGINE == "ruby"
+  #   config.cache_store = :dalli_store, "127.0.0.1",
+  #     { namespace: "mnn_test", expires_in: 2.hour, compress: true }
+  # elsif RUBY_ENGINE == "jruby"
+  #   config.cache_store = :ehcache_store, 
+  #     { cache_name: 'rails_cache', ehcache_config: 'config/ehcache.xml' }
+  # end
 
   # Raise exceptions instead of rendering exception templates
   config.action_dispatch.show_exceptions = false

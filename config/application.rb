@@ -64,11 +64,18 @@ module Publication
     # parameters by using an attr_accessible or attr_protected declaration.
     # config.active_record.whitelist_attributes = true
 
+    if RUBY_ENGINE == "ruby"
+      server = ENV['MEMCACHE_SERVERS'] ? ENV['MEMCACHE_SERVERS'] : "127.0.0.1"
+      config.cache_store = :dalli_store, server, { namespace: "mnn", expires_in: 8.hours, compress: true }
+    elsif RUBY_ENGINE == "jruby" && defined?(Ehcache)
+      config.cache_store = :ehcache_store, { cache_name: 'mnn', ehcache_config: 'ehcache.xml'}
+    end
+
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
+    config.filter_parameters += [:password, :password_confirmation]
 
     # Enable the asset pipeline
     config.assets.enabled = true
