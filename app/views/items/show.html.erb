@@ -149,7 +149,9 @@
             1
           <% end %>
         </div>
+      </footer>
 
+      <div class="clearfix">
         <span class="share">
           <%= link_to image_tag("icons/social/facebook_16.png", alt: "Facebook"),
                 facebook_share(@item),
@@ -175,7 +177,7 @@
                 title: "Digg it",
                 target: "_blank"
           %>
-          <%= link_to image_tag("icons/social/slashdot_16.png", alt: "Slashdot"),
+          <%#= link_to image_tag("icons/social/slashdot_16.png", alt: "Slashdot"),
                 slashdot_share(@item),
                 title: "Slashdot Share",
                 target: "_blank"
@@ -216,7 +218,19 @@
           <%#= render partial: "/shared/facebook" %>
 
         </span>
-      </footer>
+      </div>
+
+      <div class="clearfix">
+        <div class="facebook_badge">
+          <%= render partial: "/shared/facebook" %>
+        </div>
+      </div>
+
+      <div class="clearfix">
+        <div class="gplus_badge">
+          <%= render partial: "/shared/gplus_badge" %>
+        </div>
+      </div>
 
       <% @related = @item.solr_similar %>
       <% if @related && @related.total > 0 %>
@@ -234,11 +248,6 @@
         </div>
       <% end %>
 
-      <div class="clearfix">
-        <div class="gplus_badge">
-          <%= render partial: "/shared/gplus_badge" %>
-        </div>
-      </div>
     </article>
   </div>
 <% end %>

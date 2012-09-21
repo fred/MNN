@@ -1,10 +1,12 @@
-## September 18, 2012
+## September 20-21, 2012
 
   - Added oauth signin with Google Mail
-  - Added Facebook icon
+  - Added Facebook Like icon
   - Updated Gems,
   - Better support for jRuby and Trinidad deployment
   - Change social icons to be more uniform
+  - Fixed bug on gmail login
+  - Improved social icons at bottom of article
 
 ## September 18, 2012
 

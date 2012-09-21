@@ -1,4 +1,16 @@
-<a name='fb_share'></a> 
+<div id="fb-root"></div>
+
 <% content_for :scripts do %>
-  <script src='http://static.ak.fbcdn.net/connect.php/js/FB.Share' type='text/javascript'></script>
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
 <% end %>
+
+
+<div class="fb-like" data-href="<%= item_path(@item) %>" data-send="false" data-width="270" data-show-faces="false"></div>
