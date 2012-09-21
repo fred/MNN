@@ -9,6 +9,7 @@ ActiveAdmin.setup do |config|
   #
   config.site_title = "WorldMathaba"
 
+  config.dashboard_columns = 1
 
   # == Default Namespace
   #

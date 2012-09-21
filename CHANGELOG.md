@@ -1,5 +1,13 @@
 ## September 18, 2012
 
+  - Added oauth signin with Google Mail
+  - Added Facebook icon
+  - Updated Gems,
+  - Better support for jRuby and Trinidad deployment
+  - Change social icons to be more uniform
+
+## September 18, 2012
+
   - Release version 1.0.3
 
 Architecture:

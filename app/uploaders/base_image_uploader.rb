@@ -10,15 +10,4 @@ class BaseImageUploader < BaseUploader
     %w(jpg jpeg gif png tiff)
   end
 
-  # Set Watermark
-  # process watermark: "#{Rails.root}/public/watermark.png"
-  # protected
-  # def watermark(path_to_file)
-  #   manipulate! do |img|
-  #     img = img.composite(MiniMagick::Image.open(path_to_file), "jpg") do |c|
-  #       c.gravity "South"
-  #     end
-  #   end
-  # end
-
 end

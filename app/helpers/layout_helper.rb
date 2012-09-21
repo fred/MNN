@@ -2,7 +2,7 @@ module LayoutHelper
 
   def link_to_google_auth
     link_to("Login with Gmail",
-      "/auth/google",
+      "https://#{Settings.host}/auth/google_oauth2",
       class: "zocial google",
       rel: 'nofollow',
       title: "Login with Gmail"
@@ -61,6 +61,10 @@ module LayoutHelper
     "http://#{lang}.#{request.domain}"
   end
 
+  def facebook_link
+    "https://www.facebook.com/pages/WorldMathaba-News/264637566990258"
+  end
+
   def twitter_link
     "https://twitter.com/worldmathaba"
   end
@@ -87,10 +91,19 @@ module LayoutHelper
 
   def rss_medium
     link_to(
-      image_tag("icons/social/new/rss_32.png", width: 32, height: 32, alt: 'rss'),
+      image_tag("icons/social/new/rss_32b.png", width: 32, height: 32, alt: 'rss'),
       feed_path,
       title: "Multiple RSS Feeds",
       rel: "rss"
+    )
+  end
+
+  def facebook_medium
+    link_to(
+      image_tag("icons/social/new/facebook_32b.png", width: 32, height: 32, alt: 'Facebook'),
+      facebook_link,
+      title: "Facebook",
+      rel: "facebook"
     )
   end
 
@@ -114,7 +127,7 @@ module LayoutHelper
 
   def google_plus_new
     link_to(
-      image_tag("icons/social/new/gplus-32.png", width: 32, height: 32, alt: 'Google+', class: "google-plus"),
+      image_tag("icons/social/new/gplus_32b.png", width: 32, height: 32, alt: 'Google+', class: "google-plus"),
       google_plus_link,
       title: "Google+",
       rel: "me publisher",
@@ -128,7 +141,8 @@ module LayoutHelper
       "http://flattr.com/thing/631126/WorldMathaba",
       target: "blank",
       alt: "Flattr This Site",
-      title: "Flattr This Site"
+      title: "Flattr This Site",
+      class: 'flattr-large'
     )
   end
   
@@ -138,7 +152,8 @@ module LayoutHelper
       "http://flattr.com/thing/631126/WorldMathaba",
       target: "blank",
       alt: "Flattr This Site",
-      title: "Flattr This Site"
+      title: "Flattr This Site",
+      class: 'flattr-medium'
     )
   end
   

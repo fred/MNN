@@ -395,7 +395,6 @@ class User < ActiveRecord::Base
 
   # Returns the last 10 logged in users
   def self.logged_in(limit=10)
-    approved.
     order("current_sign_in_at DESC").
     limit(limit)
   end
