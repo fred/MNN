@@ -53,7 +53,7 @@ module ItemsHelper
       str += (_("Viewed %{num} times") % { num: item.item_stat.views_counter }) if item.item_stat
       str += "</span>"
     end
-    str += "<span class='icon-time item-date'>"
+    str += "<span class='icon-time item-date'> "
     str += _('Published') + " "
     str += time_ago_in_words(item.published_at) + " "
     str += _('ago')
@@ -70,7 +70,7 @@ module ItemsHelper
     str += "<br/>"
     str += "#{item.abstract}"
     str += "<br/>"
-    str += "<div class='date_small'>#{time_ago_in_words(item.published_at)} #{_('ago')} - #{_('by')} #{item.author_name}</div>"
+    str += "<div class='date_small'> #{time_ago_in_words(item.published_at)} #{_('ago')} - #{_('by')} #{item.author_name}</div>"
     str
   end
 

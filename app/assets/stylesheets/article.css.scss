@@ -154,7 +154,7 @@ article footer ul.tags li a {
   background-color: transparent;
   border-radius: 4px;
   border: 1px solid #CCC;
-  box-shadow: 0px 0px 4px #ccc;
+  box-shadow: 0px 0px 3px #ddd;
   padding: 2px 8px;
   margin-right: 4px;
   margin-top: 4px;
@@ -163,7 +163,7 @@ article footer ul.tags li a {
 section ul.tags li a:hover,
 article footer ul.tags li a:hover {
   border: 1px solid #bbb;
-  box-shadow: 0px 0px 6px #aaa;
+  box-shadow: 0px 0px 4px #bbb;
 }
 
 section ul.tags li:last-child,
@@ -178,7 +178,7 @@ article div.comments_count {
   margin: 6px 10px 6px 1px;
   display: inline;
   padding: 3px 8px;
-  box-shadow: 0px 0px 3px #bbb;
+  box-shadow: 0px 0px 3px #ddd;
 }
 
 article .share {
@@ -189,7 +189,7 @@ article .share {
   border: 1px solid gainsboro;
   width: 270px;
   padding: 6px 2px 5px 6px;
-  margin-bottom: 6px;
+  margin-bottom: 12px;
 }
 article .share a {
   margin-left: 4px;
@@ -303,10 +303,9 @@ div.facebook_badge {
   background: white;
   border: 1px solid gainsboro;
   width: 270px;
-  padding: 6px 2px 2px 6px;
-  margin-bottom: 6px;
+  padding: 6px 2px 4px 6px;
+  margin-bottom: 12px;
 }
-
 
 span.googleplus {
   margin-left: 5px;

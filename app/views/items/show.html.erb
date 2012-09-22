@@ -82,6 +82,7 @@
         <span class="date" itemprop="datePublished" >
           <%= time_tag(@item.published_at.in_time_zone("UTC"), pubdate: false) %> (UTC)
         </span>
+
         <% if @item.user %>
           <span class="author">
             <i class="icon-user"></i>
@@ -95,6 +96,7 @@
         <% else %>
           <%= _("by User") %>
         <% end %>
+
         <span itemprop="keywords">
           <ul class="tags">
             <i class="icon-tags"></i>
@@ -177,6 +179,16 @@
                 title: "Digg it",
                 target: "_blank"
           %>
+          <%= link_to image_tag("icons/social/email_16.png", alt: "Email"),
+                email_share(@item),
+                title: "Share by Email",
+                target: "_blank"
+          %>
+          <%= link_to image_tag("icons/social/google_plus_16.png", alt: "GooglePlus"),
+                gplus_share(@item),
+                title: "GooglePlus Share",
+                target: "_blank"
+          %>
           <%#= link_to image_tag("icons/social/slashdot_16.png", alt: "Slashdot"),
                 slashdot_share(@item),
                 title: "Slashdot Share",
@@ -197,26 +209,7 @@
                 title: "Share on Diaspora",
                 target: "_blank"
           %>
-          <%= link_to image_tag("icons/social/email_16.png", alt: "Email"),
-                email_share(@item),
-                title: "Share by Email",
-                target: "_blank"
-          %>
-          <%#= link_to image_tag("icons/social/rss_16.png"),
-                "#",
-                title: "RSS Feed",
-                target: "_blank"
-          %>
-          <%= link_to image_tag("icons/social/google_plus_16.png", alt: "GooglePlus"),
-                gplus_share(@item),
-                title: "GooglePlus Share",
-                target: "_blank"
-          %>
-          <%#= render partial: "/shared/gplus" %>
-          <%#= render partial: "/shared/twitter" %>
           <%= flattr_large %>
-          <%#= render partial: "/shared/facebook" %>
-
         </span>
       </div>
 
