@@ -4,7 +4,7 @@ class FacebookShare < Share
 
 
   def post(item)
-    share.processed_at = Time.now
+    self.processed_at = Time.now
     user = User.find Settings.facebook_manager_id
     @graph = Koala::Facebook::API.new(user.oauth_token)
     @page_token = @graph.get_page_access_token(Settings.facebook_page_id)
@@ -14,12 +14,12 @@ class FacebookShare < Share
       res = @page_graph.put_wall_post(item.title, {name: item.title, link: url})
     end
     if res && res["id"]
-      share.status = res["id"]
-      share.save
+      self.status = res["id"]
+      self.save
     else
       res = false
-      share.status = 'FAILED'
-      share.save
+      self.status = 'FAILED'
+      self.save
     end
     res
   end
