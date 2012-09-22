@@ -35,7 +35,7 @@ gem 'omniauth-google-oauth2', '~> 0.1.13'
 gem 'omniauth-oauth', '~> 1.0.1'
 gem 'omniauth-twitter', '~> 0.0.12'
 gem 'omniauth-windowslive', git: 'git://github.com/dangerp/omniauth-windowslive.git'
-
+gem 'koala'
 
 ### Roles and Authentication
 gem 'cancan', '~> 1.6.7'

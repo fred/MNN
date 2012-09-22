@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.locale.to_s %>" <%= yield(:html_tag) %>>
   <head>
-    <%= render partial: "/shared/head" %>
+    <%= render partial: "/shared/layouts/head" %>
     <%= stylesheet_link_tag "application" %>
     <%= yield(:stylesheets) %>
     <%= javascript_include_tag "application" %>
@@ -13,14 +13,14 @@
     <![endif]-->
     <%= yield(:head) %>
     <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="WorldMahaba.net Search" />
-    <%= render partial: "/shared/ga" unless current_admin_user %>
+    <%= render partial: "/shared/layouts/ga" unless current_admin_user %>
   </head>
 
   <body>
-    <%= render partial: "/shared/navbar" %>
+    <%= render partial: "/shared/layouts/navbar" %>
 
     <div class="container-fluid">
-      <%= render partial: "/shared/sidebar" %>
+      <%= render partial: "/shared/layouts/sidebar" %>
 
       <div class="content">
 
@@ -31,7 +31,7 @@
         <% end %>
         <%= bootstap_flash %>
         <%= yield %>
-        <%= render partial: "/shared/footer" %>
+        <%= render partial: "/shared/layouts/footer" %>
       </div>
 
     </div>
@@ -40,5 +40,7 @@
     <% end %>
     <%= yield(:footer) %>
     <%= yield(:scripts) %>
+
+    <%= render partial: "/shared/layouts/chrome_frame" %>
   </body>
 </html>

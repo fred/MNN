@@ -273,6 +273,9 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.7.4)
+    koala (1.5.0)
+      faraday (~> 0.7)
+      multi_json (~> 1.3)
     launchy (2.1.2)
       addressable (~> 2.3)
     launchy (2.1.2-java)
@@ -548,6 +551,7 @@ DEPENDENCIES
   jruby-rack
   json
   kaminari
+  koala
   launchy (>= 2.0.5)
   letter_opener!
   locale

@@ -5,7 +5,7 @@ class Item < ActiveRecord::Base
 
   attr_protected :user_id, :slug, :updated_by, :deleted_at, :updating_user_id
 
-  attr_accessor :updated_reason, :share_twitter, :send_emails, :existing_attachment_id, :updating_user_id
+  attr_accessor :updated_reason, :share_facebook, :share_twitter, :send_emails, :existing_attachment_id, :updating_user_id
 
   # Versioning System
   has_paper_trail meta: { tag: :updated_reason }
@@ -26,6 +26,7 @@ class Item < ActiveRecord::Base
   has_many  :attachments,           as: :attachable
   has_many  :job_stats,             as: :processable
   has_many  :twitter_shares,        dependent: :destroy
+  has_many  :facebook_shares,       dependent: :destroy
   has_many  :email_deliveries,      dependent: :destroy
   has_many  :comment_subscriptions, dependent: :destroy
 
@@ -54,6 +55,7 @@ class Item < ActiveRecord::Base
   # Filter hooks
   before_save   :clear_bad_characters
   before_save   :create_twitter_share
+  before_save   :create_facebook_share
   before_save   :dup_existing_attachment
   before_save   :send_email_deliveries
   before_save   :process_sitemap_job
@@ -229,6 +231,17 @@ class Item < ActiveRecord::Base
     if !self.draft && (self.share_twitter.to_s=="1" or self.share_twitter==true) && self.twitter_shares.empty?
       Rails.logger.info("  Twitter: Creating Twitter Share for item: #{self.id}")
       self.twitter_shares << TwitterShare.new(enqueue_at: self.enqueue_time, status: 'queued')
+    end
+    true
+  end
+
+  # Creates the Facebook sharing JOB
+  # checks the item publication date and set the time to send the twitter share
+  # Set Posting tim to be 3 minutes after the publication_date of item.
+  def create_facebook_share
+    if !self.draft && (self.share_facebook.to_s=="1" or self.share_facebook==true) && self.facebook_shares.empty?
+      Rails.logger.info("  Facebook: Creating Facebook Share for item: #{self.id}")
+      self.facebook_shares << FacebookShare.new(enqueue_at: self.enqueue_time, status: 'queued')
     end
     true
   end

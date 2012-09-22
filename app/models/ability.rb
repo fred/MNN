@@ -69,7 +69,7 @@ class Ability
     if user.has_role? :security
       can :manage, [Role,User,AdminUser,ItemStat,Language,Version,
           Contact,CommentSubscription,Subscription,EmailDelivery,
-          TwitterShare,Attachment,Document,Link,Query
+          TwitterShare,FacebookShare,Attachment,Document,Link,Query
       ]
     end
     

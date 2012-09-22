@@ -108,24 +108,40 @@
     <%= f.inputs name: "Status Codes" do %>
       <%= f.input :draft, hint: "Keep as draft if you haven't finished editing." %>
       <br />
+      
       <%= f.input :featured, label: "Highlight",
             hint: "Article will be featured on Highlights box in front page" %>
       <br />
+      
       <%= f.input :sticky, label: "Sticky",
           hint: "Article will remain first on top of Highlights box" %>
       <br />
+
       <%= f.input :allow_comments, hint: "Allow users to comment" %>
       <br />
+
       <% if f.object.twitter_shares.empty? %>
         <%= f.input :share_twitter, as: "boolean",
-            hint: "Auto post to twitter upon publication? Only set it if item is ready and not Draft. It can only be posted once. Performed 3 minutes after Publication." %>
+            label: "Twitter",
+            hint: "Auto post to Twitter after publication? Only set it if item is ready and not Draft. It can only be posted once. Performed 3 minutes after Publication." %>
       <br />
       <% else %>
         <li class="boolean input optional">
-          <label><b>Already posted to twitter</b></label>
+          <label><b>Already posted to twitter: <%= f.object.twitter_shares.first.status %></b></label>
         </li>
       <% end %>
+
+      <% if f.object.facebook_shares.empty? %>
+        <%= f.input :share_facebook, as: "boolean",
+            label: "Facebook",
+            hint: "Auto post to Facebook after publication? Only set it if item is ready and not Draft. It can only be posted once. Performed 3 minutes after Publication." %>
       <br />
+      <% else %>
+        <li class="boolean input optional">
+          <label><b>Already posted to Facebook: <%= f.object.facebook_shares.first.status %></b></label>
+        </li>
+      <% end %>
+
       <% if !f.object.email_delivery_sent? %>
         <%= f.input :send_emails, as: "boolean",
             hint: "Send emails upon publication? Only set it if item is ready and not Draft. It can only be posted once. Email will be sent 3 minutes after Publication." %>
@@ -139,6 +155,7 @@
           <label><b>Email Queued for delivery</b></label>
         </li>
       <% end %>
+
       <br />
     <% end %>
 

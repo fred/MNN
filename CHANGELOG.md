@@ -1,3 +1,7 @@
+## September 22, 2012
+
+  - Auto Share to Facebook Page
+
 ## September 20-21, 2012
 
   - Added oauth signin with Google Mail
