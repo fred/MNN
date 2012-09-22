@@ -10,11 +10,9 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']
   end
 
-  if ENV['FACEBOOK_APP_ID'] && ENV['FACEBOOK_APP_SECRET']
-    provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'],
-              scope: 'email,publish_stream,user_birthday,read_stream,manage_pages',
-              display: 'popup', secure_image_url: true
-  end
+  provider :facebook, Settings.facebook_app_id, Settings.facebook_app_secret,
+            scope: 'email,publish_stream,user_birthday,read_stream,manage_pages',
+            display: 'popup', secure_image_url: true
 
   if ENV['GOOGLE_KEY'] && ENV['GOOGLE_SECRET']
     provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {access_type: 'online', approval_prompt: ''}

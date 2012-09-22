@@ -190,22 +190,22 @@ class User < ActiveRecord::Base
   end
 
 
-  def self.find_or_create_from_oauth(auth_hash, session=nil)
+  def self.find_or_create_from_oauth(auth_hash)
     case auth_hash.provider
     when 'facebook'
-      User.facebook_oauth(auth_hash,session)
+      User.facebook_oauth(auth_hash)
     when 'twitter'
-      User.twitter_oauth(auth_hash,session)
+      User.twitter_oauth(auth_hash)
     when 'flattr'
-      User.flattr_oauth(auth_hash,session)
+      User.flattr_oauth(auth_hash)
     when 'google_oauth2'
-      User.google_oauth(auth_hash,session)
+      User.google_oauth(auth_hash)
     when 'windowslive'
       User.windowslive_oauth(auth_hash)
     end
   end
 
-  def self.facebook_oauth(auth_hash, session=nil)
+  def self.facebook_oauth(auth_hash)
     user = where(oauth_uid: auth_hash.uid, provider: 'facebook').first
     unless user
       user = User.new
@@ -221,14 +221,14 @@ class User < ActiveRecord::Base
     user.oauth_data = auth_hash
     user.oauth_token = auth_hash.credentials.token
     if user.new_record?
-      user.password_confirmation = auth_hash.credentials.token.to_s[0..16]
-      user.password = auth_hash.credentials.token.to_s[0..16]
+      user.password = Devise.friendly_token[0,20]
+      user.password_confirmation = user.password
     end
     user.save
     user
   end
 
-  def self.twitter_oauth(auth_hash, session=nil)
+  def self.twitter_oauth(auth_hash)
     user = where(oauth_uid: auth_hash.uid, provider: 'twitter').first
     unless user
       user = User.new
@@ -244,15 +244,15 @@ class User < ActiveRecord::Base
     user.oauth_data = auth_hash
     user.oauth_token = auth_hash.credentials.token
     if user.new_record?
-      user.password_confirmation = auth_hash.credentials.token.to_s[0..16]
-      user.password = auth_hash.credentials.token.to_s[0..16]
+      user.password = Devise.friendly_token[0,20]
+      user.password_confirmation = user.password
     end
     user.save
     user
   end
 
 
-  def self.flattr_oauth(auth_hash, session=nil)
+  def self.flattr_oauth(auth_hash)
     user = where(oauth_uid: auth_hash.uid, provider: 'flattr').first
     unless user
       user = User.new
@@ -267,14 +267,14 @@ class User < ActiveRecord::Base
     user.oauth_data = auth_hash
     user.oauth_token = auth_hash.credentials.token
     if user.new_record?
-      user.password_confirmation = auth_hash.credentials.token.to_s[0..16]
-      user.password = auth_hash.credentials.token.to_s[0..16]
+      user.password = Devise.friendly_token[0,20]
+      user.password_confirmation = user.password
     end
     user.save
     user
   end
 
-  def self.google_oauth(auth_hash, session=nil)
+  def self.google_oauth(auth_hash)
     user = where(oauth_uid: auth_hash.uid, provider: 'google').first
     unless user
       user = User.new
@@ -289,8 +289,8 @@ class User < ActiveRecord::Base
     user.oauth_data = auth_hash
     user.oauth_token = auth_hash.credentials.token
     if user.new_record?
-      user.password_confirmation = auth_hash.credentials.token.to_s[0..16]
-      user.password = auth_hash.credentials.token.to_s[0..16]
+      user.password = Devise.friendly_token[0,20]
+      user.password_confirmation = user.password
     end
     user.save
     user
@@ -312,8 +312,8 @@ class User < ActiveRecord::Base
     user.oauth_data = auth_hash
     user.oauth_token = auth_hash.credentials.token
     if user.new_record?
-      user.password_confirmation = auth_hash.credentials.token[0..16]
-      user.password = auth_hash.credentials.token[0..16]
+      user.password = Devise.friendly_token[0,20]
+      user.password_confirmation = user.password
     end
     user.save
     user
@@ -335,8 +335,8 @@ class User < ActiveRecord::Base
     user.oauth_data = auth_hash
     # user.oauth_token = auth_hash.credentials.token
     if user.new_record?
-      user.password_confirmation = auth_hash.credentials.token.to_s[0..16]
-      user.password = auth_hash.credentials.token.to_s[0..16]
+      user.password = Devise.friendly_token[0,20]
+      user.password_confirmation = user.password
     end
     user.save
     user

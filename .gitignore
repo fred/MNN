@@ -109,7 +109,6 @@ reload_forem.sh
 reload_db.sh
 
 config/settings.local.yml
-config/settings/*.local.yml
+config/settings/*.yml
 config/environments/*.local.yml
-config/settings/production.yml
 config/settings.yml
