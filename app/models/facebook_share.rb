@@ -1,7 +1,6 @@
 class FacebookShare < Share
   belongs_to :item
   after_create :enqueue
-  delegate :url_helpers, to: 'Rails.application.routes' 
 
   def post(item)
     self.processed_at = Time.now
@@ -9,7 +8,7 @@ class FacebookShare < Share
     @graph = Koala::Facebook::API.new(user.oauth_token)
     @page_token = @graph.get_page_access_token(Settings.facebook_page_id)
     @page_graph = Koala::Facebook::API.new(@page_token)
-    url = url_helpers.item_path(item, only_path: false, host: Settings.host)
+    url = Rails.application.routes.url_helpers.item_path(item, only_path: false, host: Settings.host)
     if @page_graph
       res = @page_graph.put_wall_post(item.title, {name: item.title, link: url})
     end

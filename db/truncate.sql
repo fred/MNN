@@ -21,6 +21,5 @@ truncate table simple_captcha_data ;
 truncate table subscriptions ;
 truncate table taggings ;
 truncate table tags ;
-truncate table translations ;
 truncate table users ;
 truncate table versions ;
