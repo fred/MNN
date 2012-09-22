@@ -1,7 +1,7 @@
 class FacebookShare < Share
   belongs_to :item
   after_create :enqueue
-
+  delegate :url_helpers, to: 'Rails.application.routes' 
 
   def post(item)
     self.processed_at = Time.now

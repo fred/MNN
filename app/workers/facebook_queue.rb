@@ -1,5 +1,4 @@
 class FacebookQueue < BaseWorker
-  delegate :url_helpers, to: 'Rails.application.routes' 
 
   def perform(share_id)
     share = FacebookShare.find(share_id)

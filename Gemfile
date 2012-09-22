@@ -28,11 +28,11 @@ end
 
 ### Oauth
 gem 'simple_oauth'
-gem 'omniauth', '1.1.0'
-gem 'omniauth-oauth2', '~> 1.1.0'
-gem 'omniauth-facebook', '~> 1.4.1'
-gem 'omniauth-google-oauth2', '~> 0.1.13'
+gem 'omniauth'
 gem 'omniauth-oauth', '~> 1.0.1'
+gem 'omniauth-oauth2', '1.0.3'
+gem 'omniauth-facebook', '1.4.0'
+gem 'omniauth-google-oauth2', '~> 0.1.13'
 gem 'omniauth-twitter', '~> 0.0.12'
 gem 'omniauth-windowslive', git: 'git://github.com/dangerp/omniauth-windowslive.git'
 gem 'koala'
