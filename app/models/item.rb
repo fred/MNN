@@ -174,11 +174,12 @@ class Item < ActiveRecord::Base
   #### JOBS ####
   ##############
   
+  # Random time between 150-180 seconds
   def enqueue_time
     if published?
-      Time.now+3.minutes
+      Time.now + 150 + Kernel.rand(29)
     else
-      self.published_at + 3.minutes
+      self.published_at + 150 + Kernel.rand(29)
     end
   end
 
