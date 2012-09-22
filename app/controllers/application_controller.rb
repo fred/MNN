@@ -119,8 +119,9 @@ class ApplicationController < ActionController::Base
   end
 
   def should_use_to_https?
-    (current_admin_user && !request.method.match("POST")) or request.url.match("/admin/login$")
+    (current_admin_user && !request.method.match("POST") && !request.url.match("auth")) or request.url.match("/admin/login$")
   end
+
   def https_for_admins
     if Rails.env.production? && should_use_to_https? && !using_ssl?
       Rails.logger.info("  *** Redirecting user to HTTPS")

@@ -28,7 +28,7 @@ end
 
 ### Oauth
 gem 'simple_oauth'
-gem 'omniauth', '~> 1.1.0'
+gem 'omniauth', '1.1.0'
 gem 'omniauth-oauth2', '~> 1.1.0'
 gem 'omniauth-facebook', '~> 1.4.1'
 gem 'omniauth-google-oauth2', '~> 0.1.13'

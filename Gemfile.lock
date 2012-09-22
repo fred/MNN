@@ -322,7 +322,7 @@ GEM
       jwt (~> 0.1.4)
       multi_json (~> 1.0)
       rack (~> 1.2)
-    omniauth (1.1.1)
+    omniauth (1.1.0)
       hashie (~> 1.2)
       rack
     omniauth-facebook (1.4.1)
@@ -362,7 +362,7 @@ GEM
       method_source (~> 0.8)
       slop (~> 3.3.1)
       spoon (~> 0.0)
-    pry-rails (0.2.1)
+    pry-rails (0.2.2)
       pry (>= 0.9.10)
     rack (1.4.1)
     rack-cache (1.2)
@@ -558,7 +558,7 @@ DEPENDENCIES
   meta_search
   multi_json
   nifty-generators
-  omniauth (~> 1.1.0)
+  omniauth (= 1.1.0)
   omniauth-facebook (~> 1.4.1)
   omniauth-google-oauth2 (~> 0.1.13)
   omniauth-oauth (~> 1.0.1)
