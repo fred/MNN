@@ -208,6 +208,7 @@ logo48.png: logo48-2bc8c0ad7bb94ce6c1a72956aef000a4.png
 logo60.png: logo60-bf9ca5dcfec19d02dba587aad7cc2827.png
 mini_logo.png: mini_logo-401ba5774f939c7ad95acf0818749ccd.png
 pg3.gif: pg3-e212554b34e2f28bedc08f179b4ad795.gif
+rails.png: rails-aa8aea913cd3b23f0cdf2a950a48069a.png
 rss_blue_16.png: rss_blue_16-d283f7cdf5b40250af00a443e626bc5e.png
 rss_blue_32.png: rss_blue_32-6c6e400b6d21ef3c0040a913ce78a22c.png
 rss_icon_glass_blue64.png: rss_icon_glass_blue64-deed2260585ed3bb754b60d14154154a.png
@@ -216,7 +217,7 @@ active_admin.js: active_admin-ebc39e1b709223361acdc7c78bf6f329.js
 application.js: application-22fca6dc92ff5da30f5d60528c7fa544.js
 registration.js: registration-979f78de5200791efea852a31c991ae2.js
 active_admin.css: active_admin-b3a2a561d695d7a3127bede354c0f92f.css
-application.css: application-dc1f40e6a43a85c9f80bbdb76fe6df10.css
+application.css: application-53c64c9590247427c4e1f5e439a4d9dc.css
 rss.css: rss-5d88525bfa6012a6fe5cdf6dd949a96f.css
 ZeroClipboard.swf: ZeroClipboard-f76388fc372f5cb0235e8f04f52b374a.swf
 ZeroClipboard10.swf: ZeroClipboard10-fcbd8515daf8c8768b86228e93ae32f5.swf
