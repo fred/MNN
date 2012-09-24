@@ -166,13 +166,13 @@ module LayoutHelper
     </noscript>"
   end
 
-  def form_class
+  def form_class(with_class="")
     if is_mobile?
-      "form-vertical"
+      str = "form-vertical"
     else
-      "form-horizontal"
+      str = "form-horizontal"
     end
-    
+    "#{str} #{with_class}"
   end
 
   def li_class_subdomain(str, css_class="active")

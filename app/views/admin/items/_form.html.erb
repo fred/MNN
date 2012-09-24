@@ -220,20 +220,23 @@
         %>
   <% end %>
   
-  <%= f.inputs name: "Editor Notes" do %>
+  <%= f.inputs name: "Notes and Updates" do %>
     <%= f.input :author_status,
           as: :select,
-          include_blank: "-- Article Status",
+          include_blank: "-- Select Status",
           label: "Author Status",
           collection: ["Ready to go", "Needs Editing", "Needs Translation", "Needs Image"]
     %>
     <%= f.input :editor_notes,
+          label: "Author Notes",
           as: "text",
           input_html: {rows: 4},
-          hint: "Your personal notes, or to other editors",
-          placeholder: "Your personal notes, or to other editors"
+          hint: "If necessary, add your personal notes, or to other editors and authors",
+          placeholder: "Your personal notes, or notes to other Editors and Authors"
     %>
-    <%= f.input :updated_reason, as: "string", hint: "Provide a reason for editing, 4-6 words." %>
+    <% unless f.object.new_record? %>
+      <%= f.input :updated_reason, label: "Update Reason", as: "string", hint: "Provide a reason for updating this article." %>
+    <% end %>
   <% end %>
 
   <%= f.input :lock_version, as: :hidden %>

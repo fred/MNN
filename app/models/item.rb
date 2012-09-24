@@ -522,10 +522,10 @@ class Item < ActiveRecord::Base
   end
 
   # Returns the most popular Items in the last N days
-  def self.popular(lim=5, n=15)
+  def self.popular(lim=5, days=15)
     published.
     includes(:attachments, :item_stat).
-    where("items.published_at > ?", (DateTime.now - n.days)).
+    where("items.published_at > ?", (DateTime.now - days.days)).
     order("item_stats.views_counter DESC").
     limit(lim)
   end

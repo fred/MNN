@@ -31,8 +31,8 @@
       <div class="control-group">
         <div class="controls">
           <div class="btn-group">
-            <%= f.submit _("Sign in"), class: "btn", data: {disable_with: _('Sending...')} %>
-            <a href="#" class="btn" data-dismiss="modal"><%= _("Cancel") %></a>
+            <%= f.submit _("Sign in"), class: "btn span2", data: {disable_with: _('Sending...')} %>
+            <input href="#" class="btn span2" data-dismiss="modal" Name="<%= _("Cancel") %>" value="<%= _("Cancel") %>">
           </div>
         </div>
       </div>
@@ -68,28 +68,3 @@
     </div>
   <% end %>
 </div>
-
-<% content_for :scripts do %>
-  <script>
-    if ($("form#login_form")){
-      $("form#login_form").validate({
-        rules: {
-          "user[email]": {required: true, minlength: 4},
-          "user[password]": {required: true, minlength: 6},
-          "user[password_confirmation]": {required: true, minlength: 6}
-        },
-        showErrors: function(errors){
-          $.each(this.errorList, function(index, value){
-            $(value.element).parent().parent().addClass('error');
-            $(value.element).attr('rel', 'tooltip');
-            $(value.element).attr('title', value.message);
-          });
-          $("[rel='tooltip']").tooltip({
-            placement: 'right',
-            trigger: 'hover'
-          });
-        }
-      });
-    }
-  </script>
-<% end %>

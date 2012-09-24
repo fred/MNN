@@ -146,19 +146,3 @@
     <% end %>
   <% end %>
 </div>
-
-
-<%= content_for :scripts do %>
-  <% unless is_handheld? %>
-    <script type="text/javascript">
-      if (!(Modernizr.touch)) {
-        $(document).ready(function(){
-          $("a#tooltip").easyTooltip({
-            yOffset: 0,
-            xOffset: 40
-          });
-        });
-      }
-    </script>
-  <% end %>
-<% end %>

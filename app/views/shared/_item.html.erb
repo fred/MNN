@@ -1,7 +1,7 @@
 <% cache_expiring("_item/#{item.cache_key_full}", 3600) do %>
   <article class="category" id="item_<%=item.id%>">
     <% unless @category %>
-      <h4 class="no-margin"><%= link_to(item.category_title, item.category, title: _("Read more articles in this category")) if item.category %></h4>
+      <h5 class="no-margin"><%= link_to(item.category_title, item.category, title: _("Read more articles in this category")) if item.category %></h5>
     <% end %>
     <header>
       <% if item.has_image? %>
@@ -107,7 +107,7 @@
             <h4><%= _("Related items") %></h4>
             <ul class="related">
               <% @related.results.each do |item| %>
-                <li><%= link_to item.title, item, title: item_title(item) %></li>
+                <li><%= link_to item.title, item, title: item_title(item), id: "tooltip", rel: 'related' %></li>
               <% end %>
             </ul>
           </section>

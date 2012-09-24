@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2012-09-17 15:25+0700\n"
+"POT-Creation-Date: 2012-09-24 11:33+0700\n"
 "PO-Revision-Date: 2012-08-29 01:51+0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "-- Please Choose"
 msgstr ""
 
-#: app/views/shared/_navbar.html.erb:95
+#: app/views/shared/layouts/_navbar.html.erb:95
 msgid "Account"
 msgstr ""
 
@@ -30,11 +30,11 @@ msgstr ""
 msgid "Account Successfully Updated"
 msgstr ""
 
-#: app/views/shared/_sidebar.html.erb:185
+#: app/views/shared/layouts/_sidebar.html.erb:186
 msgid "AdFree Site"
 msgstr ""
 
-#: app/views/shared/_navbar.html.erb:130
+#: app/views/shared/layouts/_navbar.html.erb:130
 msgid "Admin"
 msgstr ""
 
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Change Password"
 msgstr ""
 
-#: app/views/shared/_footer.html.erb:47
+#: app/views/shared/layouts/_footer.html.erb:47
 msgid "Click here to recover your password."
 msgstr ""
 
@@ -92,7 +92,7 @@ msgstr ""
 
 #: app/views/shared/_item.html.erb:99
 #: app/views/shared/_most_commented.html.erb:9
-#: app/views/shared/_sidebar.html.erb:156
+#: app/views/shared/layouts/_sidebar.html.erb:157
 msgid "Comment"
 msgid_plural "Comments"
 msgstr[0] ""
@@ -107,7 +107,7 @@ msgstr ""
 msgid "Comments"
 msgstr ""
 
-#: app/views/shared/_navbar.html.erb:40
+#: app/views/shared/layouts/_navbar.html.erb:40
 msgid "Countries"
 msgstr ""
 
@@ -131,11 +131,12 @@ msgstr ""
 msgid "Deleting..."
 msgstr ""
 
-#: app/views/shared/_navbar.html.erb:222 app/views/shared/_sidebar.html.erb:92
+#: app/views/shared/layouts/_navbar.html.erb:222
+#: app/views/shared/layouts/_sidebar.html.erb:93
 msgid "Didn't receive confirmation instructions?"
 msgstr ""
 
-#: app/views/shared/_sidebar.html.erb:97
+#: app/views/shared/layouts/_sidebar.html.erb:98
 msgid "Didn't receive unlock?"
 msgstr ""
 
@@ -143,7 +144,7 @@ msgstr ""
 msgid "Download Current Key"
 msgstr ""
 
-#: app/views/items/show.html.erb:272
+#: app/views/items/show.html.erb:274
 msgid "Edit"
 msgstr ""
 
@@ -151,14 +152,17 @@ msgstr ""
 msgid "Edit Comment"
 msgstr ""
 
-#: app/views/shared/_navbar.html.erb:105 app/views/shared/_navbar.html.erb:164
+#: app/views/shared/layouts/_navbar.html.erb:105
+#: app/views/shared/layouts/_navbar.html.erb:164
 msgid "Edit My Profile"
 msgstr ""
 
 #: app/views/devise/registrations/edit.html.erb:243
-#: app/views/shared/_footer.html.erb:20 app/views/shared/_navbar.html.erb:107
-#: app/views/shared/_navbar.html.erb:167 app/views/shared/_sidebar.html.erb:60
-#: app/views/shared/_sidebar.html.erb:70
+#: app/views/shared/layouts/_footer.html.erb:20
+#: app/views/shared/layouts/_navbar.html.erb:107
+#: app/views/shared/layouts/_navbar.html.erb:167
+#: app/views/shared/layouts/_sidebar.html.erb:61
+#: app/views/shared/layouts/_sidebar.html.erb:71
 msgid "Edit Profile"
 msgstr ""
 
@@ -166,7 +170,7 @@ msgstr ""
 msgid "Edit my Profile"
 msgstr ""
 
-#: app/views/shared/_footer.html.erb:22
+#: app/views/shared/layouts/_footer.html.erb:22
 msgid "Edit your Profile information"
 msgstr ""
 
@@ -182,16 +186,17 @@ msgstr ""
 msgid "Example: Anonymous"
 msgstr ""
 
-#: app/views/shared/_footer.html.erb:15
+#: app/views/shared/layouts/_footer.html.erb:15
 msgid "Feeds"
 msgstr ""
 
 #: app/views/shared/_login_modal.html.erb:52
-#: app/views/shared/_sidebar.html.erb:87
+#: app/views/shared/layouts/_sidebar.html.erb:88
 msgid "Forgot Password?"
 msgstr ""
 
-#: app/views/shared/_footer.html.erb:45 app/views/shared/_navbar.html.erb:218
+#: app/views/shared/layouts/_footer.html.erb:45
+#: app/views/shared/layouts/_navbar.html.erb:218
 msgid "Forgot your password?"
 msgstr ""
 
@@ -221,7 +226,8 @@ msgstr ""
 msgid "Just be a member"
 msgstr ""
 
-#: app/views/shared/_navbar.html.erb:58 app/views/shared/_sidebar.html.erb:131
+#: app/views/shared/layouts/_navbar.html.erb:58
+#: app/views/shared/layouts/_sidebar.html.erb:132
 msgid "Languages"
 msgstr ""
 
@@ -238,12 +244,14 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: app/views/shared/_footer.html.erb:33
+#: app/views/shared/layouts/_footer.html.erb:33
 msgid "Login"
 msgstr ""
 
-#: app/views/shared/_footer.html.erb:26 app/views/shared/_footer.html.erb:28
-#: app/views/shared/_navbar.html.erb:152 app/views/shared/_navbar.html.erb:204
+#: app/views/shared/layouts/_footer.html.erb:26
+#: app/views/shared/layouts/_footer.html.erb:28
+#: app/views/shared/layouts/_navbar.html.erb:152
+#: app/views/shared/layouts/_navbar.html.erb:204
 msgid "Logout"
 msgstr ""
 
@@ -251,26 +259,31 @@ msgstr ""
 msgid "Most Commented"
 msgstr ""
 
-#: app/views/shared/_sidebar.html.erb:164
-msgid "Most Read in 2 weeks"
+#: app/views/shared/layouts/_sidebar.html.erb:165
+msgid "Most Read this month"
 msgstr ""
 
-#: app/views/shared/_footer.html.erb:15
+#: app/views/shared/layouts/_footer.html.erb:15
 msgid "Multiple RSS Feeds"
 msgstr ""
 
-#: app/views/shared/_navbar.html.erb:114 app/views/shared/_navbar.html.erb:183
-#: app/views/shared/_sidebar.html.erb:63 app/views/shared/_sidebar.html.erb:73
+#: app/views/shared/layouts/_navbar.html.erb:114
+#: app/views/shared/layouts/_navbar.html.erb:183
+#: app/views/shared/layouts/_sidebar.html.erb:64
+#: app/views/shared/layouts/_sidebar.html.erb:74
 msgid "My Articles"
 msgstr ""
 
-#: app/views/shared/_navbar.html.erb:112 app/views/shared/_navbar.html.erb:181
-#: app/views/shared/_sidebar.html.erb:73
+#: app/views/shared/layouts/_navbar.html.erb:112
+#: app/views/shared/layouts/_navbar.html.erb:181
+#: app/views/shared/layouts/_sidebar.html.erb:74
 msgid "My Articles Page"
 msgstr ""
 
-#: app/views/shared/_navbar.html.erb:119 app/views/shared/_navbar.html.erb:121
-#: app/views/shared/_navbar.html.erb:188 app/views/shared/_navbar.html.erb:190
+#: app/views/shared/layouts/_navbar.html.erb:119
+#: app/views/shared/layouts/_navbar.html.erb:121
+#: app/views/shared/layouts/_navbar.html.erb:188
+#: app/views/shared/layouts/_navbar.html.erb:190
 msgid "My Subscriptions"
 msgstr ""
 
@@ -325,7 +338,7 @@ msgstr "Contraseña"
 msgid "Password Confirmation"
 msgstr ""
 
-#: app/views/shared/_footer.html.erb:39
+#: app/views/shared/layouts/_footer.html.erb:39
 msgid "Please Join us"
 msgstr ""
 
@@ -341,7 +354,7 @@ msgstr ""
 msgid "Please update your email address to enable subscriptions"
 msgstr ""
 
-#: app/views/shared/_sidebar.html.erb:174
+#: app/views/shared/layouts/_sidebar.html.erb:175
 msgid "Popular Searches"
 msgstr ""
 
@@ -391,11 +404,11 @@ msgstr ""
 msgid "Reason for joining us?"
 msgstr ""
 
-#: app/views/shared/_sidebar.html.erb:149
+#: app/views/shared/layouts/_sidebar.html.erb:150
 msgid "Recently Discussed"
 msgstr ""
 
-#: app/views/shared/_navbar.html.erb:32
+#: app/views/shared/layouts/_navbar.html.erb:32
 msgid "Regions"
 msgstr ""
 
@@ -403,7 +416,7 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: app/views/shared/_navbar.html.erb:214
+#: app/views/shared/layouts/_navbar.html.erb:214
 msgid "Register a new Account"
 msgstr ""
 
@@ -411,15 +424,15 @@ msgstr ""
 msgid "Register now"
 msgstr ""
 
-#: app/views/shared/_footer.html.erb:37
+#: app/views/shared/layouts/_footer.html.erb:37
 msgid "Registration"
 msgstr ""
 
-#: app/views/items/show.html.erb:209 app/views/shared/_item.html.erb:107
+#: app/views/items/show.html.erb:216 app/views/shared/_item.html.erb:107
 msgid "Related items"
 msgstr ""
 
-#: app/views/shared/_sidebar.html.erb:33
+#: app/views/shared/layouts/_sidebar.html.erb:34
 msgid "Remove"
 msgstr ""
 
@@ -431,23 +444,23 @@ msgstr ""
 msgid "Say something about yourself."
 msgstr ""
 
-#: app/views/shared/_sidebar.html.erb:19
+#: app/views/shared/layouts/_sidebar.html.erb:20
 msgid "Search"
 msgstr ""
 
-#: app/views/shared/_sidebar.html.erb:16
+#: app/views/shared/layouts/_sidebar.html.erb:17
 msgid "Search Articles"
 msgstr ""
 
-#: app/views/shared/_sidebar.html.erb:28
+#: app/views/shared/layouts/_sidebar.html.erb:29
 msgid "Search by Category"
 msgstr ""
 
-#: app/views/shared/_sidebar.html.erb:41
+#: app/views/shared/layouts/_sidebar.html.erb:42
 msgid "Search by Language"
 msgstr ""
 
-#: app/views/shared/_navbar.html.erb:24
+#: app/views/shared/layouts/_navbar.html.erb:24
 msgid "Sections"
 msgstr ""
 
@@ -480,17 +493,21 @@ msgstr ""
 #: app/views/devise/sessions/new.html.erb:28
 #: app/views/shared/_login_modal.html.erb:4
 #: app/views/shared/_login_modal.html.erb:34
-#: app/views/shared/_navbar.html.erb:211 app/views/shared/_sidebar.html.erb:80
+#: app/views/shared/layouts/_navbar.html.erb:211
+#: app/views/shared/layouts/_sidebar.html.erb:81
 msgid "Sign in"
 msgstr ""
 
-#: app/views/shared/_navbar.html.erb:156 app/views/shared/_navbar.html.erb:207
-#: app/views/shared/_sidebar.html.erb:66 app/views/shared/_sidebar.html.erb:76
+#: app/views/shared/layouts/_navbar.html.erb:156
+#: app/views/shared/layouts/_navbar.html.erb:207
+#: app/views/shared/layouts/_sidebar.html.erb:67
+#: app/views/shared/layouts/_sidebar.html.erb:77
 msgid "Sign out"
 msgstr "Salir"
 
 #: app/views/devise/registrations/new.html.erb:13
-#: app/views/shared/_navbar.html.erb:214 app/views/shared/_sidebar.html.erb:83
+#: app/views/shared/layouts/_navbar.html.erb:214
+#: app/views/shared/layouts/_sidebar.html.erb:84
 msgid "Sign up"
 msgstr ""
 
@@ -503,7 +520,8 @@ msgstr ""
 msgid "Stay Signed in"
 msgstr ""
 
-#: app/views/shared/_navbar.html.erb:138 app/views/shared/_navbar.html.erb:175
+#: app/views/shared/layouts/_navbar.html.erb:138
+#: app/views/shared/layouts/_navbar.html.erb:175
 msgid "Submit Article"
 msgstr ""
 
@@ -511,11 +529,12 @@ msgstr ""
 msgid "Submitted Articles:"
 msgstr ""
 
-#: app/views/items/show.html.erb:91 app/views/shared/_item.html.erb:62
+#: app/views/items/show.html.erb:92 app/views/shared/_item.html.erb:62
 msgid "Submitted by"
 msgstr ""
 
-#: app/views/shared/_navbar.html.erb:48 app/views/tags/show.html.erb:18
+#: app/views/shared/layouts/_navbar.html.erb:48
+#: app/views/tags/show.html.erb:18
 msgid "Tags"
 msgstr ""
 
@@ -523,7 +542,7 @@ msgstr ""
 msgid "Terms of Service and Privacy Policy"
 msgstr ""
 
-#: app/views/shared/_sidebar.html.erb:186
+#: app/views/shared/layouts/_sidebar.html.erb:187
 msgid "This is an Advertisement Free Site"
 msgstr ""
 
@@ -552,11 +571,11 @@ msgstr ""
 msgid "Viewed %{num} times"
 msgstr ""
 
-#: app/views/items/show.html.erb:145 app/views/shared/_item.html.erb:91
+#: app/views/items/show.html.erb:147 app/views/shared/_item.html.erb:91
 msgid "Views"
 msgstr ""
 
-#: app/views/items/show.html.erb:89 app/views/shared/_item.html.erb:52
+#: app/views/items/show.html.erb:90 app/views/shared/_item.html.erb:52
 msgid "Written by"
 msgstr ""
 
@@ -603,7 +622,7 @@ msgstr ""
 msgid "by"
 msgstr ""
 
-#: app/views/items/show.html.erb:96
+#: app/views/items/show.html.erb:97
 msgid "by User"
 msgstr ""
 

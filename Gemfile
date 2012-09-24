@@ -150,8 +150,7 @@ gem 'activeadmin', git: 'git://github.com/fred/active_admin.git', branch: 'no-ov
 
 # Twitter Bootstrap for Rails 3 Asset Pipeline
 gem 'twitter-bootstrap-rails',
-  git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git',
-  ref: '44cfe7f25a0fd305c763f1a299a418a92d027e64'
+  git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'#,ref: '44cfe7f25a0fd305c763f1a299a418a92d027e64'
 
 
 ###############

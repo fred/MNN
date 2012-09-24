@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="span7">
+  <div class="span8">
     <%= form_for(resource,
           as: resource_name,
           url: registration_path(resource_name),
@@ -19,7 +19,7 @@
                   required: true,
                   autofocus: true,
                   type: "email",
-                  class: "imput-medium"
+                  class: "input-large"
             %>
             <p class="help-block"><%= _("Your email will not be shown to the public.") %></p>
           </div>
@@ -27,7 +27,7 @@
         <div class="control-group">
           <%= f.label :password, _("Password"), class: 'control-label' %>
           <div class="controls">
-            <%= f.password_field :password, required: true, class: "imput-medium" %>
+            <%= f.password_field :password, required: true, class: "input-large password-complexity" %>
             <div id="progress"></div>
             <div id="complexity"></div>
           </div>
@@ -35,7 +35,7 @@
         <div class="control-group">
           <%= f.label :password_confirmation, _("Password Confirmation"), class: 'control-label' %>
           <div class="controls">
-            <%= f.password_field :password_confirmation, required: true, class: "imput-medium" %>
+            <%= f.password_field :password_confirmation, required: true, class: "input-large" %>
           </div>
         </div>
         <div class="control-group">
@@ -45,14 +45,14 @@
                   options_for_select([[_("Just be a member")], [_("To Comment")], [_("Comment and Submit Articles")], [_("I want to be an Editor")]]),
                   {include_blank: _("-- Please Choose")},
                   required: false,
-                  class: "imput-medium"
+                  class: "input-large"
             %>
           </div>
         </div>
         <div class="control-group">
           <%= f.label :name, _("Name"), class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :name, placeholder: _("Example: Anonymous"), class: "imput-medium" %>
+            <%= f.text_field :name, placeholder: _("Example: Anonymous"), class: "input-large" %>
           </div>
         </div>
 
@@ -85,9 +85,9 @@
 
       </fieldset>
 
-    <% end %> <!-- End Form -->
-  </div> <!-- End span8-->
-</div> <!-- End row -->
+    <% end %>
+  </div>
+</div>
 
 <% content_for :breadcrumb do %>
   <li>
@@ -95,12 +95,4 @@
     <span class="divider">/</span>
   </li>
   <li class="active"><%= _("Sign Up") %></li>
-<% end %>
-
-
-
-<% content_for :footer do %>
-  <%= stylesheet_link_tag "jquery.complexify" %>
-  <%= javascript_include_tag "jquery.complexify" %>
-  <%= javascript_include_tag "registration" %>
 <% end %>

@@ -162,8 +162,8 @@
       </div>
 
       <div class="sidebar_secions">
-        <h4><%= _("Most Read in 2 weeks") %></h4>
-        <% Item.localized.popular(5).each do |item| %>
+        <h4><%= _("Most read this month") %></h4>
+        <% Item.localized.popular(5,30).each do |item| %>
           <div class="sidebar-item">
             <%= item_mini(item).html_safe %>
             <span class="horizontal-divider"></span>
@@ -175,7 +175,7 @@
         <h4><%= _("Popular Searches") %></h4>
         <% Query.popular(FastGettext.locale).limit(10).each do |query| %>
           <ul class="nav nav-list">
-            <li><%= link_to query.keyword, search_path(q: query.keyword) %></li>
+            <li><%= link_to query.keyword.to_s.truncate(24), search_path(q: query.keyword) %></li>
           </ul>
         <% end %>
         <span class="horizontal-divider"></span>

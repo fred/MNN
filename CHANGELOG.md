@@ -1,3 +1,14 @@
+## September 24, 2012
+
+  - Updated Twitter Bootstrap to 2.1
+  - Updated Modernizr to 2.6.2
+  - Updated Gems
+  - Improved JS and CSS files loading, merged JS files
+  - Cleaned up and converted some JS to CoffeeScript
+  - Changed Top Items to montly
+  - Fixed Registration/Profile forms style
+  - Limit the length of sidebar 'Popular Searches'
+
 ## September 22, 2012
 
   - Auto Share to Facebook Page

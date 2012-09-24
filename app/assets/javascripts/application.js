@@ -16,3 +16,6 @@
 //= require twitter/widgets
 //= require jquery/jquery.validate.js
 //= require font_resizer
+//= require effects
+//= require jquery.complexify
+//= require registration

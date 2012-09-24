@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :bio, :name, :address,
-      :twitter, :diaspora, :skype, :gtalk, :jabber, :avatar, :phone_number, :time_zone,
+      :twitter, :diaspora, :skype, :gtalk, :jabber, :avatar, :remove_avatar, :phone_number, :time_zone,
       :role_ids, :roles, :subscribe, :unsubscribe, :unsubscribe_all, :upgrade, :downgrade,
       :terms_of_service, :registration_role, :gpg, :facebook
 

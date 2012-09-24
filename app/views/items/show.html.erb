@@ -297,28 +297,6 @@
   <%= canonical_item_link_tag(@item) %>
 <% end %>
 
-<%= content_for :scripts do %>
-  <% unless is_handheld? %>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        if (!(Modernizr.touch)) {
-          $("a.image-popup").fancybox({
-            openEffect  : 'none',
-            closeEffect  : 'none'
-          });
-          $("a#tooltip").easyTooltip({
-            yOffset: -30,
-            xOffset: -60
-          });
-          $('a#popover').popover({
-            placement: 'bottom'
-          });
-        }
-      });
-    </script>
-  <% end %>
-<% end %>
-
 <% if current_user %>
   <%= render partial: "/shared/tinymce" %>
 <% end %>

@@ -19,7 +19,7 @@
         <div class="control-group">
           <%= f.label :email, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :email, required: true, type: "email", class: "imput-large" %>
+            <%= f.text_field :email, required: true, type: "email", class: "input-large" %>
             <p class="help-block"><%= _("Your email will not be shown to the public.") %></p>
           </div>
         </div>
@@ -28,7 +28,7 @@
           <%= f.label :name, _("Name"), class: 'control-label' %>
           <div class="controls">
             <%= f.text_field :name, required: false, placeholder: _("Your public name, ex: Anonymous"),
-                  autofocus: true, class: "imput-large"
+                  autofocus: true, class: "input-large"
             %>
           </div>
         </div>
@@ -46,7 +46,7 @@
                   options_for_select([[_("Just be a member")], [_("To Comment")], [_("Comment and Submit Articles")], [_("I want to be an Editor")]]),
                   {include_blank: _("-- Please Choose")},
                   required: false,
-                  class: "imput-medium"
+                  class: "input-medium"
             %>
             <p class="help-block"><%= _("Not shown to the public") %></p>
           </div>
@@ -59,7 +59,7 @@
         <div class="control-group">
           <%= f.label :facebook, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :facebook, required: false, class: "imput-large", 
+            <%= f.text_field :facebook, required: false, class: "input-large", 
                   placeholder: "https://facebook.com/your-name" %>
           </div>
         </div>
@@ -67,7 +67,7 @@
         <div class="control-group">
           <%= f.label :twitter, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :twitter, required: false, class: "imput-large", 
+            <%= f.text_field :twitter, required: false, class: "input-large", 
                   placeholder: "@twitter (optional)" %>
           </div>
         </div>
@@ -75,7 +75,7 @@
         <div class="control-group">
           <%= f.label :diaspora, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :diaspora, required: false, class: "imput-large", 
+            <%= f.text_field :diaspora, required: false, class: "input-large", 
                   placeholder: "handle@host.net (optional)", type: "email" %>
           </div>
         </div>
@@ -83,7 +83,7 @@
         <div class="control-group">
           <%= f.label :skype, class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :skype, required: false, class: "imput-large", 
+            <%= f.text_field :skype, required: false, class: "input-large", 
                   placeholder: "skype name (optional)" %>
           </div>
         </div>
@@ -91,7 +91,7 @@
         <div class="control-group">
           <%= f.label :gtalk, "Google Chat", class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :gtalk, required: false, class: "imput-large", 
+            <%= f.text_field :gtalk, required: false, class: "input-large", 
                   placeholder: "xxx@gmail.com (optional)", type: "email" %>
           </div>
         </div>
@@ -99,7 +99,7 @@
         <div class="control-group">
           <%= f.label :jabber, "Jabber", class: 'control-label' %>
           <div class="controls">
-            <%= f.text_field :jabber, required: false, class: "imput-large", 
+            <%= f.text_field :jabber, required: false, class: "input-large", 
                   placeholder: "xxxxx@jabber.com (optional)", type: "email" %>
           </div>
         </div>
@@ -107,7 +107,7 @@
         <div class="control-group">
           <%= f.label :bio, _("Your Bio"), class: 'control-label' %>
           <div class="controls">
-            <%= f.text_area :bio, required: false, class: "imput-medium",
+            <%= f.text_area :bio, required: false, class: "input-medium",
                   placeholder: _("Say something about yourself."),
                   rows: 7, cols: 24
             %>
@@ -122,7 +122,7 @@
         <div class="control-group">
           <%= f.label :avatar, _("Upload Avatar"), class: 'control-label' %>
           <div class="controls">
-            <%= f.file_field :avatar, class: "imput-large" %>
+            <%= f.file_field :avatar, class: "input-large" %>
             <p class="help-block">
               <%= _("Your avatar image will be shown in the comments section.") %>
             </p>
@@ -148,7 +148,7 @@
         <div class="control-group">
           <%= f.label :gpg, _("Your Public key"), class: 'control-label' %>
           <div class="controls">
-            <%= f.file_field :gpg, class: "imput-large" %>
+            <%= f.file_field :gpg, class: "input-large" %>
             <p class="help-block">
               <%= _("Only upload your Public Key.") %>
               <br />
@@ -202,11 +202,11 @@
         <div class="control-group">
           <%= f.label :password, _("New Password"), class: 'control-label' %>
           <div class="controls">
-            <%= f.password_field :password, autocomplete: "off", required: false, class: "imput-large" %>
+            <%= f.password_field :password, autocomplete: "off", required: false, class: "input-large password-complexity" %>
             <span class="help-block">
               <%= _("Leave blank if you do not want to change password") %>
             </span>
-            <div id="progress"></div>
+            <div id="progress" data-complexity="0"></div>
             <div id="complexity"></div>
           </div>
         </div>
@@ -214,7 +214,7 @@
         <div class="control-group">
           <%= f.label :password_confirmation, _("New Password Again"), class: 'control-label' %>
           <div class="controls">
-            <%= f.password_field :password_confirmation, autocomplete: "off", required: false, class: "imput-large"  %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", required: false, class: "input-large"  %>
           </div>
         </div>
       </fieldset>
@@ -231,9 +231,9 @@
       </div>
     
       
-    <% end %> <!-- End Form -->
-  </div> <!-- End span7-->
-</div> <!-- End row -->
+    <% end %>
+  </div>
+</div>
 
 <% content_for :breadcrumb do %>
   <li>
@@ -241,10 +241,4 @@
     <span class="divider">/</span>
   </li>
   <li class="active"><%= _("Edit Profile") %></li>
-<% end %>
-
-<% content_for :footer do %>
-  <%= stylesheet_link_tag "jquery.complexify" %>
-  <%= javascript_include_tag "jquery.complexify" %>
-  <%= javascript_include_tag "registration" %>
 <% end %>
