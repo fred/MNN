@@ -131,15 +131,18 @@
         </li>
       <% end %>
 
-      <% if f.object.facebook_shares.empty? %>
-        <%= f.input :share_facebook, as: "boolean",
-            label: "Facebook",
-            hint: "Auto post to Facebook after publication? Only set it if item is ready and not Draft. It can only be posted once. Performed 3 minutes after Publication." %>
-      <br />
-      <% else %>
-        <li class="boolean input optional">
-          <label><b>Already posted to Facebook: <%= f.object.facebook_shares.first.status %></b></label>
-        </li>
+      <% if false %>
+        <!-- Facebook Sharing Disabled Temporarily -->
+        <% if f.object.facebook_shares.empty? %>
+          <%= f.input :share_facebook, as: "boolean",
+              label: "Facebook",
+              hint: "Auto post to Facebook after publication? Only set it if item is ready and not Draft. It can only be posted once. Performed 3 minutes after Publication." %>
+        <br />
+        <% else %>
+          <li class="boolean input optional">
+            <label><b>Already posted to Facebook: <%= f.object.facebook_shares.first.status %></b></label>
+          </li>
+        <% end %>
       <% end %>
 
       <% if !f.object.email_delivery_sent? %>
