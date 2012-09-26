@@ -64,7 +64,7 @@ gem 'sass', '~> 3.1.21'
 gem 'sass-rails'
 gem 'jquery-rails', '~> 2.0.2'
 
-gem 'slim'
+gem 'slim', "1.3.0"
 gem 'sinatra'
 gem 'redis'
 gem 'celluloid'
