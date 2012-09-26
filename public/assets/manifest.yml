@@ -112,7 +112,7 @@ icons/social/new/gplus_b.png: icons/social/new/gplus_b-28f514d9aa619ff2f269d8298
 icons/social/new/rss_32.png: icons/social/new/rss_32-28f5866bb695878301517d8b0568c358.png
 icons/social/new/rss_32b.png: icons/social/new/rss_32b-9e21eafee6437b57ff396c78ced5a7b1.png
 icons/social/new/twitter-bird-white-on-blue.png: icons/social/new/twitter-bird-white-on-blue-a32d5cc0d50bde085503b47504418631.png
-icons/social/new/twitter_32.png: icons/social/new/twitter_32-bf865b2cd50c85a4974d7ddf2a4511f2.png
+icons/social/new/twitter_32.png: icons/social/new/twitter_32-6d6878822690eae5b3ee7e87607bd3bb.png
 icons/social/new/twitter_32b.png: icons/social/new/twitter_32b-a1aee123e68d11d681df3e7dc6515a54.png
 icons/social/newsvine_16.png: icons/social/newsvine_16-6ba61cc70e70069754a077b55bf2b932.png
 icons/social/newsvine_32.png: icons/social/newsvine_32-ceac21c9047e894ee263764c1af2a2ca.png
@@ -212,11 +212,12 @@ rails.png: rails-aa8aea913cd3b23f0cdf2a950a48069a.png
 rss_blue_16.png: rss_blue_16-d283f7cdf5b40250af00a443e626bc5e.png
 rss_blue_32.png: rss_blue_32-6c6e400b6d21ef3c0040a913ce78a22c.png
 rss_icon_glass_blue64.png: rss_icon_glass_blue64-deed2260585ed3bb754b60d14154154a.png
+world_mathaba.png: world_mathaba-5e617c1d47f2813370f63d4aabd40c35.png
 world_mathaba11.png: world_mathaba11-05570f0309b7b69f11ada4c845795333.png
 active_admin.js: active_admin-64538e65f6b43bbed2818df05714232a.js
 application.js: application-739ff995e3f3bba9ca93cee557c2fd4e.js
 active_admin.css: active_admin-b3a2a561d695d7a3127bede354c0f92f.css
-application.css: application-97851a8789f8bf01bd1b8d7d160292de.css
+application.css: application-8cf95c984af02b98b75a067240d68b4e.css
 rss.css: rss-5d88525bfa6012a6fe5cdf6dd949a96f.css
 ZeroClipboard.swf: ZeroClipboard-f76388fc372f5cb0235e8f04f52b374a.swf
 ZeroClipboard10.swf: ZeroClipboard10-fcbd8515daf8c8768b86228e93ae32f5.swf

@@ -40,9 +40,9 @@
   </ul>
   
   <br />
-  <h4>News from Authors and Publishers</h4>
+  <h4>Authors</h4>
   <ul class="feed_list">
-    <% AdminUser.all.each do |author| %>
+    <% AdminUser.with_articles.each do |author| %>
       <li>
         <%= link_to author.public_display_name, author_path(author, format: "atom") %>
         <%= link_to image_tag("icons/social/rss_16.png"), author_path(author, format: "rss"), title: "RSS" %>
@@ -64,7 +64,7 @@
   </ul>
   
   <br />
-  <h4>News by General Tags</h4>
+  <h4>News by Tags</h4>
   <ul class="feed_list">
     <% GeneralTag.order("slug ASC").all.each do |tag| %>
       <li>

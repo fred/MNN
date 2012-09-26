@@ -342,6 +342,11 @@ class User < ActiveRecord::Base
     user
   end
 
+  # Returns Authors that have Articles
+  def self.with_articles(lim=5)
+    where("items_count > 0").
+    order("items_count DESC")
+  end
 
   # Returns Popular Authors
   def self.popular(lim=5)
@@ -349,7 +354,6 @@ class User < ActiveRecord::Base
     order("items_count DESC").
     limit(lim)
   end
-
 
   # Returns users with Admin Role
   def self.admin_users

@@ -109,7 +109,7 @@ module LayoutHelper
 
   def twitter_medium
     link_to(
-      image_tag("icons/social/new/twitter_32b.png", width: 32, height: 32, alt: 'Twitter'),
+      image_tag("icons/social/new/twitter_32.png", width: 32, height: 32, alt: 'Twitter'),
       twitter_link,
       title: "Twitter",
       rel: "twitter"
