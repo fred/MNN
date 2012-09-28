@@ -380,6 +380,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def tagged_logger(tag,msg,level=:debug)
+    if level == :info
+      Rails.logger.tagged(tag) { Rails.logger.info(msg) }
+    elsif level == :warn
+      Rails.logger.tagged(tag) { Rails.logger.warn(msg) }
+    else
+      Rails.logger.tagged(tag) { Rails.logger.debug(msg) }
+    end
+  end
+
 
   ### PRIVATE METHODS ###
   protected

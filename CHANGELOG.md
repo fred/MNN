@@ -1,3 +1,9 @@
+## September 28, 2012
+
+  - Fixed Rolling back articles in admin interface
+  - Updated Gems
+  - Updated Twitter bootstrap with fix for IE7
+
 ## September 24, 2012
 
   - Updated Twitter Bootstrap to 2.1

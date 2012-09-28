@@ -128,7 +128,7 @@ ActiveAdmin.register Item do
       @item = Item.find(params[:id])
       @related = @item.solr_similar(10)
       if params[:version].present? && params[:version].match("[0-9]{1,}")
-        Rails.logger.info("*** Reifying to version: #{params[:version]}")
+        tagged_logger("ADMIN", "Reifying to version: #{params[:version]}", :info)
         @item = @item.versions[params[:version].to_i].reify
       end
       authorize! :read, @item
@@ -136,10 +136,11 @@ ActiveAdmin.register Item do
 
     def edit
       @item = Item.find(params[:id])
-
+      lock_version = @item.lock_version if @item
       if params[:version].present? && params[:version].match("[0-9]{1,}")
-        Rails.logger.info("*** Reifying to version: #{params[:version]}")
+        tagged_logger("ADMIN", "Reifying to version: #{params[:version]}", :info)
         @item = @item.versions[params[:version].to_i].reify
+        @item.lock_version = lock_version
       end
       
       authorize! :edit, @item
