@@ -84,13 +84,13 @@
         <% end %>
       </ul>
 
-      <div class="page_views">
-        <% if item.item_stat %>
-          <i class="icon-play-circle"></i>
+      <% if item.item_stat %>
+        <i class="icon-play-circle"></i>
+        <div class="page_views">
           <%= item.item_stat.views_counter %>
           <%= _("Views") %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
 
       <% if item.comments_count > 0 %>
         <div class="icon comments_count">

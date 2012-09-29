@@ -1,3 +1,10 @@
+## September 29, 2012
+
+  - Frozen Twitter-Bootstrap-rails
+  - Improved Bot detection, added 80legs
+  - Tagged Rails logging
+  - Enabled ExceptionNotifier
+
 ## September 28, 2012
 
   - Fixed Rolling back articles in admin interface

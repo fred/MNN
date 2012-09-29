@@ -675,9 +675,8 @@ class Item < ActiveRecord::Base
       )
     end
   end
-  
-  
-  
+
+
   protected
 
     # From https://gist.github.com/1282013
@@ -697,5 +696,4 @@ class Item < ActiveRecord::Base
     end
 
 end
-
 

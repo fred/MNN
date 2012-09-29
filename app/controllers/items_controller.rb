@@ -105,18 +105,16 @@ class ItemsController < ApplicationController
     end
     
     if params[:q] && !params[:q].to_s.empty?
-      store_query
+      store_query # Save query to DB
       term = params[:q].downcase
-      @search = Item.solr_search(
-        include: [:attachments, :comments, :category, :language, :item_stat, :user, :tags]
-      ) do
+      @search = Item.solr_search(include: [:attachments, :comments, :category, :language, :item_stat, :user, :tags]) do
         fulltext term do
-          phrase_fields author_name: 3.0
+          phrase_fields author_name: 4.0
           phrase_fields title: 1.8
           phrase_fields abstract: 1.6
           phrase_fields tags: 1.5
           phrase_fields body: 1.4
-          phrase_slop   1
+          phrase_slop  1
         end
         if category
           with(:category_id, category.id)

@@ -70,11 +70,12 @@ table {
 @iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
 
 // Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
-@fontAwesomeEotPath: 'fontawesome-webfont.eot';
-@fontAwesomeWoffPath: 'fontawesome-webfont.woff';
-@fontAwesomeTtfPath: 'fontawesome-webfont.ttf';
-@fontAwesomeSvgzPath: 'fontawesome-webfont.svgz';
-@fontAwesomeSvgPath: 'fontawesome-webfont.svg';
+// Note: If you use asset_path() here, your compiled boostrap_and_overrides.css will not
+//       have the proper paths. So for now we use the absolute path.
+@fontAwesomeEotPath: "/assets/fontawesome-webfont.eot";
+@fontAwesomeWoffPath: "/assets/fontawesome-webfont.woff";
+@fontAwesomeTtfPath: "/assets/fontawesome-webfont.ttf";
+@fontAwesomeSvgPath: "/assets/fontawesome-webfont.svg";
 
 // Font Awesome
 @import "fontawesome";
@@ -85,7 +86,8 @@ table {
 // you may use and inherit here
 //
 // If you'd like to override bootstrap's own variables, you can do so here as well
-// See http://twitter.github.com/bootstrap/less.html for their names and documentation
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
 //
 // Example:
 // @linkColor: #ff0000;
+

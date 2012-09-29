@@ -19,7 +19,11 @@ module ItemsHelper
     title_str += "<br/>"
     title_str += "#{item.abstract}"
     title_str += "<br/>"
-    content_str = "<span class='date_small'> #{time_ago_in_words(item.published_at)} #{_('ago')} - #{_('by')} #{item.author_name}</span>"
+    content_str = ""
+    content_str += "<span class='date_small'>"
+    content_str += "<i class='icon-time'></i> "
+    content_str +=" #{time_ago_in_words(item.published_at)} #{_('ago')} - #{_('by')} #{item.author_name}"
+    content_str += "</span>"
     return {title: title_str, 'data-content' => content_str, id: 'popover', rel: 'popover'}
   end
 
@@ -27,7 +31,10 @@ module ItemsHelper
     str = ""
     str += "#{item.title}<br/>#{item.abstract}"
     str += "<br/>"
-    str += "<div class='icon-time date_small'> #{time_ago_in_words(item.published_at)} #{_('ago')} - #{_('by')} #{item.author_name}</div>"
+    str += "<div class='date_small'>"
+    str += "<i class='icon-time'></i> "
+    str += "#{time_ago_in_words(item.published_at)} #{_('ago')} - #{_('by')} #{item.author_name}"
+    str += "</div>"
   end
 
   def item_mini(item)
@@ -53,7 +60,8 @@ module ItemsHelper
       str += (_("Viewed %{num} times") % { num: item.item_stat.views_counter }) if item.item_stat
       str += "</span>"
     end
-    str += "<span class='icon-time item-date'> "
+    str += "<span class='item-date'>"
+    str += "<i class='icon-time'></i> "
     str += _('Published') + " "
     str += time_ago_in_words(item.published_at) + " "
     str += _('ago')

@@ -4,6 +4,15 @@ class Query < ActiveRecord::Base
   belongs_to :item
   belongs_to :user
 
+  ################
+  ####  SOLR  ####
+  ################
+  searchable do
+    text :keyword
+    text :raw_data
+    text :short_user_agent
+  end
+
   def self.store(options={})
     Rails.logger.debug("Saving Query")
     query = self.new
@@ -25,10 +34,17 @@ class Query < ActiveRecord::Base
   def short_user_agent
     if raw_data[:user_agent].present?
       tmp = raw_data[:user_agent].split
-      tmp.reverse[0..1].join(" ")
+      tmp.reverse[0..2].join(" ")
     else
       raw_data
     end
+  end
+
+  def self.cleanup(string)
+    search = self.solr_search { fulltext string; paginate page: 1, per_page: 1000 }
+    search.results.each {|t| t.destroy}
+    Sunspot.commit
+    return search.total
   end
 
 end

@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
     else
       set_default_locale
     end
-    Rails.logger.debug("  Locale: FastGettext=#{FastGettext.locale} I18n=#{I18n.locale.to_s}")
+    tagged_logger("Locale", "FastGettext=#{FastGettext.locale} I18n=#{I18n.locale.to_s}")
   end
 
   def redirect_to_default_domain(str)
@@ -65,9 +65,8 @@ class ApplicationController < ActionController::Base
   # in your /etc/hosts file to try this out locally
   def extract_locale_from_subdomain
     parsed_locale = request.subdomains.first
-    Rails.logger.debug("  Locale: Setting locale from subdomain to '#{parsed_locale}'")
     if parsed_locale && locale_available?(parsed_locale.to_s)
-      Rails.logger.debug("  Locale: Setting locale from subdomain to '#{parsed_locale}'")
+      tagged_logger("Locale", "From subdomain to '#{parsed_locale}'")
       parsed_locale
     else
       nil
@@ -124,7 +123,7 @@ class ApplicationController < ActionController::Base
 
   def https_for_admins
     if Rails.env.production? && should_use_to_https? && !using_ssl?
-      Rails.logger.info("  *** Redirecting user to HTTPS")
+      tagged_logger("Admin", "Redirecting to HTTPS", :info)
       redirect_to request.url.gsub("http://", "https://")
       # Warning! Need to have this in Nginx https config block
       # proxy_set_header X_FORWARDED_PROTO https;
@@ -133,7 +132,7 @@ class ApplicationController < ActionController::Base
 
   def auto_login_admin_user
     if current_admin_user && !current_user
-      Rails.logger.info("  Auto sign-in for AdminUser ID##{current_admin_user.id}")
+      tagged_logger("Admin", "Auto sign-in for AdminUser: #{current_admin_user.id}", :info)
       sign_in(:user, current_admin_user, bypass: true)
     end
   end
@@ -143,7 +142,7 @@ class ApplicationController < ActionController::Base
   end
 
   def private_headers_with_timeout(timeout)
-    Rails.logger.info("  Caching: private, must-revalidate, max-age=#{timeout}")
+    tagged_logger("Caching", "private, must-revalidate, max-age=#{timeout}", :info)
     headers['Cache-Control'] = "private, must-revalidate, max-age=#{timeout}"
   end
 
@@ -164,7 +163,7 @@ class ApplicationController < ActionController::Base
   end
 
   def public_headers(timeout=3600)
-    Rails.logger.info("  Caching: public, max-age=#{timeout}")
+    tagged_logger("Caching", "public, max-age=#{timeout}")
     headers['Cache-Control'] = "public, max-age=#{timeout}"
     if @last_published && @last_published.respond_to?(:httpdate)
       headers['Last-Modified'] = @last_published.httpdate
@@ -239,12 +238,24 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def bot_regex
+    "(bot|spider|wget|curl|lwp|perl|crawl|search|agent|yandex|google|jeeves|ahrefsbot|metauri|scribdreader|js-kit|rebelmouse|inagist|butterfly)"
+  end
+  def human_regex
+    "(firefox|chrome|opera|safari|webkit|gecko|konqueror|msie|windows|ubuntu|blackberry|iphone|ipad|nokia|android|webos)"
+  end
+  def mobile_regex
+    "(iphone|ipod|nokia|series60|symbian|blackberry|opera mini|mobile|iemobile|android|smartphone)"
+  end
+  def tablet_regex
+    "(tablet|ipad|galaxytab|honeycomb|p1000|playbook|xoom|android|sch-i800|kindle)"
+  end
+
   def is_mobile?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
-    valid="(iphone|ipod|nokia|series60|symbian|blackberry|opera mini|mobile|iemobile|android|smartphone)"
     invalid="(tablet|ipad|playbook|xoom)"
-    if !s.match(invalid) && s.match(valid)
-      Rails.logger.info("  UA: Mobile found: #{s}")
+    if !s.match(invalid) && s.match(mobile_regex)
+      tagged_logger("UA", "Mobile found: #{s}", :info)
       return true
     else
       return false
@@ -253,10 +264,9 @@ class ApplicationController < ActionController::Base
 
   def is_tablet?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
-    valid="(tablet|ipad|galaxytab|opera mini|honeycomb|p1000|playbook|xoom|android|sch-i800|kindle)"
     invalid="(mobile|iphone|ipod)"
-    if !s.match(invalid) && s.match(valid)
-      Rails.logger.info("  UA: Tablet found: #{s}")
+    if !s.match(invalid) && s.match(tablet_regex)
+      tagged_logger("UA", "Tablet: #{s}", :info)
       return true
     else
       return false
@@ -267,13 +277,11 @@ class ApplicationController < ActionController::Base
   def is_human?
     return true if Rails.env.test?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
-    valid="(firefox|chrome|opera|safari|webkit|gecko|msie|windows|blackberry|iphone|ipad|nokia|android|webos)"
-    bot="(bot|spider|wget|curl|yandexbot|googlebot|msnbot|bingbot|ahrefsbot|metauri|scribdreader|js-kit|rebelmouse|inagist|butterfly)"
-    if !s.match(bot) && s.match(valid)
-      Rails.logger.info("  UA: user #{s}")
+    if !s.match(bot_regex) && s.match(human_regex)
+      tagged_logger("UA", "Human: #{s}", :info)
       return true
     else
-      Rails.logger.info("  UA: bot #{s}")
+      tagged_logger("UA", "Bot: #{s}", :info)
       return false
     end
   end
@@ -281,12 +289,11 @@ class ApplicationController < ActionController::Base
   def is_bot?
     return true if Rails.env.test?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
-    valid="(bot|spider|wget|curl|yandexbot|googlebot|msnbot|bingbot|ahrefsbot|metauri|scribdreader|js-kit|rebelmouse|inagist|butterfly)"
-    if s.match(valid)
-      Rails.logger.info("  Bot: #{s}")
+    if s.match(bot_regex)
+      tagged_logger("UA", "Bot: #{s}", :info)
       return true
     else
-      Rails.logger.info("  Human: #{s}")
+      tagged_logger("UA", "Human: #{s}", :info)
       return false
     end
   end
@@ -299,20 +306,19 @@ class ApplicationController < ActionController::Base
     uri = URI.escape(site)
 
     begin
-      Timeout::timeout(2) do
+      Timeout::timeout(5) do
         json = JSON.parse Net::HTTP.get(URI(uri))
       end
     rescue Timeout::Error
-      Rails.logger.debug("  UA: useragentstring.com Timed out")
+      tagged_logger("UA", "useragentstring.com Timed out")
       return false
     end
 
-    res = json["agent_type"].to_s.match("(Browser|Feed)")
-    if res
-      Rails.logger.debug("  UA: user found: #{uas}")
+    if json && json["agent_type"].to_s.match("Browser")
+      tagged_logger("UA", "User found: #{uas}")
       return true
     else
-      Rails.logger.debug("  UA: bot found: #{uas}")
+      tagged_logger("UA", "Bot found: #{uas}")
       return false
     end
   end
@@ -325,10 +331,10 @@ class ApplicationController < ActionController::Base
 
   def set_time_zone
     if current_user && current_user.time_zone
-      Rails.logger.debug("  Timezone: #{current_user.time_zone}")
+      tagged_logger("Timezone", current_user.time_zone)
       Time.zone = current_user.time_zone
     elsif current_admin_user && current_admin_user.time_zone
-      Rails.logger.debug("  Timezone: #{current_admin_user.time_zone}")
+      tagged_logger("Timezone", current_admin_user.time_zone)
       Time.zone = current_admin_user.time_zone
     end
   end
@@ -424,7 +430,7 @@ class ApplicationController < ActionController::Base
     end
 
     def log_session
-      Rails.logger.debug("  Session: #{session.inspect}") if Rails.env.development?
+      tagged_logger("Session", session.inspect) if Rails.env.development?
     end
 
     def log_additional_data
