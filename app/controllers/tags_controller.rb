@@ -5,7 +5,7 @@ class TagsController < ApplicationController
     @last_published = Item.last_item.updated_at
     respond_to do |format|
       format.html {
-        headers_with_timeout(1200)
+        headers_with_timeout(3600)
       }
     end
   end
@@ -39,14 +39,14 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        headers_with_timeout(1200)
+        headers_with_timeout(3600)
       }
       format.atom {
-        headers_with_timeout(1200)
+        headers_with_timeout(3600)
         render partial: "/shared/items", layout: false
       }
       format.rss {
-        headers_with_timeout(1200)
+        headers_with_timeout(3600)
         render partial: "/shared/items", layout: false
       }
     end

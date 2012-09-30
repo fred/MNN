@@ -108,7 +108,7 @@ class ApplicationController < ActionController::Base
   end
 
   def using_ssl?
-    request.protocol != "http://"
+    request.protocol == "https://"
   end
 
   def set_locale_from_params
@@ -118,7 +118,7 @@ class ApplicationController < ActionController::Base
   end
 
   def should_use_to_https?
-    (current_admin_user && !request.method.match("POST") && !request.url.match("auth")) or request.url.match("/admin/login$")
+    (current_user or current_admin_user) && ( !request.method.match("POST") && !request.url.match("auth")) or request.url.match("/admin/login$")
   end
 
   def https_for_admins
@@ -141,25 +141,33 @@ class ApplicationController < ActionController::Base
     comment.owner == current_user
   end
 
-  def private_headers_with_timeout(timeout)
-    tagged_logger("Caching", "private, must-revalidate, max-age=#{timeout}", :info)
-    headers['Cache-Control'] = "private, must-revalidate, max-age=#{timeout}"
+  def should_cache?
+    if (is_bot? or request.format.to_s.match("(rss|atom|xml)"))
+      true
+    else
+      false
+    end
   end
 
   def headers_with_timeout(timeout)
     if should_cache?
       public_headers(timeout)
     else
-      private_headers
+      if (current_user or current_admin_user)
+        private_headers
+      else
+        private_headers_with_timeout(timeout)
+      end
     end
   end
 
-  def should_cache?
-    if (!is_human? or request.format.to_s.match("(rss|atom|xml)"))
-      true
-    else
-      false
-    end
+  def private_headers
+    headers['Cache-Control'] = 'private, no-cache'
+  end
+
+  def private_headers_with_timeout(timeout)
+    tagged_logger("Caching", "private, must-revalidate, max-age=#{timeout}", :info)
+    headers['Cache-Control'] = "private, must-revalidate, max-age=#{timeout}"
   end
 
   def public_headers(timeout=3600)
@@ -170,10 +178,6 @@ class ApplicationController < ActionController::Base
     end
     headers['X-Accel-Expires'] = timeout
     headers['Etag'] = @etag if @etag
-  end
-
-  def private_headers
-    headers['Cache-Control'] = 'private, no-cache'
   end
 
   def headers_for_etag(etag=nil)
@@ -287,7 +291,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_bot?
-    return true if Rails.env.test?
+    return false if Rails.env.test?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
     if s.match(bot_regex)
       tagged_logger("UA", "Bot: #{s}", :info)

@@ -64,8 +64,8 @@ GIT
 
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: 0214cd7255bd16ed3365afb46948aa8aeb191f8b
-  ref: 0214cd7255bd16ed3365afb46948aa8aeb191f8b
+  revision: 9fd5059efad36f01ef8e64c16901178d33654654
+  ref: 9fd5059efad36f01ef8e64c16901178d33654654
   specs:
     twitter-bootstrap-rails (2.1.3)
       actionpack (>= 3.1)
@@ -75,7 +75,7 @@ GIT
 
 GIT
   remote: git://github.com/sunspot/sunspot.git
-  revision: c3d681bf3d5bade73d0729045b209cb1f2a93d60
+  revision: e4de9e83e85ec91d9470bfaf7987ea54c6d656c6
   specs:
     sunspot (2.0.0.pre.120925)
       pr_geohash (~> 1.0)

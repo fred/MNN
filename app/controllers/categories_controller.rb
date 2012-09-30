@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
     end
     @categories = @site_categories
     respond_to do |format|
-      format.html { headers_with_timeout(600) }
+      format.html { headers_with_timeout(3600) }
     end
   end
 
@@ -40,7 +40,7 @@ class CategoriesController < ApplicationController
     @meta_keywords = "#{@category.title} news"
 
     if @items.empty?
-      @etag = Digest::MD5.hexdigest((Time.now.to_i / 600).to_s)
+      @etag = Digest::MD5.hexdigest((Time.now.to_i / 900).to_s)
     else
       @last_published = @items.first.published_at
       @last_mofified = @last_published
@@ -49,15 +49,15 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html {
-        headers_with_timeout(600)
+        headers_with_timeout(3600)
       }
       format.atom {
         headers['Etag'] = @etag
-        headers_with_timeout(900)
+        headers_with_timeout(3600)
         render partial: "/shared/items", layout: false 
       }
       format.rss {
-        headers_with_timeout(900)
+        headers_with_timeout(3600)
         render partial: "/shared/items", layout: false
       }
     end
