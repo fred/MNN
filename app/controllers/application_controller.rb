@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   before_filter :sidebar_variables
   before_filter :mini_profiler
   before_filter :get_locale
-  # before_filter :https_for_admins
+  before_filter :https_for_admins
   before_filter :set_start_time, :set_time_zone, :set_view_items, :current_ability
   before_filter :log_additional_data, :set_per_page
   before_filter :last_modified
