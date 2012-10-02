@@ -78,7 +78,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        private_headers_with_timeout(3600)
+        headers_with_timeout(3600)
         headers_for_etag(@item.etag)
       }
     end
