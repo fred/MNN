@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   
   def feed
-    headers_with_timeout(3600)
+    headers_with_timeout(Settings.cache_time)
   end
   
   def index
@@ -44,16 +44,16 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        headers_with_timeout(3600)
+        headers_with_timeout(Settings.cache_time)
       }
       format.json { render json: @items }
       format.atom {
-        headers_with_timeout(3600)
+        headers_with_timeout(Settings.cache_time)
         headers['Etag'] = @etag
         render partial: "/shared/items", layout: false
       }
       format.rss {
-        headers_with_timeout(3600)
+        headers_with_timeout(Settings.cache_time)
         headers['Etag'] = @etag
         render partial: "/shared/items", layout: false
       }
@@ -78,7 +78,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        headers_with_timeout(3600)
+        headers_with_timeout(Settings.cache_time)
         headers_for_etag(@item.etag)
       }
     end
@@ -148,7 +148,7 @@ class ItemsController < ApplicationController
       @items = []
       @title = "Please type something to search for"
     end
-    headers_with_timeout(3600)
+    headers_with_timeout(Settings.cache_time)
     respond_to do |format|
       format.html
       format.js

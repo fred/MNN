@@ -153,11 +153,12 @@ class ApplicationController < ActionController::Base
     if should_cache?
       public_headers(timeout)
     else
-      if (current_user or current_admin_user)
-        private_headers
-      else
-        private_headers_with_timeout(timeout)
-      end
+      private_headers
+      # if (current_user or current_admin_user)
+      #   private_headers
+      # else
+      #   private_headers_with_timeout(timeout)
+      # end
     end
   end
 
@@ -170,7 +171,7 @@ class ApplicationController < ActionController::Base
     headers['Cache-Control'] = "private, must-revalidate, max-age=#{timeout}"
   end
 
-  def public_headers(timeout=3600)
+  def public_headers(timeout=1800)
     tagged_logger("Caching", "public, max-age=#{timeout}")
     headers['Cache-Control'] = "public, max-age=#{timeout}"
     if @last_published && @last_published.respond_to?(:httpdate)

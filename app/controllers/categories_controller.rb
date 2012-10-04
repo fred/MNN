@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
     end
     @categories = @site_categories
     respond_to do |format|
-      format.html { headers_with_timeout(3600) }
+      format.html { headers_with_timeout(Settings.cache_time) }
     end
   end
 
@@ -49,15 +49,15 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html {
-        headers_with_timeout(3600)
+        headers_with_timeout(Settings.cache_time)
       }
       format.atom {
         headers['Etag'] = @etag
-        headers_with_timeout(3600)
+        headers_with_timeout(Settings.cache_time)
         render partial: "/shared/items", layout: false 
       }
       format.rss {
-        headers_with_timeout(3600)
+        headers_with_timeout(Settings.cache_time)
         render partial: "/shared/items", layout: false
       }
     end

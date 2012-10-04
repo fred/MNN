@@ -1,2 +1,3 @@
 versions_to_keep: 300
 host: 'mathaba.dev'
+cache_time: 1800
