@@ -1,6 +1,7 @@
 ActiveAdmin.register Item do
   controller.authorize_resource
   config.sort_order = "id_desc"
+  config.per_page = 12
 
   scope :published
   scope :highlight
@@ -10,6 +11,23 @@ ActiveAdmin.register Item do
   scope :with_comments
   scope :queued
   scope :from_youtube
+
+
+  # Filters
+  filter :category
+  filter :language
+  filter :user
+  filter :title
+  filter :highlight, label: "Abstract"
+  filter :author_name
+  filter :youtube_id, label: "Youtube ID"
+  filter :draft
+  filter :original
+  filter :featured, label: "Highlight"
+  filter :sticky, label: "Highlight"
+  filter :created_at
+  filter :updated_at
+  filter :published_at
 
   menu priority: 1, parent: 'Items', label: 'All Items', if: lambda{|tabs_renderer|
     controller.current_ability.can?(:read, Item)

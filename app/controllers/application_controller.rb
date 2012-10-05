@@ -163,7 +163,7 @@ class ApplicationController < ActionController::Base
   end
 
   def private_headers
-    headers['Cache-Control'] = 'private, no-cache'
+    headers['Cache-Control'] = 'private, no-cache, max-age=0'
   end
 
   def private_headers_with_timeout(timeout)

@@ -52,7 +52,7 @@ ActiveAdmin.register User do
   index title: "Users" do
     id_column
     column "Avatar", sortable: false do |user|
-      image_tag user.main_image(:thumb)
+      image_tag user.main_image(:thumb), class: 'user-avatar-mini'
     end
     column :name
     column :email

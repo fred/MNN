@@ -316,3 +316,12 @@ p.inline-hints,
 form fieldset > ol > li p.inline-hints {
   font-size: 12px;
 }
+
+img.user-avatar-mini {
+  max-width: 80px;
+  max-height: 80px;
+}
+img.user-avatar-large {
+  max-width: 160px;
+  max-height: 160px;
+}

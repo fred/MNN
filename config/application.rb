@@ -66,7 +66,7 @@ module Publication
 
     if RUBY_ENGINE == "ruby"
       server = ENV['MEMCACHE_SERVERS'] ? ENV['MEMCACHE_SERVERS'] : "127.0.0.1"
-      config.cache_store = :dalli_store, server, { namespace: "mnn", expires_in: 8.hours, compress: true }
+      config.cache_store = :dalli_store, server, { namespace: "mnn", expires_in: 24.hours, compress: true }
     elsif RUBY_ENGINE == "jruby" && defined?(Ehcache)
       config.cache_store = :ehcache_store, { cache_name: 'mnn', ehcache_config: 'ehcache.xml'}
     end
