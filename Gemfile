@@ -137,13 +137,8 @@ end
 gem 'fast_gettext'
 gem 'gettext_i18n_rails'
 
-### Active Admin, loaded at end.
-# gem 'meta_search', '~> 1.1.3'
-# gem 'activeadmin',
-#   git: 'git://github.com/fred/active_admin.git',
-#   branch: '594',
-#   ref: '62c1dd5f1c9c4d3a4167d57fdf9c36e3e0b2ab02'
 
+# Active Admin, loaded at end.
 gem 'meta_search'
 gem 'activeadmin', git: 'git://github.com/fred/active_admin.git', branch: 'no-override'
 

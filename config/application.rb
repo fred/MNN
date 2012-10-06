@@ -91,6 +91,6 @@ module Publication
     
     # RailsAdmin Assets
     config.assets.precompile += %w( rss.css tinymce.css ZeroClipboard10.swf
-      active_admin.js active_admin.css active_admin/print.css )
+      active_admin.js active_admin.css active_admin/print.css reddit.js )
   end
 end

@@ -1,3 +1,14 @@
+## October 5, 2012
+
+  - Fixed redis-namespace
+  - Added Reddit widget
+  - Removed font-resizer on IE
+  - Updated ActiveAdmin upstream
+  - Updated gems
+  - Admin/items filters
+  - Reduce pagination items for admin
+  - Un-hardcode links and use Settings.yml instead
+
 ## September 29, 2012
 
   - Frozen Twitter-Bootstrap-rails

@@ -1,6 +1,6 @@
 $(document).ready(function() {
   
-  if (!(Modernizr.touch)) {
+  if (!(Modernizr.touch) && !(jQuery.browser.msie)) {
     
     // Font Resizer
     var min=9;
