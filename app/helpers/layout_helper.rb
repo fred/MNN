@@ -61,16 +61,24 @@ module LayoutHelper
     "http://#{lang}.#{request.domain}"
   end
 
+  def host_link
+    "http://#{Settings.host}"
+  end
+
+  def flattr_link
+    Settings.flattr_link
+  end
+
   def facebook_link
-    "https://www.facebook.com/pages/WorldMathaba-News/264637566990258"
+    Settings.facebook_link
   end
 
   def twitter_link
-    "https://twitter.com/worldmathaba"
+    Settings.twitter_link
   end
 
   def google_plus_link
-    "https://plus.google.com/114360341024930120596?prsrc=3"
+    Settings.google_plus_link
   end
 
   def twitter_user_link(str)
@@ -138,7 +146,7 @@ module LayoutHelper
   def flattr_large
     link_to(
       image_tag("flattr-badge-large.png", width: 93, height: 20),
-      "http://flattr.com/thing/631126/WorldMathaba",
+      flattr_link,
       target: "blank",
       alt: "Flattr This Site",
       title: "Flattr This Site",
@@ -149,7 +157,7 @@ module LayoutHelper
   def flattr_medium
     link_to(
       image_tag("flattr-badge-medium.png", width: 32, height: 32),
-      "http://flattr.com/thing/631126/WorldMathaba",
+      flattr_link,
       target: "blank",
       alt: "Flattr This Site",
       title: "Flattr This Site",
@@ -158,9 +166,9 @@ module LayoutHelper
   end
   
   def flattr_js
-    "<a class='FlattrButton' style='display:none;' rev='flattr;button:compact;' href='http://Worldmathaba.net'></a>
+    "<a class='FlattrButton' style='display:none;' rev='flattr;button:compact;' href='#{host_link}'></a>
     <noscript>
-      <a href='http://flattr.com/thing/631126/WorldMathaba' target='_blank'>
+      <a href='#{flattr_link}' target='_blank'>
         <img src='/assets/flattr-badge-large.png' alt='Flattr this' title='Flattr this' border='0' />
       </a>
     </noscript>"
