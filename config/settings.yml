@@ -2,7 +2,8 @@ versions_to_keep: 300
 site_name_short: "World Mathaba"
 site_name_long: "World Mathaba Independent News"
 host: 'mathaba.dev'
-cache_time: 1800
+cache_time: 3600
+fragment_cache_time: 1800
 google_plus_link: "https://plus.google.com/114360341024930120596"
 facebook_link: "https://www.facebook.com/worldmathaba"
 twitter_link: "https://twitter.com/worldmathaba"
@@ -11,4 +12,3 @@ from_email: "inbox@worldmathaba.net"
 from_email_long: "inbox@worldmathaba.net"
 reply_to_email: "inbox@worldmathaba.net"
 google_analytics: "UA-00000000-0"
-

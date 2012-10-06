@@ -78,7 +78,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        headers_with_timeout(Settings.cache_time)
+        private_headers
         headers_for_etag(@item.etag)
       }
     end

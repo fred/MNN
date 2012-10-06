@@ -3,7 +3,7 @@
 
 <!-- CACHE: <%= comment_cache_key(comment) %> -->
 
-<% cache_expiring(comment_cache_key(comment), 1800) do %>
+<% cache_expiring(comment_cache_key(comment), 7200) do %>
 
   <li id="comment_<%= comment.id %>">
     <span class="comment_owner">

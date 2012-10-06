@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   # Relationships
   has_many :items,  inverse_of: :user
   has_many :scores
-  # has_many :comments
+  has_many :comments, foreign_key: :owner_id
   has_and_belongs_to_many :roles
   has_many :subscriptions, dependent: :destroy, conditions: {item_id: nil}
   has_many :comment_subscriptions, dependent: :destroy

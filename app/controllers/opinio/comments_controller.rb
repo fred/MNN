@@ -5,16 +5,16 @@ class Opinio::CommentsController < ApplicationController
   def index
     if params[:item_id]
       @item = Item.includes([:comments,:item_stat]).find(params[:item_id])
-      @comments = @item.comments.page(params[:page]).per(10)
+      @comments = @item.comments.page(params[:page]).per(20)
       @rss_title = "Comments for: #{@item.title}"
       @rss_description = "RSS comments for '#{@item.title}'"
       @rss_source = item_comments_path(@item, only_path: false, protocol: 'https')
       @rss_language = "en"
       @last_published = @item.last_commented_at
     elsif params[:mine]
-      @comments = current_user.comments.order('id DESC').page(params[:page]).per(10)
+      @comments = current_user.comments.order('id DESC').page(params[:page]).per(20)
     else
-      @comments = Comment.order('id DESC').page(params[:page]).per(10)
+      @comments = Comment.order('id DESC').page(params[:page]).per(20)
     end
 
     respond_to do |format|

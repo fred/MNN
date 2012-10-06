@@ -163,6 +163,7 @@ class ApplicationController < ActionController::Base
   end
 
   def private_headers
+    tagged_logger("Caching", "private, no-cache, max-age=0", :info)
     headers['Cache-Control'] = 'private, no-cache, max-age=0'
   end
 
@@ -244,7 +245,7 @@ class ApplicationController < ActionController::Base
   end
 
   def bot_regex
-    "(bot|spider|wget|curl|lwp|perl|crawl|search|agent|yandex|google|jeeves|ahrefsbot|metauri|scribdreader|js-kit|rebelmouse|inagist|butterfly)"
+    "(bot|spider|wget|curl|lwp|perl|crawl|agent|yandex|google|jeeves|ahrefsbot|metauri|scribdreader|js-kit|rebelmouse|inagist|butterfly)"
   end
   def human_regex
     "(firefox|chrome|opera|safari|webkit|gecko|konqueror|msie|windows|ubuntu|blackberry|iphone|ipad|nokia|android|webos)"

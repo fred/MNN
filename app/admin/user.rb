@@ -46,6 +46,7 @@ ActiveAdmin.register User do
       end
       row :created_at
       row :updated_at
+      render "user_comments"
     end
   end
 

@@ -1,6 +1,21 @@
 module ApplicationHelper
   include FastGettext::Translation
 
+
+  def fragment_cache_time
+    Settings.fragment_cache_time || 3600
+  end
+
+  def tagged_logger(tag,msg,level=:debug)
+    if level == :info
+      Rails.logger.tagged(tag) { Rails.logger.info(msg) }
+    elsif level == :warn
+      Rails.logger.tagged(tag) { Rails.logger.warn(msg) }
+    else
+      Rails.logger.tagged(tag) { Rails.logger.debug(msg) }
+    end
+  end
+
   def bootstap_flash
      flash_messages = []
      flash.each do |type, message|
@@ -53,8 +68,13 @@ module ApplicationHelper
   end
 
   # Cache for a period of time, default 2 hours
-  def cache_expiring(cache_key, cache_period=7200)
-    cache(["#{I18n.locale.to_s}/#{cache_key}", Time.now.to_i / cache_period].join('/')){ yield }
+  def cache_expiring(cache_key, cache_period=7200, allow_current_user=true)
+    if (allow_current_user == false) and (current_user or current_admin_user)
+      tagged_logger("CACHE", "Not caching for current_user")
+      yield
+    else
+      cache(["#{I18n.locale.to_s}/#{cache_key}", Time.now.to_i / cache_period].join('/')){ yield }
+    end
   end
 
   def full_image_path_helper(img)

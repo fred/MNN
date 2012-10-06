@@ -1,0 +1,25 @@
+<div class="panel">
+  <h3>Latest 20 comments for this user</h3>
+  <div class="panel_contents">
+    <% @user.comments.limit(20).order('id DESC').each do |comment| %>
+
+      <div class="comment">
+        <p>
+          <b><%= link_to(comment.commentable.title, item_path(comment.commentable)) if comment.commentable %></b>
+        </p>
+        <div class="comment_body">
+          <%= sanitize comment.body,
+                tags: comment.allowed_html_tags,
+                attributes: comment.allowed_html_attributes
+          %>
+        </div>
+        <p class="comment_date">
+          <%= link_to admin_comment_path(comment) do %>
+            <%= time_ago_in_words(comment.created_at) %> ago
+          <% end %>
+        </p>
+      </div>
+
+    <% end %>
+  </div>
+</div>

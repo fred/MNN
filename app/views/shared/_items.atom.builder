@@ -1,4 +1,4 @@
-cache_expiring("atom/#{@etag}", 900) do
+cache_expiring("atom/#{@etag}", 1800) do
   atom_feed({ 
     'xmlns' => "http://www.w3.org/2005/Atom",
     'xmlns:app' => 'http://www.w3.org/2007/app',
