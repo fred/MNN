@@ -9,3 +9,4 @@
 //= require modernizr
 //= require zclip
 //= require turbolinks
+//= require loader

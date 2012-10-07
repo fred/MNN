@@ -1,5 +1,6 @@
 ## October 7, 2012
-
+  
+  - Added loading spinner to Turbolinks
   - Using Turbolinks on admin interface (trial testing)
   - Using turbo-sprockets gem
 
