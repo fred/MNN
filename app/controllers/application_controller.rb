@@ -141,8 +141,12 @@ class ApplicationController < ActionController::Base
     comment.owner == current_user
   end
 
+  def logged_in?
+    (current_user or current_admin_user)
+  end
+
   def should_cache?
-    if (is_bot? or request.format.to_s.match("(rss|atom|xml)"))
+    if (is_bot? or request.format.to_s.match("(rss|atom|xml)")) && !logged_in?
       true
     else
       false
@@ -154,17 +158,12 @@ class ApplicationController < ActionController::Base
       public_headers(timeout)
     else
       private_headers
-      # if (current_user or current_admin_user)
-      #   private_headers
-      # else
-      #   private_headers_with_timeout(timeout)
-      # end
     end
   end
 
   def private_headers
-    tagged_logger("Caching", "private, no-cache, max-age=0", :info)
-    headers['Cache-Control'] = 'private, no-cache, max-age=0'
+    tagged_logger("Caching", "no-cache", :info)
+    headers['Cache-Control'] = 'no-cache'
   end
 
   def private_headers_with_timeout(timeout)
