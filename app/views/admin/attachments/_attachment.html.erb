@@ -53,14 +53,10 @@
 </div>
 
 <script type="text/javascript">
-
-  $(document).ready(function(){
-
-      $("a#button-copy-<%= attachment.id %>").zclip({
-          path:'/assets/ZeroClipboard10.swf',
-          copy:$('div#copy-<%= attachment.id %>').html()
-      });
-
+  (function(){
+    $("a#button-copy-<%= attachment.id %>").zclip({
+      path:'/assets/ZeroClipboard10.swf',
+      copy:$('div#copy-<%= attachment.id %>').html()
+    });
   });
-
 </script>

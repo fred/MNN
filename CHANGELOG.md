@@ -1,3 +1,8 @@
+## October 7, 2012
+
+  - Using Turbolinks on admin interface (trial testing)
+  - Using turbo-sprockets gem
+
 ## October 5, 2012
 
   - Fixed redis-namespace

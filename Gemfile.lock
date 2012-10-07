@@ -396,7 +396,7 @@ GEM
     rakismet (1.3.0)
     rdoc (3.12)
       json (~> 1.4)
-    redis (3.0.1)
+    redis (3.0.2)
     redis-namespace (1.2.1)
       redis (~> 3.0.0)
     responders (0.9.3)
@@ -488,6 +488,10 @@ GEM
     trinidad_jars (1.1.0)
     trinidad_scheduler_extension (0.1.2)
       trinidad_jars
+    turbo-sprockets-rails3 (0.1.10)
+      railties (>= 3.1.0)
+      sprockets (>= 2.0.0)
+    turbolinks (0.5.1)
     turn (0.8.3)
       ansi
     twitter (4.0.0)
@@ -602,6 +606,8 @@ DEPENDENCIES
   tinymce-rails (~> 3.5.6)
   trinidad
   trinidad_scheduler_extension
+  turbo-sprockets-rails3
+  turbolinks
   turn (~> 0.8.3)
   twitter
   twitter-bootstrap-rails!

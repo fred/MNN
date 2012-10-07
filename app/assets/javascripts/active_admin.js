@@ -8,3 +8,4 @@
 //= require jquery/jquery.validate.js
 //= require modernizr
 //= require zclip
+//= require turbolinks

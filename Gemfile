@@ -160,6 +160,9 @@ gem 'galetahub-simple_captcha', require: 'simple_captcha', git: 'git://github.co
 gem 'country-select'
 gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_email_format_of.git'
 
+gem 'turbo-sprockets-rails3'
+gem 'turbolinks'
+
 ### Disabled Gems:
 
 # gem 'postmark-rails'
