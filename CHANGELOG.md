@@ -1,5 +1,7 @@
 ## October 7, 2012
-  
+
+  - More effecient caching of sidebar.  
+  - Added more Database Indexes
   - Added loading spinner to Turbolinks
   - Using Turbolinks on admin interface (trial testing)
   - Using turbo-sprockets gem

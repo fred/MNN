@@ -173,6 +173,17 @@ class Comment < ActiveRecord::Base
     limit(limit).
     all
   end
+
+  def self.last_cache_key
+    if comment = self.last_comment
+      comment.updated_at.to_s(:number)
+    else
+      ""
+    end
+  end
   
+  def self.last_comment
+    order("id DESC").first
+  end
   
 end

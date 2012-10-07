@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120830074404) do
+ActiveRecord::Schema.define(:version => 20121007121615) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -170,11 +170,13 @@ ActiveRecord::Schema.define(:version => 20120830074404) do
   add_index "items", ["allow_star_rating"], :name => "index_items_on_allow_star_rating"
   add_index "items", ["category_id", "draft", "published_at"], :name => "index_items_on_category_id_and_draft_and_published_at"
   add_index "items", ["category_id"], :name => "index_items_on_category_id"
+  add_index "items", ["comments_count"], :name => "index_items_on_comments_count"
   add_index "items", ["draft"], :name => "index_items_on_draft"
   add_index "items", ["featured"], :name => "index_items_on_featured"
   add_index "items", ["language_id"], :name => "index_items_on_language_id"
   add_index "items", ["locale"], :name => "index_items_on_locale"
   add_index "items", ["meta_enabled"], :name => "index_items_on_meta_enabled"
+  add_index "items", ["original"], :name => "index_items_on_original"
   add_index "items", ["published_at"], :name => "index_items_on_published_at", :order => {"published_at"=>:desc}
   add_index "items", ["slug"], :name => "index_items_on_slug", :unique => true
   add_index "items", ["status_code"], :name => "index_items_on_status_code"
@@ -265,6 +267,8 @@ ActiveRecord::Schema.define(:version => 20120830074404) do
     t.integer "user_id"
   end
 
+  add_index "roles_users", ["role_id", "user_id"], :name => "index_roles_users_on_role_id_and_user_id"
+
   create_table "scores", :force => true do |t|
     t.integer  "user_id"
     t.integer  "scorable_type"
@@ -322,6 +326,7 @@ ActiveRecord::Schema.define(:version => 20120830074404) do
   end
 
   add_index "subscriptions", ["admin"], :name => "index_subscriptions_on_admin"
+  add_index "subscriptions", ["email"], :name => "index_subscriptions_on_email"
   add_index "subscriptions", ["item_id"], :name => "index_subscriptions_on_item_id"
   add_index "subscriptions", ["type"], :name => "index_subscriptions_on_type"
   add_index "subscriptions", ["user_id"], :name => "index_subscriptions_on_user_id"
@@ -393,6 +398,8 @@ ActiveRecord::Schema.define(:version => 20120830074404) do
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["items_count"], :name => "index_users_on_items_count"
+  add_index "users", ["oauth_uid", "provider"], :name => "index_users_on_oauth_uid_and_provider"
   add_index "users", ["ranking"], :name => "index_users_on_ranking"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["type"], :name => "index_users_on_type"

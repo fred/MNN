@@ -1,0 +1,5 @@
+class AddEmailIndexToSubscriptions < ActiveRecord::Migration
+  def change
+    add_index :subscriptions, :email
+  end
+end

@@ -144,8 +144,7 @@
       </div>
     <% end %>
 
-    <% cache_expiring("sidebar", 900) do %>
-
+    <% cache_expiring("sidebar_comment/#{Comment.last_cache_key}", 7200) do %>
       <div class="sidebar_secions">
         <h4><%= _("Recently Discussed") %></h4>
         <% Item.localized.recently_commented(5).each do |item| %>
@@ -160,7 +159,9 @@
           </div>
         <% end %>
       </div>
+    <% end %>
 
+    <% cache_expiring("sidebar_popular", 1800) do %>
       <div class="sidebar_secions">
         <h4><%= _("Most read this month") %></h4>
         <% Item.localized.popular(5,30).each do |item| %>
@@ -170,7 +171,9 @@
           </div>
         <% end %>
       </div>
+    <% end %>
 
+    <% cache_expiring("sidebar_searches", 1800) do %>
       <div class="sidebar_secions">
         <h4><%= _("Popular Searches") %></h4>
         <% Query.popular(FastGettext.locale).limit(10).each do |query| %>
@@ -180,7 +183,6 @@
         <% end %>
         <span class="horizontal-divider"></span>
       </div>
-
       <div class="hidden-phone">
         <%= image_tag "adfreesite.png",
               alt: _("AdFree Site"),
@@ -188,7 +190,6 @@
               width: 100, height: 60
         %>
       </div>
-
     <% end %>
 
   </div>

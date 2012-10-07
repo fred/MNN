@@ -73,7 +73,9 @@ module ApplicationHelper
       tagged_logger("CACHE", "Not caching for current_user")
       yield
     else
-      cache(["#{I18n.locale.to_s}/#{cache_key}", Time.now.to_i / cache_period].join('/')){ yield }
+      key = ["#{I18n.locale.to_s}/#{cache_key}", Time.now.to_i / cache_period].join('/')
+      tagged_logger("CACHE", "Key: #{key}")
+      cache(key){ yield }
     end
   end
 
