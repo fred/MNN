@@ -39,7 +39,7 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        headers_with_timeout(Settings.cache_time)
+        headers_with_timeout(600)
       }
       format.atom {
         headers_with_timeout(Settings.cache_time)

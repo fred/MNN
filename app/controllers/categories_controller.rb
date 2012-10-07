@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
     end
     @categories = @site_categories
     respond_to do |format|
-      format.html { headers_with_timeout(Settings.cache_time) }
+      format.html { headers_with_timeout(600) }
     end
   end
 
@@ -49,7 +49,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html {
-        headers_with_timeout(Settings.cache_time)
+        headers_with_timeout(600)
       }
       format.atom {
         headers['Etag'] = @etag

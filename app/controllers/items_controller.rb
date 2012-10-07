@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        headers_with_timeout(Settings.cache_time)
+        private_headers
       }
       format.json { render json: @items }
       format.atom {
@@ -148,7 +148,7 @@ class ItemsController < ApplicationController
       @items = []
       @title = "Please type something to search for"
     end
-    headers_with_timeout(Settings.cache_time)
+    headers_with_timeout(600)
     respond_to do |format|
       format.html
       format.js
