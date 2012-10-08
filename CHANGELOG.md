@@ -1,3 +1,7 @@
+## October 8, 2012
+
+  - Don't send welcome email to Twitter oauth users
+
 ## October 7, 2012
 
   - More effecient caching of sidebar.  

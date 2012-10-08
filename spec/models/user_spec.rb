@@ -258,8 +258,11 @@ describe User do
   end
 
   describe "with email notifications" do
-    it 'should send an Welcome email to the User and to Admin' do
+    it 'should send an Welcome email to User and Admin' do
       expect(->{ FactoryGirl.create(:user) }).to change(ActionMailer::Base.deliveries, :count).by(2)
+    end
+    it 'should not send Welcome email to User logged in from Twitter' do
+      expect(->{ FactoryGirl.create(:user, provider: 'twitter') }).to change(ActionMailer::Base.deliveries, :count).by(1)
     end
   end
   
