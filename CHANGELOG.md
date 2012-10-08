@@ -1,10 +1,11 @@
 ## October 8, 2012
 
   - Don't send welcome email to Twitter oauth users
+  - Release verion 1.0.5
 
 ## October 7, 2012
 
-  - More effecient caching of sidebar.  
+  - More effecient caching of sidebar.
   - Added more Database Indexes
   - Added loading spinner to Turbolinks
   - Using Turbolinks on admin interface (trial testing)
@@ -243,7 +244,7 @@ Features
 
 ## August 8, 2012
 
-  - Change to rmagick from mini_magick
+  - Change to rmagick from mini-magick
   - Several SQL performance improvements
   - Improved SQL Joins
   - Better caching on sidebar and navbar
