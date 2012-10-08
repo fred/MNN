@@ -146,11 +146,12 @@ class ApplicationController < ActionController::Base
   end
 
   def should_cache?
-    if (is_bot? or request.format.to_s.match("(rss|atom|xml)")) && !logged_in?
-      true
-    else
-      false
-    end
+    #if (is_bot? or request.format.to_s.match("(rss|atom|xml)")) && !logged_in?
+    #  true
+    #else
+    #  false
+    #end
+    false
   end
 
   def headers_with_timeout(timeout)

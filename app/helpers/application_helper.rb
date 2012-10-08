@@ -1,7 +1,6 @@
 module ApplicationHelper
   include FastGettext::Translation
 
-
   def fragment_cache_time
     Settings.fragment_cache_time || 3600
   end
@@ -58,10 +57,10 @@ module ApplicationHelper
   end
 
   def cache_key_for_user(str='')
-    if current_user
-      "#{current_user.id}/#{str}"
-    elsif current_admin_user
-      "#{current_admin_user.id}/#{str}"
+    if current_admin_user
+      "admin_user/#{current_admin_user.id}/#{str}"
+    elsif current_user
+      "user/#{current_user.id}/#{str}"
     else
       "guest/#{str}"
     end
@@ -82,14 +81,13 @@ module ApplicationHelper
   def full_image_path_helper(img)
     root_url.chomp('/') + asset_path(img)
   end
-  
-  
+
   def bool_symbol(bol)
     (bol ? '&#x2714;' : '&#x2717;').html_safe
   end
-  
+
   def bool_word(bol)
     (bol ? 'yes' : 'no')
   end
-  
+
 end
