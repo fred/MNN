@@ -103,6 +103,7 @@ end
 group :test, :development do
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'fuubar'
 end
 
 group :development do
@@ -119,6 +120,7 @@ group :development do
   gem 'gettext', "~> 2.2.1", require: false
   gem 'ruby_parser', require: false
   gem 'locale'
+  gem 'guard-rspec'
 end
 
 group :test do

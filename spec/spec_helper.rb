@@ -32,7 +32,7 @@ RSpec.configure do |config|
 
   # Use the specified formatter
   # :documentation, :progress, :html, :textmate
-  config.formatter = :progress
+  config.formatter = :documentation
 
   config.include Devise::TestHelpers, type: :controller
 
