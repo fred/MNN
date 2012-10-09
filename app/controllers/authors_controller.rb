@@ -2,6 +2,7 @@ class AuthorsController < ApplicationController
   
   def index
     @authors = AdminUser.order("items_count DESC").page(params[:page], per_page: 20)
+    private_headers
     respond_to do |format|
       format.html
       format.json { render json: @authors }
@@ -25,12 +26,19 @@ class AuthorsController < ApplicationController
     @meta_title = @rss_title
     @meta_author = @author.public_display_name
     @meta_keywords = "WorldMathaba, news, #{@author.public_display_name}"
-    
+
     respond_to do |format|
-      format.html
-      format.atom { render partial: "/shared/items", layout: false }
-      format.rss  { render partial: "/shared/items", layout: false }
-      format.json { render json: @items }
+      format.html {
+        private_headers
+      }
+      format.atom {
+        public_headers(900)
+        render partial: "/shared/items", layout: false
+      }
+      format.rss {
+        public_headers(900)
+        render partial: "/shared/items", layout: false
+      }
       format.xml { render @items }
     end
   end

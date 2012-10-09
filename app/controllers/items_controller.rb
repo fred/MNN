@@ -48,12 +48,12 @@ class ItemsController < ApplicationController
       }
       format.json { render json: @items }
       format.atom {
-        headers_with_timeout(Settings.cache_time)
+        public_headers(900)
         headers['Etag'] = @etag
         render partial: "/shared/items", layout: false
       }
       format.rss {
-        headers_with_timeout(Settings.cache_time)
+        public_headers(900)
         headers['Etag'] = @etag
         render partial: "/shared/items", layout: false
       }
@@ -148,7 +148,7 @@ class ItemsController < ApplicationController
       @items = []
       @title = "Please type something to search for"
     end
-    headers_with_timeout(600)
+    private_headers_with_timeout
     respond_to do |format|
       format.html
       format.js

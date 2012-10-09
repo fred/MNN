@@ -11,7 +11,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   end
 
   provider :facebook, Settings.facebook_app_id, Settings.facebook_app_secret,
-            scope: 'email,publish_stream,user_birthday,read_stream,manage_pages',
+            scope: 'email',
             display: 'popup', secure_image_url: true
 
   if ENV['GOOGLE_KEY'] && ENV['GOOGLE_SECRET']

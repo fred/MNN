@@ -11,8 +11,9 @@ class CategoriesController < ApplicationController
       @latest_items = @top_items[1..3]
     end
     @categories = @site_categories
+    private_headers
     respond_to do |format|
-      format.html { headers_with_timeout(600) }
+      format.html
     end
   end
 
@@ -49,15 +50,15 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html {
-        headers_with_timeout(600)
+        private_headers
       }
       format.atom {
         headers['Etag'] = @etag
-        headers_with_timeout(Settings.cache_time)
+        public_headers(900)
         render partial: "/shared/items", layout: false 
       }
       format.rss {
-        headers_with_timeout(Settings.cache_time)
+        public_headers(900)
         render partial: "/shared/items", layout: false
       }
     end

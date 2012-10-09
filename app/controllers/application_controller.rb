@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  # before_filter :set_gettext_locale
   before_filter :sidebar_variables
   before_filter :mini_profiler
   before_filter :get_locale
@@ -15,8 +14,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_start_time, :set_time_zone, :set_view_items, :current_ability
   before_filter :log_additional_data, :set_per_page
   before_filter :last_modified
-  before_filter :no_cache_for_admin
-  before_filter :private_headers
+  # before_filter :private_headers
   after_filter  :auto_login_admin_user
   after_filter  :store_location
   after_filter  :log_session
@@ -146,12 +144,11 @@ class ApplicationController < ActionController::Base
   end
 
   def should_cache?
-    #if (is_bot? or request.format.to_s.match("(rss|atom|xml)")) && !logged_in?
-    #  true
-    #else
-    #  false
-    #end
-    false
+    if (is_bot? or request.format.to_s.match("(rss|atom|xml)")) && !logged_in?
+     true
+    else
+     false
+    end
   end
 
   def headers_with_timeout(timeout)
@@ -163,11 +160,11 @@ class ApplicationController < ActionController::Base
   end
 
   def private_headers
-    tagged_logger("Caching", "no-cache", :info)
-    headers['Cache-Control'] = 'no-cache'
+    tagged_logger("Caching", "no-cache, private", :info)
+    headers['Cache-Control'] = 'no-cache, private'
   end
 
-  def private_headers_with_timeout(timeout)
+  def private_headers_with_timeout(timeout=1800)
     tagged_logger("Caching", "private, must-revalidate, max-age=#{timeout}", :info)
     headers['Cache-Control'] = "private, must-revalidate, max-age=#{timeout}"
   end
