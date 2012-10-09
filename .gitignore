@@ -107,8 +107,9 @@ public/sitemap_index.xml.gz
 config/newrelic.yml
 reload_forem.sh
 reload_db.sh
-
+config/rsync.yml
 config/settings.local.yml
 config/settings/*.yml
 config/environments/*.local.yml
 config/settings.yml
+

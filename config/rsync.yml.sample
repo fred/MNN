@@ -1,0 +1,3 @@
+rsync_url: 'ubuntu@server.com'
+remote_dir: '/mnt/backup/postgresql/'
+local_dir: './backup/postgresql/'
