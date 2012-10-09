@@ -8,7 +8,7 @@ namespace :db do
     db_config = Rails.application.config.database_configuration[Rails.env]
     puts "Syncing from server"
     sh "rsync -av #{rsync_config['rsync_url']}:#{rsync_config['remote_dir']} #{rsync_config['local_dir']}"
-    @last_restore=`find #{rsync_config['local_dir']} -type f -name data_only_*.sql.gz | tail -n1`.strip
+    @last_restore=`find #{rsync_config['local_dir']} -type f -name data_only_mnn_*.sql.gz | tail -n1`.strip
     puts "Dropping DB"
     Rake::Task['db:drop'].invoke
     puts "Creating DB"

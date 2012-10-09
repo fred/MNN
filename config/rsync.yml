@@ -1,3 +1,0 @@
-rsync_url: 'fred@worldmathaba.net'
-remote_dir: '/home/fred/backup/'
-local_dir: './backup/'
