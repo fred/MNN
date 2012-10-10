@@ -10,7 +10,7 @@ class CreateFeedSites < ActiveRecord::Migration
       t.integer  :user_id
       t.datetime :last_modified
       t.string   :site_url
-      t.string   :logo_url
+      t.string   :image
       t.integer  :sort_order,  default: 100
       t.timestamps
     end

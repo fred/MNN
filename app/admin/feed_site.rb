@@ -1,15 +1,36 @@
 ActiveAdmin.register FeedSite do
-  config.sort_order = 'id_asc'
+  config.sort_order = 'title_asc'
+  config.per_page = 12
+  menu parent: "Items", priority: 23, label: "Feed Sites", if: lambda{|tabs_renderer|
+    controller.current_ability.can?(:manage, FeedSite)
+  }
+
+  collection_action :refresh, method: :get do
+    FeedSiteQueue.perform_in(30)
+    flash[:notice] = "Feeds will be refreshed in 30 seconds..."
+    redirect_to admin_feed_sites_path
+  end
+
+  action_item do
+    link_to('Refresh', refresh_admin_feed_sites_path)
+  end
+
+  # Filters
+  filter :category
+  filter :user
+  filter :title
+  filter :description
+  filter :site_url
+
   index do
-    column :id
-    column :avatar do |feed_site|
-      link_to image_tag(feed_site.avatar.url(:medium)), admin_feed_site_path(feed_site)
+    column :image do |feed_site|
+      link_to image_tag(feed_site.image.url(:medium)), admin_feed_site_path(feed_site) if feed_site.image.present?
     end
-    column "Order", :sort_order
     column :title do |feed_site|
       link_to feed_site.title, admin_feed_site_path(feed_site)
     end
-    column :category, :sortable => :category_id
+    column "Order", :sort_order
+    column :category, sortable: :category_id
     column :site_url do |feed_site|
       if feed_site.site_url
         link_to("Site URL", feed_site.site_url)
@@ -18,11 +39,8 @@ ActiveAdmin.register FeedSite do
     column "Feed URL", :url do |feed_site|
       link_to "Feed URL", feed_site.url
     end
-    column :etag
-
-    column :featured
+    column :last_modified
     column :updated_at
-    column :created_at
     default_actions
   end
   
@@ -35,11 +53,11 @@ ActiveAdmin.register FeedSite do
       :etag,
       :category,
       :site_url,
-      :featured,
+      :last_modified,
       :updated_at,
       :created_at
     render "show"
   end
   # Form
-  form :partial => "form"
+  form partial: "form"
 end

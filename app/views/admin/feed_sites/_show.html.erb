@@ -1,0 +1,21 @@
+<div class="panel">
+  <h3>Logo</h3>
+  <div class="panel_contents">
+    <div class="attributes_table feed_site">
+      <%= image_tag @feed_site.image.url(:medium) if @feed_site.image.present? %>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Feeds</h3>
+  <div class="panel_contents">
+    <div class="attributes_table item">
+      <ul>
+      <% @feed_site.feed_entries.each do |t| %>
+        <li><%= link_to t.title, admin_feed_entry_path(t), target: "_blank", title: t.summary %></li>
+      <% end %>
+      <ul>
+    </div>
+  </div>
+</div>

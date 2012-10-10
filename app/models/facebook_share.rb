@@ -5,8 +5,8 @@ class FacebookShare < Share
   def post(item)
     self.processed_at = Time.now
     user = User.find Settings.facebook_manager_id
-    @graph = Koala::Facebook::API.new(user.oauth_token)
-    @page_token = @graph.get_page_access_token(Settings.facebook_page_id)
+    @user_graph = Koala::Facebook::API.new(user.oauth_token)
+    @page_token = @user_graph.get_page_access_token(Settings.facebook_page_id)
     @page_graph = Koala::Facebook::API.new(@page_token)
     url = Rails.application.routes.url_helpers.item_path(item, only_path: false, host: Settings.host)
     if @page_graph

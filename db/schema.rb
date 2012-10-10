@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121007121615) do
+ActiveRecord::Schema.define(:version => 20121009121700) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -112,6 +112,40 @@ ActiveRecord::Schema.define(:version => 20121007121615) do
 
   add_index "email_deliveries", ["item_id"], :name => "index_email_deliveries_on_item_id"
   add_index "email_deliveries", ["user_id"], :name => "index_email_deliveries_on_user_id"
+
+  create_table "feed_entries", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "author"
+    t.string   "image"
+    t.text     "summary"
+    t.text     "content"
+    t.datetime "published"
+    t.integer  "feed_site_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "feed_entries", ["feed_site_id"], :name => "index_feed_entries_on_feed_site_id"
+
+  create_table "feed_sites", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "etag"
+    t.text     "description"
+    t.integer  "category_id"
+    t.integer  "feed_type"
+    t.integer  "user_id"
+    t.datetime "last_modified"
+    t.string   "site_url"
+    t.string   "image"
+    t.integer  "sort_order",    :default => 100
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "feed_sites", ["category_id"], :name => "index_feed_sites_on_category_id"
+  add_index "feed_sites", ["user_id"], :name => "index_feed_sites_on_user_id"
 
   create_table "item_stats", :force => true do |t|
     t.integer  "item_id"

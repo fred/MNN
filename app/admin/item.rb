@@ -2,6 +2,9 @@ ActiveAdmin.register Item do
   controller.authorize_resource
   config.sort_order = "id_desc"
   config.per_page = 12
+  action_item only: [:show, :edit] do
+    link_to('View on site', item_path(item), data: 'no-turbolink')
+  end
 
   scope :published
   scope :highlight
@@ -112,7 +115,7 @@ ActiveAdmin.register Item do
       end
     end
     column "Show", sortable: false do |item|
-      link_to "Live Preview", item
+      link_to "Live Preview", item, data: 'no-turbolink'
     end
     column "Show", sortable: false do |item|
       link_to "Show", admin_item_path(item)
@@ -140,6 +143,14 @@ ActiveAdmin.register Item do
       @item.expires_on = @now+10.years
       @item.draft = true
       @item.user_id = current_admin_user.id
+      if params[:feed_id]
+        @feed_entry = FeedEntry.find(params[:feed_id])
+        @item.title = @feed_entry.title.to_s.truncate(96)
+        @item.source_url = @feed_entry.url
+        @item.author_name = @feed_entry.author
+        @item.abstract = @feed_entry.summary.to_s.truncate(116)
+        @item.body = @feed_entry.content
+      end
     end
 
     def show

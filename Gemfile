@@ -35,7 +35,7 @@ gem 'omniauth-facebook', '1.4.0'
 gem 'omniauth-google-oauth2', '~> 0.1.13'
 gem 'omniauth-twitter', '~> 0.0.12'
 gem 'omniauth-windowslive', git: 'git://github.com/dangerp/omniauth-windowslive.git'
-gem 'koala'
+gem 'koala', git: 'git://github.com/arsduo/koala.git'
 
 ### Roles and Authentication
 gem 'cancan', '~> 1.6.7'
@@ -164,6 +164,8 @@ gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_emai
 
 gem 'turbo-sprockets-rails3'
 gem 'turbolinks'
+
+gem 'feedzirra'
 
 ### Disabled Gems:
 
