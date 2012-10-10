@@ -7,7 +7,7 @@ class TwitterShare < Share
   def enqueue
     if Rails.env.production?
       if self.enqueue_at.to_i < Time.now.to_i
-        time = Time.now+60
+        time = Time.now+30
       else
         time = self.enqueue_at
       end

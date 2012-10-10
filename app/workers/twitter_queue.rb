@@ -1,7 +1,7 @@
 class TwitterQueue < BaseWorker
 
   def perform(share_id)
-    share = Share.find(share_id)
+    share = TwitterShare.find(share_id)
     if share && share.item
       item = share.item 
       if (share && item && Twitter.update(item.twitter_status))

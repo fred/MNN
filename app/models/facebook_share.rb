@@ -27,7 +27,12 @@ class FacebookShare < Share
   
   def enqueue
     if Rails.env.production?
-      FacebookQueue.perform_async(self.id)
+      if self.enqueue_at.to_i < Time.now.to_i
+        time = Time.now+30
+      else
+        time = self.enqueue_at
+      end
+      FacebookQueue.perform_at(time,self.id)
     else
       Rails.logger.info("  Queue: Updating Facebook status: #{self.id}")
     end
