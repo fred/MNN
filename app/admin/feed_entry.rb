@@ -3,7 +3,7 @@ ActiveAdmin.register FeedEntry do
   config.per_page = 50
   menu parent: "Items", priority: 24, label: "Feed Items"
 
-  action_item do
+  action_item only: [:show, :edit] do
     link_to('Import', new_admin_item_path(feed_id: feed_entry.id))
   end
 
@@ -17,7 +17,9 @@ ActiveAdmin.register FeedEntry do
         link_to("URL", feed_entry.url, target: feed_entry.url, title: feed_entry.url)
       end
     end
-    column :summary
+    column :summary do |feed_entry|
+      sanitize(feed_entry.summary, tags: '', attributes: '').to_s.truncate(180) if feed_entry.summary.present?
+    end
     column :author
     column :published
     default_actions
