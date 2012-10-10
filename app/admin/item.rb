@@ -134,7 +134,7 @@ ActiveAdmin.register Item do
   form partial: "form"
 
   controller do
-
+    include ActionView::Helpers::SanitizeHelper
     def new
       authorize! :create, Item
       @item = Item.new
@@ -145,11 +145,11 @@ ActiveAdmin.register Item do
       @item.user_id = current_admin_user.id
       if params[:feed_id]
         @feed_entry = FeedEntry.find(params[:feed_id])
-        @item.title = @feed_entry.title.to_s.truncate(96)
-        @item.source_url = @feed_entry.url
-        @item.author_name = @feed_entry.author
-        @item.abstract = @feed_entry.summary.to_s.truncate(116)
-        @item.body = @feed_entry.content
+        @item.title = sanitize(@feed_entry.title, tags: '', attributes: '').to_s.truncate(96) if @feed_entry.title.present?
+        @item.source_url = @feed_entry.url if @feed_entry.url.present?
+        @item.author_name = @feed_entry.author if @feed_entry.author.present?
+        @item.abstract = sanitize(@feed_entry.summary, tags: '', attributes: '').to_s.truncate(116) if @feed_entry.summary.present?
+        @item.body = @feed_entry.content if @feed_entry.content.present?
       end
     end
 
