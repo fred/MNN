@@ -9,7 +9,9 @@ ActiveAdmin.register FacebookShare do
   actions  :index, :destroy
   index title: "Facebook Shares" do
     column :item
-    column :status
+    column :status do |share|
+      link_to(share.status, share.status_link, target: "_blank", title: "Open post in facebook") if share.status_link
+    end
     column "Processed At", :processed_at
     column "Scheduled At", :enqueue_at
     default_actions

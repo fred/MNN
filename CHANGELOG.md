@@ -1,3 +1,11 @@
+## October 10, 2012
+
+  - Fixed Facebook Shares
+  - Add link to facebook post share
+  - Feed Reader in Admin interface
+  - Allow to import feed items
+  - Updated Gems
+
 ## October 8, 2012
 
   - Don't send welcome email to Twitter oauth users

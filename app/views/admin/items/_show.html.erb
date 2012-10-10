@@ -176,6 +176,12 @@
       <% else %>
         <p>Email Delivered: <%= bool_symbol false %></p>
       <% end %>
+      <% unless @item.facebook_shares.empty? %>
+        <p>
+          Facebook Share:
+          <%= link_to(@item.facebook_shares.first.status, @item.facebook_shares.first.status_link, target: "_blank", title: "Open post in facebook") if @item.facebook_shares.first.status_link %>
+        </p>
+      <% end %>
     </div>
   </div>
 </div>

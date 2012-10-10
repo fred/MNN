@@ -6,9 +6,6 @@ class FacebookQueue < BaseWorker
       item = share.item
       if (share && item && share.post(item))
         Rails.logger.info("  Queue: Updating Facebook status for Item: ##{item.id}")
-        share.processed_at = Time.now
-        share.status = "success"
-        share.save
       end
     else
       Rails.logger.info("  Queue: Facebook share not found for share ID: #{share.id}")

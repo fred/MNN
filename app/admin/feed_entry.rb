@@ -4,7 +4,7 @@ ActiveAdmin.register FeedEntry do
   menu parent: "Items", priority: 24, label: "Feed Items"
 
   action_item do
-    link_to('Copy', new_admin_item_path(feed_id: feed_entry.id))
+    link_to('Import', new_admin_item_path(feed_id: feed_entry.id))
   end
 
   index do

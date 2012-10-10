@@ -2,6 +2,15 @@ class FacebookShare < Share
   belongs_to :item
   after_create :enqueue
 
+  def status_link
+    if self.status.present? && self.status.match("^[0-9]+_[0-9]+")
+      status_id = self.status.to_s.split("_")[1]
+      "#{Settings.facebook_link}/posts/#{status_id}"
+    else
+      nil
+    end
+  end
+
   def post(item)
     self.processed_at = Time.now
     user = User.find Settings.facebook_manager_id
@@ -14,12 +23,12 @@ class FacebookShare < Share
     end
     if res && res["id"]
       self.status = res["id"]
-      self.save
     else
       res = false
       self.status = 'FAILED'
-      self.save
     end
+    self.processed_at = Time.now
+    self.save
     res
   end
   
