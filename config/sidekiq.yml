@@ -4,4 +4,4 @@
 ---
 :verbose: false
 :concurrency: 4
-:poll_interval: 2
+:poll_interval: 3
