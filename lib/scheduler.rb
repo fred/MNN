@@ -14,10 +14,10 @@ module Publication
       Rails.logger.info("[Celluloid] Starting FeedScheduler scheduler thread")
       # TODO: don't do anything if the feeder is trying to shutdown..
       loop do
-        sleep 10
+        sleep 30
         Rails.logger.info("[Celluloid] Running FeedScheduler from scheduler thread")
-        FeedSiteQueue.perform_async(nil)
-        sleep POLL_INTERVAL-10
+        ::FeedSiteQueue.perform_async(nil)
+        sleep POLL_INTERVAL-30
       end
     rescue => ex
       return if ex.is_a?(Celluloid::Task::TerminatedError)

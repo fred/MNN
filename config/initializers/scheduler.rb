@@ -1,4 +1,4 @@
-if Rails.env.production?
-  require './lib/scheduler.rb'
-  Publication::FeedScheduler.new.run!
-end
+# if Rails.env.production?
+#   require './lib/scheduler.rb'
+#   Publication::FeedScheduler.new.run!
+# end
