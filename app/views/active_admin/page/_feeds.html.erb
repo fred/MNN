@@ -1,6 +1,6 @@
 <div class="row-fluid">
   <% FeedSite.all.each do |feed_site| %>
-    <% cache_expiring("adminfeed/#{feed_site.full_cache_key}", 1800) do %>
+    <% cache_expiring("adminfeed/#{feed_site.full_cache_key}", 1200) do %>
       <div class="box">
         <div class="box_title">
           <p>
@@ -8,7 +8,8 @@
               <%= link_to(
                     image_tag(feed_site.image.url(:medium)),
                     admin_feed_site_path(feed_site),
-                    title: h(feed_site.title)
+                    title: h(feed_site.title),
+                    id: "tooltip"
                   )
               %>
             <% else %>
@@ -18,7 +19,15 @@
         </div>
         <div class="box_content">
           <% feed_site.feed_entries.per_box.each do |t| %>
-            <p><%= link_to(t.title.to_s, admin_feed_entry_path(t), title: sanitize(t.summary).to_s.truncate(280)) %></p>
+            <p>
+              <%= link_to(
+                    t.title.to_s,
+                    admin_feed_entry_path(t),
+                    title: sanitize(t.summary).to_s.truncate(280),
+                    id: "tooltip"
+                  )
+              %>
+            </p>
           <% end %>
         </div>
       </div>

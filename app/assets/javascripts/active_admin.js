@@ -10,3 +10,5 @@
 //= require zclip
 //= require turbolinks
 //= require loader
+//= require easyTooltip
+//= require tooltip

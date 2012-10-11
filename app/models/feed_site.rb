@@ -29,7 +29,7 @@ class FeedSite < ActiveRecord::Base
   end
 
   def full_cache_key
-    updated_at.to_s(:number)
+    "#{id}/#{updated_at.to_s(:number)}"
   end
 
   def summary_total_size
@@ -103,7 +103,7 @@ class FeedSite < ActiveRecord::Base
           entry_last_modified = nil
         end
         # allow 60 seconds delay for feed saving, to avoid dupplicates, might loose a feed entry in rare cases.
-        if (feed_entries.empty?) or (entry_last_modified && (entry_last_modified.to_i > (last_modified.to_i+60)))
+        if feed_entries.empty? or (entry_last_modified && (entry_last_modified.to_i > (last_modified.to_i+60))) or new_record?
           fi = FeedEntry.new
           fi.title = t.title.to_s[0..250]
           fi.url = t.url[0..250]
@@ -115,11 +115,12 @@ class FeedSite < ActiveRecord::Base
           fi.summary = t.summary
           fi.content = t.content
           fi.published = last_modified
-          fi.save
-          msg="[FEED] new: #{fi.title}"
-          Rails.logger.info msg
-          self.feed_entries << fi
-          @entries_count += 1
+          unless self.feed_entries.where(title: fi.title).any?
+            self.feed_entries << fi
+            @entries_count += 1
+            msg="[FEED] new: #{fi.title}"
+            Rails.logger.info msg
+          end
         end
       end
       msg = "[FEED] Added #{@entries_count} new items to #{feed.title}."

@@ -1,7 +1,7 @@
 ActiveAdmin.register FeedSite do
   config.sort_order = 'title_asc'
   config.per_page = 12
-  menu parent: "Items", priority: 23, label: "Feed Sites", if: lambda{|tabs_renderer|
+  menu parent: "News", priority: 23, label: "Feed Sites", if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, FeedSite)
   }
 

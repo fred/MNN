@@ -17,5 +17,6 @@
 //= require jquery/jquery.validate.js
 //= require font_resizer
 //= require effects
+//= require tooltip
 //= require jquery.complexify
 //= require registration
