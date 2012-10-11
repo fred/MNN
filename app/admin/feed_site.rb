@@ -6,9 +6,9 @@ ActiveAdmin.register FeedSite do
   }
 
   collection_action :refresh, method: :get do
-    FeedSiteQueue.perform_in(30)
+    FeedJob.create(enqueue_at: Time.now+30)
     flash[:notice] = "Feeds will be refreshed in 30 seconds..."
-    redirect_to admin_feed_sites_path
+    redirect_to(session[:return_to] || admin_feed_sites_path)
   end
 
   action_item do

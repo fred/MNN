@@ -1,0 +1,27 @@
+<div class="row-fluid">
+  <% FeedSite.all.each do |feed_site| %>
+    <% cache_expiring("adminfeed/#{feed_site.full_cache_key}", 1800) do %>
+      <div class="box">
+        <div class="box_title">
+          <p>
+            <% if feed_site.image? %>
+              <%= link_to(
+                    image_tag(feed_site.image.url(:medium)),
+                    admin_feed_site_path(feed_site),
+                    title: h(feed_site.title)
+                  )
+              %>
+            <% else %>
+              <%= link_to(h(feed_site.title), admin_feed_site_path(feed_site), title: h(feed_site.title))%>
+            <% end %>
+          </p>
+        </div>
+        <div class="box_content">
+          <% feed_site.feed_entries.per_box.each do |t| %>
+            <p><%= link_to(t.title.to_s, admin_feed_entry_path(t), title: sanitize(t.summary).to_s.truncate(280)) %></p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

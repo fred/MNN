@@ -24,7 +24,8 @@ class Item < ActiveRecord::Base
   has_one    :item_stat,  inverse_of: :item
 
   has_many  :attachments,           as: :attachable
-  has_many  :job_stats,             as: :processable
+  has_many  :sitemap_jobs,          as: :processable
+  has_many  :feed_jobs,             as: :processable
   has_many  :twitter_shares,        dependent: :destroy
   has_many  :facebook_shares,       dependent: :destroy
   has_many  :email_deliveries,      dependent: :destroy
@@ -254,15 +255,11 @@ class Item < ActiveRecord::Base
     return url
   end
 
-  def sitemap_jobs
-    job_stats.where(job_name: 'sitemap')
-  end
-
   # Queue up sitemap generation after 3 minutes
   def process_sitemap_job
     if !self.draft && self.sitemap_jobs.empty?
       Rails.logger.info("  Sitemap: Scheduling sitemap generation for item: #{self.id}")
-      self.job_stats << JobStat.new(job_name: 'sitemap', enqueue_at: enqueue_time)
+      self.sitemap_jobs << SitemapJob.new(enqueue_at: enqueue_time)
     end
   end
 

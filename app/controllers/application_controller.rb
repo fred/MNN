@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
   after_filter  :auto_login_admin_user
   after_filter  :store_location
   after_filter  :log_session
+  # after_filter  :refresh_feeds
 
 
   def sidebar_variables
@@ -30,6 +31,12 @@ class ApplicationController < ActionController::Base
     @site_links        ||= Link.order("title ASC")
   end
 
+  def refresh_feeds
+    if current_admin_user && request.url.match("admin")
+      FeedJob.create(enqueue_at: Time.now+30) if FeedJob.should_refresh?
+    end
+    true
+  end
 
   def no_cache_for_admin
     if current_user or request[:controller].to_s.match("admin|users|comments|devise")

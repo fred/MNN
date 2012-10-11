@@ -19,6 +19,19 @@ class FeedSite < ActiveRecord::Base
     {:id => 4, :name => "itunes_rss"}
   ]
 
+  def self.last_cache_key
+    t = order("updated_at DESC").first
+    if t
+      t.full_cache_key
+    else
+      "no-feeds"
+    end
+  end
+
+  def full_cache_key
+    updated_at.to_s(:number)
+  end
+
   def summary_total_size
     @bytes = 0
     self.feed_entries.each do |t|

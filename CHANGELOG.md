@@ -1,5 +1,10 @@
 ## October 10, 2012
 
+  - Process Feeds hourly on a Celluloid Thread
+  - News page on admin for feed reading
+
+## October 10, 2012
+
   - Fixed Facebook Shares
   - Add link to facebook post share
   - Feed Reader in Admin interface

@@ -51,7 +51,7 @@ class Ability
         Attachment,CommentSubscription,Subscription,EmailDelivery,
         Document,Link
       ]
-      can :read, [ItemStat,Version,Query]
+      can :read, [ItemStat,Version,Query,FeedSite,FeedEntry]
     end
     
     # Authors can create, and edit/delete own articles
@@ -62,14 +62,15 @@ class Ability
       can :destroy, Item, user_id: user.id, draft: true
       can :create,  Item
       can [:read, :create], Attachment
-      can :read,    [ItemStat,Category,Tag,Language,Version,Page,Document,Query]
+      can :read,    [ItemStat,Category,Tag,Language,Version,Page,Document,Query,FeedSite,FeedEntry]
     end
     
     # Security Role
     if user.has_role? :security
       can :manage, [Role,User,AdminUser,ItemStat,Language,Version,
           Contact,CommentSubscription,Subscription,EmailDelivery,
-          TwitterShare,FacebookShare,Attachment,Document,Link,Query
+          TwitterShare,FacebookShare,Attachment,Document,Link,Query,
+          FeedSite,FeedEntry
       ]
     end
     
@@ -77,7 +78,7 @@ class Ability
     # A Reader can read all other records
     if user.has_role? :reader
       can :read, Item, draft: false
-      can :read, [Attachment,ItemStat,Category,Tag,Language,Version,Document]
+      can :read, [Attachment,ItemStat,Category,Tag,Language,Version,Document,FeedSite,FeedEntry]
     end
     
     # Readers can manage own items

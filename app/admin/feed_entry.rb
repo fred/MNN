@@ -1,7 +1,7 @@
 ActiveAdmin.register FeedEntry do
   config.sort_order = 'id_desc'
-  config.per_page = 50
-  menu parent: "Items", priority: 24, label: "Feed Items"
+  config.per_page = 100
+  menu parent: "Items", priority: 24, label: "Feed News"
 
   action_item only: [:show, :edit] do
     link_to('Import', new_admin_item_path(feed_id: feed_entry.id))
