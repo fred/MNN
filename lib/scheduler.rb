@@ -7,8 +7,8 @@ module Publication
   class FeedScheduler
     include Celluloid
 
-    # run every hour
-    POLL_INTERVAL = 3600
+    # run every 8 hours
+    POLL_INTERVAL = 28_800
 
     def run
       Rails.logger.info("[Celluloid] Starting FeedScheduler scheduler thread")
