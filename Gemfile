@@ -109,7 +109,6 @@ end
 group :development do
   gem 'nifty-generators'
   gem 'hirb'
-  gem 'progress_bar' # Nice progress when rake indexing with solr
   gem 'foreman'
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
   gem 'capistrano', '2.9.0', require: false

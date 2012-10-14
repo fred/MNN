@@ -13,14 +13,20 @@ class AuthorsController < ApplicationController
   def show
     @show_breadcrumb = true
     @author = User.find(params[:id])
-    @items = @author.my_items.page(params[:page], per_page: 20)
+    @items = @author.my_items.localized.page(params[:page], per_page: 20)
     @help_page = Page.where(:slug => "contribute").first
+
+    @language = Language.where(locale: I18n.locale.to_s).first
     
-    @rss_title = "World Mathaba - Items from #{@author.public_display_name}"
-    @rss_description = "World Mathaba - Items from #{@author.public_display_name}"
+    @rss_title = "World Mathaba - #{@author.public_display_name} #{_('Articles')}"
+    @rss_title += " - #{@language.description}" if @language
+
+    @rss_description = "World Mathaba - #{@author.public_display_name} #{_('Articles')}"
+    @rss_description += " - #{@language.description}" if @language
+
     @rss_category = "author_#{@author.id}"
     @rss_source = author_path(@author, only_path: false, protocol: 'https')
-    @rss_language = "en"
+    @rss_language = I18n.locale.to_s
 
     @meta_description = @rss_description
     @meta_title = @rss_title
