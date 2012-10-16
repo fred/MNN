@@ -67,6 +67,17 @@ figure {
   color: #666;
 }
 
+.centered {
+  text-align: center;
+}
+
+.with-bottom-margin {
+  margin-bottom: 15px;
+}
+.with-top-margin {
+  margin-top: 15px;
+}
+
 header.master {
   padding-top: 1px;
 }
@@ -202,3 +213,12 @@ ul.feed_list li {
   margin: 10px;
 }
 
+.well.why-register {
+  margin-top: 0px;
+  ul {
+    li {
+      font-size: 14px;
+      margin-top: 3px;
+    }
+  }
+}

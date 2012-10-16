@@ -1,5 +1,19 @@
 <div class="row">
   <div class="span8">
+    <div class="well why-register">
+      <h4 class="centered"> Why Register? </h4>
+      <ul>
+        <li> Express your Comments on Articles </li>
+        <li> Receive Email Alerts for new articles </li>
+        <li> Receive Email Alerts for comments follow-ups </li>
+        <li> Become and Author and <%= link_to "submit your own Articles", "/pages/submit-articles" %> </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span8">
     <%= form_for(resource,
           as: resource_name,
           url: registration_path(resource_name),
@@ -9,8 +23,8 @@
       <%= custom_devise_error_messages! %>
       <%= bootstap_flash %>
 
-      <fieldset class="withBorder">
-        <legend><%= _("Sign up") %></legend>
+      <fieldset class="well">
+        <h4 class="centered with-bottom-margin"><%= _("Sign up") %></h4>
         <div class="control-group">
           <%= f.label :email, _("Email"), class: 'control-label' %>
           <div class="controls">
@@ -83,11 +97,16 @@
           </div>
         </div>
 
+        <div class="control-group">
+          <div class="controls">
+            <%= login_link _('Already have account? Login here') %>
+          </div>
+        </div>
       </fieldset>
-
     <% end %>
   </div>
 </div>
+
 
 <% content_for :breadcrumb do %>
   <li>
@@ -96,3 +115,4 @@
   </li>
   <li class="active"><%= _("Sign Up") %></li>
 <% end %>
+

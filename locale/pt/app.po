@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2012-09-24 11:33+0700\n"
+"POT-Creation-Date: 2012-10-16 22:50+0700\n"
 "PO-Revision-Date: 2012-08-29 01:51+0700\n"
 "Last-Translator: Frederico Araujo <fred@worldmathaba.net>\n"
 "Language-Team: Portuguese <fred@worldmathaba.net>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: app/views/devise/registrations/edit.html.erb:47
-#: app/views/devise/registrations/new.html.erb:46
+#: app/views/devise/registrations/new.html.erb:60
 msgid "-- Please Choose"
 msgstr "-- Escolha"
 
@@ -30,7 +30,7 @@ msgstr "Conta"
 msgid "Account Successfully Updated"
 msgstr "Conta Atualizada com sucesso"
 
-#: app/views/shared/layouts/_sidebar.html.erb:186
+#: app/views/shared/layouts/_sidebar.html.erb:218
 msgid "AdFree Site"
 msgstr "Zero Propaganda"
 
@@ -41,6 +41,10 @@ msgstr ""
 #: app/views/authors/show.html.erb:61
 msgid "All Authors Page"
 msgstr "Todos os Autores"
+
+#: app/views/devise/registrations/new.html.erb:102
+msgid "Already have account? Login here"
+msgstr ""
 
 #: app/views/opinio/comments/_comment.html.erb:44
 msgid "Are you sure you want to delete this comment?"
@@ -66,7 +70,7 @@ msgstr ""
 msgid "By"
 msgstr "Por"
 
-#: app/views/devise/sessions/new.html.erb:39
+#: app/views/devise/sessions/new.html.erb:42
 msgid "Can't access your account?"
 msgstr ""
 
@@ -78,9 +82,16 @@ msgstr "Cancelar"
 msgid "Cancel Subscription"
 msgstr "Cancelar Inscrição"
 
+#: app/views/devise/passwords/edit.html.erb:7
+#: app/views/devise/passwords/edit.html.erb:34
 #: app/views/devise/registrations/edit.html.erb:198
 msgid "Change Password"
 msgstr "Mudar Senha"
+
+#: app/views/devise/passwords/edit.html.erb:22
+#, fuzzy
+msgid "Change my password"
+msgstr "Mudar Mimha Senha"
 
 #: app/views/shared/layouts/_footer.html.erb:47
 msgid "Click here to recover your password."
@@ -92,20 +103,24 @@ msgstr ""
 
 #: app/views/shared/_item.html.erb:99
 #: app/views/shared/_most_commented.html.erb:9
-#: app/views/shared/layouts/_sidebar.html.erb:157
+#: app/views/shared/layouts/_sidebar.html.erb:186
 msgid "Comment"
 msgid_plural "Comments"
 msgstr[0] "Comentario"
 msgstr[1] "Comentarios"
 
 #: app/views/devise/registrations/edit.html.erb:46
-#: app/views/devise/registrations/new.html.erb:45
+#: app/views/devise/registrations/new.html.erb:59
 msgid "Comment and Submit Articles"
 msgstr "Comentar e contribuir Artigos"
 
 #: app/views/authors/show.html.erb:25
 msgid "Comments"
 msgstr "Comentários"
+
+#: app/views/devise/passwords/edit.html.erb:16
+msgid "Confirm your new password"
+msgstr ""
 
 #: app/views/shared/layouts/_navbar.html.erb:40
 msgid "Countries"
@@ -132,11 +147,11 @@ msgid "Deleting..."
 msgstr "Apagando"
 
 #: app/views/shared/layouts/_navbar.html.erb:222
-#: app/views/shared/layouts/_sidebar.html.erb:93
+#: app/views/shared/layouts/_sidebar.html.erb:123
 msgid "Didn't receive confirmation instructions?"
 msgstr ""
 
-#: app/views/shared/layouts/_sidebar.html.erb:98
+#: app/views/shared/layouts/_sidebar.html.erb:128
 msgid "Didn't receive unlock?"
 msgstr ""
 
@@ -144,7 +159,7 @@ msgstr ""
 msgid "Download Current Key"
 msgstr ""
 
-#: app/views/items/show.html.erb:274
+#: app/views/items/show.html.erb:277
 msgid "Edit"
 msgstr "Editar"
 
@@ -154,6 +169,7 @@ msgstr "Editar Comentário"
 
 #: app/views/shared/layouts/_navbar.html.erb:105
 #: app/views/shared/layouts/_navbar.html.erb:164
+#: app/views/shared/layouts/_sidebar.html.erb:16
 msgid "Edit My Profile"
 msgstr "Editar Minha Conta"
 
@@ -161,8 +177,8 @@ msgstr "Editar Minha Conta"
 #: app/views/shared/layouts/_footer.html.erb:20
 #: app/views/shared/layouts/_navbar.html.erb:107
 #: app/views/shared/layouts/_navbar.html.erb:167
-#: app/views/shared/layouts/_sidebar.html.erb:61
-#: app/views/shared/layouts/_sidebar.html.erb:71
+#: app/views/shared/layouts/_sidebar.html.erb:91
+#: app/views/shared/layouts/_sidebar.html.erb:101
 msgid "Edit Profile"
 msgstr "Editar Conta"
 
@@ -174,7 +190,7 @@ msgstr "Editar Minha Conta"
 msgid "Edit your Profile information"
 msgstr "Editar minha Informação"
 
-#: app/views/devise/registrations/new.html.erb:15
+#: app/views/devise/registrations/new.html.erb:29
 msgid "Email"
 msgstr ""
 
@@ -182,7 +198,7 @@ msgstr ""
 msgid "Email Subscriptions"
 msgstr ""
 
-#: app/views/devise/registrations/new.html.erb:55
+#: app/views/devise/registrations/new.html.erb:69
 msgid "Example: Anonymous"
 msgstr ""
 
@@ -190,8 +206,13 @@ msgstr ""
 msgid "Feeds"
 msgstr ""
 
+#: app/views/devise/passwords/new.html.erb:37
+#, fuzzy
+msgid "Forgot Password"
+msgstr "Esqueceu Senha"
+
 #: app/views/shared/_login_modal.html.erb:52
-#: app/views/shared/layouts/_sidebar.html.erb:88
+#: app/views/shared/layouts/_sidebar.html.erb:118
 msgid "Forgot Password?"
 msgstr "Esquceu sua Senha"
 
@@ -204,16 +225,23 @@ msgstr "Esqueceu sua Senha?"
 msgid "GPG Key"
 msgstr ""
 
+#: app/views/devise/confirmations/new.html.erb:32
+#: app/views/devise/passwords/edit.html.erb:31
+#: app/views/devise/passwords/new.html.erb:34
+#: app/views/devise/unlocks/new.html.erb:30
+msgid "Home"
+msgstr ""
+
 #: app/views/authors/show.html.erb:40
 msgid "How To Contribute"
 msgstr "Como Contribuir"
 
-#: app/views/devise/registrations/new.html.erb:62
+#: app/views/devise/registrations/new.html.erb:76
 msgid "I agree to the"
 msgstr "Eu Aceito"
 
 #: app/views/devise/registrations/edit.html.erb:46
-#: app/views/devise/registrations/new.html.erb:45
+#: app/views/devise/registrations/new.html.erb:59
 msgid "I want to be an Editor"
 msgstr "Quero ser Editor"
 
@@ -222,12 +250,12 @@ msgid "It will be available for download on your profile page."
 msgstr ""
 
 #: app/views/devise/registrations/edit.html.erb:46
-#: app/views/devise/registrations/new.html.erb:45
+#: app/views/devise/registrations/new.html.erb:59
 msgid "Just be a member"
 msgstr "Somenter ser usuário"
 
 #: app/views/shared/layouts/_navbar.html.erb:58
-#: app/views/shared/layouts/_sidebar.html.erb:132
+#: app/views/shared/layouts/_sidebar.html.erb:162
 msgid "Languages"
 msgstr "Linguas"
 
@@ -239,7 +267,7 @@ msgstr "Ultimas Notícias"
 msgid "Leave blank if you do not want to change password"
 msgstr ""
 
-#: app/views/devise/registrations/new.html.erb:69
+#: app/views/devise/registrations/new.html.erb:83
 #: app/views/devise/sessions/new.html.erb:28
 msgid "Loading..."
 msgstr "Carregando..."
@@ -259,10 +287,10 @@ msgstr "Encerrar Sessão"
 msgid "Most Commented"
 msgstr "Mais Discutidos"
 
-#: app/views/shared/layouts/_sidebar.html.erb:165
+#: app/views/shared/layouts/_sidebar.html.erb:196
 #, fuzzy
-msgid "Most Read this month"
-msgstr "Mais Lidos"
+msgid "Most read this month"
+msgstr "Mais lidos este mês"
 
 #: app/views/shared/layouts/_footer.html.erb:15
 msgid "Multiple RSS Feeds"
@@ -270,14 +298,16 @@ msgstr ""
 
 #: app/views/shared/layouts/_navbar.html.erb:114
 #: app/views/shared/layouts/_navbar.html.erb:183
-#: app/views/shared/layouts/_sidebar.html.erb:64
-#: app/views/shared/layouts/_sidebar.html.erb:74
+#: app/views/shared/layouts/_sidebar.html.erb:19
+#: app/views/shared/layouts/_sidebar.html.erb:94
+#: app/views/shared/layouts/_sidebar.html.erb:104
 msgid "My Articles"
 msgstr "Meus Artigos"
 
 #: app/views/shared/layouts/_navbar.html.erb:112
 #: app/views/shared/layouts/_navbar.html.erb:181
-#: app/views/shared/layouts/_sidebar.html.erb:74
+#: app/views/shared/layouts/_sidebar.html.erb:21
+#: app/views/shared/layouts/_sidebar.html.erb:104
 msgid "My Articles Page"
 msgstr "Meus artigos"
 
@@ -289,7 +319,7 @@ msgid "My Subscriptions"
 msgstr ""
 
 #: app/views/devise/registrations/edit.html.erb:28
-#: app/views/devise/registrations/new.html.erb:53
+#: app/views/devise/registrations/new.html.erb:67
 msgid "Name"
 msgstr "Nome"
 
@@ -297,6 +327,7 @@ msgstr "Nome"
 msgid "New Articles Alert"
 msgstr "Alerta para novos artigos"
 
+#: app/views/devise/passwords/edit.html.erb:10
 #: app/views/devise/registrations/edit.html.erb:203
 msgid "New Password"
 msgstr "Nova Senha"
@@ -313,12 +344,12 @@ msgstr "Não Mostrado ao público"
 msgid "Only upload your Public Key."
 msgstr ""
 
-#: app/views/devise/sessions/new.html.erb:46
+#: app/views/devise/sessions/new.html.erb:49
 #: app/views/shared/_login_modal.html.erb:59
 msgid "Or login with your existing services"
 msgstr ""
 
-#: app/views/devise/registrations/new.html.erb:76
+#: app/views/devise/registrations/new.html.erb:90
 msgid "Or login with your existing services:"
 msgstr ""
 
@@ -330,14 +361,19 @@ msgstr "Artigos Originais"
 msgid "Page"
 msgstr "Pagina"
 
-#: app/views/devise/registrations/new.html.erb:28
+#: app/views/devise/registrations/new.html.erb:42
 #: app/views/shared/_login_modal.html.erb:18
 msgid "Password"
 msgstr "Senha"
 
-#: app/views/devise/registrations/new.html.erb:36
+#: app/views/devise/registrations/new.html.erb:50
 msgid "Password Confirmation"
 msgstr "Confirme a Senha"
+
+#: app/views/devise/passwords/new.html.erb:7
+#, fuzzy
+msgid "Password reset"
+msgstr "Resetar Senha"
 
 #: app/views/shared/layouts/_footer.html.erb:39
 msgid "Please Join us"
@@ -355,7 +391,7 @@ msgstr ""
 msgid "Please update your email address to enable subscriptions"
 msgstr ""
 
-#: app/views/shared/layouts/_sidebar.html.erb:175
+#: app/views/shared/layouts/_sidebar.html.erb:208
 msgid "Popular Searches"
 msgstr ""
 
@@ -375,7 +411,7 @@ msgstr ""
 msgid "Public Information"
 msgstr "Informação Pública"
 
-#: app/helpers/items_helper.rb:57
+#: app/helpers/items_helper.rb:65
 msgid "Published"
 msgstr ""
 
@@ -401,11 +437,11 @@ msgid "Read more breaking news"
 msgstr ""
 
 #: app/views/devise/registrations/edit.html.erb:43
-#: app/views/devise/registrations/new.html.erb:42
+#: app/views/devise/registrations/new.html.erb:56
 msgid "Reason for joining us?"
 msgstr "Razão para registrar"
 
-#: app/views/shared/layouts/_sidebar.html.erb:150
+#: app/views/shared/layouts/_sidebar.html.erb:179
 msgid "Recently Discussed"
 msgstr "Recentemente Discutidos"
 
@@ -413,14 +449,18 @@ msgstr "Recentemente Discutidos"
 msgid "Regions"
 msgstr "Regiões"
 
-#: app/views/devise/registrations/new.html.erb:69
+#: app/views/devise/registrations/new.html.erb:83
+#: app/views/shared/layouts/_sidebar.html.erb:31
 msgid "Register"
 msgstr "Registrat"
 
+#: app/views/devise/sessions/new.html.erb:39
 #: app/views/shared/layouts/_navbar.html.erb:214
+#: app/views/shared/layouts/_sidebar.html.erb:33
 msgid "Register a new Account"
 msgstr "Registrar uma conta nova"
 
+#: app/views/devise/sessions/new.html.erb:39
 #: app/views/shared/_login_modal.html.erb:43
 msgid "Register now"
 msgstr "Registre-se agora"
@@ -429,11 +469,11 @@ msgstr "Registre-se agora"
 msgid "Registration"
 msgstr "Registração"
 
-#: app/views/items/show.html.erb:216 app/views/shared/_item.html.erb:107
+#: app/views/items/show.html.erb:219 app/views/shared/_item.html.erb:107
 msgid "Related items"
 msgstr "Artigos Parecidos"
 
-#: app/views/shared/layouts/_sidebar.html.erb:34
+#: app/views/shared/layouts/_sidebar.html.erb:64
 msgid "Remove"
 msgstr "Remover"
 
@@ -441,23 +481,38 @@ msgstr "Remover"
 msgid "Reply"
 msgstr "Responder"
 
+#: app/views/devise/confirmations/new.html.erb:7
+#: app/views/devise/confirmations/new.html.erb:35
+msgid "Resend confirmation instructions"
+msgstr ""
+
+#: app/views/devise/unlocks/new.html.erb:7
+#: app/views/devise/unlocks/new.html.erb:18
+msgid "Resend unlock instructions"
+msgstr "Re-enviar instruções para desbloqueio"
+
+#: app/views/devise/passwords/new.html.erb:25
+#, fuzzy
+msgid "Reset my Password"
+msgstr "Criar nova Senha"
+
 #: app/views/devise/registrations/edit.html.erb:111
 msgid "Say something about yourself."
 msgstr ""
 
-#: app/views/shared/layouts/_sidebar.html.erb:20
+#: app/views/shared/layouts/_sidebar.html.erb:50
 msgid "Search"
 msgstr "Buscar"
 
-#: app/views/shared/layouts/_sidebar.html.erb:17
+#: app/views/shared/layouts/_sidebar.html.erb:47
 msgid "Search Articles"
 msgstr "Buscar Artigos"
 
-#: app/views/shared/layouts/_sidebar.html.erb:29
+#: app/views/shared/layouts/_sidebar.html.erb:59
 msgid "Search by Category"
 msgstr "Filtrar por categoria"
 
-#: app/views/shared/layouts/_sidebar.html.erb:42
+#: app/views/shared/layouts/_sidebar.html.erb:72
 msgid "Search by Language"
 msgstr "Filtrar por Idioma"
 
@@ -478,15 +533,19 @@ msgstr ""
 msgid "Select this if you wish to receive email notifications when a new Article is published."
 msgstr ""
 
+#: app/views/devise/confirmations/new.html.erb:22
+#: app/views/devise/passwords/edit.html.erb:22
+#: app/views/devise/passwords/new.html.erb:25
+#: app/views/devise/unlocks/new.html.erb:20
 #: app/views/shared/_login_modal.html.erb:34
 msgid "Sending..."
-msgstr "Enviando"
+msgstr "Enviando..."
 
 #: app/views/devise/registrations/edit.html.erb:114
 msgid "Shown on your public profile"
 msgstr "Mostrado no sua pagina"
 
-#: app/views/devise/registrations/new.html.erb:97
+#: app/views/devise/registrations/new.html.erb:116
 msgid "Sign Up"
 msgstr "Registrar"
 
@@ -495,20 +554,22 @@ msgstr "Registrar"
 #: app/views/shared/_login_modal.html.erb:4
 #: app/views/shared/_login_modal.html.erb:34
 #: app/views/shared/layouts/_navbar.html.erb:211
-#: app/views/shared/layouts/_sidebar.html.erb:81
+#: app/views/shared/layouts/_sidebar.html.erb:25
+#: app/views/shared/layouts/_sidebar.html.erb:27
+#: app/views/shared/layouts/_sidebar.html.erb:111
 msgid "Sign in"
 msgstr "Login"
 
 #: app/views/shared/layouts/_navbar.html.erb:156
 #: app/views/shared/layouts/_navbar.html.erb:207
-#: app/views/shared/layouts/_sidebar.html.erb:67
-#: app/views/shared/layouts/_sidebar.html.erb:77
+#: app/views/shared/layouts/_sidebar.html.erb:97
+#: app/views/shared/layouts/_sidebar.html.erb:107
 msgid "Sign out"
 msgstr "Encerrar Sessão"
 
-#: app/views/devise/registrations/new.html.erb:13
+#: app/views/devise/registrations/new.html.erb:27
 #: app/views/shared/layouts/_navbar.html.erb:214
-#: app/views/shared/layouts/_sidebar.html.erb:84
+#: app/views/shared/layouts/_sidebar.html.erb:114
 msgid "Sign up"
 msgstr "Registrar"
 
@@ -539,11 +600,15 @@ msgstr "Enviado Por"
 msgid "Tags"
 msgstr "Tópicos"
 
-#: app/views/devise/registrations/new.html.erb:63
+#: app/views/devise/registrations/new.html.erb:77
 msgid "Terms of Service and Privacy Policy"
 msgstr ""
 
-#: app/views/shared/layouts/_sidebar.html.erb:187
+#: app/views/devise/passwords/new.html.erb:20
+msgid "The token will only be valid for 8 hours."
+msgstr ""
+
+#: app/views/shared/layouts/_sidebar.html.erb:219
 msgid "This is an Advertisement Free Site"
 msgstr ""
 
@@ -556,9 +621,14 @@ msgid "Time Zone"
 msgstr ""
 
 #: app/views/devise/registrations/edit.html.erb:46
-#: app/views/devise/registrations/new.html.erb:45
+#: app/views/devise/registrations/new.html.erb:59
 msgid "To Comment"
 msgstr "Para Comentar"
+
+#: app/views/devise/unlocks/new.html.erb:33
+#, fuzzy
+msgid "Unlock Account"
+msgstr "Desbloquear Conta"
 
 #: app/views/devise/registrations/edit.html.erb:223
 msgid "Update"
@@ -568,13 +638,21 @@ msgstr "Atualizar"
 msgid "Upload Avatar"
 msgstr ""
 
-#: app/helpers/items_helper.rb:53
+#: app/helpers/items_helper.rb:60
 msgid "Viewed %{num} times"
 msgstr ""
 
 #: app/views/items/show.html.erb:147 app/views/shared/_item.html.erb:91
 msgid "Views"
 msgstr "Visto"
+
+#: app/views/devise/unlocks/new.html.erb:13
+msgid "We will resend you instructions to unlock your password."
+msgstr ""
+
+#: app/views/devise/passwords/new.html.erb:18
+msgid "We will send you instructions to reset your password."
+msgstr ""
 
 #: app/views/items/show.html.erb:90 app/views/shared/_item.html.erb:52
 msgid "Written by"
@@ -596,12 +674,12 @@ msgstr ""
 msgid "Your avatar image will be shown in the comments section."
 msgstr ""
 
-#: app/views/devise/registrations/new.html.erb:18
+#: app/views/devise/registrations/new.html.erb:32
 msgid "Your email is required"
 msgstr ""
 
 #: app/views/devise/registrations/edit.html.erb:23
-#: app/views/devise/registrations/new.html.erb:24
+#: app/views/devise/registrations/new.html.erb:38
 msgid "Your email will not be shown to the public."
 msgstr ""
 
@@ -613,7 +691,7 @@ msgstr ""
 msgid "Youtube Source"
 msgstr ""
 
-#: app/helpers/items_helper.rb:59
+#: app/helpers/items_helper.rb:67
 #: app/views/opinio/comments/_comment.html.erb:22
 #: app/views/shared/_item.html.erb:47
 msgid "ago"

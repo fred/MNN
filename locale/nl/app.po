@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2012-09-24 11:33+0700\n"
+"POT-Creation-Date: 2012-10-16 22:50+0700\n"
 "PO-Revision-Date: 2012-08-29 01:51+0700\n"
 "Last-Translator: Quoriana <quoriana@worldmathaba.net>\n"
 "Language-Team: Dutch <quoriana@worldmathaba.net>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: app/views/devise/registrations/edit.html.erb:47
-#: app/views/devise/registrations/new.html.erb:46
+#: app/views/devise/registrations/new.html.erb:60
 msgid "-- Please Choose"
 msgstr "Gelieve te kiezen"
 
@@ -30,7 +30,7 @@ msgstr "Account"
 msgid "Account Successfully Updated"
 msgstr "Account bijgewerkt"
 
-#: app/views/shared/layouts/_sidebar.html.erb:186
+#: app/views/shared/layouts/_sidebar.html.erb:218
 msgid "AdFree Site"
 msgstr "Advertentievrije site"
 
@@ -41,6 +41,10 @@ msgstr "Admin"
 #: app/views/authors/show.html.erb:61
 msgid "All Authors Page"
 msgstr "Pagina met alle auteurs"
+
+#: app/views/devise/registrations/new.html.erb:102
+msgid "Already have account? Login here"
+msgstr ""
 
 #: app/views/opinio/comments/_comment.html.erb:44
 msgid "Are you sure you want to delete this comment?"
@@ -66,7 +70,7 @@ msgstr "Auteurs"
 msgid "By"
 msgstr "Door"
 
-#: app/views/devise/sessions/new.html.erb:39
+#: app/views/devise/sessions/new.html.erb:42
 msgid "Can't access your account?"
 msgstr "Heeft u geen toegang tot uw account?"
 
@@ -78,8 +82,15 @@ msgstr "Annuleren"
 msgid "Cancel Subscription"
 msgstr "Maak uw abonnement ongedaan"
 
+#: app/views/devise/passwords/edit.html.erb:7
+#: app/views/devise/passwords/edit.html.erb:34
 #: app/views/devise/registrations/edit.html.erb:198
 msgid "Change Password"
+msgstr "Verander uw wachtwoord"
+
+#: app/views/devise/passwords/edit.html.erb:22
+#, fuzzy
+msgid "Change my password"
 msgstr "Verander uw wachtwoord"
 
 #: app/views/shared/layouts/_footer.html.erb:47
@@ -92,20 +103,24 @@ msgstr "Klik hier om een nieuw account te registreren"
 
 #: app/views/shared/_item.html.erb:99
 #: app/views/shared/_most_commented.html.erb:9
-#: app/views/shared/layouts/_sidebar.html.erb:157
+#: app/views/shared/layouts/_sidebar.html.erb:186
 msgid "Comment"
 msgid_plural "Comments"
 msgstr[0] "Reactie"
 msgstr[1] "Reacties"
 
 #: app/views/devise/registrations/edit.html.erb:46
-#: app/views/devise/registrations/new.html.erb:45
+#: app/views/devise/registrations/new.html.erb:59
 msgid "Comment and Submit Articles"
 msgstr "Om reacties en artikelen te plaatsen"
 
 #: app/views/authors/show.html.erb:25
 msgid "Comments"
 msgstr "Reacties"
+
+#: app/views/devise/passwords/edit.html.erb:16
+msgid "Confirm your new password"
+msgstr ""
 
 #: app/views/shared/layouts/_navbar.html.erb:40
 msgid "Countries"
@@ -132,11 +147,11 @@ msgid "Deleting..."
 msgstr "Verwijdert..."
 
 #: app/views/shared/layouts/_navbar.html.erb:222
-#: app/views/shared/layouts/_sidebar.html.erb:93
+#: app/views/shared/layouts/_sidebar.html.erb:123
 msgid "Didn't receive confirmation instructions?"
 msgstr "Heeft u geen bevestigingsinstructies ontvangen?"
 
-#: app/views/shared/layouts/_sidebar.html.erb:98
+#: app/views/shared/layouts/_sidebar.html.erb:128
 msgid "Didn't receive unlock?"
 msgstr "Heeft u geen ontgrendeling ontvangen?"
 
@@ -144,7 +159,7 @@ msgstr "Heeft u geen ontgrendeling ontvangen?"
 msgid "Download Current Key"
 msgstr "Download huidige sleutel"
 
-#: app/views/items/show.html.erb:274
+#: app/views/items/show.html.erb:277
 msgid "Edit"
 msgstr "Bewerk"
 
@@ -154,6 +169,7 @@ msgstr "Reactie Bewerken"
 
 #: app/views/shared/layouts/_navbar.html.erb:105
 #: app/views/shared/layouts/_navbar.html.erb:164
+#: app/views/shared/layouts/_sidebar.html.erb:16
 msgid "Edit My Profile"
 msgstr "Bewerk mijn profiel"
 
@@ -161,8 +177,8 @@ msgstr "Bewerk mijn profiel"
 #: app/views/shared/layouts/_footer.html.erb:20
 #: app/views/shared/layouts/_navbar.html.erb:107
 #: app/views/shared/layouts/_navbar.html.erb:167
-#: app/views/shared/layouts/_sidebar.html.erb:61
-#: app/views/shared/layouts/_sidebar.html.erb:71
+#: app/views/shared/layouts/_sidebar.html.erb:91
+#: app/views/shared/layouts/_sidebar.html.erb:101
 msgid "Edit Profile"
 msgstr "Bewerk uw profiel"
 
@@ -174,7 +190,7 @@ msgstr "Bewerk uw profiel"
 msgid "Edit your Profile information"
 msgstr "Bewerk uw profiel"
 
-#: app/views/devise/registrations/new.html.erb:15
+#: app/views/devise/registrations/new.html.erb:29
 msgid "Email"
 msgstr "E-mail"
 
@@ -182,7 +198,7 @@ msgstr "E-mail"
 msgid "Email Subscriptions"
 msgstr "E-mail-abonnementen"
 
-#: app/views/devise/registrations/new.html.erb:55
+#: app/views/devise/registrations/new.html.erb:69
 msgid "Example: Anonymous"
 msgstr "Voorbeeld: Anoniem"
 
@@ -190,8 +206,13 @@ msgstr "Voorbeeld: Anoniem"
 msgid "Feeds"
 msgstr "Feeds"
 
+#: app/views/devise/passwords/new.html.erb:37
+#, fuzzy
+msgid "Forgot Password"
+msgstr "Bent u uw wachtwoord vergeten?"
+
 #: app/views/shared/_login_modal.html.erb:52
-#: app/views/shared/layouts/_sidebar.html.erb:88
+#: app/views/shared/layouts/_sidebar.html.erb:118
 msgid "Forgot Password?"
 msgstr "Bent u uw wachtwoord vergeten?"
 
@@ -204,16 +225,23 @@ msgstr "Bent u uw wachtwoord vergeten?"
 msgid "GPG Key"
 msgstr "GPG-sleutel"
 
+#: app/views/devise/confirmations/new.html.erb:32
+#: app/views/devise/passwords/edit.html.erb:31
+#: app/views/devise/passwords/new.html.erb:34
+#: app/views/devise/unlocks/new.html.erb:30
+msgid "Home"
+msgstr ""
+
 #: app/views/authors/show.html.erb:40
 msgid "How To Contribute"
 msgstr "Hoe deel te nemen"
 
-#: app/views/devise/registrations/new.html.erb:62
+#: app/views/devise/registrations/new.html.erb:76
 msgid "I agree to the"
 msgstr "Ik ga akkoord met de"
 
 #: app/views/devise/registrations/edit.html.erb:46
-#: app/views/devise/registrations/new.html.erb:45
+#: app/views/devise/registrations/new.html.erb:59
 msgid "I want to be an Editor"
 msgstr "Ik zou graag editor willen worden"
 
@@ -222,12 +250,12 @@ msgid "It will be available for download on your profile page."
 msgstr "Het zal op uw profielpagina kunnen worden gedownload"
 
 #: app/views/devise/registrations/edit.html.erb:46
-#: app/views/devise/registrations/new.html.erb:45
+#: app/views/devise/registrations/new.html.erb:59
 msgid "Just be a member"
 msgstr "Enkel om lid te zijn"
 
 #: app/views/shared/layouts/_navbar.html.erb:58
-#: app/views/shared/layouts/_sidebar.html.erb:132
+#: app/views/shared/layouts/_sidebar.html.erb:162
 msgid "Languages"
 msgstr "Talen"
 
@@ -239,7 +267,7 @@ msgstr "Meest recente nieuws"
 msgid "Leave blank if you do not want to change password"
 msgstr "Laat dit veld leeg als u uw wachtwoord niet wilt wijzigen"
 
-#: app/views/devise/registrations/new.html.erb:69
+#: app/views/devise/registrations/new.html.erb:83
 #: app/views/devise/sessions/new.html.erb:28
 msgid "Loading..."
 msgstr "Laden..."
@@ -259,7 +287,7 @@ msgstr "Log uit"
 msgid "Most Commented"
 msgstr "Meeste reacties"
 
-#: app/views/shared/layouts/_sidebar.html.erb:165
+#: app/views/shared/layouts/_sidebar.html.erb:196
 msgid "Most read this month"
 msgstr "Meest gelezen deze maand"
 
@@ -269,14 +297,16 @@ msgstr "Verscheidene RSS Feeds"
 
 #: app/views/shared/layouts/_navbar.html.erb:114
 #: app/views/shared/layouts/_navbar.html.erb:183
-#: app/views/shared/layouts/_sidebar.html.erb:64
-#: app/views/shared/layouts/_sidebar.html.erb:74
+#: app/views/shared/layouts/_sidebar.html.erb:19
+#: app/views/shared/layouts/_sidebar.html.erb:94
+#: app/views/shared/layouts/_sidebar.html.erb:104
 msgid "My Articles"
 msgstr "Mijn artikelen"
 
 #: app/views/shared/layouts/_navbar.html.erb:112
 #: app/views/shared/layouts/_navbar.html.erb:181
-#: app/views/shared/layouts/_sidebar.html.erb:74
+#: app/views/shared/layouts/_sidebar.html.erb:21
+#: app/views/shared/layouts/_sidebar.html.erb:104
 msgid "My Articles Page"
 msgstr "Pagina met mijn artikelen"
 
@@ -288,7 +318,7 @@ msgid "My Subscriptions"
 msgstr "E-mail-abonnementen"
 
 #: app/views/devise/registrations/edit.html.erb:28
-#: app/views/devise/registrations/new.html.erb:53
+#: app/views/devise/registrations/new.html.erb:67
 msgid "Name"
 msgstr "Naam"
 
@@ -296,6 +326,7 @@ msgstr "Naam"
 msgid "New Articles Alert"
 msgstr "Abonneer"
 
+#: app/views/devise/passwords/edit.html.erb:10
 #: app/views/devise/registrations/edit.html.erb:203
 msgid "New Password"
 msgstr "Nieuw wachtwoord"
@@ -312,12 +343,12 @@ msgstr "Niet zichtbaar voor andere gebruikers"
 msgid "Only upload your Public Key."
 msgstr "Upload alleen uw publieke sleutel"
 
-#: app/views/devise/sessions/new.html.erb:46
+#: app/views/devise/sessions/new.html.erb:49
 #: app/views/shared/_login_modal.html.erb:59
 msgid "Or login with your existing services"
 msgstr "Of log in met uw bestaande gegevens"
 
-#: app/views/devise/registrations/new.html.erb:76
+#: app/views/devise/registrations/new.html.erb:90
 msgid "Or login with your existing services:"
 msgstr "Of log in met uw bestaande gegevens"
 
@@ -329,14 +360,19 @@ msgstr "Originele artikelen"
 msgid "Page"
 msgstr "Pagina"
 
-#: app/views/devise/registrations/new.html.erb:28
+#: app/views/devise/registrations/new.html.erb:42
 #: app/views/shared/_login_modal.html.erb:18
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: app/views/devise/registrations/new.html.erb:36
+#: app/views/devise/registrations/new.html.erb:50
 msgid "Password Confirmation"
 msgstr "Bevestiging van uw wachtwoord"
+
+#: app/views/devise/passwords/new.html.erb:7
+#, fuzzy
+msgid "Password reset"
+msgstr "Wachtwoord"
 
 #: app/views/shared/layouts/_footer.html.erb:39
 msgid "Please Join us"
@@ -354,7 +390,7 @@ msgstr "Gelieve uw e-mailadres bij te werken"
 msgid "Please update your email address to enable subscriptions"
 msgstr "Gelieve uw e-mailadres bij te werken om de meldingen te activeren"
 
-#: app/views/shared/layouts/_sidebar.html.erb:175
+#: app/views/shared/layouts/_sidebar.html.erb:208
 msgid "Popular Searches"
 msgstr ""
 
@@ -374,7 +410,7 @@ msgstr "Profielfoto"
 msgid "Public Information"
 msgstr "Publieke informatie"
 
-#: app/helpers/items_helper.rb:57
+#: app/helpers/items_helper.rb:65
 msgid "Published"
 msgstr "Gepubliceerd"
 
@@ -400,11 +436,11 @@ msgid "Read more breaking news"
 msgstr "Lees meer recent news"
 
 #: app/views/devise/registrations/edit.html.erb:43
-#: app/views/devise/registrations/new.html.erb:42
+#: app/views/devise/registrations/new.html.erb:56
 msgid "Reason for joining us?"
 msgstr "Reden waarom u zich aanmeldt?"
 
-#: app/views/shared/layouts/_sidebar.html.erb:150
+#: app/views/shared/layouts/_sidebar.html.erb:179
 msgid "Recently Discussed"
 msgstr "Onlangs bediscussieerd"
 
@@ -412,14 +448,18 @@ msgstr "Onlangs bediscussieerd"
 msgid "Regions"
 msgstr "Regio's"
 
-#: app/views/devise/registrations/new.html.erb:69
+#: app/views/devise/registrations/new.html.erb:83
+#: app/views/shared/layouts/_sidebar.html.erb:31
 msgid "Register"
 msgstr "Aanmelden"
 
+#: app/views/devise/sessions/new.html.erb:39
 #: app/views/shared/layouts/_navbar.html.erb:214
+#: app/views/shared/layouts/_sidebar.html.erb:33
 msgid "Register a new Account"
 msgstr "Registreer een nieuw account"
 
+#: app/views/devise/sessions/new.html.erb:39
 #: app/views/shared/_login_modal.html.erb:43
 msgid "Register now"
 msgstr "Registreer u nu"
@@ -428,11 +468,11 @@ msgstr "Registreer u nu"
 msgid "Registration"
 msgstr "Registratie"
 
-#: app/views/items/show.html.erb:216 app/views/shared/_item.html.erb:107
+#: app/views/items/show.html.erb:219 app/views/shared/_item.html.erb:107
 msgid "Related items"
 msgstr "Verwante artikelen"
 
-#: app/views/shared/layouts/_sidebar.html.erb:34
+#: app/views/shared/layouts/_sidebar.html.erb:64
 msgid "Remove"
 msgstr "Verwijder"
 
@@ -440,23 +480,39 @@ msgstr "Verwijder"
 msgid "Reply"
 msgstr "Beantwoord"
 
+#: app/views/devise/confirmations/new.html.erb:7
+#: app/views/devise/confirmations/new.html.erb:35
+#, fuzzy
+msgid "Resend confirmation instructions"
+msgstr "Heeft u geen bevestigingsinstructies ontvangen?"
+
+#: app/views/devise/unlocks/new.html.erb:7
+#: app/views/devise/unlocks/new.html.erb:18
+msgid "Resend unlock instructions"
+msgstr ""
+
+#: app/views/devise/passwords/new.html.erb:25
+#, fuzzy
+msgid "Reset my Password"
+msgstr "Maak een wachtwoord aan"
+
 #: app/views/devise/registrations/edit.html.erb:111
 msgid "Say something about yourself."
 msgstr "Vertel iets over uzelf"
 
-#: app/views/shared/layouts/_sidebar.html.erb:20
+#: app/views/shared/layouts/_sidebar.html.erb:50
 msgid "Search"
 msgstr "Zoek"
 
-#: app/views/shared/layouts/_sidebar.html.erb:17
+#: app/views/shared/layouts/_sidebar.html.erb:47
 msgid "Search Articles"
 msgstr "Zoek naar artikelen"
 
-#: app/views/shared/layouts/_sidebar.html.erb:29
+#: app/views/shared/layouts/_sidebar.html.erb:59
 msgid "Search by Category"
 msgstr "Zoek op categorie"
 
-#: app/views/shared/layouts/_sidebar.html.erb:42
+#: app/views/shared/layouts/_sidebar.html.erb:72
 msgid "Search by Language"
 msgstr "Zoek op taal"
 
@@ -477,6 +533,10 @@ msgstr "Kies dit indien u <b>geen</b> e-mail-meldingen meer wenst te ontvangen"
 msgid "Select this if you wish to receive email notifications when a new Article is published."
 msgstr "Kies dit indien u een e-mail-melding wenst te ontvangen wanneer er een nieuw artikel is gepubliceerd"
 
+#: app/views/devise/confirmations/new.html.erb:22
+#: app/views/devise/passwords/edit.html.erb:22
+#: app/views/devise/passwords/new.html.erb:25
+#: app/views/devise/unlocks/new.html.erb:20
 #: app/views/shared/_login_modal.html.erb:34
 msgid "Sending..."
 msgstr "Verzenden..."
@@ -485,7 +545,7 @@ msgstr "Verzenden..."
 msgid "Shown on your public profile"
 msgstr "Wordt getoond in uw publieke profiel"
 
-#: app/views/devise/registrations/new.html.erb:97
+#: app/views/devise/registrations/new.html.erb:116
 msgid "Sign Up"
 msgstr "Registreer"
 
@@ -494,20 +554,22 @@ msgstr "Registreer"
 #: app/views/shared/_login_modal.html.erb:4
 #: app/views/shared/_login_modal.html.erb:34
 #: app/views/shared/layouts/_navbar.html.erb:211
-#: app/views/shared/layouts/_sidebar.html.erb:81
+#: app/views/shared/layouts/_sidebar.html.erb:25
+#: app/views/shared/layouts/_sidebar.html.erb:27
+#: app/views/shared/layouts/_sidebar.html.erb:111
 msgid "Sign in"
 msgstr "Inloggen"
 
 #: app/views/shared/layouts/_navbar.html.erb:156
 #: app/views/shared/layouts/_navbar.html.erb:207
-#: app/views/shared/layouts/_sidebar.html.erb:67
-#: app/views/shared/layouts/_sidebar.html.erb:77
+#: app/views/shared/layouts/_sidebar.html.erb:97
+#: app/views/shared/layouts/_sidebar.html.erb:107
 msgid "Sign out"
 msgstr "Uitloggen"
 
-#: app/views/devise/registrations/new.html.erb:13
+#: app/views/devise/registrations/new.html.erb:27
 #: app/views/shared/layouts/_navbar.html.erb:214
-#: app/views/shared/layouts/_sidebar.html.erb:84
+#: app/views/shared/layouts/_sidebar.html.erb:114
 msgid "Sign up"
 msgstr "Aanmelden"
 
@@ -538,11 +600,15 @@ msgstr "Geplaatst door"
 msgid "Tags"
 msgstr "Tags"
 
-#: app/views/devise/registrations/new.html.erb:63
+#: app/views/devise/registrations/new.html.erb:77
 msgid "Terms of Service and Privacy Policy"
 msgstr "algemene voorwaarden en het privacy-beleid"
 
-#: app/views/shared/layouts/_sidebar.html.erb:187
+#: app/views/devise/passwords/new.html.erb:20
+msgid "The token will only be valid for 8 hours."
+msgstr ""
+
+#: app/views/shared/layouts/_sidebar.html.erb:219
 msgid "This is an Advertisement Free Site"
 msgstr "Dit is een advertentievrije site"
 
@@ -555,9 +621,14 @@ msgid "Time Zone"
 msgstr "Tijdzone"
 
 #: app/views/devise/registrations/edit.html.erb:46
-#: app/views/devise/registrations/new.html.erb:45
+#: app/views/devise/registrations/new.html.erb:59
 msgid "To Comment"
 msgstr "Om reacties te plaatsen"
+
+#: app/views/devise/unlocks/new.html.erb:33
+#, fuzzy
+msgid "Unlock Account"
+msgstr "Account"
 
 #: app/views/devise/registrations/edit.html.erb:223
 msgid "Update"
@@ -567,13 +638,21 @@ msgstr "Bijwerken"
 msgid "Upload Avatar"
 msgstr "Upload avatar"
 
-#: app/helpers/items_helper.rb:53
+#: app/helpers/items_helper.rb:60
 msgid "Viewed %{num} times"
 msgstr "%{num} Keer Bekeken"
 
 #: app/views/items/show.html.erb:147 app/views/shared/_item.html.erb:91
 msgid "Views"
 msgstr "keer bekeken"
+
+#: app/views/devise/unlocks/new.html.erb:13
+msgid "We will resend you instructions to unlock your password."
+msgstr ""
+
+#: app/views/devise/passwords/new.html.erb:18
+msgid "We will send you instructions to reset your password."
+msgstr ""
 
 #: app/views/items/show.html.erb:90 app/views/shared/_item.html.erb:52
 msgid "Written by"
@@ -595,12 +674,12 @@ msgstr "Uw publieke sleutel"
 msgid "Your avatar image will be shown in the comments section."
 msgstr "Uw avatarafbeelding zal worden getoond als u een reactie plaatst"
 
-#: app/views/devise/registrations/new.html.erb:18
+#: app/views/devise/registrations/new.html.erb:32
 msgid "Your email is required"
 msgstr "Uw e-mailadres is vereist"
 
 #: app/views/devise/registrations/edit.html.erb:23
-#: app/views/devise/registrations/new.html.erb:24
+#: app/views/devise/registrations/new.html.erb:38
 msgid "Your email will not be shown to the public."
 msgstr "Uw e-mailadres zal niet worden gepubliceerd"
 
@@ -612,7 +691,7 @@ msgstr "Uw profielnaam, bijv. Anoniem"
 msgid "Youtube Source"
 msgstr "YouTube-bron"
 
-#: app/helpers/items_helper.rb:59
+#: app/helpers/items_helper.rb:67
 #: app/views/opinio/comments/_comment.html.erb:22
 #: app/views/shared/_item.html.erb:47
 msgid "ago"

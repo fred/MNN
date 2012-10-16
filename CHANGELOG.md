@@ -1,3 +1,14 @@
+## October 12-16, 2012
+
+  - Improved Registration and Login forms
+  - Updated Gems.
+  - Clean up old Javascripts
+  - Added Author name to meta title and description
+  - Better News Reader
+  - Run the scheduler thread in the Sidekiq worker, not Unicorn
+  - removed Twitter JS, too big
+  - Clean up CSS and mobile styles for iOS
+
 ## October 10, 2012
 
   - Process Feeds hourly on a Celluloid Thread

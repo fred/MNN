@@ -3,21 +3,21 @@
     <%= form_for(resource, as: resource_name, url: unlock_path(resource_name),
             html: { method: :post, class: form_class }) do |f|
     %>
-      <fieldset class="withBorder">
-        <legend>Resend unlock instructions</legend>
+      <fieldset class="well">
+        <h4 class="centered with-bottom-margin"><%= _("Resend unlock instructions") %></h4>
         <div class="control-group">
           <%= f.label :email, class: 'control-label' %>
           <div class="controls">
             <%= f.text_field :email, required: true, autofocus: true, type: "email", class: "input-large" %>
             <span class="help-block">
-              We will resend you instructions to unlock your password.
+              <%= _("We will resend you instructions to unlock your password.") %>
             </span>
           </div>
         </div>
         <div class="form-actions">
-          <%= f.submit "Resend unlock instructions",
+          <%= f.submit _("Resend unlock instructions"),
                 class: "btn btn-primary",
-                data: {disable_with: 'Sending...'}
+                data: {disable_with: _('Sending...')}
           %>
         </div>
       </fieldset>
@@ -27,8 +27,8 @@
 
 <% content_for :breadcrumb do %>
   <li>
-    <%= link_to "Home", root_path, title: "Home", rel: 'home' %>
+    <%= link_to _("Home"), root_path, title: _("Home"), rel: 'home' %>
     <span class="divider">/</span>
   </li>
-  <li class="active">Unlock Account</li>
+  <li class="active"><% _("Unlock Account") %></li>
 <% end %>

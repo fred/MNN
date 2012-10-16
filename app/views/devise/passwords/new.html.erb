@@ -3,8 +3,8 @@
     <%= form_for(resource, as: resource_name, url: password_path(resource_name),
           html: { method: :post, class: form_class }) do |f|
     %>
-      <fieldset class="withBorder">
-        <legend>Password reset</legend>
+      <fieldset class="well">
+        <h4 class="centered with-bottom-margin"><%= _("Password reset") %></h4>
         <div class="control-group">
           <%= f.label :email, 'Your Email', class: 'control-label' %>
           <div class="controls">
@@ -15,14 +15,14 @@
                   class: "input-large"
             %>
             <span class="help-block">
-              We will send you instructions to reset your password.
+              <%= _("We will send you instructions to reset your password.") %>
               <br />
-              The token will only be valid for 8 hours.
+              <%= _("The token will only be valid for 8 hours.") %>
             </span>
           </div>
         </div>
         <div class="form-actions">
-          <%= f.submit "Reset my Password", class: "btn btn-primary", data: {disable_with: 'Sending...'} %>
+          <%= f.submit _("Reset my Password"), class: "btn btn-primary", data: {disable_with: _('Sending...')} %>
         </div>
       </fieldset>
     <% end %> <!-- End Form -->
@@ -31,8 +31,8 @@
 
 <% content_for :breadcrumb do %>
   <li>
-    <%= link_to "Home", root_path, title: "Home", rel: 'home' %>
+    <%= link_to _("Home"), root_path, title: _("Home"), rel: 'home' %>
     <span class="divider">/</span>
   </li>
-  <li class="active">Forgot Password</li>
+  <li class="active"><%= _("Forgot Password") %></li>
 <% end %>

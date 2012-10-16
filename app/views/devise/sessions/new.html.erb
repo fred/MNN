@@ -6,8 +6,8 @@
           html: { class: form_class }
         ) do |f| 
     %>
-      <fieldset class="withBorder">
-        <legend><%= _("Sign in") %></legend>
+      <fieldset class="well">
+        <h4 class="centered with-bottom-margin"><%= _("Sign in") %></h4>
 
         <div class="control-group">
           <%= f.label :email, class: 'control-label' %>
@@ -35,6 +35,9 @@
         </div>
 
         <div class='control-group'>
+          <div class="controls">
+            New here? <%= link_to _("Register now"), new_registration_url(:user, protocol: http_protocol), title: _("Register a new Account") %>
+          </div>
           <div class="controls">
             <%= link_to _("Can't access your account?"), new_password_url(resource_name, protocol: "https") %>
           </div>

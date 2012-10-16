@@ -3,8 +3,8 @@
    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name),
         html: { method: :post, class: form_class }) do |f|
     %>
-      <fieldset class="withBorder">
-        <legend>Resend confirmation instructions</legend>
+      <fieldset class="well">
+        <h4 class="centered with-bottom-margin"><%= _("Resend confirmation instructions") %></h4>
         <div class="control-group">
           <%= f.label :email %>
           <div class="controls">
@@ -19,7 +19,7 @@
         <div class="form-actions">
           <%= f.submit "Resend confirmation instructions",
                 class: "btn btn-primary",
-                data: {disable_with: 'Sending...'}
+                data: {disable_with: _('Sending...')}
           %>
         </div>
       </fieldset>
@@ -29,8 +29,8 @@
 
 <% content_for :breadcrumb do %>
   <li>
-    <%= link_to "Home", root_path, title: "Home", rel: 'home' %>
+    <%= link_to _("Home"), root_path, title: _("Home"), rel: 'home' %>
     <span class="divider">/</span>
   </li>
-  <li class="active">Resend confirmation instructions</li>
+  <li class="active"><%= _("Resend confirmation instructions") %></li>
 <% end %>

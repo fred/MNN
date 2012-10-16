@@ -3,23 +3,23 @@
     <%= form_for(resource, as: resource_name, url: password_path(resource_name),
           html: { method: :put, class: form_class }) do |f|
     %>
-      <fieldset class="withBorder">
-        <legend>Change Password</legend>
+      <fieldset class="well">
+        <h4 class="centered with-bottom-margin"><%= _("Change Password") %></h4>
         <%= f.hidden_field :reset_password_token %>
         <div class="control-group">
-          <%= f.label :password, "New Password", class: 'control-label' %>
+          <%= f.label :password, _("New Password"), class: 'control-label' %>
           <div class="controls">
             <%= f.password_field :password, required: true, class: "input-large"  %>
           </div>
         </div>
         <div class="control-group">
-          <%= f.label :password_confirmation, "Confirm your new password", class: 'control-label' %>
+          <%= f.label :password_confirmation, _("Confirm your new password"), class: 'control-label' %>
           <div class="controls">
             <%= f.password_field :password_confirmation, required: true, class: "input-large"  %>
           </div>
         </div>
         <div class="form-actions">
-          <%= f.submit "Change my password", class: "btn btn-primary", data: {disable_with: 'Sending...'} %>
+          <%= f.submit _("Change my password"), class: "btn btn-primary", data: {disable_with: _('Sending...')} %>
         </div>
       </fieldset>
     <% end %> <!-- End Form -->
@@ -28,8 +28,8 @@
 
 <% content_for :breadcrumb do %>
   <li>
-    <%= link_to "Home", root_path, title: "Home", rel: 'home' %>
+    <%= link_to _("Home"), root_path, title: _("Home"), rel: 'home' %>
     <span class="divider">/</span>
   </li>
-  <li class="active">Change Password</li>
+  <li class="active"><%= _("Change Password") %></li>
 <% end %>
