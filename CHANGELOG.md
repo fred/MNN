@@ -1,5 +1,6 @@
 ## October 12-16, 2012
 
+  - Improved iphone design
   - Improved Registration and Login forms
   - Updated Gems.
   - Clean up old Javascripts

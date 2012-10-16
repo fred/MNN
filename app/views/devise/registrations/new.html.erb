@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="span8">
+  <div class="<%= mobile_css('span5', 'span8')%>">
     <div class="well why-register">
       <h4 class="centered"> Why Register? </h4>
       <ul>
@@ -13,7 +13,7 @@
 </div>
 
 <div class="row">
-  <div class="span8">
+  <div class="<%= mobile_css('span5', 'span8')%>">
     <%= form_for(resource,
           as: resource_name,
           url: registration_path(resource_name),
@@ -97,8 +97,11 @@
           </div>
         </div>
 
+        <div class="clearfix"></div>
+
         <div class="control-group">
           <div class="controls">
+            <br />
             <%= login_link _('Already have account? Login here') %>
           </div>
         </div>

@@ -17,3 +17,4 @@
 //= require tooltip
 //= require jquery.complexify
 //= require registration
+//= require touch-devices

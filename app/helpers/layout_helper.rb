@@ -174,6 +174,14 @@ module LayoutHelper
     </noscript>"
   end
 
+  def mobile_css(mobile_class='span6',desktop_class='span8')
+    if is_mobile?
+      mobile_class
+    else
+      desktop_class
+    end
+  end
+
   def form_class(with_class="")
     if is_mobile?
       str = "form-vertical"
