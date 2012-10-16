@@ -19,7 +19,7 @@ class FacebookShare < Share
     @page_graph = Koala::Facebook::API.new(@page_token)
     url = Rails.application.routes.url_helpers.item_path(item, only_path: false, host: Settings.host)
     if @page_graph
-      res = @page_graph.put_wall_post(item.abstract, {name: item.title, link: url})
+      res = @page_graph.put_wall_post(item.title, {name: item.title, link: url})
     end
     if res && res["id"]
       self.status = res["id"]

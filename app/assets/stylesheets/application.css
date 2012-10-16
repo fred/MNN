@@ -12,7 +12,6 @@
  *= require font_control
  *= require breadcrumb
  *= require grid
- *= require docs
  *= require pagination
  *= require fancybox/fancybox
  *= require error

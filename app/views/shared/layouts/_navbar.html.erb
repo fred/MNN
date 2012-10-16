@@ -215,7 +215,7 @@
               </li>
             <% end -%>
             <%- if Devise.mappings[:user].recoverable? && controller_name != 'passwords' %>
-              <li><%= link_to _("Forgot your password?"), new_password_url(:user, protocol: http_protocol) %></li>
+              <li><%= link_to _("Forgot password?"), new_password_url(:user, protocol: http_protocol) %></li>
             <% end -%>
             <%- if Devise.mappings[:user].confirmable? && controller_name != 'confirmations' %>
               <li>

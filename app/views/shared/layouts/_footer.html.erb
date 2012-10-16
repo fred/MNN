@@ -42,7 +42,7 @@
       <% end %>
       <%- if Devise.mappings[:user].recoverable? && controller_name != 'passwords' %>
         <li>
-          <%= link_to _("Forgot your password?"),
+          <%= link_to _("Forgot password?"),
                 new_password_url(:user, protocol: http_protocol), 
                 title: _("Click here to recover your password.")
           %>

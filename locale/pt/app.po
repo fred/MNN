@@ -197,7 +197,7 @@ msgstr "Esquceu sua Senha"
 
 #: app/views/shared/layouts/_footer.html.erb:45
 #: app/views/shared/layouts/_navbar.html.erb:218
-msgid "Forgot your password?"
+msgid "Forgot password?"
 msgstr "Esqueceu sua Senha?"
 
 #: app/views/devise/registrations/edit.html.erb:147

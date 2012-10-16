@@ -8,6 +8,36 @@
     <%= facebook_medium %>
   </div>
 
+  <% if is_handheld? %>
+    <div class="well social hidden-desktop visible-tablet visible-phone">
+      <% if current_user %>
+        <%= link_to t("Edit Profile"),
+              edit_user_registration_url(protocol: http_protocol),
+              title: _("Edit My Profile"),
+              class: "btn"
+        %>
+        <%= link_to _("My Articles"),
+              author_path(current_user),
+              title: _("My Articles Page"),
+              class: 'btn'
+        %>
+      <% else %>
+        <%= link_to _('Sign in'),
+              new_session_url(:user, protocol: http_protocol),
+              title: _('Sign in'),
+              class: 'btn'
+        %>
+        <%- if Devise.mappings[:user].registerable?  %>
+          <%= link_to _("Register"),
+                new_registration_url(:user, protocol: http_protocol),
+                title: _("Register a new Account"),
+                class: 'btn'
+          %>
+        <% end -%>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="well">
     <%= form_tag(search_path, method: :get, class: 'search') do |f| %>
       <%= text_field_tag :q, 

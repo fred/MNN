@@ -7,11 +7,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require css3-mediaqueries
 //= require easyTooltip
 //= require fancybox/fancybox
 //= require modernizr
-//= require bootstrap
 //= require tinymce-jquery
 //= require twitter/widgets
 //= require jquery/jquery.validate.js

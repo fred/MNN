@@ -200,7 +200,7 @@ module LayoutHelper
   end
 
   def login_link(str)
-    if is_mobile?
+    if is_handheld?
       link_to str, new_session_url(:user, protocol: 'https'), title: "Login"
     else
       "<a data-toggle='modal' data-target='#modal-login' href='#' >#{str}</a>".html_safe
