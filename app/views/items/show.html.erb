@@ -96,9 +96,8 @@
           <%= _("by User") %>
         <% end %>
 
-        <span itemprop="keywords">
+        <div itemprop="keywords">
           <ul class="tags">
-            <i class="icon-tags"></i>
             <% @item.general_tags.each do |tag| %>
               <li>
                 <span itemprop='keywords'>
@@ -139,7 +138,7 @@
               </li>
             <% end %>
           </ul>
-        </span>
+        </div>
 
         <i class="icon-play-circle"></i>
         <div class="page_views">
