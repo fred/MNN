@@ -8,7 +8,7 @@
   <li id="comment_<%= comment.id %>">
     <span class="comment_owner">
       <% if comment.owner %>
-        <%= image_tag(comment.owner.main_image) %>
+        <%= image_tag(comment.owner.main_image, alt: comment.owner.public_display_name) %>
         <i><%= comment.owner.title %></i> said:
       <% end %>
     </span>
@@ -50,6 +50,7 @@
         <%= link_to _('Edit Comment'),
             edit_comment_path(comment),
             class: "btn btn-mini btn-warning",
+            title: "Edit your comment",
             data: {
               disable_with: 'Loading...'
             }

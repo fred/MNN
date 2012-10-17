@@ -194,7 +194,7 @@
     <% cache_expiring("sidebar_popular", 1800) do %>
       <div class="sidebar_secions">
         <h4><%= _("Most read this month") %></h4>
-        <% Item.localized.popular(5,30).each do |item| %>
+        <% Item.localized.popular(5).each do |item| %>
           <div class="sidebar-item">
             <%= item_mini(item).html_safe %>
             <span class="horizontal-divider"></span>

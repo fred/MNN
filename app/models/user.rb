@@ -181,7 +181,7 @@ class User < ActiveRecord::Base
     published.
     not_draft.
     includes(:attachments, :user, :tags, :item_stat).
-    order("published_at DESC")
+    order("original DESC, published_at DESC")
   end
 
   def twitter_username
