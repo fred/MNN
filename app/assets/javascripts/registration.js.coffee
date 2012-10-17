@@ -11,7 +11,7 @@ jQuery ->
           $(value.element).parent().parent().addClass('error')
           $(value.element).attr('rel', 'tooltip')
           $(value.element).attr('title', value.message)
-        $("[rel='tooltip']").tooltip
+        $("input[rel='tooltip']").tooltip
           placement: 'right',
           trigger: 'hover'
 
@@ -26,7 +26,7 @@ jQuery ->
           $(value.element).parent().parent().addClass('error')
           $(value.element).attr('rel', 'tooltip')
           $(value.element).attr('title', value.message)
-        $("[rel='tooltip']").tooltip
+        $("input[rel='tooltip']").tooltip
           placement: 'right',
           trigger: 'hover'
 
@@ -40,7 +40,7 @@ jQuery ->
           $(value.element).parent().parent().addClass('error')
           $(value.element).attr('rel', 'tooltip')
           $(value.element).attr('title', value.message)
-        $("[rel='tooltip']").tooltip
+        $("input[rel='tooltip']").tooltip
           placement: 'right',
           trigger: 'hover'
 

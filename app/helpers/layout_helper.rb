@@ -109,8 +109,7 @@ module LayoutHelper
     link_to(
       image_tag("icons/social/new/rss_32b.png", width: 32, height: 32, alt: 'rss'),
       feed_path,
-      title: "Multiple RSS Feeds",
-      rel: "rss"
+      title: "Multiple RSS Feeds"
     )
   end
 
@@ -118,8 +117,7 @@ module LayoutHelper
     link_to(
       image_tag("icons/social/new/facebook_32b.png", width: 32, height: 32, alt: 'Facebook'),
       facebook_link,
-      title: "Facebook",
-      rel: "facebook"
+      title: "Facebook"
     )
   end
 
@@ -127,8 +125,7 @@ module LayoutHelper
     link_to(
       image_tag("icons/social/new/twitter_32.png", width: 32, height: 32, alt: 'Twitter'),
       twitter_link,
-      title: "Twitter",
-      rel: "twitter"
+      title: "Twitter"
     )
   end
 
@@ -146,17 +143,16 @@ module LayoutHelper
       image_tag("icons/social/new/gplus_32b.png", width: 32, height: 32, alt: 'Google+', class: "google-plus"),
       google_plus_link,
       title: "Google+",
-      rel: "me publisher",
+      rel: "me",
       class: "google-plus"
     )
   end
   
   def flattr_large
     link_to(
-      image_tag("flattr-badge-large.png", width: 93, height: 20),
+      image_tag("flattr-badge-large.png", width: 93, height: 20, alt: "Flattr",),
       flattr_link,
       target: "blank",
-      alt: "Flattr This Site",
       title: "Flattr This Site",
       class: 'flattr-large'
     )
@@ -164,10 +160,9 @@ module LayoutHelper
   
   def flattr_medium
     link_to(
-      image_tag("flattr-badge-medium.png", width: 32, height: 32),
+      image_tag("flattr-badge-medium.png", width: 32, height: 32, alt: "Flattr"),
       flattr_link,
       target: "blank",
-      alt: "Flattr This Site",
       title: "Flattr This Site",
       class: 'flattr-medium'
     )

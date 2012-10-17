@@ -107,7 +107,7 @@
             <h4><%= _("Related items") %></h4>
             <ul class="related">
               <% @related.results.each do |item| %>
-                <li><%= link_to item.title, item, title: item_title(item), id: "tooltip", rel: 'related' %></li>
+                <li><%= link_to item.title, item, title: item_title(item), class: 'easy-tooltip', rel: 'related' %></li>
               <% end %>
             </ul>
           </section>

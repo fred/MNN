@@ -61,8 +61,7 @@
                     @item.main_image.image.full.url,
                     target: "blank",
                     class: "image-popup",
-                    title: alt_for_image(@item.main_image),
-                    rel: 'image'
+                    title: alt_for_image(@item.main_image)
               %>
             </span>
             <% if @item.main_image.title %>
@@ -236,7 +235,7 @@
             <ul class="related">
               <% @related.results.each do |item| %>
                 <li>
-                  <%= link_to item.title, item, title: item_title(item), id: "tooltip", rel: 'related' %>
+                  <%= link_to item.title, item, title: item_title(item), class: 'easy-tooltip' %>
                 </li>
               <% end %>
             </ul>
@@ -263,8 +262,7 @@
           @item.category,
           @item.category_title,
           @item.category,
-          title: @item.category_title,
-          rel: 'category'
+          title: @item.category_title
         )
     %>
     <span class="divider">/</span>

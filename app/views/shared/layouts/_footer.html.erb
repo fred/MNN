@@ -1,20 +1,26 @@
 <footer>
-  <ul class="footer_menu">
+  
+  <% cache_expiring("footer/top", 1800) do %>
+    <ul class="footer_menu footer_categories">
+      <% @site_categories.each do |category| %>
+        <li>
+          <%= link_to category.title, category, title:  category.description %>
+        </li>
+      <% end %>
+    </ul>
 
-    <% cache_expiring("footer/top", 1800) do %>
-      <span class="footer_categories">
-        <% @site_categories.each do |category| %>
-          <li>
-            <%= link_to category.title, category, title:  category.description %>
-          </li>
-        <% end %>
-      </span>
+    <ul class="footer_menu">
       <% @site_pages.each do |page| %>
         <li><%= link_to page.title, page, title: page.title %></li>
       <% end %>
-      <li><%= link_to _("Feeds"), feed_path, title: _("Multiple RSS Feeds") %></li>
-    <% end %>
 
+      <li>
+        <%= link_to _("Feeds"), feed_path, title: _("Multiple RSS Feeds") %>
+      </li>
+    </ul>
+  <% end %>
+
+  <ul class="footer_menu">
     <% if current_user or current_admin_user %>
       <li>
         <%= link_to _("Edit Profile"),
@@ -50,6 +56,7 @@
       <% end %>
     <% end %>
   </ul>
+
   <p class="footer_logo">
     World Mathaba
   </p>

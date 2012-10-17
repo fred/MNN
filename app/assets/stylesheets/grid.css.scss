@@ -1,12 +1,3 @@
-/*!
- * Bootstrap Responsive
- *
- * Copyright 2012 Twitter, Inc
- * Licensed under the Apache License v2.0
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- */
-
 .clearfix {
   *zoom: 1;
 }
@@ -59,6 +50,7 @@
 .hidden-desktop {
   display: none !important;
 }
+
 
 @media (max-width: 320px) {
   .hidden-old-phone {
@@ -135,23 +127,24 @@
     white-space: nowrap;
     overflow: hidden; 
   }
-  article section {
-    font-size: 13px;
-  }
-  article section span#item_body img {
-    max-width: 460px;
-    max-height: 440px;
-  }
-  article footer {
-    padding: 20px 0 40px 0;
+  article {
+    section {
+      font-size: 13px;
+    }
+    section span#item_body img {
+      max-width: 460px;
+      max-height: 440px;
+    }
+    footer {
+      padding: 20px 0 40px 0;
+    }
   }
   footer ul.footer_menu li a {
     display: inline-block;
     margin-bottom: 2px;
   }
-  .footer_categories {
+  footer ul.footer_categories {
     display: none;
-    margin-bottom: 2px;
   }
 }
 
@@ -189,23 +182,26 @@
     white-space: nowrap;
     overflow: hidden; 
   }
-  article section {
-    font-size: 14px;
+  article {
+    section {
+      font-size: 14px;
+    }
+    section span#item_body img {
+      max-width: 640px;
+      max-height: 560px;
+    }
+    footer {
+      padding: 20px 0 20px 0;
+    }
   }
-  article section span#item_body img {
-    max-width: 640px;
-    max-height: 560px;
+  footer {
+    ul.footer_menu li a {
+      display: inline-block;
+    }
+    ul.footer_categories {
+      display: none;
+    }
   }
-  article footer {
-    padding: 20px 0 20px 0;
-  }
-  footer ul.footer_menu li a {
-    display: inline-block;
-  }
-  .footer_categories {
-    display: none;
-  }
-  
 }
 
 
@@ -240,31 +236,31 @@
     white-space: nowrap;
     overflow: hidden; 
   }
-  article section {
-    font-size: 14px;
+  article {
+    section {
+      font-size: 14px;
+    }
+    section span#item_body img {
+      max-width: 1200px;
+      max-height: 900px;
+    }
+    footer {
+      padding: 20px 0 20px 0;
+    }
   }
-  article section span#item_body img {
-    max-width: 1200px;
-    max-height: 900px;
-  }
-  article footer {
-    padding: 20px 0 20px 0;
-  }
-  .footer_categories {
+  footer ul.footer_categories {
     display: none;
-    margin-bottom: 0px;
   }
 }
 
 
 
 
-/* Highend Mobile */
+// Highend Mobile
 @media handheld and (max-width: 480px), screen and (max-device-width: 480px), screen and (max-width: 767px) {
-  /*
   body {
-    -webkit-text-size-adjust: auto;
-  } */
+   // -webkit-text-size-adjust: auto;
+  }
   .container-fluid {
      min-width: 480px;
      padding-right: 16px;
@@ -281,18 +277,6 @@
   }
   ul.nav li#home_link {
     display: none;
-  }
-  article {
-    padding: 8px 20px;
-  }
-  article h1 {
-    font-size: 26px;
-    line-height: 32px;
-    margin-bottom: 12px;
-  }
-  article h3 {
-    font-size: 20px;
-    line-height: 26px;
   }
   .input-xlarge, input.xlarge, textarea.xlarge, select.xlarge {
       width: 200px;
@@ -319,21 +303,33 @@
     white-space: normal;
     overflow: visible;
   }
-  article section {
-    font-size: 13px;
-  }
-  article section span#item_body img {
-    max-width: 420px;
-    max-height: 380px;
-  }
-  article footer {
-    padding: 20px 0 40px 0;
+  article {
+    padding: 8px 20px;
+    h1 {
+      font-size: 26px;
+      line-height: 32px;
+      margin-bottom: 12px;
+    }
+    h3 {
+      font-size: 20px;
+      line-height: 26px;
+    }
+    section {
+      font-size: 13px;
+    }
+    section span#item_body img {
+      max-width: 420px;
+      max-height: 380px;
+    }
+    footer {
+      padding: 20px 0 40px 0;
+    }
   }
   footer ul.footer_menu li a {
     display: inline-block;
     margin-bottom: 2px;
   }
-  .footer_categories {
+  footer ul.footer_categories {
     display: none;
   }
 }
@@ -359,23 +355,24 @@
     white-space: normal;
     overflow: visible;
   }
-  article section {
-    font-size: 13px;
+  article {
+    section {
+      font-size: 13px;
+    }
+    section span#item_body img {
+      max-width: 360px;
+      max-height: 320px;
+    }
+    footer {
+      padding: 20px 0 40px 0;
+    }
   }
-  article section span#item_body img {
-    max-width: 360px;
-    max-height: 320px;
-  }
-  article footer {
-    padding: 20px 0 40px 0;
-  }
-  .footer_categories {
+  footer ul.footer_categories {
     display: none;
   }
 }
 
-/* Lowend Mobile */
-
+// Lowend Mobile
 @media handheld and (max-width: 360px), screen and (max-device-width: 360px), screen and (max-width: 560px) {
   .container-fluid {
      min-width: 320px;
@@ -436,18 +433,6 @@
     margin: 0 0 10px;
     padding: 7px 10px;
   }
-  article {
-    padding: 6px 16px;
-  }
-  article h1 {
-    font-size: 22px;
-    line-height: 30px;
-    margin-bottom: 12px;
-  }
-  article h3 {
-      font-size: 18px;
-      line-height: 22px;
-  }
   .input-xlarge, input.xlarge, textarea.xlarge, select.xlarge {
       width: 200px;
   }
@@ -456,7 +441,7 @@
     height: auto;
     min-height: 200px;
     width: 98%;
-    max-width: 320px;
+    max-width: 330px;
   }
   ul.nav li#home_link {
     display: none;
@@ -467,47 +452,33 @@
     white-space: normal;
     overflow: visible;
   }
-  article section {
-    font-size: 13px;
-  }
   .content article img.show_item_image,
   .content article img.youtube {
     display: block;
   }
-  article section span#item_body img {
-    max-width: 320px;
-    max-height: 280px;
-  }
   #item_body {
     display: block;
     clear: both;
-  }
-  article footer {
-    padding: 20px 0 40px 0;
-  }
-  footer ul.footer_menu li a {
-    text-decoration: underline;
-    display: block;
-    margin-bottom: 2px;
   }
   #new_comment {
     max-width: 320px;
     margin-left: 0;
     padding-left: 0;
   }
-  .comments ul,
-  .comments ol {
-    padding: 0;
-    margin: 0 0 3px 6px;
-  }
-  .comments h3 {
-    margin: 0 0 6px 8px;
-  }
-  .comments form,
-  .comments textarea,
-  .comments textarea#Comment,
-  .comments .form-actions {
-    margin: 0px;
+  .comments {
+    ul, ol {
+      padding: 0;
+      margin: 0 0 3px 6px;
+    }
+    h3 {
+      margin: 0 0 6px 8px;
+    }
+    form,
+    textarea,
+    textarea#Comment,
+    .form-actions {
+      margin: 0px;
+    }
   }
   .hidden-old-phone {
     display: none !important;
@@ -518,8 +489,36 @@
   .form-horizontal .controls {
     margin-left: 132px;
   }
-  .footer_categories {
-    display: inherit;
-    margin-bottom: 20px;
+  article {
+    padding: 6px 16px;
+    h1 {
+      font-size: 22px;
+      line-height: 30px;
+      margin-bottom: 12px;
+    }
+    h3 {
+      font-size: 18px;
+      line-height: 22px;
+    }
+    section {
+      font-size: 13px;
+    }
+    section span#item_body img {
+      max-width: 320px;
+      max-height: 280px;
+    }
+    footer {
+      padding: 20px 0 40px 0;
+    }
+  }
+  footer {
+    ul.footer_menu li a {
+      text-decoration: underline;
+      display: block;
+      margin-bottom: 2px;
+    }
+    ul.footer_categories {
+      display: inherit;
+    }
   }
 }

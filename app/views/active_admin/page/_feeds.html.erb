@@ -9,7 +9,7 @@
                     image_tag(feed_site.image.url(:medium)),
                     admin_feed_site_path(feed_site),
                     title: h(feed_site.title),
-                    id: "tooltip"
+                    class: 'easy-tooltip'
                   )
               %>
             <% else %>
@@ -24,7 +24,7 @@
                     t.title.to_s,
                     admin_feed_entry_path(t),
                     title: sanitize(t.summary).to_s.truncate(280),
-                    id: "tooltip"
+                    class: 'easy-tooltip'
                   )
               %>
             </p>

@@ -44,17 +44,19 @@ module ItemsHelper
           image_tag(item.main_image.image.thumb, class: "item-image", title: item.abstract, alt: item.main_image.title),
           item,
           title: item.abstract,
-          id: 'tooltip'
+          class: 'easy-tooltip'
       )
     elsif item.youtube_id
       str += link_to(
           image_tag(youtube_thumb(item), class: "item-image", title: item.abstract),
           item,
           title: item.abstract,
-          id: 'tooltip'
+          class: 'easy-tooltip'
       )
     end
-    str += "<span class='item-title'> #{link_to item.title.truncate(55), item, title: item.abstract, id: 'tooltip'}</span>"
+    str += "<span class='item-title'> "
+    str += link_to(item.title.truncate(55), item, title: item.abstract, class: 'easy-tooltip')
+    str += "</span>"
     if item.item_stat
       str += "<span class='item-views'>"
       str += (_("Viewed %{num} times") % { num: item.item_stat.views_counter }) if item.item_stat

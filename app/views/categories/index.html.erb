@@ -20,7 +20,7 @@
                       ),
                       item,
                       title: item_title_small(item),
-                      id: 'tooltip'
+                      class: 'easy-tooltip'
                     )
                 %>
               <% elsif item.youtube_id && item.youtube_img %>
@@ -31,7 +31,7 @@
                       ),
                       item,
                       title: item_title_small(item),
-                      id: 'tooltip'
+                      class: 'easy-tooltip'
                     )
                 %>
               <% end %>
@@ -39,7 +39,7 @@
                 <%= link_to item.title.to_s.truncate(100),
                             item,
                             title: item_title_small(item),
-                            id: 'tooltip'
+                            class: 'easy-tooltip'
                 %>
               </span>
               <span class="abstract"><%= item.abstract.to_s.truncate(120) %></span>
@@ -66,7 +66,7 @@
                     ),
                     item,
                     title: item_title_small(item),
-                    id: 'tooltip'
+                    class: 'easy-tooltip'
                   )
               %>
             <% elsif item.youtube_id && item.youtube_img %>
@@ -79,7 +79,7 @@
               <%= link_to item.title.to_s.truncate(120),
                           item,
                           title: item_title_small(item),
-                          id: 'tooltip'
+                          class: 'easy-tooltip'
               %>
             </span>
             <span class="abstract">
@@ -89,7 +89,7 @@
         <% end %>
         </ul>
         <span class="more breaking-news">
-          <%= link_to _("more..."), items_path, title: _("Read more breaking news"), id: 'tooltip' %>
+          <%= link_to _("more..."), items_path, title: _("Read more breaking news"), class: 'easy-tooltip' %>
         </span>
       <% end %>
     <% end %>
@@ -114,7 +114,7 @@
                           ),
                           item, 
                           title: item_title_small(item),
-                          id: 'tooltip'
+                          class: 'easy-tooltip'
                         )
                     %>
                   <% elsif item.youtube_id && item.youtube_img %>
@@ -125,13 +125,13 @@
                     %>
                   <% end %>
                   <%= link_to item.title.to_s.truncate(100), item, 
-                          title: item_title_small(item), id: 'tooltip'
+                          title: item_title_small(item), class: 'easy-tooltip'
                   %>
                   <span class="abstract"><%= item.abstract.to_s.truncate(120) %></span>
                 <% else %>
                   <span class="noroll">
                     <%= link_to item.title.to_s.truncate(100), item,
-                          title: item_title(item), id: 'tooltip'
+                          title: item_title(item), class: 'easy-tooltip'
                     %>
                   </span>
                 <% end %>
