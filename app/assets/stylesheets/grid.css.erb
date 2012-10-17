@@ -1,11 +1,10 @@
 /*!
- * Bootstrap Responsive v2.0.4
+ * Bootstrap Responsive
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
 .clearfix {
@@ -103,11 +102,8 @@
 
 
 
-
 @media only screen and (min-width: 640px) {
-
   body {
-    /*padding-top: 60px;*/
     font-size: 13px;
   }
   .container-fluid {
@@ -121,7 +117,7 @@
     display: block;
   }
   .container-fluid > .content {
-    margin-left: 230px;
+    margin-left: 215px;
   }
   .navbar div > ul, .nav {
     font-size: 14px;
@@ -131,7 +127,6 @@
     margin-bottom: 2px;
   }
   div.well form input#q {
-    /*width: 130px;*/
     margin-bottom: 10px;
   }
   span.noroll {
@@ -152,10 +147,11 @@
   }
   footer ul.footer_menu li a {
     display: inline-block;
+    margin-bottom: 2px;
   }
   .footer_categories {
     display: none;
-    margin-bottom: 0px;
+    margin-bottom: 2px;
   }
 }
 
@@ -181,7 +177,6 @@
     margin-bottom: 2px;
   }
   div.well form input#q {
-    /*width: 130px;*/
     margin-bottom: 10px;
   }
   div.well.social img {
@@ -209,7 +204,6 @@
   }
   .footer_categories {
     display: none;
-    margin-bottom: 0px;
   }
   
 }
@@ -267,12 +261,13 @@
 
 /* Highend Mobile */
 @media handheld and (max-width: 480px), screen and (max-device-width: 480px), screen and (max-width: 767px) {
-
+  /*
   body {
-    /*-webkit-text-size-adjust: auto;*/
-  }
+    -webkit-text-size-adjust: auto;
+  } */
   .container-fluid {
      min-width: 480px;
+     padding-right: 16px;
   }
   .container-fluid > .sidebar {
     float: left;
@@ -282,10 +277,10 @@
     display: block;
   }
   .container-fluid > .content {
-    margin-left: 180px;
+    margin-left: 168px;
   }
   ul.nav li#home_link {
-    display:none;
+    display: none;
   }
   article {
     padding: 8px 20px;
@@ -336,6 +331,7 @@
   }
   footer ul.footer_menu li a {
     display: inline-block;
+    margin-bottom: 2px;
   }
   .footer_categories {
     display: none;
@@ -344,11 +340,6 @@
 
 
 @media screen and (max-width: 680px) {
-
-  body {
-    /*-webkit-text-size-adjust: auto;*/
-    /*padding-top: 95px;*/
-  }
   .categories .box {
     padding: 3px 5px 5px 1px;
     height: auto;
@@ -386,13 +377,10 @@
 /* Lowend Mobile */
 
 @media handheld and (max-width: 360px), screen and (max-device-width: 360px), screen and (max-width: 560px) {
-  body {
-    /*-webkit-text-size-adjust: auto;*/
-    /*padding-top: 90px;*/
-  }
   .container-fluid {
      min-width: 320px;
      padding-left: 8px;
+     padding-right: 12px;
   }
   .container-fluid > .sidebar {
     float: left;
@@ -404,13 +392,13 @@
   div.well {
     margin-bottom: 12px;
     padding: 10px 4px 4px 4px;
-    text-align:center;
+    text-align: center;
     width: 100%;
   }
   div.well.social {
     margin-bottom: 12px;
     padding: 8px 4px 8px 4px;
-    text-align:center;
+    text-align: center;
     width: 100%;
   }
   div.well.social img {
@@ -439,12 +427,11 @@
     position: inherit;
   }
   .navbar .brand{
-    text-align:center;
+    text-align: center;
   }
   .navbar-inner {
-    padding-right: 10px;
+    padding-right: 8px;
   }
-
   .breadcrumb {
     margin: 0 0 10px;
     padding: 7px 10px;
@@ -468,9 +455,11 @@
     padding: 3px 3px 4px 0px;
     height: auto;
     min-height: 200px;
+    width: 98%;
+    max-width: 320px;
   }
   ul.nav li#home_link {
-    display:none;
+    display: none;
   }
   span.noroll {
     text-overflow: ellipsis;
@@ -499,12 +488,12 @@
   footer ul.footer_menu li a {
     text-decoration: underline;
     display: block;
+    margin-bottom: 2px;
   }
-
   #new_comment {
     max-width: 320px;
-    margin-left:0;
-    padding-left:0;
+    margin-left: 0;
+    padding-left: 0;
   }
   .comments ul,
   .comments ol {

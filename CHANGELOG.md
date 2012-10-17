@@ -1,3 +1,8 @@
+## October 17, 2012
+
+  - Fixed IE bug for media-queries
+  - Improved responsive design and iPhone layout
+
 ## October 12-16, 2012
 
   - Improved iphone design

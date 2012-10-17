@@ -1,11 +1,47 @@
-<!--[if lte IE 9]>
+<!--[if lt IE 8]>
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
   <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
   <style>
     .chromeFrameInstallDefaultStyle {
-      width: 100%; /* default is 800px */
-      border: 2px solid blue;
-      margin-top: 25px;
+      width: 800px;
+      height: 500px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -400px;
+      margin-top: -260px;
+    }
+    .chromeFrameOverlayContent {
+      position: absolute;
+      margin-left: -400px;
+      margin-top: -260px;
+      left: 50%;
+      top: 50%;
+      border: 1px solid #93B4D9;
+      background-color: white;
+      z-index: 2001;
+    }
+    .chromeFrameOverlayContent iframe {
+      width: 800px;
+      height: 500px;
+      border: none;
+    }
+    .chromeFrameOverlayCloseBar {
+      height: 1em;
+      text-align: right;
+      background-color: #CADEF4;
+    }
+    .chromeFrameOverlayUnderlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      opacity: 0.5;
+      -moz-opacity: 0.5;
+      -webkit-opacity: 0.5;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+      filter: alpha(opacity=50);
+      z-index: 2000;
     }
   </style>
 <![endif]-->

@@ -50,15 +50,23 @@ module LayoutHelper
   end
 
   def localized_host(lang)
-    if lang.match(Item::DEFAULT_LOCALE)
-      "#{request.domain}"
+    if request.domain
+      if lang.match(Item::DEFAULT_LOCALE)
+        "#{request.domain}"
+      else
+        "#{lang}.#{request.domain}"
+      end
     else
-      "#{lang}.#{request.domain}"
+      Settings.host
     end
   end
 
   def localized_subdomain(lang)
-    "http://#{lang}.#{request.domain}"
+    if request.domain
+      "http://#{lang}.#{request.domain}"
+    else
+      "http://#{Settings.host}"
+    end
   end
 
   def host_link

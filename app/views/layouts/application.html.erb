@@ -10,10 +10,13 @@
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
       <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <%= javascript_include_tag "css3-mediaqueries" %>
     <![endif]-->
     <%= yield(:head) %>
     <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="WorldMahaba.net Search" />
-    <%= render partial: "/shared/layouts/ga" unless current_admin_user %>
+    <% if Rails.env.production? %>
+      <%= render partial: "/shared/layouts/ga" unless (current_user or current_admin_user) %>
+    <% end %>
   </head>
 
   <body>
