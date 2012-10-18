@@ -296,7 +296,3 @@
 <%= content_for :head do %>
   <%= canonical_item_link_tag(@item) %>
 <% end %>
-
-<% if current_user %>
-  <%= render partial: "/shared/tinymce" %>
-<% end %>

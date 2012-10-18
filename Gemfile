@@ -96,7 +96,7 @@ group :production do
 end
 
 group :production, :development do
-  gem 'unicorn', require: false, platform: :mri_19
+  gem 'unicorn', "~> 4.3.1", require: false, platform: :mri_19
   gem 'sitemap_generator'
 end
 

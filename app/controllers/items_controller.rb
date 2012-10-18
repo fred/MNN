@@ -64,7 +64,7 @@ class ItemsController < ApplicationController
     @item = Item.includes([:attachments, :user, :category, :language]).find(params[:id])
     @comments = @item.approved_comments
     @show_breadcrumb = true
-    if @item && is_human? && (@item_stat = @item.item_stat)
+    if @item && view_context.is_human? && (@item_stat = @item.item_stat)
       if session[:view_items] && !session[:view_items].include?(@item.id)
         @item_stat.views_counter += 1
         @item_stat.save
@@ -168,7 +168,7 @@ class ItemsController < ApplicationController
 
   protected
   def store_query
-    if is_human? && !current_admin_user
+    if view_context.is_human? && !current_admin_user
       raw = {}
       raw[:ip] = request.remote_ip if request.remote_ip
       raw[:referrer] = request.referrer if request.referrer

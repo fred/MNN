@@ -1,4 +1,4 @@
-<% if @comment %>
+<% if @comment && current_user %>
   <%= form_for @comment, html: { method: :put, class: form_class } do |f|%>
     <h3> Editing Comment </h3>
     <p>
@@ -19,5 +19,7 @@
       %>
     </div>
   <% end %>
-  <%= render partial: "/shared/tinymce" %>
+  <% unless is_handheld? %>
+    <%= render partial: "/shared/tinymce" %>
+  <% end %>
 <% end %>

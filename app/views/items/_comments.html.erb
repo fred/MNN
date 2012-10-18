@@ -8,3 +8,7 @@
   <span class="with-left-margin"><i>Latest comments on top</i></span>
   <%= comments_for @item %>
 </div>
+
+<% if current_user && !is_handheld? %>
+  <%= render partial: "/shared/tinymce" %>
+<% end %>
