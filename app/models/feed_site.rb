@@ -73,9 +73,9 @@ class FeedSite < ActiveRecord::Base
       Rails.logger.info "[FEED] *** Error: feed:#{feed}, class:#{feed.class}"
       return false
     end
-    self.title = feed.title.to_s if self.title.to_s.blank?
-    self.description = feed.class.to_s if self.description.to_s.blank?
-    self.site_url = feed.url.to_s
+    self.title = feed.title.to_s[0..250] if self.title.to_s.blank?
+    self.description = feed.class.to_s[0..250] if self.description.to_s.blank?
+    # self.site_url = feed.url.to_s[0..250]
 
     # Start with 7 days articles
     self.last_modified  = Time.now - 7.days unless self.last_modified.present?
