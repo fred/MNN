@@ -1,3 +1,5 @@
+# requiring parent model for threadsafe!
+require "job_stat.rb"
 class FeedJob < JobStat
 
   after_create :enqueue
