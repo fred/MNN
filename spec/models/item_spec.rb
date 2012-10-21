@@ -6,7 +6,7 @@ describe Item do
 
   describe "Valitidy" do
     let(:item) {
-      Item.create valid_item_attributes
+      FactoryGirl.create(:item)
     }
     it "should be valid" do
       expect(item).to be_valid

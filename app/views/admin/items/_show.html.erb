@@ -155,6 +155,7 @@
       <p>Name: <%= @item.author_name %></p>
       <p>Email: <%= @item.author_name %></p>
       <p>Source URL: <%= @item.source_url %></p>
+      <p>WM user: <%= @item.user.title if @item.user %></p>
     </div>
   </div>
 </div>
@@ -191,10 +192,8 @@
   <div class="panel_contents">
     <div class="attributes_table item">
       <p>Published: <%= @item.published_at.to_s(:long) if @item.published_at %></p>
-      <p>Expires: <%= @item.expires_on.to_s(:long) if @item.expires_on %></p>
       <p>Created: <%= @item.created_at.to_s(:long) %></p>
       <p>Updated: <%= @item.updated_at.to_s(:long) %></p>
-      <p>Updated by: <%= @item.user.title if @item.user %></p>
     </div>
   </div>
 </div>

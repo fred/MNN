@@ -123,7 +123,6 @@ class Item < ActiveRecord::Base
   def after_initialize
     self.draft ||= true
     self.published_at ||= Time.zone.now  # will set the default value only if it's nil
-    self.expires_on   ||= Time.zone.now+10.years
   end
 
   def corrected_updated_at

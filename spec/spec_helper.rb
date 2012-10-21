@@ -64,6 +64,7 @@ module ItemSpecHelper
   def valid_item_attributes
     { 
       category_id: 1,
+      language_id: 1,
       title: 'Some Listing',
       abstract: 'Some Long Abstract',
       body: "some body...",

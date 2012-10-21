@@ -297,7 +297,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource_or_scope)
     case resource_or_scope
     when :admin_user, AdminUser
-      admin_dashboard_path(protocol: http_protocol)
+      redirect_location
     when :user, User
       redirect_location
     else

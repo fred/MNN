@@ -236,7 +236,7 @@ class User < ActiveRecord::Base
     unless user
       user = User.new
       user.name = auth_hash.info.name
-      user.email = "please_update_your_email_#{Kernel.rand(999999)}@worldmathaba.net"
+      user.email = "please_update_email_#{Kernel.rand(999999)}@worldmathaba.net"
       user.twitter = auth_hash.info.urls.Twitter
     end
     if auth_hash.extra.raw_info.timezone
@@ -304,7 +304,7 @@ class User < ActiveRecord::Base
     unless user
       user = User.new
       user.name = auth_hash.info.name
-      user.email = "please_update_your_email_#{Kernel.rand(999999)}@worldmathaba.net"
+      user.email = "please_update_email_#{Kernel.rand(999999)}@worldmathaba.net"
       user.oauth_page = auth_hash.info.urls.public_profile
     end
     if auth_hash.extra.raw_info.timezone

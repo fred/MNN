@@ -1,6 +1,7 @@
 class SitemapQueue < BaseWorker
 
   def perform
+    return true unless Rails.env.production?
     Sidekiq.logger.info("Sitemap: Starting Sitemap Generation")
 
     # Set the host name for URL creation

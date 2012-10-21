@@ -140,7 +140,6 @@ ActiveAdmin.register Item do
       @item = Item.new
       @now = Time.zone.now
       @item.published_at = nil
-      @item.expires_on = @now+10.years
       @item.draft = true
       @item.user_id = current_admin_user.id
       if params[:feed_id]
@@ -178,11 +177,6 @@ ActiveAdmin.register Item do
         @item.published_at = @item.published_at.localtime
       else
         @item.published_at = Time.zone.now
-      end
-      if @item.expires_on
-        @item.expires_on = @item.expires_on.localtime
-      else
-        @item.expires_on = Time.zone.now+10.years
       end
     end
 

@@ -97,7 +97,6 @@ end
 
 group :production, :development do
   gem 'unicorn', "~> 4.3.1", require: false, platform: :mri_19
-  gem 'sitemap_generator'
 end
 
 group :test, :development do
@@ -111,7 +110,7 @@ group :development do
   gem 'hirb'
   gem 'foreman'
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
-  gem 'capistrano', '2.9.0', require: false
+  gem 'capistrano', '~> 2.13.0', require: false
   gem 'rvm-capistrano', require: false
   gem 'debugger', platform: :mri_19
   gem 'pry-rails'
@@ -149,23 +148,17 @@ gem 'twitter-bootstrap-rails',
   git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git', ref: '9fd5059efad36f01ef8e64c16901178d33654654'
 
 
-###############
-## Searching ##
-###############
-
 gem 'sunspot', git: 'git://github.com/sunspot/sunspot.git'
 gem 'sunspot_rails', git: 'git://github.com/sunspot/sunspot.git'
-
+gem 'sitemap_generator'
 gem 'tinymce-rails' , '~> 3.5.6'
 gem 'galetahub-simple_captcha', require: 'simple_captcha', git: 'git://github.com/galetahub/simple-captcha.git'
 gem 'country-select'
 gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_email_format_of.git'
-
 gem 'turbo-sprockets-rails3'
 gem 'turbolinks'
-
 gem 'feedzirra'
 
-### Disabled Gems:
 
+### Disabled Gems:
 # gem 'postmark-rails'

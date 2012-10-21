@@ -1,3 +1,8 @@
+## October 20, 2012
+
+  - Removed expire-date from items
+  - Disabled tinymce on ipad
+
 ## October 17, 2012
 
   - Fixed IE bug for media-queries

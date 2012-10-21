@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121010154859) do
+ActiveRecord::Schema.define(:version => 20121019135911) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20121010154859) do
   end
 
   add_index "categories", ["slug"], :name => "index_categories_on_slug", :unique => true
+  add_index "categories", ["title"], :name => "index_categories_on_title", :unique => true
 
   create_table "comments", :force => true do |t|
     t.integer  "owner_id",                            :null => false
@@ -157,7 +158,7 @@ ActiveRecord::Schema.define(:version => 20121010154859) do
   add_index "item_stats", ["item_id"], :name => "index_item_stats_on_item_id"
 
   create_table "items", :force => true do |t|
-    t.string   "title"
+    t.string   "title",                                  :null => false
     t.string   "highlight"
     t.text     "body"
     t.text     "abstract"
@@ -180,8 +181,7 @@ ActiveRecord::Schema.define(:version => 20121010154859) do
     t.boolean  "allow_comments",    :default => true
     t.boolean  "allow_star_rating", :default => true
     t.boolean  "featured",          :default => false
-    t.datetime "published_at"
-    t.datetime "expires_on"
+    t.datetime "published_at",                           :null => false
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "author_status"
@@ -296,6 +296,8 @@ ActiveRecord::Schema.define(:version => 20121010154859) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "roles", ["title"], :name => "index_roles_on_title", :unique => true
+
   create_table "roles_users", :id => false, :force => true do |t|
     t.integer "role_id"
     t.integer "user_id"
@@ -382,6 +384,7 @@ ActiveRecord::Schema.define(:version => 20121010154859) do
   end
 
   add_index "tags", ["slug"], :name => "index_tags_on_slug", :unique => true
+  add_index "tags", ["title"], :name => "index_tags_on_title", :unique => true
   add_index "tags", ["type"], :name => "index_tags_on_type"
 
   create_table "users", :force => true do |t|

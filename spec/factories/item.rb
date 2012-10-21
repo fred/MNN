@@ -29,7 +29,7 @@ FactoryGirl.define do
     title 'Some News Highlight'
     abstract "Some Abstract 2"
     body "a very long body"
-    # association :language, factory: :language
+    association :language, factory: :language
     association :category, factory: :category1
     association :user, factory: :user
     featured true
@@ -41,7 +41,7 @@ FactoryGirl.define do
     title 'Some News in future'
     abstract "Some Abstract 3"
     body "a very long body"
-    # association :language, factory: :language
+    association :language, factory: :language
     association :category, factory: :category2
     association :user, factory: :admin
     featured false
@@ -53,7 +53,7 @@ FactoryGirl.define do
     title 'Some News Draft'
     abstract "Some Abstract draft"
     body "a very long body"
-    # association :language, factory: :language
+    association :language, factory: :language
     association :category, factory: :category2
     association :user, factory: :admin
     draft true

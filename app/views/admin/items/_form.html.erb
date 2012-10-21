@@ -47,12 +47,6 @@
           hint: "Time to go live. Timezone used for picking date: '#{Time.zone}' from your Profile. 
             (Required)"
     %>
-    <%= f.input :expires_on,
-        as: "string",
-        label: "Expire Date",
-        # input_html: { value: f.object.expires_on.localtime },
-        hint: "Expiration date of article (default: 10 years)."
-    %>
   <% end %>
 
   <%= f.inputs name: "Author and Source" do %>
