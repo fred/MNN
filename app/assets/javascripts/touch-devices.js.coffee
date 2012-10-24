@@ -1,3 +1,4 @@
 jQuery ->
   if (Modernizr.touch)
-    $('.hidden-touch').hide()
+    $('.dropdown-menu').on('touchstart.dropdown.data-api', (e) ->
+      e.stopPropagation() )

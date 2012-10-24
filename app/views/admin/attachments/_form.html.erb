@@ -17,5 +17,10 @@
       count: 'up',
       goal: 160
   });
+  $("form.formtastic").validate({
+    rules: {
+      "attachment[image]": { required: true }
+    }
+  });
 </script>
 

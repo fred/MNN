@@ -1,3 +1,7 @@
+## October 24, 2012
+
+  -  Fixed empty Attachments bug
+
 ## October 20, 2012
 
   - Removed expire-date from items
