@@ -138,30 +138,7 @@ ActiveAdmin::Dashboards.build do
       end
     end
   end
-  ### ITEMS
-  section "Recently Updated Items", priority: 10 do
-    if controller.current_ability.can?(:read, Item)
-      ul do
-        Item.recent_updated(10).collect do |item|
-          li(
-            link_to("#{item.id} - #{item.title} (#{item.category_title}) - #{time_ago_in_words(item.updated_at)} ago",
-            admin_item_path(item))
-          )
-        end
-      end
-    end
-  end
 
-  ### USERS
-  # section "Pending Users for Approval", priority: 14 do
-  #   if controller.current_ability.can?(:read, User)
-  #     ul do
-  #       User.recent_pending(8).collect do |user|
-  #         li link_to(user.title, admin_user_path(user))
-  #       end
-  #     end
-  #   end
-  # end
   ### USERS
   section "Newly Registered User", priority: 16 do
     if controller.current_ability.can?(:read, User)

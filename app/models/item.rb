@@ -8,7 +8,7 @@ class Item < ActiveRecord::Base
   attr_accessor :updated_reason, :share_facebook, :share_twitter, :send_emails, :existing_attachment_id, :updating_user_id
 
   # Versioning System
-  has_paper_trail meta: { tag: :updated_reason }
+  has_paper_trail meta: { tag: :updated_reason }, :ignore => [:updated_at, :last_commented_at, :comments_count]
 
   # Comment System
   opinio_subjectum conditions: {approved: true}, include: :owner
