@@ -69,7 +69,7 @@ describe Devise::RegistrationsController do
         
       it "redirects to the admin_dashboard after creating admin_user" do
         post :create, admin_user: valid_user_attributes
-        expect(response).to redirect_to(admin_dashboard_path)
+        expect(response).to redirect_to(root_path)
       end
       
       it "assigns current_user to the newly created admin_user" do

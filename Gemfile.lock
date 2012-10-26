@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: git://github.com/sunspot/sunspot.git
-  revision: da826a41b9ebda3910fecbf9bdde9b270e76a6b5
+  revision: 858353283a18e0d98a9dbdd41df0e0c77ea9bc70
   specs:
     sunspot (2.0.0.pre.120925)
       pr_geohash (~> 1.0)
@@ -168,7 +168,7 @@ GEM
     carrierwave (0.6.2)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
-    celluloid (0.12.2)
+    celluloid (0.12.3)
       facter (>= 1.6.12)
       timers (>= 1.0.0)
     childprocess (0.3.6)
@@ -341,6 +341,7 @@ GEM
     net-ssh (2.6.1)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
+    newrelic_rpm (3.5.0.1)
     nifty-generators (0.4.6)
     nokogiri (1.5.5)
     nokogiri (1.5.5-java)
@@ -515,7 +516,7 @@ GEM
     trinidad_jars (1.1.1)
     trinidad_scheduler_extension (0.1.2)
       trinidad_jars
-    turbo-sprockets-rails3 (0.1.16)
+    turbo-sprockets-rails3 (0.2.3)
       railties (>= 3.1.0)
       sprockets (>= 2.0.0)
     turbolinks (0.5.1)
@@ -592,6 +593,7 @@ DEPENDENCIES
   locale
   meta_search
   multi_json
+  newrelic_rpm
   nifty-generators
   omniauth
   omniauth-facebook (= 1.4.0)

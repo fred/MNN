@@ -304,8 +304,8 @@ class Item < ActiveRecord::Base
   end
 
   def comment_cache_key
-    if self.comments_count > 0 && self.last_commented_at
-      self.last_commented_at.to_s(:number)
+    if self.comments_count > 0 && self.updated_at
+      self.updated_at.to_s(:number)
     else
       ""
     end
@@ -319,8 +319,12 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def etag_key
+    self.id + self.updated_at
+  end
+
   def etag
-    Digest::MD5.hexdigest(cache_key_full)
+    Digest::MD5.hexdigest(etag_key.to_s)
   end
 
   # Returns an improved cache_key that includes the last image on the item

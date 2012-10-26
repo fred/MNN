@@ -167,16 +167,24 @@ class ApplicationController < ActionController::Base
   end
 
   def private_headers
+    if current_user
+      no_cache_headers
+    else
+      private_headers_with_timeout
+    end
+  end
+
+  def no_cache_headers
     tagged_logger("Caching", "no-cache, private", :info)
     headers['Cache-Control'] = 'no-cache, private'
   end
 
-  def private_headers_with_timeout(timeout=1800)
+  def private_headers_with_timeout(timeout=600)
     tagged_logger("Caching", "private, must-revalidate, max-age=#{timeout}", :info)
     headers['Cache-Control'] = "private, must-revalidate, max-age=#{timeout}"
   end
 
-  def public_headers(timeout=1800)
+  def public_headers(timeout=900)
     tagged_logger("Caching", "public, max-age=#{timeout}")
     headers['Cache-Control'] = "public, max-age=#{timeout}"
     if @last_published && @last_published.respond_to?(:httpdate)

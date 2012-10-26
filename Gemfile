@@ -158,7 +158,7 @@ gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_emai
 gem 'turbo-sprockets-rails3'
 gem 'turbolinks'
 gem 'feedzirra'
-
+gem 'newrelic_rpm'
 
 ### Disabled Gems:
 # gem 'postmark-rails'

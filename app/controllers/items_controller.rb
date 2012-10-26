@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        private_headers
+        fresh_when(etag: @etag, last_modified: @last_published) unless (current_user or current_admin_user)
       }
       format.json { render json: @items }
       format.atom {
@@ -76,12 +76,7 @@ class ItemsController < ApplicationController
     @meta_keywords = @item.meta_keywords
     @meta_author = @item.user.title if @item.user
 
-    respond_to do |format|
-      format.html {
-        private_headers
-        headers_for_etag(@item.etag)
-      }
-    end
+    fresh_when(etag: @item, last_modified: @item.updated_at) unless (current_user or current_admin_user)
   end
 
   def new

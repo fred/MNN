@@ -21,8 +21,9 @@ class Comment < ActiveRecord::Base
   # belongs_to :user
   belongs_to :approving_user, foreign_key: :approved_by, class_name: "User"
 
-  after_create  :notify_admin, :notify_users, :touch_commentable, :subscribe_users
-  before_save :check_for_spam, :check_suspicious
+  after_create  :notify_admin, :notify_users, :subscribe_users
+  before_save   :check_for_spam, :check_suspicious
+  after_save    :touch_commentable
 
   delegate :name, to: :owner, allow_nil: true
 
@@ -36,8 +37,8 @@ class Comment < ActiveRecord::Base
   end
 
   def touch_commentable
-    if !marked_spam? && commentable && commentable.respond_to?(:update_column)
-      commentable.update_column(:last_commented_at, DateTime.now)
+    if !marked_spam? && commentable
+      commentable.reload.update_attributes(last_commented_at: DateTime.now)
     end
   end
 

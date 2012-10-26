@@ -11,10 +11,11 @@ class CategoriesController < ApplicationController
       @latest_items = @top_items[1..3]
     end
     @categories = @site_categories
-    private_headers
-    respond_to do |format|
-      format.html
-    end
+    @last_published = Item.last_item.updated_at
+    fresh_when(etag: @etag, last_modified: @last_published) unless (current_user or current_admin_user)
+    # respond_to do |format|
+    #   format.html
+    # end
   end
 
   def show
@@ -50,7 +51,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html {
-        private_headers
+        fresh_when(etag: @etag, last_modified: @last_published) unless (current_user or current_admin_user)
       }
       format.atom {
         headers['Etag'] = @etag
@@ -58,6 +59,7 @@ class CategoriesController < ApplicationController
         render partial: "/shared/items", layout: false 
       }
       format.rss {
+        headers['Etag'] = @etag
         public_headers(900)
         render partial: "/shared/items", layout: false
       }
