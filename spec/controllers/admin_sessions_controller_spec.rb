@@ -23,7 +23,7 @@ describe ActiveAdmin::Devise::SessionsController do
     describe "POST create" do
       it "should login and redirect to admin_dashboard_path" do
         post :create, {admin_user: {email: @user.email, password: "welcome"}}
-        expect(response).to redirect_to(admin_path)
+        expect(response).to redirect_to(admin_root_path)
       end
       it "should login and assign admin_current_user" do
         post :create, {admin_user: {email: @user.email, password: "welcome"}}
