@@ -8,7 +8,7 @@ class SitemapQueue < BaseWorker
     SitemapGenerator::Sitemap.default_host = "http://worldmathaba.net"
     SitemapGenerator::Sitemap.create do
       add items_path, priority: 0.9, changefreq: 'hourly'
-      Page.all.each do |page|
+      Page.active.each do |page|
         add(page_path(page), lastmod: page.updated_at, priority: 0.5)
       end
       Category.all.each do |category|

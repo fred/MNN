@@ -12,7 +12,7 @@ class PagesController < InheritedResources::Base
   end
   
   def index
-    @pages = Page.all
+    @pages = Page.active.all
   end
   
 end

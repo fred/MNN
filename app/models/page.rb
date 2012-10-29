@@ -14,5 +14,8 @@ class Page < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
   
+  def self.active
+    where(active: true)
+  end
   
 end
