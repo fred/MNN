@@ -74,7 +74,7 @@ ActiveAdmin.register Item do
     column :tags do |item|
       item.tag_list(", ")
     end
-    column "Youtube", :youtube_id, sortable: :youtube_id do |item|
+    column "Y", :youtube_id, sortable: :youtube_id do |item|
       if item.youtube_id
         link_to(item.youtube_id,
           "http://www.youtube.com/watch?v=#{item.youtube_id}",
@@ -86,7 +86,7 @@ ActiveAdmin.register Item do
     column "Views", sortable: false do |item|
       item.item_stat.views_counter if item.item_stat
     end
-    column "Comments", :comments_count
+    column "Comment", :comments_count
     bool_column :draft
     bool_column :original
     column "Highlt", :featured, sortable: :featured do |item|

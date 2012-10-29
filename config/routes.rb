@@ -17,6 +17,8 @@ Publication::Application.routes.draw do
 
   match 'news/:category/:id' => 'items#show', :as => :news_path
 
+  post '/tinymce_assets' => 'attachments#create'
+
   # Omniauth
   match '/auth/:provider/callback', to: 'services#create'
   match '/auth/failure' => 'services#failure'

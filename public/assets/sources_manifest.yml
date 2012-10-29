@@ -214,7 +214,7 @@ rss_blue_32.png: 6c6e400b6d21ef3c0040a913ce78a22c
 rss_icon_glass_blue64.png: deed2260585ed3bb754b60d14154154a
 world_mathaba.png: 5e617c1d47f2813370f63d4aabd40c35
 world_mathaba11.png: 05570f0309b7b69f11ada4c845795333
-active_admin.js: d62e1c62d1fdf0e54644e781d06119c4
+active_admin.js: 28abd39db6368487bea78d6e94863628
 application.js: 2f84eb1f7566e8afe0ee4c19b08fc2e7
 css3-mediaqueries.js: 44a99ecd20bbb674ed2effb74b07465d
 reddit.js: 9f6c2f73ab0315c475697b62d2cd5a34
@@ -239,6 +239,8 @@ jquery-ui/ui-icons_70b2e1_256x240.png: 8e03fea10d13d32191f9218bac7bd8fb
 jquery-ui/ui-icons_999999_256x240.png: 38f9fd130f71cbd46431075c623c0de4
 jquery-ui/ui-icons_f53239_256x240.png: 6079da69e7456f3a0f5419de158dc9dd
 tinymce.css: e6b7f48bdce8bacdb08a46dd3dae0fb3
+tinymce/plugins/uploadimage/dialog.html: ae3fb34c4875891cf679412211fa5c20
+tinymce/plugins/uploadimage/img/uploadimage.png: d37475dfcf33ba2bcc80b520c827a4d8
 tinymce.js: 54536b75be97e1b8a5de758db1a18816
 tinymce/license.txt: 552ce033e5ef95ca929a550ba90cbf0c
 tinymce/plugins/advhr/rule.htm: 1e74e5ba5a9f7535a576c925bad475d3

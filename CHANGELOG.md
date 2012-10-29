@@ -1,3 +1,9 @@
+## October 29, 2012
+
+  - Allow to upload images from the Editor (tinymce-rails-imageupload)
+  - Fixed some bugs
+  - Updated Gems
+
 ## October 24, 2012
 
   -  Fixed empty Attachments bug

@@ -12,3 +12,4 @@
 //= require loader
 //= require easyTooltip
 //= require tooltip
+//= require tinymce/plugins/uploadimage/editor_plugin.js
