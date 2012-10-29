@@ -327,14 +327,6 @@ class Item < ActiveRecord::Base
     Digest::MD5.hexdigest(etag_key.to_s)
   end
 
-  # Returns an improved cache_key that includes the last image on the item
-  def cache_key_full
-    str = self.cache_key 
-    str += "/"
-    str += self.main_image_cache_key
-    str += self.comment_cache_key
-  end
-
   def tag_list(join=", ")
     array = []
     self.tags.each do |t|

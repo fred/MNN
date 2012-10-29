@@ -118,9 +118,6 @@ describe Item do
     it "should respond to has_image?" do
       expect(item).to respond_to(:has_image?)
     end
-    it "should respond to cache_key_full" do
-      expect(item).to respond_to(:cache_key_full)
-    end
     it "should respond to tag_list" do
       expect(item).to respond_to(:tag_list)
     end

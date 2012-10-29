@@ -1,4 +1,4 @@
-<% cache_expiring("_item/#{item.cache_key_full}") do %>
+<% cache_expiring("_item/#{item.cache_key}") do %>
   <article class="category" id="item_<%=item.id%>">
     <% unless @category %>
       <h5 class="no-margin"><%= link_to(item.category_title, item.category, title: _("Read more articles in this category")) if item.category %></h5>
