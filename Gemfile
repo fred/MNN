@@ -60,7 +60,7 @@ gem 'friendly_id', '~> 4.0.0'
 gem 'opinio', git:  'git://github.com/fred/opinio.git', branch: 'fred'
 gem 'rakismet'
 
-gem 'sass', '~> 3.1.21'
+gem 'sass', '~> 3.2'
 gem 'sass-rails'
 gem 'jquery-rails', '~> 2.0.2'
 
@@ -145,7 +145,9 @@ gem 'activeadmin', git: 'git://github.com/fred/active_admin.git', branch: 'no-ov
 
 # Twitter Bootstrap for Rails 3 Asset Pipeline
 gem 'twitter-bootstrap-rails',
-  git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git', ref: '9fd5059efad36f01ef8e64c16901178d33654654'
+  git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git',
+  ref: '24981d6c611466ca7afe87080f07702ed6113e31'
+  #, ref: '9fd5059efad36f01ef8e64c16901178d33654654'
 
 
 gem 'sunspot', git: 'git://github.com/sunspot/sunspot.git'
