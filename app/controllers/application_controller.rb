@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
   def sidebar_variables
     @site_categories   ||= Category.order("priority ASC, title DESC")
     @site_pages        ||= Page.active.order("priority ASC")
+    @private_pages     ||= Page.active.member_only.order("priority ASC")
     @site_languages    ||= Language.order("locale ASC")
     @site_country_tags ||= CountryTag.order("title ASC")
     @site_general_tags ||= GeneralTag.order("title ASC")
