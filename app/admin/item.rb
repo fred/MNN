@@ -87,8 +87,9 @@ ActiveAdmin.register Item do
       item.item_stat.views_counter if item.item_stat
     end
     column "Comment", :comments_count
-    bool_column :draft
-    bool_column :original
+    column "Orig", :original, sortable: :original do |item|
+      bool_symbol(item.original)
+    end
     column "Highlt", :featured, sortable: :featured do |item|
       bool_symbol(item.featured)
     end
@@ -110,6 +111,8 @@ ActiveAdmin.register Item do
         time_ago_in_words(item.published_at) +
         " ago" +
         '</span>').html_safe
+      elsif item.draft
+        "<b><i>Draft</i></b>".html_safe
       else
         item.published_at.localtime.to_s(:short)
       end

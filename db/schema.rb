@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121019135911) do
+ActiveRecord::Schema.define(:version => 20121031062805) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -265,10 +265,11 @@ ActiveRecord::Schema.define(:version => 20121019135911) do
     t.integer  "user_id"
     t.boolean  "active"
     t.text     "body"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "rel"
     t.string   "rev"
+    t.boolean  "member_only", :default => false
   end
 
   add_index "pages", ["active"], :name => "index_pages_on_active"

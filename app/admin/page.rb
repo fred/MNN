@@ -14,7 +14,8 @@ ActiveAdmin.register Page do
     column :link_title
     column :slug
     column :priority
-    column :active
+    bool_column :active
+    bool_column :member_only
     column :language
     column :created_at
     column :updated_at

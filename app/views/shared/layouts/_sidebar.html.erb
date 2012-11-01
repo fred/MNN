@@ -39,15 +39,15 @@
   <% end %>
 
   <div class="well">
-    <%= form_tag(search_path, method: :get, class: 'search') do |f| %>
+    <%= form_tag(search_path, method: :get, class: 'search-form') do |f| %>
       <%= text_field_tag :q, 
             params[:q], 
             type: "search", 
-            class: "span3",
+            class: "span3 search-query",
             placeholder: _("Search Articles"),
             autofocus: false
       %>
-      <button class="btn" type="submit"><%= _("Search") %></button>
+      <button class="btn search" type="submit"><%= _("Search") %></button>
     <% end %>
 
     <div class="sidebar_secions">
@@ -152,6 +152,11 @@
         </ul>
         <ul class="nav nav-list">
           <% @site_pages.each do |page| %>
+            <li class="<%= li_class(page.to_param, :id, 'active') %>">
+              <%= link_to page.title, page, title:  page.title %>
+            </li>
+          <% end %>
+          <% @private_pages.each do |page| %>
             <li class="<%= li_class(page.to_param, :id, 'active') %>">
               <%= link_to page.title, page, title:  page.title %>
             </li>
