@@ -22,7 +22,7 @@ module ItemsHelper
     content_str = ""
     content_str += "<span class='date_small'>"
     content_str += "<i class='icon-time'></i> "
-    content_str +=" #{time_ago_in_words(item.published_at)} #{_('ago')} - #{_('by')} #{item.author_name}"
+    content_str +=" #{time_ago_in_words(item.published_at)} #{_('ago')} - #{_('by')} #{item.author}"
     content_str += "</span>"
     return {title: title_str, 'data-content' => content_str, id: 'popover', rel: 'popover'}
   end
@@ -33,7 +33,7 @@ module ItemsHelper
     str += "<br/>"
     str += "<div class='date_small'>"
     str += "<i class='icon-time'></i> "
-    str += "#{time_ago_in_words(item.published_at)} #{_('ago')} - #{_('by')} #{item.author_name}"
+    str += "#{time_ago_in_words(item.published_at)} #{_('ago')} - #{_('by')} #{item.author}"
     str += "</div>"
   end
 
@@ -80,7 +80,7 @@ module ItemsHelper
     str += "<br/>"
     str += "#{item.abstract}"
     str += "<br/>"
-    str += "<div class='date_small'> #{time_ago_in_words(item.published_at)} #{_('ago')} - #{_('by')} #{item.author_name}</div>"
+    str += "<div class='date_small'> #{time_ago_in_words(item.published_at)} #{_('ago')} - #{_('by')} #{item.author}</div>"
     str
   end
 

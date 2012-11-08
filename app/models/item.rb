@@ -388,6 +388,14 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def author
+    if original
+      user_title
+    else
+      author_name
+    end
+  end
+
   # Returns the article's author formated name
   def user_title
     if self.user
