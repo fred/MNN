@@ -29,6 +29,10 @@ Disallow: /
 User-agent: UnwindFetchor
 Disallow: /
 
+# magpie-crawler/1.1 (U; Linux amd64; en-GB; +http://www.brandwatch.net)
+User-agent: magpie-crawler
+Disallow: /
+
 # others
 User-agent: Flipboard
 Disallow: /
@@ -461,4 +465,13 @@ User-agent: Zeus 32297 Webster Pro V2.9 Win32
 Disallow: /
 
 User-agent: Zeus Link Scout
+Disallow: /
+
+User-agent: Updownerbot
+Disallow: /
+
+User-agent: Ezooms
+Disallow: /
+
+User-agent: WASALive-Bot
 Disallow: /
