@@ -45,14 +45,14 @@ class Item < ActiveRecord::Base
 
   # Nested Attributes
   accepts_nested_attributes_for :attachments, allow_destroy: true, reject_if: lambda { |t| t['image'].nil? }
-  
+
   # Validations
   validates_presence_of :title, :abstract, :category_id, :published_at
   validates_presence_of :body, if: Proc.new { |item| item.youtube_id.blank? }
   validates_presence_of :published_at
 
   validate :check_security, on: :update
-  
+
   # Filter hooks
   before_save   :clear_bad_characters
   before_save   :create_twitter_share
@@ -173,7 +173,7 @@ class Item < ActiveRecord::Base
   ##############
   #### JOBS ####
   ##############
-  
+
   # Random time between 150-180 seconds
   def enqueue_time
     if published?
@@ -595,8 +595,7 @@ class Item < ActiveRecord::Base
     order("published_at DESC").
     limit(limit).
     includes(:attachments).
-    offset(offset).
-    all
+    offset(offset)
   end
 
   # Returns the last 10 approved items (not draft anymore)
@@ -606,8 +605,7 @@ class Item < ActiveRecord::Base
     where(draft: false).
     where("updated_at > created_at").
     order("updated_at DESC").
-    limit(limit).
-    all
+    limit(limit)
   end
 
   # Returns the last 10 approved items (not draft anymore)
@@ -615,8 +613,7 @@ class Item < ActiveRecord::Base
   def self.recent(limit=10)
     published.
     order("id DESC").
-    limit(limit).
-    all
+    limit(limit)
   end
 
   # Returns the last 10 draft items
@@ -624,8 +621,7 @@ class Item < ActiveRecord::Base
   def self.recent_drafts(limit=10)
     draft.
     order("updated_at DESC").
-    limit(limit).
-    all
+    limit(limit)
   end
 
   # Returns the last 10 pending items (not draft anymore)
@@ -634,8 +630,7 @@ class Item < ActiveRecord::Base
     where(published_at: nil).
     not_draft.
     order("updated_at DESC").
-    limit(limit).
-    all
+    limit(limit)
   end
 
   # Imports an XML output from wordpress

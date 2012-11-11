@@ -14,10 +14,10 @@ class Comment < ActiveRecord::Base
   # user_ip       : IP address used to submit this comment
   # user_agent    : user agent string
   # referrer      : referring URL (note the spelling)
-  
+
   validates_presence_of :body
   attr_accessible :body, :commentable_id, :commentable_type, :approved, :marked_spam, :suspicious, :approved_by, :subscribe
-  
+
   # belongs_to :user
   belongs_to :approving_user, foreign_key: :approved_by, class_name: "User"
 
@@ -145,34 +145,30 @@ class Comment < ActiveRecord::Base
     where(marked_spam: false).
     order("updated_at DESC").
     includes([:owner, :commentable]).
-    limit(limit).
-    all
+    limit(limit)
   end
 
   # Returns the last 10 pending comments
   def self.pending(limit=10)
     where(approved: false).
     order("updated_at DESC").
-    limit(limit).
-    all
+    limit(limit)
   end
-  
+
   # Returns the last 10 suspicious comments
   def self.suspicious(limit=10)
     where(suspicious: true).
     where(marked_spam: false).
     order("updated_at DESC").
-    limit(limit).
-    all
+    limit(limit)
   end
-  
+
   # Returns the last 10 comments marked as spam
   def self.as_spam(limit=10)
     where(marked_spam: true).
     includes([:owner, :commentable]).
     order("updated_at DESC").
-    limit(limit).
-    all
+    limit(limit)
   end
 
   def self.last_cache_key
@@ -182,9 +178,9 @@ class Comment < ActiveRecord::Base
       ""
     end
   end
-  
+
   def self.last_comment
     order("id DESC").first
   end
-  
+
 end

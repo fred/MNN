@@ -100,7 +100,7 @@
         </div>
       <% end %>
       <div class="clearfix"></div>
-      <% @related = item.solr_similar(4) %>
+      <% @related = item.solr_similar(3) %>
       <% if @related && @related.total > 0 %>
         <div class="related">
           <section id="related">

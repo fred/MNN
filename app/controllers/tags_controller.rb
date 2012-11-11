@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
-  
+
   def index
-    @tags = Tag.order("type DESC, title ASC").all
+    @tags = Tag.order("type DESC, title ASC")
     @last_published = Item.last_item.updated_at
     respond_to do |format|
       format.html {

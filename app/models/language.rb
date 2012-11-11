@@ -40,7 +40,7 @@ class Language < ActiveRecord::Base
 
   # only give languages with more than 1 item
   def self.with_articles
-    find(:all, order: 'languages.locale DESC')
+    order("languages.locale DESC")
     # find(:all,
     #   select: '"languages".id, "languages".description, "languages".slug, count("items".id) as counter', 
     #   joins: :items,

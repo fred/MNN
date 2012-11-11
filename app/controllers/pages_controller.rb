@@ -1,5 +1,5 @@
 class PagesController < InheritedResources::Base
-  
+
   def show
     @page = Page.find(params[:id])
     private_headers
@@ -10,9 +10,9 @@ class PagesController < InheritedResources::Base
       format.js { render layout: false }
     end
   end
-  
+
   def index
-    @pages = Page.active.all
+    @pages = Page.active
   end
-  
+
 end
