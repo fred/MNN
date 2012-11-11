@@ -183,17 +183,7 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
           %>
         </span>
         <p>
-          Details: <%= link_to @url, @url %>
-        </p>
-        <p>
-          Item: 
-          <%= link_to @comment.commentable_title, 
-                url_for(item_path(@comment.commentable, 
-                        only_path: false,
-                        protocol: 'http'
-                      )
-                )
-          %>
+          Article: <%= link_to @url, @url %>
         </p>
         <p>
           Date: <%= @comment.created_at.to_s(:long) %>
