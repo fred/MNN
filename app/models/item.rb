@@ -248,9 +248,10 @@ class Item < ActiveRecord::Base
   end
 
   def twitter_status
-    url  = self.title.truncate(115)
+    url  = title.truncate((110 - hashtags.to_s[0..39].size), separator: ' ')
     url += " "
     url += url_for(item_path(self, host: "worldmathaba.net", only_path: false, protocol: 'http'))
+    url += " #{hashtags.to_s[0..39]}" if hashtags.present?
     return url
   end
 

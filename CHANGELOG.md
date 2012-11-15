@@ -1,3 +1,11 @@
+## November 10-15, 2012
+
+  - Added hashtags to twitter auto posting
+  - updated gems
+  - Updated robots.txt
+  - Sidekiq 2.5.2
+  - Font-resizer fix, rewriten in jQuery/coffee-js
+
 ## October 29, 2012
 
   - Allow to upload images from the Editor (tinymce-rails-imageupload)

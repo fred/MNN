@@ -113,16 +113,25 @@
 
       <%= f.input :allow_comments, hint: "Allow users to comment" %>
       <br />
+    <% end %>
 
+    <%= f.inputs name: "Emails and Social Sharing" do %>
       <% if f.object.twitter_shares.empty? %>
         <%= f.input :share_twitter, as: "boolean",
             label: "Twitter",
             hint: "Auto post to Twitter after publication? Only set it if item is ready and not Draft. It can only be posted once. Performed 3 minutes after Publication." %>
-      <br />
+        <br />
+        <%= f.input :hashtags, label: "Twitter Hashtags", hint: "Twitter Hashtags, space separated, ex: #syria #libya", placeholder: "Twitter Hashtags, space separated. 40 characters max." %>
+        <br />
       <% else %>
         <li class="boolean input optional">
-          <label><b>Already posted to twitter: <%= f.object.twitter_shares.first.status %></b></label>
+          <label><b>Already posted to Twitter: <%= f.object.twitter_shares.first.status %></b></label>
         </li>
+        <% if f.object.hashtags.present? %>
+          <li class="boolean input optional">
+            <label><%= f.object.hashtags %></label>
+          </li>
+        <% end %>
       <% end %>
 
       <!-- Facebook Sharing Disabled Temporarily -->
@@ -152,11 +161,11 @@
         <br />
       <% elsif f.object.email_delivery_sent? %>
         <li class="boolean input optional">
-          <label><b>Already Sent Emails</b></label>
+          <label><b>Already sent emails</b></label>
         </li>
       <% elsif f.object.email_delivery_queued? %>
         <li class="boolean input optional">
-          <label><b>Email Queued for delivery</b></label>
+          <label><b>Email queued for delivery</b></label>
         </li>
       <% end %>
 
@@ -164,7 +173,7 @@
     <% end %>
 
   <% else %>
-    <%= f.inputs name: "Status Codes" do %>
+    <%= f.inputs name: "Status codes" do %>
       <%= f.input :draft,
             as: :hidden,
             input_html: { value: true }
@@ -224,7 +233,7 @@
         %>
   <% end %>
   
-  <%= f.inputs name: "Notes and Updates" do %>
+  <%= f.inputs name: "Notes and updates" do %>
     <%= f.input :author_status,
           as: :select,
           include_blank: "-- Select Status",
