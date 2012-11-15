@@ -3,7 +3,8 @@
   - Added hashtags to twitter auto posting
   - updated gems
   - Updated robots.txt
-  - Sidekiq 2.5.2
+  - Sidekiq 2.5.3 upgrade
+  - Rails 3.2.9 upgrade
   - Font-resizer fix, rewriten in jQuery/coffee-js
 
 ## October 29, 2012

@@ -5,7 +5,7 @@ source 'http://rubygems.org'
 gem 'rack'
 gem 'rack-cache'
 gem 'rake'
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.9'
 gem 'bundler'
 
 ### Database Adapter

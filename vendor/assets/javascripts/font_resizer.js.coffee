@@ -4,10 +4,10 @@ jQuery ->
     normal = 14
     max = 20
     lineHeight = 20
-    
     $("#resetFont").click ->
-      resetFont
-
+      $('#item_body p').each ->
+        $(this).css("font-size", normal+"px")
+        $(this).css("line-height", lineHeight+"px")
     $("#increaseFont").click ->
       $('#item_body p').each ->
         p = this
@@ -16,7 +16,6 @@ jQuery ->
         s += 1
         $(p).css("font-size", s+"px")
         $(p).css("line-height", h+"px")
-      
     $("#decreaseFont").click ->
       $('#item_body p').each ->
         p = this
@@ -25,11 +24,4 @@ jQuery ->
         s -= 1
         $(p).css("font-size", s+"px")
         $(p).css("line-height", h+"px")
-
-    resetFont = ->
-      $('#item_body p').each ->
-        $(this).css("font-size", normal+"px")
-        $(this).css("line-height", lineHeight+"px")
-
-
     $("#font_control").show();
