@@ -90,11 +90,15 @@ class Comment < ActiveRecord::Base
     true
   end
 
+  def from_item?
+    self.commentable && self.commentable.is_a?(Item)
+  end
+
   def commentable_title
-    if self.commentable
+    if self.commentable && from_item?
       self.commentable.title
     else
-      ""
+      "in reply"
     end
   end
 

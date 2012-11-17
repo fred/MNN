@@ -75,6 +75,8 @@ module ItemsHelper
     str = ""
     if item.has_image?
       str += image_tag(item.main_image.image.thumb, class: "tooltip_image", title: item.main_image.title, alt: item.main_image.title)
+    elsif item.youtube_id
+      str += image_tag(youtube_thumb(item), class: "tooltip_image youtube_thumb", title: item.abstract, alt: item.youtube_id)
     end
     str += "#{item.title}"
     str += "<br/>"

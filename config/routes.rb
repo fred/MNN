@@ -31,6 +31,7 @@ Publication::Application.routes.draw do
   # opinio_model
   resources :authors do
     resources :items
+    resources :comments, controller: 'opinio/comments'
   end
 
   resources :items do
@@ -39,8 +40,8 @@ Publication::Application.routes.draw do
     opinio
   end
 
-  resources :comments, :controller => 'opinio/comments' do
-    get 'reply', :on => :member
+  resources :comments, controller: 'opinio/comments' do
+    get 'reply', on: :member
   end
 
   resources :links, only: [:index]

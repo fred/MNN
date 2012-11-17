@@ -3,13 +3,42 @@
 
 <!-- CACHE: <%= comment_cache_key(comment) %> -->
 
-<% cache_expiring(comment_cache_key(comment), 600) do %>
+<li id="comment_<%= comment.id %>">
 
-  <li id="comment_<%= comment.id %>">
+  <% if params[:author_id] && @user && comment.from_item? %>
+  <span class="commentable_title">
+    <%= link_to(
+          comment.commentable_title,
+          comment.commentable,
+          title: item_title(comment.commentable),
+          class: 'easy-tooltip'
+        ) if comment.commentable
+    %>
+  </span>
+  <% end %>
+
+  <!-- START CACHING -->
+  <% cache_expiring(comment_cache_key(comment), 600) do %>
     <span class="comment_owner">
       <% if comment.owner %>
-        <%= image_tag(comment.owner.main_image, alt: comment.owner.public_display_name) %>
-        <i><%= comment.owner.title %></i> said:
+        <%= link_to(
+              image_tag(
+                comment.owner.main_image, 
+                alt: comment.owner.public_display_name
+              ),
+              author_comments_path(comment.owner),
+              title: "View all #{comment.owner.public_display_name} comments"
+            )
+        %>
+        <i>
+          <%= link_to(
+                comment.owner.public_display_name,
+                author_comments_path(comment.owner),
+                title: "View all #{comment.owner.public_display_name} comments"
+              )
+          %>
+        </i>
+        said:
       <% end %>
     </span>
     <div class="comment_body">
@@ -19,9 +48,8 @@
       %>
     </div>
     <span class="comment_date">
-      <%= time_ago_in_words(comment.created_at) %> <%= _('ago') %>
+      <i class='icon-time'></i> <%= time_ago_in_words(comment.created_at) %> <%= _('ago') %>
     </span>
-
 
     <%# this enables only 1 level of replies %>
     
@@ -45,7 +73,6 @@
             }
         %>
       <% end %>
-
       <% if can_edit_comment(comment) %>
         <%= link_to _('Edit Comment'),
             edit_comment_path(comment),
@@ -65,6 +92,8 @@
         %>
       </ul>
     <% end %>
-  </li>
 
-<% end %>
+  <% end %>
+  <!-- END CACHING -->
+
+</li>

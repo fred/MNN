@@ -12,7 +12,10 @@ class Opinio::CommentsController < ApplicationController
       @rss_language = "en"
       @last_published = @item.last_commented_at
     elsif params[:mine]
-      @comments = current_user.comments.order('id DESC').page(params[:page]).per(20)
+      @comments = current_user.comments.order('id DESC').includes(:owner).page(params[:page]).per(20)
+    elsif params[:author_id]
+      @user = User.find(params[:author_id])
+      @comments = @user.comments.order("id DESC").includes([:owner, :commentable]).page(params[:page]).per(20)
     else
       @comments = Comment.order('id DESC').page(params[:page]).per(20)
     end

@@ -1,11 +1,12 @@
 <div class="comments">
-  <h3>
-    <span class="label label-info">Comments</span>
+  <span class="span6">
+    <span class="label label-info"><i class='icon-comments'></i> Comments </span>
+    &nbsp;
     <%= link_to image_tag("icons/social/rss_16.png", alt: "RSS for comments on this article"),
           item_comments_path(@item, format: 'rss')
     %>
-  </h3>
-  <span class="with-left-margin"><i>Latest comments on top</i></span>
+  </span>
+  <span class="span6"><i>Latest comments on top</i></span>
   <%= comments_for @item %>
 </div>
 

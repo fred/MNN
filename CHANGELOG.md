@@ -1,5 +1,11 @@
 ## November 10-15, 2012
 
+ - Added page with all user's comments
+ - Improved Styles for comments
+ - Updated Gemfile
+
+## November 10-15, 2012
+
   - Added hashtags to twitter auto posting
   - updated gems
   - Updated robots.txt

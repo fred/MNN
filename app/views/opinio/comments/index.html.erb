@@ -2,10 +2,16 @@
   <h3>Comments on: <%= link_to @item.title, @item %></h3>
 <% end %>
 
-<div class="comments">
-  <h4>
+<div class="comments row-fluid">
+  <div class="span6">
+    <h4>
     <%= link_to image_tag('icons/social/rss_32.png'), format: "rss" %>
-    <%= link_to "RSS feed for all comments", format: "rss" %>
-  </h4>
+    <% if params[:author_id] && @user %>
+      <%= link_to "RSS feed for #{@user.public_display_name} comments", format: "rss" %>
+    <% else %>
+      <%= link_to "RSS feed for all comments", format: "rss" %>
+    <% end %>
+    </h4>
+  </div>
   <%= render partial: "opinio/comments/comments", locals: { comments: @comments } %>
 </div>
