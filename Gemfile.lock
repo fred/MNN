@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: git://github.com/fred/active_admin.git
-  revision: 7605fd6b237e0460ff673ec2efd29f071ecef196
+  revision: 26cca0cbbaf8438f2b277aea5e80b6233cdf9384
   branch: no-override
   specs:
     activeadmin (0.5.0)
