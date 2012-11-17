@@ -43,6 +43,10 @@ ActiveAdmin::Dashboards.build do
   #   link_to "Back to Site", root_path
   # end
 
+  section "Welcome back", pririty: 0 do
+    para "#{Time.now.to_s(:long)}"
+  end
+
   section "Popular Searches", priority: 1 do
     table_for Query.popular.limit(10) do
       column "Query" do |t|
@@ -57,7 +61,7 @@ ActiveAdmin::Dashboards.build do
     end
   end
 
-  section "Suspicious Comments", priority: 1 do
+  section "Suspicious Comments", priority: 2 do
     if controller.current_ability.can?(:read, Comment)
       table_for Comment.suspicious(10) do
         column "User" do |t|
@@ -199,7 +203,7 @@ ActiveAdmin::Dashboards.build do
           v.tag
         end
         column "When" do |v|
-          v.created_at.to_s :short
+          "#{time_ago_in_words(v.created_at)} ago"
         end
         column "User" do |v|
           user = User.where(id: v.whodunnit).first
@@ -251,4 +255,16 @@ ActiveAdmin::Dashboards.build do
     end
   end
 
+end
+
+
+module ActiveAdmin
+  module Views
+    class Footer < Component
+      def build
+        super id: "footer"
+        para "Worldmathaba Admin -- #{Time.now.to_s(:long)}"
+      end
+    end
+  end
 end
