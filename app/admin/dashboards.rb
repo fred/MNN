@@ -43,10 +43,6 @@ ActiveAdmin::Dashboards.build do
   #   link_to "Back to Site", root_path
   # end
 
-  section "Welcome back", pririty: 0 do
-    para "#{Time.now.to_s(:long)}"
-  end
-
   section "Popular Searches", priority: 1 do
     table_for Query.popular.limit(10) do
       column "Query" do |t|
