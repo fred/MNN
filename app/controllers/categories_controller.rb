@@ -12,7 +12,8 @@ class CategoriesController < ApplicationController
     end
     @categories = @site_categories
     @last_published = Item.last_item.updated_at
-    fresh_when(etag: @etag, last_modified: @last_published) unless (current_user or current_admin_user)
+    # fresh_when(etag: @etag, last_modified: @last_published) unless (current_user or current_admin_user)
+    no_cache_headers
     # respond_to do |format|
     #   format.html
     # end
