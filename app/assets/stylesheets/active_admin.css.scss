@@ -11,7 +11,7 @@ body {
 }
 
 #title_bar h2 {
-  font-size: 1.8em;
+  font-size: 1.6em;
   line-height: 1.1em;
 }
 
@@ -23,12 +23,17 @@ body {
   padding: 9px 15px;
 }
 
+#footer {
+  font-size: 0.9em;
+  padding: 0 0 0 16px;
+}
+
 #title_bar #titlebar_right {
   text-align: center;
 }
 
 #active_admin_content {
-  padding: 12px 20px;
+  padding: 8px 12px;
 }
 form input[type="select"],
 form input[type="text"],

@@ -6,7 +6,7 @@ ActiveAdmin.register AdminUser do
   end
   controller.authorize_resource
   config.comments = false
-  menu parent: "Members", priority: 24, if: lambda{|tabs_renderer|
+  menu parent: "Members", priority: 24, label: "Admin Users", if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, AdminUser)
   }
   form partial: "form"

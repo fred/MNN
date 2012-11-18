@@ -7,7 +7,7 @@ ActiveAdmin.register User do
   controller.authorize_resource
   config.comments = false
   # config.sort_order = "last_sign_in_at_desc"
-  menu parent: "Members", priority: 24, if: lambda{|tabs_renderer|
+  menu parent: "Members", priority: 24, label: "Users", if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, User)
   }
   form partial: "form"

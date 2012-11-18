@@ -2,7 +2,7 @@
 ActiveAdmin.register Role do
   controller.authorize_resource
   
-  menu parent: "Members", priority: 50, if: lambda{|tabs_renderer|
+  menu parent: "Members", priority: 50, label: "Admin Roles", if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, Role)
   }
   

@@ -2,7 +2,7 @@ ActiveAdmin.register Page do
   config.clear_sidebar_sections!
   controller.authorize_resource
 
-  menu parent: "Settings", priority: 100, if: lambda{|tabs_renderer|
+  menu parent: "More", priority: 60, label: "Static Pages", if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, Page)
   }
   config.sort_order = "updated_at_desc"
