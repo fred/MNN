@@ -7,6 +7,10 @@ ActiveAdmin.register Page do
   }
   config.sort_order = "updated_at_desc"
   config.comments = false
+
+  action_item only: [:show, :edit] do
+    link_to('View on site', page_path(page), data: 'no-turbolink')
+  end
   
   index title: "Pages" do
     id_column

@@ -81,8 +81,6 @@
       <% end %>
 
 
-    <% cache_expiring(cache_key_for_user('navbar')) do %>
-
       <div class="btn-group pull-right hidden-old-phone hidden-phone">
         
         <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -207,7 +205,9 @@
                 <%= _("Sign out") %>
               <% end %>
             </li>
+
           <% else %>
+
             <li><%= login_link _('Sign in') %></li>
             <%- if Devise.mappings[:user].registerable?  %>
               <li>
@@ -222,12 +222,11 @@
                 <%= link_to _("Didn't receive confirmation instructions?"), new_confirmation_url(:user, protocol: http_protocol) %>
               </li>
             <% end -%>
+
           <% end %>
+
         </ul>
       </div>
-
-    <% end %>
-
     </div>
   </div>
 </div>

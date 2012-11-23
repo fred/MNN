@@ -122,6 +122,7 @@ group :development do
 end
 
 group :test do
+  gem 'xpath'
   gem 'factory_girl', '~> 4.0'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'cucumber-rails', '>= 1.0.2'
