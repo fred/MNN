@@ -464,6 +464,9 @@ class Item < ActiveRecord::Base
     comments.where(spam: false, suspicious: false, approved: true)
   end
 
+  def updated_after_published?
+    updated_at > (published_at + 1.hour)
+  end
 
   ####################
   ### CLASS METHODS

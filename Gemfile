@@ -96,7 +96,7 @@ group :production do
 end
 
 group :production, :development do
-  gem 'unicorn', "~> 4.3.1", require: false, platform: :mri_19
+  gem 'unicorn', require: false, platform: :mri_19
 end
 
 group :test, :development do

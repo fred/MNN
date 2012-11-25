@@ -96,6 +96,12 @@
           <%= _("by User") %>
         <% end %>
 
+        <% if @item.updated_after_published? %>
+          <span class="item_updated">
+            (Updated: <%= time_tag(@item.updated_at.in_time_zone("UTC"), pubdate: false) %>)
+          </span>
+        <% end %>
+
         <div itemprop="keywords">
           <ul class="tags">
             <% @item.general_tags.each do |tag| %>

@@ -92,7 +92,12 @@ article {
     color: #555;
     font-weight: bold;
     font-size: 13px;
-    padding: 2px 2px 0 2px;
+    padding: 2px 2px 0 6px;
+  }
+  span.item_updated {
+    padding-left: 6px;
+    font-style: italic;
+    font-size: 12px;
   }
   span.source_url {
     display:block;
