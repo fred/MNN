@@ -60,6 +60,7 @@ class Item < ActiveRecord::Base
   before_save   :dup_existing_attachment
   before_save   :send_email_deliveries
   before_save   :process_sitemap_job
+  before_save   :update_custom_slug
   before_update :set_status_code
   before_create :build_stat
   after_create  :set_custom_slug
@@ -135,7 +136,12 @@ class Item < ActiveRecord::Base
 
   # generate slugs once and then treat them as read-only
   def should_generate_new_friendly_id?
-    new_record?
+    # new_record?
+    false
+  end
+
+  def update_custom_slug
+    self.slug = custom_slug
   end
 
   def set_custom_slug
@@ -155,16 +161,18 @@ class Item < ActiveRecord::Base
     # self.body.gsub!("&mdash;", "&#45;")
     # self.body.gsub!("&#180;", "&#39;")
     # self.body.gsub!("&#96;", "&#39;")
-    self.body.to_s.gsub!("&lsquo;", "\'")
-    self.body.to_s.gsub!("&rsquo;", "\'")
-    self.body.to_s.gsub!("&ldquo;", "\"")
-    self.body.to_s.gsub!("&rdquo;", "\"")
-    self.body.to_s.gsub!("&ndash;", "-")
-    self.body.to_s.gsub!("&mdash;", "-")
-    self.body.to_s.gsub!("&#180;", "\'")
-    self.body.to_s.gsub!("&#96;", "\'")
-    self.body.to_s.gsub!("&nbsp;", " ")
-    self.body.to_s.gsub!("&hellip;", "...")
+    if body.present?
+      body.to_s.gsub!("&lsquo;", "\'")
+      body.to_s.gsub!("&rsquo;", "\'")
+      body.to_s.gsub!("&ldquo;", "\"")
+      body.to_s.gsub!("&rdquo;", "\"")
+      body.to_s.gsub!("&ndash;", "-")
+      body.to_s.gsub!("&mdash;", "-")
+      body.to_s.gsub!("&#180;", "\'")
+      body.to_s.gsub!("&#96;", "\'")
+      body.to_s.gsub!("&nbsp;", " ")
+      body.to_s.gsub!("&hellip;", "...")
+    end
     true
   end
 

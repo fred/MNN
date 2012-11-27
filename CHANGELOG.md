@@ -1,3 +1,17 @@
+## November 27, 2012
+
+  - Allow changing URL based when Headline has changed
+
+## November 16-24, 2012
+
+  - Page Improvements
+  - Updated activeadmin from upstream
+  - Updated Gems
+  - Added page with all Comments for users
+  - Tinymce 3.5.8 update
+  - Admin page improvements
+  - Added Updated time to articles
+
 ## November 10-15, 2012
 
  - Added page with all user's comments
