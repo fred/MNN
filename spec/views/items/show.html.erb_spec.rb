@@ -16,6 +16,7 @@ describe "items/show" do
     ))
     @item.attachments << FactoryGirl.create(:attachment)
     @user = FactoryGirl.create(:user)
+    @comments = Comment.page(1).per(10)
     Sunspot.commit
   end
 

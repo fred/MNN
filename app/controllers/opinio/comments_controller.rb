@@ -38,6 +38,7 @@ class Opinio::CommentsController < ApplicationController
     else
       @comment.owner = nil
     end
+    @user = @comment.owner
     @comment.user_ip = request.remote_ip.to_s if @comment.respond_to?(:user_ip)
     @comment.user_agent = request.user_agent.to_s if @comment.respond_to?(:user_agent)
     @comment.approved = nil
