@@ -6,8 +6,9 @@
           item_comments_path(@item, format: 'rss')
     %>
   </span>
-  <span class="span6"><i>Latest comments on top</i></span>
-  <%= comments_for @item %>
+  <span class="span6"><i>Latest comments</i></span>
+  <%#= comments_for @item %>
+  <%= render(partial: "opinio/comments/comments", locals: {comments: @comments, commentable: @item}) %>
 </div>
 
 <% if current_user && !is_handheld? %>

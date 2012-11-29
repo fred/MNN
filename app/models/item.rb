@@ -469,7 +469,7 @@ class Item < ActiveRecord::Base
   end
 
   def approved_comments
-    comments.where(spam: false, suspicious: false, approved: true)
+    comments.where(marked_spam: false, suspicious: false, approved: true)
   end
 
   def updated_after_published?
@@ -530,7 +530,7 @@ class Item < ActiveRecord::Base
   end
 
   def self.last_item
-    published.order("updated_at DESC").first
+    select("id, updated_at, draft, published_at").published.not_draft.order("updated_at DESC").first
   end
 
   # Returns the most popular Items in the last N days

@@ -22,7 +22,24 @@
     <% end %>
     <p><%= _("Submitted Articles:") %> <%= @author.items_count %></p>
     <p><%= _("Original Articles:")%> <%= @author.original_items_count %></p>
-    <p><%= _("Comments")%>: <%= @author.comments_count %></p>
+    <p>
+      <%= _("Comments") %>:
+      <%= link_to(
+            @author.comments_count,
+            author_comments_path(@author),
+            title: "View all #{@author.public_display_name} comments"
+          )
+      %>
+    </p>
+    <p>
+      <%= link_to(
+            _("View Comments"),
+            author_comments_path(@author),
+            title: "View all #{@author.public_display_name} comments",
+            class: 'btn'
+          )
+      %>
+    </p>
     <br />
     <%= @author.bio %>
     <% if (current_user && @author.id == current_user.id) or (current_admin_user && @author.id == current_admin_user.id) %>

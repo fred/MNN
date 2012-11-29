@@ -2,7 +2,7 @@ class TagsController < ApplicationController
 
   def index
     @tags = Tag.order("type DESC, title ASC")
-    @last_published = Item.last_item.updated_at
+    @last_published = @last_mofified
     respond_to do |format|
       format.html {
         private_headers
@@ -13,14 +13,7 @@ class TagsController < ApplicationController
   def show
     @show_breadcrumb = true
     @tag = Tag.find(params[:id])
-    @items = @tag.
-      items.
-      localized.
-      where(draft: false).
-      includes(:attachments, :category, :language, :item_stat, :user, :tags).
-      where("published_at is not NULL").
-      where("published_at < ?", Time.now).
-      order("published_at DESC").
+    @items = @tag.items.localized.published.not_draft.order("published_at DESC").
       page(params[:page]).per(per_page)
     if @items.empty?
       @last_published = Time.now
@@ -34,7 +27,6 @@ class TagsController < ApplicationController
     @meta_keywords = "#{@tag.title} news"
     @rss_category = @tag.title
     @rss_source = tags_path(@tag, only_path: false, protocol: 'https', format: "html")
-    @last_mofified = @last_published
     headers['Last-Modified'] = @last_published.httpdate
 
     respond_to do |format|

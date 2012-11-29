@@ -49,6 +49,9 @@
     </div>
     <span class="comment_date">
       <i class='icon-time'></i> <%= time_ago_in_words(comment.created_at) %> <%= _('ago') %>
+      <% if comment.commentable %>
+      - <i><%= link_to "permalink", item_path(comment.commentable) + "#comment_#{comment.id}" %></i>
+      <% end %>
     </span>
 
     <%# this enables only 1 level of replies %>

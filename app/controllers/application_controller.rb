@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :sidebar_variables
-  before_filter :mini_profiler
   before_filter :get_locale
   before_filter :https_for_admins
   before_filter :set_start_time, :set_time_zone, :set_view_items, :current_ability
@@ -335,17 +334,6 @@ class ApplicationController < ActionController::Base
 
   ### PRIVATE METHODS ###
   protected
-
-  def can_debug?
-    # Rails.env.development? && !request[:controller].to_s.match("admin")
-    false
-  end
-
-  def mini_profiler
-    if can_debug? && defined?(Rack::MiniProfiler)
-      Rack::MiniProfiler.authorize_request
-    end
-  end
 
     def redirect_url
       if request.env['omniauth.origin']

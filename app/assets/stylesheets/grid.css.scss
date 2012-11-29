@@ -99,7 +99,7 @@
     font-size: 13px;
   }
   .container-fluid {
-     min-width: 640px;
+     min-width: 580px;
   }
   .container-fluid > .sidebar {
     float: left;
@@ -151,6 +151,9 @@
 @media only screen and (min-width: 940px) {
   body {
     font-size: 13px;
+  }
+  .container-fluid {
+    min-width: 880px;
   }
   .container-fluid > .sidebar {
     float: left;
@@ -210,7 +213,7 @@
     font-size: 14px;
   }
   .container-fluid {
-     min-width: 1260px;
+     min-width: 1220px;
   }
   .container-fluid > .sidebar {
     float: left;
@@ -262,7 +265,7 @@
    // -webkit-text-size-adjust: auto;
   }
   .container-fluid {
-     min-width: 480px;
+     min-width: 440px;
      padding-right: 16px;
   }
   .container-fluid > .sidebar {
@@ -386,6 +389,14 @@
     width: 300px;
     left: 0px;
   }
+  .container-fluid > .sidebar .sidebar_secions {
+    display: none;
+  }
+  .container-fluid > .content {
+    margin-left: 0px;
+    clear: both;
+    display: block;
+  }
   div.well {
     margin-bottom: 12px;
     padding: 10px 4px 4px 4px;
@@ -414,14 +425,6 @@
   }
   div.well ul, div.well ol {
     margin: 0 0 8px 16px;
-  }
-  .container-fluid > .sidebar .sidebar_secions {
-    display: none;
-  }
-  .container-fluid > .content {
-    margin-left: 0px;
-    float: left;
-    position: inherit;
   }
   .navbar .brand{
     text-align: center;

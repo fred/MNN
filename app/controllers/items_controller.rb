@@ -13,9 +13,8 @@ class ItemsController < ApplicationController
       @rss_language = @language.locale
       @rss_source = items_path(language_id: params[:language_id], only_path: false)
       @meta_keywords = "#{@language.description}, WorldMathaba"
-      @items = Item.published.
-        not_draft.
-        includes(:language, :attachments, :tags, :item_stat, :user).
+      @items = Item.published.not_draft.
+        includes(:attachments).
         where(language_id: @language.id).
         order("published_at DESC").
         page(params[:page]).per(per_page)
@@ -24,10 +23,7 @@ class ItemsController < ApplicationController
       @rss_description = "World Mathaba - Latest News"
       @rss_source = items_path(only_path: false, protocol: 'https')
       @rss_language = "en"
-      @items = Item.published.
-        localized.
-        not_draft.
-        # includes(:language, :attachments, :tags, :item_stat, :user). # relying on fragment caching
+      @items = Item.published.localized.not_draft.
         includes(:attachments).
         order("published_at DESC").
         page(params[:page]).per(per_page)
@@ -62,7 +58,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.includes([:attachments, :user, :category, :language]).find(params[:id])
-    @comments = @item.approved_comments
+    @comments = @item.approved_comments.page(params[:page]).per(30)
     @show_breadcrumb = true
     if @item && view_context.is_human? && (@item_stat = @item.item_stat)
       if session[:view_items] && !session[:view_items].include?(@item.id)
@@ -105,11 +101,10 @@ class ItemsController < ApplicationController
       @search = Item.solr_search(include: [:attachments, :comments, :category, :language, :item_stat, :user, :tags]) do
         fulltext term do
           phrase_fields author_name: 4.0
-          phrase_fields title: 1.8
+          phrase_fields title: 2.4
           phrase_fields abstract: 1.6
-          phrase_fields tags: 1.5
-          phrase_fields body: 1.4
-          phrase_slop  1
+          phrase_fields tags: 1.6
+          phrase_fields body: 1.2
         end
         if category
           with(:category_id, category.id)

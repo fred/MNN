@@ -12,6 +12,7 @@
       <%= link_to "RSS feed for all comments", format: "rss" %>
     <% end %>
     </h4>
+    <%= link_to("View User Profile", author_path(@user), class: 'btn with-top-margin') %>
   </div>
   <%= render partial: "opinio/comments/comments", locals: { comments: @comments } %>
 </div>
