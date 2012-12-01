@@ -143,6 +143,7 @@ ActiveAdmin.register Item do
       @item = Item.new
       @now = Time.zone.now
       @item.published_at = nil
+      @published_at = nil
       @item.draft = true
       @item.user_id = current_admin_user.id
       if params[:feed_id]
@@ -177,9 +178,9 @@ ActiveAdmin.register Item do
       authorize! :edit, @item
 
       if @item.published_at
-        @item.published_at = @item.published_at.localtime
+        @published_at = @item.published_at.to_s
       else
-        @item.published_at = Time.zone.now
+        @published_at = Time.zone.now
       end
     end
 

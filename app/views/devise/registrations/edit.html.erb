@@ -43,7 +43,7 @@
           <%= f.label :registration_role, _("Reason for joining us?"), class: 'control-label' %>
           <div class="controls">
             <%= f.select :registration_role, 
-                  options_for_select([[_("Just be a member")], [_("To Comment")], [_("Comment and Submit Articles")], [_("I want to be an Editor")]]),
+                  options_for_select([[_("Just be a member")], [_("To comment")], [_("Comment and submit articles")], [_("To write articles")]]),
                   {include_blank: _("-- Please Choose")},
                   required: false,
                   class: "input-medium"
@@ -107,9 +107,9 @@
         <div class="control-group">
           <%= f.label :bio, _("Your Bio"), class: 'control-label' %>
           <div class="controls">
-            <%= f.text_area :bio, required: false, class: "input-medium",
+            <%= f.text_area :bio, required: false, class: "input-large",
                   placeholder: _("Say something about yourself."),
-                  rows: 7, cols: 24
+                  rows: 6
             %>
             <p class="help-block"><%= _("Shown on your public profile") %></p>
           </div>
@@ -220,9 +220,8 @@
       </fieldset>
 
       <div class="form-actions">
-        <%= f.submit _("Update"), class: "btn btn-primary", data: {disable_with: _('Processing...')} %>
-        &nbsp;
-        <%= link_to _("Delete my account"),
+        <%= f.submit _("Update Account"), class: "btn btn-primary", data: {disable_with: _('Processing...')} %>
+        <%= button_to _("Delete Account"),
               registration_path(resource_name),
               data: {confirm: _("Are you sure you want to delete your account from our system?")},
               method: :delete,

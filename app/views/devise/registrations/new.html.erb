@@ -58,7 +58,7 @@
           <%= f.label :registration_role, _("Reason for joining us?"), class: 'control-label' %>
           <div class="controls">
             <%= f.select :registration_role, 
-                  options_for_select([[_("Just be a member")], [_("To Comment")], [_("Comment and Submit Articles")], [_("I want to be an Editor")]]),
+                  options_for_select([[_("Just be a member")], [_("To comment")], [_("Comment and submit articles")], [_("To write articles")]]),
                   {include_blank: _("-- Please Choose")},
                   required: false,
                   class: "input-large"

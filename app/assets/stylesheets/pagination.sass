@@ -1,63 +1,64 @@
-nav.pagination a
-  line-height: 18px
-
-nav.pagination
-  padding: 0px
-  margin: 0px
-  margin-top: 10px
-  float: right
-  clear: both
-  display: block
-
-nav.pagination span.prev,
-nav.pagination span.next,
-nav.pagination span.first,
-nav.pagination span.last,
-nav.pagination span.page,
-nav.pagination span.current
-  list-style-type: none
+nav.pagination 
+  -moz-border-bottom-colors: none
+  -moz-border-left-colors: none
+  -moz-border-right-colors: none
+  -moz-border-top-colors: none
+  background-color: #F4F4F4
+  background-image: linear-gradient(#FFFFFF, #EFEFEF)
+  background-repeat: repeat-x
+  border-color: #EAEAEA #EAEAEA -moz-use-text-color
+  border-image: none
+  border-radius: 3px 3px 3px 3px
+  border-style: solid solid none
+  border-width: 1px 1px medium
   display: inline-block
-  margin: 0 4px
+  margin: 7px 0
+  overflow: hidden
+  border-color: #CCC
+  height: auto
+  box-shadow: 0px 0px 3px #ccc
 
-nav.pagination span.prev a,
-nav.pagination span.next a,
-nav.pagination span.first a,
-nav.pagination span.last a,
-nav.pagination span.page a,
-nav.pagination span.current a
-  webkit-box-shadow: 0px 0px 3px #ddd
-  background: #f6f6f6
-  border: 1px solid #ccc
-  padding: 5px 6px
-  -webkit-border-radius: 4px
-  -moz-border-radius: 4px
-  border-radius: 4px
-  color: #555
+// nav.pagination span.page, nav.pagination span.next, nav.pagination span.last
+nav.pagination span, nav.pagination a
+  border-bottom: 1px solid #CCC
+  border-left: 1px solid rgba(255, 255, 255, 0.7)
+  border-right: 1px solid rgba(0, 0, 0, 0.1)
+  color: #777777
+  float: left
+  font-size: 13px
+  margin: 0
+  padding: 6px 12px 5px
   text-decoration: none
-  -webkit-box-shadow: 0px 0px 3px #ddd
-  -moz-box-shadow: 0px 0px 3px #ddd
-  box-shadow: 0px 0px 3px #ddd
+  text-shadow: 0 1px 0 white
 
-nav.pagination span.prev a:hover,
-nav.pagination span.next a:hover,
-nav.pagination span.first a:hover,
-nav.pagination span.last a:hover,
-nav.pagination span.page a:hover,
-nav.pagination span.current a:hover
-  background: #fff
-  border: 1px solid #bbb
-  box-shadow: 0px 0px 4px #aaa
+nav.pagination a:first-child, nav.pagination span:first-child 
+  border-bottom-left-radius: 3px
+  border-left: medium none
 
-nav.pagination span.current 
-  -webkit-border-radius: 4px
-  -moz-border-radius: 4px
-  border-radius: 4px
-  -webkit-box-shadow: 0px 0px 2px #999
-  -moz-box-shadow: 0px 0px 2px #999      
-  box-shadow: 0px 0px 2px #999
-  border: 1px solid #aaa
-  padding: 4px 6px
-  margin: 0px 2px
-  line-height: 18px
-  box-shadow: 0px 0px 4px #aaa
-  font-weight: bold
+nav.pagination a:last-child, nav.pagination span:last-child 
+  border-bottom-right-radius: 3px
+  border-right: medium none
+
+nav.pagination a:hover, nav.pagination span:hover 
+  background-color: #DCE6EF
+  background-image: linear-gradient(#FAFBFD, #DCE6EF)
+  background-repeat: repeat-x
+  border-bottom-color: #CFDCE8
+  color: #4183C4
+
+nav.pagination a.current, nav.pagination a.current:hover, nav.pagination span.current, nav.pagination span.current:hover 
+  background-color: #EBEBEB
+  background-image: linear-gradient(#FCFCFC, #EBEBEB)
+  background-repeat: repeat-x
+  border-bottom-color: #D26911
+  color: #000000
+
+nav.pagination a.disabled, nav.pagination a.gap, nav.pagination span.disabled, nav.pagination span.gap 
+  color: #BBBBBB
+  cursor: default
+
+nav.pagination a.disabled:hover, nav.pagination a.gap:hover, nav.pagination span.disabled:hover, nav.pagination span.gap:hover 
+  background-color: #EFEFEF
+  background-image: linear-gradient(#FFFFFF, #EFEFEF)
+  background-repeat: repeat-x
+  border-bottom-color: #CCC

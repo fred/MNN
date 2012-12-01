@@ -6,45 +6,58 @@
                 member_label: 'title',
                 member_value: :id,
                 label: "Category",
-                required: true,
-                hint: "Select Article category"
+                hint: "Select Article category",
+                input_html: {
+                  required: true
+                }
     %>
     <%= f.input :language,
                 as: :select,
                 member_label: 'description',
                 member_value: :id,
                 label: "Language",
-                required: true,
-                hint: "Select a language for this article"
+                hint: "Select a language for this article",
+                input_html: {
+                  required: true
+                }
     %>
     <%= f.input :title,
                 label: "Headline",
-                required: true,
-                hint: "Ideally 60 characters. Max 100." %>
+                hint: "Ideally 60 characters. Max 100.",
+                input_html: {
+                  maxlength: 100,
+                  required: true
+                }
+    %>
     <%= f.input :abstract,
                 hint: "Ideally 90 characters. Max 120.",
                 required: true,
-                input_html: { rows: 2, required: true}
+                input_html: {
+                  maxlength: 120,
+                  rows: 2,
+                  required: true
+                }
     %>
-    
     <%= f.input :body,
                 label: "Main Content",
-                required: true,
                 input_html: { rows: 60, cols: 120},
-                hint: "Do Not use H1 headings. Use only H2, H3 and H4. If you want a new paragraph, simply hit 'RETURN' key. If you don’t want a new paragraph and just want a line break, hit 'SHIFT+RETURN' keys. - If you are copying and pasting from a website, it is recommended to paste first to Notepad.exe/TextEdit.app then copy again and paste here."
+                hint: "Do Not use H1 headings. Use only H2, H3 and H4. If you want a new paragraph, simply hit 'RETURN' key. If you don’t want a new paragraph and just want a line break, hit 'SHIFT+RETURN' keys. - If you are copying and pasting from a website, it is recommended to paste first to Notepad.exe/TextEdit.app then copy again and paste here.",
+                input_html: {
+                  required: true
+                }
     %>
-
     <%= f.input :keywords,
                 label: "Keywords",
-                required: false,
                 hint: "Keywords related to the article, such as names, events, special keywords, or any keyword with a ralationship to other articles. Examples: Jamahiriya, USA, Illuminati, Rockefeller, New World Order, Free Energy, Monsanto, GMO, IMF, Pepsi, Gold, banking, Wikileaks, Anonymous. It will improve discovery of related items. You may also use special keywords to relate other items. It's invisble to the users. Less keywords will give more related items but less accurate, more keywords will give less related items but more accurate. You need to find a good balance."
     %>
     <%= f.input :published_at,
           as: "string",
           label: "Publication Date",
-          require: true,
-          hint: "Time to go live. Timezone used for picking date: '#{Time.zone}' from your Profile. 
-            (Required)"
+          hint: "Time to go live. Timezone used for picking date: '#{Time.zone}' from your Profile. (Required)",
+          input_html: {
+            required: true,
+            value: @published_at
+          }
     %>
   <% end %>
 
@@ -76,8 +89,7 @@
     %>
     <br />
   <% end %>
-  
-  
+
   <%= f.inputs name: "Tags" do %>
     <div class="medium_box">
       <%= f.input :general_tags, as: :check_boxes, label: "General",
