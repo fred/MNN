@@ -12,7 +12,8 @@ gem 'bundler'
 platforms :ruby do
   gem 'pg', '~> 0.14.1'
   gem 'rmagick'
-  gem 'dalli'
+  # gem 'dalli'
+  gem 'rails3_libmemcached_store'
 end
 
 platforms :jruby do
