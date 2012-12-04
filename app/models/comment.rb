@@ -1,6 +1,8 @@
 class Comment < ActiveRecord::Base
   attr_accessor :subscribe
 
+  acts_as_voteable
+
   opinio counter_cache: true
 
   include Rakismet::Model

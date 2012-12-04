@@ -1,0 +1,11 @@
+<% if !logged_in? %>
+  $('#modal-login').modal('show');
+<% elsif @own_comment %>
+  alert("You can't vote on your own comment!")
+<% elsif @vote_deleted %>
+  alert("Your vote has been cleared")
+<% elsif @already_voted %>
+  alert("You already voted on this comment")
+<% elsif @voted %>
+  alert("Thank you for your vote!")
+<% end %>

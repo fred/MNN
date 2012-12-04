@@ -47,12 +47,28 @@
             attributes: comment.allowed_html_attributes
       %>
     </div>
-    <span class="comment_date">
-      <i class='icon-time'></i> <%= time_ago_in_words(comment.created_at) %> <%= _('ago') %>
-      <% if comment.commentable %>
-      - <i><%= link_to "permalink", item_path(comment.commentable) + "#comment_#{comment.id}" %></i>
-      <% end %>
-    </span>
+    <div class="clearfix">
+      <span class="comment_date">
+        <i class='icon-time'></i> <%= time_ago_in_words(comment.created_at) %> <%= _('ago') %>
+        <% if comment.commentable %>
+        - <i><%= link_to "permalink", item_path(comment.commentable) + "#comment_#{comment.id}" %></i>
+        <% end %>
+      </span>
+
+      <span class="discussion-vote">
+        - 
+        <%= link_to comment_vote_path(comment, vote: 'up'), rel: "nofollow", class: "vote-up", title: "Vote up, interesting or helpful comment", remote: true do %>
+          <i class="icon-thumbs-up"></i>
+        <% end %>
+        <%= link_to comment_vote_path(comment, vote: 'down'), rel: "nofollow", class: "vote-down", title: "Vote down, I don't like this comment", remote: true do %>
+          <i class="icon-thumbs-down"></i>
+        <% end %>
+        <%= link_to comment_vote_path(comment, vote: 'delete'), rel: "nofollow", class: "vote-delete", title: "Clear my vote from this comment", remote: true do %>
+          <i class="icon-trash"></i>
+        <% end %>
+        <%= comment_rate(comment).html_safe %>
+      </span>
+    </div>
 
     <%# this enables only 1 level of replies %>
     

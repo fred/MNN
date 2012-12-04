@@ -28,7 +28,7 @@ platforms :jruby do
 end
 
 ### Oauth
-gem 'simple_oauth'
+gem 'simple_oauth', "~> 0.1.9"
 gem 'omniauth'
 gem 'omniauth-oauth', '~> 1.0.1'
 gem 'omniauth-oauth2', '1.0.3'
@@ -74,7 +74,7 @@ gem 'sidekiq'
 ### JSON and Twitter
 gem 'multi_json'
 gem 'json'
-gem 'twitter'
+gem 'twitter', "~> 4.0"
 
 gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
 
@@ -164,6 +164,8 @@ gem 'turbo-sprockets-rails3'
 gem 'turbolinks'
 gem 'feedzirra'
 gem 'newrelic_rpm'
+
+gem 'thumbs_up'
 
 ### Disabled Gems:
 # gem 'postmark-rails'

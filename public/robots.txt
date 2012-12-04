@@ -4,6 +4,7 @@ Disallow: /auth/
 Disallow: /users/
 Disallow: /admin/
 Disallow: /drafts/
+Disallow: /comments/*/vote
 Crawl-Delay: 30
 
 

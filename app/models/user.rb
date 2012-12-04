@@ -4,6 +4,13 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   mount_uploader :gpg, GpgUploader
 
+  acts_as_voter
+  # The following line is optional, and tracks karma (up votes) for questions this user has submitted.
+  # Each question has a submitter_id column that tracks the user who submitted it.
+  # The option :weight value will be multiplied to any karma from that voteable model (defaults to 1).
+  # You can track any voteable model.
+  has_karma(:comments, as: :owner)
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :lockable,

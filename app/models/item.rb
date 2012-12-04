@@ -3,6 +3,8 @@ class Item < ActiveRecord::Base
 
   DEFAULT_LOCALE = 'en'
 
+  acts_as_voteable
+
   attr_protected :user_id, :slug, :updated_by, :deleted_at, :updating_user_id
 
   attr_accessor :updated_reason, :share_facebook, :share_twitter, :send_emails, :existing_attachment_id, :updating_user_id

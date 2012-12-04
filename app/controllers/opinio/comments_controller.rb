@@ -2,6 +2,31 @@ class Opinio::CommentsController < ApplicationController
   include Opinio::Controllers::InternalHelpers
   include Opinio::Controllers::Replies if Opinio.accept_replies
 
+  def vote
+    return false unless current_user
+
+    @comment = Comment.find(params[:comment_id])
+
+    if @comment.owner_id == current_user.id
+      @own_comment = true
+    elsif current_user.voted_on?(@comment)
+      @already_voted = true
+      if params[:vote] == "delete"
+        @vote_deleted = true
+        current_user.unvote_for(@comment)
+      end
+    else
+      @already_voted = false
+      if params[:vote] == "up"
+        @voted = true
+        current_user.vote_for @comment
+      elsif params[:vote] == "down"
+        @voted = true
+        current_user.vote_against @comment
+      end
+    end
+  end
+
   def index
     if params[:item_id]
       @item = Item.includes([:comments,:item_stat]).find(params[:item_id])

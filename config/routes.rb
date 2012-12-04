@@ -38,10 +38,12 @@ Publication::Application.routes.draw do
     resources :language
     resources :category
     opinio
+    get 'vote'
   end
 
   resources :comments, controller: 'opinio/comments' do
     get 'reply', on: :member
+    get 'vote'
   end
 
   resources :links, only: [:index]

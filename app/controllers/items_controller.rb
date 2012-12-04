@@ -1,4 +1,8 @@
 class ItemsController < ApplicationController
+
+  def vote
+    @item = Item.find(params[:item_id])
+  end
   
   def feed
     headers_with_timeout(Settings.cache_time)

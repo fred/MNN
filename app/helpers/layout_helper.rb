@@ -1,5 +1,9 @@
 module LayoutHelper
 
+  def logged_in?
+    (current_user or current_admin_user)
+  end
+
   def link_to_google_auth
     link_to("Login with Gmail",
       "https://#{Settings.host}/auth/google_oauth2",
