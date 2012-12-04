@@ -221,7 +221,7 @@
 
       <div class="form-actions">
         <%= f.submit _("Update Account"), class: "btn btn-primary", data: {disable_with: _('Processing...')} %>
-        <%= button_to _("Delete Account"),
+        <%= link_to _("Delete Account"),
               registration_path(resource_name),
               data: {confirm: _("Are you sure you want to delete your account from our system?")},
               method: :delete,
