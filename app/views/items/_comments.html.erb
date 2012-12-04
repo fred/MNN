@@ -6,7 +6,6 @@
           item_comments_path(@item, format: 'rss')
     %>
   </span>
-  <span class="span6"><i>Latest comments</i></span>
   <%#= comments_for @item %>
   <%= render(partial: "opinio/comments/comments", locals: {comments: @comments, commentable: @item}) %>
   <%= render(partial: "opinio/comments/new", locals: {commentable: @item} ) %>

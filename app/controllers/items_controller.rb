@@ -72,7 +72,9 @@ class ItemsController < ApplicationController
     @meta_keywords = @item.meta_keywords
     @meta_author = @item.user.title if @item.user
 
-    fresh_when(etag: @item, last_modified: @item.updated_at) unless (current_user or current_admin_user)
+    unless (current_user or current_admin_user or Rails.env.development?)
+      fresh_when(etag: @item, last_modified: @item.updated_at)
+    end
   end
 
   def new

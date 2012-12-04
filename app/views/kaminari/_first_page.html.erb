@@ -6,5 +6,5 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
-
-<%= link_to_unless current_page.first?, '1', url, :remote => remote %>
+<%#= link_to_unless current_page.first?, '1', url, rel: 'first', remote: remote %>
+<%= link_to_unless current_page.first?, 'First Page', url, rel: 'first', remote: remote %>
