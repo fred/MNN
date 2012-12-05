@@ -82,7 +82,7 @@ gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
 # in production environments by default.
 group :assets do
   gem 'therubyrhino', require: 'rhino', platform: :jruby
-  gem 'therubyracer', require: 'v8',    platform: :mri_19
+  gem 'therubyracer', "~> 0.10.2", require: 'v8',    platform: :mri_19
   gem 'execjs'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.5'
