@@ -429,8 +429,8 @@ world_mathaba.png: world_mathaba-86cde783c3cb0d9f6f4ad0f19f287b0c.png
 world_mathaba/index.png: world_mathaba-86cde783c3cb0d9f6f4ad0f19f287b0c.png
 world_mathaba11.png: world_mathaba11-abcf06684b97056eb88ac74ffb595cf8.png
 world_mathaba11/index.png: world_mathaba11-abcf06684b97056eb88ac74ffb595cf8.png
-active_admin.js: active_admin-26b05805a81cd68ac9ae79089303ca1a.js
-active_admin/index.js: active_admin-26b05805a81cd68ac9ae79089303ca1a.js
+active_admin.js: active_admin-50a111aab4148ae53140e3702c04ce2e.js
+active_admin/index.js: active_admin-50a111aab4148ae53140e3702c04ce2e.js
 application.js: application-3073f76fe0b710846e5a6f29e9bb7f5e.js
 application/index.js: application-3073f76fe0b710846e5a6f29e9bb7f5e.js
 css3-mediaqueries.js: css3-mediaqueries-25e62a62b2e0ee5f01d5adbe6dc3a049.js
