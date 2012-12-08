@@ -1,0 +1,13 @@
+<span class="discussion-vote">
+  - 
+  <%= link_to comment_vote_path(comment, vote: 'up'), rel: "nofollow", class: "vote-up", title: "Vote up, interesting or helpful comment", remote: true do %>
+    <i class="icon-thumbs-up"></i>
+  <% end %>
+  <%= link_to comment_vote_path(comment, vote: 'down'), rel: "nofollow", class: "vote-down", title: "Vote down, I don't like this comment", remote: true do %>
+    <i class="icon-thumbs-down"></i>
+  <% end %>
+  <%= link_to comment_vote_path(comment, vote: 'delete'), rel: "nofollow", class: "vote-delete", title: "Clear my vote from this comment", remote: true do %>
+    <i class="icon-trash"></i>
+  <% end %>
+  <span id="comment_score_<%= comment.id %>"><%= comment_rate(comment).html_safe %></span>
+</span>

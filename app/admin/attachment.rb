@@ -2,6 +2,8 @@
 ActiveAdmin.register Attachment do
 
   filter :title
+  filter :user_id
+  filter :parent_id
   controller.authorize_resource
   config.sort_order = "id_desc"
 
@@ -59,4 +61,9 @@ ActiveAdmin.register Attachment do
     end
   end
 
+  controller do
+    def scoped_collection
+       Attachment.includes(:attachable)
+    end
+  end
 end

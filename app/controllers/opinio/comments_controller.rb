@@ -25,6 +25,7 @@ class Opinio::CommentsController < ApplicationController
         current_user.vote_against @comment
       end
     end
+    no_cache_headers
   end
 
   def index
@@ -102,6 +103,7 @@ class Opinio::CommentsController < ApplicationController
 
   def show
     @comment = Opinio.model_name.constantize.find(params[:id])
+    @show_commentable = true
     respond_to do |format|
       format.js
       format.html

@@ -5,6 +5,12 @@ ActiveAdmin.register CommentSubscription do
   menu parent: "Members", priority: 56, label: "Comment Subscriptions", if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, CommentSubscription)
   }
+
+  # Filters
+  filter :user
+  filter :email
+  filter :admin
+
   index title: "Comments" do
     id_column
     column :user do |t|
@@ -31,6 +37,12 @@ ActiveAdmin.register CommentSubscription do
       f.input :admin
     end
     f.buttons
+  end
+
+  controller do
+    def scoped_collection
+       CommentSubscription.includes(:user, :item)
+    end
   end
 
 end

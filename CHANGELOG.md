@@ -1,3 +1,12 @@
+## December 4-8, 2012
+
+  - Votes on comments
+  - Added ajax comment score
+  - Improved CSS
+  - updated Gemfile
+  - Enabled Memcached Compression
+
+
 ## November 27, 2012
 
   - Allow changing URL based when Headline has changed

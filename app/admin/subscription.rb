@@ -5,6 +5,11 @@ ActiveAdmin.register Subscription do
   menu parent: "Members", priority: 55, label: "Email Subscriptions", if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, Subscription)
   }
+
+  # Filters
+  filter :user
+  filter :email
+
   index title: "Email Subscriptions" do
     id_column
     column :user do |t|
@@ -16,5 +21,10 @@ ActiveAdmin.register Subscription do
     column :updated_at
     column :created_at
     default_actions
+  end
+  controller do
+    def scoped_collection
+       Subscription.includes(:user)
+    end
   end
 end
