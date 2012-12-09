@@ -365,6 +365,26 @@ class User < ActiveRecord::Base
     limit(lim)
   end
 
+  # Returns users with Comments Role
+  def self.moderators
+    role = Role.where(title: 'moderator').first
+    if role
+      role.users
+    else
+      []
+    end
+  end
+
+  # Returns users with Editor Role
+  def self.editors
+    role = Role.where(title: 'editor').first
+    if role
+      role.users
+    else
+      []
+    end
+  end
+
   # Returns users with Admin Role
   def self.admin_users
     role = Role.where(title: 'admin').first

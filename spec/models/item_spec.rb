@@ -160,6 +160,9 @@ describe Item do
     it "should respond to enqueue_time" do
       expect(item).to respond_to(:enqueue_time)
     end
+    it "should respond to last_modified" do
+      expect(item).to respond_to(:last_modified)
+    end
   end
 
 
@@ -324,5 +327,16 @@ describe Item do
     end
   end
 
+  describe "With Comment" do
+    before(:each) do
+      @item = FactoryGirl.create(:item)
+    end
+    it "should update column last_commented_at" do
+      @comment = Comment.new(body: "hello")
+      expect {
+        @item.comments << @comment
+      }.to change(@item, :last_commented_at)
+    end
+  end
 
 end

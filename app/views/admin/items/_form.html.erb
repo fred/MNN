@@ -113,16 +113,15 @@
     <%= f.inputs name: "Status Codes" do %>
       <%= f.input :draft, hint: "Keep as draft if you haven't finished editing." %>
       <br />
-      
       <%= f.input :featured, label: "Highlight",
             hint: "Article will be featured on Highlights box in front page" %>
       <br />
-      
       <%= f.input :sticky, label: "Sticky",
           hint: "Article will remain first on top of Highlights box" %>
       <br />
-
       <%= f.input :allow_comments, hint: "Allow users to comment" %>
+      <br />
+      <%= f.input :protected, hint: "Protect this item from edititing by other users (except Admin). Only you can edit and preview it." %>
       <br />
     <% end %>
 

@@ -201,7 +201,7 @@ class ApplicationController < ActionController::Base
   def last_modified
     @last_item = Item.last_item
     if @last_item && @last_modified.nil?
-      @last_modified = @last_item.updated_at.httpdate
+      @last_modified = @last_item.last_modified.httpdate
     else
       @last_modified = Time.now.httpdate
     end

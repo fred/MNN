@@ -12,10 +12,10 @@ ActiveAdmin.register Role do
   form do |f|
     f.inputs "Role" do
       f.input :title
-      f.input :description
+      f.input :description, as: :string
     end
     f.inputs "Users" do
-      f.input :users, as: :check_boxes, member_value: :id, member_label: :title
+      f.input :users, as: :check_boxes, member_value: :id, member_label: :title, collection: AdminUser.order("id ASC").all
     end
     f.buttons
   end

@@ -18,10 +18,12 @@ ActiveAdmin.register Comment do
       end
     end
     column "Message", sortable: false do |t|
-      link_to sanitize(t.body, tags: '', attributes: '').truncate(80),
+      link_to sanitize(t.body, tags: '', attributes: '').truncate(70),
         admin_comment_path(t),
+        title: sanitize(t.body, tags: '', attributes: '').truncate(300),
         class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
     end
+    column "Moderator", :approving_user
     column "Live", :approved do |t|
       bool_symbol t.approved
     end
@@ -29,10 +31,10 @@ ActiveAdmin.register Comment do
       bool_symbol t.marked_spam
     end
     column "Created", :created_at do |t|
-      time_ago_in_words(t.created_at)
+      time_ago_in_words(t.created_at) + " ago"
     end
     column "Updated", :created_at do |t|
-      time_ago_in_words(t.updated_at)
+      time_ago_in_words(t.updated_at) + " ago"
     end
     default_actions
   end
@@ -43,7 +45,7 @@ ActiveAdmin.register Comment do
       f.input :approved
       f.input :marked_spam
       f.input :suspicious
-      f.input :approved_by, as: :select, collection: AdminUser.all.map{ |t| [ t.title, t.id ] }, include_blank: true
+      f.input :approving_user, as: :select, collection: AdminUser.moderators.order("id ASC").map{ |t| [ t.title, t.id ] }, include_blank: true
     end
     f.buttons
   end

@@ -174,7 +174,7 @@ ActiveAdmin.register Item do
         @item = @item.versions[params[:version].to_i].reify
         @item.lock_version = lock_version
       end
-      
+
       authorize! :edit, @item
 
       if @item.published_at
@@ -243,7 +243,7 @@ ActiveAdmin.register Item do
     def stale_record_recovery_action
       flash[:error] = "Error: Another user has updated this record since you accessed the edit form."
       render :edit, status: :conflict
-   end
+    end
 
     def scoped_collection
        Item.includes(:language, :attachments, :tags, :user, :category, :item_stat)

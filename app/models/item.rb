@@ -108,6 +108,14 @@ class Item < ActiveRecord::Base
   ### Instance Methods
   ######################
 
+  def last_modified
+    if self.last_commented_at.present? && (self.last_commented_at > self.updated_at)
+      self.last_commented_at
+    else
+      self.updated_at
+    end
+  end
+
   def check_security
     unless can_update?
       Rails.logger.info("  Security Protection: Author tried to update published item.")
@@ -532,7 +540,7 @@ class Item < ActiveRecord::Base
   end
 
   def self.last_item
-    select("id, updated_at, draft, published_at").published.not_draft.order("updated_at DESC").first
+    select("id, updated_at, last_commented_at, draft, published_at").published.not_draft.order("updated_at DESC").first
   end
 
   # Returns the most popular Items in the last N days

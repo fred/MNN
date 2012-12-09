@@ -23,9 +23,12 @@ class Comment < ActiveRecord::Base
   # belongs_to :user
   belongs_to :approving_user, foreign_key: :approved_by, class_name: "User"
 
-  after_create  :notify_admin, :notify_users, :subscribe_users
-  before_save   :check_for_spam, :check_suspicious
-  after_save    :touch_commentable
+  before_save  :check_for_spam
+  before_save  :check_suspicious
+  after_create :notify_admin
+  after_create :notify_users
+  after_create :subscribe_users
+  after_save   :touch_commentable
 
   delegate :name, to: :owner, allow_nil: true
 
@@ -40,7 +43,7 @@ class Comment < ActiveRecord::Base
 
   def touch_commentable
     if !marked_spam? && commentable
-      commentable.reload.update_attributes(last_commented_at: DateTime.now)
+      commentable.reload.update_column(:last_commented_at, DateTime.now)
     end
   end
 
@@ -65,13 +68,15 @@ class Comment < ActiveRecord::Base
   end
 
   def check_for_spam
-    if !Rails.env.test? && self.spam?
-      self.marked_spam = true
-      self.approved = false
-      Rails.logger.info("  Security: Comment marked as SPAM")
-    else
-      self.marked_spam = false
-      self.approved = true
+    unless self.approving_user.present?
+      if Rails.env.production? && self.spam?
+        self.marked_spam = true
+        self.approved = false
+        Rails.logger.info("  Security: Comment marked as SPAM")
+      else
+        self.marked_spam = false
+        self.approved = true
+      end
     end
     true
   end
