@@ -46,6 +46,7 @@ ActiveAdmin.register Comment do
       f.input :marked_spam
       f.input :suspicious
       f.input :approving_user, as: :select, collection: AdminUser.moderators.order("id ASC").map{ |t| [ t.title, t.id ] }, include_blank: true
+      f.input :skip_spam_check, as: :boolean, hint: "Check this to bypass spam checking, to avoid false positives."
     end
     f.buttons
   end
@@ -88,6 +89,9 @@ ActiveAdmin.register Comment do
     end
     def scoped_collection
       Comment.includes(:owner)
+    end
+    rescue_from CanCan::AccessDenied do |exception|
+      redirect_to admin_access_denied_path, alert: exception.message
     end
   end
   

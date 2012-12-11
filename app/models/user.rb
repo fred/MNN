@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   # The option :weight value will be multiplied to any karma from that voteable model (defaults to 1).
   # You can track any voteable model.
   has_karma(:comments, as: :owner)
+  has_karma(:items, as: :user, weight: 2)
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -49,6 +50,30 @@ class User < ActiveRecord::Base
   after_create  :send_welcome_email
 
   apply_simple_captcha
+
+  def full_karma
+    score = 0
+    score += original_items_karma
+    score += comments_karma
+    score += items_karma
+    score
+  end
+
+  def original_items_karma
+    (Math.log(original_items_count+1) + original_items_count/10.0).round
+  end
+
+  def items_karma
+    (Math.log((items_count/100)+1) + Math.log(items_count+1)).round
+  end
+
+  def comments_karma
+    karma + (Math.log((comments_count/100)+1) + Math.log(comments_count+1)).round
+  end
+
+  def comments_trusted?
+    comments_karma > 1
+  end
 
   def check_security
     unless secured?
@@ -90,7 +115,7 @@ class User < ActiveRecord::Base
   end
 
   def original_items_count
-    items.original.count
+    items.published.original.count
   end
 
   def is_admin?
@@ -110,6 +135,14 @@ class User < ActiveRecord::Base
       name
     else
       "Anonymous ##{id.to_s}"
+    end
+  end
+
+  def display_name
+    if name.present?
+      name
+    else
+      "user-#{id.to_s}"
     end
   end
 
@@ -353,9 +386,8 @@ class User < ActiveRecord::Base
   end
 
   # Returns Authors that have Articles
-  def self.with_articles(lim=5)
-    where("items_count > 0").
-    order("items_count DESC")
+  def self.with_articles
+    where("items_count > 0")
   end
 
   # Returns Popular Authors

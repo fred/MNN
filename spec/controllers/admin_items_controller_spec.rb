@@ -39,7 +39,7 @@ describe Admin::ItemsController do
       describe "GET edit" do
         it "Should have @item" do
           get :edit, id: @item.id
-          expect(response).to redirect_to(admin_dashboard_path)
+          expect(response).to redirect_to(admin_access_denied_path)
         end
       end
     end
@@ -137,9 +137,9 @@ describe Admin::ItemsController do
           delete :destroy, {id: @item.to_param}
         }.to change(Item, :count).by(0)
       end
-      it "redirects to the items list" do
+      it "redirects to the access denied page" do
         delete :destroy, {id: @item.to_param}
-        expect(response).to redirect_to(admin_dashboard_path)
+        expect(response).to redirect_to(admin_access_denied_path)
       end
     end
   end

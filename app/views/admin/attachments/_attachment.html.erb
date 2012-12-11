@@ -35,19 +35,20 @@
 </p>
 
 <div class="hidden" id="copy-<%=attachment.id%>">
+<p>
 <%=
   if attachment.existing_attachment
     link_to(
-      image_tag(attachment.existing_attachment.image.large.url, title: attachment.title, alt: attachment.title),
-      attachment.image.full.url,
+      image_tag(attachment.existing_attachment.image.full.url, title: attachment.title, alt: attachment.title),
+      attachment.image.url,
       title: attachment.title,
       targe: "_blank",
       class: "image-popup"
     )
   else
     link_to(
-      image_tag(attachment.image.large.url, title: attachment.title, alt: attachment.title),
-      attachment.image.full.url,
+      image_tag(attachment.image.full.url, title: attachment.title, alt: attachment.title),
+      attachment.image.url,
       title: attachment.title,
       targe: "_blank",
       class: "image-popup"
@@ -55,8 +56,10 @@
   end
 %>
 <% if attachment.title.present? %>
-<p class="image-caption"><%= attachment.title.to_s.truncate(100) %></p>
+<br />
+<span class="image-caption"><%= attachment.title.to_s.truncate(100) %></span>
 <% end %>
+</p>
 </div>
 
 <script type="text/javascript">

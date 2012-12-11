@@ -1,7 +1,7 @@
 class AuthorsController < ApplicationController
   
   def index
-    @authors = AdminUser.order("items_count DESC").page(params[:page], per_page: 20)
+    @authors = AdminUser.with_articles.order("items_count DESC").page(params[:page], per_page: 20)
     private_headers
     respond_to do |format|
       format.html

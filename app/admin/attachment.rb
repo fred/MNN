@@ -24,19 +24,6 @@ ActiveAdmin.register Attachment do
   form partial: "form"
 
   controller do
-    # def update
-    #   @attachment = Attachment.find(params[:id])
-    #   if params[:attachment][:image].present? && params[:attachment][:image].is_a?(Array)
-    #     params[:attachment][:image] = params[:attachment][:image].join
-    #   end
-    #   if @attachment.update_attributes(params[:attachment])
-    #     flash[:success] = ("Image was updated")
-    #     redirect_to admin_attachment_path(@attachment)
-    #   else
-    #     render action: 'edit'
-    #   end
-    # end
-
     def create
       if params[:attachment][:image].present? && params[:attachment][:image].is_a?(Array)
         @count = 0
@@ -63,7 +50,10 @@ ActiveAdmin.register Attachment do
 
   controller do
     def scoped_collection
-       Attachment.includes(:attachable)
+      Attachment.includes(:attachable)
+    end
+    rescue_from CanCan::AccessDenied do |exception|
+      redirect_to admin_access_denied_path, alert: exception.message
     end
   end
 end

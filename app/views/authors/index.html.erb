@@ -10,8 +10,11 @@
         %>
       <% end %>
       <h3><%= link_to author.public_display_name, author_path(author), title: author.public_display_name %></h3>
+      <%= author.bio %>
     </header>
+    <div class="clearfix"></div>
     <section>
+      <p>Karma: <%= author.full_karma %></p>
       <% unless author.twitter.to_s.empty? %>
         <p>Twitter: <%= twitter_user_link(author.twitter) %></p>
       <% end %>
@@ -20,8 +23,15 @@
       <% end %>
       <p><%= _("Articles Submitted:") %> <%= author.items_count %></p>
       <p><%= _("Original Articles:") %> <%= author.original_items_count %></p>
-      <br />
-      <%= author.bio %>
+      <p>
+        <%= _("Comments") %>:
+        <%= link_to(
+              author.comments_count,
+              author_comments_path(author),
+              title: "View all #{author.public_display_name} comments"
+            )
+        %>
+      </p>
     </section>
   </article>
 

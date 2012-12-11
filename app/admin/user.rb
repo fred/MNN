@@ -6,7 +6,6 @@ ActiveAdmin.register User do
   end
   controller.authorize_resource
   config.comments = false
-  # config.sort_order = "last_sign_in_at_desc"
   menu parent: "Members", priority: 24, label: "Users", if: lambda{|tabs_renderer|
     controller.current_ability.can?(:manage, User)
   }
@@ -46,18 +45,38 @@ ActiveAdmin.register User do
       end
       row :created_at
       row :updated_at
-      render "user_comments"
+      row "Articles" do |user|
+        user.items_count
+      end
+      row "Original Articles" do |user|
+        user.original_items_count
+      end
+      row "Voted Karma" do |user|
+        user.karma
+      end
+      row "Comments Karma" do |user|
+        user.comments_karma
+      end
+      row "Total Site Karma" do |user|
+        user.full_karma
+      end
+      row "Trusted for comments" do |user|
+        bool_symbol user.comments_trusted?
+      end
     end
+    render "user_comments"
   end
 
   index title: "Users" do
     id_column
     column "Avatar", sortable: false do |user|
-      image_tag user.main_image(:thumb), class: 'user-avatar-mini'
+      image_tag(user.main_image(:thumb), class: 'user-avatar-mini')
     end
     column :name
-    column :email
-    column :time_zone
+    column :email do |user|
+      user.email.truncate(20)
+    end
+    column :karma, sortable: false
     column :provider
     column "Facebook", sortable: false do |user|
       if user.facebook.present?
@@ -94,6 +113,7 @@ ActiveAdmin.register User do
   controller do
     def update
       @user = User.find(params[:id])
+      authorize! :update, @user
       respond_to do |format|
         if @user.update_without_password(params[:user])
           format.html { redirect_to admin_users_path, notice: 'User was successfully updated.' }
@@ -106,6 +126,9 @@ ActiveAdmin.register User do
     end
     def scoped_collection
       User.includes(:subscriptions, :roles)
+    end
+    rescue_from CanCan::AccessDenied do |exception|
+      redirect_to admin_access_denied_path, alert: exception.message
     end
   end
 end

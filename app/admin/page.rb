@@ -44,6 +44,8 @@ ActiveAdmin.register Page do
     def scoped_collection
       Page.includes(:user, :language)
     end
+    rescue_from CanCan::AccessDenied do |exception|
+      redirect_to admin_access_denied_path, alert: exception.message
+    end
   end
-  
 end

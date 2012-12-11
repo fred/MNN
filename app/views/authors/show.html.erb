@@ -9,8 +9,11 @@
       <%= link_to(image_tag(@author.avatar.small, class: "show_item_image"), author_path(@author)) %>
     <% end %>
     <h3><%= link_to @author.public_display_name, author_path(@author), rev: 'author' %></h3>
+    <%= @author.bio %>
   </header>
+  <div class="clearfix"></div>
   <section>
+    <p>Karma: <%= @author.full_karma %></p>
     <% unless @author.twitter.to_s.empty? %>
       <p>Twitter: <%= twitter_user_link(@author.twitter) %></p>
     <% end %>
@@ -41,7 +44,6 @@
       %>
     </p>
     <br />
-    <%= @author.bio %>
     <% if (current_user && @author.id == current_user.id) or (current_admin_user && @author.id == current_admin_user.id) %>
       <%= link_to _("Edit my Profile"), edit_user_registration_url(protocol: 'https'), class: "btn" %>
     <% end %>

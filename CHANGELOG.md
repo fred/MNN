@@ -1,5 +1,10 @@
+## December 11, 2012
+
+  - Added some charts on the admin site
+  - Improved karma detection
+
 ## December 4-8, 2012
-  
+
   - Fixed updated time for article (it was set whenever comment was created)
   - Fixed comment false spam detection
   - Allow admin users with 'Moderator' role to moderate comments

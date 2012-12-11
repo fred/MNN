@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204061002) do
+ActiveRecord::Schema.define(:version => 20121208012116) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -199,6 +199,7 @@ ActiveRecord::Schema.define(:version => 20121204061002) do
     t.integer  "lock_version",      :default => 0,       :null => false
     t.string   "youtube_res"
     t.string   "hashtags"
+    t.boolean  "protected",         :default => false
   end
 
   add_index "items", ["allow_comments"], :name => "index_items_on_allow_comments"

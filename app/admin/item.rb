@@ -93,7 +93,10 @@ ActiveAdmin.register Item do
     column "Highlt", :featured, sortable: :featured do |item|
       bool_symbol(item.featured)
     end
-    bool_column :sticky 
+    bool_column :sticky
+    column "Lock", :protected, sortable: :protected do |item|
+      bool_symbol(item.protected)
+    end
     column "Lang", :language, sortable: :language_id do |item|
       item.language.description if item.language
     end
@@ -118,10 +121,10 @@ ActiveAdmin.register Item do
       end
     end
     column "Show", sortable: false do |item|
-      link_to "Live Preview", item, data: 'no-turbolink'
+      link_to("Live Preview", item, data: 'no-turbolink') if controller.current_ability.can?(:preview, item)
     end
     column "Show", sortable: false do |item|
-      link_to "Show", admin_item_path(item)
+      link_to "Show", admin_item_path(item) if controller.current_ability.can?(:preview, item)
     end
     column "" do |item|
       link_to "Edit", edit_admin_item_path(item) if controller.current_ability.can?(:update, item)
@@ -246,7 +249,10 @@ ActiveAdmin.register Item do
     end
 
     def scoped_collection
-       Item.includes(:language, :attachments, :tags, :user, :category, :item_stat)
+      Item.includes(:language, :attachments, :tags, :user, :category, :item_stat)
+    end
+    rescue_from CanCan::AccessDenied do |exception|
+      redirect_to admin_access_denied_path, alert: exception.message
     end
   end
 end

@@ -9,6 +9,9 @@
 body {
   font-size: 90%;
 }
+form fieldset {
+  padding: 10px 0 15px;
+}
 
 #title_bar h2 {
   font-size: 1.6em;
@@ -346,4 +349,12 @@ p.comment_date {
   color: #666;
   font-style: italic;
   margin: 4px 2px 2px 2px;
+}
+
+div.chart-unit {
+  margin: 30px 10px 30px 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0px 0px 4px #ccc;
+  border-radius: 4px;
+  padding: 10px;
 }

@@ -166,6 +166,7 @@ gem 'feedzirra'
 gem 'newrelic_rpm'
 
 gem 'thumbs_up'
+gem 'lazy_high_charts'
 
 ### Disabled Gems:
 # gem 'postmark-rails'

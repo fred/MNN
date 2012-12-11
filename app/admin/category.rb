@@ -30,9 +30,9 @@ ActiveAdmin.register Category do
     end
     default_actions
   end
-  # controller do
-  #   def scoped_collection
-  #      Category.includes(:last_item)
-  #   end
-  # end
+  controller do
+    rescue_from CanCan::AccessDenied do |exception|
+      redirect_to admin_access_denied_path, alert: exception.message
+    end
+  end
 end

@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessor :subscribe
+  attr_accessor :subscribe, :skip_spam_check
 
   acts_as_voteable
 
@@ -10,7 +10,7 @@ class Comment < ActiveRecord::Base
   # author        : name submitted with the comment
   # author_url    : URL submitted with the comment
   # author_email  : email submitted with the comment
-  # comment_type  : Defaults to comment but you can set it to trackback, pingback, or something more appropriate
+  # comment_type  : Defaults to comment but you can set it to trackback, pingback, or appropriate
   # content       : the content submitted
   # permalink     : the permanent URL for the entry the comment belongs to
   # user_ip       : IP address used to submit this comment
@@ -18,17 +18,19 @@ class Comment < ActiveRecord::Base
   # referrer      : referring URL (note the spelling)
 
   validates_presence_of :body
-  attr_accessible :body, :commentable_id, :commentable_type, :approved, :marked_spam, :suspicious, :approved_by, :subscribe
+  attr_accessible :body, :commentable_id, :commentable_type, :approved, :marked_spam, :suspicious, 
+  :approved_by, :subscribe, :skip_spam_check
 
   # belongs_to :user
   belongs_to :approving_user, foreign_key: :approved_by, class_name: "User"
 
-  before_save  :check_for_spam
-  before_save  :check_suspicious
-  after_create :notify_admin
-  after_create :notify_users
-  after_create :subscribe_users
-  after_save   :touch_commentable
+  before_create :auto_approve_comment
+  before_save   :check_for_spam
+  before_save   :check_suspicious
+  after_create  :notify_admin
+  after_create  :notify_users
+  after_create  :subscribe_users
+  after_save    :touch_commentable
 
   delegate :name, to: :owner, allow_nil: true
 
@@ -67,24 +69,42 @@ class Comment < ActiveRecord::Base
     end
   end
 
+  def auto_approve_comment
+    self.approved = true
+    self.marked_spam = false
+    self.suspicious = false
+    true
+  end
+
+  def user_is_trusted?
+    if owner && owner.comments_trusted?
+      true
+    else
+      false
+    end
+  end
+
+  def bypass_spam?
+    skip_spam_check.present? && (skip_spam_check == "1" or skip_spam_check == true)
+  end
+
+  def should_check_spam?
+    (Rails.env.production? && !bypass_spam? && !user_is_trusted?) or approving_user.present?
+  end
+
   def check_for_spam
-    unless self.approving_user.present?
-      if Rails.env.production? && self.spam?
-        self.marked_spam = true
-        self.approved = false
-        Rails.logger.info("  Security: Comment marked as SPAM")
-      else
-        self.marked_spam = false
-        self.approved = true
-      end
+    if should_check_spam? && self.spam?
+      self.marked_spam = true
+      self.approved = false
+      Rails.logger.info("  Security: Comment marked as SPAM")
     end
     true
   end
 
   def check_suspicious
     return true if (self.owner.has_any_role?(:admin, :security) or self.approving_user)
-    check = %w{ <applet <body <embed <frame <script <frameset <html <iframe <layer <ilayer <meta <object
-      script base64 onclick onmouse onfocus onload createelement
+    check = %w{ <applet <body <embed <frame <script <frameset <html <iframe <layer <ilayer <meta 
+      <object script base64 onclick onmouse onfocus onload createelement
     }.join("|")
     if body.downcase.match(check)
       Rails.logger.info("  Security: Comment marked as SUSPICIOUS")
@@ -192,6 +212,13 @@ class Comment < ActiveRecord::Base
 
   def self.last_comment
     order("id DESC").first
+  end
+
+  def self.top_users
+    User.select('users.*, count(comments.id) as comments_count').
+    joins('left outer join comments on comments.owner_id = users.id').
+    group('users.id').
+    order('comments_count DESC')
   end
 
 end

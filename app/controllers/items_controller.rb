@@ -75,10 +75,6 @@ class ItemsController < ApplicationController
     @meta_description = "News #{@item.category_title} - #{@item.abstract}"
     @meta_keywords = @item.meta_keywords
     @meta_author = @item.user.title if @item.user
-
-    unless (current_user or current_admin_user or Rails.env.development?)
-      fresh_when(etag: @item, last_modified: @item.last_modified)
-    end
   end
 
   def new

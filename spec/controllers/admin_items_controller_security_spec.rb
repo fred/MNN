@@ -80,15 +80,15 @@ describe Admin::ItemsController do
       end
     end
     describe "editing own live article" do
-      it "should not be allowed" do
+      it "should redirect to access denied page" do
         get :edit, id: @item.id
-        expect(response).to redirect_to(admin_dashboard_path)
+        expect(response).to redirect_to(admin_access_denied_path)
       end
     end
     describe "updating own live article" do
-      it "should not be allowed" do
+      it "should redirect to access denied page" do
         put :update, {id: @item.to_param, item: {title: 'new title'}}
-        expect(response).to redirect_to(admin_dashboard_path)
+        expect(response).to redirect_to(admin_access_denied_path)
       end
     end
   end
@@ -111,15 +111,15 @@ describe Admin::ItemsController do
       end
     end
     describe "editing own live article" do
-      it "should not be allowed" do
+      it "should redirect to access denied page" do
         get :edit, id: @item.id
-        expect(response).to redirect_to(admin_dashboard_path)
+        expect(response).to redirect_to(admin_access_denied_path)
       end
     end
     describe "updating own live article" do
-      it "should not be allowed" do
+      it "should redirect to access denied page" do
         put :update, {id: @item.to_param, item: {title: 'new title'}}
-        expect(response).to redirect_to(admin_dashboard_path)
+        expect(response).to redirect_to(admin_access_denied_path)
       end
     end
   end

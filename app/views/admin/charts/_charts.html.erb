@@ -1,0 +1,14 @@
+<div class="chart-unit" id="top_commenters"></div>
+<div class="chart-unit" id="karma_comments"></div>
+<div class="chart-unit" id="top_users_karma"></div>
+<div class="chart-unit" id="items_karma"></div>
+<div class="chart-unit" id="top_item_users"></div>
+<div class="chart-unit" id="top_original_item_users"></div>
+
+<%= high_chart("top_commenters", SiteCharts.top_comment_users) %>
+<%= high_chart("karma_comments", SiteCharts.karma_comments) %>
+<%= high_chart("items_karma", SiteCharts.items_karma) %>
+<%= high_chart("top_users_karma", SiteCharts.top_users_karma) %>
+
+<%= high_chart("top_item_users", SiteCharts.top_item_users) %>
+<%= high_chart("top_original_item_users", SiteCharts.top_original_item_users) %>

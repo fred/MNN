@@ -13,3 +13,4 @@
 //= require easyTooltip
 //= require tooltip
 //= require tinymce/plugins/uploadimage/editor_plugin.js
+//= require highcharts

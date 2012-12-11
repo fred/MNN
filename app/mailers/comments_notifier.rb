@@ -11,7 +11,7 @@ class CommentsNotifier < ActionMailer::Base
       domain:    "worldmathaba.com",
       address:   "localhost",
       port:      25
-    } if Rails.env.production?
+    } if @comment && Rails.env.production?
     mail(
       from:     "WorldMathaba <inbox@worldmathaba.net>",
       sender:   "inbox@worldmathaba.net",
@@ -31,7 +31,7 @@ class CommentsNotifier < ActionMailer::Base
       domain:    "worldmathaba.com",
       address:   "localhost",
       port:      25
-    } if Rails.env.production?
+    } if @comment && Rails.env.production?
     mail(
       from:     "WorldMathaba <inbox@worldmathaba.net>",
       sender:   "inbox@worldmathaba.net",
