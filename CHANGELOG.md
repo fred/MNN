@@ -2,6 +2,8 @@
 
   - Added some charts on the admin site
   - Improved karma detection
+  - Improved roles page, permissions
+  - Show karma score on user profile
 
 ## December 4-8, 2012
 
