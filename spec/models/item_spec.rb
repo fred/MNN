@@ -327,16 +327,4 @@ describe Item do
     end
   end
 
-  describe "With Comment" do
-    before(:each) do
-      @item = FactoryGirl.create(:item)
-    end
-    it "should update column last_commented_at" do
-      @comment = Comment.new(body: "hello")
-      expect {
-        @item.comments << @comment
-      }.to change(@item, :last_commented_at)
-    end
-  end
-
 end

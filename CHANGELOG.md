@@ -1,3 +1,9 @@
+## December 13, 2012
+
+  - Fixed size of user avatar on comments
+  - Caching admin charts
+  - Updated Gemfile
+
 ## December 11, 2012
 
   - Added some charts on the admin site
