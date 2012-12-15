@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
   end
 
   def comments_trusted?
-    comments_karma > 1
+    comments_karma > 3
   end
 
   def check_security
