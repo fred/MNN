@@ -77,7 +77,7 @@ class Comment < ActiveRecord::Base
   end
 
   def user_is_trusted?
-    if owner && owner.comments_trusted?
+    if owner.present? && (owner.comments_trusted? or owner.has_any_role?(:admin, :security))
       true
     else
       false
@@ -88,12 +88,12 @@ class Comment < ActiveRecord::Base
     skip_spam_check.present? && (skip_spam_check == "1" or skip_spam_check == true)
   end
 
-  def should_check_spam?
+  def security_check?
     (Rails.env.production? && !bypass_spam? && !user_is_trusted?) or approving_user.present?
   end
 
   def check_for_spam
-    if should_check_spam? && self.spam?
+    if security_check? && self.spam?
       self.marked_spam = true
       self.approved = false
       Rails.logger.info("  Security: Comment marked as SPAM")
@@ -102,9 +102,9 @@ class Comment < ActiveRecord::Base
   end
 
   def check_suspicious
-    return true if (self.owner.has_any_role?(:admin, :security) or self.approving_user)
+    return true unless security_check?
     check = %w{ <applet <body <embed <frame <script <frameset <html <iframe <layer <ilayer <meta 
-      <object script base64 onclick onmouse onfocus onload createelement
+      <object script base64 onclick onmouse onfocus onload createelemen
     }.join("|")
     if body.downcase.match(check)
       Rails.logger.info("  Security: Comment marked as SUSPICIOUS")
@@ -159,13 +159,13 @@ class Comment < ActiveRecord::Base
 
   def allowed_html_tags
     tags = %w(p em b i u a br blockquote strong div pre ul ol li)
-    tags += %w(iframe img) if approving_user
+    tags += %w(iframe img) unless security_check?
     tags
   end
 
   def allowed_html_attributes
-    tags = %w(href target rel rev)
-    tags += %w(src width height allowfullscreen) if approving_user
+    tags = %w(href target rel rev alt title)
+    tags += %w(src width height allowfullscreen) unless security_check?
     tags
   end
 
