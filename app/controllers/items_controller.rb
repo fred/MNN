@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
 
+  after_filter :store_query, only: [:show]
+
   def vote
     @item = Item.find(params[:item_id])
   end
@@ -98,7 +100,6 @@ class ItemsController < ApplicationController
     end
     
     if params[:q] && !params[:q].to_s.empty?
-      store_query # Save query to DB
       term = params[:q].downcase
       @search = Item.solr_search(include: [:attachments, :comments, :category, :language, :item_stat, :user, :tags]) do
         fulltext term do
@@ -136,6 +137,7 @@ class ItemsController < ApplicationController
       @rss_title = "WorldMathaba Search - #{params[:q]}"
       @last_published = @items.first.published_at unless @items.empty?
       @faceted_results = faceted_results
+      store_query # Save query to DB
     else
       @items = []
       @title = "Please type something to search for"
@@ -159,14 +161,16 @@ class ItemsController < ApplicationController
 
 
   protected
+
   def store_query
-    if view_context.is_human? && !current_admin_user
+    if current_user or current_admin_user or view_context.is_human?
       raw = {}
       raw[:ip] = request.remote_ip if request.remote_ip
       raw[:referrer] = request.referrer if request.referrer
       raw[:user_agent] = request.user_agent if request.user_agent
       q = {}
-      q[:query]   = params[:q]
+      q[:keyword] = params[:q] if params[:q].present?
+      q[:item_id] = @item.id if @item
       q[:user_id] = current_user.id if current_user
       q[:locale]  = I18n.locale
       q[:raw_data]= raw

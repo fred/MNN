@@ -16,10 +16,11 @@ class Query < ActiveRecord::Base
   def self.store(options={})
     Rails.logger.debug("Saving Query")
     query = self.new
-    query.keyword  = options[:query]    if options[:query]
-    query.locale   = options[:locale]   if options[:locale]
-    query.user_id  = options[:user_id]  if options[:user_id]
-    query.raw_data = options[:raw_data] if options[:raw_data]
+    query.keyword  = options[:keyword]  if options[:keyword].present?
+    query.locale   = options[:locale]   if options[:locale].present?
+    query.user_id  = options[:user_id]  if options[:user_id].present?
+    query.raw_data = options[:raw_data] if options[:raw_data].present?
+    query.item_id  = options[:item_id]  if options[:item_id].present?
     query.save
     true
   end

@@ -30,7 +30,7 @@ ActiveAdmin.register Query do
   end
   controller do
     def scoped_collection
-      Query.includes(:item, :user)
+      Query.includes(:item, :user).where(item_id: nil)
     end
   end
 end
