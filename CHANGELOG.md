@@ -1,3 +1,11 @@
+## December 17, 2012
+
+  - Fixed high_chart gem for turbolinks
+  - skip spam check for special users
+  - updated gems
+  - record every page view individually
+  - trust users with Karma 4 points or more
+
 ## December 13, 2012
 
   - Fixed size of user avatar on comments
