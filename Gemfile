@@ -78,11 +78,13 @@ gem 'twitter', "~> 4.0"
 
 gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
 
+gem 'nokogiri', '~> 1.5.6.rc3'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'therubyrhino', require: 'rhino', platform: :jruby
-  gem 'therubyracer', "~> 0.10.2", require: 'v8',    platform: :mri_19
+  gem 'therubyracer', "~> 0.10.2", require: 'v8',  platform: :mri_19
   gem 'execjs'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.5'
@@ -166,7 +168,7 @@ gem 'feedzirra'
 gem 'newrelic_rpm'
 
 gem 'thumbs_up'
-gem 'lazy_high_charts'
+gem 'lazy_high_charts', git: 'git://github.com/fred/lazy_high_charts.git', branch: 'turbolinks'
 
 ### Disabled Gems:
 # gem 'postmark-rails'
