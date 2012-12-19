@@ -218,7 +218,7 @@ class Comment < ActiveRecord::Base
     User.select('users.*, count(comments.id) as comments_count').
     joins('left outer join comments on comments.owner_id = users.id').
     group('users.id').
-    order('comments_count DESC')
+    order('users.id ASC')
   end
 
 end

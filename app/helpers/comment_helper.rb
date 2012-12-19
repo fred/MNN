@@ -13,16 +13,4 @@ module CommentHelper
     end
   end
 
-  def comment_rate(comment)
-    score = comment.votes_for - comment.votes_against
-    if score > 0
-      " <span class='vote-score positive-vote'>(+#{score})</span>"
-    elsif score < 0
-      " <span class='vote-score negative-vote'>(#{score})</span>"
-    else
-      ""
-    end
-  end
-
-
 end

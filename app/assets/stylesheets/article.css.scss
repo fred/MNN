@@ -114,6 +114,30 @@ article {
     padding: 3px 8px;
     box-shadow: 0px 0px 3px #ddd;
   }
+  span.discussion-vote {
+    font-size: 15px;
+    margin-left: 3px;
+    display: inline;
+    clear: none;
+    a {
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+    a, a:hover {
+      text-decoration: none;
+    }
+    .vote-score {
+      margin-left: 2px;
+      font-weight: normal;
+      font-size: 14px;
+    }
+    .positive-vote {
+      color: green;
+    }
+    .negative-vote {
+      color: red;
+    }
+  }
   header {
     h1 a:hover,
     h2 a:hover,
@@ -130,7 +154,7 @@ article {
     margin-top: 8px;
     font-size: 13px;
     span#item_body {
-      color:#333;
+      color: #333;
     }
     span#item_body img {
       max-width: 99%;
@@ -253,12 +277,12 @@ div.box img.youtube_main {
 }
 img.show_item_image.youtube_small,
 img.list_item_image.youtube_small {
-  max-height:100px;
+  max-height: 100px;
   max-width: 100px;
 }
 img.show_item_image.youtube_medium,
 img.list_item_image.youtube_medium {
-  max-height:120px;
+  max-height: 120px;
   max-width: 120px;
 }
 .content article.category img.show_item_image {
@@ -267,10 +291,10 @@ img.list_item_image.youtube_medium {
   margin-right: 12px;
 }
 
-
 figure {
   float: left;
   margin-right: 8px;
+  max-width: 260px;
   figcaption {
     float: left;
     display: block;

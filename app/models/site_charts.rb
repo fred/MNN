@@ -127,7 +127,7 @@ class SiteCharts
           borderWidth: 0
         }
       )
-      User.order("id DESC").all.each do |user|
+      User.order("id ASC").all.each do |user|
         if (user.original_items_karma + user.items_karma) >= min
           f.series(name: user.display_name, data: [user.items_karma + user.original_items_karma] )
         end
@@ -158,7 +158,7 @@ class SiteCharts
           borderWidth: 0
         }
       )
-      User.order("id DESC").all.each do |user|
+      User.order("id ASC").all.each do |user|
         if user.full_karma >= min
           f.series(name: user.display_name, data: [user.full_karma] )
         end
@@ -190,7 +190,7 @@ class SiteCharts
           borderWidth: 0
         }
       )
-      AdminUser.where("items_count > 0").order("items_count DESC").each do |user|
+      AdminUser.where("items_count > 0").order("id ASC").each do |user|
         if user.items_count >= min
           f.series(name: user.display_name, data: [user.items_count] )
         end
@@ -221,7 +221,7 @@ class SiteCharts
           borderWidth: 0
         }
       )
-      AdminUser.where("items_count > 0").order("items_count DESC").each do |user|
+      AdminUser.where("items_count > 0").order("id ASC").each do |user|
         if user.original_items_count >= min
           f.series(name: user.display_name, data: [user.original_items_count] )
         end

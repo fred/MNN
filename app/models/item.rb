@@ -109,6 +109,10 @@ class Item < ActiveRecord::Base
   ### Instance Methods
   ######################
 
+  def recent_page_views(lim=10)
+    queries.order("id DESC").limit(lim)
+  end
+
   def last_modified
     if self.last_commented_at.present? && (self.last_commented_at > self.updated_at)
       self.last_commented_at

@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   # Each question has a submitter_id column that tracks the user who submitted it.
   # The option :weight value will be multiplied to any karma from that voteable model (defaults to 1).
   # You can track any voteable model.
-  has_karma(:comments, as: :owner)
-  has_karma(:items, as: :user, weight: 2)
+  has_karma(:comments, as: :owner, weight: 0.5)
+  has_karma(:items, as: :user, weight: 1)
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -53,6 +53,7 @@ class User < ActiveRecord::Base
 
   def full_karma
     score = 0
+    score += karma
     score += original_items_karma
     score += comments_karma
     score += items_karma
@@ -60,11 +61,11 @@ class User < ActiveRecord::Base
   end
 
   def original_items_karma
-    (Math.log(original_items_count+1) + original_items_count/10.0).round
+    (Math.log((original_items_count/100)+1) + Math.log(original_items_count+1) * 4).round
   end
 
   def items_karma
-    (Math.log((items_count/100)+1) + Math.log(items_count+1)).round
+    (Math.log((items_count/100)+1) + Math.log(items_count+1)*2).round
   end
 
   def comments_karma

@@ -1,3 +1,9 @@
+## December 19, 2012
+
+  - Vote for Article
+  - Added better Stats on article page
+  - Updated karma calculation
+
 ## December 17, 2012
 
   - Fixed high_chart gem for turbolinks

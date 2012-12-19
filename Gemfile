@@ -169,6 +169,9 @@ gem 'newrelic_rpm'
 
 gem 'thumbs_up'
 gem 'lazy_high_charts', git: 'git://github.com/fred/lazy_high_charts.git', branch: 'turbolinks'
+gem 'sql_funk', git: 'git://github.com/FernandoEscher/sql_funk.git'
+gem 'tabletastic'
 
 ### Disabled Gems:
 # gem 'postmark-rails'
+

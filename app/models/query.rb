@@ -41,6 +41,16 @@ class Query < ActiveRecord::Base
     end
   end
 
+  def user_agent
+    raw_data[:user_agent]
+  end
+  def user_ip
+    raw_data[:ip]
+  end
+  def referrer
+    raw_data[:referrer]
+  end
+
   def self.cleanup(string)
     search = self.solr_search { fulltext string; paginate page: 1, per_page: 1000 }
     search.results.each {|t| t.destroy}

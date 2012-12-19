@@ -1,0 +1,12 @@
+<span class="discussion-vote">
+  <%= link_to item_vote_path(item, vote: 'up'), rel: "nofollow", class: "vote-up", title: "Vote up, interesting or insightful article", remote: true do %>
+    <i class="icon-thumbs-up"></i>
+  <% end %>
+  <%= link_to item_vote_path(item, vote: 'down'), rel: "nofollow", class: "vote-down", title: "Vote down, I don't like this article", remote: true do %>
+    <i class="icon-thumbs-down"></i>
+  <% end %>
+  <%= link_to item_vote_path(item, vote: 'delete'), rel: "nofollow", class: "vote-delete", title: "Clear my vote from this article", remote: true do %>
+    <i class="icon-trash"></i>
+  <% end %>
+  <span id="item_score_<%= item.id %>"><%= score_for(item).html_safe %></span>
+</span>

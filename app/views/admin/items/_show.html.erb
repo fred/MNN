@@ -1,287 +1,319 @@
-<div class="panel">
-  <h3>Main Category</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <%= @item.category_title %>
-    </div>
-  </div>
-</div>
+<% cache_expiring("admin/show/#{@item.cache_key}", 600) do %>
 
-<div class="panel">
-  <h3>Language</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <%= @item.language.description if @item.language %>
-    </div>
-  </div>
-</div>
-
-<div class="panel">
-  <h3>Title</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <%= @item.title %>
-    </div>
-  </div>
-</div>
-
-
-<div class="panel">
-  <h3>Abstract</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <%= @item.abstract %>
-    </div>
-  </div>
-</div>
-
-<div class="panel">
-  <h3>Body</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <%= @item.body.html_safe %>
-    </div>
-  </div>
-</div>
-
-<div class="panel">
-  <h3>Keywords</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <%= @item.keywords.to_s %>
-    </div>
-  </div>
-</div>
-
-<div class="panel">
-  <h3>Youtube</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <p>Video ID: 
-        <% unless @item.youtube_id.blank? %>
-          <b><%= link_to(@item.youtube_id.to_s,
-              "http://www.youtube.com/watch?v=#{@item.youtube_id}",
-              title: "Open Youtube video page",
-              target: "blank"
-            )
-          %></b>
-        <% end %>
-      </p>
-      <p>Auto Embed Video: <b> <%= bool_symbol @item.youtube_img %></b></p>
-      <p>Auto Image Screenshot: <b> <%= bool_symbol  @item.youtube_img %></b></p>
-      <% unless @item.youtube_id.blank? %>
-        <p>
-          Youtube Available Screenshots:
-          <br />
-          <%= image_tag("https://img.youtube.com/vi/#{@item.youtube_id}/1.jpg",
-                alt: "screnshot 1", title: "screnshot 1")
-          %>
-          <%= image_tag("https://img.youtube.com/vi/#{@item.youtube_id}/2.jpg",
-                alt: "screnshot 2", title: "screnshot 2")
-          %>
-          <%= image_tag("https://img.youtube.com/vi/#{@item.youtube_id}/3.jpg",
-                alt: "screnshot 3", title: "screnshot 3")
-          %>
-        </p>
-      <% end %>
-      <p>
-        <%= render partial: "/shared/youtube_video" %>
-      </p>
-    </div>
-  </div>
-</div>
-
-
-<% if @related && @related.total > 0 %>
+  <% if @item.published? %>
   <div class="panel">
-    <h3>Related Items</h3>
+    <h3>Statistics (updated every 10 minutes)</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        Positive Votes: <b><span class='green'><%= @item.votes_for %></span></b>
+      </div>
+      <div class="attributes_table item">
+        Negative Votes: <b><span class='red'><%= @item.votes_against %></span></b>
+      </div>
+      <div class="attributes_table item">
+        Page Views: <b><%= @item.item_stat.views_counter %></b>
+      </div>
+      <div class="attributes_table item">
+        Recorded Page Views: <b><%= @item.queries.count %></b> &nbsp; <small><i>(after Dec 17, 2012)</i></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Latest 15 page views (updated every 10 minutes)</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        <table>
+        <%= table_for(@item.recent_page_views(15)) do |t|
+          t.data do
+            t.cell(:created_at, heading: "Time") {|p| p.created_at.to_s(:short)}
+            t.cell(:ip, heading: "IP") {|p| p.user_ip}
+            t.cell(:user, heading: "User") {|p| p.user.display_name if p.user}
+            t.cell(:referrer, heading: "Source") do |p|
+              p.referrer.to_s.truncate(36) if p.referrer.present?
+            end
+            t.cell(:user_agent, heading: "Browser") do |p|
+              p.short_user_agent.truncate(50) if p.short_user_agent.present?
+            end
+            t.cell(:details, heading: "") do |p|
+              link_to "Details", admin_query_path(p)
+            end
+          end
+        end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="panel">
+    <h3>Main Category</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        <%= @item.category_title %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Language</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        <%= @item.language.description if @item.language %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Title</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        <%= @item.title %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel">
+    <h3>Abstract</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        <%= @item.abstract %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Body</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        <%= @item.body.html_safe %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Keywords</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        <%= @item.keywords.to_s %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Youtube</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        <p>Video ID: 
+          <% unless @item.youtube_id.blank? %>
+            <b><%= link_to(@item.youtube_id.to_s,
+                "http://www.youtube.com/watch?v=#{@item.youtube_id}",
+                title: "Open Youtube video page",
+                target: "blank"
+              )
+            %></b>
+          <% end %>
+        </p>
+        <p>Auto Embed Video: <b> <%= bool_symbol @item.youtube_img %></b></p>
+        <p>Auto Image Screenshot: <b> <%= bool_symbol  @item.youtube_img %></b></p>
+        <% unless @item.youtube_id.blank? %>
+          <p>
+            Youtube Available Screenshots:
+            <br />
+            <%= image_tag("https://img.youtube.com/vi/#{@item.youtube_id}/1.jpg",
+                  alt: "screnshot 1", title: "screnshot 1")
+            %>
+            <%= image_tag("https://img.youtube.com/vi/#{@item.youtube_id}/2.jpg",
+                  alt: "screnshot 2", title: "screnshot 2")
+            %>
+            <%= image_tag("https://img.youtube.com/vi/#{@item.youtube_id}/3.jpg",
+                  alt: "screnshot 3", title: "screnshot 3")
+            %>
+          </p>
+        <% end %>
+        <p>
+          <%= render partial: "/shared/youtube_video" %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>General Tags</h3>
     <div class="panel_contents">
       <div class="attributes_table item">
         <ul>
-          <% @related.results.each do |item| %>
-            <li><%= link_to item.title, admin_item_path(item), title: item.abstract %></li>
+          <% @item.general_tags.each do |tag| %>
+            <li><%= tag.title %></li>
           <% end %>
         </ul>
       </div>
     </div>
   </div>
-<% end %>
 
-<div class="panel">
-  <h3>General Tags</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <ul>
-        <% @item.general_tags.each do |tag| %>
-          <li><%= tag.title %></li>
+
+  <div class="panel">
+    <h3>Region Tags</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        <ul>
+          <% @item.region_tags.each do |tag| %>
+            <li><%= tag.title %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel">
+    <h3>Country Tags</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        <ul>
+          <% @item.country_tags.each do |tag| %>
+            <li><%= tag.title %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Author and Source Details</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        <p>Name: <%= @item.author_name %></p>
+        <p>Email: <%= @item.author_name %></p>
+        <p>Source URL: <%= @item.source_url %></p>
+        <p>WM user: <%= @item.user.title if @item.user %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Satus Codes</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        <p>Draft: <%= bool_symbol @item.draft %></p>
+        <p>Highlight: <%= bool_symbol @item.featured %></p>
+        <p>Comments: <%= bool_symbol @item.allow_comments %></p>
+        <p>Original: <%= bool_symbol @item.original %></p>
+        <!-- <p>Star Rating Enabled: <%#= @item.allow_star_rating %></p> -->
+        <p>Twitter: <%= bool_symbol(@item.posted_to_twitter?) %></p>
+        <% if @item.email_delivery_sent? %>
+          <p>Email Delivered: <%= bool_symbol true %> </p>
+        <% elsif @item.email_delivery_queued? %>
+          <p>Email Queue for Delivery at: <%= @item.email_delivery_queued_at %></p>
+        <% else %>
+          <p>Email Delivered: <%= bool_symbol false %></p>
         <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
-
-
-<div class="panel">
-  <h3>Region Tags</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <ul>
-        <% @item.region_tags.each do |tag| %>
-          <li><%= tag.title %></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
-
-
-<div class="panel">
-  <h3>Country Tags</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <ul>
-        <% @item.country_tags.each do |tag| %>
-          <li><%= tag.title %></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="panel">
-  <h3>Author and Source Details</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <p>Name: <%= @item.author_name %></p>
-      <p>Email: <%= @item.author_name %></p>
-      <p>Source URL: <%= @item.source_url %></p>
-      <p>WM user: <%= @item.user.title if @item.user %></p>
-    </div>
-  </div>
-</div>
-
-<div class="panel">
-  <h3>Satus Codes</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <p>Draft: <%= bool_symbol @item.draft %></p>
-      <p>Highlight: <%= bool_symbol @item.featured %></p>
-      <p>Comments: <%= bool_symbol @item.allow_comments %></p>
-      <p>Original: <%= bool_symbol @item.original %></p>
-      <!-- <p>Star Rating Enabled: <%#= @item.allow_star_rating %></p> -->
-      <p>Twitter: <%= bool_symbol(@item.posted_to_twitter?) %></p>
-      <% if @item.email_delivery_sent? %>
-        <p>Email Delivered: <%= bool_symbol true %> </p>
-      <% elsif @item.email_delivery_queued? %>
-        <p>Email Queue for Delivery at: <%= @item.email_delivery_queued_at %></p>
-      <% else %>
-        <p>Email Delivered: <%= bool_symbol false %></p>
-      <% end %>
-      <% unless @item.facebook_shares.empty? %>
-        <p>
-          Facebook Share:
-          <%= link_to(@item.facebook_shares.first.status, @item.facebook_shares.first.status_link, target: "_blank", title: "Open post in facebook") if @item.facebook_shares.first.status_link %>
-        </p>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<div class="panel">
-  <h3>Dates</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <p>Published: <%= @item.published_at.to_s(:long) if @item.published_at %></p>
-      <p>Created: <%= @item.created_at.to_s(:long) %></p>
-      <p>Updated: <%= @item.updated_at.to_s(:long) %></p>
-    </div>
-  </div>
-</div>
-
-
-<div class="panel">
-  <h3>Editor Notes</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <pre>
-        <%= @item.editor_notes %>
-      </pre>
-    </div>
-  </div>
-</div>
-
-
-<div class="panel">
-  <h3>Images</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <% @item.attachments.each do |attachment| %>
-        <% if attachment.image %>
-          <span class='image'>
-            <h3>Image</h3>
-            <% if attachment.existing_attachment %>
-              <%= link_to(
-                  image_tag(attachment.existing_attachment.image.medium.url, class: "show_item_img"), 
-                  admin_attachment_path(attachment.existing_attachment),
-                  title: "Show full size"
-                ) 
-              %>
-              <p><%= attachment.description %></p>
-              <p>
-                <%= link_to "Edit", edit_admin_attachment_path(attachment.existing_attachment) %> - 
-                <%= link_to "Delete", admin_attachment_path(attachment),
-                      method: 'delete',
-                      data: {confirm: "Are You sure you want to delete this Image?"}
-                %>
-              </p>
-            <% else %>
-              <%= link_to(
-                  image_tag(attachment.image.medium.url, class: "show_item_img"), 
-                  admin_attachment_path(attachment),
-                  title: "Show full size"
-                ) 
-              %>
-              <p><%= attachment.description %></p>
-              <p>
-                <%= link_to "Edit", edit_admin_attachment_path(attachment) %> - 
-                <%= link_to "Delete", admin_attachment_path(attachment),
-                      method: 'delete', 
-                      data: {confirm: "Are You sure you want to delete this Image?"}
-                %>
-              </p>
-            <% end %>
-          </span>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-
-<div class="panel">
-  <h3>Revisions</h3>
-  <div class="panel_contents">
-    <div class="attributes_table item">
-      <% @item.versions.each do |v| %>
-        <% if v.whodunnit %>
-          <% user = User.where(id: v.whodunnit).first %>
+        <% unless @item.facebook_shares.empty? %>
           <p>
-            <%= link_to v.event,admin_version_path(v) %>
-            by <%= link_to(user.title, admin_user_path(v.whodunnit)) if user %> 
-            on '<%= v.created_at.to_s(:long) %>' 
-            Reason: 
-            <%= v.tag %> &nbsp; --- &nbsp;
-            <%= link_to "Details",admin_version_path(v) %>
+            Facebook Share:
+            <%= link_to(@item.facebook_shares.first.status, @item.facebook_shares.first.status_link, target: "_blank", title: "Open post in facebook") if @item.facebook_shares.first.status_link %>
           </p>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="panel">
-  <h3>Statistics</h3>
-  <div id="chart"></div>
-</div>
+  <div class="panel">
+    <h3>Dates</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        <p>Published: <%= @item.published_at.to_s(:long) if @item.published_at %></p>
+        <p>Created: <%= @item.created_at.to_s(:long) %></p>
+        <p>Updated: <%= @item.updated_at.to_s(:long) %></p>
+      </div>
+    </div>
+  </div>
 
-<%#= high_chart("chart", SiteCharts.chart_for_item(@item)) %>
+
+  <div class="panel">
+    <h3>Editor Notes</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        <pre>
+          <%= @item.editor_notes %>
+        </pre>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel">
+    <h3>Images</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        <% @item.attachments.each do |attachment| %>
+          <% if attachment.image %>
+            <span class='image'>
+              <h3>Image</h3>
+              <% if attachment.existing_attachment %>
+                <%= link_to(
+                    image_tag(attachment.existing_attachment.image.medium.url, class: "show_item_img"), 
+                    admin_attachment_path(attachment.existing_attachment),
+                    title: "Show full size"
+                  ) 
+                %>
+                <p><%= attachment.description %></p>
+                <p>
+                  <%= link_to "Edit", edit_admin_attachment_path(attachment.existing_attachment) %> - 
+                  <%= link_to "Delete", admin_attachment_path(attachment),
+                        method: 'delete',
+                        data: {confirm: "Are You sure you want to delete this Image?"}
+                  %>
+                </p>
+              <% else %>
+                <%= link_to(
+                    image_tag(attachment.image.medium.url, class: "show_item_img"), 
+                    admin_attachment_path(attachment),
+                    title: "Show full size"
+                  ) 
+                %>
+                <p><%= attachment.description %></p>
+                <p>
+                  <%= link_to "Edit", edit_admin_attachment_path(attachment) %> - 
+                  <%= link_to "Delete", admin_attachment_path(attachment),
+                        method: 'delete', 
+                        data: {confirm: "Are You sure you want to delete this Image?"}
+                  %>
+                </p>
+              <% end %>
+            </span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel">
+    <h3>Revisions</h3>
+    <div class="panel_contents">
+      <div class="attributes_table item">
+        <% @item.versions.each do |v| %>
+          <% if v.whodunnit %>
+            <% user = User.where(id: v.whodunnit).first %>
+            <p>
+              <%= link_to v.event,admin_version_path(v) %>
+              by <%= link_to(user.title, admin_user_path(v.whodunnit)) if user %> 
+              on '<%= v.created_at.to_s(:long) %>' 
+              Reason: 
+              <%= v.tag %> &nbsp; --- &nbsp;
+              <%= link_to "Details",admin_version_path(v) %>
+            </p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Statistics</h3>
+    <div id="chart"></div>
+  </div>
+
+  <%#= high_chart("chart", SiteCharts.chart_for_item(@item)) %>
+<% end %>

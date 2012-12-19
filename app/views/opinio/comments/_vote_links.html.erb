@@ -9,5 +9,5 @@
   <%= link_to comment_vote_path(comment, vote: 'delete'), rel: "nofollow", class: "vote-delete", title: "Clear my vote from this comment", remote: true do %>
     <i class="icon-trash"></i>
   <% end %>
-  <span id="comment_score_<%= comment.id %>"><%= comment_rate(comment).html_safe %></span>
+  <span id="comment_score_<%= comment.id %>"><%= score_for(comment).html_safe %></span>
 </span>

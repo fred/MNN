@@ -3,7 +3,28 @@ class ItemsController < ApplicationController
   after_filter :store_query, only: [:show]
 
   def vote
+    return false unless current_user
     @item = Item.find(params[:item_id])
+
+    if @item.user_id == current_user.id
+      @own_article = true
+    elsif current_user.voted_on?(@item)
+      @already_voted = true
+      if params[:vote] == "delete"
+        @vote_deleted = true
+        current_user.unvote_for(@item)
+      end
+    else
+      @already_voted = false
+      if params[:vote] == "up"
+        @voted = true
+        current_user.vote_for @item
+      elsif params[:vote] == "down"
+        @voted = true
+        current_user.vote_against @item
+      end
+    end
+    no_cache_headers
   end
   
   def feed

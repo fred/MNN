@@ -160,8 +160,7 @@ ActiveAdmin.register Item do
     end
 
     def show
-      @item = Item.find(params[:id])
-      @related = @item.solr_similar(10)
+      @item = Item.includes(:user, :attachments, :tags).find(params[:id])
       if params[:version].present? && params[:version].match("[0-9]{1,}")
         tagged_logger("ADMIN", "Reifying to version: #{params[:version]}", :info)
         @item = @item.versions[params[:version].to_i].reify

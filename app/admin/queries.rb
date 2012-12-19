@@ -5,17 +5,17 @@ ActiveAdmin.register Query do
   menu parent: "Items", label: 'Site Searches', priority: 10, if: lambda{|tabs_renderer|
     controller.current_ability.can?(:read, Query)
   }
-  actions :index
+  actions :index, :show
   config.comments = false
   index title: "Searches" do
     column "Search Term", sortable: :keyword do |t|
       link_to t.keyword.to_s.truncate(50), search_path(q: t.keyword.to_s), target: "_blank"
     end
     column "IP", sortable: false do |t|
-      link_to(t.raw_data[:ip], "http://www.geoiptool.com/en/?IP=#{t.raw_data[:ip]}", target: "_blank") if t.raw_data[:ip].present?
+      link_to(t.user_ip, "http://www.geoiptool.com/en/?IP=#{t.user_ip}", target: "_blank") if t.user_ip.present?
     end
     column "From", sortable: false do |t|
-      link_to("URL", t.raw_data[:referrer], title: t.raw_data[:referrer], taget: "_blank") if t.raw_data[:referrer].present?
+      link_to("URL", t.referrer, title: t.referrer, taget: "_blank") if t.referrer.present?
     end
     column "UserAgent", sortable: false do |t|
       t.short_user_agent
