@@ -15,14 +15,14 @@ describe Item do
       @item.comments << @comment
       @item.reload
       sleep 1
-      expect(@item.reload.last_commented_at).not_to eq(@last_commented_at)
+      expect(@item.reload.last_commented_at.to_i).not_to eq(@last_commented_at.to_i)
     end
 
     it "should not update column update_at" do
       @updated_at = @item.updated_at
       @item.comments << @comment
       @item.reload
-      expect(@item.reload.updated_at).to eq(@updated_at)
+      expect(@item.reload.updated_at.to_i).to eq(@updated_at.to_i)
     end
 
   end
