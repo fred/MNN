@@ -1,6 +1,5 @@
 source 'http://rubygems.org'
 
-
 ### Basic
 gem 'rack'
 gem 'rack-cache'
@@ -78,7 +77,7 @@ gem 'twitter', "~> 4.0"
 
 gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
 
-gem 'nokogiri', '~> 1.5.6.rc3'
+gem 'nokogiri'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -168,7 +167,7 @@ gem 'feedzirra'
 gem 'newrelic_rpm'
 
 gem 'thumbs_up'
-gem 'lazy_high_charts', git: 'git://github.com/fred/lazy_high_charts.git', branch: 'turbolinks'
+gem 'lazy_high_charts', git: 'git://github.com/michelson/lazy_high_charts.git'
 gem 'sql_funk', git: 'git://github.com/FernandoEscher/sql_funk.git'
 gem 'tabletastic'
 
