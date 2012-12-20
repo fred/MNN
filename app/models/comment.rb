@@ -53,7 +53,7 @@ class Comment < ActiveRecord::Base
   def notify_users
     unless marked_spam
       if Rails.env.production?
-        CommentsNotifier.delay_for(60).to_users(self.id)
+        CommentsNotifier.delay_for(30).to_users(self.id)
       else
         CommentsNotifier.to_users(self.id).deliver
       end
@@ -63,7 +63,7 @@ class Comment < ActiveRecord::Base
   # Send email to admins 15 seconds after creation
   def notify_admin
     if Rails.env.production?
-      CommentsNotifier.delay_for(15).to_admin(self.id)
+      CommentsNotifier.delay_for(20).to_admin(self.id)
     else
       CommentsNotifier.to_admin(self.id).deliver
     end
