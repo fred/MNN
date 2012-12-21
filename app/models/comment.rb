@@ -203,8 +203,8 @@ class Comment < ActiveRecord::Base
   end
 
   def self.last_cache_key
-    if comment = self.last_comment
-      comment.updated_at.to_s(:number)
+    if comment = select("id,created_at").last_comment
+      comment.created_at.to_s(:number)
     else
       ""
     end

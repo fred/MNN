@@ -13,11 +13,9 @@ class ApplicationController < ActionController::Base
   before_filter :set_start_time, :set_time_zone, :set_view_items, :current_ability
   before_filter :log_additional_data, :set_per_page
   before_filter :last_modified
-  # before_filter :private_headers
   after_filter  :auto_login_admin_user
   after_filter  :store_location
   after_filter  :log_session
-  # after_filter  :refresh_feeds
 
 
   def sidebar_variables
@@ -29,13 +27,6 @@ class ApplicationController < ActionController::Base
     @site_general_tags ||= GeneralTag.order("title ASC")
     @site_region_tags  ||= RegionTag.order("title ASC")
     @site_links        ||= Link.order("title ASC")
-  end
-
-  def refresh_feeds
-    if current_admin_user && request.url.match("admin")
-      FeedJob.create(enqueue_at: Time.now+30) if FeedJob.should_refresh?
-    end
-    true
   end
 
   def no_cache_for_admin

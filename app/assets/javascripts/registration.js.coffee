@@ -11,9 +11,10 @@ jQuery ->
           $(value.element).parent().parent().addClass('error')
           $(value.element).attr('rel', 'tooltip')
           $(value.element).attr('title', value.message)
-        $("input[rel='tooltip']").tooltip
-          placement: 'right',
-          trigger: 'hover'
+          $(value.element).attr('placeholder', 'Required Field')
+        # $("input[rel='tooltip']").tooltip
+        #   placement: 'right',
+        #   trigger: 'hover'
 
   if $("form#new_user")
     $("form#new_user").validate

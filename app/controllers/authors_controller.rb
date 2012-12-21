@@ -2,7 +2,7 @@ class AuthorsController < ApplicationController
   
   def index
     @authors = AdminUser.with_articles.order("items_count DESC").page(params[:page], per_page: 20)
-    private_headers
+    no_cache_headers
     respond_to do |format|
       format.html
       format.json { render json: @authors }
@@ -35,7 +35,7 @@ class AuthorsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        private_headers
+        no_cache_headers
       }
       format.atom {
         public_headers(900)

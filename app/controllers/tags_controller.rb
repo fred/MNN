@@ -5,7 +5,7 @@ class TagsController < ApplicationController
     @last_published = @last_mofified
     respond_to do |format|
       format.html {
-        private_headers
+        no_cache_headers
       }
     end
   end
@@ -31,7 +31,7 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        private_headers
+        no_cache_headers
       }
       format.atom {
         public_headers(900)

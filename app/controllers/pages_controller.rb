@@ -2,7 +2,7 @@ class PagesController < InheritedResources::Base
 
   def show
     @page = Page.find(params[:id])
-    private_headers
+    no_cache_headers
     headers['Last-Modified'] = @page.updated_at.httpdate if @page
     respond_to do |format|
       format.html

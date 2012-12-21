@@ -7,7 +7,7 @@
 
   <div class="span6 box" id="main_highlights">
     <% if @highlights && @highlights.first %>
-      <% cache_expiring("main/#{@highlights.first.cache_key}",600) do %>
+      <% cache_expiring("main/#{@highlights.first.cache_key}", 10.minutes) do %>
         <ul>
           <% @highlights.each do |item| %>
             <li class="featured_item" id="highlight_item_<%=item.id%>">
@@ -52,7 +52,7 @@
   
   <div class="span6 box" id="highlights">
     <% if @latest_items && @latest_items.first %>
-      <% cache_expiring("hglt/#{@latest_items.map{|t| t.updated_at.to_f}.sum}",600) do %>
+      <% cache_expiring("hglt/#{@latest_items.map{|t| t.updated_at.to_f}.sum}", 10.minutes) do %>
         <h2><%= link_to _("Latest News"), items_path, title: _("Latest News") %></h2>
         <ul>
         <% @latest_items.each do |item| %>
@@ -98,7 +98,7 @@
   <% for category in @categories %>
     <% @top_items = category.top_items(13) %>
     <% unless @top_items.empty? %>
-      <% cache_expiring("box/#{category.id}/#{@top_items.map{|t| t.updated_at.to_f}.sum}", 900) do %>
+      <% cache_expiring("box/#{category.id}/#{@top_items.map{|t| t.updated_at.to_f}.sum}", 20.minutes) do %>
         <div class="span6 box" id="<%= category.slug %>">
           <h2><%= link_to category.title, category, title: _("Read more articles in this category") %></h2>
           <ul>

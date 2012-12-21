@@ -67,16 +67,16 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        fresh_when(etag: @etag, last_modified: @last_published) unless (current_user or current_admin_user)
+        no_cache_headers
       }
       format.json { render json: @items }
       format.atom {
-        public_headers(900)
+        public_headers(1200)
         headers['Etag'] = @etag
         render partial: "/shared/items", layout: false
       }
       format.rss {
-        public_headers(900)
+        public_headers(1200)
         headers['Etag'] = @etag
         render partial: "/shared/items", layout: false
       }
@@ -98,6 +98,7 @@ class ItemsController < ApplicationController
     @meta_description = "News #{@item.category_title} - #{@item.abstract}"
     @meta_keywords = @item.meta_keywords
     @meta_author = @item.user.title if @item.user
+    no_cache_headers
   end
 
   def new
@@ -163,9 +164,11 @@ class ItemsController < ApplicationController
       @items = []
       @title = "Please type something to search for"
     end
-    private_headers_with_timeout
+
     respond_to do |format|
-      format.html
+      format.html {
+        no_cache_headers
+      }
       format.js
       format.atom {
         render partial: "/shared/items", layout: false

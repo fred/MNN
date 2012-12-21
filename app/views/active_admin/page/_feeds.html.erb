@@ -1,6 +1,6 @@
 <div class="row-fluid">
   <% FeedSite.all.each do |feed_site| %>
-    <% cache_expiring("adminfeed/#{feed_site.full_cache_key}", 1200) do %>
+    <% cache_expiring("adminfeed/#{feed_site.full_cache_key}", 30.minutes) do %>
       <div class="box">
         <div class="box_title">
           <p>

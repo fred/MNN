@@ -1,3 +1,10 @@
+## December 21, 2012
+
+  - Improved Modal login window
+  - Re-enable fragment cache for logged in users
+  - Increased fragment caching times
+  - Disabled HTTP headers caching
+
 ## December 19, 2012
 
   - Vote for Article

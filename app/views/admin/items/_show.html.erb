@@ -1,4 +1,4 @@
-<% cache_expiring("admin/show/#{@item.cache_key}", 600) do %>
+<% cache_expiring("admin/show/#{@item.cache_key}", 15.minutes) do %>
 
   <% if @item.published? %>
   <div class="panel">
