@@ -19,15 +19,15 @@ ActiveAdmin.register Item do
   # Filters
   filter :category
   filter :language
-  filter :user
-  filter :title
-  filter :highlight, label: "Abstract"
+  filter :user, collection: proc { AdminUser.with_articles.order("id ASC").all }
+  filter :title, label: "Headline"
+  filter :abstract
   filter :author_name
   filter :youtube_id, label: "Youtube ID"
   filter :draft
   filter :original
   filter :featured, label: "Highlight"
-  filter :sticky, label: "Highlight"
+  filter :sticky
   filter :created_at
   filter :updated_at
   filter :published_at
