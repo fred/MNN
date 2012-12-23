@@ -2,6 +2,7 @@
 
   - Upgrade to SORL-4.0 (from 3.6)
   - Quoting author searching for better results
+  - Fixed sidebar "recently discussed", removed date limit
 
 ## December 22, 2012
 
