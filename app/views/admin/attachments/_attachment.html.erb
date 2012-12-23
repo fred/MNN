@@ -45,7 +45,7 @@
       targe: "_blank",
       class: "image-popup"
     )
-  else
+  elsif attachment.image.present?
     link_to(
       image_tag(attachment.image.full.url, title: attachment.title, alt: attachment.title),
       attachment.image.url,
