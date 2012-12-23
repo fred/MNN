@@ -211,9 +211,9 @@
     <% cache_expiring("sidebar_searches", 30.minutes) do %>
       <div class="sidebar_secions">
         <h4><%= _("Popular Searches") %></h4>
-        <% Query.popular(FastGettext.locale).limit(15).each do |query| %>
+        <% Query.popular(FastGettext.locale).limit(10).each do |query| %>
           <ul class="nav nav-list">
-            <li><%= link_to query.keyword.to_s.truncate(24), search_path(q: query.keyword) %></li>
+            <li><%= link_to query.keyword.to_s.truncate(24).gsub('"'," ").gsub('+'," "), search_path(q: query.keyword) %></li>
           </ul>
         <% end %>
         <span class="horizontal-divider"></span>

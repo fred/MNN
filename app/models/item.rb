@@ -74,11 +74,11 @@ class Item < ActiveRecord::Base
   ################
   # searchable auto_index: false, auto_remove: false do # if using QUEUE
   searchable do
-    text :title, boost: 2.4
-    text :abstract, boost:  1.6
-    text :keywords, boost:  4.0
-    text :category_title, boost:  1.8
-    text :author_name, boost:  3.0
+    text :title,          boost: 2.4
+    text :abstract,       boost: 1.6
+    text :keywords,       boost: 4.0
+    text :author_name,    boost: 3.0
+    text :category_title, boost: 1.8
     text :author_email
     text :article_source
     text :source_url
@@ -93,7 +93,6 @@ class Item < ActiveRecord::Base
     boolean :sticky
     time :updated_at, trie: true
     time :published_at, trie: true
-    # boost { 3.0 if featured }
     text :tags do
       tags.map { |tag| tag.title }
     end
@@ -103,7 +102,6 @@ class Item < ActiveRecord::Base
   # after_commit   :queue_solr_update
   # before_destroy :queue_solr_remove
   # end
-
 
   ######################
   ### Instance Methods

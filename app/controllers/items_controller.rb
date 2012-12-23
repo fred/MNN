@@ -124,13 +124,7 @@ class ItemsController < ApplicationController
     if params[:q] && !params[:q].to_s.empty?
       term = params[:q].downcase
       @search = Item.solr_search(include: [:attachments, :comments, :category, :language, :item_stat, :user, :tags]) do
-        fulltext term do
-          phrase_fields author_name: 4.0
-          phrase_fields title: 2.4
-          phrase_fields abstract: 1.6
-          phrase_fields tags: 1.6
-          phrase_fields body: 1.2
-        end
+        fulltext term
         if category
           with(:category_id, category.id)
           faceted_results << " under #{category.title} "

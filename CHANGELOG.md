@@ -1,3 +1,12 @@
+## December 23, 2012
+
+  - Upgrade to SORL-4.0 (from 3.6)
+  - Quoting author searching for better results
+
+## December 22, 2012
+
+  - Improved User filter for admin/items
+
 ## December 21, 2012
 
   - Improved Modal login window

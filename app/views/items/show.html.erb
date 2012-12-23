@@ -44,7 +44,7 @@
         <% if !@item.original? && @item.author_name %>
           - <%= _("by") %>
           <span class='author' itemprop='author'>
-            <%= link_to @item.author_name, search_path(q: @item.author_name), title: _('Author Articles') %>
+            <%= link_to @item.author_name, search_path(q: "\"#{@item.author_name}\""), title: _('Author Articles') %>
           </span>
         <% end %>
       </span>

@@ -223,11 +223,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_per_page
-    if Rails.env.production?
-      24
-    else
-      6
-    end
+    24
   end
 
   def per_page
