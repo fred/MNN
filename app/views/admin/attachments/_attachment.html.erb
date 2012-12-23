@@ -1,4 +1,4 @@
-<% cache_expiring("a/i/p/#{attachment.cache_key}", 1.day) do %>
+<% cache_expiring("aip/#{attachment.cache_key}", 1.day) do %>
 <%=
   if attachment.existing_attachment
     link_to(
