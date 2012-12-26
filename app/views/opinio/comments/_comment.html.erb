@@ -8,7 +8,7 @@
         <%= link_to(
               comment.commentable_title,
               comment.commentable,
-              title: item_title(comment.commentable),
+              title: object_title(comment.commentable),
               class: 'easy-tooltip'
             ) if comment.commentable
         %>
@@ -56,12 +56,11 @@
         </i>
         <% end %>
       </span>
-
       <%= render partial: "opinio/comments/vote_links", locals: {comment: comment} %>
     </div>
 
     <%# this enables only 1 level of replies %>
-    
+
     <div class="comment-actions">
       <% if Opinio.accept_replies && !reply %>
         <%= link_to _("Reply"),
@@ -93,7 +92,7 @@
         %>
       <% end %>
     </div>
-    
+
     <% if Opinio.accept_replies && !reply %>
       <ul id="comment_<%= comment.id %>_replies" class="replies">
         <%= render partial: "opinio/comments/comment",

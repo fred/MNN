@@ -71,6 +71,19 @@ module ItemsHelper
     str
   end
 
+  def object_title(obj)
+    if obj.is_a? Item
+      item_title(obj)
+    elsif obj.is_a? Comment
+      comment_title(obj)
+    else
+      ""
+    end
+  end
+
+  def comment_title(comment)
+  end
+
   def item_title(item)
     str = ""
     if item.has_image?
