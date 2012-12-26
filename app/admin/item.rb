@@ -40,6 +40,7 @@ ActiveAdmin.register Item do
   before_filter only: :index do
     if params[:per_page]
       @per_page = params[:per_page].to_i
+      @per_page = 100 if @per_page > 100
     end
   end
 
