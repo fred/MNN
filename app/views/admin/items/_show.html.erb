@@ -20,20 +20,21 @@
   </div>
 
   <div class="panel">
-    <h3>Latest 15 page views (updated every 10 minutes)</h3>
+    <h3>Latest 20 page views (updated every 10 minutes)</h3>
     <div class="panel_contents">
       <div class="attributes_table item">
         <table>
-        <%= table_for(@item.recent_page_views(15)) do |t|
+        <%= table_for(@item.recent_page_views(20)) do |t|
           t.data do
             t.cell(:created_at, heading: "Time") {|p| p.created_at.to_s(:short)}
             t.cell(:ip, heading: "IP") {|p| p.user_ip}
             t.cell(:user, heading: "User") {|p| p.user.display_name if p.user}
             t.cell(:referrer, heading: "Source") do |p|
-              p.referrer.to_s.truncate(36) if p.referrer.present?
-            end
-            t.cell(:user_agent, heading: "Browser") do |p|
-              p.short_user_agent.truncate(50) if p.short_user_agent.present?
+              link_to(
+                p.referrer.to_s.truncate(50),
+                p.referrer.to_s,
+                title: p.referrer.to_s
+              ) if p.referrer.present?
             end
             t.cell(:details, heading: "") do |p|
               link_to "Details", admin_query_path(p)
