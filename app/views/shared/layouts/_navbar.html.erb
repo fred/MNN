@@ -128,6 +128,12 @@
                 <%= _("Admin") %>
               <% end %>
             </li>
+            <li>
+              <%= link_to admin_charts_url(protocol: http_protocol) do %>
+                <i class="icon-book"></i>
+                <%= _("Statistics") %>
+              <% end %>
+            </li>
 
             <% if current_ability.can?(:create, Item) %>
               <li>
