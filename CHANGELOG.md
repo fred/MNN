@@ -1,3 +1,7 @@
+## December 26, 2012
+
+  - Updated Twitter-Bootstrap gem
+
 ## December 23, 2012
 
   - Upgrade to SORL-4.0 (from 3.6)
