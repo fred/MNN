@@ -1,3 +1,7 @@
+## December 28, 2012
+
+  - Improved CSS style for sidebar
+
 ## December 26, 2012
 
   - Updated Twitter-Bootstrap gem

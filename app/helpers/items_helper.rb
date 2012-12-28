@@ -55,7 +55,7 @@ module ItemsHelper
       )
     end
     str += "<span class='item-title'> "
-    str += link_to(item.title.truncate(55), item, title: item.abstract, class: 'easy-tooltip')
+    str += link_to(item.title.truncate(50), item, title: item.abstract, class: 'easy-tooltip')
     str += "</span>"
     if item.item_stat
       str += "<span class='item-views'>"
