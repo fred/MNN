@@ -1,3 +1,5 @@
+require "job_stat.rb" # requiring parent model for threadsafe!
+
 class SitemapJob < JobStat
   
   after_create :enqueue
