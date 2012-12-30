@@ -112,11 +112,23 @@ class Item < ActiveRecord::Base
   end
 
   def last_modified
-    if self.last_commented_at.present? && (self.last_commented_at > self.updated_at)
-      self.last_commented_at
+    if last_commented_at.present? && (last_commented_at > last_updated_version)
+      last_commented_at
     else
-      self.updated_at
+      last_updated_version
     end
+  end
+
+  def last_updated_version
+    if versions.empty?
+      created_at
+    else
+      versions.last.created_at
+    end
+  end
+
+  def updated_after_published?
+    !versions.empty? && versions.last.created_at > (published_at + 1.hour)
   end
 
   def check_security
@@ -483,10 +495,6 @@ class Item < ActiveRecord::Base
 
   def approved_comments
     comments.where(marked_spam: false, suspicious: false, approved: true)
-  end
-
-  def updated_after_published?
-    updated_at > (published_at + 1.hour)
   end
 
   ####################

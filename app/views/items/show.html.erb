@@ -98,7 +98,7 @@
 
         <% if @item.updated_after_published? %>
           <span class="item_updated">
-            (Updated: <%= time_tag(@item.updated_at.in_time_zone("UTC"), pubdate: false) %>)
+            (Updated: <%= time_tag(@item.last_updated_version.in_time_zone("UTC"), pubdate: false) %>)
           </span>
         <% end %>
 

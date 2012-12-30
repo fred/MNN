@@ -1,3 +1,8 @@
+## December 30, 2012
+
+  - Fixed bug on Update date for article
+  - using Version history to show last update
+
 ## December 28, 2012
 
   - Improved CSS style for sidebar
