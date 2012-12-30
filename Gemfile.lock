@@ -323,7 +323,7 @@ GEM
     libwebsocket (0.1.7.1)
       addressable
       websocket
-    listen (0.6.0)
+    listen (0.7.0)
     locale (2.0.8)
     loofah (1.2.1)
       nokogiri (>= 1.4.4)
