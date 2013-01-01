@@ -31,7 +31,7 @@ xml.rss(
     xml.pubDate(@last_published.rfc2822) if @last_published
 
     for comment in @comments
-      xml.entry do
+      xml.item do
         xml.title("#{comment.display_name} said:")
         xml.description(
           sanitize(comment.body,
