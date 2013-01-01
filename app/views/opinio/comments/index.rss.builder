@@ -31,7 +31,7 @@ xml.rss(
     xml.pubDate(@last_published.rfc2822) if @last_published
 
     for comment in @comments
-      xml.item do
+      xml.entry do
         xml.title("#{comment.display_name} said:")
         xml.description(
           sanitize(comment.body,
@@ -40,7 +40,7 @@ xml.rss(
           )
         )
         if @item
-          xml.guid(url_for(item_comments_path(@item.id, only_path: false, protocol: 'http')))
+          xml.guid(url_for(comment_path(comment.id, only_path: false, protocol: 'http')))
           xml.pubDate(@item.last_commented_at.rfc2822) if @item.last_commented_at
           xml.link(url_for(item_comments_path(@item, only_path: false, protocol: 'http')))
         end

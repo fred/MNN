@@ -14,9 +14,14 @@ atom_feed({
   xml.rights("Please see our copyrights page.")
   for comment in @comments
     xml.entry(comment) do
-      xml.title("#{comment.display_name.capitalize} comment")
-      xml.content "type" => "html" do
-        xml.text! render(partial: "opinio/comments/comment", locals: {comment: comment}, formats: 'html')
+      xml.title("#{comment.display_name.capitalize} said:")
+      xml.content do
+        xml.text!(
+          sanitize(comment.body,
+            tags: %w(),
+            attributes: %w()
+          )
+        )
       end
       xml.author {
         xml.name comment.display_name

@@ -121,7 +121,7 @@ class Item < ActiveRecord::Base
 
   def last_updated_version
     if versions.empty?
-      created_at
+      self.updated_at
     else
       versions.last.created_at
     end
