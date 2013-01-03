@@ -88,8 +88,8 @@ class ItemsController < ApplicationController
     if params[:id].to_s.match("^[0-9]+-")
       id = params[:id].to_s.match("^[0-9]+-").to_s.gsub('-','')
       @item = item.where(id: id).first
-    elsif params[:id].to_s.match("^[a-zA-Z]")
-      @item = item.where("slug like ?", "%" + params[:id].to_s).first
+    elsif params[:id].to_s.match("^[a-zA-Z]") && \
+      @item = item.where("slug like ?", "%" + params[:id].to_s.split("&").first).first
       redirect_to(item_path(@item), status: 301) if @item.slug.match("^[0-9]+-")
     else
       @item = item.find(params[:id].to_s)
