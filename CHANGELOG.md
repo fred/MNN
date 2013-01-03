@@ -1,3 +1,9 @@
+## January 3, 2013
+
+  - Rails 3.2.10 Security Update
+  - Added Security to Find SQL for article
+  - Redirect old pages to new SLUG format
+
 ## December 30, 2012
 
   - Fixed bug on Update date for article

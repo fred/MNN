@@ -84,7 +84,17 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.includes([:attachments, :user, :category, :language]).find(params[:id])
+    item = Item.includes([:attachments, :user, :category, :language])
+    if params[:id].to_s.match("^[0-9]+-")
+      id = params[:id].to_s.match("^[0-9]+-").to_s.gsub('-','')
+      @item = item.where(id: id).first
+    elsif params[:id].to_s.match("^[a-zA-Z]")
+      @item = item.where("slug like ?", "%" + params[:id].to_s).first
+      redirect_to(item_path(@item), status: 301) if @item.slug.match("^[0-9]+-")
+    else
+      @item = item.find(params[:id].to_s)
+    end
+
     @comments = @item.approved_comments.page(params[:page]).per(30)
     @show_breadcrumb = true
     if @item && view_context.is_human? && (@item_stat = @item.item_stat)
