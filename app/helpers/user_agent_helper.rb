@@ -1,7 +1,7 @@
 module UserAgentHelper
 
   def bot_regex
-    "(bot|spider|wget|curl|lwp|perl|crawl|agent|yandex|google|jeeves|ahrefsbot|metauri|scribdreader|js-kit|rebelmouse|inagist|butterfly)"
+    "(bot|spider|wget|curl|lwp|perl|crawl|agent|yandex|google|jeeves|metauri|scribdreader|js-kit|rebelmouse|inagist|butterfly)"
   end
   def human_regex
     "(firefox|chrome|opera|safari|webkit|gecko|konqueror|msie|windows|ubuntu|blackberry|iphone|ipad|nokia|android|webos)"

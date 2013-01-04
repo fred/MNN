@@ -5,10 +5,15 @@ Disallow: /users/
 Disallow: /admin/
 Disallow: /drafts/
 Disallow: /comments/*/vote
+Disallow: /items/*/vote
 Crawl-Delay: 30
 
 
 ### BLOCKED BOTS ###
+
+# http://www.seoprofiler.com/bot/
+User-agent: spbot
+Disallow: /
 
 #  Ahrefs.com (http://ahrefs.com/robot/)
 user-agent: AhrefsBot
