@@ -139,7 +139,7 @@
     <% end %>
 
 
-    <% cache_expiring(sidebar_cache_key, 1.day) do %>
+    <% cache_expiring(sidebar_cache_key, 1.hour) do %>
       <div class="sidebar_secions">
         <ul class="nav nav-list">
           <li class="horizontal-divider"></li>
@@ -179,7 +179,7 @@
       </div>
     <% end %>
 
-    <% cache_expiring("sidebar_comment/#{Comment.last_cache_key}", 1.hour) do %>
+    <% cache_expiring("sidebar_comment/#{Comment.last_cache_key}", 10.minutes) do %>
       <div class="sidebar_secions">
         <h4><%= _("Recently Discussed") %></h4>
         <% Item.localized.recently_commented(5).each do |item| %>
@@ -196,7 +196,7 @@
       </div>
     <% end %>
 
-    <% cache_expiring("sidebar_popular", 30.minutes) do %>
+    <% cache_expiring("sidebar_popular", 10.minutes) do %>
       <div class="sidebar_secions">
         <h4><%= _("Most read this month") %></h4>
         <% Item.localized.popular(5).each do |item| %>
