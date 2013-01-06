@@ -1,0 +1,20 @@
+<div class="panel">
+  <h3>Drafts</h3>
+  <div class="panel_contents">
+    <%= table_for(Item.recent_drafts(20)) do |t|
+      t.data do
+        t.cell(:id, heading: "ID") do |item|
+          link_to(item.id, admin_item_path(item))
+        end
+        t.cell(:title, heading: "Title") do |item|
+          link_to(item.title.truncate(50), admin_item_path(item))
+        end
+        t.cell(:category, heading: "Category") {|item| item.category_title}
+        t.cell(:user, heading: "User") {|item| item.user.display_name}
+        t.cell(:updated_at, heading: "Updated") do |item|
+          "#{time_ago_in_words(item.updated_at)} ago"
+        end
+      end
+    end %>
+  </div>
+</div>

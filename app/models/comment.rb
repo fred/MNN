@@ -182,7 +182,7 @@ class Comment < ActiveRecord::Base
   # Returns the last 10 pending comments
   def self.pending(limit=10)
     where(approved: false).
-    order("updated_at DESC").
+    order("id DESC").
     limit(limit)
   end
 
@@ -190,7 +190,7 @@ class Comment < ActiveRecord::Base
   def self.suspicious(limit=10)
     where(suspicious: true).
     where(marked_spam: false).
-    order("updated_at DESC").
+    order("id DESC").
     limit(limit)
   end
 
@@ -198,7 +198,7 @@ class Comment < ActiveRecord::Base
   def self.as_spam(limit=10)
     where(marked_spam: true).
     includes([:owner, :commentable]).
-    order("updated_at DESC").
+    order("id DESC").
     limit(limit)
   end
 

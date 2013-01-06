@@ -13,6 +13,12 @@ class Query < ActiveRecord::Base
     text :short_user_agent
   end
 
+  def self.recent_page_views(lim=10)
+    where("item_id is not NULL").
+    order("id DESC").
+    limit(lim)
+  end
+
   def self.store(options={})
     Rails.logger.debug("Saving Query")
     query = self.new

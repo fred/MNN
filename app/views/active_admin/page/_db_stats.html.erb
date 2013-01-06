@@ -1,0 +1,53 @@
+<% cache_expiring("aa/db_stats", 30.minutes) do %>
+
+  <div class="row">
+
+    <div class="dashboard_section panel span6">
+      <h3>Largest Tables (Top 15)</h3>
+      <div class="panel_contents">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>Table</th>
+              <th>Size</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% DbStats.biggest_relations(15).to_set.each do |t| %>
+              <tr>
+                <td><%= t["relation"].to_s.gsub(/^public\./,"") %></td>
+                <td><%= t["total_size"].to_s %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="dashboard_section panel span6">
+      <h3>Index Status (Top 15)</h3>
+      <div class="panel_contents">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>Table</th>
+              <th>Index Used %</th>
+              <th>Records</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% DbStats.index_status(15).to_set.each do |t| %>
+              <tr>
+                <td><%= t["relname"] %></td>
+                <td><%= t["percent_of_times_index_used"] %> %</td>
+                <td><%= t["rows_in_table"] %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+  </div>
+
+<% end %>

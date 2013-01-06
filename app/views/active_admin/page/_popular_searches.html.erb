@@ -1,0 +1,31 @@
+<% cache_expiring("aa/popular_searches", 30.minutes) do %>
+
+  <div class="row">
+
+    <div class="dashboard_section panel">
+      <h3>Popular Searches (Top 20)</h3>
+      <div class="panel_contents">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>Search Keyword</th>
+              <th>Total Hits</th>
+              <th>Language</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% Query.popular.limit(20).each do |t| %>
+              <tr>
+                <td><%= link_to t.keyword, search_path(q: t.keyword) %></td>
+                <td><%= t.count %></td>
+                <td><%= t.locale %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+<% end %>

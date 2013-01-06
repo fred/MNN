@@ -42,10 +42,10 @@ class SiteCharts
     end
   end
 
-  def self.top_comment_users(min=5)
+  def self.top_comment_users(min=10)
     LazyHighCharts::HighChart.new('graph') do |f|
       f.title(
-        { text: "Most comments" }
+        { text: "Most Comments (+#{min})" }
       )
       f.chart(
         {
@@ -73,7 +73,7 @@ class SiteCharts
     end
   end
 
-  def self.karma_comments
+  def self.karma_comments(min=4)
     LazyHighCharts::HighChart.new('graph') do |f|
       f.title(
         { text: "Comments Karma" }
@@ -97,14 +97,14 @@ class SiteCharts
         }
       )
       Comment.top_users.each do |user|
-        if user.comments_karma > 1
+        if user.comments_karma >= min
           f.series(name: user.display_name, data: [user.comments_karma] )
         end
       end
     end
   end
 
-  def self.items_karma(min = 2)
+  def self.items_karma(min = 5)
     LazyHighCharts::HighChart.new('graph') do |f|
       f.title(
         { text: "Articles Karma" }
@@ -135,7 +135,7 @@ class SiteCharts
     end
   end
 
-  def self.top_users_karma(min = 4)
+  def self.top_users_karma(min = 5)
     LazyHighCharts::HighChart.new('graph') do |f|
       f.title(
         { text: "Total Karma Score (Comments + Articles)" }

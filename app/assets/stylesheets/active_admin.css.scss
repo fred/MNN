@@ -2,6 +2,7 @@
 //= require loading
 //= require box
 //= require easytooltip
+//= require admin_grid
 
 @import "active_admin/mixins";
 @import "active_admin/base";
@@ -357,4 +358,8 @@ div.chart-unit {
   box-shadow: 0px 0px 4px #ccc;
   border-radius: 4px;
   padding: 10px;
+}
+
+ul.stats li {
+  margin: 1px;
 }

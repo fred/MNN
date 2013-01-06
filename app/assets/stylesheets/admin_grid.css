@@ -1,0 +1,96 @@
+/* ==================================================================================================================== */
+/* ! The 1140px Grid V2 by Andy Taylor \ http://cssgrid.net \ http://www.twitter.com/andytlr \ http://www.andytlr.com   */
+/* ==================================================================================================================== */
+
+
+.row {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11 {
+margin-right: 2%;
+float: left;
+min-height: 1px;
+}
+
+.row .span1 {
+width: 4.85%;
+}
+
+.row .span2 {
+width: 13.45%;
+}
+
+.row .span3 {
+width: 22.05%;
+}
+
+.row .span4 {
+width: 30.75%;
+}
+
+.row .span5 {
+width: 39.45%;
+}
+
+.row .span6 {
+width: 48%;
+}
+
+.row .span7 {
+width: 56.75%;
+}
+
+.row .span8 {
+width: 65.4%;
+}
+
+.row .span9 {
+width: 74.05%;
+}
+
+.row .span10 {
+width: 82.7%;
+}
+
+.row .span11 {
+width: 91.35%;
+}
+
+.row .span12 {
+width: 100%;
+float: left;
+}
+
+.last {
+margin-right: 0px;
+}
+
+
+/* Mobile */
+
+@media handheld, only screen and (max-width: 767px) {
+
+	body {
+  	-webkit-text-size-adjust: auto;
+	}
+	
+	.row, body, .container {
+  	width: 100%;
+  	min-width: 0;
+  	margin-left: 0px;
+  	margin-right: 0px;
+  	padding-left: 0px;
+  	padding-right: 0px;
+	}
+	
+	.row .span1, .row .span2, .row .span3, .row .span4,
+  .row .span5, .row .span6, .row .span7, .row .span8,
+  .row .span9, .row .span10, .row .span11, .row .span12 {
+  	width: auto;
+  	float: none;
+	}
+
+}
