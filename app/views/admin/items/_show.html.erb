@@ -23,7 +23,6 @@
     <h3>Latest 20 page views (updated every 10 minutes)</h3>
     <div class="panel_contents">
       <div class="attributes_table item">
-        <table>
         <%= table_for(@item.recent_page_views(20)) do |t|
           t.data do
             t.cell(:created_at, heading: "Time") {|p| p.created_at.to_s(:short)}
