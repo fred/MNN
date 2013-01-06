@@ -4,15 +4,6 @@ class Query < ActiveRecord::Base
   belongs_to :item
   belongs_to :user
 
-  ################
-  ####  SOLR  ####
-  ################
-  searchable do
-    text :keyword
-    text :raw_data
-    text :short_user_agent
-  end
-
   def self.recent_page_views(lim=10)
     where("item_id is not NULL").
     order("id DESC").
