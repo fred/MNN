@@ -2,7 +2,7 @@ class SiteCharts
 
   def self.chart_for_item(item)
     @series = []
-    item.queries.each do |query|
+    item.page_views.each do |query|
       @series << [query.created_at.to_i*1000, 1]
     end
     LazyHighCharts::HighChart.new('graph') do |f|

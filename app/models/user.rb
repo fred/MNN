@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   has_many :subscriptions, dependent: :destroy, conditions: {item_id: nil}
   has_many :comment_subscriptions, dependent: :destroy
   has_many :page_views
-  has_many :queries
+  has_many :search_queries
 
   has_and_belongs_to_many :roles
 

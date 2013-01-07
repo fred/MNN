@@ -1,5 +1,6 @@
 ## January 7, 2013
 
+  - Twitter Bootstrap updates
   - Added Page Views in Admin
   - removed Solr indexing for Queries
   - Improved Admin Charts and Dashboards

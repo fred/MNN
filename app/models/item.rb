@@ -109,7 +109,7 @@ class Item < ActiveRecord::Base
   ######################
 
   def recent_page_views(lim=10)
-    queries.order("id DESC").limit(lim)
+    page_views.order("id DESC").limit(lim)
   end
 
   def last_modified

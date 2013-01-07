@@ -12,6 +12,9 @@ ActiveAdmin.register PageView do
   filter :created_at, label: "Date"
   sidebar :per_page, partial: "per_page", only: :index
 
+  # scope :by_users
+  # scope :by_guests
+
   index title: "Page Views" do
     column "", sortable: false do |t|
       link_to t.item.id, t.item, target: "_blank"

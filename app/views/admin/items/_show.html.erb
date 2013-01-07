@@ -14,7 +14,7 @@
         Unique Page Views: <b><%= @item.item_stat.views_counter %></b>
       </div>
       <div class="attributes_table item">
-        Total Page Views: <b><%= @item.queries.count %></b> &nbsp; <small><i>(since Dec 17, 2012)</i></small>
+        Total Page Views: <b><%= @item.page_views.count %></b> &nbsp; <small><i>(since Dec 17, 2012)</i></small>
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@
               ) if p.referrer.present?
             end
             t.cell(:details, heading: "") do |p|
-              link_to "Details", admin_query_path(p)
+              link_to "Details", admin_page_view_path(p)
             end
           end
         end %>

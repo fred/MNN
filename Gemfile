@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ### Basic
-gem 'rack'
+gem 'rack', '1.4.1'
 gem 'rack-cache'
 gem 'rake'
 gem 'rails', '3.2.10'
@@ -94,7 +94,6 @@ gem 'rails_config'
 
 group :production do
   gem 'exception_notification', '~> 2.6.0', require: 'exception_notifier'
-  # git:  'git://github.com/smartinez87/exception_notification.git'
 end
 
 group :production, :development do
@@ -140,28 +139,21 @@ end
 gem 'fast_gettext'
 gem 'gettext_i18n_rails'
 
-
-# Active Admin, loaded at end.
+# Active Admin, loaded at end
 gem 'meta_search'
 gem 'activeadmin', git: 'git://github.com/fred/active_admin.git', branch: 'no-override'
-
 
 # Twitter Bootstrap for Rails 3 Asset Pipeline
 gem 'less', '~> 2.2.2'
 gem 'less-rails', '~> 2.2.6'
-gem 'twitter-bootstrap-rails' #,
-  # git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git',
-  # ref: '24981d6c611466ca7afe87080f07702ed6113e31'
-
-  #, ref: '9fd5059efad36f01ef8e64c16901178d33654654'
-
+gem 'twitter-bootstrap-rails'
 
 gem 'sunspot', git: 'git://github.com/sunspot/sunspot.git'
 gem 'sunspot_rails', git: 'git://github.com/sunspot/sunspot.git'
 gem 'sitemap_generator'
 gem 'tinymce-rails' , '~> 3.5.6'
 gem 'tinymce-rails-imageupload', '~> 3.5.6.3'
-gem 'galetahub-simple_captcha', require: 'simple_captcha', git: 'git://github.com/galetahub/simple-captcha.git'
+gem 'simple_captcha', require: 'simple_captcha', git: 'git://github.com/galetahub/simple-captcha.git'
 gem 'country-select'
 gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_email_format_of.git'
 gem 'turbo-sprockets-rails3'
@@ -173,7 +165,4 @@ gem 'thumbs_up'
 gem 'lazy_high_charts', git: 'git://github.com/michelson/lazy_high_charts.git'
 gem 'sql_funk', git: 'git://github.com/FernandoEscher/sql_funk.git'
 gem 'tabletastic'
-
-### Disabled Gems:
-# gem 'postmark-rails'
 
