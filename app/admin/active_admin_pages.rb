@@ -29,7 +29,7 @@ ActiveAdmin.register_page "Database History" do
 end
 
 ActiveAdmin.register_page "User Stats" do
-  menu priority: 2, label: "User Stats", parent: "Dashboard"
+  menu priority: 9, label: "User Stats", parent: "Dashboard"
   action_item do
     link_to "Website", "/"
   end

@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  after_filter :store_query, only: [:show]
+  after_filter :store_page_view, only: [:show]
 
   def vote
     return false unless current_user
@@ -163,7 +163,7 @@ class ItemsController < ApplicationController
       @rss_title = "WorldMathaba Search - #{params[:q]}"
       @last_published = @items.first.published_at unless @items.empty?
       @faceted_results = faceted_results
-      store_query # Save query to DB
+      store_query
     else
       @items = []
       @title = "Please type something to search for"
@@ -203,10 +203,30 @@ class ItemsController < ApplicationController
       q[:locale]  = I18n.locale
       q[:raw_data]= raw
       if Rails.env.production?
-        Query.delay.store(q)
+        SearchQuery.delay.store(q)
       else
-        Query.store(q)
+        SearchQuery.store(q)
       end
     end
   end
+
+  def store_page_view
+    if current_user or current_admin_user or view_context.is_human?
+      raw = {}
+      raw[:ip] = request.remote_ip if request.remote_ip
+      raw[:referrer] = request.referrer if request.referrer
+      raw[:user_agent] = request.user_agent if request.user_agent
+      q = {}
+      q[:item_id] = @item.id if @item
+      q[:user_id] = current_user.id if current_user
+      q[:locale]  = I18n.locale
+      q[:raw_data]= raw
+      if Rails.env.production?
+        PageView.delay.store(q)
+      else
+        PageView.store(q)
+      end
+    end
+  end
+
 end

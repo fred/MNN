@@ -2,14 +2,17 @@
   <div class="panel">
     <h3>Latest 60 page views, updated every 5 minutes</h3>
     <div class="panel_contents">
-      <%= table_for(Query.recent_page_views(60)) do |t|
+      <%= table_for(PageView.recent_page_views(60)) do |t|
         t.data do
+          t.cell(:item_id, heading: "") do |p|
+            link_to(p.item.id, admin_item_path(p.item)) if p.item
+          end
           t.cell(:item_id, heading: "Article") do |p|
-            link_to(p.item.title.truncate(50), admin_item_path(p.item)) if p.item
+            link_to(p.item.title.truncate(46), admin_item_path(p.item)) if p.item
           end
           t.cell(:created_at, heading: "Time") {|p| p.created_at.to_s(:short)}
           t.cell(:ip, heading: "IP") {|p| p.user_ip}
-          t.cell(:user, heading: "User") {|p| p.user.display_name.truncate(30) if p.user}
+          t.cell(:user, heading: "User") {|p| p.user.display_name.truncate(24) if p.user}
           t.cell(:referrer, heading: "Referrer") do |p|
             link_to(
               p.referrer.to_s.truncate(40),
@@ -19,7 +22,7 @@
             ) if p.referrer.present?
           end
           t.cell(:details, heading: "") do |p|
-            link_to "Detail", admin_query_path(p)
+            link_to "Details", admin_page_view_path(p)
           end
         end
       end %>

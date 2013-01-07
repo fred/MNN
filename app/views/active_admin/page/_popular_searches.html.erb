@@ -14,7 +14,7 @@
             </tr>
           </thead>
           <tbody>
-            <% Query.popular.limit(20).each do |t| %>
+            <% SearchQuery.popular.limit(20).each do |t| %>
               <tr>
                 <td><%= link_to t.keyword, search_path(q: t.keyword) %></td>
                 <td><%= t.count %></td>

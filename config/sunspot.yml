@@ -12,15 +12,19 @@ production:
     hostname: '127.0.0.1'
     port: 8082
     path: '/solr/mnn_development'
+    auto_commit_after_request: false
 
 development:
   solr:
     hostname: '127.0.0.1'
     port: 8082
     path: '/solr/mnn_development'
+    auto_commit_after_request: false
 
 test:
   solr:
     hostname: '127.0.0.1'
     port: 8082
     path: '/solr/mnn_test'
+    auto_commit_after_request: false
+

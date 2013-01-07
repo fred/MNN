@@ -1,3 +1,11 @@
+## January 7, 2013
+
+  - Added Page Views in Admin
+  - removed Solr indexing for Queries
+  - Improved Admin Charts and Dashboards
+  - fixed error with malformed URLS
+  - RSS xml fix
+
 ## January 3, 2013
 
   - Rails 3.2.10 Security Update

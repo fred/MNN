@@ -18,7 +18,7 @@ class Ability
         Attachment,CommentSubscription,Subscription,EmailDelivery,
         Document,Link
       ]
-      can :read, [ItemStat,Version,Query,FeedSite,FeedEntry]
+      can :read, [ItemStat,Version,SearchQuery,PageView,FeedSite,FeedEntry]
     end
 
     if user.has_role? :author
@@ -27,14 +27,14 @@ class Ability
       can :destroy, Item, user_id: user.id, draft: true
       can :create,  Item
       can [:read, :create], Attachment
-      can :read,    [ItemStat,Category,Tag,Language,Version,Page,Document,Query,FeedSite,FeedEntry]
+      can :read,    [ItemStat,Category,Tag,Language,Version,Page,Document,SearchQuery,FeedSite,FeedEntry]
     end
 
     if user.has_role? :security
       can :manage, [Role,User,AdminUser,ItemStat,Language,Version,
           Contact,CommentSubscription,Subscription,EmailDelivery,
-          TwitterShare,FacebookShare,Attachment,Document,Link,Query,
-          FeedSite,FeedEntry
+          TwitterShare,FacebookShare,Attachment,Document,Link,SearchQuery,
+          FeedSite,FeedEntry,PageView
       ]
     end
 

@@ -32,7 +32,8 @@ class Item < ActiveRecord::Base
   has_many  :facebook_shares,       dependent: :destroy
   has_many  :email_deliveries,      dependent: :destroy
   has_many  :comment_subscriptions, dependent: :destroy
-  has_many  :queries
+  has_many  :search_queries
+  has_many  :page_views
 
   has_and_belongs_to_many :tags, join_table: "taggings", 
     foreign_key: "taggable_id", association_foreign_key: "tag_id"

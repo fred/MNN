@@ -1,14 +1,7 @@
 class Query < ActiveRecord::Base
 
   serialize :raw_data, Hash
-  belongs_to :item
   belongs_to :user
-
-  def self.recent_page_views(lim=10)
-    where("item_id is not NULL").
-    order("id DESC").
-    limit(lim)
-  end
 
   def self.store(options={})
     Rails.logger.debug("Saving Query")
@@ -22,17 +15,10 @@ class Query < ActiveRecord::Base
     true
   end
 
-  def self.popular(lang='en')
-    select("keyword, locale, count(keyword)").
-    where(locale: lang.to_s).
-    group("keyword,locale").
-    order("count DESC")
-  end
-
   def short_user_agent
     if raw_data[:user_agent].present?
       tmp = raw_data[:user_agent].split
-      tmp.reverse[0..2].join(" ")
+      tmp.reverse[0..4].join(" ")
     else
       raw_data
     end
@@ -41,18 +27,13 @@ class Query < ActiveRecord::Base
   def user_agent
     raw_data[:user_agent]
   end
+
   def user_ip
     raw_data[:ip]
   end
+
   def referrer
     raw_data[:referrer]
-  end
-
-  def self.cleanup(string)
-    search = self.solr_search { fulltext string; paginate page: 1, per_page: 1000 }
-    search.results.each {|t| t.destroy}
-    Sunspot.commit
-    return search.total
   end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130103091332) do
+ActiveRecord::Schema.define(:version => 20130107111239) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -287,10 +287,12 @@ ActiveRecord::Schema.define(:version => 20130103091332) do
     t.text     "raw_data"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "type"
   end
 
   add_index "queries", ["item_id"], :name => "index_queries_on_item_id"
   add_index "queries", ["locale"], :name => "index_queries_on_locale"
+  add_index "queries", ["type"], :name => "index_queries_on_type"
 
   create_table "roles", :force => true do |t|
     t.string   "title"

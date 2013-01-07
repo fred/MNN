@@ -38,9 +38,12 @@ class User < ActiveRecord::Base
   has_many :items,  inverse_of: :user
   has_many :scores
   has_many :comments, foreign_key: :owner_id
-  has_and_belongs_to_many :roles
   has_many :subscriptions, dependent: :destroy, conditions: {item_id: nil}
   has_many :comment_subscriptions, dependent: :destroy
+  has_many :page_views
+  has_many :queries
+
+  has_and_belongs_to_many :roles
 
   before_save   :create_subscriptions
   before_save   :cancel_subscriptions

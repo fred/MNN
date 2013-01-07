@@ -1,13 +1,16 @@
 module UserAgentHelper
 
+  def bot_regex_extra
+    "(msnbot|googlebot)"
+  end
   def bot_regex
-    "(bot|spider|wget|curl|lwp|perl|crawl|agent|yandex|google|jeeves|metauri|scribdreader|js-kit|rebelmouse|inagist|butterfly)"
+    "(bot|slurp|bot|wasalive|yahoo|baidu|spider|twitter|facebook|wget|curl|lwp|perl|libwww|crawl|agent|yandex|jeeves|metauri|scribdreader|js-kit|rebelmouse|inagist|mozilla\/[1-3]|hosttracker|jeeves|butterfly)"
   end
   def human_regex
-    "(firefox|chrome|opera|safari|webkit|gecko|konqueror|msie|windows|ubuntu|blackberry|iphone|ipad|nokia|android|webos)"
+    "(firefox|chrome|opera|safari|webkit|gecko|konqueror|msie|ipad|webos)"
   end
   def mobile_regex
-    "(iphone|ipod|nokia|series60|symbian|blackberry|opera mini|mobile|iemobile|android|smartphone)"
+    "(iphone|ipod|nokia|htc|sonyericsson|series60|symbian|blackberry|opera mini|mobile|iemobile|android|smartphone|ios)"
   end
   def old_mobile_regex
     "(iphone os [3-4]_|ipad 1|ios [2-4]|ipod|nokia|series60|symbian|blackberry|opera mini|palm)"
@@ -64,7 +67,7 @@ module UserAgentHelper
   def is_human?
     return true if Rails.env.test?
     s = request.env["HTTP_USER_AGENT"].to_s.downcase
-    if !s.match(bot_regex) && s.match(human_regex)
+    if !s.match(bot_regex) && (s.match(human_regex) or s.match(mobile_regex))
       tagged_logger("UA", "Human: #{s}", :info)
       return true
     else
