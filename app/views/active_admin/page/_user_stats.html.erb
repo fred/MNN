@@ -1,9 +1,9 @@
 <% if current_ability.can?(:read, User) %>
 
-  <% cache_expiring("aa/user_stats", 5.minutes) do %>
+  <% cache_expiring("aa/user_stats", 10.minutes) do %>
 
     <div class="dashboard_section panel">
-      <h3>Newly Registered</h3>
+      <h3>Newly Registered (updated every 10 minutes)</h3>
       <div class="panel_contents">
         <table border="0" cellspacing="0" cellpadding="0">
           <thead>

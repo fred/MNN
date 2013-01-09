@@ -1,4 +1,4 @@
-cache_expiring("rss/#{@etag}", 1800) do
+cache_expiring("rss/#{@etag}", 30.minutes) do
   xml.instruct! :xml, version: "1.0"
   xml.rss(
     version: "2.0", 
