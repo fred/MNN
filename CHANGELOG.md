@@ -1,3 +1,7 @@
+## January 9, 2013
+
+  - Improved detection for Bot spiders and crawlers
+
 ## January 7, 2013
 
   - Twitter Bootstrap updates

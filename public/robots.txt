@@ -481,3 +481,9 @@ Disallow: /
 
 User-agent: WASALive-Bot
 Disallow: /
+
+User-Agent: www.integromedb.org/Crawler
+Disallow: /
+
+User-Agent: SurveyBot
+Disallow: /

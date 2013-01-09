@@ -1,10 +1,10 @@
 module UserAgentHelper
 
   def bot_regex
-    "(bot|google|slurp|wasalive|yahoo|baidu|spider|twitter|facebook|wget|curl|lwp|perl|libwww|crawl|agent|yandex|jeeves|metauri|scribdreader|js-kit|rebelmouse|inagist|hosttracker|jeeves|butterfly)"
+    "(bot|google|slurp|wasalive|yahoo|baidu|spider|twitter|facebook|wget|curl|lwp|perl|libwww|crawl|agent|yandex|jeeves|metauri|scribdreader|js-kit|rebelmouse|inagist|hosttracker|jeeves|butterfly|archive)"
   end
   def human_regex
-    "(firefox|chrome|opera|safari|webkit|gecko|konqueror|msie|ipad|webos|iphone|ipod|symbian|android)"
+    "(firefox|chrome|opera|safari|webkit|gecko|konqueror|msie|ipad|webos|iphone|ipod|symbian|android|blackberry)"
   end
   def mobile_regex
     "(iphone|ipod|nokia|sonyericsson|series60|symbian|blackberry|opera mini|mobile|iemobile|android|smartphone)"
