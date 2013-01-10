@@ -254,7 +254,7 @@ class User < ActiveRecord::Base
 
   def self.facebook_oauth(auth_hash)
     # user = where(oauth_uid: auth_hash.uid, provider: 'facebook').first
-    user = where("(oauth_uid = ? AND provider = ?) OR email = ?", auth_hash.uid, 'facebook', auth_hash.info.email)
+    user = where("(oauth_uid = ? AND provider = ?) OR email = ?", auth_hash.uid, 'facebook', auth_hash.info.email).first
     unless user
       user = User.new
       user.name = auth_hash.info.name
@@ -324,7 +324,7 @@ class User < ActiveRecord::Base
 
   def self.google_oauth(auth_hash)
     # user = where(oauth_uid: auth_hash.uid, provider: 'google').first
-    user = where("(oauth_uid = ? AND provider = ?) OR email = ?", auth_hash.uid, 'google', auth_hash.info.email)
+    user = where("(oauth_uid = ? AND provider = ?) OR email = ?", auth_hash.uid, 'google', auth_hash.info.email).first
 
     unless user
       user = User.new
@@ -371,7 +371,7 @@ class User < ActiveRecord::Base
 
   def self.windowslive_oauth(auth_hash)
     # user = where(oauth_uid: auth_hash.uid, provider: 'windowslive').first
-    user = where("(oauth_uid = ? AND provider = ?) OR email = ?", auth_hash.uid, 'windowslive', auth_hash.info.email)
+    user = where("(oauth_uid = ? AND provider = ?) OR email = ?", auth_hash.uid, 'windowslive', auth_hash.info.email).first
     unless user
       user = User.new
       user.name = auth_hash.info.name
