@@ -1,5 +1,8 @@
 ## January 10, 2013
 
+  - Fixed Google Oauth login
+  - Improved OAuth login for existing users
+  - oauth login will look for email as well as oauth uid token
   - Extremely critical security update (Rails 3.2.11)
   - Updated Sidekiq and Rack
 

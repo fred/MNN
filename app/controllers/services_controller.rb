@@ -12,7 +12,7 @@ class ServicesController < ApplicationController
           event: :authentication,
           notice: "Welcome! You are now signed in."
       else
-        flash[:notice] = "Sorry, there was an error and we could not login you in with #{auth_hash['provider']}."
+        flash[:error] = "Sorry, there was an error and we could not login you in with #{auth_hash['provider']}."
         Rails.logger.info("  Oauth: failed: #{request.env['omniauth.auth']}")
         Rails.logger.info("  Oauth: user valid?: #{@user.valid?}") if @user
         Rails.logger.info("  Oauth: user persisted?: #{@user.persisted?}") if @user
