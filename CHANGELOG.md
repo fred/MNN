@@ -1,3 +1,8 @@
+## January 10, 2013
+
+  - Extremely critical security update (Rails 3.2.11)
+  - Updated Sidekiq and Rack
+
 ## January 9, 2013
 
   - Improved detection for Bot spiders and crawlers

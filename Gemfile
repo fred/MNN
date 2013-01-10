@@ -1,10 +1,10 @@
 source 'http://rubygems.org'
 
 ### Basic
-gem 'rack', '1.4.1'
+gem 'rack', '~> 1.4.3'
 gem 'rack-cache'
 gem 'rake'
-gem 'rails', '3.2.10'
+gem 'rails', '3.2.11'
 gem 'bundler'
 
 ### Database Adapter
