@@ -666,6 +666,19 @@ class Item < ActiveRecord::Base
     limit(limit)
   end
 
+  # Only for slugs that match ^[0-9]-[a-zA-Z]
+  def self.find_from_slug(slug)
+    if slug.match("^[0-9]+-")
+      id = slug.match("^[0-9]+-").to_s.gsub('-','')
+      s = where(id: id)
+    elsif slug.match("^[a-zA-Z]") && \
+      s = where("slug like ?", "%" + slug.split("&").first)
+    else
+      s = where(id: slug.to_i)
+    end
+    s
+  end
+
   # Imports an XML output from wordpress
   def self.import_wordpress_xml
     require 'nokogiri'

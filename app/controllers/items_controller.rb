@@ -84,15 +84,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    item = Item.includes([:attachments, :user, :category, :language])
-    if params[:id].to_s.match("^[0-9]+-")
-      id = params[:id].to_s.match("^[0-9]+-").to_s.gsub('-','')
-      @item = item.where(id: id).first
-    elsif params[:id].to_s.match("^[a-zA-Z]") && \
-      @item = item.where("slug like ?", "%" + params[:id].to_s.split("&").first).first
-      redirect_to(item_path(@item), status: 301) if @item.slug.match("^[0-9]+-")
-    else
-      @item = item.find(params[:id].to_s)
+    @item = Item.includes([:attachments, :user, :category, :language]).find_from_slug(params[:id].to_s).first
+    if params[:id].to_s.match("^[a-zA-Z]") && @item && @item.slug.match("^[0-9]+-")
+      redirect_to(item_path(@item), status: 301)
     end
 
     @comments = @item.approved_comments.page(params[:page]).per(30)

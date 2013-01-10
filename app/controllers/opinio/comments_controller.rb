@@ -30,7 +30,7 @@ class Opinio::CommentsController < ApplicationController
 
   def index
     if params[:item_id]
-      @item = Item.includes([:comments,:item_stat]).find(params[:item_id])
+      @item = Item.includes([:comments, :item_stat]).find_from_slug(params[:item_id].to_s).first
       @comments = @item.comments.page(params[:page]).per(20)
       @rss_title = "Comments for: #{@item.title}"
       @rss_description = "RSS comments for '#{@item.title}'"
