@@ -1,5 +1,12 @@
 ## January 10, 2013
 
+  - Updated Devise to fix regresion
+  - turbolinks 1.0
+  - Added Index heap ratio to DB Stats
+  - Fixed bug for creating new shares for new items
+
+## January 10, 2013
+
   - Fixed Google Oauth login
   - Improved OAuth login for existing users
   - oauth login will look for email as well as oauth uid token

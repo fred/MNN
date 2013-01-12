@@ -25,6 +25,16 @@ class DbStats
     ActiveRecord::Base.connection.execute(sql)
   end
 
+  def self.hit_ratio
+    sql = "SELECT
+      sum(heap_blks_read) as heap_read,
+      sum(heap_blks_hit)  as heap_hit,
+      (sum(heap_blks_hit) - sum(heap_blks_read)) / sum(heap_blks_hit) as ratio
+    FROM
+      pg_statio_user_tables;"
+    ActiveRecord::Base.connection.execute(sql)
+  end
+
   def self.stat_user_tables
     sql = 'select * from pg_stat_user_tables;'
     ActiveRecord::Base.connection.execute(sql)

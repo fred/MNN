@@ -59,15 +59,16 @@ class Item < ActiveRecord::Base
 
   # Filter hooks
   before_save   :clear_bad_characters
-  before_save   :create_twitter_share
-  before_save   :create_facebook_share
   before_save   :dup_existing_attachment
-  before_save   :send_email_deliveries
-  before_save   :process_sitemap_job
   before_save   :update_custom_slug
   before_update :set_status_code
   before_create :build_stat
   after_create  :set_custom_slug
+
+  after_save   :process_sitemap_job
+  after_save   :create_twitter_share
+  after_save   :create_facebook_share
+  after_save   :send_email_deliveries
 
 
   ################

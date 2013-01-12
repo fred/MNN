@@ -1,8 +1,7 @@
 class TwitterQueue < BaseWorker
 
   def perform(share_id)
-    share = TwitterShare.find(share_id)
-    if share && share.item
+    if (share = TwitterShare.find(share_id)) && share.item
       item = share.item 
       if (share && item && Twitter.update(item.twitter_status))
         Rails.logger.info("  Queue: Updating Twitter status: #{item.twitter_status}")

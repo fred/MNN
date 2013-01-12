@@ -50,4 +50,32 @@
   
   </div>
 
+  <div class="row">
+
+    <div class="dashboard_section panel span6">
+      <h3>Heap Index Ratio</h3>
+      <div class="panel_contents">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>Heap Read</th>
+              <th>Heap Hit</th>
+              <th>Heap Ratio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% DbStats.hit_ratio.to_set.each do |t| %>
+              <tr>
+                <td><%= t["heap_read"].to_s %></td>
+                <td><%= t["heap_hit"].to_s %></td>
+                <td><%= (t["ratio"].to_f * 100).round(4) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
 <% end %>
