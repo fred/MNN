@@ -1,5 +1,8 @@
-## January 10, 2013
+## January 12, 2013
 
+  - Increase Sidebar recent commented articles
+  - Clear html code on pasting to TinyMCE
+  - Comments editor, force clear any HTML
   - Updated Devise to fix regresion
   - turbolinks 1.0
   - Added Index heap ratio to DB Stats

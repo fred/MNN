@@ -179,10 +179,10 @@
       </div>
     <% end %>
 
-    <% cache_expiring("sidebar_comment/#{Comment.last_cache_key}", 30.minutes) do %>
+    <% cache_expiring("sidebar_comment/#{Comment.last_cache_key}", 40.minutes) do %>
       <div class="sidebar_secions">
         <h4><%= _("Recently Discussed") %></h4>
-        <% Item.localized.recently_commented(5).each do |item| %>
+        <% Item.localized.recently_commented(8).each do |item| %>
           <div class="sidebar-item">
             <%= item_mini(item).html_safe %>
             <span class="comment-date">
@@ -196,9 +196,9 @@
       </div>
     <% end %>
 
-    <% cache_expiring("sidebar_popular", 20.minutes) do %>
+    <% cache_expiring("sidebar_popular", 24.minutes) do %>
       <div class="sidebar_secions">
-        <h4><%= _("Most read this month") %></h4>
+        <h4><%= _("Popular this month") %></h4>
         <% Item.localized.popular(5).each do |item| %>
           <div class="sidebar-item">
             <%= item_mini(item).html_safe %>
@@ -208,10 +208,10 @@
       </div>
     <% end %>
 
-    <% cache_expiring("sidebar_searches", 30.minutes) do %>
+    <% cache_expiring("sidebar_searches", 32.minutes) do %>
       <div class="sidebar_secions">
         <h4><%= _("Popular Searches") %></h4>
-        <% SearchQuery.popular(FastGettext.locale).limit(10).each do |query| %>
+        <% SearchQuery.popular(FastGettext.locale).limit(5).each do |query| %>
           <ul class="nav nav-list">
             <li><%= link_to query.keyword.to_s.truncate(24).gsub('"'," ").gsub('+'," "), search_path(q: query.keyword) %></li>
           </ul>
