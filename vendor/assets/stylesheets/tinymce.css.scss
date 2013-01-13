@@ -1,7 +1,4 @@
 body {
-  text-rendering: optimizeLegibility;
-  font-smoothing: auto;
-  -webkit-font-smoothing: auto;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 100%;
@@ -31,14 +28,32 @@ body {
 p {
   font-size: 14px;
   font-weight: normal;
-  line-height: 18px;
-  margin-bottom: 9px;
-  color: #444;
+  line-height: 20px;
+  margin: 0 0 12px 0;
+  color: #333;
   font-family: Arial, Helmet, Freesans, sans-serif;
   font-smoothing: auto;
   -webkit-font-smoothing: auto;
   text-rendering: optimizelegibility;
 }
+blockquote {
+  clear: both;
+  display: inline-block;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+  padding: 0 0 0 15px;
+  margin: 0 0 15px;
+  border-left: 5px solid #eeeeee;
+}
+blockquote p {
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+}
+
 figure {
   margin: 0;
   padding: 0;
@@ -52,9 +67,6 @@ header.master {
 }
 
 
-p {
-  margin: 10px 0;
-}
 .help-block {
   margin-top: 2px;
 }
@@ -128,16 +140,4 @@ span.author {
 span.source_url {
   display:block;
   clear: both;
-}
-
-#tinymce blockquote {
-  clear: both;
-  display: inline-block;
-  font-weight: normal;
-  line-height: 18px;
-  margin-bottom: 5px;
-  color: #666;
-  padding: 0 0 0 15px;
-  margin: 0 0 15px;
-  border-left: 5px solid #eeeeee;
 }

@@ -50,9 +50,10 @@
       body_class : "tinymce",
       plugins : "autolink,lists,spellchecker,pagebreak,style,layer,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,uploadimage",
       // Theme options
-      theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-      theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,blockquote,|,undo,redo,|,link,unlink,anchor,image,uploadimage,cleanup,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-      theme_advanced_buttons3 : "hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+      theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,forecolor,backcolor,|,styleselect,formatselect,fontselect,fontsizeselect",
+      theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,selectall,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,|,image,uploadimage,|,removeformat,cleanup,code,|,insertdate,inserttime,preview",
+      theme_advanced_buttons3 : "hr,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking",
+      theme_advanced_buttons4 : "",
       theme_advanced_blockformats : "p,address,blockquote,h2,h3,h4,h5,h6,div,pre,caption,figcaption",
       theme_advanced_toolbar_location : "top",
       theme_advanced_toolbar_align : "left",
@@ -62,8 +63,6 @@
       paste_strip_class_attributes : "all",
       paste_remove_spans : true,
       paste_remove_styles : true,
-      paste_text_sticky: true,
-      paste_text_sticky_default: true,
       content_css : "<%= asset_path 'tinymce.css' %>"
     });
   });

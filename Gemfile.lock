@@ -12,12 +12,12 @@ GIT
 
 GIT
   remote: git://github.com/arsduo/koala.git
-  revision: e8559e9f0404f2b8c6d65469c1b4900efc665c7f
+  revision: 95c1c8a9266d94ad07114e21ff6d3e7d730f3d75
   specs:
-    koala (1.6.0)
-      addressable (~> 2.2)
-      faraday (~> 0.8)
-      multi_json (~> 1.3)
+    koala (1.7.0)
+      addressable
+      faraday
+      multi_json
 
 GIT
   remote: git://github.com/dangerp/omniauth-windowslive.git
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: git://github.com/fred/active_admin.git
-  revision: 4c381ab045473e4783dd32cabf030a3c42c8a13b
+  revision: 357e827144a28884a4359133c8942e26601a22ce
   branch: no-override
   specs:
     activeadmin (0.5.1)
@@ -299,7 +299,7 @@ GEM
       jruby-ehcache
     jruby-openssl (0.8.2)
       bouncy-castle-java (>= 1.5.0146.1)
-    jruby-rack (1.1.12)
+    jruby-rack (1.1.13)
     json (1.7.6)
     json (1.7.6-java)
     jwt (0.1.5)
@@ -451,7 +451,7 @@ GEM
       diff-lcs (~> 1.1.3)
     rspec-instafail (0.2.4)
     rspec-mocks (2.12.1)
-    rspec-rails (2.12.1)
+    rspec-rails (2.12.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
