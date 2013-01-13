@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
 
+  before_filter :check_params_encoding, only: [:show]
+
   def index
     @sticky_item = Item.top_sticky
     if @sticky_item

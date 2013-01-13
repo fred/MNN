@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-
+  before_filter :check_params_encoding, only: [:show]
   after_filter :store_page_view, only: [:show]
 
   def vote

@@ -1,3 +1,7 @@
+## January 13, 2013
+
+  - Security checks for bad encoded params
+
 ## January 12, 2013
 
   - Increase Sidebar recent commented articles

@@ -18,6 +18,15 @@ class ApplicationController < ActionController::Base
   after_filter  :log_session
 
 
+  def check_params_encoding
+    if params[:id] && !params[:id].valid_encoding?
+      tagged_logger("Security", "Invalid encoding on params[:id]", :info)
+      redirect_to root_path
+    else
+      super
+    end
+  end
+
   def sidebar_variables
     @site_categories   ||= Category.order("priority ASC, title DESC")
     @site_pages        ||= Page.active.order("priority ASC")

@@ -32,7 +32,6 @@ describe ItemsController do
   
   describe "GET index" do
     it "assigns all items as items" do
-      # item = Item.create! valid_item_attributes
       get :index
       expect(assigns(:items)).to eq([item])
     end
@@ -40,12 +39,16 @@ describe ItemsController do
   
   describe "GET show" do
     it "assigns the requested item as item" do
-      # item = Item.create! valid_item_attributes
       get :show, id: item.id
       expect(assigns(:item)).to eq(item)
     end
+    it "creates a page_view record" do
+      get :show, id: item.id
+      expect(assigns(:item).page_views).not_to be_empty
+      expect(assigns(:item).page_views.count).to eq(1)
+    end
   end
-  
+
   describe "GET show for same user" do
     it "increases the views_counter of item" do
       get :show, id: item.id
@@ -87,6 +90,9 @@ describe ItemsController do
       it "should show some items" do
         get :search, q: item.title
         expect(assigns(:items)).to eq([item])
+      end
+      it "should store the Search Query" do
+        expect(->{ get :search, q: item.title }).to change(SearchQuery, :count).by(1)
       end
     end
   end
