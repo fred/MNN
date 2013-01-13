@@ -158,9 +158,9 @@ gem 'country-select'
 gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_email_format_of.git'
 gem 'turbo-sprockets-rails3'
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 gem 'feedzirra'
 gem 'newrelic_rpm', "3.5.4.34"
-
 gem 'thumbs_up'
 gem 'lazy_high_charts', git: 'git://github.com/michelson/lazy_high_charts.git'
 gem 'sql_funk', git: 'git://github.com/FernandoEscher/sql_funk.git'

@@ -9,6 +9,7 @@
 //= require modernizr
 //= require zclip
 //= require turbolinks
+//= require jquery.turbolinks
 //= require loader
 //= require easyTooltip
 //= require tooltip
