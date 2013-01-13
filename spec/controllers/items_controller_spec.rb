@@ -49,6 +49,13 @@ describe ItemsController do
     end
   end
 
+  describe "GET show with invalid encoding params" do
+    it "assigns the requested item as item" do
+      get :show, id: "1000-a\xFCe"
+      expect(response).to redirect_to(root_path)
+    end
+  end
+
   describe "GET show for same user" do
     it "increases the views_counter of item" do
       get :show, id: item.id

@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
       tagged_logger("Security", "Invalid encoding on params[:id]", :info)
       redirect_to root_path
     else
-      super
+      true
     end
   end
 
