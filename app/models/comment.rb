@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   attr_accessor :subscribe, :skip_spam_check
+  has_paper_trail :on => [:edit, :destroy]
 
   acts_as_voteable
 

@@ -2,6 +2,7 @@ class Tag < ActiveRecord::Base
     
   validates_presence_of :title
   validates_uniqueness_of :title
+  has_paper_trail
   
   # Permalink URLS
   extend FriendlyId

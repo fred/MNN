@@ -15,7 +15,7 @@
             </tr>
           </thead>
           <tbody>
-            <% User.recent(10).each do |user| %>
+            <% User.recent(12).each do |user| %>
               <tr>
                 <td><%= link_to_if(user.name.present?,user.name.to_s, admin_user_path(user)) %></td>
                 <td><%= link_to(user.email, admin_user_path(user)) %></td>
@@ -42,7 +42,7 @@
             </tr>
           </thead>
           <tbody>
-            <% User.logged_in(10).each do |user| %>
+            <% User.logged_in(12).each do |user| %>
               <tr>
                 <td><%= link_to_if(user.name.present?,user.name.to_s, admin_user_path(user)) %></td>
                 <td><%= link_to(user.email, admin_user_path(user)) %></td>

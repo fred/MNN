@@ -1,4 +1,5 @@
 class Link < ActiveRecord::Base
+  has_paper_trail
 
   # Validations
   validates_presence_of   :title
