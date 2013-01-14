@@ -185,17 +185,18 @@ class ItemsController < ApplicationController
   protected
 
   def store_query
-    if current_user or current_admin_user or view_context.is_human?
-      raw = {}
-      raw[:ip] = request.remote_ip if request.remote_ip
-      raw[:referrer] = request.referrer if request.referrer
-      raw[:user_agent] = request.user_agent if request.user_agent
+    safe = params[:q] && params[:q].scan(/select|where|\(|\)/).uniq.size <= 1
+    if safe && (current_user or current_admin_user or view_context.is_human?)
+      data = {}
+      data["ip"] = request.remote_ip if request.remote_ip
+      data["referrer"] = request.referrer if request.referrer
+      data["user_agent"] = request.user_agent if request.user_agent
       q = {}
       q[:keyword] = params[:q] if params[:q].present?
       q[:item_id] = @item.id if @item
       q[:user_id] = current_user.id if current_user
       q[:locale]  = I18n.locale
-      q[:raw_data]= raw
+      q[:data]= data
       if Rails.env.production?
         SearchQuery.delay.store(q)
       else
@@ -206,15 +207,15 @@ class ItemsController < ApplicationController
 
   def store_page_view
     if current_user or current_admin_user or view_context.is_human?
-      raw = {}
-      raw[:ip] = request.remote_ip if request.remote_ip
-      raw[:referrer] = request.referrer if request.referrer
-      raw[:user_agent] = request.user_agent if request.user_agent
+      data = {}
+      data["ip"] = request.remote_ip if request.remote_ip
+      data["referrer"] = request.referrer if request.referrer
+      data["user_agent"] = request.user_agent if request.user_agent
       q = {}
       q[:item_id] = @item.id if @item
       q[:user_id] = current_user.id if current_user
       q[:locale]  = I18n.locale
-      q[:raw_data]= raw
+      q[:data]= data
       if Rails.env.production?
         PageView.delay.store(q)
       else

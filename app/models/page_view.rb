@@ -7,11 +7,11 @@ class PageView < Query
     limit(lim)
   end
 
-  def self.by_users
+  def self.from_users
     where("user_id is not NULL")
   end
 
-  def self.by_guests
+  def self.from_guests
     where("user_id is NULL")
   end
 

@@ -11,7 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130107111239) do
+ActiveRecord::Schema.define(:version => 20130114120000) do
+
+
+  create_extension "hstore", :version => "1.1"
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -213,7 +216,7 @@ ActiveRecord::Schema.define(:version => 20130107111239) do
   add_index "items", ["locale"], :name => "index_items_on_locale"
   add_index "items", ["meta_enabled"], :name => "index_items_on_meta_enabled"
   add_index "items", ["original"], :name => "index_items_on_original"
-  add_index "items", ["published_at"], :name => "index_items_on_published_at", :order => {"published_at"=>:desc}
+  add_index "items", ["published_at"], :name => "index_items_on_published_at"
   add_index "items", ["slug"], :name => "index_items_on_slug", :unique => true
   add_index "items", ["status_code"], :name => "index_items_on_status_code"
   add_index "items", ["sticky"], :name => "index_items_on_sticky"
@@ -288,8 +291,10 @@ ActiveRecord::Schema.define(:version => 20130107111239) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "type"
+    t.hstore   "data"
   end
 
+  add_index "queries", ["data"], :name => "index_queries_on_data", :using => "gist"
   add_index "queries", ["item_id"], :name => "index_queries_on_item_id"
   add_index "queries", ["locale"], :name => "index_queries_on_locale"
   add_index "queries", ["type"], :name => "index_queries_on_type"

@@ -166,3 +166,5 @@ gem 'lazy_high_charts', git: 'git://github.com/michelson/lazy_high_charts.git'
 gem 'sql_funk', git: 'git://github.com/FernandoEscher/sql_funk.git'
 gem 'tabletastic'
 
+gem 'activerecord-postgres-hstore', github: 'engageis/activerecord-postgres-hstore'
+gem 'pg_power'

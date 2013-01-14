@@ -1,3 +1,7 @@
+## January 14, 2013
+
+  - Using Postgres Hstore for storing serialized data
+
 ## January 13, 2013
 
   - Security checks for bad encoded params
