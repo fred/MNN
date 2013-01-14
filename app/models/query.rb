@@ -17,24 +17,24 @@ class Query < ActiveRecord::Base
   end
 
   def short_user_agent
-    if data["user_agent"].present?
+    if data && data["user_agent"].present?
       tmp = data["user_agent"].split
       tmp.reverse[0..4].join(" ")
     else
-      data
+      ""
     end
   end
 
   def user_agent
-    data["user_agent"]
+    data["user_agent"] if data && data["user_agent"].present?
   end
 
   def user_ip
-    data["ip"]
+    data["ip"] if data && data["ip"].present?
   end
 
   def referrer
-    data["referrer"]
+    data["referrer"] if data && data["referrer"].present?
   end
 
 end
