@@ -7,6 +7,7 @@ ActiveAdmin.register SearchQuery do
   }
   actions :index, :show
   config.comments = false
+
   index title: "Searches" do
     column "Search Term", sortable: :keyword do |t|
       link_to t.keyword.to_s.truncate(50), search_path(q: t.keyword.to_s), target: "_blank"
@@ -29,6 +30,21 @@ ActiveAdmin.register SearchQuery do
     end
     default_actions
   end
+
+  show do
+    attributes_table do
+      row :id
+      row :keyword
+      row :locale
+      row :user
+      row :user_ip
+      row :user_agent
+      row :referrer
+      row :updated_at
+      row :created_at
+    end
+  end
+
   controller do
     def scoped_collection
       SearchQuery.includes(:user)

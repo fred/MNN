@@ -37,6 +37,21 @@ ActiveAdmin.register PageView do
     column "Lang", :locale
     default_actions
   end
+
+  show do
+    attributes_table do
+      row :id
+      row :locale
+      row :item
+      row :user
+      row :user_ip
+      row :user_agent
+      row :referrer
+      row :updated_at
+      row :created_at
+    end
+  end
+
   controller do
     def scoped_collection
       PageView.includes(:item, :user)
