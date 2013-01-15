@@ -9,7 +9,7 @@ ActiveAdmin.register Page do
   config.comments = false
 
   action_item only: [:show, :edit] do
-    link_to('View on site', page_path(page), data: 'no-turbolink')
+    link_to('View on site', page_path(page), 'data-no-turbolink' => true)
   end
   
   index title: "Pages" do
