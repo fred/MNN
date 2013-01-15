@@ -3,7 +3,7 @@ ActiveAdmin.register Item do
   config.sort_order = "id_desc"
   config.per_page = 12
   action_item only: [:show, :edit] do
-    link_to('View on site', item_path(item), data: 'no-turbolink')
+    link_to('View on site', item_path(item), 'data-no-turbolink' => true)
   end
 
   scope :published
@@ -71,23 +71,9 @@ ActiveAdmin.register Item do
       link_to item.title, admin_item_path(item), title: item.abstract, class: "featured_#{item.featured}"
     end
     column :category, sortable: :category_id
-    column :keywords
-    column :tags do |item|
-      item.tag_list(", ")
-    end
-    column "Y", :youtube_id, sortable: :youtube_id do |item|
-      if item.youtube_id
-        link_to(item.youtube_id,
-          "http://www.youtube.com/watch?v=#{item.youtube_id}",
-          title: "Open Youtube video page",
-          target: "blank"
-        )
-      end
-    end
     column "Views", sortable: false do |item|
       item.item_stat.views_counter if item.item_stat
     end
-    column "Comment", :comments_count
     column "Orig", :original, sortable: :original do |item|
       bool_symbol(item.original)
     end
@@ -97,12 +83,6 @@ ActiveAdmin.register Item do
     bool_column :sticky
     column "Lock", :protected, sortable: :protected do |item|
       bool_symbol(item.protected)
-    end
-    column "Lang", :language, sortable: :language_id do |item|
-      item.language.description if item.language
-    end
-    column "Updated", sortable: :updated_at do |item|
-      item.updated_at.localtime.to_s(:short)
     end
     column "Live", sortable: :published_at do |item|
       if !item.draft? && item.published_at && item.published_at > Time.zone.now
@@ -121,11 +101,11 @@ ActiveAdmin.register Item do
         item.published_at.localtime.to_s(:short)
       end
     end
-    column "Show", sortable: false do |item|
-      link_to("Live Preview", item, data: 'no-turbolink') if controller.current_ability.can?(:preview, item)
+    column "", sortable: false do |item|
+      link_to("Live Preview", item, 'data-no-turbolink' => true) if controller.current_ability.can?(:preview, item)
     end
-    column "Show", sortable: false do |item|
-      link_to "Show", admin_item_path(item) if controller.current_ability.can?(:preview, item)
+    column "", sortable: false do |item|
+      link_to "Details", admin_item_path(item) if controller.current_ability.can?(:preview, item)
     end
     column "" do |item|
       link_to "Edit", edit_admin_item_path(item) if controller.current_ability.can?(:update, item)
