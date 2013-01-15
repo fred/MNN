@@ -1,3 +1,9 @@
+## January 15, 2013
+
+  - Updated Gems
+  - Removed some colums from admin/items
+  - Removed news sitemap
+
 ## January 14, 2013
 
   - Using Postgres Hstore for storing serialized data
