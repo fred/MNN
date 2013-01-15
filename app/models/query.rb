@@ -1,6 +1,4 @@
 class Query < ActiveRecord::Base
-
-  serialize :raw_data, Hash
   serialize :data, ActiveRecord::Coders::Hstore
   belongs_to :user
 
