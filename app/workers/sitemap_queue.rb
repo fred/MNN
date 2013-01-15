@@ -26,27 +26,27 @@ class SitemapQueue < BaseWorker
         )
         add '/', host: "http://#{language.locale}.worldmathaba.net"
       end
-      Item.news_for_sitemap.each do |item|
-        add(
-          item_path(item),
-          changefreq: 'daily',
-          priority: 0.7,
-          host: "http://#{item.localized_domain}",
-          news: {
-            publication_name: "WorldMathaba",
-            publication_language: item.language_title_short,
-            title: item.title,
-            keywords: item.tag_list,
-            publication_date: item.published_at.xmlschema,
-            genres: "PressRelease"
-          }
-        )
-      end
+      # Item.news_for_sitemap.each do |item|
+      #   add(
+      #     item_path(item),
+      #     changefreq: 'daily',
+      #     priority: 0.7,
+      #     host: "http://#{item.localized_domain}",
+      #     news: {
+      #       publication_name: "WorldMathaba",
+      #       publication_language: item.language_title_short,
+      #       title: item.title,
+      #       keywords: item.tag_list,
+      #       publication_date: item.published_at.xmlschema,
+      #       genres: "PressRelease"
+      #     }
+      #   )
+      # end
       Item.for_sitemap.each do |item|
         add(
           item_path(item),
           changefreq: 'daily',
-          priority: 0.6,
+          priority: 1.0,
           host: "http://#{item.localized_domain}"
         )
       end
