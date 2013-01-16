@@ -17,8 +17,12 @@ ActiveAdmin.register RegionTag do
     column "Items" do |tag|
       tag.items.count
     end
-    column :created_at
-    column :updated_at
+    column "Updated" do |t|
+      t.updated_at.to_s(:short)
+    end
+    column "Created" do |t|
+      t.created_at.to_s(:short)
+    end
     default_actions
   end
 end

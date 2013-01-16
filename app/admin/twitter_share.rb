@@ -10,8 +10,12 @@ ActiveAdmin.register TwitterShare do
   index title: "Twitter Shares" do
     column :item
     column :status
-    column "Processed At", :processed_at
-    column "Scheduled At", :enqueue_at
+    column "Processed At" do |t|
+      t.processed_at.to_s(:short)
+    end
+    column "Scheduled At" do |t|
+      t.enqueue_at.to_s(:short)
+    end
     default_actions
   end
   controller do

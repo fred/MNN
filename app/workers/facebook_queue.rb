@@ -1,8 +1,7 @@
 class FacebookQueue < BaseWorker
 
   def perform(share_id)
-    share = FacebookShare.find(share_id)
-    if share && share.item
+    if (share = FacebookShare.find(share_id)) && share.item
       item = share.item
       if (share && item && share.post(item))
         Rails.logger.info("  Queue: Updating Facebook status for Item: ##{item.id}")

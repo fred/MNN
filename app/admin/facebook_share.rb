@@ -12,8 +12,12 @@ ActiveAdmin.register FacebookShare do
     column :status do |share|
       link_to(share.status, share.status_link, target: "_blank", title: "Open post in facebook") if share.status_link
     end
-    column "Processed At", :processed_at
-    column "Scheduled At", :enqueue_at
+    column "Processed At" do |t|
+      t.processed_at.to_s(:short)
+    end
+    column "Scheduled At" do |t|
+      t.enqueue_at.to_s(:short)
+    end
     default_actions
   end
   controller do

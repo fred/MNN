@@ -14,8 +14,13 @@ ActiveAdmin.register EmailDelivery do
         link_to t.item.title, admin_item_path(t.item)
       end
     end
-    column :created_at
-    column "Send Time", :send_at
+    bool_column :delivered
+    column :created_at do |t|
+      t.created_at.to_s(:short)
+    end
+    column "Schedule Time" do |t|
+      t.send_at.to_s(:short)
+    end
     default_actions
   end
   controller do

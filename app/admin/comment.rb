@@ -9,7 +9,7 @@ ActiveAdmin.register Comment do
 
   index title: "Comments" do
     selectable_column
-    column "Item", sortable: :commentable_id do |t|
+    column "Item ID", sortable: :commentable_id do |t|
       link_to t.commentable_id, item_path(t.commentable_id) if t.commentable_id
     end
     column "User", sortable: :owner_id do |t|
@@ -18,7 +18,7 @@ ActiveAdmin.register Comment do
       end
     end
     column "Message", sortable: false do |t|
-      link_to sanitize(t.body, tags: '', attributes: '').truncate(70),
+      link_to sanitize(t.body, tags: '', attributes: '').truncate(65),
         admin_comment_path(t),
         title: sanitize(t.body, tags: '', attributes: '').truncate(300),
         class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"

@@ -1,3 +1,7 @@
+## January 16, 2013
+
+  - Improved dates on admin interface
+
 ## January 15, 2013
 
   - Updated Gems

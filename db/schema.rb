@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130114120000) do
+ActiveRecord::Schema.define(:version => 20130116162146) do
 
 
   create_extension "hstore", :version => "1.1"
@@ -109,9 +109,10 @@ ActiveRecord::Schema.define(:version => 20130114120000) do
   create_table "email_deliveries", :force => true do |t|
     t.integer  "item_id"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.datetime "send_at"
+    t.boolean  "delivered",  :default => false
   end
 
   add_index "email_deliveries", ["item_id"], :name => "index_email_deliveries_on_item_id"

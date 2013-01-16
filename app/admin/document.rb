@@ -15,8 +15,12 @@ ActiveAdmin.register Document do
     end
     column :content_type
     column :user
-    column :updated_at
-    column :created_at
+    column "Updated" do |t|
+      t.updated_at.to_s(:short)
+    end
+    column "Created" do |t|
+      t.created_at.to_s(:short)
+    end
     default_actions
   end
 

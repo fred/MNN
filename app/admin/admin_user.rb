@@ -29,8 +29,12 @@ ActiveAdmin.register AdminUser do
       end
       row :bio
       bool_row :show_public
-      row "Logged in at", &:last_sign_in_at
-      row "Last Seen", &:current_sign_in_at
+      row "Logged in" do |user|
+        user.current_sign_in_at.to_s(:short)
+      end
+      row "Last Seen" do |user|
+        user.last_sign_in_at.to_s(:short)
+      end
       row "Last IP" do |user|
         if user.last_sign_in_ip
           link_to user.last_sign_in_ip.to_s, 
@@ -82,14 +86,11 @@ ActiveAdmin.register AdminUser do
         twitter_user_link(user.twitter)
       end
     end
-    column :role_titles
-    column :type
-    column "Subscribed", sortable: false do |user|
-      bool_symbol user.has_subscription?
-    end
+    column "Roles", :role_titles, sortable: false
     column "Logins", :sign_in_count
-    column "Logged in", :last_sign_in_at
-    column "Last Seen", :current_sign_in_at
+    column "Last Login" do |user|
+      user.current_sign_in_at.to_s(:short)
+    end
     column "Last IP" do |user|
       if user.last_sign_in_ip
         link_to user.last_sign_in_ip.to_s,
