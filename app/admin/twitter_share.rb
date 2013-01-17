@@ -11,16 +11,16 @@ ActiveAdmin.register TwitterShare do
     column :item
     column :status
     column "Processed At" do |t|
-      t.processed_at.to_s(:short)
+      t.processed_at.to_s(:short) if t.processed_at.present?
     end
     column "Scheduled At" do |t|
-      t.enqueue_at.to_s(:short)
+      t.enqueue_at.to_s(:short) if t.enqueue_at.present?
     end
     default_actions
   end
   controller do
     def scoped_collection
-       TwitterShare.includes(:item)
+      TwitterShare.includes(:item)
     end
   end
 end

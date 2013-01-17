@@ -13,16 +13,16 @@ ActiveAdmin.register FacebookShare do
       link_to(share.status, share.status_link, target: "_blank", title: "Open post in facebook") if share.status_link
     end
     column "Processed At" do |t|
-      t.processed_at.to_s(:short)
+      t.processed_at.to_s(:short) if t.processed_at.present?
     end
     column "Scheduled At" do |t|
-      t.enqueue_at.to_s(:short)
+      t.enqueue_at.to_s(:short) if t.enqueue_at.present?
     end
     default_actions
   end
   controller do
     def scoped_collection
-       FacebookShare.includes(:item)
+      FacebookShare.includes(:item)
     end
   end
 end
