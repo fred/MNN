@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   before_filter :check_params_encoding, only: [:show]
-  after_filter :increment_counter, only: [:show]
   after_filter :store_page_view, only: [:show]
 
   def vote
@@ -95,6 +94,7 @@ class ItemsController < ApplicationController
     @meta_description = "News #{@item.category_title} - #{@item.abstract}"
     @meta_keywords = @item.meta_keywords
     @meta_author = @item.user.title if @item.user
+    increment_counter
     no_cache_headers
   end
 
