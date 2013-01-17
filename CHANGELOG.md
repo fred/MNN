@@ -1,3 +1,8 @@
+## January 17, 2013
+
+  - Limit the page_view update to 1 per 24 hours per IP
+    so a unique IP can only update page view once per day
+
 ## January 16, 2013
 
   - Improved dates on admin interface

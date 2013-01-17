@@ -66,8 +66,8 @@ module ApplicationHelper
     end
   end
 
-  # Cache for a period of time, default 4 hours
-  def cache_expiring(cache_key, cache_period = 4.hours, no_cache = false)
+  # Cache for a period of time, default 16 hours
+  def cache_expiring(cache_key, cache_period = 16.hours, no_cache = false)
     if no_cache
       tagged_logger("CACHE", "Not caching for current_user")
       yield

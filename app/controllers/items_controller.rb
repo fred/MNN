@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_filter :check_params_encoding, only: [:show]
+  after_filter :increment_counter, only: [:show]
   after_filter :store_page_view, only: [:show]
 
   def vote
@@ -88,16 +89,8 @@ class ItemsController < ApplicationController
     if params[:id].to_s.match("^[a-zA-Z]") && @item && @item.slug.match("^[0-9]+-")
       redirect_to(item_path(@item), status: 301)
     end
-
     @comments = @item.approved_comments.page(params[:page]).per(30)
     @show_breadcrumb = true
-    if @item && view_context.is_human? && (@item_stat = @item.item_stat)
-      if session[:view_items] && !session[:view_items].include?(@item.id)
-        @item_stat.views_counter += 1
-        @item_stat.save
-        session[:view_items] << @item.id
-      end
-    end
     @meta_title = @item.title + " - World Mathaba"
     @meta_description = "News #{@item.category_title} - #{@item.abstract}"
     @meta_keywords = @item.meta_keywords
@@ -184,6 +177,16 @@ class ItemsController < ApplicationController
 
   protected
 
+  def increment_counter
+    if @item && view_context.is_human? && (@item_stat = @item.item_stat)
+      if session[:view_items] && !session[:view_items].include?(@item.id) && !ip_has_visited?(1)
+        @item_stat.views_counter += 1
+        @item_stat.save
+        session[:view_items] << @item.id
+      end
+    end
+  end
+
   def store_query
     safe = params[:q] && params[:q].scan(/select|where|\(|\)/).uniq.size <= 1
     if safe && (current_user or current_admin_user or view_context.is_human?)
@@ -206,7 +209,7 @@ class ItemsController < ApplicationController
   end
 
   def store_page_view
-    if current_user or current_admin_user or view_context.is_human?
+    if (current_user or current_admin_user or view_context.is_human?) && !ip_has_visited?(10)
       data = {}
       data["ip"] = request.remote_ip if request.remote_ip
       data["referrer"] = request.referrer if request.referrer
@@ -221,6 +224,18 @@ class ItemsController < ApplicationController
       else
         PageView.store(q)
       end
+    end
+  end
+
+  def ip_has_visited?(times = 2)
+    count = PageView.where("data -> 'ip' = :value", value: request.remote_ip).
+      where(item_id: @item.id).
+      where("created_at > ?", Time.now-2.day).
+      count
+    if count > times
+      true
+    else
+      false
     end
   end
 
