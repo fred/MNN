@@ -71,12 +71,14 @@ describe ItemsController do
     end
   end
   describe "GET show for different users" do
-    it "should increases the views_counter for the same user" do
+    it "should increase the views_counter at most 2 per user" do
+      get :show, id: item.id
+      session[:view_items] = Set.new
       get :show, id: item.id
       session[:view_items] = Set.new
       get :show, id: item.id
       @new_item = Item.find(item.id)
-      assert_equal 1, @new_item.item_stat.views_counter
+      assert_equal 2, @new_item.item_stat.views_counter
     end
   end
 
