@@ -17,7 +17,7 @@ namespace :db do
     Rake::Task['db:migrate'].invoke
     puts "Truncating DB"
     sh "psql -d #{db_config['database']} -a -f db/truncate.sql"
-    puts "Restoring Last Dump"
+    puts "Restoring Last Dump: #{@last_restore}"
     sh "pg_restore -C -d #{db_config['database']} #{@last_restore}"
     puts "Reindexing Solr"
     Rake::Task["sunspot:reindex"].invoke
