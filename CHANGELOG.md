@@ -1,3 +1,9 @@
+## January 19, 2013
+
+  - Drastically improved search results
+  - sort results by relevance with Solr date boosting
+  - Updated Sidekiq and Gemfile
+
 ## January 17, 2013
 
   - Limit the page_view update to 1 per 24 hours per IP
