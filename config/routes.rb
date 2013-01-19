@@ -10,6 +10,7 @@ Publication::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, controllers: {registrations: :registrations}
 
+  match 'benchmark_solr' => 'items#benchmark_solr', :as => :benchmark_solr
   match 'search' => 'items#search', :as => :search
   match 'feed' => "items#feed", :as => :feed
   match 'languages/:language_id/items/page/:page' => 'items#index'

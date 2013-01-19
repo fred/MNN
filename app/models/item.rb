@@ -718,6 +718,14 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def self.solr_search_term(term,page=1,per_page=100)
+    test_search = Item.solr_search do
+      fulltext term
+      paginate page: page, per_page: per_page
+    end
+    test_search
+  end
+
 
   protected
 
