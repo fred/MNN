@@ -136,7 +136,10 @@ class ItemsController < ApplicationController
         facet(:category_id)
         facet(:language_id)
         facet(:user_id)
-        order_by(:published_at,:desc)
+        adjust_solr_params do |params|
+          params[:boost] = "recip(ms(NOW/DAY,published_at_dt),3.16e-6,1,1)"
+          params[:defType] = :edismax
+        end
         paginate page: page, per_page: per_page
       end
       if page && page > 1
@@ -174,6 +177,22 @@ class ItemsController < ApplicationController
     current_admin_user && (can? :destroy, Comment)
   end
 
+  # def benchmark_solr
+  #   Item.solr_search_term("Muammar Qaddafi",1,50)
+  #   Item.solr_search_term("Reverand Michelle Hopkins",1,50)
+  #   Item.solr_search_term("The House I Live In",1,50)
+  #   Item.solr_search_term("France",1,50)
+  #   Item.solr_search_term("Libya",1,50)
+  #   Item.solr_search_term("VoltaireNet",1,50)
+  #   Item.solr_search_term("Sana",1,50)
+  #   Item.solr_search_term("Australia",1,50)
+  #   Item.solr_search_term("Brazil",1,50)
+  #   Item.solr_search_term("Thailand",1,50)
+  #   Item.solr_search_term("Obama",1,50)
+  #   Item.solr_search_term("Italy",1,50)
+  #   Item.solr_search_term("War Crimes",1,50)
+  #   render nothing: true
+  # end
 
   protected
 
