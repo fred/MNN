@@ -137,7 +137,7 @@ class ItemsController < ApplicationController
         facet(:language_id)
         facet(:user_id)
         adjust_solr_params do |params|
-          params[:boost] = "recip(ms(NOW/DAY,published_at_dt),3.16e-6,1,1)"
+          params[:boost] = "recip(ms(NOW/DAY,published_at_dt),3.16e-10,1,1)"
           params[:defType] = :edismax
         end
         paginate page: page, per_page: per_page
