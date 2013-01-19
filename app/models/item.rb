@@ -479,6 +479,10 @@ class Item < ActiveRecord::Base
       without(:id, self.id)
       with(:draft, false)
       with(:published_at).less_than Time.now
+      adjust_solr_params do |params|
+        params[:boost] = "recip(ms(NOW/DAY,published_at_dt),3.16e-10,1,1)"
+        params[:defType] = :edismax
+      end
       paginate page: 1, per_page: limit
     end
   end
