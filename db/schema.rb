@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130116162146) do
+ActiveRecord::Schema.define(:version => 20130123112010) do
 
 
   create_extension "hstore", :version => "1.1"
@@ -26,10 +26,6 @@ ActiveRecord::Schema.define(:version => 20130116162146) do
     t.datetime "updated_at",    :null => false
     t.string   "namespace"
   end
-
-  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
   create_table "attachments", :force => true do |t|
     t.string   "image"
@@ -47,7 +43,6 @@ ActiveRecord::Schema.define(:version => 20130116162146) do
 
   add_index "attachments", ["attachable_id", "attachable_type"], :name => "index_attachments_on_attachable_id_and_attachable_type"
   add_index "attachments", ["attachable_id"], :name => "index_attachments_on_attachable_id"
-  add_index "attachments", ["user_id"], :name => "index_attachments_on_user_id"
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -78,7 +73,6 @@ ActiveRecord::Schema.define(:version => 20130116162146) do
   end
 
   add_index "comments", ["approved"], :name => "index_comments_on_approved"
-  add_index "comments", ["approved_by"], :name => "index_comments_on_approved_by"
   add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["marked_spam"], :name => "index_comments_on_marked_spam"
   add_index "comments", ["owner_id"], :name => "index_comments_on_owner_id"
@@ -116,7 +110,6 @@ ActiveRecord::Schema.define(:version => 20130116162146) do
   end
 
   add_index "email_deliveries", ["item_id"], :name => "index_email_deliveries_on_item_id"
-  add_index "email_deliveries", ["user_id"], :name => "index_email_deliveries_on_user_id"
 
   create_table "feed_entries", :force => true do |t|
     t.string   "title"
@@ -183,7 +176,6 @@ ActiveRecord::Schema.define(:version => 20130116162146) do
     t.boolean  "draft",             :default => true
     t.boolean  "meta_enabled",      :default => true
     t.boolean  "allow_comments",    :default => true
-    t.boolean  "allow_star_rating", :default => true
     t.boolean  "featured",          :default => false
     t.datetime "published_at",                           :null => false
     t.datetime "created_at",                             :null => false
@@ -206,22 +198,17 @@ ActiveRecord::Schema.define(:version => 20130116162146) do
     t.boolean  "protected",         :default => false
   end
 
-  add_index "items", ["allow_comments"], :name => "index_items_on_allow_comments"
-  add_index "items", ["allow_star_rating"], :name => "index_items_on_allow_star_rating"
   add_index "items", ["category_id", "draft", "published_at"], :name => "index_items_on_category_id_and_draft_and_published_at"
   add_index "items", ["category_id"], :name => "index_items_on_category_id"
   add_index "items", ["comments_count"], :name => "index_items_on_comments_count"
   add_index "items", ["draft"], :name => "index_items_on_draft"
   add_index "items", ["featured"], :name => "index_items_on_featured"
   add_index "items", ["language_id"], :name => "index_items_on_language_id"
-  add_index "items", ["locale"], :name => "index_items_on_locale"
   add_index "items", ["meta_enabled"], :name => "index_items_on_meta_enabled"
   add_index "items", ["original"], :name => "index_items_on_original"
   add_index "items", ["published_at"], :name => "index_items_on_published_at"
   add_index "items", ["slug"], :name => "index_items_on_slug", :unique => true
-  add_index "items", ["status_code"], :name => "index_items_on_status_code"
   add_index "items", ["sticky"], :name => "index_items_on_sticky"
-  add_index "items", ["updated_by"], :name => "index_items_on_updated_by"
   add_index "items", ["user_id"], :name => "index_items_on_user_id"
 
   create_table "job_stats", :force => true do |t|
@@ -235,7 +222,6 @@ ActiveRecord::Schema.define(:version => 20130116162146) do
     t.string   "type"
   end
 
-  add_index "job_stats", ["job_id"], :name => "index_job_stats_on_job_id"
   add_index "job_stats", ["processable_id", "processable_type"], :name => "index_job_stats_on_processable_id_and_processable_type"
   add_index "job_stats", ["type"], :name => "index_job_stats_on_type"
 
@@ -279,7 +265,6 @@ ActiveRecord::Schema.define(:version => 20130116162146) do
   end
 
   add_index "pages", ["active"], :name => "index_pages_on_active"
-  add_index "pages", ["language_id"], :name => "index_pages_on_language_id"
   add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true
 
   create_table "queries", :force => true do |t|
@@ -395,7 +380,7 @@ ActiveRecord::Schema.define(:version => 20130116162146) do
   end
 
   add_index "tags", ["slug"], :name => "index_tags_on_slug", :unique => true
-  add_index "tags", ["title"], :name => "index_tags_on_title", :unique => true
+  add_index "tags", ["title"], :name => "index_tags_on_title"
   add_index "tags", ["type"], :name => "index_tags_on_type"
 
   create_table "users", :force => true do |t|
@@ -448,7 +433,6 @@ ActiveRecord::Schema.define(:version => 20130116162146) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["items_count"], :name => "index_users_on_items_count"
   add_index "users", ["oauth_uid", "provider"], :name => "index_users_on_oauth_uid_and_provider"
-  add_index "users", ["ranking"], :name => "index_users_on_ranking"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["type"], :name => "index_users_on_type"
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true

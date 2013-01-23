@@ -1,3 +1,8 @@
+## January 23, 2013
+  
+  - Removed unused indexes and columns
+  - Show More DB stats
+
 ## January 19, 2013
 
   - Drastically improved search results

@@ -1,5 +1,12 @@
 <script type="text/javascript">
 
+  function setConfirmUnload(on) {
+    window.onbeforeunload = (on) ? unloadMessage : null;
+  }
+  function unloadMessage() {
+    return "Your modifications will be lost if you close this page.";
+  }
+
   $(function() {
     $('#item_body').tinymce({
       entity_encoding : "raw",
@@ -61,5 +68,9 @@
       "item[title]": { required: true },
       "item[body]": { required: true }
     }
+  });
+
+  $(window).bind('page:change', function() {
+    setConfirmUnload(true);
   });
 </script>

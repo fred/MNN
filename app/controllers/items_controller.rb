@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
   def vote
     return false unless current_user
-    @item = Item.find(params[:item_id])
+    @item = Item.where(id: params[:item_id]).first
 
     if @item.user_id == current_user.id
       @own_article = true
@@ -18,9 +18,11 @@ class ItemsController < ApplicationController
       @already_voted = false
       if params[:vote] == "up"
         @voted = true
+        @up = true
         current_user.vote_for @item
       elsif params[:vote] == "down"
         @voted = true
+        @down = true
         current_user.vote_against @item
       end
     end

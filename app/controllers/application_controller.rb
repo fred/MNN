@@ -199,11 +199,13 @@ class ApplicationController < ActionController::Base
   end
 
   def last_modified
-    @last_item = Item.last_item
-    if @last_item && @last_modified.nil?
-      @last_modified = @last_item.last_modified.httpdate
-    else
-      @last_modified = Time.now.httpdate
+    unless request.xhr?
+      @last_item = Item.last_item
+      if @last_item && @last_modified.nil?
+        @last_modified = @last_item.last_modified.httpdate
+      else
+        @last_modified = Time.now.httpdate
+      end
     end
   end
 

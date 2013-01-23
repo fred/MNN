@@ -3,11 +3,16 @@
 <% elsif @own_article %>
   alert("You can't vote on your own article!");
 <% elsif @vote_deleted %>
-  alert("Your vote has been cleared");
   $("#item_score_<%= @item.id %>").html("<%= escape_javascript(score_for(@item).html_safe) %>");
+  alert("Your vote has been cleared");
 <% elsif @already_voted %>
   alert("You already voted on this article");
 <% elsif @voted %>
-  alert("Thank you for your vote!");
   $("#item_score_<%= @item.id %>").html("<%= escape_javascript(score_for(@item).html_safe) %>");
+  <% if @up %>
+    $("i#voted-up").css("color","green");
+  <% elsif @down %>
+    $("i#voted-down").css("color","red");
+  <% end %>
+  alert("Thank you for your vote!");
 <% end %>

@@ -1,14 +1,13 @@
-<% cache_expiring("aa/db_stats", 30.minutes) do %>
+<% cache_expiring("aa/db_stats", 5.minutes) do %>
 
   <div class="row">
-
     <div class="dashboard_section panel span6">
       <h3>Largest Tables (Top 15)</h3>
       <div class="panel_contents">
         <table border="0" cellspacing="0" cellpadding="0">
           <thead>
             <tr>
-              <th>Table</th>
+              <th>Schema</th>
               <th>Size</th>
             </tr>
           </thead>
@@ -23,14 +22,13 @@
         </table>
       </div>
     </div>
-
     <div class="dashboard_section panel span6">
       <h3>Index Status (Top 15)</h3>
       <div class="panel_contents">
         <table border="0" cellspacing="0" cellpadding="0">
           <thead>
             <tr>
-              <th>Table</th>
+              <th>Schema</th>
               <th>Index Used %</th>
               <th>Records</th>
             </tr>
@@ -47,35 +45,255 @@
         </table>
       </div>
     </div>
-  
   </div>
 
-  <div class="row">
 
+  <div class="row">
     <div class="dashboard_section panel span6">
-      <h3>Heap Index Ratio</h3>
+      <h3>Global Heap Ratio</h3>
       <div class="panel_contents">
         <table border="0" cellspacing="0" cellpadding="0">
           <thead>
             <tr>
               <th>Heap Read</th>
               <th>Heap Hit</th>
-              <th>Heap Ratio</th>
+              <th>Ratio</th>
             </tr>
           </thead>
           <tbody>
-            <% DbStats.hit_ratio.to_set.each do |t| %>
+            <% DbStats.heap_hit_ratio.to_set.each do |t| %>
               <tr>
                 <td><%= t["heap_read"].to_s %></td>
                 <td><%= t["heap_hit"].to_s %></td>
-                <td><%= (t["ratio"].to_f * 100).round(4) %> %</td>
+                <td><%= (t["ratio"].to_f * 100).round(5) %> %</td>
               </tr>
             <% end %>
           </tbody>
         </table>
       </div>
     </div>
+    <div class="dashboard_section panel span6">
+      <h3>Global Index Ratio</h3>
+      <div class="panel_contents">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>Index Read</th>
+              <th>Index Hit</th>
+              <th>Ratio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% DbStats.idx_hit_ratio.to_set.each do |t| %>
+              <tr>
+                <td><%= t["idx_read"].to_s %></td>
+                <td><%= t["idx_hit"].to_s %></td>
+                <td><%= (t["ratio"].to_f * 100).round(5) %> %</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
+  <% @stat_user_tables = DbStats.stat_user_tables.to_set %>
+
+  <div class="row">
+    <div class="dashboard_section panel span12">
+      <h3>Table stats</h3>
+      <div class="panel_contents">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>Schema</th>
+              <th>seq scan</th>
+              <th>seq tup read</th>
+              <th>idx scan</th>
+              <th>idx tup fetch</th>
+              <th>n tup ins</th>
+              <th>n tup upd</th>
+              <th>n tup del</th>
+              <th>n tup hot upd</th>
+              <th>n live tup</th>
+              <th>n dead tup</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @stat_user_tables.each do |t| %>
+              <tr>
+                <td><%= t["relname"].to_s %></td>
+                <td><%= t["seq_scan"].to_s %></td>
+                <td><%= t["seq_tup_read"].to_s %></td>
+                <td><%= t["idx_scan"].to_s %></td>
+                <td><%= t["idx_tup_fetch"].to_s %></td>
+                <td><%= t["n_tup_ins"].to_s %></td>
+                <td><%= t["n_tup_upd"].to_s %></td>
+                <td><%= t["n_tup_del"].to_s %></td>
+                <td><%= t["n_tup_hot_upd"].to_s %></td>
+                <td><%= t["n_live_tup"].to_s %></td>
+                <td><%= t["n_dead_tup"].to_s %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="dashboard_section panel span12">
+      <h3>Analyze stats</h3>
+      <div class="panel_contents">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>Schema</th>
+              <th>last analyze</th>
+              <th>last autoanalyze</th>
+              <th>analyze count</th>
+              <th>autoanalyze count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @stat_user_tables.each do |t| %>
+              <tr>
+                <td><%= t["relname"].to_s %></td>
+                <td><%= t["last_analyze"].to_s %></td>
+                <td><%= t["last_autoanalyze"].to_s %></td>
+                <td><%= t["analyze_count"].to_s %></td>
+                <td><%= t["autoanalyze_count"].to_s %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="dashboard_section panel span12">
+      <h3>Vaccum stats</h3>
+      <div class="panel_contents">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>Schema</th>
+              <th>last vacuum</th>
+              <th>last autovacuum</th>
+              <th>vacuum count</th>
+              <th>autovacuum count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @stat_user_tables.each do |t| %>
+              <tr>
+                <td><%= t["relname"].to_s %></td>
+                <td><%= t["last_vacuum"].to_s %></td>
+                <td><%= t["last_autovacuum"].to_s %></td>
+                <td><%= t["vacuum_count"].to_s %></td>
+                <td><%= t["autovacuum_count"].to_s %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="dashboard_section panel span12">
+      <h3>Stat BG Write</h3>
+      <div class="panel_contents">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>checkpoints timed</th>
+              <th>checkpoints req</th>
+              <th>checkpoint write time</th>
+              <th>checkpoint sync time</th>
+              <th>buffers checkpoint</th>
+              <th>buffers clean</th>
+              <th>maxwritten clean</th>
+              <th>buffers backend</th>
+              <th>buffers backend fsync</th>
+              <th>buffers alloc</th>
+              <th>stats reset</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% DbStats.stat_bgwrite.to_set.each do |t| %>
+              <tr>
+                <td><%= t["checkpoints_timed"].to_s %></td>
+                <td><%= t["checkpoints_req"].to_s %></td>
+                <td><%= t["checkpoint_write_time"].to_s %></td>
+                <td><%= t["checkpoint_sync_time"].to_s %></td>
+                <td><%= t["buffers_checkpoint"].to_s %></td>
+                <td><%= t["buffers_clean"].to_s %></td>
+                <td><%= t["maxwritten_clean"].to_s %></td>
+                <td><%= t["buffers_backend"].to_s %></td>
+                <td><%= t["buffers_backend_fsync"].to_s %></td>
+                <td><%= t["buffers_alloc"].to_s %></td>
+                <td><%= t["stats_reset"].to_s %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="dashboard_section panel span12">
+      <h3>Duplicate Indexes</h3>
+      <div class="panel_contents">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>Schema</th>
+              <th>First Index</th>
+              <th>Second Index</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% DbStats.duplicate_indexes.to_set.each do |t| %>
+              <tr>
+                <td><%= t["indrelid"].to_s %></td>
+                <td><%= t["first_index"].to_s %></td>
+                <td><%= t["second_index"].to_s %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="dashboard_section panel span12">
+      <h3>Unused Indexes</h3>
+      <div class="panel_contents">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>Schema</th>
+              <th>Index</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% DbStats.unused_indexes.to_set.each do |t| %>
+              <tr>
+                <td><%= t["table"].to_s %></td>
+                <td><%= t["index"].to_s %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
 <% end %>

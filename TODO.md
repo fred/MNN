@@ -1,5 +1,7 @@
 ## TODO Soon
 
+    -- Reply to comments
+    -- Threaded comments view
     -- Change menus to pure CSS3 instead of Javascript
        http://www.htmldrive.net/items/show/1177/-Awesome-CSS3-animation-menu
        http://tutorialzine.com/2012/10/css3-dropdown-menu/

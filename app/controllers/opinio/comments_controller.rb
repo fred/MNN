@@ -4,9 +4,7 @@ class Opinio::CommentsController < ApplicationController
 
   def vote
     return false unless current_user
-
     @comment = Comment.find(params[:comment_id])
-
     if @comment.owner_id == current_user.id
       @own_comment = true
     elsif current_user.voted_on?(@comment)
