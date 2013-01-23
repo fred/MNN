@@ -380,7 +380,7 @@ ActiveRecord::Schema.define(:version => 20130123112010) do
   end
 
   add_index "tags", ["slug"], :name => "index_tags_on_slug", :unique => true
-  add_index "tags", ["title"], :name => "index_tags_on_title"
+  add_index "tags", ["title"], :name => "index_tags_on_title", :unique => true
   add_index "tags", ["type"], :name => "index_tags_on_type"
 
   create_table "users", :force => true do |t|
