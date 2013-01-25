@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
   before_filter :https_for_admins
   before_filter :set_start_time, :set_time_zone, :set_view_items, :current_ability
   before_filter :log_additional_data, :set_per_page
-  before_filter :last_modified
   after_filter  :auto_login_admin_user
   after_filter  :store_location
   after_filter  :log_session
@@ -199,13 +198,10 @@ class ApplicationController < ActionController::Base
   end
 
   def last_modified
-    unless request.xhr?
-      @last_item = Item.last_item
-      if @last_item && @last_modified.nil?
-        @last_modified = @last_item.last_modified.httpdate
-      else
-        @last_modified = Time.now.httpdate
-      end
+    if @last_published.nil? && (@last_item = Item.last_item)
+      @last_published = @last_item.last_modified.httpdate
+    else
+      @last_published = Time.now.httpdate
     end
   end
 

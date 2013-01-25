@@ -1,8 +1,8 @@
 class TagsController < ApplicationController
+  before_filter :last_modified, only: [:index]
 
   def index
     @tags = Tag.order("type DESC, title ASC")
-    @last_published = @last_mofified
     respond_to do |format|
       format.html {
         no_cache_headers
