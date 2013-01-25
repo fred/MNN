@@ -3,7 +3,11 @@ class Version < ActiveRecord::Base
   after_create  :cleanup_versions
 
   def self.versions_to_keep
-    Settings.versions_to_keep || 300
+    if Rails.env.test?
+      20
+    else
+      Settings.versions_to_keep || 300
+    end
   end
 
   def self.versions_threshold

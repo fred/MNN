@@ -22,10 +22,9 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @items = @category.
       items.
+      not_draft.
       localized.
-      where(draft: false).
-      where("published_at is not NULL").
-      where("published_at < ?", Time.now).
+      published.
       order("published_at DESC").
       page(params[:page]).per(per_page)
 

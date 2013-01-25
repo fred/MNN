@@ -557,11 +557,25 @@ class Item < ActiveRecord::Base
   end
 
   def self.last_item
-    select("id, updated_at, last_commented_at, draft, published_at").published.not_draft.order("updated_at DESC").first
+    select("id, updated_at, last_commented_at, draft, published_at").not_draft.published.order("updated_at DESC").first
+  end
+
+  def self.reduced
+    select(min_fields)
+  end
+
+  def self.min_fields
+    a = %W{id title slug abstract published_at updated_at last_commented_at author_name
+      sticky featured original draft language_id category_id user_id comments_count
+      youtube_img youtube_id protected
+    }
+    a.join(",")
   end
 
   # Returns the most popular Items in the last N days
   def self.popular(lim=5, days=31)
+    reduced.
+    not_draft.
     published.
     includes(:item_stat).
     where("items.published_at > ?", (DateTime.now - days.days)).
@@ -571,6 +585,7 @@ class Item < ActiveRecord::Base
 
   # Returns the most Commented Items
   def self.recently_commented(lim=5)
+    reduced.
     published.
     where("items.comments_count > 0").
     where("items.last_commented_at is NOT NULL").
@@ -580,6 +595,7 @@ class Item < ActiveRecord::Base
 
   # Returns the most Commented Items in the last N days
   def self.most_commented(lim=5, n=30)
+    reduced.
     published.
     where("items.published_at > ?", (DateTime.now - n.days)).
     where("comments_count > 0").
@@ -587,16 +603,15 @@ class Item < ActiveRecord::Base
     limit(lim)
   end
 
-
   def self.news_for_sitemap(lim=100, hrs=96)
     self.for_sitemap(lim,hrs).where(original: true)
   end
 
   # Only show items in the past 2 days in sitemaps
   def self.for_sitemap(lim=100, hrs=48)
+    not_draft.
     published.
     where("published_at > ?", DateTime.now-(hrs.hours)).
-    not_draft.
     order("published_at DESC").
     limit(lim)
   end
@@ -617,9 +632,10 @@ class Item < ActiveRecord::Base
   # Returns the top sticky item
   # Used on the Front End, joining attachments
   def self.top_sticky
+    reduced.
+    where(draft: false, sticky: true).
     published.
     localized.
-    where(draft: false, sticky: true).
     order("published_at DESC").
     first
   end
@@ -627,9 +643,12 @@ class Item < ActiveRecord::Base
   # Returns top Highlight Items
   # Used on the Front End, joining attachments
   def self.highlights(limit=6,offset=0)
+    reduced.
+    highlight.
+    not_draft.
+    not_sticky.
     published.
     localized.
-    where(draft: false, featured: true, sticky: false).
     order("published_at DESC").
     limit(limit).
     offset(offset)
@@ -638,8 +657,8 @@ class Item < ActiveRecord::Base
   # Returns the last 10 approved items (not draft anymore)
   # Used on the dashboard
   def self.recent_updated(limit=10)
+    not_draft.
     published.
-    where(draft: false).
     where("updated_at > created_at").
     order("updated_at DESC").
     limit(limit)
@@ -648,6 +667,7 @@ class Item < ActiveRecord::Base
   # Returns the last 10 approved items (not draft anymore)
   # Used on the Admin Dashboard
   def self.recent(limit=10)
+    not_draft.
     published.
     order("id DESC").
     limit(limit)
@@ -657,15 +677,7 @@ class Item < ActiveRecord::Base
   # Used on the Admin Dashboard
   def self.recent_drafts(limit=10)
     draft.
-    order("updated_at DESC").
-    limit(limit)
-  end
-
-  # Returns the last 10 pending items (not draft anymore)
-  # Used on the Admin Dashboard
-  def self.pending(limit=10)
-    where(published_at: nil).
-    not_draft.
+    reduced.
     order("updated_at DESC").
     limit(limit)
   end

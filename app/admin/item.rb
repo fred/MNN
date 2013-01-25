@@ -228,7 +228,7 @@ ActiveAdmin.register Item do
     end
 
     def scoped_collection
-      Item.includes(:language, :attachments, :tags, :user, :category, :item_stat)
+      Item.includes(:language, :attachments, :tags, :user, :category, :item_stat).reduced
     end
     rescue_from CanCan::AccessDenied do |exception|
       redirect_to admin_access_denied_path, alert: exception.message

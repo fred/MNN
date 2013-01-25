@@ -23,21 +23,18 @@ class Category < ActiveRecord::Base
   def published_items
     self.
       items.
-      includes(:attachments).
-      where(draft: false).
-      where("published_at is not NULL").
-      where("published_at < ?", Time.now).
+      not_draft.
+      published.
       order("published_at DESC")
   end
   
   def top_items(lmt=8)
     self.
       items.
-      includes(:attachments).
+      reduced.
+      not_draft.
       localized.
-      where(draft: false).
-      where("published_at is not NULL").
-      where("published_at < ?", Time.now).
+      published.
       order("published_at DESC").
       limit(lmt)
   end
