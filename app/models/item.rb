@@ -563,7 +563,7 @@ class Item < ActiveRecord::Base
   # Returns the most popular Items in the last N days
   def self.popular(lim=5, days=31)
     published.
-    includes(:item_stat, :attachments).
+    includes(:item_stat).
     where("items.published_at > ?", (DateTime.now - days.days)).
     order("item_stats.views_counter DESC").
     limit(lim)
@@ -574,7 +574,6 @@ class Item < ActiveRecord::Base
     published.
     where("items.comments_count > 0").
     where("items.last_commented_at is NOT NULL").
-    includes(:attachments, :comments, :item_stat).
     order("items.last_commented_at DESC").
     limit(lim)
   end
@@ -585,7 +584,6 @@ class Item < ActiveRecord::Base
     where("items.published_at > ?", (DateTime.now - n.days)).
     where("comments_count > 0").
     order("comments_count DESC").
-    includes(:attachments, :comments, :item_stat).
     limit(lim)
   end
 
@@ -620,7 +618,6 @@ class Item < ActiveRecord::Base
     localized.
     where(draft: false, sticky: true).
     order("published_at DESC").
-    includes(:attachments).
     first
   end
 
@@ -632,7 +629,6 @@ class Item < ActiveRecord::Base
     where(draft: false, featured: true, sticky: false).
     order("published_at DESC").
     limit(limit).
-    includes(:attachments).
     offset(offset)
   end
 

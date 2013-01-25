@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130123112010) do
+ActiveRecord::Schema.define(:version => 20130125012807) do
 
 
   create_extension "hstore", :version => "1.1"
@@ -198,7 +198,6 @@ ActiveRecord::Schema.define(:version => 20130123112010) do
     t.boolean  "protected",         :default => false
   end
 
-  add_index "items", ["category_id", "draft", "published_at"], :name => "index_items_on_category_id_and_draft_and_published_at"
   add_index "items", ["category_id"], :name => "index_items_on_category_id"
   add_index "items", ["comments_count"], :name => "index_items_on_comments_count"
   add_index "items", ["draft"], :name => "index_items_on_draft"

@@ -25,7 +25,6 @@ class CategoriesController < ApplicationController
       items.
       localized.
       where(draft: false).
-      includes(:attachments).
       where("published_at is not NULL").
       where("published_at < ?", Time.now).
       order("published_at DESC").

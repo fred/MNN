@@ -43,7 +43,6 @@ class ItemsController < ApplicationController
       @rss_source = items_path(language_id: params[:language_id], only_path: false)
       @meta_keywords = "#{@language.description}, WorldMathaba"
       @items = Item.published.not_draft.
-        includes(:attachments).
         where(language_id: @language.id).
         order("published_at DESC").
         page(params[:page]).per(per_page)
@@ -53,7 +52,6 @@ class ItemsController < ApplicationController
       @rss_source = items_path(only_path: false, protocol: 'https')
       @rss_language = "en"
       @items = Item.published.localized.not_draft.
-        includes(:attachments).
         order("published_at DESC").
         page(params[:page]).per(per_page)
     end
@@ -90,6 +88,7 @@ class ItemsController < ApplicationController
     if params[:id].to_s.match("^[a-zA-Z]") && @item && @item.slug.match("^[0-9]+-")
       redirect_to(item_path(@item), status: 301)
     end
+    not_found unless @item
     @comments = @item.approved_comments.page(params[:page]).per(30)
     @show_breadcrumb = true
     @meta_title = @item.title + " - World Mathaba"

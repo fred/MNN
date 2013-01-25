@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale.to_s %>" <%= yield(:html_tag) %>>
+  <head>
+    <%= render partial: "/shared/layouts/head" %>
+    <%= stylesheet_link_tag "application", data: {"turbolinks-track" => ''} %>
+    <%= yield(:stylesheets) %>
+    <%= javascript_include_tag "application", data: {"dataturbolinks-track" => ''} %>
+    <%= yield(:javascripts) %>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="WorldMahaba.net Search" />
+    <% if Rails.env.production? %>
+      <%= render partial: "/shared/layouts/ga" unless (current_user or current_admin_user) %>
+    <% end %>
+  </head>
+
+  <body>
+    <%= render partial: "/shared/layouts/navbar" %>
+
+    <div class="container-fluid">
+
+      <div class="content">
+        <%= bootstap_flash %>
+        <%= yield %>
+        <%= render partial: "/shared/layouts/footer" %>
+      </div>
+
+    </div>
+    <% unless current_user or current_admin_user %>
+      <%= render partial: "/shared/login_modal" %>
+    <% end %>
+    <%= yield(:footer) %>
+    <%= yield(:scripts) %>
+  </body>
+</html>
