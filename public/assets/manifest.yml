@@ -425,6 +425,14 @@ rss_blue_32.png: rss_blue_32-db4451407922faa8a69ea5855db744ed.png
 rss_blue_32/index.png: rss_blue_32-db4451407922faa8a69ea5855db744ed.png
 rss_icon_glass_blue64.png: rss_icon_glass_blue64-b5cfc4b4c3abddc2016eb7333673d692.png
 rss_icon_glass_blue64/index.png: rss_icon_glass_blue64-b5cfc4b4c3abddc2016eb7333673d692.png
+touch-icon-ipad-retina.png: touch-icon-ipad-retina-910525fecd593ed26fd484dbb564001a.png
+touch-icon-ipad-retina/index.png: touch-icon-ipad-retina-910525fecd593ed26fd484dbb564001a.png
+touch-icon-ipad.png: touch-icon-ipad-24d21a6648f2b06bd972f4759a38b0b7.png
+touch-icon-ipad/index.png: touch-icon-ipad-24d21a6648f2b06bd972f4759a38b0b7.png
+touch-icon-iphone-retina.png: touch-icon-iphone-retina-ae15dcec1855f55f54c8bde1f668cea4.png
+touch-icon-iphone-retina/index.png: touch-icon-iphone-retina-ae15dcec1855f55f54c8bde1f668cea4.png
+touch-icon-iphone.png: touch-icon-iphone-4501850ec253231487929e2ec51612cb.png
+touch-icon-iphone/index.png: touch-icon-iphone-4501850ec253231487929e2ec51612cb.png
 world_mathaba.png: world_mathaba-86cde783c3cb0d9f6f4ad0f19f287b0c.png
 world_mathaba/index.png: world_mathaba-86cde783c3cb0d9f6f4ad0f19f287b0c.png
 world_mathaba11.png: world_mathaba11-abcf06684b97056eb88ac74ffb595cf8.png

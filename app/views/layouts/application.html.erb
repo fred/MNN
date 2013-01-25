@@ -17,6 +17,7 @@
     <% if Rails.env.production? %>
       <%= render partial: "/shared/layouts/ga" unless (current_user or current_admin_user) %>
     <% end %>
+    <%= render partial: "/shared/apple-icon" %>
   </head>
 
   <body>

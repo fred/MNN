@@ -215,7 +215,6 @@ ActiveAdmin.register Item do
         format.html {redirect_to admin_items_path}
         format.js {render layout: false}
         format.json
-        format.xml
       end
     end
 

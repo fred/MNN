@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: git://github.com/arsduo/koala.git
-  revision: f7ea181df0dbeaf299a33c700f1785b917b2b0b8
+  revision: aacdd324e4f00411c0fcebfa1f2cde7e9394bbcf
   specs:
     koala (1.7.0)
       addressable
@@ -95,7 +95,7 @@ GIT
 
 GIT
   remote: git://github.com/sunspot/sunspot.git
-  revision: f5a6b54e8c12a500acf37cfa3b4091bc57b75db0
+  revision: f2b67958231a68e356e2d0029cb3e699af43bd18
   specs:
     sunspot (2.0.0.pre.130115)
       pr_geohash (~> 1.0)
