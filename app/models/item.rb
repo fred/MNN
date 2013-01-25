@@ -602,13 +602,16 @@ class Item < ActiveRecord::Base
   end
 
   def self.localized
-    # language = Language.where(locale: default_locale).first
-    if default_locale
-      joins(:language).
-      where("languages.locale = ?", default_locale)
+    language = Language.where(locale: default_locale).first
+    if language
+      where("language_id = ?", language.id)
     else
       where('')
     end
+  end
+
+  def self.for_language(language_id)
+    where("language_id = ?", language_id)
   end
 
   # Returns the top sticky item
