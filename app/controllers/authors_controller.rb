@@ -6,7 +6,6 @@ class AuthorsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @authors }
-      format.xml { render @authors }
     end
   end
   
@@ -45,7 +44,6 @@ class AuthorsController < ApplicationController
         public_headers(900)
         render partial: "/shared/items", layout: false
       }
-      format.xml { render @items }
     end
   end
   

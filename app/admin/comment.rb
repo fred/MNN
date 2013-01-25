@@ -84,7 +84,6 @@ ActiveAdmin.register Comment do
         format.html {redirect_to admin_comments_path}
         format.js {render layout: false}
         format.json
-        format.xml
       end
     end
     def scoped_collection

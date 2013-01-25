@@ -47,7 +47,6 @@ class Opinio::CommentsController < ApplicationController
     respond_to do |format|
       format.js
       format.html
-      format.xml
       format.rss
       format.atom
     end
