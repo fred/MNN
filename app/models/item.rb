@@ -688,7 +688,7 @@ class Item < ActiveRecord::Base
       id = slug.match("^[0-9]+-").to_s.gsub('-','')
       s = where(id: id)
     elsif slug.match("^[a-zA-Z]") && \
-      s = where("slug like ?", "%" + slug.split("&").first)
+      s = where("slug like ?", "%" + slug.split("&").first + "%")
     else
       s = where(id: slug.to_i)
     end

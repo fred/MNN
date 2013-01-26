@@ -179,7 +179,7 @@
       </div>
     <% end %>
 
-    <% cache_expiring("sidebar_comment/#{Comment.last_cache_key}", 40.minutes) do %>
+    <% cache_expiring("sidebar_comment/#{Comment.last_cache_key}", 1.hour) do %>
       <div class="sidebar_secions">
         <h4><%= _("Recently Discussed") %></h4>
         <% Item.localized.recently_commented(8).each do |item| %>
@@ -196,7 +196,7 @@
       </div>
     <% end %>
 
-    <% cache_expiring("sidebar_popular", 24.minutes) do %>
+    <% cache_expiring("sidebar_popular", 30.minutes) do %>
       <div class="sidebar_secions">
         <h4><%= _("Popular this month") %></h4>
         <% Item.localized.popular(5).each do |item| %>
@@ -208,7 +208,7 @@
       </div>
     <% end %>
 
-    <% cache_expiring("sidebar_searches", 32.minutes) do %>
+    <% cache_expiring("sidebar_searches", 1.hour) do %>
       <div class="sidebar_secions">
         <h4><%= _("Popular Searches") %></h4>
         <% SearchQuery.popular(FastGettext.locale).limit(5).each do |query| %>

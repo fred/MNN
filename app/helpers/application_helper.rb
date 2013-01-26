@@ -2,7 +2,7 @@ module ApplicationHelper
   include FastGettext::Translation
 
   def fragment_cache_time
-    Settings.fragment_cache_time || 3600
+    Settings.fragment_cache_time || 16.hours
   end
 
   def tagged_logger(tag,msg,level=:debug)

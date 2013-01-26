@@ -1,6 +1,6 @@
 <footer>
   
-  <% cache_expiring("footer/top", 1.hour) do %>
+  <% cache_expiring("footer/top", 2.hours) do %>
     <ul class="footer_menu footer_categories">
       <% @site_categories.each do |category| %>
         <li>
