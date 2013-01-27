@@ -79,7 +79,7 @@ class Item < ActiveRecord::Base
     text :title,          boost: 2.4
     text :abstract,       boost: 1.6
     text :keywords,       boost: 4.0
-    text :author_name,    boost: 3.0
+    text :author_name,    boost: 1.6
     text :category_title, boost: 1.8
     text :author_email
     text :article_source
