@@ -330,7 +330,7 @@ class ApplicationController < ActionController::Base
   end
 
   unless Rails.application.config.consider_all_requests_local
-    rescue_from Exception, with: lambda { |exception| render_error 500, exception }
+    rescue_from Exception, with: lambda { |exception| render_error_and_notify 500, exception }
     rescue_from ActionController::RoutingError,
       ActionController::UnknownController,
       ::AbstractController::ActionNotFound,
@@ -339,13 +339,20 @@ class ApplicationController < ActionController::Base
   end
 
   def render_error(status, exception)
-    ExceptionNotifier::Notifier.exception_notification(request.env, exception).deliver
     respond_to do |format|
       format.html { render template: "errors/error_#{status}", layout: 'layouts/simple', status: status }
       format.all { render nothing: true, status: status }
     end
   end
 
+  def render_error_and_notify(status, exception)
+    if Rails.env.production?
+      ExceptionNotifier::Notifier.delay_for(5).exception_notification(request.env, exception)
+    else
+      ExceptionNotifier::Notifier.exception_notification(request.env, exception).deliver
+    end
+    render_error(status, exception)
+  end
 
   ### PRIVATE METHODS ###
   protected

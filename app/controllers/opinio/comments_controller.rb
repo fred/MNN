@@ -29,6 +29,7 @@ class Opinio::CommentsController < ApplicationController
   def index
     if params[:item_id]
       @item = Item.includes([:comments, :item_stat]).find_from_slug(params[:item_id].to_s).first
+      not_found unless @item
       @comments = @item.comments.page(params[:page]).per(20)
       @rss_title = "Comments for: #{@item.title}"
       @rss_description = "RSS comments for '#{@item.title}'"
@@ -43,7 +44,6 @@ class Opinio::CommentsController < ApplicationController
     else
       @comments = Comment.order('id DESC').page(params[:page]).per(20)
     end
-
     respond_to do |format|
       format.js
       format.html
