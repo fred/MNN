@@ -1,5 +1,6 @@
 ## Januart 27-29, 2013
 
+  - Better related articles with images
   - Using Rails from 3-2-stable branch
   - decrease boost from author_name
   - Fixed Error notification
