@@ -346,11 +346,7 @@ class ApplicationController < ActionController::Base
   end
 
   def render_error_and_notify(status, exception)
-    if Rails.env.production?
-      ExceptionNotifier::Notifier.delay_for(5).exception_notification(request.env, exception)
-    else
-      ExceptionNotifier::Notifier.exception_notification(request.env, exception).deliver
-    end
+    ExceptionNotifier::Notifier.exception_notification(request.env, exception).deliver
     render_error(status, exception)
   end
 

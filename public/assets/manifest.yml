@@ -403,6 +403,8 @@ jquery-ui/ui-icons_eeeeee_256x240.png: jquery-ui/ui-icons_eeeeee_256x240-9693acc
 jquery-ui/ui-icons_eeeeee_256x240/index.png: jquery-ui/ui-icons_eeeeee_256x240-9693acccb7f08f65655a3b9ded6ec9a0.png
 jquery-ui/ui-icons_ffffff_256x240.png: jquery-ui/ui-icons_ffffff_256x240-1c01f668788a185c55cbcafc3a729572.png
 jquery-ui/ui-icons_ffffff_256x240/index.png: jquery-ui/ui-icons_ffffff_256x240-1c01f668788a185c55cbcafc3a729572.png
+loader.gif: loader-7520a2498137d486a3b5d9cd65d241be.gif
+loader/index.gif: loader-7520a2498137d486a3b5d9cd65d241be.gif
 logo120.png: logo120-431afba5d2246119324f6ac64e37b800.png
 logo120/index.png: logo120-431afba5d2246119324f6ac64e37b800.png
 logo128.png: logo128-8f1629077cde55bdfa355570f7e5706d.png
@@ -445,8 +447,8 @@ css3-mediaqueries.js: css3-mediaqueries-25e62a62b2e0ee5f01d5adbe6dc3a049.js
 css3-mediaqueries/index.js: css3-mediaqueries-25e62a62b2e0ee5f01d5adbe6dc3a049.js
 reddit.js: reddit-02c466496522cf14e34718f6ac9017b1.js
 reddit/index.js: reddit-02c466496522cf14e34718f6ac9017b1.js
-active_admin.css: active_admin-551cc0288e3a1451aed1bc3c48e4d3d3.css
-active_admin/index.css: active_admin-551cc0288e3a1451aed1bc3c48e4d3d3.css
+active_admin.css: active_admin-38aaea8d1f5d3463a8635e4eff48f76d.css
+active_admin/index.css: active_admin-38aaea8d1f5d3463a8635e4eff48f76d.css
 application.css: application-d80af5d0fa7a3f45a09930de22c6f02e.css
 application/index.css: application-d80af5d0fa7a3f45a09930de22c6f02e.css
 rss.css: rss-15efea75cba7ce77a6d1ef336c7f8999.css

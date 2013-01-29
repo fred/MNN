@@ -201,6 +201,7 @@ jquery-ui/ui-icons_8dc262_256x240.png: 9e92a23bf2f74b783696149bc235a4cf
 jquery-ui/ui-icons_cd0a0a_256x240.png: 9c7f01a0539917dd59de65f31b542ac2
 jquery-ui/ui-icons_eeeeee_256x240.png: 9693acccb7f08f65655a3b9ded6ec9a0
 jquery-ui/ui-icons_ffffff_256x240.png: 1c01f668788a185c55cbcafc3a729572
+loader.gif: 7520a2498137d486a3b5d9cd65d241be
 logo120.png: 431afba5d2246119324f6ac64e37b800
 logo128.png: 8f1629077cde55bdfa355570f7e5706d
 logo240.png: af1b20e71425a5820a7c5665e94adf46
@@ -222,7 +223,7 @@ active_admin.js: ec1404e49b54420fd5d962d625798bd7
 application.js: 5b3cfb3ac7cf164cf513025c3cceee52
 css3-mediaqueries.js: c7e2177532a4bdb8a07b96c7f18051b0
 reddit.js: d392293159cd09f261933fd3c15ea697
-active_admin.css: bf4f8d363c7046f22ac306c872cb3b93
+active_admin.css: a773acadaf3fa2385d83c50733fecc92
 application.css: 05700facae1d173c85f80663e61e475f
 rss.css: 5a14678eab5a4a1c3318b55e75d78fb1
 ZeroClipboard.swf: ce7e06d6ff14018414dcd60b001f93f6
