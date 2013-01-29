@@ -1,3 +1,16 @@
+## Januart 27-29, 2013
+
+  - Using Rails from 3-2-stable branch
+  - decrease boost from author_name
+  - Fixed Error notification
+  - Database performance improvements
+  - Reduced DB query times
+  - Apple touch icon
+  - removed join query with languages
+  - disabled XML params
+  - fixing null values for comments
+
+
 ## January 23, 2013
   
   - Removed unused indexes and columns

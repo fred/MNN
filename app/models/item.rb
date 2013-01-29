@@ -565,11 +565,11 @@ class Item < ActiveRecord::Base
   end
 
   def self.min_fields
-    a = %W{id title slug abstract published_at updated_at last_commented_at author_name
+    a = %W{items.id title slug abstract published_at updated_at last_commented_at author_name
       sticky featured original draft language_id category_id user_id comments_count
-      youtube_img youtube_id protected
+      youtube_img youtube_id youtube_vid protected
     }
-    a.join(",")
+    a.join(", items.")
   end
 
   # Returns the most popular Items in the last N days
@@ -577,7 +577,7 @@ class Item < ActiveRecord::Base
     reduced.
     not_draft.
     published.
-    includes(:item_stat).
+    joins(:item_stat).
     where("items.published_at > ?", (DateTime.now - days.days)).
     order("item_stats.views_counter DESC").
     limit(lim)
@@ -586,6 +586,7 @@ class Item < ActiveRecord::Base
   # Returns the most Commented Items
   def self.recently_commented(lim=5)
     reduced.
+    not_draft.
     published.
     where("items.comments_count > 0").
     where("items.last_commented_at is NOT NULL").
@@ -596,6 +597,7 @@ class Item < ActiveRecord::Base
   # Returns the most Commented Items in the last N days
   def self.most_commented(lim=5, n=30)
     reduced.
+    not_draft.
     published.
     where("items.published_at > ?", (DateTime.now - n.days)).
     where("comments_count > 0").
@@ -609,6 +611,7 @@ class Item < ActiveRecord::Base
 
   # Only show items in the past 2 days in sitemaps
   def self.for_sitemap(lim=100, hrs=48)
+    reduced.
     not_draft.
     published.
     where("published_at > ?", DateTime.now-(hrs.hours)).

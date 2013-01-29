@@ -4,7 +4,8 @@ source 'http://rubygems.org'
 gem 'rack', '~> 1.4.3'
 gem 'rack-cache'
 gem 'rake'
-gem 'rails', '3.2.11'
+# gem 'rails', '3.2.11'
+gem 'rails', git: 'https://github.com/rails/rails.git', branch: '3-2-stable'
 gem 'bundler'
 
 ### Database Adapter
@@ -113,7 +114,7 @@ group :development do
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
   gem 'capistrano', '~> 2.13.0', require: false
   gem 'rvm-capistrano', require: false
-  gem 'debugger', platform: :mri_19
+  # gem 'debugger', "~> 1.3.0", platform: :mri_19
   gem 'pry-rails'
   gem 'brakeman'
   gem 'gettext', "~> 2.2.1", require: false
