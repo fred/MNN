@@ -104,8 +104,8 @@
       <% if @related && @related.total > 0 %>
         <div class="related">
           <section id="related">
-            <h4><%= _("Related items") %></h4>
-            <ul class="related">
+            <h4><%= _("Related articles") %></h4>
+            <ul class="mini-related">
               <% @related.results.each do |item| %>
                 <li><%= link_to item.title, item, title: item_title(item), class: 'easy-tooltip', rel: 'related' %></li>
               <% end %>

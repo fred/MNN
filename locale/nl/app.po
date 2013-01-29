@@ -469,7 +469,7 @@ msgid "Registration"
 msgstr "Registratie"
 
 #: app/views/items/show.html.erb:219 app/views/shared/_item.html.erb:107
-msgid "Related items"
+msgid "Related articles"
 msgstr "Verwante artikelen"
 
 #: app/views/shared/layouts/_sidebar.html.erb:64

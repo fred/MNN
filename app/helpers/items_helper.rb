@@ -10,31 +10,40 @@ module ItemsHelper
     end
   end
 
-  def item_popover(item)
-    title_str = ""
-    if item.has_image?
-      title_str += image_tag(item.main_image.image.thumb, class: "tooltip_image", title: item.main_image.title, alt: item.main_image.title)
-    end
-    title_str += item.title.to_s
-    title_str += "<br/>"
-    title_str += "#{item.abstract}"
-    title_str += "<br/>"
-    content_str = ""
-    content_str += "<span class='date_small'>"
-    content_str += "<i class='icon-time'></i> "
-    content_str +=" #{time_ago_in_words(item.published_at)} #{_('ago')} - #{_('by')} #{item.author}"
-    content_str += "</span>"
-    return {title: title_str, 'data-content' => content_str, id: 'popover', rel: 'popover'}
-  end
-
   def item_title_small(item)
     str = ""
-    str += "#{item.title}<br/>#{item.abstract}"
-    str += "<br/>"
+    str += "<div class='tooltip-title'>#{item.title}</div>"
+    str += "<div class='tooltip-abstract'>#{item.abstract}</div>"
     str += "<div class='date_small'>"
     str += "<i class='icon-time'></i> "
     str += "#{time_ago_in_words(item.published_at)} #{_('ago')} - #{_('by')} #{item.author}"
     str += "</div>"
+  end
+
+  def item_mini_related(item)
+    str = ""
+    if item.has_image?
+      str += link_to(
+          image_tag(item.main_image.image.thumb, class: "item-image", title: item.abstract, alt: item.main_image.title),
+          item,
+          title: item.abstract,
+          class: 'easy-tooltip'
+      )
+    elsif item.youtube_id
+      str += link_to(
+          image_tag(youtube_thumb(item), class: "item-image", title: item.abstract),
+          item,
+          title: item.abstract,
+          class: 'easy-tooltip'
+      )
+    end
+    str += "<div class='item-title'> "
+    str += link_to(item.title, item, title: item.abstract, title: item_title(item), class: 'easy-tooltip')
+    str += "</div>"
+    str += "<div class='item-abstract'> "
+    str += item.abstract
+    str += "</div>"
+    str
   end
 
   def item_mini(item)
@@ -87,14 +96,12 @@ module ItemsHelper
   def item_title(item)
     str = ""
     if item.has_image?
-      str += image_tag(item.main_image.image.thumb, class: "tooltip_image", title: item.main_image.title, alt: item.main_image.title)
+      str += image_tag(item.main_image.image.small, class: "tooltip_image", title: item.main_image.title, alt: item.main_image.title)
     elsif item.youtube_id
       str += image_tag(youtube_thumb(item), class: "tooltip_image youtube_thumb", title: item.abstract, alt: item.youtube_id)
     end
-    str += "#{item.title}"
-    str += "<br/>"
-    str += "#{item.abstract}"
-    str += "<br/>"
+    str += "<div class='tooltip-title'>#{item.title}</div>"
+    str += "<div class='tooltip-abstract'>#{item.abstract}</div>"
     str += "<div class='date_small'> #{time_ago_in_words(item.published_at)} #{_('ago')} - #{_('by')} #{item.author}</div>"
     str
   end

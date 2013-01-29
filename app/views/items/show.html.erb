@@ -242,12 +242,10 @@
       <% if @related && @related.total > 0 %>
         <div class="related">
           <section id="related">
-            <h4><%= _("Related items") %></h4>
+            <h3><%= _("Related articles") %></h3>
             <ul class="related">
               <% @related.results.each do |item| %>
-                <li>
-                  <%= link_to item.title, item, title: item_title(item), class: 'easy-tooltip' %>
-                </li>
+                <li><%= item_mini_related(item).html_safe %> </li>
               <% end %>
             </ul>
           </section>
