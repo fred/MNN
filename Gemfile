@@ -9,10 +9,9 @@ gem 'rails', git: 'https://github.com/rails/rails.git', branch: '3-2-stable'
 gem 'bundler'
 
 ### Database Adapter
-platforms :ruby do
+platforms :mri_19 do
   gem 'pg', '~> 0.14.1'
   gem 'rmagick'
-  # gem 'dalli'
   gem 'rails3_libmemcached_store'
 end
 
@@ -23,8 +22,6 @@ platforms :jruby do
   gem 'jruby-rack'
   gem 'jruby-ehcache'
   gem 'jruby-ehcache-rails3', require: 'ehcache'
-  gem 'trinidad', require: false
-  gem 'trinidad_scheduler_extension'
 end
 
 ### Oauth
@@ -160,7 +157,7 @@ gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_emai
 gem 'turbo-sprockets-rails3'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
-gem 'feedzirra'
+#gem 'feedzirra'
 gem 'newrelic_rpm', '3.5.4.34'
 gem 'thumbs_up'
 gem 'lazy_high_charts', git: 'git://github.com/michelson/lazy_high_charts.git'
