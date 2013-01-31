@@ -81,18 +81,12 @@ class Item < ActiveRecord::Base
     text :keywords,       boost: 4.0
     text :author_name,    boost: 1.6
     text :category_title, boost: 1.8
-    text :author_email
-    text :article_source
-    text :source_url
     text :body
-    text :youtube_id
     integer :id, trie: true
     integer :category_id, references: Category, trie: true
     integer :language_id, references: Language, trie: true
     integer :user_id,     references: User, trie: true
     boolean :draft
-    boolean :featured
-    boolean :sticky
     time :updated_at, trie: true
     time :published_at, trie: true
     text :tags do
