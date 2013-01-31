@@ -8,7 +8,7 @@ REDIS_NAMESPACE = OpenSSL::HMAC.hexdigest('md5', Rails.application.class.parent_
 
 Sidekiq.configure_server do |config|
   config.redis = { url: 'redis://127.0.0.1:6379', namespace: REDIS_NAMESPACE }
-  Publication::FeedScheduler.new.run! if Rails.env.production?
+  # Publication::FeedScheduler.new.run! if Rails.env.production?
 end
 # Next, you need to configure the Sidekiq client, which is similar.
 # If you're using the client with a single-threaded Rails (or other ruby) process,
