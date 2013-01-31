@@ -66,17 +66,6 @@
               <% end %>
             </ul>
           </div>
-          <div class='widget_content'>
-            <ul class="nav nav-list">
-              <li class="horizontal-divider"></li>
-              <li class="nav-header"><%= _("Search by Language") %></li>
-              <% @site_languages.each do |language| %>
-                <li>
-                  <%= link_to(language.description, params.merge(language_id: language.id, page: nil)) %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
         </div>
         <br />
       <% end %>
@@ -139,7 +128,7 @@
     <% end %>
 
 
-    <% cache_expiring(sidebar_cache_key, 2.hours) do %>
+    <% cache_expiring(sidebar_cache_key, 4.hours) do %>
       <div class="sidebar_secions">
         <ul class="nav nav-list">
           <li class="horizontal-divider"></li>
@@ -162,18 +151,6 @@
             </li>
           <% end %>
           <li><%= link_to "Other Sites", links_path %></li>
-          <li class="horizontal-divider"></li>
-        </ul>
-        <h4><%= _("Languages") %></h4>
-        <ul class="nav nav-list">
-          <% @site_languages.each do |language|%>
-            <li class="<%= li_class_subdomain(language.locale, 'active') %>">
-              <%= link_to url_for(localized_subdomain(language.locale)), title: language.description do %>
-                <%= image_tag "blank.gif", class: "flag flag-#{language.flag_code}", alt: language.description %>
-                <%= language.description %>
-              <% end %>
-            </li>
-          <% end %>
           <li class="horizontal-divider"></li>
         </ul>
       </div>
@@ -211,7 +188,7 @@
     <% cache_expiring("sidebar_searches", 1.hour) do %>
       <div class="sidebar_secions">
         <h4><%= _("Popular Searches") %></h4>
-        <% SearchQuery.popular(FastGettext.locale).limit(5).each do |query| %>
+        <% SearchQuery.popular(FastGettext.locale).limit(10).each do |query| %>
           <ul class="nav nav-list">
             <li><%= link_to query.keyword.to_s.truncate(24).gsub('"'," ").gsub('+'," "), search_path(q: query.keyword) %></li>
           </ul>

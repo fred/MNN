@@ -3,7 +3,7 @@
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <% cache_expiring("navbar") do %>
+      <% cache_expiring("navbar", 2.hours) do %>
         <%= link_to(image_tag("world_mathaba.png",
                     width: '200',
                     height: '33',
@@ -50,19 +50,6 @@
               <% @site_general_tags.each do |tag| %>
                 <li>
                   <%= link_to tag.title, tag_path(tag), title: tag.title %>
-                </li>
-              <% end %>
-            </ul>
-          </li>
-          <li class="dropdown" data-dropdown="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= _("Languages") %> <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <% @site_languages.each do |language|%>
-                <li>
-                  <%= link_to url_for(localized_subdomain(language.locale)), title: language.description do %>
-                    <%= image_tag "blank.gif", class: "flag flag-#{language.flag_code}", alt: language.description %>
-                    <%= language.description %>
-                  <% end %>
                 </li>
               <% end %>
             </ul>
