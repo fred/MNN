@@ -21,6 +21,8 @@ bg_texture.jpg: bg_texture-58dc892ffc0b1e1f8b8c4f4e26131556.jpg
 bg_texture/index.jpg: bg_texture-58dc892ffc0b1e1f8b8c4f4e26131556.jpg
 blank.gif: blank-a473d8be17ff223c05f2b53bf53cd4e8.gif
 blank/index.gif: blank-a473d8be17ff223c05f2b53bf53cd4e8.gif
+by-nc-nd-88x31.png: by-nc-nd-88x31-615e1eb79527d19b77b35d77244cc404.png
+by-nc-nd-88x31/index.png: by-nc-nd-88x31-615e1eb79527d19b77b35d77244cc404.png
 fancybox_buttons.png: fancybox_buttons-738a62b56e13a0b4c70572a871a2089d.png
 fancybox_buttons/index.png: fancybox_buttons-738a62b56e13a0b4c70572a871a2089d.png
 fancybox_loading.gif: fancybox_loading-9f79f68373e802d7cbf3ee895f93ac02.gif
@@ -449,8 +451,8 @@ reddit.js: reddit-02c466496522cf14e34718f6ac9017b1.js
 reddit/index.js: reddit-02c466496522cf14e34718f6ac9017b1.js
 active_admin.css: active_admin-7cd50632ef91c3c35d7be3c84319164b.css
 active_admin/index.css: active_admin-7cd50632ef91c3c35d7be3c84319164b.css
-application.css: application-77c3bd59121546cb0326be8108e3a9aa.css
-application/index.css: application-77c3bd59121546cb0326be8108e3a9aa.css
+application.css: application-4aacbf2e0f09fadc0d9ba545b82b0550.css
+application/index.css: application-4aacbf2e0f09fadc0d9ba545b82b0550.css
 rss.css: rss-15efea75cba7ce77a6d1ef336c7f8999.css
 rss/index.css: rss-15efea75cba7ce77a6d1ef336c7f8999.css
 ZeroClipboard.swf: ZeroClipboard-ce7e06d6ff14018414dcd60b001f93f6.swf

@@ -1,3 +1,10 @@
+## Frebruary 1, 2013
+
+  - Added License for original articles
+  - Removed some unised fields from Solr (performance)
+  - Removed Feed sites from admin
+  - Removed Languages from sidebar, increased Top Searches
+
 ## Januart 27-29, 2013
 
   - Better related articles with images

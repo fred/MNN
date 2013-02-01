@@ -1,0 +1,12 @@
+<div class="license">
+  <div class="image">
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US">
+      <%= image_tag "by-nc-nd-88x31.png", alt: "Creative Commons License" %>
+    </a>
+  </div>
+  <div class="description">
+    <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">This article</span>
+    by <a xmlns:cc="http://creativecommons.org/ns#" href="<%= author_path(@item.user) %>" property="cc:attributionName" rel="cc:attributionURL"><%= @item.user_title %></a>
+    is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.
+  </div>
+</div>

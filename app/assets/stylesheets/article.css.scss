@@ -167,13 +167,13 @@ article {
   }
   .share {
     float: left;
-    margin-top: 6px;
+    margin-top: 0px;
     margin-left: 16px;
     background: white;
     border: 1px solid gainsboro;
     width: 290px;
     padding: 6px 2px 6px 6px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     a {
       margin-left: 4px;
       color: #007AB8;
@@ -187,6 +187,29 @@ article {
   ul li {
     margin-top: 5px;
     margin-bottom: 5px;
+  }
+}
+
+div.license {
+  margin: 16px 2px 16px 0px;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 3px #ddd;
+  font-size: 12px;
+  overflow: auto;
+  div.image {
+    float: left;
+    display: inline;
+    clear: none;
+    width: 98px;
+  }
+  div.description {
+    float: left;
+    display: inline;
+    clear: none;
+    width: 80%;
+    line-height: 16px;
   }
 }
 
@@ -338,7 +361,7 @@ div.facebook_badge {
   border: 1px solid gainsboro;
   width: 292px;
   padding: 6px 0px 4px 6px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 span.googleplus {
@@ -347,7 +370,7 @@ span.googleplus {
 
 
 div.related {
-  margin-top: 20px;
+  margin-top: 10px;
   h3 {
     text-shadow: 1px 1px 1px #fff;
     color: #444;

@@ -102,6 +102,11 @@
           </span>
         <% end %>
 
+
+        <% if @item.original %>
+          <%= render partial: "license", locals: {item: @item} %>
+        <% end %>
+
         <div itemprop="keywords">
           <ul class="tags">
             <% @item.general_tags.each do |tag| %>
@@ -155,9 +160,7 @@
             1
           <% end %>
         </div>
-
         <%= render partial: "vote_links", locals: {item: @item} %>
-
       </footer>
 
       <div class="clearfix">
