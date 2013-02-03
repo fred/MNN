@@ -3,33 +3,7 @@
   <% cache_expiring("aa/user_stats", 10.minutes) do %>
 
     <div class="dashboard_section panel">
-      <h3>Newly Registered (updated every 10 minutes)</h3>
-      <div class="panel_contents">
-        <table border="0" cellspacing="0" cellpadding="0">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Provider</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% User.recent(12).each do |user| %>
-              <tr>
-                <td><%= link_to_if(user.name.present?,user.name.to_s, admin_user_path(user)) %></td>
-                <td><%= link_to(user.email, admin_user_path(user)) %></td>
-                <td><%= user.provider if user.provider.present? %></td>
-                <td><%= time_ago_in_words(user.created_at) %> ago</td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="dashboard_section panel">
-      <h3>Recently Logged in</h3>
+      <h3>Recently Logged in (updated every 10 minutes)</h3>
       <div class="panel_contents">
         <table border="0" cellspacing="0" cellpadding="0">
           <thead>
@@ -49,6 +23,32 @@
                 <td><%= time_ago_in_words(user.current_sign_in_at) %> ago</td>
                 <td><%= user.last_sign_in_ip %></td>
                 <td><%= user.current_sign_in_ip %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="dashboard_section panel">
+      <h3>Recently Registered (updated every 10 minutes)</h3>
+      <div class="panel_contents">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Provider</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% User.recent(12).each do |user| %>
+              <tr>
+                <td><%= link_to_if(user.name.present?,user.name.to_s, admin_user_path(user)) %></td>
+                <td><%= link_to(user.email, admin_user_path(user)) %></td>
+                <td><%= user.provider if user.provider.present? %></td>
+                <td><%= time_ago_in_words(user.created_at) %> ago</td>
               </tr>
             <% end %>
           </tbody>

@@ -1,7 +1,6 @@
 ## TODO Soon
 
     -- Automate WIKI email to Registered users to be Author
-
     -- Reply to comments
     -- Threaded comments view
     -- Change menus to pure CSS3 instead of Javascript

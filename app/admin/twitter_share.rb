@@ -10,6 +10,7 @@ ActiveAdmin.register TwitterShare do
   index title: "Twitter Shares" do
     column :item
     column :status
+    bool_column :processed
     column "Processed At" do |t|
       t.processed_at.to_s(:short) if t.processed_at.present?
     end
@@ -21,6 +22,11 @@ ActiveAdmin.register TwitterShare do
   controller do
     def scoped_collection
       TwitterShare.includes(:item)
+    end
+    def run_now
+      if share = TwitterShare.where(processed: false, id: params[:id]).first
+        share.enqueue
+      end
     end
   end
 end

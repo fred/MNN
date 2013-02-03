@@ -28,6 +28,7 @@ class FacebookShare < Share
       self.status = 'FAILED'
     end
     self.processed_at = Time.now
+    self.processed = true
     self.save
     res
   end
