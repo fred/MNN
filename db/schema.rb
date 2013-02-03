@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130125012807) do
+ActiveRecord::Schema.define(:version => 20130203091642) do
 
 
   create_extension "hstore", :version => "1.1"
@@ -334,7 +334,8 @@ ActiveRecord::Schema.define(:version => 20130125012807) do
     t.datetime "enqueue_at"
   end
 
-  add_index "shares", ["item_id", "processed"], :name => "index_shares_on_item_id_and_processed"
+  add_index "shares", ["item_id"], :name => "index_shares_on_item_id"
+  add_index "shares", ["processed"], :name => "index_shares_on_processed"
   add_index "shares", ["type"], :name => "index_shares_on_type"
 
   create_table "simple_captcha_data", :force => true do |t|

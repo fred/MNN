@@ -1,3 +1,9 @@
+## Frebruary 3, 2013
+  
+  - Improved Sharing jobs queue
+  - Match css for tinymce
+  - Added proper indexes for Shares
+
 ## Frebruary 1, 2013
 
   - Added License for original articles
