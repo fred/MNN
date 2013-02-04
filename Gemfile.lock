@@ -475,7 +475,7 @@ GEM
       rubyzip
       websocket (~> 1.0.4)
     sexp_processor (4.1.4)
-    sidekiq (2.7.0)
+    sidekiq (2.6.5)
       celluloid (~> 0.12.0)
       connection_pool (~> 1.0)
       multi_json (~> 1)
@@ -644,7 +644,7 @@ DEPENDENCIES
   rvm-capistrano
   sass (~> 3.2)
   sass-rails
-  sidekiq
+  sidekiq (= 2.6.5)
   simple_captcha!
   simple_oauth (~> 0.1.9)
   sinatra

@@ -67,7 +67,7 @@ gem 'slim', "~> 1.3.0"
 gem 'sinatra'
 gem 'redis'
 gem 'celluloid'
-gem 'sidekiq'
+gem 'sidekiq', "2.6.5"
 
 ### JSON and Twitter
 gem 'multi_json'
