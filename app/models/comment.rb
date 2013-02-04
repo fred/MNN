@@ -94,7 +94,7 @@ class Comment < ActiveRecord::Base
   end
 
   def check_for_spam
-    if do_security_check? && self.spam?
+    if Rails.env.production? && do_security_check? && self.spam?
       self.marked_spam = true
       self.approved = false
       Rails.logger.info("  Security: Comment marked as SPAM")
