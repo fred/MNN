@@ -76,8 +76,17 @@ class User < ActiveRecord::Base
   end
 
   def comments_trusted?
-    comments_karma > 3
+    comments_karma > 4
   end
+
+  def tiny_mce_buttons2
+    if comments_trusted?
+      "cut,copy,paste,pastetext,pasteword,selectall,|,bullist,numlist,|,outdent,indent,blockquote,|,link,unlink,anchor,|,image,|,removeformat,cleanup,|,insertdate,inserttime,preview"
+    else
+      ""
+    end
+  end
+
 
   def check_security
     unless secured?

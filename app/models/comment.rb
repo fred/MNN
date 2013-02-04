@@ -90,7 +90,7 @@ class Comment < ActiveRecord::Base
   end
 
   def do_security_check?
-    (Rails.env.production? && !bypass_spam? && !user_is_trusted?) or approving_user.present?
+    (Rails.env.production? && !bypass_spam? && !user_is_trusted?) or !approving_user.present?
   end
 
   def check_for_spam
@@ -161,13 +161,13 @@ class Comment < ActiveRecord::Base
 
   def allowed_html_tags
     tags = %w(p em b i u a br blockquote strong div pre ul ol li)
-    tags += %w(iframe img) unless do_security_check?
+    tags += %w(iframe img) if user_is_trusted?
     tags
   end
 
   def allowed_html_attributes
     tags = %w(href target rel rev alt title)
-    tags += %w(src width height allowfullscreen) unless do_security_check?
+    tags += %w(src width height allowfullscreen) if user_is_trusted?
     tags
   end
 
