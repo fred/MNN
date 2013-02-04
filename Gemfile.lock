@@ -29,9 +29,9 @@ GIT
 
 GIT
   remote: git://github.com/engageis/activerecord-postgres-hstore.git
-  revision: f92b012ea1a7149388c24fd52740e6d091706e66
+  revision: 77a3f02820b48866dc67d67701886db755dee3ff
   specs:
-    activerecord-postgres-hstore (0.5.3)
+    activerecord-postgres-hstore (0.7.0)
       rails
       rake
 
@@ -95,7 +95,7 @@ GIT
 
 GIT
   remote: git://github.com/sunspot/sunspot.git
-  revision: 508f00f73a76bfe8c1a5580f5a31b026f6b2efdc
+  revision: 3675a1dff444b6fcd011c8984a6dc952212c072c
   specs:
     sunspot (2.0.0.pre.130115)
       pr_geohash (~> 1.0)
@@ -107,7 +107,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 1337e9284c038de8f0ea8a2de0d03efa630ea057
+  revision: b4f189a162f4280b360dbc2a6635bbff6c6f09bc
   branch: 3-2-stable
   specs:
     actionmailer (3.2.11)
@@ -156,9 +156,9 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    activerecord-jdbc-adapter (1.2.5)
-    activerecord-jdbcpostgresql-adapter (1.2.5)
-      activerecord-jdbc-adapter (~> 1.2.5)
+    activerecord-jdbc-adapter (1.2.6)
+    activerecord-jdbcpostgresql-adapter (1.2.6)
+      activerecord-jdbc-adapter (~> 1.2.6)
       jdbc-postgres (>= 9.1, < 9.3)
     addressable (2.3.2)
     ansi (1.4.3)
@@ -243,7 +243,7 @@ GEM
     factory_girl_rails (4.2.0)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
-    faraday (0.8.4)
+    faraday (0.8.5)
       multipart-post (~> 1.1)
     fast_gettext (0.7.0)
     fastercsv (1.5.5)
@@ -348,7 +348,7 @@ GEM
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
     method_source (0.8.1)
-    mime-types (1.19)
+    mime-types (1.20.1)
     multi_json (1.5.0)
     multipart-post (1.1.5)
     net-scp (1.0.4)
@@ -434,7 +434,7 @@ GEM
       redis (~> 3.0.0)
     responders (0.9.3)
       railties (~> 3.1)
-    rmagick (2.13.1)
+    rmagick (2.13.2)
     rmagick4j (0.3.7)
     rsolr (1.0.8)
       builder (>= 2.1.2)
@@ -475,7 +475,7 @@ GEM
       rubyzip
       websocket (~> 1.0.4)
     sexp_processor (4.1.4)
-    sidekiq (2.6.5)
+    sidekiq (2.7.0)
       celluloid (~> 0.12.0)
       connection_pool (~> 1.0)
       multi_json (~> 1)
@@ -625,7 +625,7 @@ DEPENDENCIES
   omniauth-windowslive!
   opinio!
   paper_trail (~> 2.6.3)
-  pg (~> 0.14.1)
+  pg
   pg_power
   pry-rails
   rack (~> 1.4.3)

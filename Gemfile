@@ -10,7 +10,8 @@ gem 'bundler'
 
 ### Database Adapter
 platforms :mri_19 do
-  gem 'pg', '~> 0.14.1'
+  gem 'pg'
+  gem 'pg_power'
   gem 'rmagick'
   gem 'rails3_libmemcached_store'
 end
@@ -165,4 +166,3 @@ gem 'sql_funk', git: 'git://github.com/FernandoEscher/sql_funk.git'
 gem 'tabletastic'
 
 gem 'activerecord-postgres-hstore', github: 'engageis/activerecord-postgres-hstore'
-gem 'pg_power'
