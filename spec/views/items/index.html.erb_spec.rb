@@ -11,7 +11,7 @@ describe "items/index" do
 
   it "renders a list of items" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "article>header>h3", text: "Some News".to_s, count: 2
+    assert_select "article>header>h2", text: "Some News".to_s, count: 2
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "article>section", text: "Some Abstract".to_s, count: 2
     # Run the generator again with the --webrat flag if you want to use webrat matchers
