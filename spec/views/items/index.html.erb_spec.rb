@@ -20,8 +20,8 @@ describe "items/index" do
   
   
   it "renders a list of items with headline as link" do
-    assert_select "article#item_#{@item.id} > header > h3 > a", text: @item.title.to_s, count: 1
-    assert_select "article#item_#{@item.id} > header > h3 > a", href: items_path(@item), count: 1
+    assert_select "article#item_#{@item.id} > header > h2 > a", text: @item.title.to_s, count: 1
+    assert_select "article#item_#{@item.id} > header > h2 > a", href: items_path(@item), count: 1
   end
   
   it "renders a list of items with abstraction is a section" do

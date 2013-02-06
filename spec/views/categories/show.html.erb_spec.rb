@@ -12,7 +12,7 @@ describe "categories/show" do
     expect(view.content_for(:breadcrumb)).to contain(@category.title)
   end
   it "should render item in an article tag" do
-    assert_select "article#item_#{@item.id} > header > h3 > a", text: @item.title, count: 1
-    assert_select "article#item_#{@item.id} > header > h3 > a", href: item_path(@item), count: 1
+    assert_select "article#item_#{@item.id} > header > h2 > a", text: @item.title, count: 1
+    assert_select "article#item_#{@item.id} > header > h2 > a", href: item_path(@item), count: 1
   end
 end
