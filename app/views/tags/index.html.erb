@@ -1,3 +1,4 @@
+<% cache_expiring("tags/index", 8.hours) do %>
 <div class="row all_tags">
   <% @tags.each do |tag| %>
     <div class="tag" id="tag_<%= tag.id %>">
@@ -12,3 +13,4 @@
   <% end %>
 </div>
 <div clas="clearfix"></div>
+<% end %>
