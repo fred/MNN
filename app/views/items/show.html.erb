@@ -43,7 +43,7 @@
         <% end %>
         <% if !@item.original? && @item.author_name %>
           - <%= _("by") %>
-          <span class='author' itemprop='author'>
+          <span class='author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
             <%= link_to @item.author_name, search_path(q: "\"#{@item.author_name}\""), title: _('Author Articles') %>
           </span>
         <% end %>
@@ -56,6 +56,7 @@
               <%= link_to image_tag(@item.main_image.image.medium,
                               class: "show_item_image",
                               id: "main_image",
+                              itemprop: "thumbnailUrl",
                               alt: alt_for_image(@item.main_image)
                     ),
                     @item.main_image.image.full.url,
@@ -270,13 +271,15 @@
     <span class="divider">/</span>
   </li>
   <li>
-    <%= link_to_if(
-          @item.category,
-          @item.category_title,
-          @item.category,
-          title: @item.category_title
-        )
-    %>
+    <span itemprop="articleSection">
+      <%= link_to_if(
+            @item.category,
+            @item.category_title,
+            @item.category,
+            title: @item.category_title
+          )
+      %>
+    </span>
     <span class="divider">/</span>
   </li>
   <li>
@@ -291,7 +294,6 @@
               protocol: 'http',
               host: localized_host(@item.language_title_short)
             ),
-          rel: 'canonical',
           title: @item.title
       %>
     </span>

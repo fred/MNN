@@ -33,3 +33,9 @@ class Version < ActiveRecord::Base
   end
 
 end
+
+Version.module_eval do
+  def user
+    User.where(id: v.whodunnit).first
+  end
+end

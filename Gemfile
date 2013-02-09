@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ### Basic
-gem 'rack', '~> 1.4.3'
+gem 'rack'
 gem 'rack-cache'
 gem 'rake'
 # gem 'rails', '3.2.11'
@@ -82,7 +82,7 @@ gem 'nokogiri'
 # in production environments by default.
 group :assets do
   gem 'therubyrhino', require: 'rhino', platform: :jruby
-  gem 'therubyracer', "~> 0.10.2", require: 'v8',  platform: :mri_19
+  gem 'therubyracer', require: 'v8',  platform: :mri_19
   gem 'execjs'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.5'
@@ -110,9 +110,9 @@ group :development do
   gem 'hirb'
   gem 'foreman'
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
-  gem 'capistrano', '~> 2.13.0', require: false
+  gem 'capistrano', require: false
   gem 'rvm-capistrano', require: false
-  # gem 'debugger', "~> 1.3.0", platform: :mri_19
+  gem 'capistrano-ext', require: false
   gem 'pry-rails'
   gem 'brakeman'
   gem 'gettext', "~> 2.2.1", require: false

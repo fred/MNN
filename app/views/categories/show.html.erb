@@ -21,8 +21,7 @@
       <%= link_to(
             image_tag("icons/social/rss_16.png", alt: "RSS for #{@category.title}"), 
             category_path(@category, format: "rss"),
-            title: (_("RSS feed for items in category %{str}") % { str: @category.title }),
-            rev: 'category'
+            title: (_("RSS feed for items in category %{str}") % { str: @category.title })
           )
       %>
     </h1>

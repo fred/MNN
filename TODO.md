@@ -10,6 +10,7 @@
 
 ## TODO Later
 
+    -- StatusNet like system
     S- Add Connect to Twitter and Facebook
     -- Let Users share to Twitter
     -- Let Users share to Facebook

@@ -1,12 +1,14 @@
 <div class="comments">
   <span class="span6">
-    <span class="label label-info"><i class='icon-comments'></i> Comments </span>
-    &nbsp;
-    <%= link_to image_tag("icons/social/rss_16.png", alt: "RSS for comments on this article"),
+    <span class="label label-info"><i class='icon-comments'> </i>
+      <%= @item.comments_count %> Comments
+    </span>
+    <%= link_to(
+          image_tag("icons/social/rss_16.png", alt: "RSS for comments on this article"),
           item_comments_path(@item, format: 'rss')
+        )
     %>
   </span>
-  <%#= comments_for @item %>
   <%= render(partial: "opinio/comments/comments", locals: {comments: @comments, commentable: @item}) %>
   <%= render(partial: "opinio/comments/new", locals: {commentable: @item} ) %>
 </div>

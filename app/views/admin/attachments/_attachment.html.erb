@@ -39,7 +39,7 @@
 <%=
   if attachment.existing_attachment
     link_to(
-      image_tag(attachment.existing_attachment.image.full.url, title: attachment.title, alt: attachment.title),
+      image_tag(attachment.existing_attachment.image.full.url, title: attachment.title, alt: attachment.alt_text),
       attachment.image.url,
       title: attachment.title,
       targe: "_blank",
@@ -47,7 +47,7 @@
     )
   elsif attachment.image.present?
     link_to(
-      image_tag(attachment.image.full.url, title: attachment.title, alt: attachment.title),
+      image_tag(attachment.image.full.url, title: attachment.title, alt: attachment.alt_text),
       attachment.image.url,
       title: attachment.title,
       targe: "_blank",

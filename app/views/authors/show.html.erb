@@ -8,7 +8,7 @@
     <% if @author.avatar? %>
       <%= link_to(image_tag(@author.avatar.small, class: "show_item_image"), author_path(@author)) %>
     <% end %>
-    <h3><%= link_to @author.public_display_name, author_path(@author), rev: 'author' %></h3>
+    <h3><%= link_to @author.public_display_name, author_path(@author), rel: 'author' %></h3>
     <%= @author.bio %>
   </header>
   <div class="clearfix"></div>
@@ -81,7 +81,7 @@
     <span class="divider">/</span>
   </li>
   <li class="active">
-    <%= link_to @author.public_display_name, author_path(@author), rev: 'author' %>
+    <%= link_to @author.public_display_name, author_path(@author), rel: 'author' %>
     <%= link_to(
           image_tag("icons/social/rss_16.png", alt: "RSS for #{@author.public_display_name}"), 
           author_path(@author, format: "rss"),

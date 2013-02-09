@@ -1,4 +1,5 @@
 ActiveAdmin.register Version do
+  config.clear_sidebar_sections!
   controller.authorize_resource
   actions :index, :show
   menu priority: 99, label: "History", if: lambda{|tabs_renderer|
@@ -35,5 +36,11 @@ ActiveAdmin.register Version do
       end
     end
     # default_actions
+    # controller do
+    #   def scoped_collection
+    #     Version.includes(:user)
+    #   end
+    # end
   end
+
 end

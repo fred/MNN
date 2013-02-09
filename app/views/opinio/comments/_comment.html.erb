@@ -1,7 +1,6 @@
 <% reply = defined?(reply) ? reply : false %>
 
-<li id="comment_<%= comment.id %>">
-
+<li id="comment_<%= comment.id %>" itemprop="comment" itemscope itemtype="http://schema.org/UserComments">
   <% if comment.commentable && ((params[:author_id] && @user && comment.from_item?) or @show_commentable) %>
     <span class="commentable_title">
       <h3>
@@ -22,7 +21,8 @@
       <% if comment.owner %>
         <%= link_to(
               image_tag(
-                comment.owner.main_image, 
+                comment.owner.main_image,
+                itemprop: "image",
                 alt: comment.owner.public_display_name
               ),
               author_comments_path(comment.owner),
@@ -30,21 +30,25 @@
             )
         %>
         <i>
-          <%= link_to(
-                comment.owner.public_display_name,
-                author_comments_path(comment.owner),
-                title: "View all #{comment.owner.public_display_name} comments"
-              )
-          %>
+          <span itemprop="creator" itemscope itemtype="http://schema.org/Person">
+            <%= link_to(
+                  comment.owner.public_display_name,
+                  author_comments_path(comment.owner),
+                  title: "View all #{comment.owner.public_display_name} comments"
+                )
+            %>
+          </span>
         </i>
         said:
       <% end %>
     </span>
     <div class="comment_body">
-      <%= sanitize comment.body,
-            tags: comment.allowed_html_tags,
-            attributes: comment.allowed_html_attributes
-      %>
+      <section itemprop="commentText">
+        <%= sanitize comment.body,
+              tags: comment.allowed_html_tags,
+              attributes: comment.allowed_html_attributes
+        %>
+      </section>
     </div>
     <div class="clearfix">
       <span class="comment_date">

@@ -4,4 +4,12 @@ class Attachment < ActiveRecord::Base
   belongs_to :existing_attachment, foreign_key: 'parent_id', class_name: "Attachment", touch: true
   mount_uploader :image, ImageUploader
   has_paper_trail :on => [:edit, :destroy]
+
+  def alt_text
+    if title.present?
+      title.to_s
+    else
+      "image"
+    end
+  end
 end

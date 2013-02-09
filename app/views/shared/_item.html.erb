@@ -1,7 +1,9 @@
 <% cache_expiring("_item/#{item.cache_key}", 8.hours) do %>
   <article class="category" id="item_<%=item.id%>">
     <% unless @category %>
-      <h5 class="no-margin"><%= link_to(item.category_title, item.category, title: _("Read more articles in this category")) if item.category %></h5>
+      <h5 class="no-margin">
+        <%= link_to(item.category_title, item.category, title: _("Read more articles in this category")) if item.category %>
+      </h5>
     <% end %>
     <header>
       <% if item.has_image? %>
@@ -11,8 +13,7 @@
                       title: alt_for_image(item.main_image)
                     ),
             item,
-            title: item.title,
-            rel: 'image'
+            title: item.title
         %>
       <% elsif item.youtube_id && item.youtube_img %>
         <%= image_tag(youtube_thumb(item), 
@@ -37,7 +38,7 @@
 
         <% if !item.original? && item.author_name %>
           - <%= _("by") %>
-          <span class='author' itemprop='author'>
+          <span class='author'>
             <%= link_to item.author_name, search_path(q: "\"#{item.author_name}\""), title: _('Author Articles') %>
           </span>
         <% end %>
@@ -66,7 +67,7 @@
       <% end %>
 
       <ul class="tags">
-        <i class="icon-tags"></i>
+        <li><i class="icon-tags"></i></li>
         <% item.general_tags.each do |tag| %>
           <li>
             <%= link_to tag.title, tag_path(tag), title: (_("See all Articles tagged as %{str}") % { str: tag.title }) %>
@@ -103,11 +104,11 @@
       <% @related = item.solr_similar(3) %>
       <% if @related && @related.total > 0 %>
         <div class="related">
-          <section id="related">
+          <section>
             <h4><%= _("Related articles") %></h4>
             <ul class="mini-related">
               <% @related.results.each do |item| %>
-                <li><%= link_to item.title, item, title: item_title(item), class: 'easy-tooltip', rel: 'related' %></li>
+                <li><%= link_to item.title, item, title: item_title(item), class: 'easy-tooltip' %></li>
               <% end %>
             </ul>
           </section>

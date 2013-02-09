@@ -1,0 +1,62 @@
+---
+  address: localhost # set to 127.0.0.1 if Trinidad behind a web server such as Apache
+  port: 3013  # port where Trinidad is running
+  http: # HTTP connector setup
+    acceptCount: 100
+    maxThreads: 200
+    maxKeepAliveRequests: 100
+    # ... https://github.com/trinidad/trinidad/wiki/HTTP-Connector
+  #ajp: # AJP configuration
+    #port: 3031
+    # ... https://github.com/trinidad/trinidad/wiki/AJP-Configuration
+  #ssl: # SSL configuration
+    #port: 3081
+    # ... https://github.com/trinidad/trinidad/wiki/Secure-Socket-Layer-%28SSL%29
+  #apps_base: # directory where several applications are located
+  #
+  # Begin: Configuration options that can be overrided per web-application
+  #
+  environment: production
+  jruby_min_runtimes: 1 # min number of JRuby runtimes to use
+  jruby_max_runtimes: 1 # max number of JRuby runtimes to use
+  jruby_compat_version: 1.9 # or 1.8 by default uses the same as trinidad is running
+  context_path: / # default context path
+  root_dir: "." # system path where the application is located, by default is PWD
+  rackup: config.ru # rackup script if you are running a (non-Rails) Rack application
+  public: public # system path (relative to root) where your public files are located
+  # If you do not put a web-server in front of Trinidad you might tune asset caching :
+  #public: 
+  #  root: public # same as the above "public: public" setting
+  #  aliases: # allows to "link" other directories into the public root e.g. :
+  #    /home: /var/local/www
+  #  cached: true # enable (in-memory) asset caching on for env != 'development'
+  #  cache_ttl: 5000 # cache TTL in millis (might want to increase this)
+  #  cache_max_size: 10240 # the maximum cache size in kB
+  #  cache_object_max_size: 512 # max size for a cached object (asset) in kB
+  # java_lib: lib/java # directory where libraries packed as jars can be found
+  # java_classes: lib/java/classes # directory where compiled java classes can be found
+  # default_web_xml: config/web.xml # if you are using a custom web.xml
+  # reload_strategy: default # alternatively you might use "rolling"
+  #
+  # End: Configuration options that can be overrided per web-application
+  #
+  # extensions: # if you are using any Trinidad extension
+    #daemon: # sample daemon extension
+      #pid_file: # pid file
+      #jvm_args: # additional arguments for the thread that runs the daemon
+  #
+  # web_apps: # if running more than one application or using web apps extensions
+  #   default: # by default the name is used as the context path, 'default' means the root path '/'
+  #      # Here you can override any already configured options or add new ones e.g. :
+  #      #extensions:
+  #         #mysql_dbpool:
+  #           #jndi: 'jdbc/BarDB'
+  #           #username: 'root'
+  #           #password: 'pass'
+  #           #url: 'localhost:3306/bar'
+  #           #maxActive: 100
+  #           #maxIdle: 30
+  #           #maxWait: 10000
+  #   foo_app: # configuring another application
+  #     context_path: /foo # this will be the path rather than '/foo_app'
+  #     web_app_dir: /var/www/foo_app # system path where this application is located
