@@ -12,8 +12,8 @@ module ItemsHelper
 
   def item_title_small(item)
     str = ""
-    str += "<div class='tooltip-title'>#{item.title}</div>"
-    str += "<div class='tooltip-abstract'>#{item.abstract}</div>"
+    str += "<div class='tooltip-title'> #{item.title} </div>"
+    str += "<div class='tooltip-abstract'> #{item.abstract} </div>"
     str += "<div class='date_small'>"
     str += "<i class='icon-time'></i> "
     str += "#{time_ago_in_words(item.published_at)} #{_('ago')} - #{_('by')} #{item.author}"
