@@ -118,7 +118,9 @@ div.well.social {
   }
 }
 
-pre { display: none; }
+pre {
+  display: block;
+}
 
 button a:hover,
 button a:visited, 

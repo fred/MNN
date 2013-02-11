@@ -10,7 +10,7 @@ class Query < ActiveRecord::Base
     query.user_id  = options[:user_id]  if options[:user_id].present?
     query.data     = options[:data]     if options[:data].present?
     query.item_id  = options[:item_id]  if options[:item_id].present?
-    query.save
+    query.save if query.valid?
     true
   end
 

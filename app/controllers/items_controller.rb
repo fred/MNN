@@ -211,11 +211,11 @@ class ItemsController < ApplicationController
     safe = params[:q] && params[:q].scan(/select|where|\(|\)/).uniq.size <= 1
     if safe && (current_user or current_admin_user or view_context.is_human?)
       data = {}
-      data["ip"] = request.remote_ip if request.remote_ip
-      data["referrer"] = request.referrer if request.referrer
-      data["user_agent"] = request.user_agent if request.user_agent
+      data["ip"] = request.remote_ip if request.remote_ip.present?
+      data["referrer"] = request.referrer if request.referrer.present? && request.referrer.valid_encoding?
+      data["user_agent"] = request.user_agent if request.user_agent.present? && request.user_agent.valid_encoding?
       q = {}
-      q[:keyword] = params[:q] if params[:q].present?
+      q[:keyword] = params[:q] if params[:q].present? && params[:q].valid_encoding?
       q[:item_id] = @item.id if @item
       q[:user_id] = current_user.id if current_user
       q[:locale]  = I18n.locale
@@ -231,9 +231,9 @@ class ItemsController < ApplicationController
   def store_page_view
     if (current_user or current_admin_user or view_context.is_human?) && !ip_has_visited?(10)
       data = {}
-      data["ip"] = request.remote_ip if request.remote_ip
-      data["referrer"] = request.referrer if request.referrer
-      data["user_agent"] = request.user_agent if request.user_agent
+      data["ip"] = request.remote_ip if request.remote_ip.present?
+      data["referrer"] = request.referrer if request.referrer.present? && request.referrer.valid_encoding?
+      data["user_agent"] = request.user_agent if request.user_agent.present? && request.user_agent.valid_encoding?
       q = {}
       q[:item_id] = @item.id if @item
       q[:user_id] = current_user.id if current_user
