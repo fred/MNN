@@ -20,10 +20,10 @@
   </div>
 
   <div class="panel">
-    <h3>Latest 20 page views (updated every 10 minutes)</h3>
+    <h3>Latest 50 page views (updated every 10 minutes)</h3>
     <div class="panel_contents">
       <div class="attributes_table item">
-        <%= table_for(@item.recent_page_views(20)) do |t|
+        <%= table_for(@item.recent_page_views(50)) do |t|
           t.data do
             t.cell(:created_at, heading: "Time") {|p| p.created_at.to_s(:short)}
             t.cell(:ip, heading: "IP") {|p| p.user_ip}
