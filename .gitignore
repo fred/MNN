@@ -112,3 +112,4 @@ config/settings/*.yml
 config/environments/*.local.yml
 config/settings.yml
 
+config/deploy/

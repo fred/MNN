@@ -17,8 +17,8 @@ production:
 development:
   solr:
     hostname: '127.0.0.1'
-    port: 8980
-    path: '/solr/collection1'
+    port: 8080
+    path: '/solr/mnn_development'
     auto_commit_after_request: false
 
 test:

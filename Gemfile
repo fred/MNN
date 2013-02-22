@@ -48,8 +48,8 @@ gem 'kaminari'
 gem 'squeel', '~> 1.0.11'
 
 ### File Uploading and Image Processing
-gem 'fog', '~> 1.4.0'
-gem 'carrierwave', '~> 0.6.2'
+gem 'fog', '~> 1.9.0'
+gem 'carrierwave', '~> 0.8.0'
 
 ### Permalink
 gem 'stringex', '~> 1.4'
@@ -110,6 +110,7 @@ group :development do
   gem 'hirb'
   gem 'foreman'
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
+  gem 'net-scp', '1.0.4'
   gem 'capistrano', require: false
   gem 'rvm-capistrano', require: false
   gem 'capistrano-ext', require: false
