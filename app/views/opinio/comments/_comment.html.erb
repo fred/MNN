@@ -21,7 +21,7 @@
       <% if comment.owner %>
         <%= link_to(
               image_tag(
-                comment.owner.main_image,
+                comment.owner.main_image(:thumb),
                 itemprop: "image",
                 alt: comment.owner.public_display_name
               ),

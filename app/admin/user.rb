@@ -16,6 +16,9 @@ ActiveAdmin.register User do
       row :id
       row :email
       row :name
+      row :avatar do |user|
+        link_to(image_tag(user.main_image(:medium)), user.main_image, target: 'blank')
+      end
       row :registration_role
       row :time_zone
       row :provider
@@ -24,9 +27,6 @@ ActiveAdmin.register User do
       row :diaspora
       row :jabber
       row :phone_number
-      row :avatar do |user|
-        image_tag(user.main_image(:thumb))
-      end
       row :bio
       bool_row :show_public
       row "Logged in" do |user|
@@ -78,7 +78,7 @@ ActiveAdmin.register User do
   index title: "Users" do
     id_column
     column "Avatar", sortable: false do |user|
-      image_tag(user.main_image(:thumb), class: 'user-avatar-mini')
+      link_to(image_tag(user.main_image(:thumb), class: 'user-avatar-mini'), admin_user_path(user))
     end
     column :name
     column :email do |user|

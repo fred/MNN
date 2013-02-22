@@ -4,7 +4,7 @@ module AuthorsHelper
     count = user.items_count
     str = ""
     str += link_to(
-        image_tag(user.main_image, class: "item-image", title: user.title, alt: user.title),
+        image_tag(user.main_image(:thumb), class: "item-image", title: user.title, alt: user.title),
         author_path(user),
         title: user.title
     )

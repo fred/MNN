@@ -163,9 +163,13 @@ class User < ActiveRecord::Base
     avatar?
   end
 
-  def main_image(version=:thumb)
+  def main_image(version=nil)
     if has_image?
-      avatar.url(version)
+      if version
+        avatar.url(version)
+      else
+        avatar.url
+      end
     elsif oauth_data && oauth_data[:info] && oauth_data[:info][:image]
       oauth_data[:info][:image].to_s
     else
