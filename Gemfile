@@ -4,7 +4,6 @@ source 'http://rubygems.org'
 gem 'rack'
 gem 'rack-cache'
 gem 'rake'
-# gem 'rails', '3.2.11'
 gem 'rails', git: 'https://github.com/rails/rails.git', branch: '3-2-stable'
 gem 'bundler'
 
@@ -131,7 +130,7 @@ group :test do
   gem 'capybara', '>= 1.0.1'
   gem 'database_cleaner'
   gem 'launchy', '>= 2.0.5'
-  gem 'sunspot_solr', git: 'git://github.com/sunspot/sunspot.git'
+  gem 'sunspot_solr', git: 'git://github.com/sunspot/sunspot.git', ref: 'c768d11731e103a7c1794dc29172fbe8fe8b7115'
   gem 'sunspot_test'
   gem 'turn', '~> 0.8.3', require: false
 end
@@ -148,8 +147,8 @@ gem 'less', '~> 2.2.2'
 gem 'less-rails', '~> 2.2.6'
 gem 'twitter-bootstrap-rails'
 
-gem 'sunspot', git: 'git://github.com/sunspot/sunspot.git'
-gem 'sunspot_rails', git: 'git://github.com/sunspot/sunspot.git'
+gem 'sunspot', git: 'git://github.com/sunspot/sunspot.git', ref: 'c768d11731e103a7c1794dc29172fbe8fe8b7115'
+gem 'sunspot_rails', git: 'git://github.com/sunspot/sunspot.git', ref: 'c768d11731e103a7c1794dc29172fbe8fe8b7115'
 gem 'sitemap_generator'
 gem 'tinymce-rails' , '~> 3.5.6'
 gem 'tinymce-rails-imageupload', '~> 3.5.6.3'

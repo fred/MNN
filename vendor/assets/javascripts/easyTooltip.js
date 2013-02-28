@@ -18,7 +18,7 @@
 	  
 		// default configuration properties
 		var defaults = {	
-			xOffset: 10,		
+			xOffset: 10,
 			yOffset: 25,
 			tooltipId: "easyTooltip",
 			clickRemove: false,
