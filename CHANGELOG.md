@@ -1,11 +1,16 @@
-## March 5, 2013
+## March 13, 2013
 
-  - using SQL schema
+  - Draft Items protection
 
 ## February 5-28, 2013
 
   - using SQL schema
-  - using SQL schema
+  - increased recent page views on item
+  - updated Gems
+  - HTML5 validation
+  - Improved cache on tags/index page
+  - downgraded Koala
+  - 
 
 ## February 3, 2013
   
