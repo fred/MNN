@@ -6,7 +6,6 @@ FactoryGirl.define do
     body "Some body"
     association :language, factory: :language
     association :category, factory: :category
-    # association :user, factory: :user
     featured false
     draft false
     published_at Time.now-600
@@ -19,7 +18,6 @@ FactoryGirl.define do
     body "Some body"
     association :language, factory: :language2
     association :category, factory: :category2
-    # association :user, factory: :user2
     featured false
     draft false
     published_at Time.now-600
@@ -55,7 +53,6 @@ FactoryGirl.define do
     body "a very long body"
     association :language, factory: :language
     association :category, factory: :category2
-    association :user, factory: :admin
     draft true
     published_at Time.now-600
   end

@@ -1,17 +1,26 @@
-## Frebruary 3, 2013
+## March 5, 2013
+
+  - using SQL schema
+
+## February 5-28, 2013
+
+  - using SQL schema
+  - using SQL schema
+
+## February 3, 2013
   
   - Improved Sharing jobs queue
   - Match css for tinymce
   - Added proper indexes for Shares
 
-## Frebruary 1, 2013
+## February 1, 2013
 
   - Added License for original articles
   - Removed some unised fields from Solr (performance)
   - Removed Feed sites from admin
   - Removed Languages from sidebar, increased Top Searches
 
-## Januart 27-29, 2013
+## January 27-29, 2013
 
   - Better related articles with images
   - Using Rails from 3-2-stable branch

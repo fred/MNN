@@ -4,6 +4,7 @@ describe ItemsController do
   include ItemSpecHelper
   include EnableSunspot
   let(:item) {FactoryGirl.create(:item)}
+  let(:item_draft) {FactoryGirl.create(:item_draft)}
   let(:category) {item.category}
 
   before(:all) do
@@ -46,6 +47,22 @@ describe ItemsController do
       get :show, id: item.id
       expect(assigns(:item).page_views).not_to be_empty
       expect(assigns(:item).page_views.count).to eq(1)
+    end
+    it "renders not found for Draft item" do
+      expect(->{ get :show, id: item_draft.id }).to raise_error
+    end
+  end
+
+  describe "GET show logged in as Admin User" do
+    before (:each) do
+      @request.env["devise.mapping"] = Devise.mappings[:admin_user]
+      @user = FactoryGirl.create(:admin_user)
+      sign_in @user
+    end
+    it "renders Item" do
+      get :show, id: item_draft.id
+      expect(response).to be_success
+      expect(assigns(:item)).to eq(item_draft)
     end
   end
 

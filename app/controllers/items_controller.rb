@@ -88,7 +88,9 @@ class ItemsController < ApplicationController
     if params[:id].to_s.match("^[a-zA-Z]") && @item && @item.slug.match("^[0-9]+-")
       redirect_to(item_path(@item), status: 301)
     end
-    not_found unless @item
+    unless @item && (!@item.draft or current_admin_user)
+      not_found
+    end
     @comments = @item.approved_comments.page(params[:page]).per(30)
     @show_breadcrumb = true
     @meta_title = @item.title + " - World Mathaba"
