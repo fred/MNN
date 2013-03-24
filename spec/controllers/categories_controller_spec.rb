@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe CategoriesController do
-  
+
   before(:each) do
     @item = FactoryGirl.create(:item)
     @category = @item.category
@@ -21,11 +21,11 @@ describe CategoriesController do
     end
   end
 
-  describe "GET show with invalid encoding params" do
-    it "assigns the requested item as item" do
-      get :show, id: "abc-a\xFCe"
-      expect(response).to redirect_to(root_path)
-    end
-  end
+  #describe "GET show with invalid encoding params" do
+  #  it "assigns the requested item as item" do
+  #    get :show, id: "abc-a\xFCe"
+  #    expect(response).to redirect_to(root_path)
+  #  end
+  #end
 
 end

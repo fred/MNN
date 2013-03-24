@@ -10,14 +10,14 @@ describe ItemsController do
   before(:all) do
     Sunspot.commit
   end
-  
+
   describe "GET feed" do
     it "show show feed page" do
       get :feed
       expect(response).to be_success
     end
   end
-  
+
   describe 'GET index' do
     it 'should render RSS XML' do
       get :index, format: 'rss', lang: 'en'
@@ -30,14 +30,14 @@ describe ItemsController do
       expect(response.headers["Content-Type"]).to eql("application/atom+xml; charset=utf-8")
     end
   end
-  
+
   describe "GET index" do
     it "assigns all items as items" do
       get :index
       expect(assigns(:items)).to eq([item])
     end
   end
-  
+
   describe "GET show" do
     it "assigns the requested item as item" do
       get :show, id: item.id
@@ -66,12 +66,12 @@ describe ItemsController do
     end
   end
 
-  describe "GET show with invalid encoding params" do
-    it "assigns the requested item as item" do
-      get :show, id: "1000-a\xFCe"
-      expect(response).to redirect_to(root_path)
-    end
-  end
+  #describe "GET show with invalid encoding params" do
+  #  it "assigns the requested item as item" do
+  #    get :show, id: "1000-a\xFCe"
+  #    expect(response).to redirect_to(root_path)
+  #  end
+  #end
 
   describe "GET show for same user" do
     it "increases the views_counter of item" do

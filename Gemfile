@@ -8,7 +8,7 @@ gem 'rails', git: 'https://github.com/rails/rails.git', branch: '3-2-stable'
 gem 'bundler'
 
 ### Database Adapter
-platforms :mri_19 do
+platforms :ruby do
   gem 'pg'
   gem 'pg_power'
   gem 'rmagick'
@@ -47,7 +47,7 @@ gem 'kaminari'
 gem 'squeel'
 
 ### File Uploading and Image Processing
-gem 'fog', '~> 1.9.0'
+gem 'fog', '~> 1.10.0'
 gem 'carrierwave', '~> 0.8.0'
 
 ### Permalink
@@ -81,7 +81,7 @@ gem 'nokogiri'
 # in production environments by default.
 group :assets do
   gem 'therubyrhino', require: 'rhino', platform: :jruby
-  gem 'therubyracer', require: 'v8',  platform: :mri_19
+  gem 'therubyracer', require: 'v8',  platform: :ruby
   gem 'execjs'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.5'
@@ -95,7 +95,7 @@ group :production do
 end
 
 group :production, :development do
-  gem 'unicorn', require: false, platform: :mri_19
+  gem 'unicorn', require: false, platform: :ruby
 end
 
 group :test, :development do
@@ -109,7 +109,7 @@ group :development do
   gem 'hirb'
   gem 'foreman'
   gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
-  gem 'net-scp', '1.0.4'
+  gem 'net-scp', '~> 1.1'
   gem 'capistrano', require: false
   gem 'rvm-capistrano', require: false
   gem 'capistrano-ext', require: false

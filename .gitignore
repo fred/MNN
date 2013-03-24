@@ -113,3 +113,4 @@ config/environments/*.local.yml
 config/settings.yml
 
 config/deploy/
+.ruby-version
