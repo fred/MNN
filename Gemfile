@@ -60,7 +60,7 @@ gem 'rakismet'
 
 gem 'sass', '~> 3.2'
 gem 'sass-rails'
-gem 'jquery-rails', '~> 2.0.2'
+gem 'jquery-rails', '~> 2.1.4'
 
 gem 'slim', "~> 1.3.0"
 gem 'sinatra'
