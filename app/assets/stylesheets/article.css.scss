@@ -43,14 +43,14 @@ article {
   h1 {
     letter-spacing: 1px;
     font-size: 28px;
-    line-height: 34px;
+    line-height: 36px;
     margin-bottom: 0px;
     color: #333;
   }
   h2 {
     letter-spacing: 1px;
     font-size: 24px;
-    line-height: 30px;
+    line-height: 32px;
     color: #333;
     margin-bottom: 12px;
     margin-top: 13px;
@@ -64,14 +64,14 @@ article {
   }
   h4 {
     font-size: 18px;
-    line-height: 24px;
+    line-height: 25px;
     color: #222;
     margin-bottom: 8px;
     margin-top: 10px;
   }
   h5 {
     font-size: 15px;
-    line-height: 20px;
+    line-height: 22px;
     color: #222;
     margin-bottom: 7px;
     margin-top: 9px;
@@ -159,9 +159,17 @@ article {
   section {
     margin-bottom: 14px;
     margin-top: 8px;
-    font-size: 13px;
+    font-size: 14px;
     #item_body {
       color: #333;
+    }
+    .article-body {
+      line-height: 22px;
+      font-size: 15px;
+    }
+    p {
+      line-height: 22px;
+      font-size: 15px;
     }
   }
   footer {
@@ -269,16 +277,16 @@ blockquote {
   clear: both;
   display: inline-block;
   font-weight: normal;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 15px;
+  line-height: 22px;
   margin-bottom: 15px;
   margin-top: 10px;
   color: #333;
   p {
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: normal;
-    line-height: 20px;
+    line-height: 22px;
   }
 }
 
