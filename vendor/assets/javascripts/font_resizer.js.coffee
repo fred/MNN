@@ -1,8 +1,8 @@
 jQuery ->
   if !(Modernizr.touch) && !(jQuery.browser.msie)
     min = 9
-    normal = 14
-    max = 20
+    normal = 15
+    max = 22
     lineHeight = 20
     $("#resetFont").click ->
       $('#item_body p').each ->
