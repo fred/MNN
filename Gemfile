@@ -72,10 +72,7 @@ gem 'sidekiq', "~> 2.8.0"
 gem 'multi_json'
 gem 'json'
 gem 'twitter', "~> 4.0"
-
 gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
-
-gem 'nokogiri'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -92,6 +89,7 @@ gem 'rails_config'
 
 group :production do
   gem 'exception_notification', '~> 2.6.0', require: 'exception_notifier'
+  gem 'newrelic_rpm'
 end
 
 group :production, :development do
@@ -158,8 +156,7 @@ gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_emai
 gem 'turbo-sprockets-rails3'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
-#gem 'feedzirra'
-gem 'newrelic_rpm' #, '3.5.4.34'
+
 gem 'thumbs_up'
 gem 'lazy_high_charts', git: 'git://github.com/michelson/lazy_high_charts.git'
 gem 'sql_funk', git: 'git://github.com/FernandoEscher/sql_funk.git'

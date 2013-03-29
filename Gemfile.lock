@@ -627,7 +627,6 @@ DEPENDENCIES
   net-scp (~> 1.1)
   newrelic_rpm
   nifty-generators
-  nokogiri
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
