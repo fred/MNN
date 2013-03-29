@@ -1,9 +1,9 @@
 jQuery ->
-  if !(Modernizr.touch) && !(jQuery.browser.msie)
+  if !(Modernizr.touch)
     min = 9
     normal = 15
     max = 22
-    lineHeight = 20
+    lineHeight = 22
     $("#resetFont").click ->
       $('#item_body p').each ->
         $(this).css("font-size", normal+"px")

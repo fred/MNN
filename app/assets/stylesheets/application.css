@@ -13,10 +13,10 @@
  *= require breadcrumb
  *= require grid
  *= require pagination
- *= require fancybox/fancybox
  *= require error
  *= require zocial
  *= require forms
  *= require flags
  *= require jquery.complexify
+ *= require fancybox/jquery.fancybox
 */

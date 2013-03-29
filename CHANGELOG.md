@@ -1,3 +1,15 @@
+## March 20-29, 2013
+
+  - Upgraded to jQuery 1.9.1
+  - Added jquery.migrate plugin
+  - Upgraded Fancybox JS plugin
+  - Increased article font to 15px
+  - Ruby 2.0.0 compatibility
+  - Fixed Newrelic reporting issue
+  - Added Newrelic browser monitoring
+  - Updated Sidekiq to 2.8
+  - Updated all gems
+
 ## March 13, 2013
 
   - Draft Items protection
