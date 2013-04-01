@@ -1,6 +1,7 @@
 //= require active_admin/base
 //= require jquery
 //= require jquery_ujs
+//= require jquery/migrate.min.js
 //= require tinymce-jquery
 //= require anytime/main
 //= require anytime/timezone
