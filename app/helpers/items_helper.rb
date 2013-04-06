@@ -1,7 +1,7 @@
 module ItemsHelper
 
   def alt_for_image(image)
-    if !image.title.to_s.empty?
+    if !image.title.blank?
       image.title
     elsif image.attachable
       image.attachable.title

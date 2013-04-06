@@ -2,15 +2,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery/migrate.min.js
+//= require turbolinks
 //= require tinymce-jquery
 //= require anytime/main
 //= require anytime/timezone
 //= require jquery/counter
 //= require jquery/jquery.validate.js
 //= require modernizr
-//= require zclip
-//= require turbolinks
-//= require jquery.turbolinks
 //= require loader
 //= require easyTooltip
 //= require tooltip

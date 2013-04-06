@@ -63,10 +63,16 @@
 </div>
 
 <script type="text/javascript">
-  $("a#button-copy-<%= attachment.id %>").zclip({
-    path:'/assets/ZeroClipboard10.swf',
-    copy:$('div#copy-<%= attachment.id %>').html()
+  // $("a#button-copy-<%= attachment.id %>").zclip({
+  //   path:'/assets/ZeroClipboard10.swf',
+  //   copy:$('div#copy-<%= attachment.id %>').html()
+  // });
+
+  $("a#button-copy-<%= attachment.id %>").click(function () {
+    var txt = "Copy the following text to paste in HTML mode:\n" + $('div#copy-<%= attachment.id %>').html();
+    alert(txt);
   });
+
 </script>
 
 <% end %>

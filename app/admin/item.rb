@@ -81,9 +81,6 @@ ActiveAdmin.register Item do
       bool_symbol(item.featured)
     end
     bool_column :sticky
-    column "Lock", :protected, sortable: :protected do |item|
-      bool_symbol(item.protected)
-    end
     column "Live", sortable: :published_at do |item|
       if !item.draft? && item.published_at && item.published_at > Time.zone.now
         ("<span class='red bold'>" +
