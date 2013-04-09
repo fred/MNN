@@ -1,4 +1,4 @@
-<%= table_for(Comment.recent(10)) do |t|
+<%= table_for(Comment.pending(10)) do |t|
   t.data do
     t.cell(:user) do |t|
       if t.owner

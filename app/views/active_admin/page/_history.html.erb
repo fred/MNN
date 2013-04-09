@@ -1,45 +1,38 @@
-<% if current_ability.can?(:read, Version) %>
-  <div class="dashboard_section panel">
-    <h3>History</h3>
-    <div class="panel_contents">
-      <table border="0" cellspacing="0" cellpadding="0">
-        <thead>
-          <tr>
-            <th>Record</th>
-            <th>Action</th>
-            <th>Reason</th>
-            <th>Date</th>
-            <th>User</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% Version.order('id desc').limit(24).each do |v| %>
-            <tr>
-              <td>
-                <% if v.item %>
-                  <%= link_to(
-                        "#{v.item_type.underscore.humanize} ##{v.item_id}",
-                        url_for(controller: "admin/#{v.item.class.to_s.underscore.pluralize}", action: 'show', id: v.item_id)
-                      )
-                  %>
-                <% else %>
-                  <%= "#{v.item_type.underscore.humanize} ##{v.item_id}" %>
-                <% end %>
-              </td>
-              <td><%= link_to(v.event,admin_version_path(v)) %></td>
-              <td><%= v.tag %></td>
-              <td><%= time_ago_in_words(v.created_at) %> ago</td>
-              <td>
-                <% if user = User.where(id: v.whodunnit).first %>
-                  <%= link_to(user.title, admin_user_path(v.whodunnit)) %>
-                <% end %>
-              </td>
-              <td><%= link_to('Details',admin_version_path(v)) %></td>
-            </tr>
+<table>
+  <thead>
+    <tr>
+      <th>Record</th>
+      <th>Action</th>
+      <th>Reason</th>
+      <th>Date</th>
+      <th>User</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Version.order('id desc').limit(20).each do |v| %>
+      <tr>
+        <td>
+          <% if v.item %>
+            <%= link_to(
+                  "#{v.item_type.underscore.humanize} ##{v.item_id}",
+                  url_for(controller: "admin/#{v.item.class.to_s.underscore.pluralize}", action: 'show', id: v.item_id)
+                )
+            %>
+          <% else %>
+            <%= "#{v.item_type.underscore.humanize} ##{v.item_id}" %>
           <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-<% end %>
+        </td>
+        <td><%= link_to(v.event,admin_version_path(v)) %></td>
+        <td><%= v.tag %></td>
+        <td><%= time_ago_in_words(v.created_at) %> ago</td>
+        <td>
+          <% if user = User.where(id: v.whodunnit).first %>
+            <%= link_to(user.title, admin_user_path(v.whodunnit)) %>
+          <% end %>
+        </td>
+        <td><%= link_to('Details',admin_version_path(v)) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

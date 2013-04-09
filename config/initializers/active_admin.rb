@@ -211,6 +211,7 @@ ActiveAdmin.setup do |config|
 
 end
 
+
 module ActiveAdmin
   module Views
 
@@ -227,6 +228,14 @@ module ActiveAdmin
         row attribute, &BOOL_LAMBDA.curry[attribute]
       end
     end
+
+    class Footer < Component
+      def build
+        super id: "footer"
+        para "Worldmathaba Admin -- #{Time.now.to_s(:long)}"
+      end
+    end
+
   end
 end
 

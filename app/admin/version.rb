@@ -2,7 +2,7 @@ ActiveAdmin.register Version do
   config.clear_sidebar_sections!
   actions :index, :show
   menu priority: 99, label: "History"
-  index title: "Item Versions" do
+  index title: "Database History" do
     id_column
     column "Record" do |v| 
       if v.item

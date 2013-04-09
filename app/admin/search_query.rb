@@ -2,6 +2,7 @@ ActiveAdmin.register SearchQuery do
   config.clear_sidebar_sections!
   config.sort_order = "id_desc"
   menu parent: "Items", label: 'Site Searches', priority: 10
+  actions :index, :show
 
   index title: "Searches" do
     column "Search Term", sortable: :keyword do |t|
