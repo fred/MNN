@@ -18,27 +18,19 @@ ActiveAdmin.register_page "Dashboard" do
 
     if authorized?(:read, Comment)
       panel "Latest Comments (updated every 5 minutes)" do
-        cache_expiring("aa/comments_stats", 5.minutes) do
-          render 'comments_stats'
-        end
+        render 'comments_stats'
       end
       panel "Pending Comments (updated every 5 minutes)" do
-        cache_expiring("aa/pending_comments", 5.minutes) do
-          render 'pending_comments'
-        end
+        render 'pending_comments'
       end
     end
 
     if current_ability.can?(:read, User)
       panel "Recently Logged in Users (updated every 5 minutes)" do
-        cache_expiring("aa/logged_users", 5.minutes) do
           render 'logged_users'
-        end
       end
       panel "Recently Registered Users (updated every 5 minutes)" do
-        cache_expiring("aa/registered_users", 5.minutes) do
           render 'registered_users'
-        end
       end
     end
 

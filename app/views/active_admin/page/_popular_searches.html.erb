@@ -1,18 +1,20 @@
-<table border="0" cellspacing="0" cellpadding="0">
-  <thead>
-    <tr>
-      <th>Search Keyword</th>
-      <th>Total Hits</th>
-      <th>Language</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% SearchQuery.popular.limit(20).each do |t| %>
+<% cache_expiring("aa/popular_searches", 10.minutes) do %>
+  <table border="0" cellspacing="0" cellpadding="0">
+    <thead>
       <tr>
-        <td><%= link_to t.keyword, search_path(q: t.keyword) %></td>
-        <td><%= t.count %></td>
-        <td><%= t.locale %></td>
+        <th>Search Keyword</th>
+        <th>Total Hits</th>
+        <th>Language</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% SearchQuery.popular.limit(20).each do |t| %>
+        <tr>
+          <td><%= link_to t.keyword, search_path(q: t.keyword) %></td>
+          <td><%= t.count %></td>
+          <td><%= t.locale %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>

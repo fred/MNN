@@ -20,9 +20,7 @@ ActiveAdmin.register_page "Recent Page Views" do
   content title: "Recent Page Views" do
     if authorized?(:read, PageView)
       panel "Recent Page Views (updated every 5 minutes)" do
-        cache_expiring("aa/page_views", 5.minutes) do
-          render "page_views"
-        end
+        render "page_views"
       end
     end
   end
@@ -50,14 +48,10 @@ ActiveAdmin.register_page "User Stats" do
   content title: "User Stats" do
     if authorized?(:read, User)
       panel "Recently Logged in Users (updated every 5 minutes)" do
-        cache_expiring("aa/logged_users", 5.minutes) do
           render 'logged_users'
-        end
       end
       panel "Recently Registered Users (updated every 5 minutes)" do
-        cache_expiring("aa/registered_users", 5.minutes) do
           render 'registered_users'
-        end
       end
     end
   end
@@ -71,9 +65,7 @@ ActiveAdmin.register_page "Popular Searches" do
   content title: "Popular Searches" do
     if authorized?(:read, SearchQuery)
       panel "Popular Searches (updated every 10 minutes)" do
-        cache_expiring("aa/popular_searches", 10.minutes) do
-          render 'popular_searches'
-        end
+        render 'popular_searches'
       end
     end
   end
@@ -85,9 +77,7 @@ ActiveAdmin.register_page "DB Stats" do
     link_to "Website", "/"
   end
   content title: "Database Statistics" do
-    cache_expiring("aa/db_stats", 10.minutes) do
-      render "db_stats"
-    end
+    render "db_stats"
   end
 end
 
@@ -97,8 +87,6 @@ ActiveAdmin.register_page "Charts" do
     link_to "Website", "/"
   end
   content do
-    cache_expiring("aa/charts", 12.hours) do
-      render "charts"
-    end
+    render "charts"
   end
 end

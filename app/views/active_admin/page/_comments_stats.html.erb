@@ -1,30 +1,34 @@
-<%= table_for(Comment.recent(10)) do |t|
-  t.data do
-    t.cell(:user) do |t|
-      if t.owner
-        link_to t.name, admin_user_path(t.owner), class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
-      else
-        t.owner_id
+<% cache_expiring("aa/comments_stats", 5.minutes) do %>
+
+  <%= table_for(Comment.recent(10)) do |t|
+    t.data do
+      t.cell(:user) do |t|
+        if t.owner
+          link_to t.name, admin_user_path(t.owner), class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
+        else
+          t.owner_id
+        end
+      end
+      t.cell(:body, heading: "Comment") do |t|
+        link_to(sanitize(t.body, tags: '', attributes: '').truncate(80),
+          admin_comment_path(t),
+          class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
+        )
+      end
+      t.cell(:item, heading: "Article") do |t|
+        if t.commentable && t.commentable_type == "Item"
+          link_to t.commentable.title.truncate(34), admin_item_path(t.commentable), title: t.commentable.title
+        elsif t.commentable && t.commentable_type == "Comment"
+          link_to t.commentable.commentable.title.truncate(30), admin_item_path(t.commentable.commentable)
+        end
+      end
+      t.cell(:created_at, heading: "Time") do |t|
+        "#{time_ago_in_words(t.created_at)} ago"
+      end
+      t.cell(:user_ip, heading: "IP") do |t|
+        link_to(t.user_ip, "http://www.geoiptool.com/en/?IP=#{t.user_ip}", target: "_blank")
       end
     end
-    t.cell(:body, heading: "Comment") do |t|
-      link_to(sanitize(t.body, tags: '', attributes: '').truncate(80),
-        admin_comment_path(t),
-        class: "suspicious_#{t.suspicious?} spam_#{t.marked_spam?}"
-      )
-    end
-    t.cell(:item, heading: "Article") do |t|
-      if t.commentable && t.commentable_type == "Item"
-        link_to t.commentable.title.truncate(34), admin_item_path(t.commentable), title: t.commentable.title
-      elsif t.commentable && t.commentable_type == "Comment"
-        link_to t.commentable.commentable.title.truncate(30), admin_item_path(t.commentable.commentable)
-      end
-    end
-    t.cell(:created_at, heading: "Time") do |t|
-      "#{time_ago_in_words(t.created_at)} ago"
-    end
-    t.cell(:user_ip, heading: "IP") do |t|
-      link_to(t.user_ip, "http://www.geoiptool.com/en/?IP=#{t.user_ip}", target: "_blank")
-    end
-  end
-end %>
+  end %>
+
+<% end %>

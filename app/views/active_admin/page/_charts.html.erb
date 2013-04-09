@@ -1,3 +1,4 @@
+<% cache_expiring("aa/charts", 12.hours) do %>
 <div class="chart-unit" id="top_commenters"></div>
 <div class="chart-unit" id="karma_comments"></div>
 <div class="chart-unit" id="top_users_karma"></div>
@@ -10,3 +11,4 @@
 <%= high_chart("top_users_karma", SiteCharts.top_users_karma) %>
 <%= high_chart("top_item_users", SiteCharts.top_item_users) %>
 <%= high_chart("top_original_item_users", SiteCharts.top_original_item_users) %>
+<% end %>
