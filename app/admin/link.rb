@@ -1,10 +1,6 @@
 ActiveAdmin.register Link do
   config.clear_sidebar_sections!
-  controller.authorize_resource
-  config.comments = false
-  menu parent: "More", priority: 62, label: "Site Links", if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:manage, Link)
-  }
+  menu parent: "More", priority: 62, label: "Site Links"
 
   index title: "Links" do
     id_column

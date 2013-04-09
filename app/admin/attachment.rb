@@ -1,15 +1,9 @@
-# Images and File
 ActiveAdmin.register Attachment do
-
   filter :title
   filter :user_id
   filter :parent_id
-  controller.authorize_resource
   config.sort_order = "id_desc"
-
-  menu parent: "Items", label: 'Images', priority: 2, if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:read, Attachment)
-  }
+  menu parent: "Items", label: 'Images', priority: 2
 
   index title: "Images", as: :block do |attachment|
     div for: attachment, class: "grid_images" do
@@ -53,7 +47,7 @@ ActiveAdmin.register Attachment do
       Attachment.includes(:attachable)
     end
     rescue_from CanCan::AccessDenied do |exception|
-      redirect_to admin_access_denied_path, alert: exception.message
+      redirect_to admin_authorization_denied_path, alert: exception.message
     end
   end
 end

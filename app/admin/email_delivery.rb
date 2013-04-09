@@ -1,11 +1,6 @@
-# Comments
 ActiveAdmin.register EmailDelivery do
   config.clear_sidebar_sections!
-  controller.authorize_resource
-  config.comments = false
-  menu parent: "Items", priority: 14, label: "Email Delivery", if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:manage, EmailDelivery)
-  }
+  menu parent: "Items", priority: 14, label: "Email Delivery"
   actions  :index, :destroy
   index do
     column :id

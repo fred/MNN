@@ -1,3 +1,14 @@
+## April 09, 2013
+
+  - Cleaned Admin interface, switched to official active_admin 0.6.0
+  - Remove custom cancan code, using ActiveAdmin built in Authorization system
+  - Switched to official active_admin git repo instead of my fork
+  - Removed Anytime timepicker, now using jquery-timepicker
+  - Using jquery-ui-rails (v1.10.2)
+  - Update jquery.validate.js
+  - Update wordcounter.js
+  - Upgraded many gems
+
 ## March 20-29, 2013
 
   - Upgraded to jQuery 1.9.1
@@ -22,7 +33,6 @@
   - HTML5 validation
   - Improved cache on tags/index page
   - downgraded Koala
-  - 
 
 ## February 3, 2013
   

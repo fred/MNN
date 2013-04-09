@@ -1,14 +1,9 @@
-# USER
 ActiveAdmin.register User do
   config.clear_sidebar_sections!
   before_filter only: :index do
     @per_page = 12
   end
-  controller.authorize_resource
-  config.comments = false
-  menu parent: "Members", priority: 24, label: "Users", if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:manage, User)
-  }
+  menu parent: "Members", priority: 24, label: "Users"
   form partial: "form"
 
   show title: :title do
@@ -133,7 +128,7 @@ ActiveAdmin.register User do
       User.includes(:subscriptions, :roles)
     end
     rescue_from CanCan::AccessDenied do |exception|
-      redirect_to admin_access_denied_path, alert: exception.message
+      redirect_to admin_authorization_denied_path, alert: exception.message
     end
   end
 end

@@ -1,11 +1,7 @@
 ActiveAdmin.register Version do
   config.clear_sidebar_sections!
-  controller.authorize_resource
   actions :index, :show
-  menu priority: 99, label: "History", if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:read, Version)
-  }
-  config.comments = false
+  menu priority: 99, label: "History"
   index title: "Item Versions" do
     id_column
     column "Record" do |v| 

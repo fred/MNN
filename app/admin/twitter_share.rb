@@ -1,11 +1,6 @@
-# Comments
 ActiveAdmin.register TwitterShare do
   config.clear_sidebar_sections!
-  controller.authorize_resource
-  config.comments = false
-  menu parent: "Items", priority: 12, label: "Twitter Shares", if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:manage, TwitterShare)
-  }
+  menu parent: "Items", priority: 12, label: "Twitter Shares"
   actions  :index, :destroy
   index title: "Twitter Shares" do
     column :item

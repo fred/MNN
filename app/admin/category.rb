@@ -1,11 +1,6 @@
-# Categories
 ActiveAdmin.register Category do
-  controller.authorize_resource
-  config.comments = false
   config.sort_order = "priority_asc"
-  menu parent: "More", priority: 80, label: "Categories", if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:manage, Category)
-  }
+  menu parent: "More", priority: 80, label: "Categories"
   index title: "Categories" do
     id_column
     column :title
@@ -32,7 +27,7 @@ ActiveAdmin.register Category do
   end
   controller do
     rescue_from CanCan::AccessDenied do |exception|
-      redirect_to admin_access_denied_path, alert: exception.message
+      redirect_to admin_authorization_denied_path, alert: exception.message
     end
   end
 end

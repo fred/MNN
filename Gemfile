@@ -61,6 +61,7 @@ gem 'rakismet'
 gem 'sass', '~> 3.2'
 gem 'sass-rails'
 gem 'jquery-rails', '~> 2.2.1'
+gem 'jquery-ui-rails'
 
 gem 'slim', "~> 1.3.0"
 gem 'sinatra'
@@ -138,7 +139,8 @@ gem 'gettext_i18n_rails'
 
 # Active Admin, loaded at end
 gem 'meta_search'
-gem 'activeadmin', git: 'git://github.com/fred/active_admin.git', branch: 'no-override'
+# gem 'activeadmin', git: 'git://github.com/fred/active_admin.git', branch: 'no-override'
+gem 'activeadmin', git: 'git://github.com/gregbell/active_admin.git'
 
 # Twitter Bootstrap for Rails 3 Asset Pipeline
 gem 'less', '~> 2.2.2'

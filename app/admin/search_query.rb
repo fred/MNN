@@ -1,12 +1,7 @@
 ActiveAdmin.register SearchQuery do
   config.clear_sidebar_sections!
-  controller.authorize_resource
   config.sort_order = "id_desc"
-  menu parent: "Items", label: 'Site Searches', priority: 10, if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:read, SearchQuery)
-  }
-  actions :index, :show
-  config.comments = false
+  menu parent: "Items", label: 'Site Searches', priority: 10
 
   index title: "Searches" do
     column "Search Term", sortable: :keyword do |t|

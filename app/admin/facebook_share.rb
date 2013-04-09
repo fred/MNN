@@ -1,11 +1,6 @@
-# Comments
 ActiveAdmin.register FacebookShare do
   config.clear_sidebar_sections!
-  controller.authorize_resource
-  config.comments = false
-  menu parent: "Items", priority: 13, label: "Facebook Shares", if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:manage, FacebookShare)
-  }
+  menu parent: "Items", priority: 13, label: "Facebook Shares"
   actions  :index, :destroy
   index title: "Facebook Shares" do
     column :item

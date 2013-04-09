@@ -1,11 +1,60 @@
-//= require anytime
 //= require loading
 //= require box
-//= require easytooltip
 //= require admin_grid
+//= require timepicker
+//= require jquery.ui.core
+//= require jquery.ui.theme
+//= require jquery.ui.datepicker
+//= require jquery.ui.slider
 
 @import "active_admin/mixins";
-@import "active_admin/base";
+
+
+/* Active Admin CSS */
+// Reset Away!
+body {
+  @include global-reset;
+}
+
+body {
+  @import "active_admin/typography";
+  @import "active_admin/header";
+  @import "active_admin/forms";
+  @import "active_admin/components/comments";
+  @import "active_admin/components/flash_messages";
+  @import "active_admin/components/popovers";
+  @import "active_admin/components/tables";
+  @import "active_admin/components/batch_actions";
+  @import "active_admin/components/blank_slates";
+  @import "active_admin/components/breadcrumbs";
+  @import "active_admin/components/dropdown_menu";
+  @import "active_admin/components/buttons";
+  @import "active_admin/components/grid";
+  @import "active_admin/components/links";
+  @import "active_admin/components/pagination";
+  @import "active_admin/components/panels";
+  @import "active_admin/components/columns";
+  @import "active_admin/components/scopes";
+  @import "active_admin/components/status_tags";
+  @import "active_admin/components/table_tools";
+  @import "active_admin/components/index_list";
+  @import "active_admin/pages/dashboard";
+  @import "active_admin/pages/logged_out";
+  @import "active_admin/structure/footer";
+  @import "active_admin/structure/main_structure";
+  @import "active_admin/structure/title_bar";
+}
+
+body {
+  @include sans-family;
+  line-height: 150%;
+  font-size: 72%;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+  color: $text-color;
+}
+
 
 body {
   font-size: 90%;
@@ -233,15 +282,6 @@ nav.pagination {
 #index_footer {
   font-size: 1em;
 }
-
-
-/* css for timepicker */
-.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
-.ui-timepicker-div dl { text-align: left; }
-.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
-.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
-.ui-timepicker-div td { font-size: 90%; }
-.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
 
 
 table.dashboard .dashboard_section > div {

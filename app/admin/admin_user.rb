@@ -1,14 +1,9 @@
-# USER
 ActiveAdmin.register AdminUser do
   config.clear_sidebar_sections!
   before_filter only: :index do
     @per_page = 12
   end
-  controller.authorize_resource
-  config.comments = false
-  menu parent: "Members", priority: 24, label: "Admin Users", if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:manage, AdminUser)
-  }
+  menu parent: "Members", priority: 24, label: "Admin Users"
   form partial: "form"
 
   show title: :title do

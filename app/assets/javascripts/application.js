@@ -7,15 +7,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery/migrate.min
+//= require jquery/jquery.validate
+//= require jquery.complexify
+//
 //= require twitter/bootstrap
 //= require easyTooltip
 //= require fancybox/fancybox
 //= require modernizr
 //= require tinymce-jquery
-//= require jquery/jquery.validate.js
 //= require font_resizer
 //= require effects
 //= require tooltip
-//= require jquery.complexify
 //= require registration
 //= require touch-devices

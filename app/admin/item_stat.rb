@@ -1,13 +1,9 @@
 ActiveAdmin.register ItemStat do
   config.clear_sidebar_sections!
-  controller.authorize_resource 
   config.per_page = 50 
   config.sort_order = "updated_at_desc"
-  menu parent: "Items", label: 'Item Stats', priority: 3, if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:read, ItemStat)
-  }
+  menu parent: "Items", label: 'Item Stats', priority: 3
   actions :index
-  config.comments = false
   index title: "Item Statistics" do
     column "", sortable: :item_id do |t|
       t.item_id
@@ -28,7 +24,7 @@ ActiveAdmin.register ItemStat do
        ItemStat.includes(:item)
     end
     rescue_from CanCan::AccessDenied do |exception|
-      redirect_to admin_access_denied_path, alert: exception.message
+      redirect_to admin_authorization_denied_path, alert: exception.message
     end
   end
 end

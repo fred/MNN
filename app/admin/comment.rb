@@ -1,11 +1,6 @@
-# Comments
 ActiveAdmin.register Comment do
   config.clear_sidebar_sections!
-  controller.authorize_resource
-  config.comments = false
-  menu priority: 8, label: "Comments", if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:manage, Comment)
-  }
+  menu priority: 8, label: "Comments"
 
   index title: "Comments" do
     selectable_column
@@ -90,7 +85,7 @@ ActiveAdmin.register Comment do
       Comment.includes(:owner)
     end
     rescue_from CanCan::AccessDenied do |exception|
-      redirect_to admin_access_denied_path, alert: exception.message
+      redirect_to admin_authorization_denied_path, alert: exception.message
     end
   end
   

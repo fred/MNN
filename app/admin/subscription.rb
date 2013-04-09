@@ -1,11 +1,6 @@
-# Item Subscription
 ActiveAdmin.register Subscription do
   config.sort_order = 'id_desc'
-  controller.authorize_resource
-  config.comments = false
-  menu parent: "Members", priority: 55, label: "Email Subscriptions", if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:manage, Subscription)
-  }
+  menu parent: "Members", priority: 55, label: "Email Subscriptions"
 
   # Filters
   filter :user

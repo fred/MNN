@@ -1,9 +1,8 @@
 ActiveAdmin.register Item do
-  controller.authorize_resource
   config.sort_order = "id_desc"
   config.per_page = 12
   action_item only: [:show, :edit] do
-    link_to('View on site', item_path(item), 'data-no-turbolink' => true)
+    link_to('View on site', item_path(item))
   end
 
   scope :published
@@ -14,7 +13,6 @@ ActiveAdmin.register Item do
   scope :with_comments
   scope :queued
   scope :from_youtube
-
 
   # Filters
   filter :category
@@ -32,9 +30,7 @@ ActiveAdmin.register Item do
   filter :updated_at
   filter :published_at
 
-  menu priority: 1, parent: 'Items', label: 'All Items', if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:read, Item)
-  }
+  menu priority: 1, parent: 'Items', label: 'All Items'
   sidebar :per_page, partial: "per_page", only: :index
 
   before_filter only: :index do
@@ -158,9 +154,9 @@ ActiveAdmin.register Item do
       authorize! :edit, @item
 
       if @item.published_at
-        @published_at = @item.published_at.to_s
+        @published_at = @item.published_at.strftime "%Y-%m-%d %H:%M:%S %z"
       else
-        @published_at = Time.zone.now
+        @published_at = Time.now.to_s
       end
     end
 
@@ -228,7 +224,7 @@ ActiveAdmin.register Item do
       Item.includes(:language, :attachments, :tags, :user, :category, :item_stat).reduced
     end
     rescue_from CanCan::AccessDenied do |exception|
-      redirect_to admin_access_denied_path, alert: exception.message
+      redirect_to admin_authorization_denied_path, alert: exception.message
     end
   end
 end

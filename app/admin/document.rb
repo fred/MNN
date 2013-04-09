@@ -1,11 +1,7 @@
-# Images and File
 ActiveAdmin.register Document do
   config.clear_sidebar_sections!
-  controller.authorize_resource
   config.sort_order = "id_desc"
-  menu parent: "Items", priority: 20, if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:read, Document)
-  }
+  menu parent: "Items", priority: 20
 
   index title: "Documents" do
     id_column

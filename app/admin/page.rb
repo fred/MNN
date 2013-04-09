@@ -1,12 +1,7 @@
 ActiveAdmin.register Page do
   config.clear_sidebar_sections!
-  controller.authorize_resource
-
-  menu parent: "More", priority: 60, label: "Static Pages", if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:manage, Page)
-  }
+  menu parent: "More", priority: 60, label: "Static Pages"
   config.sort_order = "updated_at_desc"
-  config.comments = false
 
   action_item only: [:show, :edit] do
     link_to('View on site', page_path(page), 'data-no-turbolink' => true)
@@ -49,7 +44,7 @@ ActiveAdmin.register Page do
       Page.includes(:user, :language)
     end
     rescue_from CanCan::AccessDenied do |exception|
-      redirect_to admin_access_denied_path, alert: exception.message
+      redirect_to admin_authorization_denied_path, alert: exception.message
     end
   end
 end

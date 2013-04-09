@@ -1,19 +1,11 @@
 ActiveAdmin.register PageView do
-  controller.authorize_resource
   config.sort_order = "id_desc"
   config.per_page = 50
-  menu parent: "Items", label: 'All Page Views', priority: 8, if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:read, PageView)
-  }
+  menu parent: "Items", label: 'All Page Views', priority: 8
   actions :index, :show
-  config.comments = false
-
   filter :locale, label: "Language"
   filter :created_at, label: "Date"
   sidebar :per_page, partial: "per_page", only: :index
-
-  # scope :by_users
-  # scope :by_guests
 
   index title: "Page Views" do
     column "", sortable: false do |t|

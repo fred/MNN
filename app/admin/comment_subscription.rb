@@ -1,12 +1,6 @@
-# Comments Subscription
 ActiveAdmin.register CommentSubscription do
   config.sort_order = 'item_id_desc'
-  controller.authorize_resource
-  config.comments = false
-  menu parent: "Members", priority: 56, label: "Comment Subscriptions", if: lambda{|tabs_renderer|
-    controller.current_ability.can?(:manage, CommentSubscription)
-  }
-
+  menu parent: "Members", priority: 56, label: "Comment Subscriptions"
   # Filters
   filter :user
   filter :email
