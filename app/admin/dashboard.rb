@@ -1,6 +1,12 @@
 ActiveAdmin.register_page "Dashboard" do
-
   menu priority: 1, label: "Dashboard"
+
+  action_item if: proc { authorized?(:create, Item) } do
+    link_to "New Item", new_admin_item_path
+  end
+  action_item do
+    link_to "Website", "/"
+  end
 
   content title: "Admin Dashboard" do
 
@@ -27,10 +33,10 @@ ActiveAdmin.register_page "Dashboard" do
 
     if current_ability.can?(:read, User)
       panel "Recently Logged in Users (updated every 5 minutes)" do
-          render 'logged_users'
+        render 'logged_users'
       end
       panel "Recently Registered Users (updated every 5 minutes)" do
-          render 'registered_users'
+        render 'registered_users'
       end
     end
 

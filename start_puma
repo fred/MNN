@@ -1,1 +1,4 @@
-puma -t 4:8 -b unix:///Users/fred/rails/mathaba/tmp/pids/unicorn.sock
+kill -QUIT `cat tmp/pids/unicorn.pid`
+rm -rf tmp/pids/unicorn.sock
+bundle exec puma -q -t 4:8 -b unix:///Users/fred/rails/mathaba/tmp/pids/unicorn.sock
+

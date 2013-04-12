@@ -12,6 +12,21 @@ class Ability
       can :manage, Comment
     end
 
+    can :read, ActiveAdmin::Page, name: "Dashboard"
+
+    if user.has_any_role?(:editor, :author, :reader, :basic)
+      can :read, ActiveAdmin::Page, name: "Charts"
+      can :read, ActiveAdmin::Page, name: "PopularSearches"
+    end
+
+    if user.has_any_role?(:editor, :author, :reader)
+      can :read, ActiveAdmin::Page, name: "DatabaseHistory"
+    end
+
+    if user.has_any_role?(:editor, :author, :security)
+      can :read, ActiveAdmin::Page, name: "DbStats"
+    end
+
     if user.has_role? :editor
       can :manage, [ItemStat,Version,Item,Tag,Category,Page,Language,
         Attachment,CommentSubscription,Subscription,EmailDelivery,

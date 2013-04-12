@@ -12,7 +12,7 @@ ActiveAdmin.register_page "Drafts" do
   end
 end
 
-ActiveAdmin.register_page "Recent Page Views" do
+ActiveAdmin.register_page "RecentPageViews" do
   menu priority: 2, label: "Recent Page Views", parent: "Dashboard"
   action_item do
     link_to "Website", "/"
@@ -26,7 +26,7 @@ ActiveAdmin.register_page "Recent Page Views" do
   end
 end
 
-ActiveAdmin.register_page "Database History" do
+ActiveAdmin.register_page "DatabaseHistory" do
   menu priority: 2, label: "Database History", parent: "Dashboard"
   action_item do
     link_to "Website", "/"
@@ -40,7 +40,7 @@ ActiveAdmin.register_page "Database History" do
   end
 end
 
-ActiveAdmin.register_page "User Stats" do
+ActiveAdmin.register_page "UserStats" do
   menu priority: 9, label: "User Stats", parent: "Dashboard"
   action_item do
     link_to "Website", "/"
@@ -48,16 +48,16 @@ ActiveAdmin.register_page "User Stats" do
   content title: "User Stats" do
     if authorized?(:read, User)
       panel "Recently Logged in Users (updated every 5 minutes)" do
-          render 'logged_users'
+        render 'logged_users'
       end
       panel "Recently Registered Users (updated every 5 minutes)" do
-          render 'registered_users'
+        render 'registered_users'
       end
     end
   end
 end
 
-ActiveAdmin.register_page "Popular Searches" do
+ActiveAdmin.register_page "PopularSearches" do
   menu priority: 2, label: "Popular Searches", parent: "Dashboard"
   action_item do
     link_to "Website", "/"
@@ -71,7 +71,7 @@ ActiveAdmin.register_page "Popular Searches" do
   end
 end
 
-ActiveAdmin.register_page "DB Stats" do
+ActiveAdmin.register_page "DbStats" do
   menu priority: 2, label: "DB Stats", parent: "Dashboard"
   action_item do
     link_to "Website", "/"

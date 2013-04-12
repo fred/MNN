@@ -48,358 +48,360 @@ body {
 body {
   @include sans-family;
   line-height: 150%;
-  font-size: 72%;
+  font-size: 90%;
   background: #fff;
   margin: 0;
   padding: 0;
   color: $text-color;
-}
+
+  form fieldset {
+    padding: 10px 0 15px;
+  }
+
+  #title_bar h2 {
+    font-size: 1.6em;
+    line-height: 1.1em;
+  }
+
+  #header h1 {
+    margin-right: 0px;
+  }
+
+  #header {
+    padding: 6px 0px 2px 0px;
+  }
+
+  #footer {
+    font-size: 0.9em;
+    padding: 0 0 0 16px;
+  }
+
+  #title_bar #titlebar_right {
+    text-align: center;
+  }
+
+  #active_admin_content {
+    padding: 5px 10px;
+  }
+
+  form input[type="select"],
+  form input[type="text"],
+  form input[type="password"],
+  form input[type="email"],
+  form input[type="url"],
+  form input[type="tel"],
+  form textarea {
+    font-size: 16px;
+    padding: 6px 8px;
+  }
+  fieldset legend.label label, 
+  form label.label {
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 24px;
+  }
+  .sidebar_sction input[type="text"],
+  .sidebar_section input[type="password"],
+  .sidebar_section input[type="email"],
+  .sidebar_section input[type="url"],
+  .sidebar_section input[type="tel"],
+  .sidebar_section textarea {
+    font-size: 13px;
+    padding: 3px 6px;
+  }
+  .sidebar_section form label.label,
+  .panel_contents form label.label {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .sidebar_section > div {
+    padding: 3px 10px 10px 10px;
+  }
+
+  ol.choices-group {
+    height: 360px;
+    overflow: scroll;
+    padding-right: 20px;
+    box-shadow: 0px 0px 8px #CCC;
+    width: auto;
+    padding-right: 20px;
+    min-width: 150px;
+  }
+  form fieldset.choices {
+    margin-bottom: 0px;
+  }
+
+  li.boolean label,
+  li.input label,
+  li.optional label,
+  form fieldset label, 
+  form fieldset.choices li.choice label {
+    font-size: 14px;
+    font-weight: normal;
+    padding-left: 2px;
+  }
+  li.choice input[type="checkbox"] {
+    font-size: 14px;
+    margin-right: 6px;
+  }
+
+  form input[type="submit"] {
+    font-size: 14px;
+  }
+  form fieldset legend span {
+    font-size: 15px;
+  }
+  form fieldset > ol > li fieldset legend {
+    padding-top: 6px;
+    padding-left: 2px;
+  }
+  form fieldset img,
+  form fieldset p,
+  form fieldset h2,
+  form fieldset li,
+  form fieldset h3,
+  form fieldset h4 {
+    padding-left: 10px;
+  }
+  form hr {
+    color:#fff;
+    border-color:#fff;
+  }
+
+  form #googlemap {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 2%;
+    padding: 2px;
+    border: 1px solid #fff;
+    box-shadow: 0px 0px 6px #999;
+    border-radius: 6px;
+  }
+
+  form input.full_sized {
+    width: 176px;
+  }
+  form input.auto_sized {
+    width: auto;
+  }
+
+  form div.small_box {
+    float: left;
+    margin: 10px 0 10px 20px;
+    padding: 10px;
+    border: 1px solid #fff;
+    box-shadow: 0px 0px 6px #999;
+    width: 200px;
+  }
+
+  form div.small_box label {
+    padding-right: 6px;
+  }
+  form div.medium_box {
+    float:left;
+    min-width: 200px;
+    margin: 10px 0 10px 20px;
+    padding: 10px;
+    border: 1px solid #fff;
+    box-shadow: 0px 0px 6px #999;
+  }
+  form div.medium_box fieldset ol > li {
+    display: block;
+    margin-bottom:5px;
+  }
+  form div.medium_box fieldset ol > li label {
+    display: block;
+    width: 90%;
+    float: left;
+  }
+
+  img.show_listing_img {
+    margin: 9px;
+    box-shadow: 0px 0px 8px #888;
+    padding: none;
+    border: 1px solid #eee;
+  }
+  span.image {
+    float: left;
+    display: block;
+    text-align: center;
+    margin: 10px 10px 0 0;
+    border: 1px solid #DDD;
+    padding-bottom: 4px;
+  }
+  span.image p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .index_as_block {
+    float: left;
+    display: block;
+  }
+  .index_as_block h2,
+  .index_as_block h3,
+  .index_as_block h4,
+  .index_as_block p {
+    margin: 1px 1px 2px 8px;
+    padding: 0px;
+  }
+  .index_as_block .grid_images {
+    float: left;
+    margin-right: 16px;
+    margin-bottom: 8px;
+    width: 254px;
+    height: 364px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  .index_as_block .grid_images img {
+    margin: 6px;
+    box-shadow: 0px 0px 7px #888;
+    padding: none;
+    border: 1px solid #eee;
+  }
+  .index_as_block .grid_images p {
+    line-height: 15px;
+    font-size: 12px;
+    margin: 2px 2px 6px 6px;
+  }
+  .index_as_block a.button {
+    margin-right: 5px;
+    font-size: 12px;
+    padding: 4px 12px;
+  }
+
+  a.featured_true {
+    font-weight: bold;
+  }
+
+  nav.pagination {
+    font-size: 1em;
+  }
+  #index_footer {
+    font-size: 1em;
+  }
 
 
-body {
-  font-size: 90%;
-}
-form fieldset {
-  padding: 10px 0 15px;
-}
+  table.dashboard .dashboard_section > div {
+    padding: 2px 0px 2px 8px;
+  }
 
-#title_bar h2 {
-  font-size: 1.6em;
-  line-height: 1.1em;
-}
+  #item_title_counter,
+  #item_abstract_counter {
+    margin-left: 21%;
+    color: #666;
+    font-style: italic;
+    padding: 1px;
+  }
 
-#header h1 {
-  margin-right: 14px;
-}
+  table.index_table td {
+    padding: 10px 6px;
+  }
 
-#header {
-  padding: 9px 15px;
-}
+  .hidden {
+    display: none;
+  }
 
-#footer {
-  font-size: 0.9em;
-  padding: 0 0 0 16px;
-}
+  form fieldset ol > li label abbr {
+    color: #555;
+    padding-left: 2px;
+  }
 
-#title_bar #titlebar_right {
-  text-align: center;
-}
-
-#active_admin_content {
-  padding: 8px 12px;
-}
-form input[type="select"],
-form input[type="text"],
-form input[type="password"],
-form input[type="email"],
-form input[type="url"],
-form input[type="tel"],
-form textarea {
-  font-size: 16px;
-  padding: 6px 8px;
-}
-fieldset legend.label label, 
-form label.label {
-  font-size: 15px;
-  font-weight: normal;
-  line-height: 24px;
-}
-.sidebar_sction input[type="text"],
-.sidebar_section input[type="password"],
-.sidebar_section input[type="email"],
-.sidebar_section input[type="url"],
-.sidebar_section input[type="tel"],
-.sidebar_section textarea {
-  font-size: 13px;
-  padding: 3px 6px;
-}
-.sidebar_section form label.label,
-.panel_contents form label.label {
-  font-size: 12px;
-  line-height: 20px;
-}
-
-ol.choices-group {
-  height: 360px;
-  overflow: scroll;
-  padding-right: 20px;
-  box-shadow: 0px 0px 8px #CCC;
-  width: auto;
-  padding-right: 20px;
-  min-width: 150px;
-}
-form fieldset.choices {
-  margin-bottom: 0px;
-}
-
-li.boolean label,
-li.input label,
-li.optional label,
-form fieldset label, 
-form fieldset.choices li.choice label {
-  font-size: 14px;
-  font-weight: normal;
-  padding-left: 2px;
-}
-li.choice input[type="checkbox"] {
-  font-size: 14px;
-  margin-right: 6px;
-}
-
-form input[type="submit"] {
-  font-size: 14px;
-}
-form fieldset legend span {
-  font-size: 15px;
-}
-form fieldset > ol > li fieldset legend {
-  padding-top: 6px;
-  padding-left: 2px;
-}
-form fieldset img,
-form fieldset p,
-form fieldset h2,
-form fieldset li,
-form fieldset h3,
-form fieldset h4 {
-  padding-left: 10px;
-}
-form hr {
-  color:#fff;
-  border-color:#fff;
-}
-
-form #googlemap {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  margin-left: 2%;
-  padding: 2px;
-  border: 1px solid #fff;
-  box-shadow: 0px 0px 6px #999;
-  border-radius: 6px;
-}
-
-form input.full_sized {
-  width: 176px;
-}
-form input.auto_sized {
-  width: auto;
-}
-
-form div.small_box {
-  float: left;
-  margin: 10px 0 10px 20px;
-  padding: 10px;
-  border: 1px solid #fff;
-  box-shadow: 0px 0px 6px #999;
-  width: 200px;
-}
-
-form div.small_box label {
-  padding-right: 6px;
-}
-form div.medium_box {
-  float:left;
-  min-width: 200px;
-  margin: 10px 0 10px 20px;
-  padding: 10px;
-  border: 1px solid #fff;
-  box-shadow: 0px 0px 6px #999;
-}
-form div.medium_box fieldset ol > li {
-  display: block;
-  margin-bottom:5px;
-}
-form div.medium_box fieldset ol > li label {
-  display: block;
-  width: 90%;
-  float: left;
-}
-
-img.show_listing_img {
-  margin: 9px;
-  box-shadow: 0px 0px 8px #888;
-  padding: none;
-  border: 1px solid #eee;
-}
-span.image {
-  float: left;
-  display: block;
-  text-align: center;
-  margin: 10px 10px 0 0;
-  border: 1px solid #DDD;
-  padding-bottom: 4px;
-}
-span.image p {
-  margin: 0;
-  padding: 0;
-}
-
-.index_as_block {
-  float: left;
-  display: block;
-}
-.index_as_block h2,
-.index_as_block h3,
-.index_as_block h4,
-.index_as_block p {
-  margin: 1px 1px 2px 8px;
-  padding: 0px;
-}
-.index_as_block .grid_images {
-  float: left;
-  margin-right: 16px;
-  margin-bottom: 8px;
-  width: 254px;
-  height: 364px;
-  text-align: left;
-  border-bottom: 1px solid #ccc;
-}
-.index_as_block .grid_images img {
-  margin: 6px;
-  box-shadow: 0px 0px 7px #888;
-  padding: none;
-  border: 1px solid #eee;
-}
-.index_as_block .grid_images p {
-  line-height: 15px;
-  font-size: 12px;
-  margin: 2px 2px 6px 6px;
-}
-.index_as_block a.button {
-  margin-right: 5px;
-  font-size: 12px;
-  padding: 4px 12px;
-}
-
-a.featured_true {
-  font-weight: bold;
-}
-
-nav.pagination {
-  font-size: 1em;
-}
-#index_footer {
-  font-size: 1em;
-}
+  img.youtube_mini {
+    max-width: 80px;
+    max-height: 80px;
+  }
 
 
-table.dashboard .dashboard_section > div {
-  padding: 2px 0px 2px 8px;
-}
+  table.index_table tr.even td.status {
+    background: #DDD;
+  }
 
-#item_title_counter,
-#item_abstract_counter {
-  margin-left: 21%;
-  color: #666;
-  font-style: italic;
-  padding: 1px;
-}
+  a.suspicious_true {
+    color: #FF6600;
+  }
+  a.spam_true {
+    color: #ff0000;
+  }
 
-table.index_table td {
-  padding: 10px 6px;
-}
+  .red {
+    color: #ff0000;
+  }
+  .green {
+    color: #006400;
+  }
+  .bold {
+    font-weight: bold;
+  }
 
-.hidden {
-  display: none;
-}
+  form fieldset label.error,
+  li label.error,
+  label.error {
+    color: red !important;
+    font-size: 12px;
+    font-style: italic;
+    width: auto;
+    padding-right: 4px;
+  }
+  form fieldset textarea.error,
+  form fieldset select.error,
+  form fieldset input.error,
+  li textarea.error,
+  li select.error,
+  li input.error,
+  textarea.error
+  select.error
+  input.error {
+    border-color: red !important;
+  }
 
-form fieldset ol > li label abbr {
-  color: #555;
-  padding-left: 2px;
-}
+  #item_existing_attachment_id {
+    padding: 2px;
+    margin-left: 10px;
+    width: 100px;
+  }
 
-img.youtube_mini {
-  max-width: 80px;
-  max-height: 80px;
-}
+  p.inline-hints,
+  form fieldset > ol > li p.inline-hints {
+    font-size: 12px;
+  }
 
+  img.user-avatar-mini {
+    max-width: 80px;
+    max-height: 80px;
+  }
+  img.user-avatar-large {
+    max-width: 160px;
+    max-height: 160px;
+  }
 
-table.index_table tr.even td.status {
-  background: #DDD;
-}
+  div.comment {
+    margin: 8px 2px 16px 2px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0px 0px 3px #ccc
+  }
 
-a.suspicious_true {
-  color: #FF6600;
-}
-a.spam_true {
-  color: #ff0000;
-}
+  p.comment_date {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+    margin: 4px 2px 2px 2px;
+  }
 
-.red {
-  color: #ff0000;
-}
-.green {
-  color: #006400;
-}
-.bold {
-  font-weight: bold;
-}
+  div.chart-unit {
+    margin: 30px 10px 30px 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 4px #ccc;
+    border-radius: 4px;
+    padding: 10px;
+  }
 
-form fieldset label.error,
-li label.error,
-label.error {
-  color: red !important;
-  font-size: 12px;
-  font-style: italic;
-  width: auto;
-  padding-right: 4px;
-}
-form fieldset textarea.error,
-form fieldset select.error,
-form fieldset input.error,
-li textarea.error,
-li select.error,
-li input.error,
-textarea.error
-select.error
-input.error {
-  border-color: red !important;
-}
+  ul.stats li {
+    margin: 1px;
+  }
 
-#item_existing_attachment_id {
-  padding: 2px;
-  margin-left: 10px;
-  width: 100px;
-}
-
-p.inline-hints,
-form fieldset > ol > li p.inline-hints {
-  font-size: 12px;
-}
-
-img.user-avatar-mini {
-  max-width: 80px;
-  max-height: 80px;
-}
-img.user-avatar-large {
-  max-width: 160px;
-  max-height: 160px;
-}
-
-div.comment {
-  margin: 8px 2px 16px 2px;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0px 0px 3px #ccc
-}
-
-p.comment_date {
-  font-size: 12px;
-  color: #666;
-  font-style: italic;
-  margin: 4px 2px 2px 2px;
-}
-
-div.chart-unit {
-  margin: 30px 10px 30px 10px;
-  border: 1px solid #ddd;
-  box-shadow: 0px 0px 4px #ccc;
-  border-radius: 4px;
-  padding: 10px;
-}
-
-ul.stats li {
-  margin: 1px;
 }

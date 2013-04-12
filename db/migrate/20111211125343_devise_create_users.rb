@@ -38,12 +38,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       # Token authenticatable
       t.string :authentication_token
-      
-      
-      
-      
-      
-      
+
+
       # Custom Personal Fields
       t.text    :bio
       t.string  :name
@@ -55,10 +51,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string  :jabber
       t.string  :phone_number
       t.string  :time_zone
-      
       # Karma Fields
       t.integer :ranking
-      
       t.timestamps
     end
     add_index :users, :ranking

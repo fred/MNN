@@ -9,6 +9,12 @@
 
 # See http://www.zonalatina.com/Zldata29.htm for categories found here:
 
+AdminUser.create(
+  :email => 'admin@example.com',
+  :password => 'password',
+  :password_confirmation => 'password'
+)
+
 Category.create([
   { :title => 'Main News', :description => "Main News and Highlights" },
   { :title => 'Opinion', :description => "Opinion, Interviews and Editorial" },

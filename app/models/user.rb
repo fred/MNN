@@ -109,7 +109,7 @@ class User < ActiveRecord::Base
 
   # Send welcome email, except for twitter users
   def send_welcome_email
-    unless (provider.present? && provider.match("twitter"))
+    unless (self.provider.present? && self.provider.match("twitter"))
       if Rails.env.production?
         UserMailer.delay_for(15).welcome_email(self.id)
       else
