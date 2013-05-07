@@ -78,7 +78,7 @@ class Comment < ActiveRecord::Base
   end
 
   def user_is_trusted?
-    if owner.present? && (owner.comments_trusted? or owner.has_any_role?(:admin, :security))
+    if owner.present? && (owner.comments_trusted? or owner.has_any_role?(:admin, :security, :author, :editor))
       true
     else
       false
@@ -90,14 +90,17 @@ class Comment < ActiveRecord::Base
   end
 
   def do_security_check?
-    (Rails.env.production? && !bypass_spam? && !user_is_trusted?) or !approving_user.present?
+    Rails.env.production? && !bypass_spam? && !user_is_trusted?
   end
 
   def check_for_spam
+    Rails.logger.info("  Security: Checking Comment for spam.")
     if Rails.env.production? && do_security_check? && self.spam?
       self.marked_spam = true
       self.approved = false
-      Rails.logger.info("  Security: Comment marked as SPAM")
+      Rails.logger.info("  Security: Comment marked as SPAM.")
+    else
+      Rails.logger.info("  Security: Comment found not to be spam.")
     end
     true
   end
