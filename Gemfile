@@ -67,7 +67,7 @@ gem 'slim', "~> 1.3.0"
 gem 'sinatra'
 gem 'redis'
 gem 'celluloid'
-gem 'sidekiq', "~> 2.8.0"
+gem 'sidekiq'
 
 ### JSON and Twitter
 gem 'multi_json'
@@ -117,7 +117,6 @@ group :development do
   gem 'gettext', "~> 2.2.1", require: false
   gem 'ruby_parser', require: false
   gem 'locale'
-  gem 'guard-rspec'
 end
 
 group :test do
@@ -149,7 +148,7 @@ gem 'twitter-bootstrap-rails'
 
 gem 'sunspot', git: 'git://github.com/sunspot/sunspot.git', ref: 'c768d11731e103a7c1794dc29172fbe8fe8b7115'
 gem 'sunspot_rails', git: 'git://github.com/sunspot/sunspot.git', ref: 'c768d11731e103a7c1794dc29172fbe8fe8b7115'
-gem 'sitemap_generator'
+gem 'sitemap_generator', '~> 3.4'
 gem 'tinymce-rails' , '3.5.8'
 gem 'tinymce-rails-imageupload', '~> 3.5.6.3'
 gem 'simple_captcha', require: 'simple_captcha', git: 'git://github.com/galetahub/simple-captcha.git'

@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: git://github.com/engageis/activerecord-postgres-hstore.git
-  revision: 259458c070ee35b856e142bef208d0074c8af47a
+  revision: 385085f3d661a19e4b38fa3a2630746390cfa131
   specs:
     activerecord-postgres-hstore (0.7.6)
       activerecord (>= 3.1)
@@ -71,7 +71,7 @@ GIT
 
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 416b879a235edb3ce614721b70d483dabda98265
+  revision: 600b5398fed9f6281b296b0fc8b4d3414ac13152
   specs:
     activeadmin (0.6.0)
       arbre (>= 1.0.1)
@@ -88,7 +88,7 @@ GIT
 
 GIT
   remote: git://github.com/michelson/lazy_high_charts.git
-  revision: 13492f23b64651f73a4e469dadf42f8b05819da9
+  revision: ac4b1bb86530efa4b507b38803169e3ec2c7dd4f
   specs:
     lazy_high_charts (1.4.1)
       bundler (>= 1.0)
@@ -109,7 +109,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 68239487bfbb467d1f7e7e33f493257e041a90a8
+  revision: 8218a46adb5d2c360f54d5680966f9d78f5aa4bc
   branch: 3-2-stable
   specs:
     actionmailer (3.2.13)
@@ -162,7 +162,7 @@ GEM
     activerecord-jdbcpostgresql-adapter (1.2.9)
       activerecord-jdbc-adapter (~> 1.2.9)
       jdbc-postgres (>= 9.1, < 9.3)
-    addressable (2.3.3)
+    addressable (2.3.4)
     ansi (1.4.3)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
@@ -170,7 +170,7 @@ GEM
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-java)
     bouncy-castle-java (1.5.0147)
-    bourbon (3.1.2.1)
+    bourbon (3.1.6)
       sass (>= 3.2.0)
       thor
     brakeman (1.9.5)
@@ -186,7 +186,7 @@ GEM
       terminal-table (~> 1.4)
     builder (3.0.4)
     cancan (1.6.9)
-    capistrano (2.14.2)
+    capistrano (2.15.4)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
@@ -203,8 +203,7 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
-    celluloid (0.12.4)
-      facter (>= 1.6.12)
+    celluloid (0.13.0)
       timers (>= 1.0.0)
     coderay (1.0.9)
     coffee-rails (3.2.2)
@@ -217,10 +216,10 @@ GEM
     commonjs (0.2.6)
     connection_pool (1.0.0)
     country-select (1.1.1)
-    cucumber (1.2.5)
+    cucumber (1.3.1)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
-      gherkin (~> 2.11.7)
+      gherkin (~> 2.12.0)
       multi_json (~> 1.3)
     cucumber-rails (1.3.1)
       capybara (>= 1.1.2)
@@ -228,19 +227,19 @@ GEM
       nokogiri (>= 1.5.0)
       rails (~> 3.0)
     database_cleaner (0.9.1)
-    devise (2.2.3)
+    devise (2.2.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
-    diff-lcs (1.2.3)
+    diff-lcs (1.2.4)
+    dotenv (0.7.0)
     erubis (2.7.0)
     exception_notification (2.6.1)
       actionmailer (>= 3.0.4)
-    excon (0.20.1)
+    excon (0.21.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    facter (1.6.18)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.2.1)
@@ -250,7 +249,7 @@ GEM
       multipart-post (~> 1.1)
     fast_gettext (0.7.0)
     fastercsv (1.5.5)
-    ffi (1.7.0-java)
+    ffi (1.8.1-java)
     fog (1.10.1)
       builder
       excon (~> 0.20)
@@ -261,10 +260,11 @@ GEM
       net-ssh (>= 2.1.3)
       nokogiri (~> 1.5.0)
       ruby-hmac
-    foreman (0.62.0)
+    foreman (0.63.0)
+      dotenv (>= 0.7)
       thor (>= 0.13.6)
-    foreman (0.62.0-java)
-      posix-spawn (~> 0.3.6)
+    foreman (0.63.0-java)
+      dotenv (>= 0.7)
       thor (>= 0.13.6)
     formatador (0.2.4)
     formtastic (2.2.1)
@@ -278,25 +278,16 @@ GEM
       locale
     gettext_i18n_rails (0.9.4)
       fast_gettext (>= 0.4.8)
-    gherkin (2.11.8)
+    gherkin (2.12.0)
       multi_json (~> 1.3)
-    gherkin (2.11.8-java)
+    gherkin (2.12.0-java)
       multi_json (~> 1.3)
-    guard (1.7.0)
-      formatador (>= 0.2.4)
-      listen (>= 0.6.0)
-      lumberjack (>= 1.0.2)
-      pry (>= 0.9.10)
-      thor (>= 0.14.6)
-    guard-rspec (2.5.3)
-      guard (>= 1.1)
-      rspec (~> 2.11)
     haml (4.0.2)
       tilt
     has_scope (0.5.1)
     hash-deep-merge (0.1.1)
-    hashie (2.0.3)
-    highline (1.6.16)
+    hashie (2.0.4)
+    highline (1.6.18)
     hike (1.2.2)
     hirb (0.7.1)
     httpauth (0.2.0)
@@ -315,7 +306,7 @@ GEM
     jruby-ehcache (1.3.2)
     jruby-ehcache-rails3 (1.3.2)
       jruby-ehcache
-    jruby-openssl (0.8.7)
+    jruby-openssl (0.8.8)
       bouncy-castle-java (>= 1.5.0147)
     jruby-rack (1.1.13.2)
     json (1.7.7)
@@ -326,20 +317,15 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.0)
-    launchy (2.2.0)
+    launchy (2.3.0)
       addressable (~> 2.3)
-    launchy (2.2.0-java)
-      addressable (~> 2.3)
-      spoon (~> 0.0.1)
     less (2.2.2)
       commonjs (~> 0.2.6)
     less-rails (2.2.6)
       actionpack (>= 3.1)
       less (~> 2.2.0)
     libv8 (3.11.8.17)
-    listen (0.7.3)
     locale (2.0.8)
-    lumberjack (1.0.3)
     mail (2.5.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -351,8 +337,8 @@ GEM
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
     method_source (0.8.1)
-    mime-types (1.22)
-    multi_json (1.7.2)
+    mime-types (1.23)
+    multi_json (1.7.3)
     multipart-post (1.2.0)
     net-scp (1.1.0)
       net-ssh (>= 2.6.5)
@@ -361,7 +347,7 @@ GEM
     net-ssh (2.6.7)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
-    newrelic_rpm (3.6.0.83)
+    newrelic_rpm (3.6.1.88)
     nifty-generators (0.4.6)
     nokogiri (1.5.9)
     nokogiri (1.5.9-java)
@@ -377,7 +363,7 @@ GEM
       rack
     omniauth-facebook (1.4.1)
       omniauth-oauth2 (~> 1.1.0)
-    omniauth-google-oauth2 (0.1.13)
+    omniauth-google-oauth2 (0.1.17)
       omniauth (~> 1.0)
       omniauth-oauth2
     omniauth-oauth (1.0.1)
@@ -395,20 +381,19 @@ GEM
       railties (~> 3.0)
     pg (0.15.1)
     pg-hstore (1.1.7)
-    pg_power (1.3.1)
+    pg_power (1.4.0)
       pg
       rails (~> 3.1)
       rspec-rails
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
-    posix-spawn (0.3.6)
     pr_geohash (1.0.0)
-    pry (0.9.12)
+    pry (0.9.12.1)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
-    pry (0.9.12-java)
+    pry (0.9.12.1-java)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
@@ -426,15 +411,15 @@ GEM
       rack (>= 1.0)
     rails3_libmemcached_store (0.5.1)
       memcached
-    rails_config (0.3.2)
+    rails_config (0.3.3)
       activesupport (>= 3.0)
-    raindrops (0.10.0)
+    raindrops (0.11.0)
     rake (10.0.4)
     rakismet (1.3.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    redis (3.0.3)
-    redis-namespace (1.2.1)
+    redis (3.0.4)
+    redis-namespace (1.3.0)
       redis (~> 3.0.0)
     ref (1.0.4)
     responders (0.9.3)
@@ -452,7 +437,7 @@ GEM
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-instafail (0.2.4)
     rspec-mocks (2.13.1)
-    rspec-rails (2.13.0)
+    rspec-rails (2.13.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
@@ -466,19 +451,19 @@ GEM
       sexp_processor (~> 4.0)
     ruby_parser (3.1.3)
       sexp_processor (~> 4.1)
-    rvm-capistrano (1.2.7)
+    rvm-capistrano (1.3.0)
       capistrano (>= 2.0.0)
-    sass (3.2.7)
+    sass (3.2.8)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
     sexp_processor (4.2.1)
-    sidekiq (2.8.0)
-      celluloid (~> 0.12.0)
-      connection_pool (~> 1.0)
-      multi_json (~> 1)
-      redis (~> 3)
+    sidekiq (2.11.2)
+      celluloid (>= 0.13.0)
+      connection_pool (>= 1.0.0)
+      multi_json
+      redis (>= 3.0)
       redis-namespace
     simple_oauth (0.2.0)
     sinatra (1.3.6)
@@ -491,7 +476,7 @@ GEM
       temple (~> 0.6.3)
       tilt (~> 1.3.3)
     slop (3.4.4)
-    spoon (0.0.3)
+    spoon (0.0.4)
       ffi
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -508,7 +493,7 @@ GEM
       sunspot_rails (>= 1.2.1)
     tabletastic (0.2.3)
       activesupport (~> 3.0)
-    temple (0.6.3)
+    temple (0.6.4)
     terminal-table (1.4.5)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
@@ -595,7 +580,6 @@ DEPENDENCIES
   fuubar
   gettext (~> 2.2.1)
   gettext_i18n_rails
-  guard-rspec
   hirb
   jquery-rails (~> 2.2.1)
   jquery-ui-rails
@@ -645,11 +629,11 @@ DEPENDENCIES
   rvm-capistrano
   sass (~> 3.2)
   sass-rails
-  sidekiq (~> 2.8.0)
+  sidekiq
   simple_captcha!
   simple_oauth
   sinatra
-  sitemap_generator
+  sitemap_generator (~> 3.4)
   slim (~> 1.3.0)
   sql_funk!
   squeel
