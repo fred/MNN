@@ -71,7 +71,7 @@ GIT
 
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 600b5398fed9f6281b296b0fc8b4d3414ac13152
+  revision: 9d6656316929cab7954aed0be0dbe7e91f5d8462
   specs:
     activeadmin (0.6.0)
       arbre (>= 1.0.1)
@@ -109,12 +109,12 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 8218a46adb5d2c360f54d5680966f9d78f5aa4bc
+  revision: 0d8dbd131b551051ce35379093832fa12fb0cf10
   branch: 3-2-stable
   specs:
     actionmailer (3.2.13)
       actionpack (= 3.2.13)
-      mail (~> 2.5.3)
+      mail (~> 2.5.4)
     actionpack (3.2.13)
       activemodel (= 3.2.13)
       activesupport (= 3.2.13)
@@ -185,7 +185,7 @@ GEM
       slim (~> 1.3.6)
       terminal-table (~> 1.4)
     builder (3.0.4)
-    cancan (1.6.9)
+    cancan (1.6.10)
     capistrano (2.15.4)
       highline
       net-scp (>= 1.0.0)
@@ -203,7 +203,7 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
-    celluloid (0.13.0)
+    celluloid (0.14.0)
       timers (>= 1.0.0)
     coderay (1.0.9)
     coffee-rails (3.2.2)
@@ -226,7 +226,7 @@ GEM
       cucumber (>= 1.2.0)
       nokogiri (>= 1.5.0)
       rails (~> 3.0)
-    database_cleaner (0.9.1)
+    database_cleaner (1.0.1)
     devise (2.2.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -237,7 +237,7 @@ GEM
     erubis (2.7.0)
     exception_notification (2.6.1)
       actionmailer (>= 3.0.4)
-    excon (0.21.0)
+    excon (0.22.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.2.0)
@@ -286,8 +286,8 @@ GEM
       tilt
     has_scope (0.5.1)
     hash-deep-merge (0.1.1)
-    hashie (2.0.4)
-    highline (1.6.18)
+    hashie (2.0.5)
+    highline (1.6.19)
     hike (1.2.2)
     hirb (0.7.1)
     httpauth (0.2.0)
@@ -300,7 +300,7 @@ GEM
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jquery-ui-rails (4.0.2)
+    jquery-ui-rails (4.0.3)
       jquery-rails
       railties (>= 3.1.0)
     jruby-ehcache (1.3.2)
@@ -309,8 +309,8 @@ GEM
     jruby-openssl (0.8.8)
       bouncy-castle-java (>= 1.5.0147)
     jruby-rack (1.1.13.2)
-    json (1.7.7)
-    json (1.7.7-java)
+    json (1.8.0)
+    json (1.8.0-java)
     jwt (0.1.8)
       multi_json (>= 1.5)
     kaminari (0.14.1)
@@ -326,8 +326,7 @@ GEM
       less (~> 2.2.0)
     libv8 (3.11.8.17)
     locale (2.0.8)
-    mail (2.5.3)
-      i18n (>= 0.4.0)
+    mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     memcached (1.5.0)
@@ -340,14 +339,14 @@ GEM
     mime-types (1.23)
     multi_json (1.7.3)
     multipart-post (1.2.0)
-    net-scp (1.1.0)
+    net-scp (1.1.1)
       net-ssh (>= 2.6.5)
-    net-sftp (2.1.1)
+    net-sftp (2.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.6.7)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
-    newrelic_rpm (3.6.1.88)
+    newrelic_rpm (3.6.2.96)
     nifty-generators (0.4.6)
     nokogiri (1.5.9)
     nokogiri (1.5.9-java)
@@ -381,7 +380,7 @@ GEM
       railties (~> 3.0)
     pg (0.15.1)
     pg-hstore (1.1.7)
-    pg_power (1.4.0)
+    pg_power (1.5.0)
       pg
       rails (~> 3.1)
       rspec-rails
@@ -389,16 +388,16 @@ GEM
       activerecord (~> 3.0)
     polyglot (0.3.3)
     pr_geohash (1.0.0)
-    pry (0.9.12.1)
+    pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
-    pry (0.9.12.1-java)
+    pry (0.9.12.2-java)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
       spoon (~> 0.0)
-    pry-rails (0.2.2)
+    pry-rails (0.3.0)
       pry (>= 0.9.10)
     rack (1.4.5)
     rack-cache (1.2)
@@ -453,16 +452,16 @@ GEM
       sexp_processor (~> 4.1)
     rvm-capistrano (1.3.0)
       capistrano (>= 2.0.0)
-    sass (3.2.8)
+    sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
     sexp_processor (4.2.1)
-    sidekiq (2.11.2)
-      celluloid (>= 0.13.0)
+    sidekiq (2.12.0)
+      celluloid (>= 0.14.0)
       connection_pool (>= 1.0.0)
-      multi_json
+      json
       redis (>= 3.0)
       redis-namespace
     simple_oauth (0.2.0)
@@ -472,10 +471,10 @@ GEM
       tilt (~> 1.3, >= 1.3.3)
     sitemap_generator (3.4)
       builder
-    slim (1.3.8)
+    slim (1.3.9)
       temple (~> 0.6.3)
-      tilt (~> 1.3.3)
-    slop (3.4.4)
+      tilt (~> 1.3, >= 1.3.3)
+    slop (3.4.5)
     spoon (0.0.4)
       ffi
     sprockets (2.2.2)
@@ -505,7 +504,7 @@ GEM
     thumbs_up (0.6.4)
       activerecord
       statistics2
-    tilt (1.3.7)
+    tilt (1.4.1)
     timers (1.1.0)
     tinymce-rails (3.5.8)
       railties (>= 3.1.1)
@@ -531,7 +530,7 @@ GEM
       execjs
       railties (>= 3.1)
     tzinfo (0.3.37)
-    uglifier (2.0.1)
+    uglifier (2.1.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     unicorn (4.6.2)
