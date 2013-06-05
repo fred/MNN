@@ -51,8 +51,7 @@ gem 'fog', '~> 1.10.0'
 gem 'carrierwave', '~> 0.8.0'
 
 ### Permalink
-gem 'stringex', '~> 1.4'
-gem 'friendly_id', '~> 4.0.0'
+gem 'friendly_id', '~> 4.0'
 
 ### Comment System
 gem 'opinio', git:  'git://github.com/fred/opinio.git', branch: 'fred'
