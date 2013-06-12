@@ -214,10 +214,10 @@ class ItemsController < ApplicationController
     if safe && (current_user or current_admin_user or view_context.is_human?)
       data = {}
       data["ip"] = request.remote_ip if request.remote_ip.present?
-      data["referrer"] = request.referrer if request.referrer.present? && request.referrer.valid_encoding?
-      data["user_agent"] = request.user_agent if request.user_agent.present? && request.user_agent.valid_encoding?
+      data["referrer"] = request.referrer.to_s[0..99] if request.referrer.present? && request.referrer.valid_encoding?
+      data["user_agent"] = request.user_agent.to_s[0..99] if request.user_agent.present? && request.user_agent.valid_encoding?
       q = {}
-      q[:keyword] = params[:q] if params[:q].present? && params[:q].valid_encoding?
+      q[:keyword] = params[:q].to_s[0..49] if params[:q].present? && params[:q].valid_encoding?
       q[:item_id] = @item.id if @item
       q[:user_id] = current_user.id if current_user
       q[:locale]  = I18n.locale
