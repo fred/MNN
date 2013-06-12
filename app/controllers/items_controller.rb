@@ -210,7 +210,7 @@ class ItemsController < ApplicationController
   end
 
   def store_query
-    safe = params[:q] && params[:q].scan(/select|where|\(|\)/).uniq.size <= 1
+    safe = params[:q] && (params[:q].scan(/select|where|\(|\)/).uniq.size <= 1) && params[:q].to_s.size < 100
     if safe && (current_user or current_admin_user or view_context.is_human?)
       data = {}
       data["ip"] = request.remote_ip if request.remote_ip.present?
