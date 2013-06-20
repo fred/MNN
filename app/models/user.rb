@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :lockable,
+  devise :database_authenticatable, :registerable, :lockable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
@@ -86,7 +86,6 @@ class User < ActiveRecord::Base
       ""
     end
   end
-
 
   def check_security
     unless secured?
@@ -249,6 +248,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def mark_as_confirmed
+    self.confirmation_token = nil
+    self.confirmed_at = Time.now
+  end
 
   def self.find_or_create_from_oauth(auth_hash)
     case auth_hash.provider
@@ -285,6 +288,7 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       user.password_confirmation = user.password
     end
+    user.mark_as_confirmed
     user.save
     user
   end
@@ -308,6 +312,7 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       user.password_confirmation = user.password
     end
+    user.mark_as_confirmed
     user.save
     user
   end
@@ -331,6 +336,7 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       user.password_confirmation = user.password
     end
+    user.mark_as_confirmed
     user.save
     user
   end
@@ -355,6 +361,7 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       user.password_confirmation = user.password
     end
+    user.mark_as_confirmed
     user.save
     user
   end
@@ -378,6 +385,7 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       user.password_confirmation = user.password
     end
+    user.mark_as_confirmed
     user.save
     user
   end
@@ -402,6 +410,7 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       user.password_confirmation = user.password
     end
+    user.mark_as_confirmed
     user.save
     user
   end
@@ -483,6 +492,13 @@ class User < ActiveRecord::Base
   def self.logged_in(limit=10)
     order("current_sign_in_at DESC").
     limit(limit)
+  end
+
+  protected
+
+  # Callback to overwrite if confirmation is required or not.
+  def confirmation_required?
+    provider.blank? && oauth_data.blank?
   end
 
 end

@@ -16,4 +16,10 @@ class AdminUser < User
       :role_ids, :roles, :subscribe,  :unsubscribe, :unsubscribe_all, :upgrade, :downgrade,
       :terms_of_service, :registration_role, :gpg
 
+  protected
+
+  def confirmation_required?
+    false
+  end
+
 end

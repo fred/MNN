@@ -1,7 +1,7 @@
 FactoryGirl.define do
   
   factory :item, class: 'Item' do 
-    title 'Some News'
+    sequence(:title){|n| "Some News #{n}" }
     abstract "Some Abstract"
     body "Some body"
     association :language, factory: :language
@@ -13,7 +13,7 @@ FactoryGirl.define do
   end
   
   factory :item2, class: 'Item' do
-    title 'Some News'
+    sequence(:title){|n| "Some News #{n}" }
     abstract "Some Abstract"
     body "Some body"
     association :language, factory: :language2
@@ -24,7 +24,7 @@ FactoryGirl.define do
   end
   
   factory :item_highlight, class: 'Item' do
-    title 'Some News Highlight'
+    sequence(:title){|n| "Some News Highlight #{n}" }
     abstract "Some Abstract 2"
     body "a very long body"
     association :language, factory: :language
@@ -36,7 +36,7 @@ FactoryGirl.define do
   end
   
   factory :item_unpublished, class: 'Item' do
-    title 'Some News in future'
+    sequence(:title){|n| "Some News in the Future #{n}" }
     abstract "Some Abstract 3"
     body "a very long body"
     association :language, factory: :language
@@ -48,7 +48,7 @@ FactoryGirl.define do
   end
   
   factory :item_draft, class: 'Item' do
-    title 'Some News Draft'
+    sequence(:title){|n| "Some Draft article #{n}" }
     abstract "Some Abstract draft"
     body "a very long body"
     association :language, factory: :language

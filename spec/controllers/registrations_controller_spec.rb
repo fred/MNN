@@ -29,6 +29,7 @@ describe Devise::RegistrationsController do
     before (:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       @user = FactoryGirl.create(:user)
+      @user.confirm!
       sign_in @user
     end
     describe "GET edit" do
@@ -72,9 +73,9 @@ describe Devise::RegistrationsController do
         expect(response).to redirect_to(root_path)
       end
       
-      it "assigns current_user to the newly created user" do
+      it "do not assign current_user to the newly created user" do
         post :create, user: valid_user_attributes
-        expect(subject.current_user).not_to be_nil
+        expect(subject.current_user).to be_nil
       end
     end
   

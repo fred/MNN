@@ -4,7 +4,8 @@ describe User do
   include UserSpecHelper
   describe "Validity" do 
     before(:each) do
-      @user = FactoryGirl.create(:user)
+      @user = FactoryGirl.build(:user)
+      @user.confirm!
     end
     it "should be valid" do
       assert_equal true, @user.valid?
@@ -62,6 +63,7 @@ describe User do
       )
     }
     it "should not allow new users to self upgrade" do
+      user.mark_as_confirmed
       user.upgrade = true
       expect(user.valid?).to eq(false)
       expect(user.errors.size).to be(1)
@@ -87,7 +89,9 @@ describe User do
         email: "welcome@gmail.com",
         name: 'My Name',
         password: 'welcome',
-        password_confirmation: 'welcome'
+        password_confirmation: 'welcome',
+        confirmation_token: nil,
+        confirmed_at: Time.now
       )
     }
     it "should respond to notify_admin" do
@@ -199,7 +203,8 @@ describe User do
   
   describe "with subscription" do
     before(:each) do
-      @user = FactoryGirl.create(:user, subscribe: "1")
+      @user = FactoryGirl.build(:user, subscribe: "1")
+      @user.confirm!
     end
     it "should create a subscription model" do
       expect(@user.subscriptions).not_to eq([])
@@ -231,7 +236,8 @@ describe User do
   
   describe "with unsubscribe or unsubscribe_all" do
     before(:each) do
-      @user = FactoryGirl.create(:user, unsubscribe: "1")
+      @user = FactoryGirl.build(:user, unsubscribe: "1")
+      @user.confirm!
     end
     it "should not create a subscription" do
       expect(@user.subscriptions).to eq([])
@@ -258,11 +264,17 @@ describe User do
   end
 
   describe "with email notifications" do
-    it 'should send an Welcome email to User and Admin' do
-      expect(->{ FactoryGirl.create(:user) }).to change(ActionMailer::Base.deliveries, :count).by(2)
+    it 'should send Confirmation email, Welcome email and Admin notification email' do
+      expect(->{ 
+        user = FactoryGirl.build(:user)
+        user.confirm!
+      }).to change(ActionMailer::Base.deliveries, :count).by(3)
     end
     it 'should not send Welcome email to User logged in from Twitter' do
-      expect(->{ FactoryGirl.create(:user, provider: 'twitter') }).to change(ActionMailer::Base.deliveries, :count).by(1)
+      expect(->{
+        user = FactoryGirl.build(:user, provider: 'twitter', oauth_data: {info: "test-info"})
+        user.confirm!
+      }).to change(ActionMailer::Base.deliveries, :count).by(1)
     end
   end
   

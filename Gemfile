@@ -47,7 +47,7 @@ gem 'kaminari'
 gem 'squeel'
 
 ### File Uploading and Image Processing
-gem 'fog', '~> 1.10.0'
+gem 'fog', '~> 1.12.1'
 gem 'carrierwave', '~> 0.8.0'
 
 ### Permalink

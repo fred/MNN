@@ -19,6 +19,7 @@ describe Devise::SessionsController do
     before (:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       @user = FactoryGirl.create(:user)
+      @user.confirm!
     end
     describe "POST create" do
       it "should login user and redirect to root_path" do
