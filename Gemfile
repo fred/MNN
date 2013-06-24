@@ -4,7 +4,7 @@ source 'http://rubygems.org'
 gem 'rack'
 gem 'rack-cache'
 gem 'rake'
-gem 'rails', git: 'https://github.com/rails/rails.git', branch: '3-2-stable'
+gem 'rails', git: 'git://github.com/rails/rails.git', branch: '3-2-stable'
 gem 'bundler'
 
 ### Database Adapter
