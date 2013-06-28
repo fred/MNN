@@ -14,18 +14,17 @@ module CarrierWave
     end
   end
 
-  # Change quality on mini_magick
-  # if defined?(MiniMagick)
-  #   module MiniMagick
-  #     def quality(percentage)
-  #       manipulate! do |img|
-  #         img.quality(percentage.to_s)
-  #         img = yield(img) if block_given?
-  #         img
-  #       end
-  #     end
-  #   end
-  # end
+  if defined?(MiniMagick)
+    module MiniMagick
+      def quality(percentage)
+        manipulate! do |img|
+          img.quality(percentage.to_s)
+          img = yield(img) if block_given?
+          img
+        end
+      end
+    end
+  end
   
   if defined?(RMagick)
     module RMagick

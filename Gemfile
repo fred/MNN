@@ -11,14 +11,14 @@ gem 'bundler'
 platforms :ruby do
   gem 'pg'
   gem 'pg_power'
-  gem 'rmagick'
+  # gem 'rmagick'
   gem 'rails3_libmemcached_store'
 end
 
 platforms :jruby do
   gem 'jruby-openssl'
   gem 'activerecord-jdbcpostgresql-adapter'
-  gem 'rmagick4j'
+  # gem 'rmagick4j'
   gem 'jruby-rack'
   gem 'jruby-ehcache'
   gem 'jruby-ehcache-rails3', require: 'ehcache'
@@ -47,6 +47,7 @@ gem 'kaminari'
 gem 'squeel'
 
 ### File Uploading and Image Processing
+gem 'mini_magick'
 gem 'fog', '~> 1.12.1'
 gem 'carrierwave', '~> 0.8.0'
 
@@ -122,7 +123,7 @@ group :test do
   gem 'xpath'
   gem 'factory_girl', '~> 4.0'
   gem 'factory_girl_rails', '~> 4.0'
-  gem 'cucumber-rails', '>= 1.0.2'
+  gem 'cucumber-rails', require: false
   gem 'webrat', '~> 0.7.3'
   gem 'capybara', '>= 1.0.1'
   gem 'database_cleaner'
@@ -141,8 +142,8 @@ gem 'meta_search'
 gem 'activeadmin', git: 'git://github.com/gregbell/active_admin.git'
 
 # Twitter Bootstrap for Rails 3 Asset Pipeline
-gem 'less', '~> 2.2.2'
-gem 'less-rails', '~> 2.2.6'
+gem 'less'
+gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 
 gem 'sunspot', git: 'git://github.com/sunspot/sunspot.git', ref: 'c768d11731e103a7c1794dc29172fbe8fe8b7115'

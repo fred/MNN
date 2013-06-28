@@ -1,6 +1,6 @@
 # encoding: utf-8
 class BaseImageUploader < BaseUploader
-  include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
   
   process quality: 90
 
