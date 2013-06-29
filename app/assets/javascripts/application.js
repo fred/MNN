@@ -19,4 +19,3 @@
 //= require effects
 //= require tooltip
 //= require registration
-//= require touch-devices
