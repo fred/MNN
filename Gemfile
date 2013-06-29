@@ -161,4 +161,3 @@ gem 'tabletastic'
 
 gem 'activerecord-postgres-hstore', github: 'engageis/activerecord-postgres-hstore'
 
-# gem 'puma', '>= 2.0.0.b7'
