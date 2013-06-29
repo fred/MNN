@@ -64,12 +64,13 @@ module Publication
     # parameters by using an attr_accessible or attr_protected declaration.
     # config.active_record.whitelist_attributes = true
 
+    server = '127.0.0.1:11211'
     if RUBY_ENGINE == "ruby"
-      server = ENV['MEMCACHE_SERVERS'] ? ENV['MEMCACHE_SERVERS'] : "127.0.0.1"
       # config.cache_store = :dalli_store, server, { namespace: "mnn", expires_in: 24.hours, compress: false }
       config.cache_store = :libmemcached_store, server, { namespace: "mnn", expires_in: 24.hours, compress: true }
-    elsif RUBY_ENGINE == "jruby" && defined?(Ehcache)
-      config.cache_store = :ehcache_store, { cache_name: 'mnn', ehcache_config: 'ehcache.xml'}
+    elsif RUBY_ENGINE == "jruby"
+      require 'memcached'
+      config.cache_store = Memcached::Rails.new(servers: [server], namespace: "mnn" )
     end
 
     # Configure the default encoding used in templates for Ruby 1.9.

@@ -11,17 +11,14 @@ gem 'bundler'
 platforms :ruby do
   gem 'pg'
   gem 'pg_power'
-  # gem 'rmagick'
   gem 'rails3_libmemcached_store'
 end
 
 platforms :jruby do
   gem 'jruby-openssl'
   gem 'activerecord-jdbcpostgresql-adapter'
-  # gem 'rmagick4j'
   gem 'jruby-rack'
-  gem 'jruby-ehcache'
-  gem 'jruby-ehcache-rails3', require: 'ehcache'
+  gem 'jruby-memcached'
 end
 
 ### Oauth
@@ -67,7 +64,7 @@ gem 'slim', "~> 1.3.0"
 gem 'sinatra'
 gem 'redis'
 gem 'celluloid'
-gem 'sidekiq'
+gem 'sidekiq', '~> 2.12.4'
 
 ### JSON and Twitter
 gem 'multi_json'

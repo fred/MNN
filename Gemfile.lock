@@ -249,6 +249,7 @@ GEM
       multipart-post (~> 1.1)
     fast_gettext (0.7.1)
     fastercsv (1.5.5)
+    ffi (1.9.0)
     ffi (1.9.0-java)
     fog (1.12.1)
       builder
@@ -303,9 +304,7 @@ GEM
     jquery-ui-rails (4.0.3)
       jquery-rails
       railties (>= 3.1.0)
-    jruby-ehcache (1.3.2)
-    jruby-ehcache-rails3 (1.3.2)
-      jruby-ehcache
+    jruby-memcached (0.5.5)
     jruby-openssl (0.8.8)
       bouncy-castle-java (>= 1.5.0147)
     jruby-rack (1.1.13.2)
@@ -583,8 +582,7 @@ DEPENDENCIES
   hirb
   jquery-rails (~> 2.2.1)
   jquery-ui-rails
-  jruby-ehcache
-  jruby-ehcache-rails3
+  jruby-memcached
   jruby-openssl
   jruby-rack
   json
