@@ -25,21 +25,21 @@ ActiveAdmin.register User do
       row :bio
       bool_row :show_public
       row "Logged in" do |user|
-        user.current_sign_in_at.to_s(:short)
+        user.current_sign_in_at.to_s(:short) if user.current_sign_in_at.present?
       end
       row "Last Seen" do |user|
-        user.last_sign_in_at.to_s(:short)
+        user.last_sign_in_at.to_s(:short) if user.last_sign_in_at.present?
       end
       row "Last IP" do |user|
         if user.last_sign_in_ip
           link_to user.last_sign_in_ip.to_s, 
-            "http://www.geoiptool.com/en/?IP=#{user.last_sign_in_ip.to_s}"
+            "http://www.geoiptool.com/en/?IP=#{user.last_sign_in_ip.to_s}" if user.last_sign_in_ip.present?
         end
       end
       row "Current IP" do |user|
         if user.current_sign_in_ip
           link_to user.current_sign_in_ip.to_s,
-            "http://www.geoiptool.com/en/?IP=#{user.current_sign_in_ip.to_s}"
+            "http://www.geoiptool.com/en/?IP=#{user.current_sign_in_ip.to_s}" if user.current_sign_in_ip.present?
         end
       end
       row "Updated" do |user|
@@ -94,18 +94,18 @@ ActiveAdmin.register User do
     column :type
     column "Logins", :sign_in_count
     column "Last Login" do |user|
-      user.current_sign_in_at.to_s(:short)
+      user.current_sign_in_at.to_s(:short) if user.current_sign_in_at.present?
     end
     column "Last IP" do |user|
       if user.last_sign_in_ip
         link_to user.last_sign_in_ip.to_s,
-          "http://www.geoiptool.com/en/?IP=#{user.last_sign_in_ip.to_s}"
+          "http://www.geoiptool.com/en/?IP=#{user.last_sign_in_ip.to_s}" if user.last_sign_in_ip
       end
     end
     column "Current IP" do |user|
       if user.current_sign_in_ip
         link_to user.current_sign_in_ip.to_s,
-          "http://www.geoiptool.com/en/?IP=#{user.current_sign_in_ip.to_s}"
+          "http://www.geoiptool.com/en/?IP=#{user.current_sign_in_ip.to_s}" if user.current_sign_in_ip
       end
     end
     default_actions

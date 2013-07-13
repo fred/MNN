@@ -16,9 +16,9 @@
           <td><%= link_to_if(user.name.present?,user.name.to_s, admin_user_path(user)) %></td>
           <td><%= link_to(user.email, admin_user_path(user)) %></td>
           <td><%= user.provider if user.provider.present? %></td>
-          <td><%= user.last_sign_in_ip %></td>
-          <td><%= user.current_sign_in_ip %></td>
-          <td><%= time_ago_in_words(user.created_at) %> ago</td>
+          <td><%= user.last_sign_in_ip.to_s %></td>
+          <td><%= user.current_sign_in_ip.to_s %></td>
+          <td><%= time_ago_in_words(user.created_at) if user.created_at %> ago</td>
         </tr>
       <% end %>
     </tbody>
