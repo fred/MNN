@@ -60,11 +60,12 @@ gem 'sass-rails'
 gem 'jquery-rails', '~> 2.2.1'
 gem 'jquery-ui-rails'
 
+gem 'haml', "~> 4.0.3"
 gem 'slim', "~> 1.3.0"
 gem 'sinatra'
 gem 'redis'
 gem 'celluloid'
-gem 'sidekiq', '~> 2.12.4'
+gem 'sidekiq', '~> 2.13.0'
 
 ### JSON and Twitter
 gem 'multi_json'
