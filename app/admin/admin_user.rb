@@ -84,7 +84,7 @@ ActiveAdmin.register AdminUser do
     column "Roles", :role_titles, sortable: false
     column "Logins", :sign_in_count
     column "Last Login" do |user|
-      user.current_sign_in_at.to_s(:short)
+      user.current_sign_in_at.to_s(:short) if user.current_sign_in_at.present?
     end
     column "Last IP" do |user|
       if user.last_sign_in_ip

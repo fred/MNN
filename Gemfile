@@ -4,7 +4,7 @@ source 'http://rubygems.org'
 gem 'rack'
 gem 'rack-cache'
 gem 'rake'
-gem 'rails', '3.2.14.rc2'
+gem 'rails', '3.2.14'
 gem 'bundler'
 
 ### Database Adapter
@@ -60,12 +60,12 @@ gem 'sass-rails'
 gem 'jquery-rails', '~> 2.2.1'
 gem 'jquery-ui-rails'
 
-gem 'haml', "~> 4.0.3"
-gem 'slim', "~> 1.3.0"
+gem 'haml'
+gem 'slim'
 gem 'sinatra'
 gem 'redis'
 gem 'celluloid'
-gem 'sidekiq', '~> 2.13.0'
+gem 'sidekiq'
 
 ### JSON and Twitter
 gem 'multi_json'

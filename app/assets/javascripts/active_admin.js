@@ -17,4 +17,6 @@
 //= require modernizr
 //= require loader
 //= require tinymce/plugins/uploadimage/editor_plugin.js
-//= require highcharts
+
+//= require highcharts/highcharts
+//= require highcharts/highcharts-more

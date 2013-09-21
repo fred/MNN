@@ -60,9 +60,11 @@
   <p class="footer_logo">
     World Mathaba
   </p>
+  <% if @start_time %>
   <p class="render_time">
     Page Rendered in <strong><%= sprintf('%.3f', (Time.now.usec - @start_time).abs / 1000000.0) %></strong> seconds
   </p>
+  <% end %>
   <p class="render_time">
     <%= link_to 'Source code under GPLv3', "https://github.com/fred/mnn", title: 'License and Source Code', rel: 'license' %>
   </p>
