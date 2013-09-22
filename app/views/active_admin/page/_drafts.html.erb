@@ -7,7 +7,7 @@
       link_to(item.title.truncate(50), admin_item_path(item))
     end
     t.cell(:category, heading: "Category") {|item| item.category_title}
-    t.cell(:user, heading: "User") {|item| item.user.display_name}
+    t.cell(:user, heading: "User") {|item| item.user.display_name} if item.user
     t.cell(:updated_at, heading: "Updated") do |item|
       "#{time_ago_in_words(item.updated_at)} ago"
     end
