@@ -2,7 +2,7 @@ module ApplicationHelper
   include FastGettext::Translation
 
   def fragment_cache_time
-    Settings.fragment_cache_time || 16.hours
+    Settings.fragment_cache_time || 2.days
   end
 
   def tagged_logger(tag,msg,level=:debug)
@@ -66,8 +66,8 @@ module ApplicationHelper
     end
   end
 
-  # Cache for a period of time, default 16 hours
-  def cache_expiring(cache_key, cache_period = 16.hours, no_cache = false)
+  # Cache for a period of time, default 3.days
+  def cache_expiring(cache_key, cache_period = 3.days, no_cache = false)
     if no_cache
       tagged_logger("CACHE", "Not caching for current_user")
       yield

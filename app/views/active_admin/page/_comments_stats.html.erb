@@ -1,4 +1,4 @@
-<% cache_expiring("aa/comments_stats", 5.minutes) do %>
+<% cache_expiring("aa/comments_stats", 1.hour) do %>
 
   <%= table_for(Comment.recent(10)) do |t|
     t.data do

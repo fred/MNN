@@ -4,7 +4,7 @@ describe Item do
 
   describe "with Version" do
     include ItemSpecHelper
-    require 'sidekiq/testing/inline'
+    Sidekiq::Testing.inline!
 
     it "should create a revision after creating an article" do
       expect(->{ Item.create(valid_item_attributes) }).to change(Version, :count).by(1)

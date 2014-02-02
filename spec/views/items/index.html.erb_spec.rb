@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "items/index" do
   before(:each) do
     @item = FactoryGirl.create(:item)
-    @items = Item.published.not_draft.order("published_at DESC").page(params[:page], per_page: 20)
+    @items = Item.published.not_draft.order("published_at DESC").page(params[:page]).per(20)
     assign(:items, @items)
     render
   end

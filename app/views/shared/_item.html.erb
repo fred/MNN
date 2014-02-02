@@ -1,4 +1,4 @@
-<% cache_expiring("_item/#{item.cache_key}", 8.hours) do %>
+<% cache_expiring("_item/#{item.cache_key}", 1.day) do %>
   <article class="category" id="item_<%=item.id%>">
     <% unless @category %>
       <h5 class="no-margin">

@@ -1,7 +1,7 @@
 class AuthorsController < ApplicationController
   
   def index
-    @authors = AdminUser.with_articles.order("items_count DESC").page(params[:page], per_page: 20)
+    @authors = AdminUser.with_articles.order("items_count DESC").page(params[:page]).per(20)
     no_cache_headers
     respond_to do |format|
       format.html
@@ -12,7 +12,7 @@ class AuthorsController < ApplicationController
   def show
     @show_breadcrumb = true
     @author = User.find(params[:id])
-    @items = @author.my_items.localized.page(params[:page], per_page: 20)
+    @items = @author.my_items.localized.page(params[:page]).per(20)
     @help_page = Page.where(:slug => "contribute").first
 
     @language = Language.where(locale: I18n.locale.to_s).first

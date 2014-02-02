@@ -4,7 +4,7 @@ source 'http://rubygems.org'
 gem 'rack'
 gem 'rack-cache'
 gem 'rake'
-gem 'rails', '3.2.14'
+gem 'rails', '3.2.16'
 gem 'bundler'
 
 ### Database Adapter
@@ -34,7 +34,7 @@ gem 'koala', git: 'git://github.com/arsduo/koala.git', ref: '0239c57c552e4fa36e2
 
 ### Roles and Authentication
 gem 'cancan', '~> 1.6.7'
-gem 'devise', '~> 2.0'
+gem 'devise', '~> 3.0.2'
 
 ### Versioning
 gem 'paper_trail', '~> 2.6.3'
@@ -65,13 +65,13 @@ gem 'slim'
 gem 'sinatra'
 gem 'redis'
 gem 'celluloid'
-gem 'sidekiq'
+gem 'sidekiq', '~> 2.17.3'
 
 ### JSON and Twitter
 gem 'multi_json'
 gem 'json'
 gem 'twitter', "~> 4.0"
-gem 'anytime', git: 'git://github.com/fred/anytime-rails.git'
+# gem 'anytime_rails', git: 'git://github.com/fred/anytime-rails.git'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -105,13 +105,12 @@ group :development do
   gem 'nifty-generators'
   gem 'hirb'
   gem 'foreman'
-  gem 'letter_opener', git: 'git://github.com/fred/letter_opener.git', branch: 'fred'
+  gem 'letter_opener'
   gem 'net-scp', '~> 1.1'
-  gem 'capistrano', require: false
+  gem 'capistrano', '~> 2.15.5', require: false
   gem 'rvm-capistrano', require: false
   gem 'capistrano-ext', require: false
   gem 'pry-rails'
-  gem 'brakeman'
   gem 'gettext', "~> 2.2.1", require: false
   gem 'ruby_parser', require: false
   gem 'locale'
@@ -136,8 +135,7 @@ gem 'gettext_i18n_rails'
 
 # Active Admin, loaded at end
 gem 'meta_search'
-# gem 'activeadmin', git: 'git://github.com/fred/active_admin.git', branch: 'no-override'
-gem 'activeadmin', git: 'git://github.com/gregbell/active_admin.git'
+gem 'activeadmin', '~> 0.6.3'
 
 # Twitter Bootstrap for Rails 3 Asset Pipeline
 gem 'less'

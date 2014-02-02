@@ -16,7 +16,7 @@
   <% end %>
 
   <!-- START CACHING -->
-  <% cache_expiring(comment_cache_key(comment), 1.hour) do %>
+  <% cache_expiring(comment_cache_key(comment), 1.day) do %>
     <span class="comment_owner">
       <% if comment.owner %>
         <%= link_to(

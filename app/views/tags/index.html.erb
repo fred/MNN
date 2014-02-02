@@ -1,4 +1,4 @@
-<% cache_expiring("tags/index", 8.hours) do %>
+<% cache_expiring("tags/index", 2.days) do %>
 <div class="row all_tags">
   <% @tags.each do |tag| %>
     <div class="tag" id="tag_<%= tag.id %>">
