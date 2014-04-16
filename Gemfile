@@ -150,7 +150,7 @@ gem 'tinymce-rails-imageupload', '~> 3.5.8.6'
 gem 'simple_captcha', require: 'simple_captcha', git: 'git://github.com/galetahub/simple-captcha.git'
 gem 'country-select'
 gem 'validates_email_format_of', git: 'git://github.com/alexdunae/validates_email_format_of.git'
-gem 'turbo-sprockets-rails3'
+# gem 'turbo-sprockets-rails3'
 gem 'turbolinks'
 
 gem 'thumbs_up'

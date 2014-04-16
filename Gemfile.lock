@@ -485,9 +485,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbo-sprockets-rails3 (0.3.11)
-      railties (> 3.2.8, < 4.0.0)
-      sprockets (>= 2.2.0)
     turbolinks (2.2.2)
       coffee-rails
     turn (0.8.3)
@@ -615,7 +612,6 @@ DEPENDENCIES
   thumbs_up
   tinymce-rails (~> 3.5.8.3)
   tinymce-rails-imageupload (~> 3.5.8.6)
-  turbo-sprockets-rails3
   turbolinks
   turn (~> 0.8.3)
   twitter (~> 4.0)
