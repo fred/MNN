@@ -11,16 +11,6 @@ GIT
     validates_email_format_of (1.5.3)
 
 GIT
-  remote: git://github.com/arsduo/koala.git
-  revision: 0239c57c552e4fa36e2caf80d138bad9e3bcf30a
-  ref: 0239c57c552e4fa36e2caf80d138bad9e3bcf30a
-  specs:
-    koala (1.7.0)
-      addressable
-      faraday
-      multi_json
-
-GIT
   remote: git://github.com/dangerp/omniauth-windowslive.git
   revision: 5abf18df60b314b9955400c45c854f1de099824f
   specs:
@@ -271,6 +261,10 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.2)
+    koala (1.9.0)
+      addressable
+      faraday
+      multi_json
     launchy (2.4.2)
       addressable (~> 2.3)
     launchy (2.4.2-java)
@@ -483,11 +477,11 @@ GEM
       statistics2
     tilt (1.4.1)
     timers (1.1.0)
-    tinymce-rails (3.5.8)
+    tinymce-rails (3.5.8.3)
       railties (>= 3.1.1)
-    tinymce-rails-imageupload (3.5.6.4)
+    tinymce-rails-imageupload (3.5.8.6)
       railties (>= 3.1)
-      tinymce-rails (>= 3.4.9)
+      tinymce-rails (~> 3.5.8.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -564,7 +558,7 @@ DEPENDENCIES
   jruby-rack
   json
   kaminari
-  koala!
+  koala
   launchy (>= 2.0.5)
   lazy_high_charts!
   less
@@ -619,8 +613,8 @@ DEPENDENCIES
   therubyracer
   therubyrhino
   thumbs_up
-  tinymce-rails (= 3.5.8)
-  tinymce-rails-imageupload (~> 3.5.6.3)
+  tinymce-rails (~> 3.5.8.3)
+  tinymce-rails-imageupload (~> 3.5.8.6)
   turbo-sprockets-rails3
   turbolinks
   turn (~> 0.8.3)
