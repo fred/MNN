@@ -1,3 +1,5 @@
+require 'active_admin/cancan_adapter'
+
 ActiveAdmin.setup do |config|
 
   # == Site Title

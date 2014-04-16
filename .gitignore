@@ -16,7 +16,7 @@ config/initializers/postmark_mailer.rb
 *.pill
 brakeman.html
 mathaba.war
-
+.env.sh
 public/assets
 
 # Documentation

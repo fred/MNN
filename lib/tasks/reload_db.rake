@@ -19,6 +19,9 @@ namespace :db do
     
     puts "Truncating DB"
     sh "psql -d #{db_config['database']} -a -f db/truncate.sql"
+
+    puts "Migrating DB"
+    Rake::Task['db:migrate'].invoke
     
     puts "Restoring Last Dump: #{@last_restore}"
     sh "pg_restore -C -d #{db_config['database']} #{@last_restore}"

@@ -4,7 +4,7 @@ source 'http://rubygems.org'
 gem 'rack'
 gem 'rack-cache'
 gem 'rake'
-gem 'rails', '3.2.16'
+gem 'rails', '~> 3.2.17'
 gem 'bundler'
 
 ### Database Adapter
@@ -33,8 +33,8 @@ gem 'omniauth-windowslive', git: 'git://github.com/dangerp/omniauth-windowslive.
 gem 'koala', git: 'git://github.com/arsduo/koala.git', ref: '0239c57c552e4fa36e2caf80d138bad9e3bcf30a'
 
 ### Roles and Authentication
-gem 'cancan', '~> 1.6.7'
-gem 'devise', '~> 3.0.2'
+gem 'cancancan'
+gem 'devise', '~> 3.2.0'
 
 ### Versioning
 gem 'paper_trail', '~> 2.6.3'
@@ -45,8 +45,8 @@ gem 'squeel'
 
 ### File Uploading and Image Processing
 gem 'mini_magick'
-gem 'fog', '~> 1.12.1'
-gem 'carrierwave', '~> 0.8.0'
+gem 'fog', '~> 1.21.0'
+gem 'carrierwave', '~> 0.10.0'
 
 ### Permalink
 gem 'friendly_id', '~> 4.0'

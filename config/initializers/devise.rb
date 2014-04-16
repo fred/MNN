@@ -6,6 +6,8 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
   config.mailer_sender = "inbox@worldmathaba.net"
 
+  config.secret_key = ENV['SECRET_TOKEN'] || 'f1927d844bdafb2aa1923c08db2e1e4d5091310045c4629262cbdde341a7d089724b81a443fa650f7c9e4485ee3155452019cf9d6462182b692d2deca85411b8'
+
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
 
