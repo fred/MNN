@@ -2,7 +2,7 @@
 require 'yaml'
 
 namespace :db do
-  task :pull => :environment do
+  task pull: :environment do
     db_config = Rails.application.config.database_configuration[Rails.env]
     rsync_config = YAML.load_file(File.join(Rails.root, "config", "rsync.yml"))
     db_config = Rails.application.config.database_configuration[Rails.env]
@@ -22,13 +22,15 @@ namespace :db do
 
     puts "Migrating DB"
     Rake::Task['db:migrate'].invoke
+
+    puts "Truncating DB"
+    sh "psql -d #{db_config['database']} -a -f db/truncate.sql"
     
     puts "Restoring Last Dump: #{@last_restore}"
     sh "pg_restore -C -d #{db_config['database']} #{@last_restore}"
 
     puts "Migrating DB"
     Rake::Task['db:migrate'].invoke
-    
     
     puts "Reindexing Solr"
     Rake::Task["sunspot:reindex"].invoke

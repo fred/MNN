@@ -180,6 +180,14 @@ class ItemsController < ApplicationController
     current_admin_user && (can? :destroy, Comment)
   end
 
+  def opensearch
+    respond_to do |format|
+      format.xml {
+        render file: "public/opensearch.xml"
+      }
+    end
+  end
+
   # def benchmark_solr
   #   Item.solr_search_term("Muammar Qaddafi",1,50)
   #   Item.solr_search_term("Reverand Michelle Hopkins",1,50)

@@ -102,9 +102,6 @@ group :test, :development do
 end
 
 group :development do
-  gem 'nifty-generators'
-  gem 'hirb'
-  gem 'foreman'
   gem 'letter_opener'
   gem 'net-scp', '~> 1.1'
   gem 'capistrano', '~> 2.15.5', require: false
@@ -125,7 +122,7 @@ group :test do
   gem 'capybara', '>= 1.0.1'
   gem 'database_cleaner'
   gem 'launchy', '>= 2.0.5'
-  gem 'sunspot_solr', git: 'git://github.com/sunspot/sunspot.git', ref: 'c768d11731e103a7c1794dc29172fbe8fe8b7115'
+  gem 'sunspot_solr' #, git: 'git://github.com/sunspot/sunspot.git', ref: 'c768d11731e103a7c1794dc29172fbe8fe8b7115'
   gem 'sunspot_test'
   gem 'turn', '~> 0.8.3', require: false
 end
@@ -142,8 +139,8 @@ gem 'less'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 
-gem 'sunspot', git: 'git://github.com/sunspot/sunspot.git', ref: 'c768d11731e103a7c1794dc29172fbe8fe8b7115'
-gem 'sunspot_rails', git: 'git://github.com/sunspot/sunspot.git', ref: 'c768d11731e103a7c1794dc29172fbe8fe8b7115'
+gem 'sunspot' #, git: 'git://github.com/sunspot/sunspot.git', ref: 'c768d11731e103a7c1794dc29172fbe8fe8b7115'
+gem 'sunspot_rails' #, git: 'git://github.com/sunspot/sunspot.git', ref: 'c768d11731e103a7c1794dc29172fbe8fe8b7115'
 gem 'sitemap_generator', '~> 3.4'
 gem 'tinymce-rails' , '~> 3.5.8.3'
 gem 'tinymce-rails-imageupload', '~> 3.5.8.6'

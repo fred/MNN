@@ -8,7 +8,6 @@
     <%= yield(:javascripts) %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
-    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="WorldMahaba.net Search" />
     <% if Rails.env.production? %>
       <%= render partial: "/shared/layouts/ga" unless (current_user or current_admin_user) %>
     <% end %>

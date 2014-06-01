@@ -11,6 +11,7 @@ Publication::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, controllers: {registrations: :registrations}
 
+  match 'opensearch' => 'items#opensearch', :as => :opensearch
   match 'benchmark_solr' => 'items#benchmark_solr', :as => :benchmark_solr
   match 'search' => 'items#search', :as => :search
   match 'feed' => "items#feed", :as => :feed

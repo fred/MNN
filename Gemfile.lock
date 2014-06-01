@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/alexdunae/validates_email_format_of.git
-  revision: 46b832f7c778cc73f45ebc84cffba03c33294928
+  revision: f2b20985865069905ba58580bfcfb41c198107b6
   specs:
     validates_email_format_of (1.5.3)
 
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: git://github.com/engageis/activerecord-postgres-hstore.git
-  revision: efa8f53c98ad6c29b7ae66312d0b46b74e1a8705
+  revision: 0f959161350aad37a0847a5cd3672ec67e3c2f14
   specs:
     activerecord-postgres-hstore (0.7.7)
       activerecord (>= 3.1)
@@ -45,34 +45,21 @@ GIT
 
 GIT
   remote: git://github.com/michelson/lazy_high_charts.git
-  revision: d1b0d3a79ba4a1fb7dec799d1c86d0668940d08b
+  revision: e21a4111a406e02eb2a81aa753ad700fe3a129d2
   specs:
-    lazy_high_charts (1.5.2)
+    lazy_high_charts (1.5.4)
       bundler (>= 1.0)
       hash-deep-merge
-
-GIT
-  remote: git://github.com/sunspot/sunspot.git
-  revision: c768d11731e103a7c1794dc29172fbe8fe8b7115
-  ref: c768d11731e103a7c1794dc29172fbe8fe8b7115
-  specs:
-    sunspot (2.0.0.pre.130115)
-      pr_geohash (~> 1.0)
-      rsolr (~> 1.0.7)
-    sunspot_rails (2.0.0.pre.130115)
-      nokogiri
-      sunspot (= 2.0.0.pre.130115)
-    sunspot_solr (2.0.0.pre.130115)
 
 GEM
   remote: http://rubygems.org/
   specs:
-    actionmailer (3.2.17)
-      actionpack (= 3.2.17)
+    actionmailer (3.2.18)
+      actionpack (= 3.2.18)
       mail (~> 2.5.4)
-    actionpack (3.2.17)
-      activemodel (= 3.2.17)
-      activesupport (= 3.2.17)
+    actionpack (3.2.18)
+      activemodel (= 3.2.18)
+      activesupport (= 3.2.18)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       journey (~> 1.0.4)
@@ -91,12 +78,12 @@ GEM
       meta_search (~> 1.0)
       rails (>= 3.0.0, < 4)
       sass (~> 3.1)
-    activemodel (3.2.17)
-      activesupport (= 3.2.17)
+    activemodel (3.2.18)
+      activesupport (= 3.2.18)
       builder (~> 3.0.0)
-    activerecord (3.2.17)
-      activemodel (= 3.2.17)
-      activesupport (= 3.2.17)
+    activerecord (3.2.18)
+      activemodel (= 3.2.18)
+      activesupport (= 3.2.18)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
     activerecord-jdbc-adapter (1.3.7)
@@ -104,10 +91,10 @@ GEM
     activerecord-jdbcpostgresql-adapter (1.3.7)
       activerecord-jdbc-adapter (~> 1.3.7)
       jdbc-postgres (>= 9.1)
-    activeresource (3.2.17)
-      activemodel (= 3.2.17)
-      activesupport (= 3.2.17)
-    activesupport (3.2.17)
+    activeresource (3.2.18)
+      activemodel (= 3.2.18)
+      activesupport (= 3.2.18)
+    activesupport (3.2.18)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     addressable (2.3.6)
@@ -118,11 +105,11 @@ GEM
     bcrypt (3.1.7)
     bcrypt (3.1.7-java)
     bouncy-castle-java (1.5.0147)
-    bourbon (3.1.8)
-      sass (>= 3.2.0)
+    bourbon (3.2.3)
+      sass (~> 3.2)
       thor
     builder (3.0.4)
-    cancancan (1.7.1)
+    cancancan (1.8.1)
     capistrano (2.15.5)
       highline
       net-scp (>= 1.0.0)
@@ -155,18 +142,19 @@ GEM
     commonjs (0.2.7)
     connection_pool (2.0.0)
     country-select (1.1.1)
-    cucumber (1.3.14)
+    cucumber (1.3.15)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
       gherkin (~> 2.12)
       multi_json (>= 1.7.5, < 2.0)
       multi_test (>= 0.1.1)
-    cucumber-rails (1.4.0)
-      capybara (>= 1.1.2)
-      cucumber (>= 1.2.0)
-      nokogiri (>= 1.5.0)
-      rails (>= 3.0.0)
-    database_cleaner (1.2.0)
+    cucumber-rails (1.4.1)
+      capybara (>= 1.1.2, < 3)
+      cucumber (>= 1.3.8, < 2)
+      mime-types (~> 1.16)
+      nokogiri (~> 1.5)
+      rails (>= 3, < 5)
+    database_cleaner (1.3.0)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -174,12 +162,11 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    dotenv (0.10.0)
     erubis (2.7.0)
     exception_notification (2.6.1)
       actionmailer (>= 3.0.4)
-    excon (0.33.0)
-    execjs (2.0.2)
+    excon (0.34.0)
+    execjs (2.1.0)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.4.1)
@@ -197,32 +184,26 @@ GEM
     fog-brightbox (0.0.2)
       fog-core
       fog-json
-    fog-core (1.21.1)
+    fog-core (1.22.0)
       builder
-      excon (~> 0.32)
-      formatador (~> 0.2.0)
+      excon (~> 0.33)
+      formatador (~> 0.2)
       mime-types
       net-scp (~> 1.1)
       net-ssh (>= 2.1.3)
     fog-json (1.0.0)
       multi_json (~> 1.0)
-    foreman (0.63.0)
-      dotenv (>= 0.7)
-      thor (>= 0.13.6)
-    foreman (0.63.0-java)
-      dotenv (>= 0.7)
-      thor (>= 0.13.6)
-    formatador (0.2.4)
+    formatador (0.2.5)
     formtastic (2.2.1)
       actionpack (>= 3.0)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
-    fuubar (1.3.2)
+    fuubar (1.3.3)
       rspec (>= 2.14.0, < 3.1.0)
-      ruby-progressbar (~> 1.3)
+      ruby-progressbar (~> 1.4)
     gettext (2.2.1)
       locale
-    gettext_i18n_rails (1.0.4)
+    gettext_i18n_rails (1.0.5)
       fast_gettext (>= 0.4.8)
     gherkin (2.12.2)
       multi_json (~> 1.3)
@@ -237,7 +218,6 @@ GEM
     hashie (2.1.1)
     highline (1.6.21)
     hike (1.2.3)
-    hirb (0.7.1)
     i18n (0.6.9)
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
@@ -247,7 +227,7 @@ GEM
     jquery-rails (2.2.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jquery-ui-rails (4.2.0)
+    jquery-ui-rails (4.2.1)
       railties (>= 3.2.16)
     jruby-memcached (0.5.5)
     jruby-openssl (0.9.4)
@@ -255,8 +235,7 @@ GEM
     jruby-rack (1.1.14)
     json (1.8.1)
     json (1.8.1-java)
-    jwt (0.1.11)
-      multi_json (>= 1.5)
+    jwt (1.0.0)
     kaminari (0.15.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -270,7 +249,7 @@ GEM
     launchy (2.4.2-java)
       addressable (~> 2.3)
       spoon (~> 0.0.1)
-    less (2.5.0)
+    less (2.5.1)
       commonjs (~> 0.2.7)
     less-rails (2.5.0)
       actionpack (>= 3.1)
@@ -282,7 +261,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    memcached (1.7.2)
+    memcached (1.8.0)
     meta_search (1.1.3)
       actionpack (~> 3.1)
       activerecord (~> 3.1)
@@ -292,28 +271,26 @@ GEM
     mime-types (1.25.1)
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
-    mini_portile (0.5.3)
-    multi_json (1.9.2)
+    mini_portile (0.6.0)
+    multi_json (1.10.1)
     multi_test (0.1.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    net-scp (1.2.0)
+    net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
       net-ssh (>= 2.6.5)
-    net-ssh (2.8.0)
+    net-ssh (2.9.1)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
-    newrelic_rpm (3.7.3.204)
-    nifty-generators (0.4.6)
-    nokogiri (1.6.1)
-      mini_portile (~> 0.5.0)
-    nokogiri (1.6.1-java)
-      mini_portile (~> 0.5.0)
+    newrelic_rpm (3.8.1.221)
+    nokogiri (1.6.2.1)
+      mini_portile (= 0.6.0)
+    nokogiri (1.6.2.1-java)
     oauth (0.4.7)
-    oauth2 (0.9.3)
+    oauth2 (0.9.4)
       faraday (>= 0.8, < 0.10)
-      jwt (~> 0.1.8)
+      jwt (~> 1.0)
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
@@ -322,9 +299,9 @@ GEM
       rack (~> 1.0)
     omniauth-facebook (1.6.0)
       omniauth-oauth2 (~> 1.1)
-    omniauth-google-oauth2 (0.2.2)
+    omniauth-google-oauth2 (0.2.4)
       omniauth (~> 1.0)
-      omniauth-oauth2
+      omniauth-oauth2 (~> 1.1)
     omniauth-oauth (1.0.1)
       oauth
       omniauth (~> 1.0)
@@ -347,7 +324,7 @@ GEM
       rails (~> 3.1)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
-    polyglot (0.3.4)
+    polyglot (0.3.5)
     pr_geohash (1.0.0)
     pry (0.9.12.6)
       coderay (~> 1.0)
@@ -369,27 +346,27 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (3.2.17)
-      actionmailer (= 3.2.17)
-      actionpack (= 3.2.17)
-      activerecord (= 3.2.17)
-      activeresource (= 3.2.17)
-      activesupport (= 3.2.17)
+    rails (3.2.18)
+      actionmailer (= 3.2.18)
+      actionpack (= 3.2.18)
+      activerecord (= 3.2.18)
+      activeresource (= 3.2.18)
+      activesupport (= 3.2.18)
       bundler (~> 1.0)
-      railties (= 3.2.17)
+      railties (= 3.2.18)
     rails3_libmemcached_store (0.5.1)
       memcached
-    rails_config (0.3.4)
+    rails_config (0.4.2)
       activesupport (>= 3.0)
-    railties (3.2.17)
-      actionpack (= 3.2.17)
-      activesupport (= 3.2.17)
+    railties (3.2.18)
+      actionpack (= 3.2.18)
+      activesupport (= 3.2.18)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     raindrops (0.13.0)
-    rake (10.3.0)
+    rake (10.3.2)
     rakismet (1.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
@@ -417,12 +394,12 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    ruby-progressbar (1.4.2)
-    ruby_parser (3.5.0)
+    ruby-progressbar (1.5.1)
+    ruby_parser (3.6.1)
       sexp_processor (~> 4.1)
-    rvm-capistrano (1.5.1)
+    rvm-capistrano (1.5.2)
       capistrano (~> 2.15.4)
-    sass (3.3.5)
+    sass (3.3.8)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -458,6 +435,14 @@ GEM
       polyamorous (~> 0.5.0)
     statistics2 (0.54)
     subexec (0.2.3)
+    sunspot (2.1.1)
+      pr_geohash (~> 1.0)
+      rsolr (~> 1.0.7)
+    sunspot_rails (2.1.1)
+      nokogiri
+      rails (>= 3)
+      sunspot (= 2.1.1)
+    sunspot_solr (2.1.1)
     sunspot_test (0.4.0)
       sunspot_rails (>= 1.2.1)
     tabletastic (0.2.3)
@@ -470,8 +455,8 @@ GEM
       therubyrhino_jar (>= 1.7.3)
     therubyrhino_jar (1.7.4)
     thor (0.19.1)
-    thread_safe (0.3.3)
-    thread_safe (0.3.3-java)
+    thread_safe (0.3.4)
+    thread_safe (0.3.4-java)
     thumbs_up (0.6.7)
       activerecord
       statistics2
@@ -502,7 +487,7 @@ GEM
     uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unicorn (4.8.2)
+    unicorn (4.8.3)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
@@ -541,13 +526,11 @@ DEPENDENCIES
   factory_girl_rails (~> 4.0)
   fast_gettext
   fog (~> 1.21.0)
-  foreman
   friendly_id (~> 4.0)
   fuubar
   gettext (~> 2.2.1)
   gettext_i18n_rails
   haml
-  hirb
   jquery-rails (~> 2.2.1)
   jquery-ui-rails
   jruby-memcached
@@ -567,7 +550,6 @@ DEPENDENCIES
   multi_json
   net-scp (~> 1.1)
   newrelic_rpm
-  nifty-generators
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
@@ -602,9 +584,9 @@ DEPENDENCIES
   slim
   sql_funk!
   squeel
-  sunspot!
-  sunspot_rails!
-  sunspot_solr!
+  sunspot
+  sunspot_rails
+  sunspot_solr
   sunspot_test
   tabletastic
   therubyracer
