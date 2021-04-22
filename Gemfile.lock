@@ -287,7 +287,7 @@ GEM
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     nokogiri (1.6.2.1-java)
-    oauth (0.4.7)
+    oauth (0.5.6)
     oauth2 (0.9.4)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
