@@ -19,15 +19,6 @@ GIT
       omniauth-oauth2 (~> 1.0)
 
 GIT
-  remote: git://github.com/engageis/activerecord-postgres-hstore.git
-  revision: 0f959161350aad37a0847a5cd3672ec67e3c2f14
-  specs:
-    activerecord-postgres-hstore (0.7.7)
-      activerecord (>= 3.1)
-      pg-hstore (>= 1.1.5)
-      rake
-
-GIT
   remote: git://github.com/fred/opinio.git
   revision: 1614b8a0ea0c91667d0628333761b6cb24f886e4
   branch: fred
@@ -50,6 +41,15 @@ GIT
     lazy_high_charts (1.5.4)
       bundler (>= 1.0)
       hash-deep-merge
+
+GIT
+  remote: https://github.com/engageis/activerecord-postgres-hstore.git
+  revision: 2f5bb585d7a6a810d7f060f6b23f83f4b744cab1
+  specs:
+    activerecord-postgres-hstore (0.7.8)
+      activerecord (>= 3.1)
+      pg-hstore (>= 1.1.5)
+      rake
 
 GEM
   remote: http://rubygems.org/
@@ -483,7 +483,7 @@ GEM
       execjs
       rails (>= 3.1)
       railties (>= 3.1)
-    tzinfo (0.3.39)
+    tzinfo (0.3.61)
     uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
